@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Joining (Merging) Data | R for HR: An Introduction to Human Resource Analytics Using R</title>
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR, and the purpose of this book is to show how the R programming language can be used to manage, analyze, and visualize HR data in order to derive insights and to inform decision making." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Joining (Merging) Data | R for HR: An Introduction to Human Resource Analytics Using R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="coverart.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR, and the purpose of this book is to show how the R programming language can be used to manage, analyze, and visualize HR data in order to derive insights and to inform decision making." />
+  <meta name="github-repo" content="davidcaughlin/R-for-HR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Joining (Merging) Data | R for HR: An Introduction to Human Resource Analytics Using R" />
+  
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR, and the purpose of this book is to show how the R programming language can be used to manage, analyze, and visualize HR data in order to derive insights and to inform decision making." />
+  <meta name="twitter:image" content="coverart.png" />
+
+<meta name="author" content="David E. Caughlin" />
+
+
+<meta name="date" content="2020-07-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="arrange.html"/>
+<link rel="next" href="filter.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for HR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> HR Analytics Project Life Cycle</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#questform"><i class="fa fa-check"></i><b>0.3.1</b> Question Formulation</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#dacquire"><i class="fa fa-check"></i><b>0.3.2</b> Data Acquisition</a></li>
+<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#dmanage"><i class="fa fa-check"></i><b>0.3.3</b> Data Management</a></li>
+<li class="chapter" data-level="0.3.4" data-path="index.html"><a href="index.html#danalysis"><i class="fa fa-check"></i><b>0.3.4</b> Data Analysis</a></li>
+<li class="chapter" data-level="0.3.5" data-path="index.html"><a href="index.html#dinterpret"><i class="fa fa-check"></i><b>0.3.5</b> Data Interpretion &amp; Storytelling</a></li>
+<li class="chapter" data-level="0.3.6" data-path="index.html"><a href="index.html#ddeploy"><i class="fa fa-check"></i><b>0.3.6</b> Deployment &amp; Implementation</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a><ul>
+<li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.4.1</b> Rationale for Using R</a></li>
+<li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.4.2</b> Audience</a></li>
+<li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.4.3</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.5</b> About the Author</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R &amp; RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>1.1</b> Downloading &amp; Installing R</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>1.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="1.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>1.1.2</b> For Mac Operating Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>1.2</b> Downloading &amp; Installing RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>2.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#setwd"><i class="fa fa-check"></i><b>2.2</b> Setting a Working Directory</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#identifying-the-current-working-directory"><i class="fa fa-check"></i><b>2.2.1</b> Identifying the Current Working Directory</a></li>
+<li class="chapter" data-level="2.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#setting-a-new-working-directory"><i class="fa fa-check"></i><b>2.2.2</b> Setting a New Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>2.3</b> Creating &amp; Saving an R Script</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>2.3.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="2.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>2.3.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="2.3.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.3.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="2.3.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>2.3.4</b> Opening a Saved R Script</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>2.4</b> Creating an RStudio Project</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>2.4.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="2.4.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>2.4.2</b> Opening an Existing RStudio Project</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>2.5</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="2.6" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>3</b> Basic Features and Operations of the R Language</a><ul>
+<li class="chapter" data-level="3.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="3.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a></li>
+<li class="chapter" data-level="3.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
+<li class="chapter" data-level="3.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>3.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="3.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>3.5</b> Types of Data</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>3.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="3.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>3.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="3.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>3.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="3.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>3.5.4</b> <code>logical</code> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>3.6</b> Vectors</a></li>
+<li class="chapter" data-level="3.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>3.7</b> Lists</a></li>
+<li class="chapter" data-level="3.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>3.8</b> Data Frames</a></li>
+<li class="chapter" data-level="3.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>3.9</b> Annotations</a></li>
+<li class="chapter" data-level="3.10" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Acquisition</b></span></li>
+<li class="chapter" data-level="4" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>4</b> Reading Data into R</a><ul>
+<li class="chapter" data-level="4.1" data-path="read.html"><a href="read.html#read-data"><i class="fa fa-check"></i><b>4.1</b> Read Data</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="read.html"><a href="read.html#option-1-read.csv-function-from-base-r"><i class="fa fa-check"></i><b>4.1.1</b> Option 1: <code>read.csv</code> Function from Base R</a></li>
+<li class="chapter" data-level="4.1.2" data-path="read.html"><a href="read.html#option-2-read_csv-function-from-readr-package"><i class="fa fa-check"></i><b>4.1.2</b> Option 2: <code>read_csv</code> Function from <code>readr</code> Package</a></li>
+<li class="chapter" data-level="4.1.3" data-path="read.html"><a href="read.html#option-3-read-function-from-lessr-package"><i class="fa fa-check"></i><b>4.1.3</b> Option 3: <code>Read</code> Function from <code>lessR</code> Package</a></li>
+<li class="chapter" data-level="4.1.4" data-path="read.html"><a href="read.html#option-4-read_excel-function-from-readxl-package"><i class="fa fa-check"></i><b>4.1.4</b> Option 4: <code>read_excel</code> Function from <code>readxl</code> Package</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="read.html"><a href="read.html#special-topics"><i class="fa fa-check"></i><b>4.2</b> Special Topics</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="read.html"><a href="read.html#list-data-file-names-in-working-directory"><i class="fa fa-check"></i><b>4.2.1</b> List Data File Names in Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="read.html"><a href="read.html#skip-rows-of-data-when-reading"><i class="fa fa-check"></i><b>4.2.2</b> Skip Rows of Data When Reading</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>5</b> Removing and Adding Variable Names</a><ul>
+<li class="chapter" data-level="5.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>5.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="5.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>5.2</b> Add Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="5.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>5.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>6</b> Writing Data from R</a><ul>
+<li class="chapter" data-level="6.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>6.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="6.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>6.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="6.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Management</b></span></li>
+<li class="chapter" data-level="7" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>7</b> Arranging (Sorting) Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>7.1</b> Arrange (Sort) Data</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>7.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="7.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>7.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>7.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>8</b> Joining (Merging) Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>8.1</b> Horizontal Join (Merge)</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>8.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="8.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>8.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>8.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="8.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>9</b> Filtering Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="filter.html"><a href="filter.html#filter-data-by-cases"><i class="fa fa-check"></i><b>9.1</b> Filter Data by Cases</a></li>
+<li class="chapter" data-level="9.2" data-path="filter.html"><a href="filter.html#option-1-using-filter-function-from-dplyr"><i class="fa fa-check"></i><b>9.2</b> Option 1: Using <code>filter</code> function from <code>dplyr</code></a><ul>
+<li class="chapter" data-level="9.2.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>9.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="9.2.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>9.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="filter.html"><a href="filter.html#option-2-using-subset-function-from-base-r"><i class="fa fa-check"></i><b>9.3</b> Option 2: Using <code>subset</code> function from base <code>R</code></a></li>
+<li class="chapter" data-level="9.4" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>9.4</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="9.5" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>9.5</b> Select Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="9.6" data-path="filter.html"><a href="filter.html#option-1-using-select-function-from-dplyr"><i class="fa fa-check"></i><b>9.6</b> Option 1: Using <code>select</code> Function from <code>dplyr</code></a><ul>
+<li class="chapter" data-level="9.6.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>9.6.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="9.6.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>9.6.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="filter.html"><a href="filter.html#option-2-using-subset-function-from-base-r-1"><i class="fa fa-check"></i><b>9.7</b> Option 2: Using <code>subset</code> Function from base <code>R</code></a></li>
+<li class="chapter" data-level="9.8" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>9.8</b> Remove Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="9.9" data-path="filter.html"><a href="filter.html#option-1-using-select-function-from-dplyr-1"><i class="fa fa-check"></i><b>9.9</b> Option 1: Using <code>select</code> Function from <code>dplyr</code></a><ul>
+<li class="chapter" data-level="9.9.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>9.9.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="9.9.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>9.9.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="filter.html"><a href="filter.html#option-2-using-subset-function-from-base-r-2"><i class="fa fa-check"></i><b>9.10</b> Option 2: Using <code>subset</code> Function from base <code>R</code></a></li>
+<li class="chapter" data-level="9.11" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>9.11</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>Chapter Supplements</b></span></li>
+<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a><ul>
+<li><a href="arrange-supplement.html#arrange_supp"><code>order</code> Function from Base R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a><ul>
+<li><a href="join-supplement.html#join_supp"><code>merge</code> Function from Base R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for HR:<br />
+<em>An Introduction to Human Resource Analytics Using R</em></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="join" class="section level1">
+<h1><span class="header-section-number">Chapter 8</span> Joining (Merging) Data</h1>
+<p><strong>Joining</strong> refers to the process of matching two data frames by either one or more key variables (i.e., horizontal join) or by variable names or columns (i.e., vertical join). Sometimes a <strong>join</strong> is referred to as a <strong>merge</strong>, and thus I will use these terms interchangeably. Broadly speaking, there are two types of joins (merges): horizontal and vertical.</p>
+<div id="joining-data-horizontally" class="section level4">
+<h4><span class="header-section-number">8.0.0.1</span> Joining Data Horizontally</h4>
+<p>A <strong>horizontal join (merge)</strong> refers to the process of matching cases (i.e., rows, observations) between two data frames using a <em>key variable</em> (<em>matching variable</em>), which results in distinct sets of variables (i.e., fields, columns) being combined horizontally (laterally) across two data frames. The resulting joined data frame will be wider (in terms of the number of variables) than either of the original data frames in isolation. For example, imagine that we pull data from separate information systems, each with different variables (i.e., fields) but at least some employees (i.e., cases) in common; to combine these two data frames, we can perform a horizontal join. This is often a necessary step when creating a data frame that contains all of the variables we will need in subsequent data analyses. For instance, if we wish to estimate the criterion-related validities (see <a href="#selectiontoolvalidation">Selection Tool Validation</a>) using the selection tool scores from one data frame with criterion (e.g., job performance) scores from another data frame, then we could perform a horizontal join.</p>
+<div class="figure">
+<img src="horizontal_join.png" alt="In a horizontal join, cases (or observations) are matched between two data frames using one or more key variables." />
+<p class="caption">In a <em>horizontal join</em>, cases (or observations) are matched between two data frames using one or more key variables.</p>
+</div>
+<p>We will focus on four different types of horizontal joins:</p>
+<ol style="list-style-type: decimal">
+<li>Inner join</li>
+<li>Full join</li>
+<li>Left join</li>
+<li><p>Right join</p></li>
+<li><p><strong>Inner join</strong>: All unmatched cases (or observations) are dropped, thereby retaining only those cases that are present in both the left (x, first) and right (y, second) data frames. In other words, a case is only included in the merged data frame if it appears in both of the original data data frames.</p></li>
+</ol>
+<div class="figure">
+<img src="inner_join.png" alt="In an inner join, all unmatched cases (or observations) are dropped, thereby retaining only those cases that are present in both the left (x, first) and right (y, second) data frames." />
+<p class="caption">In an <em>inner join</em>, all unmatched cases (or observations) are dropped, thereby retaining only those cases that are present in both the left (x, first) and right (y, second) data frames.</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Full join</strong>: All cases (or observations) are retained, including those cases that do not have a match in the other data data frame. In other words, a case is included in the merged data frame even if it only appears in one of the original data data frames. These type of join leads to the highest number of retained cases under conditions in which both data frames contain unique cases.</li>
+</ol>
+<div class="figure">
+<img src="full_join.png" alt="In a full join, all cases (or observations) are retained, including those cases that do not have a match in the other data data frame." />
+<p class="caption">In a <em>full join</em>, all cases (or observations) are retained, including those cases that do not have a match in the other data data frame.</p>
+</div>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Left join</strong>: All cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame. Consequently, cases from the right data frame that lack a match in the left data frame are dropped in the merged data frame.</li>
+</ol>
+<div class="figure">
+<img src="left_join.png" alt="In a left join, all cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame." />
+<p class="caption">In a <em>left join</em>, all cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame.</p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Right join</strong>: All cases (or observations) that appear in the right (y, second) data frame are retained, even if they lack a match in the left (x, first) data frame. Consequently, cases from the left data frame that lack a match in the right data frame are dropped in the merged data frame.</li>
+</ol>
+<div class="figure">
+<img src="right_join.png" alt="In a left join, only cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame." />
+<p class="caption">In a <em>left join</em>, only cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame.</p>
+</div>
+<p>Please note that I have illustrated different types of horizontal joins using a single key variable. It is entirely possible to perform horizontal joins using two or more key variables. For example, imagine that each morning we administered a pulse survey to employees and each afternoon we afternoon we administered a different pulse survey to the same employees, and that we repeated this process for five consecutive workdays. In this instance, we would likely need to horizontally join the data frames using both a unique employee identifier variable and a unique day-of-week variable.</p>
+</div>
+<div id="joining-data-vertically" class="section level4">
+<h4><span class="header-section-number">8.0.0.2</span> Joining Data Vertically</h4>
+<p>A <strong>vertical join (merge)</strong> refers to the process of matching identical variables from two data frames, which results in distinct sets of cases or observations being combined vertically. The resulting joined data frame will be longer (in terms of the number of cases) than either of the original data frames in isolation. For example, imagine an organization administered the same survey to two facilities (i.e., independent groups) each with unique employees; we could combine the two resulting data frames by performing a vertical join.</p>
+<div class="figure">
+<img src="vertical_join.png" alt="In a vertical join, identical variables are matched between two data frames, each with distinct sets of cases or observations." />
+<p class="caption">In a <em>vertical join</em>, identical variables are matched between two data frames, each with distinct sets of cases or observations.</p>
+</div>
+</div>
+<div id="video-tutorial" class="section level4">
+<h4><span class="header-section-number">8.0.0.3</span> Video Tutorial</h4>
+<p>Link to Video Tutorial: <a href="https://youtu.be/wVwJQsLNbmw" class="uri">https://youtu.be/wVwJQsLNbmw</a></p>
+</div>
+<div id="functions-packages-introduced" class="section level4">
+<h4><span class="header-section-number">8.0.0.4</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>merge</code></td>
+<td>base</td>
+</tr>
+<tr class="even">
+<td><code>right_join</code></td>
+<td><code>dplyr</code></td>
+</tr>
+<tr class="odd">
+<td><code>left_join</code></td>
+<td><code>dplyr</code></td>
+</tr>
+<tr class="even">
+<td><code>inner_join</code></td>
+<td><code>dplyr</code></td>
+</tr>
+<tr class="odd">
+<td><code>full_join</code></td>
+<td><code>dplyr</code></td>
+</tr>
+<tr class="even">
+<td><code>data.frame</code></td>
+<td>base</td>
+</tr>
+<tr class="odd">
+<td><code>c</code></td>
+<td>base</td>
+</tr>
+<tr class="even">
+<td><code>rep</code></td>
+<td>base</td>
+</tr>
+<tr class="odd">
+<td><code>rbind</code></td>
+<td>base</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_join" class="section level4">
+<h4><span class="header-section-number">8.0.0.5</span> Initial Steps</h4>
+<p>If you haven't already, save the files called <strong>&quot;PersData.csv&quot;</strong> and <strong>&quot;PerfData.csv&quot;</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>&quot;H:/RWorkshop&quot;</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you've followed the link to GitHub, just click &quot;Code&quot; (or &quot;Download&quot;) followed by &quot;Download ZIP&quot;, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory...</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="gettingstarted.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Set your working directory</span>
+<span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</code></pre></div>
+<p>Next, read in the .csv data files called <strong>&quot;PersData.csv&quot;</strong> and <strong>&quot;PerfData.csv&quot;</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(Wickham, Hester, and Francois <a href="#ref-R-readr">2018</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don't need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install readr package if you haven&#39;t already</span>
+<span class="co"># [Note: You don&#39;t need to install a package every </span>
+<span class="co"># time you wish to access it]</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access readr package</span>
+<span class="kw">library</span>(readr)
+
+<span class="co"># Read data and name data frame (tibble) objects</span>
+personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   id = col_double(),
+##   lastname = col_character(),
+##   firstname = col_character(),
+##   startdate = col_character(),
+##   gender = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">performancedata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   id = col_double(),
+##   perf_q1 = col_double(),
+##   perf_q2 = col_double(),
+##   perf_q3 = col_double(),
+##   perf_q4 = col_double()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View the names of the variables in the data frame (tibble) objects</span>
+<span class="kw">names</span>(personaldata)</code></pre></div>
+<pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(performancedata)</code></pre></div>
+<pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View data frame (tibble) objects</span>
+personaldata</code></pre></div>
+<pre><code>## # A tibble: 9 x 5
+##      id lastname   firstname startdate gender
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
+## 1   153 Sanchez    Alejandro 1/1/2016  male  
+## 2   154 McDonald   Ronald    1/9/2016  male  
+## 3   155 Smith      John      1/9/2016  male  
+## 4   165 Doe        Jane      1/4/2016  female
+## 5   125 Franklin   Benjamin  1/5/2016  male  
+## 6   111 Newton     Isaac     1/9/2016  male  
+## 7   198 Morales    Linda     1/7/2016  female
+## 8   201 Providence Cindy     1/9/2016  female
+## 9   282 Legend     John      1/9/2016  male</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">performancedata</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##      id perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153     3.9     4.8     4.9     5  
+## 2   125     2.1     1.9     2.1     2.3
+## 3   111     3.3     3.3     3.4     3.3
+## 4   198     4.9     4.5     4.4     4.8
+## 5   201     1.2     1.1     1       1  
+## 6   282     2.2     2.3     2.4     2.5</code></pre>
+<p>As you can see from the output generated in your console, on the one hand, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. On the other hand, the <code>personaldata</code> data frame object contains the same <code>id</code> unique identifer variable as the <code>personaldata</code> data frame object, but instead of employee demographic information, this data frame object includes varuables associated with quarterly employee performance: <code>perf_q1</code>, <code>perf_q2</code>, <code>perf_q3</code>, and <code>perf_q4</code>.</p>
+<p>In order to better illustrate certain join functions later on in this chapter, we'll begin by removing the case (i.e., employee) associated with the <code>id</code> variable value of 153 (i.e., Alejandro Sanchez); in terms of a rationale for doing so, let's imagine that Alejandro no longer works for the organization, and thus we would like to remove him from the <code>personaldata</code> data frame. If you don't completely understand the following process for removing this individual from the data frame, no need to worry, as you will learn more in the subsequent chapter on <a href="filter.html#filter">filtering data</a>.</p>
+<ol style="list-style-type: decimal">
+<li>Type the name of the data frame object (<code>personaldata</code>) followed by the <code>&lt;-</code> operator to overwrite the existing data frame object.</li>
+<li>Type the name of the original data frame object (<code>personaldata</code>) followed by brackets (<code>[ ]</code>).</li>
+<li>Within the brackets (<code>[ ]</code>), type the name of the data frame object (<code>personaldata</code>) again, followed by the <code>$</code> operator and the name of the variable we wish to use to select the case that will be removed, which in this instance is the <code>id</code> unique identifier variable. The <code>$</code> operator indicates to R that the <code>id</code> variable belongs to the <code>personaldata</code> data frame.</li>
+<li>Type the &quot;not equal to&quot; operator, which is <code>!=</code> (the <code>!</code> means &quot;not&quot;), followed by the <code>id</code> variable value we wish to use to remove the case (i.e., 153).</li>
+<li>Type a comma (<code>,</code>) to indicate that we are removing a row, not a column. <em>When referencing rows and columns in R, as we are doing in the brackets (<code>[ ]</code>), rows are entered first (before a comma), and columns are entered second (after a comma).</em> In doing so, we are telling R to retain all rows of data in <code>personaldata</code> except for the one corresponding to <code>id</code> equal to 153.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove case with id variable equal to 153</span>
+personaldata &lt;-<span class="st"> </span>personaldata[personaldata<span class="op">$</span>id <span class="op">!=</span><span class="st"> </span><span class="dv">153</span>,]</code></pre></div>
+<p>Check out the first 6 rows of the updated data frame for <code>personaldata</code>, and note that the data corresponding to the case associated with <code>id</code> equal to 153 is gone.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View first 6 rows of first data frame object once more</span>
+<span class="kw">head</span>(personaldata)</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##      id lastname firstname startdate gender
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
+## 1   154 McDonald Ronald    1/9/2016  male  
+## 2   155 Smith    John      1/9/2016  male  
+## 3   165 Doe      Jane      1/4/2016  female
+## 4   125 Franklin Benjamin  1/5/2016  male  
+## 5   111 Newton   Isaac     1/9/2016  male  
+## 6   198 Morales  Linda     1/7/2016  female</code></pre>
+</div>
+<div id="horizontaljoin" class="section level2">
+<h2><span class="header-section-number">8.1</span> Horizontal Join (Merge)</h2>
+<p>Recall that a horizontal join (merge) means that cases are matched using one more more key variables, and as a result, variables (i.e., columns, fields) are combined across two data frames. We will review two options for performing horizontal joins.</p>
+<p>To perform horizontal joins, we will learn how to use the <code>join</code> functions from the the <code>dplyr</code> package <span class="citation">(Wickham et al. <a href="#ref-R-dplyr">2020</a>)</span>, which include: <code>right_join</code>, <code>left_join</code>, <code>inner_join</code>, and <code>full_join</code>. Please note that there are other functions we could use to perform horizontal joins, and if you're interested, in the <a href="join-supplement.html#join_supplement">Joining (Merging) Data: Chapter Supplement</a>, I demonstrate how to use the <code>merge</code> function from base R to carry out the same operations we will cover below.</p>
+<p>Using the aformentioned <code>join</code> functions, we will match cases from the <code>personaldata</code> and <code>performancedata</code> data frames using the <code>id</code> unique identifer variable as a key variable. So how can we verify that <code>id</code> is an appropriate key variable? Well, let's use the <code>names</code> function from base R to retrieve the list of variable names from the two data frames, which we already did above. Nevertheless, let's call up those variable names once more. Simply enter the name of the data frame as a parenthetical argument in the <code>names</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Retrieve variable names from first data frame</span>
+<span class="kw">names</span>(personaldata)</code></pre></div>
+<pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Retrieve variable names from second data frame</span>
+<span class="kw">names</span>(performancedata)</code></pre></div>
+<pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
+<p>As you can see in the variable names listed above, the <code>id</code> variable is common to both data frames, and thus it will serve as our key variable.</p>
+<p>Now we are almost ready to begin joining the two data frames using the <code>id</code> unique identifer as a key variable. Before doing so, however, we should make sure that we have installed and accessed the <code>dplyr</code> package (if we haven't already), as the <code>join</code> functions come from that package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install dplyr package if you haven&#39;t already</span>
+<span class="co"># [Note: You don&#39;t need to install a package every </span>
+<span class="co"># time you wish to access it]</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access dplyr package</span>
+<span class="kw">library</span>(dplyr)</code></pre></div>
+<p>I will demonstrate two techniques for applying the <code>join</code> function.</p>
+<p>The <em>first technique</em> uses the pipe operator (<code>%&gt;%</code>). The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(Bache and Wickham <a href="#ref-R-magrittr">2014</a>)</span>, on which the <code>dplyr</code> is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund's <span class="citation">(<a href="#ref-wickham2017">2017</a>)</span> chapter on pipes: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
+<p>The <em>second technique</em> for applying the <code>join</code> function takes a more traditional approach in that it involves nested functions being nested parenthetically. If you don't want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called <a href="join.html#opt2_join_withoutpipe">Without Pipe</a>.</p>
+<div id="opt2_join_withpipe" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> <em>With</em> Pipe</h3>
+<p>Using the pipe (<code>%&gt;%</code>) operator technique, let's begin with what is referred to as an <strong>inner join</strong> by doing the following:</p>
+<ol style="list-style-type: decimal">
+<li>Use the <code>&lt;-</code> symbol to name the joined (merged) data frame that we will create using the one of the <code>dplyr</code> join functions. For this example, I name the new joined data frame <code>mergeddf</code>, which is completely arbitrary; you could name it whatever you would like. Make sure you put the name of the new data frame object to the <em>left</em> of the <code>&lt;-</code> operator.</li>
+<li>To the <em>right</em> of the <code>&lt;-</code> operator, type the name of the first data frame, which we named <code>personaldata</code>, followed by the pipe (<code>%&gt;%</code>) operator. This will &quot;pipe&quot; our data frame into the subsequent function.</li>
+<li>On the same line or on the next line, type the <code>inner_join</code> function, and within the parentheses as the first argument, type the name of the second data frame, which we called <code>performancedata</code>. As the second argument, use the <code>by=</code> argument to indicate the name of the key variable, which in this example is <code>id</code>; make sure the key variable is in quotation marks (<code>&quot; &quot;</code>), and remember, object and variable names in R are case and space sensitive.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Inner join (with pipe)</span>
+mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 5 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 2   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Now, let's revisit the original data frame objects that we read in initially.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View the first original data frame</span>
+personaldata</code></pre></div>
+<pre><code>## # A tibble: 8 x 5
+##      id lastname   firstname startdate gender
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
+## 1   154 McDonald   Ronald    1/9/2016  male  
+## 2   155 Smith      John      1/9/2016  male  
+## 3   165 Doe        Jane      1/4/2016  female
+## 4   125 Franklin   Benjamin  1/5/2016  male  
+## 5   111 Newton     Isaac     1/9/2016  male  
+## 6   198 Morales    Linda     1/7/2016  female
+## 7   201 Providence Cindy     1/9/2016  female
+## 8   282 Legend     John      1/9/2016  male</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View the second original data frame</span>
+performancedata</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##      id perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153     3.9     4.8     4.9     5  
+## 2   125     2.1     1.9     2.1     2.3
+## 3   111     3.3     3.3     3.4     3.3
+## 4   198     4.9     4.5     4.4     4.8
+## 5   201     1.2     1.1     1       1  
+## 6   282     2.2     2.3     2.4     2.5</code></pre>
+<p>In the output, first, note how all of the variables from the original data frames (i.e., <code>personaldata</code>, <code>performancedata</code>) are represented in the merged data frame (i.e., <code>mergeddf</code>). Second, note how the cases are matched by the <code>id</code> key variable. Third, note that the <code>personaldata</code> data frame has 8 cases, the <code>performancedata</code> data frame has 6 cases, and the <code>mergeddf</code> data frame has 6 cases. By default, the <code>merge</code> function performs an <em>inner join</em> and retains only those matched cases that have data in <em>both</em> data frames. Because cases whose <code>id</code> values were <code>154</code>, <code>155</code>, and <code>165</code> had data in <code>personaldata</code> but not <code>performancedata</code> and because the case with an <code>id</code> value equal to 153 was in <code>performancedata</code> but not <code>personaldata</code>, only the 5 cases that had available data in both data frames were retained.</p>
+<p>To perform what is referred to as a <strong>full join</strong> in which we retain all cases and available data, we simply swap out the <code>inner_join</code> function from our previous code with the <code>full_join</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Full join (with pipe)</span>
+mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 9 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 3   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 4   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 5   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 6   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 7   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
+## 9   153 &lt;NA&gt;       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;       3.9     4.8     4.9     5</code></pre>
+<p>Note how the <code>full_join</code> function retains all available cases that had available data in at least one of the data frames, which in this example is 9 cases. <em>When in doubt, I recommend using the <code>full_join</code> function to retain all available data.</em></p>
+<p>To perform what is referred to as a <strong>left join</strong> in which we retain only those cases with data available in the first (left, x) data frame (<code>personaldata</code>), we use the <code>left_join</code> function instead, while keeping the rest of the previous code the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Left join (with pipe)</span>
+mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 8 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 3   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 4   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 5   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 6   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 7   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Note how the <code>left_join</code> function retains only those cases for which the first (left, x) data frame (i.e., <code>personaldata</code>) has complete data, which in this case happens to be 8 cases. Notably absent is the case associated with <code>id</code> equal to 153 because the first (left, x) data frame (i.e., <code>personaldata</code>) lacked that case. An <code>NA</code> appears for each case from the second (right, y) data frame that contained missing values on variables from that data frame.</p>
+<p>To perform what is referred to as a <strong>right join</strong> in which we retain only those cases with data available in the second (right, y) data frame (<code>performancedata</code>), we use the <code>right_join</code> function instead, while keeping the rest of the previous code the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Right join (with pipe)</span>
+mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 6 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 2   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
+## 6   153 &lt;NA&gt;       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;       3.9     4.8     4.9     5</code></pre>
+<p>Note how the <code>right_join</code> function retains only those cases for which the joined (second, right, y) data frame (i.e., <code>performancedata</code>) has complete data. Because the first (left, x) data frame lacks data for the case in which <code>id</code> is equal to 153, an <code>NA</code> appears for each case from the first data frame that contained missing values on variables from that data frame.</p>
+</div>
+<div id="opt2_join_withoutpipe" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> <em>Without</em> Pipe</h3>
+<p>In this section, I demonstrate the same <code>dplyr</code> join functions <a href="join.html#opt2_join_withpipe">as above</a>, except here I demonstrate how to specify the functions <em>without</em> the use of a pipe (<code>%&gt;%</code>) operator.</p>
+<p>Let's begin with what is referred to as an <strong>inner join</strong> by doing the following:</p>
+<ol style="list-style-type: decimal">
+<li>Use the <code>&lt;-</code> operator to name the joined (merged) data frame that we will create using the one of the <code>dplyr</code> join functions. For this example, I name the new joined data frame <code>mergeddf</code>, which is completely arbitrary; you could name it whatever you would like. Make sure you put the name of the new data frame object to the <em>left</em> of the <code>&lt;-</code> operator.</li>
+<li>To the <em>right</em> of the <code>&lt;-</code> operator, type the name of the <code>inner_join</code> function. As the first argument within the parentheses, type the name of the first data frame, which we named <code>personaldata</code>. As the second argument, type the name of the second data frame we named <code>performancedata</code>. As the third argument, use the <code>by=</code> argument to indicate the name of the key variable, which in this example is <code>id</code>; make sure the key variable is in quotation marks (<code>&quot; &quot;</code>), and remember, object and variable names in R are case and space sensitive.</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Inner join (without pipe)</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">inner_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 5 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 2   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Now, let's revisit the original data frame objects that we read in initially.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View the first original data frame</span>
+personaldata</code></pre></div>
+<pre><code>## # A tibble: 8 x 5
+##      id lastname   firstname startdate gender
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
+## 1   154 McDonald   Ronald    1/9/2016  male  
+## 2   155 Smith      John      1/9/2016  male  
+## 3   165 Doe        Jane      1/4/2016  female
+## 4   125 Franklin   Benjamin  1/5/2016  male  
+## 5   111 Newton     Isaac     1/9/2016  male  
+## 6   198 Morales    Linda     1/7/2016  female
+## 7   201 Providence Cindy     1/9/2016  female
+## 8   282 Legend     John      1/9/2016  male</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View the second original data frame</span>
+performancedata</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##      id perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153     3.9     4.8     4.9     5  
+## 2   125     2.1     1.9     2.1     2.3
+## 3   111     3.3     3.3     3.4     3.3
+## 4   198     4.9     4.5     4.4     4.8
+## 5   201     1.2     1.1     1       1  
+## 6   282     2.2     2.3     2.4     2.5</code></pre>
+<p>In the output, first, note how all of the variables from the original data frames (i.e., <code>personaldata</code>, <code>performancedata</code>) are represented in the merged data frame (i.e., <code>mergeddf</code>). Second, note how the cases are matched by the <code>id</code> key variable. Third, note that the <code>personaldata</code> data frame has 8 cases, the <code>performancedata</code> data frame has 6 cases, and the <code>mergeddf</code> data frame has 6 cases. By default, the <code>merge</code> function performs an <em>inner join</em> and retains only those matched cases that have data in <em>both</em> data frames. Because cases whose <code>id</code> values were <code>154</code>, <code>155</code>, and <code>165</code> had data in <code>personaldata</code> but not <code>performancedata</code> and because the case with an <code>id</code> value equal to 153 was in <code>performancedata</code> but not <code>personaldata</code>, only the 5 cases that had available data in both data frames were retained.</p>
+<p>To perform what is referred to as a <strong>full join</strong> in which we retain all cases and available data, we simply swap out the <code>inner_join</code> function from our previous code with the <code>full_join</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Full join (without pipe)</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">full_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 9 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 3   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 4   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 5   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 6   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 7   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
+## 9   153 &lt;NA&gt;       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;       3.9     4.8     4.9     5</code></pre>
+<p>Note how the <code>full_join</code> function retains all available cases that had available data in at least one of the data frames, which in this example is 9 cases. <em>When in doubt, I recommend using the <code>full_join</code> function to retain all available data.</em></p>
+<p>To perform what is referred to as a <strong>left join</strong> in which we retain only those cases with data available in the first (left, x) data frame (<code>personaldata</code>), we use the <code>left_join</code> function instead, while keeping the rest of the previous code the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Left join (without pipe)</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">left_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 8 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 3   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 4   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 5   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 6   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 7   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Note how the <code>left_join</code> function retains only those cases for which the first (left, x) data frame (i.e., <code>personaldata</code>) has complete data, which in this case happens to be 8 cases. Notably absent is the case associated with <code>id</code> equal to 153 because the first (left, x) data frame (i.e., <code>personaldata</code>) lacked that case. An <code>NA</code> appears for each case from the second (right, y) data frame that contained missing values on variables from that data frame.</p>
+<p>To perform what is referred to as a <strong>right join</strong> in which we retain only those cases with data available in the second (right, y) data frame (<code>performancedata</code>), we use the <code>right_join</code> function instead, while keeping the rest of the previous code the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Right join (without pipe)</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">right_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View the joined data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 6 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 2   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
+## 6   153 &lt;NA&gt;       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;       3.9     4.8     4.9     5</code></pre>
+<p>Note how the <code>right_join</code> function retains only those cases for which the joined (second, right, y) data frame (i.e., <code>performancedata</code>) has complete data. Because the first (left, x) data frame lacks data for the case in which <code>id</code> is equal to 153, an <code>NA</code> appears for each case from the first data frame that contained missing values on variables from that data frame.</p>
+</div>
+</div>
+<div id="verticaljoin" class="section level2">
+<h2><span class="header-section-number">8.2</span> Vertical Join (Merge)</h2>
+<p>To perform a vertical join (merge), we will use the <code>rbind</code> function from base R, which stands for &quot;row bind.&quot; As a reminder, with a horizontal join, our focus is on joining variables (i.e., columns, fields) from two data frames containing overlapping cases (i.e., rows). In contrast, with a vertical join, our focus is on joining cases from data frames with the same variables.</p>
+<p>To illustrate how to perform a vertical join, we take a slightly different approach than what we did with <a href="join.html#horizontaljoin">horizontal joins</a>. Instead of reading in data files, we will create two &quot;toy&quot; employee demographic data frames with the exact same variables but different cases. We will use the <code>data.frame</code> function from base R to indicate that we wish to create a data frame object; we use the <code>c</code> (combine) function from base R to combine values into a vector; and we use the <code>rep</code> (replicate) function from base R to replicate the same value a specified number of times. Also note that the <code>:</code> operator, when used between two numbers, creates a vector of consecutive values, beginning with the first value and ending with the second. Please note, that using and understanding the <code>data.frame</code>, <code>c</code>, and <code>rep</code> functions is not consequential for understanding how to do a vertical merge; rather, I merely use these functions in this tutorial to create quick toy data frames that we can use to illustrate how to do a vertical join. For more information on the <code>data.frame</code> function and the <code>c</code> function, please refer to the chapter called <a href="gentleintro.html#gentleintro">Basic Features and Operations of the R Language</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Create data frames with same variables but arbitrary values</span>
+df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">21</span><span class="op">:</span><span class="dv">26</span>), <span class="dt">sex=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;male&quot;</span>, <span class="dv">6</span>)))
+df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">27</span><span class="op">:</span><span class="dv">30</span>), <span class="dt">sex=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;female&quot;</span>, <span class="dv">4</span>)))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View first data frame</span>
+df1</code></pre></div>
+<pre><code>##   id age  sex
+## 1  1  21 male
+## 2  2  22 male
+## 3  3  23 male
+## 4  4  24 male
+## 5  5  25 male
+## 6  6  26 male</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View second data frame</span>
+df2</code></pre></div>
+<pre><code>##   id age    sex
+## 1  7  27 female
+## 2  8  28 female
+## 3  9  29 female
+## 4 10  30 female</code></pre>
+<p>Given that these two data frames (i.e., <code>df1</code>, <code>df2</code>) have the exact same variable names (<code>id</code>, <code>age</code>, and <code>sex</code>), we can easily perform a vertical join using the <code>rbind</code> function. To do so, enter the names of the two data frames as arguments, separated by a comma. Use the <code>&lt;-</code> symbol to name the merged data frame something, which for this case, I arbitrarily named it <code>mergeddf2</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Verticle merge</span>
+mergeddf2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2)
+
+<span class="co"># View the merged data frame</span>
+mergeddf2</code></pre></div>
+<pre><code>##    id age    sex
+## 1   1  21   male
+## 2   2  22   male
+## 3   3  23   male
+## 4   4  24   male
+## 5   5  25   male
+## 6   6  26   male
+## 7   7  27 female
+## 8   8  28 female
+## 9   9  29 female
+## 10 10  30 female</code></pre>
+<p>Note how the two data frames are now &quot;stacked&quot; on one another. This was possible because they shared the same variables names and variables types (e.g., numeric and character).</p>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">8.3</span> Summary</h2>
+<p>Joining (merging) data frames in R is a useful practice. In this chapter, we learned how to perform a horizontal join using the <code>right_join</code>, <code>left_join</code>, <code>inner_join</code>, and <code>full_join</code> functions from the <code>dplyr</code> package. We also learned how to perform a vertical join using the <code>rbind</code> function from base R.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-magrittr">
+<p>Bache, Stefan Milton, and Hadley Wickham. 2014. <em>Magrittr: A Forward-Pipe Operator for R</em>. <a href="https://CRAN.R-project.org/package=magrittr" class="uri">https://CRAN.R-project.org/package=magrittr</a>.</p>
+</div>
+<div id="ref-wickham2017">
+<p>Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n" class="uri">https://r4ds.had.co.nz/n</a>.</p>
+</div>
+<div id="ref-R-dplyr">
+<p>Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2020. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr" class="uri">https://CRAN.R-project.org/package=dplyr</a>.</p>
+</div>
+<div id="ref-R-readr">
+<p>Wickham, Hadley, Jim Hester, and Romain Francois. 2018. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr" class="uri">https://CRAN.R-project.org/package=readr</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="arrange.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="filter.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R for HR.pdf", "R for HR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

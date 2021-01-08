@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Filtering Data | R for HR: An Introduction to Human Resource Analytics Using R</title>
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR, and the purpose of this book is to show how the R programming language can be used to manage, analyze, and visualize HR data in order to derive insights and to inform decision making." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Filtering Data | R for HR: An Introduction to Human Resource Analytics Using R" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="coverart.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR, and the purpose of this book is to show how the R programming language can be used to manage, analyze, and visualize HR data in order to derive insights and to inform decision making." />
+  <meta name="github-repo" content="davidcaughlin/R-for-HR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Filtering Data | R for HR: An Introduction to Human Resource Analytics Using R" />
+  
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR, and the purpose of this book is to show how the R programming language can be used to manage, analyze, and visualize HR data in order to derive insights and to inform decision making." />
+  <meta name="twitter:image" content="coverart.png" />
+
+<meta name="author" content="David E. Caughlin" />
+
+
+<meta name="date" content="2020-07-30" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="join.html"/>
+<link rel="next" href="arrange-supplement.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for HR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> HR Analytics Project Life Cycle</a><ul>
+<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#questform"><i class="fa fa-check"></i><b>0.3.1</b> Question Formulation</a></li>
+<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#dacquire"><i class="fa fa-check"></i><b>0.3.2</b> Data Acquisition</a></li>
+<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#dmanage"><i class="fa fa-check"></i><b>0.3.3</b> Data Management</a></li>
+<li class="chapter" data-level="0.3.4" data-path="index.html"><a href="index.html#danalysis"><i class="fa fa-check"></i><b>0.3.4</b> Data Analysis</a></li>
+<li class="chapter" data-level="0.3.5" data-path="index.html"><a href="index.html#dinterpret"><i class="fa fa-check"></i><b>0.3.5</b> Data Interpretion &amp; Storytelling</a></li>
+<li class="chapter" data-level="0.3.6" data-path="index.html"><a href="index.html#ddeploy"><i class="fa fa-check"></i><b>0.3.6</b> Deployment &amp; Implementation</a></li>
+</ul></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a><ul>
+<li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.4.1</b> Rationale for Using R</a></li>
+<li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.4.2</b> Audience</a></li>
+<li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.4.3</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.5</b> About the Author</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction</b></span></li>
+<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R &amp; RStudio</a><ul>
+<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>1.1</b> Downloading &amp; Installing R</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>1.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="1.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>1.1.2</b> For Mac Operating Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>1.2</b> Downloading &amp; Installing RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
+<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>2.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#setwd"><i class="fa fa-check"></i><b>2.2</b> Setting a Working Directory</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#identifying-the-current-working-directory"><i class="fa fa-check"></i><b>2.2.1</b> Identifying the Current Working Directory</a></li>
+<li class="chapter" data-level="2.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#setting-a-new-working-directory"><i class="fa fa-check"></i><b>2.2.2</b> Setting a New Working Directory</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>2.3</b> Creating &amp; Saving an R Script</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>2.3.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="2.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>2.3.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="2.3.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.3.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="2.3.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>2.3.4</b> Opening a Saved R Script</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>2.4</b> Creating an RStudio Project</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>2.4.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="2.4.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>2.4.2</b> Opening an Existing RStudio Project</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>2.5</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="2.6" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>3</b> Basic Features and Operations of the R Language</a><ul>
+<li class="chapter" data-level="3.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="3.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a></li>
+<li class="chapter" data-level="3.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
+<li class="chapter" data-level="3.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>3.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="3.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>3.5</b> Types of Data</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>3.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="3.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>3.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="3.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>3.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="3.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>3.5.4</b> <code>logical</code> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>3.6</b> Vectors</a></li>
+<li class="chapter" data-level="3.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>3.7</b> Lists</a></li>
+<li class="chapter" data-level="3.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>3.8</b> Data Frames</a></li>
+<li class="chapter" data-level="3.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>3.9</b> Annotations</a></li>
+<li class="chapter" data-level="3.10" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>II Data Acquisition</b></span></li>
+<li class="chapter" data-level="4" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>4</b> Reading Data into R</a><ul>
+<li class="chapter" data-level="4.1" data-path="read.html"><a href="read.html#read-data"><i class="fa fa-check"></i><b>4.1</b> Read Data</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="read.html"><a href="read.html#option-1-read.csv-function-from-base-r"><i class="fa fa-check"></i><b>4.1.1</b> Option 1: <code>read.csv</code> Function from Base R</a></li>
+<li class="chapter" data-level="4.1.2" data-path="read.html"><a href="read.html#option-2-read_csv-function-from-readr-package"><i class="fa fa-check"></i><b>4.1.2</b> Option 2: <code>read_csv</code> Function from <code>readr</code> Package</a></li>
+<li class="chapter" data-level="4.1.3" data-path="read.html"><a href="read.html#option-3-read-function-from-lessr-package"><i class="fa fa-check"></i><b>4.1.3</b> Option 3: <code>Read</code> Function from <code>lessR</code> Package</a></li>
+<li class="chapter" data-level="4.1.4" data-path="read.html"><a href="read.html#option-4-read_excel-function-from-readxl-package"><i class="fa fa-check"></i><b>4.1.4</b> Option 4: <code>read_excel</code> Function from <code>readxl</code> Package</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="read.html"><a href="read.html#special-topics"><i class="fa fa-check"></i><b>4.2</b> Special Topics</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="read.html"><a href="read.html#list-data-file-names-in-working-directory"><i class="fa fa-check"></i><b>4.2.1</b> List Data File Names in Working Directory</a></li>
+<li class="chapter" data-level="4.2.2" data-path="read.html"><a href="read.html#skip-rows-of-data-when-reading"><i class="fa fa-check"></i><b>4.2.2</b> Skip Rows of Data When Reading</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>4.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>5</b> Removing and Adding Variable Names</a><ul>
+<li class="chapter" data-level="5.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>5.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="5.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>5.2</b> Add Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="5.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>5.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>6</b> Writing Data from R</a><ul>
+<li class="chapter" data-level="6.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>6.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="6.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>6.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="6.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Management</b></span></li>
+<li class="chapter" data-level="7" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>7</b> Arranging (Sorting) Data</a><ul>
+<li class="chapter" data-level="7.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>7.1</b> Arrange (Sort) Data</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>7.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="7.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>7.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>7.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>8</b> Joining (Merging) Data</a><ul>
+<li class="chapter" data-level="8.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>8.1</b> Horizontal Join (Merge)</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>8.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="8.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>8.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>8.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="8.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>8.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>9</b> Filtering Data</a><ul>
+<li class="chapter" data-level="9.1" data-path="filter.html"><a href="filter.html#filter-data-by-cases"><i class="fa fa-check"></i><b>9.1</b> Filter Data by Cases</a></li>
+<li class="chapter" data-level="9.2" data-path="filter.html"><a href="filter.html#option-1-using-filter-function-from-dplyr"><i class="fa fa-check"></i><b>9.2</b> Option 1: Using <code>filter</code> function from <code>dplyr</code></a><ul>
+<li class="chapter" data-level="9.2.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>9.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="9.2.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>9.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="filter.html"><a href="filter.html#option-2-using-subset-function-from-base-r"><i class="fa fa-check"></i><b>9.3</b> Option 2: Using <code>subset</code> function from base <code>R</code></a></li>
+<li class="chapter" data-level="9.4" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>9.4</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="9.5" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>9.5</b> Select Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="9.6" data-path="filter.html"><a href="filter.html#option-1-using-select-function-from-dplyr"><i class="fa fa-check"></i><b>9.6</b> Option 1: Using <code>select</code> Function from <code>dplyr</code></a><ul>
+<li class="chapter" data-level="9.6.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>9.6.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="9.6.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>9.6.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="filter.html"><a href="filter.html#option-2-using-subset-function-from-base-r-1"><i class="fa fa-check"></i><b>9.7</b> Option 2: Using <code>subset</code> Function from base <code>R</code></a></li>
+<li class="chapter" data-level="9.8" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>9.8</b> Remove Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="9.9" data-path="filter.html"><a href="filter.html#option-1-using-select-function-from-dplyr-1"><i class="fa fa-check"></i><b>9.9</b> Option 1: Using <code>select</code> Function from <code>dplyr</code></a><ul>
+<li class="chapter" data-level="9.9.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>9.9.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="9.9.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>9.9.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="9.10" data-path="filter.html"><a href="filter.html#option-2-using-subset-function-from-base-r-2"><i class="fa fa-check"></i><b>9.10</b> Option 2: Using <code>subset</code> Function from base <code>R</code></a></li>
+<li class="chapter" data-level="9.11" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>9.11</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>Chapter Supplements</b></span></li>
+<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a><ul>
+<li><a href="arrange-supplement.html#arrange_supp"><code>order</code> Function from Base R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a><ul>
+<li><a href="join-supplement.html#join_supp"><code>merge</code> Function from Base R</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for HR:<br />
+<em>An Introduction to Human Resource Analytics Using R</em></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="filter" class="section level1">
+<h1><span class="header-section-number">Chapter 9</span> Filtering Data</h1>
+<p>Applying a <strong>filter</strong> to data (i.e., creating a <strong>subset</strong> of data) is an important aspect of data management. When filter data, we either (a) select a subset of cases based on values/scores on one or more variables or (b) select a subset of variables. In this tutorial, you will learn some fundamental techniques for filtering your data in <code>R</code>.</p>
+<div id="video-tutorial" class="section level4">
+<h4><span class="header-section-number">9.0.0.1</span> Video Tutorial</h4>
+<p>Link to Video Tutorial: <a href="https://youtu.be/izVcbPmu0D0" class="uri">https://youtu.be/izVcbPmu0D0</a></p>
+</div>
+<div id="functions-packages-introduced" class="section level4">
+<h4><span class="header-section-number">9.0.0.2</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>str</code></td>
+<td>base</td>
+</tr>
+<tr class="even">
+<td><code>filter</code></td>
+<td><code>dplyr</code></td>
+</tr>
+<tr class="odd">
+<td><code>c</code></td>
+<td>base</td>
+</tr>
+<tr class="even">
+<td><code>as.Date</code></td>
+<td>base</td>
+</tr>
+<tr class="odd">
+<td><code>select</code></td>
+<td><code>dplyr</code></td>
+</tr>
+<tr class="even">
+<td><code>subset</code></td>
+<td>base</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_filter" class="section level4">
+<h4><span class="header-section-number">9.0.0.3</span> Initial Steps</h4>
+<p>If you haven't already, save the files called <strong>&quot;PersData.csv&quot;</strong> and <strong>&quot;PerfData.csv&quot;</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>&quot;H:/RWorkshop&quot;</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you've followed the link to GitHub, just click &quot;Code&quot; (or &quot;Download&quot;) followed by &quot;Download ZIP&quot;, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory...</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="gettingstarted.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Set your working directory</span>
+<span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</code></pre></div>
+<p>Next, read in the .csv data files called <strong>&quot;PersData.csv&quot;</strong> and <strong>&quot;PerfData.csv&quot;</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(Wickham, Hester, and Francois <a href="#ref-R-readr">2018</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don't need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install readr package if you haven&#39;t already</span>
+<span class="co"># [Note: You don&#39;t need to install a package every </span>
+<span class="co"># time you wish to access it]</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access readr package</span>
+<span class="kw">library</span>(readr)
+
+<span class="co"># Read data and name data frame (tibble) objects</span>
+personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   id = col_double(),
+##   lastname = col_character(),
+##   firstname = col_character(),
+##   startdate = col_character(),
+##   gender = col_character()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">performancedata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   id = col_double(),
+##   perf_q1 = col_double(),
+##   perf_q2 = col_double(),
+##   perf_q3 = col_double(),
+##   perf_q4 = col_double()
+## )</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View the names of the variables in the data frame (tibble) objects</span>
+<span class="kw">names</span>(personaldata)</code></pre></div>
+<pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(performancedata)</code></pre></div>
+<pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># View data frame (tibble) objects</span>
+personaldata</code></pre></div>
+<pre><code>## # A tibble: 9 x 5
+##      id lastname   firstname startdate gender
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
+## 1   153 Sanchez    Alejandro 1/1/2016  male  
+## 2   154 McDonald   Ronald    1/9/2016  male  
+## 3   155 Smith      John      1/9/2016  male  
+## 4   165 Doe        Jane      1/4/2016  female
+## 5   125 Franklin   Benjamin  1/5/2016  male  
+## 6   111 Newton     Isaac     1/9/2016  male  
+## 7   198 Morales    Linda     1/7/2016  female
+## 8   201 Providence Cindy     1/9/2016  female
+## 9   282 Legend     John      1/9/2016  male</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">performancedata</code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##      id perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153     3.9     4.8     4.9     5  
+## 2   125     2.1     1.9     2.1     2.3
+## 3   111     3.3     3.3     3.4     3.3
+## 4   198     4.9     4.5     4.4     4.8
+## 5   201     1.2     1.1     1       1  
+## 6   282     2.2     2.3     2.4     2.5</code></pre>
+<p>As you can see from the output generated in your console, on the one hand, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. On the other hand, the <code>personaldata</code> data frame object contains the same <code>id</code> unique identifer variable as the <code>personaldata</code> data frame object, but instead of employee demographic information, this data frame object includes varuables associated with quarterly employee performance: <code>perf_q1</code>, <code>perf_q2</code>, <code>perf_q3</code>, and <code>perf_q4</code>.</p>
+<p>To make this chapter more interesting (and for the sake of practice), let's use the <code>full_join</code> function from <code>dplyr</code> to join (merge) the two data frames we just read in (<code>personaldata</code>, <code>performancedata</code>) using the <code>id</code> variable as the key variable. Let's arbitrarily name the new joined (merged) data frame <code>mergeddf</code> using the <code>&lt;-</code> operator. For more information on joining data, check out the chapter called <a href="join.html#join">Joining (Merging) Data</a>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install readr package if you haven&#39;t already</span>
+<span class="co"># [Note: You don&#39;t need to install a package every </span>
+<span class="co"># time you wish to access it]</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access package</span>
+<span class="kw">library</span>(dplyr)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Full join (without pipe)</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">full_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)
+
+<span class="co"># View joined (merged) data frame object</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 9 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez    Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 3   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 4   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 5   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 6   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 7   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 8   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 9   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Now we have a joined data frame called <code>mergeddf</code>!</p>
+</div>
+<div id="filter-data-by-cases" class="section level2">
+<h2><span class="header-section-number">9.1</span> Filter Data by Cases</h2>
+<p>Sometimes we want to select only a subset of cases from a data frame or table. There are different functions that can achieve this end. For example, the <code>subset</code> function filter from base <code>R</code> will do the trick. With that said, the <code>dplyr</code> package offers the <code>filter</code> function which has some advantages (e.g., faster with larger amounts of data), and thus, I recommend that you use the <code>filter</code> function, as we will do in this tutorial. In this tutorial, we will first learn how to apply a filter using the <code>filter</code> function from <code>dplyr</code> and later using the <code>subset</code> function from base <code>R</code>. You can use either approach, but as I mentioned there are some speed advantages to the <code>dplyr</code> version of the function that become more noticeable with larger datasets.</p>
+<p>In order to properly filter data by cases, we need to know the respective types (classes) of the variables in the data frame. Perhaps the quickest way to find out the type (class) of each variable in the data frame is to use the <code>str</code> (structure) function from base <code>R</code>, and the function's parentheses, just enter the name of the data frame (<code>mergeddf</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Determine class of variables</span>
+<span class="kw">str</span>(mergeddf)</code></pre></div>
+<pre><code>## tibble [9 x 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ id       : num [1:9] 153 154 155 165 125 111 198 201 282
+##  $ lastname : chr [1:9] &quot;Sanchez&quot; &quot;McDonald&quot; &quot;Smith&quot; &quot;Doe&quot; ...
+##  $ firstname: chr [1:9] &quot;Alejandro&quot; &quot;Ronald&quot; &quot;John&quot; &quot;Jane&quot; ...
+##  $ startdate: chr [1:9] &quot;1/1/2016&quot; &quot;1/9/2016&quot; &quot;1/9/2016&quot; &quot;1/4/2016&quot; ...
+##  $ gender   : chr [1:9] &quot;male&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...
+##  $ perf_q1  : num [1:9] 3.9 NA NA NA 2.1 3.3 4.9 1.2 2.2
+##  $ perf_q2  : num [1:9] 4.8 NA NA NA 1.9 3.3 4.5 1.1 2.3
+##  $ perf_q3  : num [1:9] 4.9 NA NA NA 2.1 3.4 4.4 1 2.4
+##  $ perf_q4  : num [1:9] 5 NA NA NA 2.3 3.3 4.8 1 2.5
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   id = col_double(),
+##   ..   lastname = col_character(),
+##   ..   firstname = col_character(),
+##   ..   startdate = col_character(),
+##   ..   gender = col_character()
+##   .. )</code></pre>
+<p>Note that the <code>id</code> variable is of type integer; the <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code> variables are of type character (string); and the <code>perf_q4</code>, <code>perf_q4</code>, <code>perf_q4</code>, and <code>perf_q4</code> variables are of type numeric. The variable type will have important implications for how use use the <code>filter</code> function from <code>dplyr</code>.</p>
+<p>In <code>R</code>, we can apply any one of the following logical operators when filtering our data:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Logical Operator</th>
+<th>Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>&lt;</code></td>
+<td>&quot;less than&quot;</td>
+</tr>
+<tr class="even">
+<td><code>&gt;</code></td>
+<td>&quot;greater than&quot;</td>
+</tr>
+<tr class="odd">
+<td><code>&lt;=</code></td>
+<td>&quot;less than or equal to&quot;</td>
+</tr>
+<tr class="even">
+<td><code>&gt;=</code></td>
+<td>&quot;greater than or equal to&quot;</td>
+</tr>
+<tr class="odd">
+<td><code>==</code></td>
+<td>&quot;equal to&quot;</td>
+</tr>
+<tr class="even">
+<td><code>!=</code></td>
+<td>&quot;not equal to&quot;</td>
+</tr>
+<tr class="odd">
+<td><code>|</code></td>
+<td>&quot;or&quot;</td>
+</tr>
+<tr class="even">
+<td><code>&amp;</code></td>
+<td>&quot;and&quot;</td>
+</tr>
+<tr class="odd">
+<td><code>!</code></td>
+<td>&quot;not&quot;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="option-1-using-filter-function-from-dplyr" class="section level2">
+<h2><span class="header-section-number">9.2</span> Option 1: Using <code>filter</code> function from <code>dplyr</code></h2>
+<p>To get started, install and access the <code>dplyr</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Install package</span>
+<span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Access package</span>
+<span class="kw">library</span>(dplyr)</code></pre></div>
+<p>I will demonstrate two approaches applying the <code>filter</code> function from <code>dplyr</code>. The first option uses &quot;pipe(s),&quot; which in <code>R</code> is represented by the <code>%&gt;%</code> operator. The pipe operator comes from a package called <code>magrittr</code>, on which the <code>dplyr</code> is partially dependent. In short, a pipe allows one to more efficiently code/script and to improve the readability of the code/script under certain conditions. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. The second option is more traditional and lacks the efficiency and readability of pipes. You can use either approach, and if don't you want to use pipes, skip to the section below called <em>Filter Data without Pipes</em>. For more information on the pipe operator, check out this link: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
+<div id="with-pipes" class="section level3">
+<h3><span class="header-section-number">9.2.1</span> <em>With</em> Pipes</h3>
+<p>Using an approach with pipes, first, use the <code>&lt;-</code> symbol to name the filtered data frame that we will create. For this example, I name the new joined data frame <code>filterdf</code>; you could name it whatever you would like. Second, type the name of the first data frame, which we named <code>mergeddf</code> (see above), followed by the pipe (<code>%&gt;%</code>) operator. This will &quot;pipe&quot; our data frame into the subsequent function. Third, either on the same line or on the next line, type the <code>filter</code> function. Fourth, within the function parentheses, type the name of the variable we wish to filter the data frame by, which in this example is <code>gender</code>. Fourth, type a logical operator, which for this example is <code>==</code>. Fifth, type a value for the filter variable, which in this example is &quot;female&quot;; because the <code>gender</code> variable is of type <em>character</em>, we need to put quotation marks (<code>&quot; &quot;</code>) around the value of the variable that we wish to filter by. Remember, object names in <code>R</code> are case and space sensitive; for instance, <code>gender</code> is different from <code>Gender</code>, and &quot;female&quot; is different from &quot;Female&quot;.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter in by gender with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(gender<span class="op">==</span><span class="st">&quot;female&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 3 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 2   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
+<p>Note how the data frame above contains only those cases with &quot;female&quot; as their <code>gender</code> variable designation. The filter worked as expected.</p>
+<p>Alternatively, we could filter <em>out</em> those cases in which <code>gender</code> is equal to &quot;female&quot; using the <code>!=</code> (not equal to) logical operator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter out by gender with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(gender<span class="op">!=</span><span class="st">&quot;female&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 6 x 9
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   154 McDonald Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 3   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 4   125 Franklin Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 5   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 6   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Note how cases with <code>gender</code> equal to &quot;female&quot; are no longer in the data frame, while every other case is retained.</p>
+<p>Let's now filter by a variable of type numeric (or integer). Specifically, let's select those cases in which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is of type <em>numeric</em>, we don't use quotation marks (<code>&quot; &quot;</code>) around the value we wish to filter by, which in this case is 4.0.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by perf_q2 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 2 x 9
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
+<p>If we wish to filter by two variables, we can apply the logical &quot;or&quot; (<code>|</code>) operator or &quot;and&quot; (<code>&amp;</code>) operator. First, let's select those cases in which either <code>gender</code> is equal to &quot;female&quot; or <code>perf_q2</code> is greater than 4.0 using the &quot;or&quot; (<code>|</code>) operator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender or perf_q2 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">|</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 4 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez    Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
+<p>Watch what happens if we apply the logical &quot;and&quot; (<code>&amp;</code>) operator with the same syntax as above.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender and perf_q2 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 1 x 9
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
+<p>We can also use the logical &quot;or&quot; (<code>|</code>) operator to select two values of the same variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by two values of firstname with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(firstname<span class="op">==</span><span class="st">&quot;John&quot;</span> <span class="op">|</span><span class="st"> </span>firstname<span class="op">==</span><span class="st">&quot;Jane&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 3 x 9
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 2   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
+## 3   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Or we can select two ranges of values from the same variable using the logical &quot;or&quot; (<code>|</code>) operator, assuming the variable is of type numeric, integer, or date.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by two ranges of values of perf_q1 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(perf_q1<span class="op">&lt;=</span><span class="fl">2.5</span> <span class="op">|</span><span class="st"> </span>perf_q1<span class="op">&gt;=</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 4 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 2   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 4   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>The <code>filter</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you've identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let's pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs <code>R</code> to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs <code>R</code> to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter out id of 198 and 201 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(<span class="op">!</span>id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 7 x 9
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   154 McDonald Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 3   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 4   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
+## 5   125 Franklin Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 6   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>Note that in the output above cases with <code>id</code> variable values equal to 198 and 201 are no longer present.</p>
+<p>If you remove the <code>!</code> in front of the filter variable, only cases <code>198</code> and <code>201</code> are retained.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter in id of 198 and 201 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 2 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 2   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
+<p>And if you wanted to remove just a single case, you could use the unique identifier variable (<code>id</code>) and the following script/code.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter out id of 198 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(id<span class="op">!=</span><span class="dv">198</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 8 x 9
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez    Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 3   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 4   165 Doe        Jane      1/4/2016  female    NA      NA      NA      NA  
+## 5   125 Franklin   Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 6   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 7   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
+<p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base <code>R</code> (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base <code>R</code>. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells <code>R</code> that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format=&quot;%m/%d/%Y&quot;</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span>
+mergeddf<span class="op">$</span>startdate2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">as.character</span>(mergeddf<span class="op">$</span>startdate), <span class="dt">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</code></pre></div>
+<p>To verify that the new <code>startdate2</code> variable is of type date, use the <code>str</code> function from base <code>R</code>, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span>
+<span class="kw">str</span>(mergeddf)</code></pre></div>
+<pre><code>## tibble [9 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ id        : num [1:9] 153 154 155 165 125 111 198 201 282
+##  $ lastname  : chr [1:9] &quot;Sanchez&quot; &quot;McDonald&quot; &quot;Smith&quot; &quot;Doe&quot; ...
+##  $ firstname : chr [1:9] &quot;Alejandro&quot; &quot;Ronald&quot; &quot;John&quot; &quot;Jane&quot; ...
+##  $ startdate : chr [1:9] &quot;1/1/2016&quot; &quot;1/9/2016&quot; &quot;1/9/2016&quot; &quot;1/4/2016&quot; ...
+##  $ gender    : chr [1:9] &quot;male&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...
+##  $ perf_q1   : num [1:9] 3.9 NA NA NA 2.1 3.3 4.9 1.2 2.2
+##  $ perf_q2   : num [1:9] 4.8 NA NA NA 1.9 3.3 4.5 1.1 2.3
+##  $ perf_q3   : num [1:9] 4.9 NA NA NA 2.1 3.4 4.4 1 2.4
+##  $ perf_q4   : num [1:9] 5 NA NA NA 2.3 3.3 4.8 1 2.5
+##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   id = col_double(),
+##   ..   lastname = col_character(),
+##   ..   firstname = col_character(),
+##   ..   startdate = col_character(),
+##   ..   gender = col_character()
+##   .. )</code></pre>
+<p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>&quot; &quot;</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by startdate2 with pipe</span>
+filterdf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(startdate2 <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))
+
+<span class="co"># View filtered data frame</span>
+<span class="kw">print</span>(filterdf)</code></pre></div>
+<pre><code>## # A tibble: 5 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 3   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 4   201 Provide~ Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+</div>
+<div id="without-pipes" class="section level3">
+<h3><span class="header-section-number">9.2.2</span> <em>Without</em> Pipes</h3>
+<p>We can also filter using the <code>filter</code> function from the <code>dplyr</code> package without using the pipe (<code>%&gt;%</code>) operator. Note how I simply move the name of the data frame object from before the pipe (<code>%&gt;%</code>) operator to the first argument in the <code>filter</code> function. Everything else remains the same. For simplicity, I don't display the output below as it is the same as the output as above using pipes. <em>Your decision whether to use a pipe operator is completely up to you.</em></p>
+<p>Let's filter the <code>mergeddf</code> data frame object such that only those cases for which the <code>gender</code> variable is equal to &quot;female&quot; are retained. Note how we apply the equal to (<code>==</code>) logical operator. A table of logical operators is presented towards the beginning of this tutorial.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter in by gender without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>Now let's filter <em>out</em> those cases in which <code>gender</code> is <em>not</em> equal to &quot;female&quot;. We apply the not equal to (<code>!=</code>) logical operator to do so.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter in by gender without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, gender<span class="op">!=</span><span class="st">&quot;female&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>Filter the data frame such that we retain those cases for which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is numeric, we <em>don't</em> put the value 4.0 in quotation marks.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by perf_q2 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>Using the logical &quot;or&quot; operator (<code>|</code>), select those cases for which <code>gender</code> is equal to &quot;female&quot; <em>or</em> for which <code>perf_q2</code> is greater than 4.0.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender or perf_q2 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">|</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>Using the logical &quot;and&quot; operator (<code>&amp;</code>), select those cases for which <code>gender</code> is equal to &quot;female&quot; <em>and</em> for which <code>perf_q2</code> is greater than 4.0. Note the difference in the resulting filtered data frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender and perf_q2 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>Using the logical &quot;or&quot; operator (<code>|</code>), select those cases for which <code>firstname</code> is equal to &quot;John&quot; <em>or</em> for which <code>firstname</code> is equal to &quot;Jane&quot;. In other words, select those individuals whose names are either &quot;John&quot; or &quot;Jane&quot;.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by two values of firstname without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, firstname<span class="op">==</span><span class="st">&quot;John&quot;</span> <span class="op">|</span><span class="st"> </span>firstname<span class="op">==</span><span class="st">&quot;Jane&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>Using the logical &quot;or&quot; operator (<code>|</code>), select the range of cases for which <code>perf_q1</code> is less than equal to (<code>&lt;=</code>) 2.5 <em>or</em> for which <code>perf_q1</code> is greater than or equal (<code>&gt;=</code>) to 4.0.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by two ranges of values of perf_q1 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, perf_q1<span class="op">&lt;=</span><span class="fl">2.5</span> <span class="op">|</span><span class="st"> </span>perf_q1<span class="op">&gt;=</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>The <code>filter</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you've identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let's pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs <code>R</code> to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs <code>R</code> to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter out id of 198 and 201 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, <span class="op">!</span>id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>Or if you wish to retain only those cases for which the <code>id</code> variable is equal to 198 and 201, drop the not operator (<code>!</code>) from the previous script.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter in id of 198 and 201 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>You can also drop specific cases one by one using the not equal to operator (<code>!=</code>) and the a unique identifier value associated with the case you wish to remove. We accomplish the same result as above but use two steps instead. Also, note that in the second step below, the new data frame object (<code>filterdf</code>) is used as the first argument because we want to retain the changes we made in the prior step (i.e., dropping case with <code>id</code> equal to 198).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter in id of 198 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, id<span class="op">!=</span><span class="dv">198</span>)
+
+<span class="co"># Filter in id of 201 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(filterdf, id<span class="op">!=</span><span class="dv">201</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base <code>R</code> (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base <code>R</code>. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells <code>R</code> that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format=&quot;%m/%d/%Y&quot;</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year. To verify that the new <code>startdate2</code> variable is of type date, on the next line, use the <code>str</code> function from base <code>R</code>, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Convert character startdate variable to the date type startdate2 variable</span>
+mergeddf<span class="op">$</span>startdate2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">as.character</span>(mergeddf<span class="op">$</span>startdate), <span class="dt">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)
+
+<span class="co"># Verify that the startdate2 variable is now a variable of type date</span>
+<span class="kw">str</span>(mergeddf)</code></pre></div>
+<p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>&quot; &quot;</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by startdate2 without pipe</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">filter</span>(mergeddf, startdate2 <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))
+
+<span class="co"># View filtered data frame</span>
+<span class="kw">print</span>(filterdf)</code></pre></div>
+</div>
+</div>
+<div id="option-2-using-subset-function-from-base-r" class="section level2">
+<h2><span class="header-section-number">9.3</span> Option 2: Using <code>subset</code> function from base <code>R</code></h2>
+<p>To filter a data frame by cases using the <code>subset</code> function from base <code>R</code>, use the <code>&lt;-</code> symbol to name the filtered data frame that we are about to create. For this example, I name the new joined data frame <code>filterdf</code>; you could name it whatever you would like. To the right of the <code>&lt;-</code> symbol, type the name of <code>subset</code> function from base <code>R</code>. As the first argument in the function, enter the name of the data frame we created above (<code>mergeddf</code>). As the second argument, type the name of the variable we wish to filter the data frame by, which in this example is <code>gender</code> followed by a logical/conditional argument. For this example, we wish to to retain only those cases in which <code>gender</code> is equal to &quot;female&quot;, and we do so using this logical arguent <code>gender==&quot;female&quot;</code>. Because the <code>gender</code> variable is of type <em>character</em>, we need to put quotation marks (<code>&quot; &quot;</code>) around the value of the variable that we wish to filter by. Remember, object names in <code>R</code> are case and space sensitive; for instance, <code>gender</code> is different from <code>Gender</code>, and &quot;female&quot; is different from &quot;Female&quot;.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 3 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
+## 2   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 3   201 Provide~ Cindy     1/9/2016  female     1.2     1.1     1       1  
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>Note how the data frame above contains only those cases with &quot;female&quot; as their <code>gender</code> variable designation. The filter worked as expected.</p>
+<p>Alternatively, we could filter <em>out</em> those cases in which <code>gender</code> is equal to &quot;female&quot; using the <code>!=</code> (not equal to) logical operator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">!=</span><span class="st">&quot;female&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 6 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   154 McDonald Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 3   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 4   125 Franklin Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 5   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 6   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>Note how cases with <code>gender</code> equal to &quot;female&quot; are no longer in the data frame, while every other case is retained.</p>
+<p>Let's now filter by a variable of type <em>numeric</em> (or <em>integer</em>). Specifically, let's select those cases in which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is of type <em>numeric</em>, we don't use quotation marks (<code>&quot; &quot;</code>) around the value we wish to filter by, which in this case is 4.0.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by perf_q2</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 2 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>If we wish to filter by two variables, we can apply the logical &quot;or&quot; (<code>|</code>) operator or &quot;and&quot; (<code>&amp;</code>) operator. First, let's select those cases in which either <code>gender</code> is equal to &quot;female&quot; or <code>perf_q2</code> is greater than 4.0 using the &quot;or&quot; (<code>|</code>) operator.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender or perf_q2</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">|</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 4 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
+## 3   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 4   201 Provide~ Cindy     1/9/2016  female     1.2     1.1     1       1  
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>Watch what happens if we apply the logical &quot;and&quot; (<code>&amp;</code>) operator with the same syntax as above.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by gender and perf_q2</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 1 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>We can also use the logical &quot;or&quot; (<code>|</code>) operator to select two values of the same variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by two values of firstname</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, firstname<span class="op">==</span><span class="st">&quot;John&quot;</span> <span class="op">|</span><span class="st"> </span>firstname<span class="op">==</span><span class="st">&quot;Jane&quot;</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 3 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 2   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
+## 3   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>Or we can select two ranges of values from the same variable using the logical &quot;or&quot; (<code>|</code>) operator, assuming the variable is of type numeric, integer, or date.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by two ranges of values of perf_q1</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, perf_q1<span class="op">&lt;=</span><span class="fl">2.5</span> <span class="op">|</span><span class="st"> </span>perf_q1<span class="op">&gt;=</span><span class="fl">4.0</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 4 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   125 Franklin Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 2   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 3   201 Provide~ Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 4   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>The <code>subset</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you've identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let's pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs <code>R</code> to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs <code>R</code> to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter out id of 198 and 201</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="op">!</span>id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 7 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   154 McDonald Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 3   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 4   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
+## 5   125 Franklin Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 6   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>Note that in the output above cases with <code>id</code> variable values equal to 198 and 201 are no longer present.</p>
+<p>If you remove the <code>!</code> in front of the filter variable, only cases <code>198</code> and <code>201</code> are retained.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter in id of 198 and 201</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 2 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8
+## 2   201 Provide~ Cindy     1/9/2016  female     1.2     1.1     1       1  
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>You can also drop specific cases one by one using the not equal to operator (<code>!=</code>) and the a unique identifier value associated with the case you wish to remove. We accomplish the same result as above but use two steps instead. Also, note that in the second step below, the new data frame object (<code>filterdf</code>) is used as the first argument because we want to retain the changes we made in the prior step (i.e., dropping case with <code>id</code> equal to 198).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter out id of 198</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, id<span class="op">!=</span><span class="dv">198</span>)
+
+<span class="co"># Filter out id of 201</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(filterdf, id<span class="op">!=</span><span class="dv">201</span>)
+
+<span class="co"># View filtered data frame</span>
+filterdf</code></pre></div>
+<pre><code>## # A tibble: 7 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
+## 2   154 McDonald Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 3   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 4   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
+## 5   125 Franklin Benjamin  1/5/2016  male       2.1     1.9     2.1     2.3
+## 6   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+<p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base <code>R</code> (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base <code>R</code>. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells <code>R</code> that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format=&quot;%m/%d/%Y&quot;</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span>
+mergeddf<span class="op">$</span>startdate2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">as.character</span>(mergeddf<span class="op">$</span>startdate), <span class="dt">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</code></pre></div>
+<p>To verify that the new <code>startdate2</code> variable is of type <em>Date</em>, use the <code>str</code> function from base <code>R</code>, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span>
+<span class="kw">str</span>(mergeddf)</code></pre></div>
+<pre><code>## tibble [9 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ id        : num [1:9] 153 154 155 165 125 111 198 201 282
+##  $ lastname  : chr [1:9] &quot;Sanchez&quot; &quot;McDonald&quot; &quot;Smith&quot; &quot;Doe&quot; ...
+##  $ firstname : chr [1:9] &quot;Alejandro&quot; &quot;Ronald&quot; &quot;John&quot; &quot;Jane&quot; ...
+##  $ startdate : chr [1:9] &quot;1/1/2016&quot; &quot;1/9/2016&quot; &quot;1/9/2016&quot; &quot;1/4/2016&quot; ...
+##  $ gender    : chr [1:9] &quot;male&quot; &quot;male&quot; &quot;male&quot; &quot;female&quot; ...
+##  $ perf_q1   : num [1:9] 3.9 NA NA NA 2.1 3.3 4.9 1.2 2.2
+##  $ perf_q2   : num [1:9] 4.8 NA NA NA 1.9 3.3 4.5 1.1 2.3
+##  $ perf_q3   : num [1:9] 4.9 NA NA NA 2.1 3.4 4.4 1 2.4
+##  $ perf_q4   : num [1:9] 5 NA NA NA 2.3 3.3 4.8 1 2.5
+##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   id = col_double(),
+##   ..   lastname = col_character(),
+##   ..   firstname = col_character(),
+##   ..   startdate = col_character(),
+##   ..   gender = col_character()
+##   .. )</code></pre>
+<p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>&quot; &quot;</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Filter by startdate2</span>
+filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, startdate2 <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))
+
+<span class="co"># View filtered data frame</span>
+<span class="kw">print</span>(filterdf)</code></pre></div>
+<pre><code>## # A tibble: 5 x 10
+##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith    John      1/9/2016  male      NA      NA      NA      NA  
+## 3   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 4   201 Provide~ Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+</div>
+<div id="remove-single-variable-from-data-frame" class="section level2">
+<h2><span class="header-section-number">9.4</span> Remove Single Variable from Data Frame</h2>
+<p>If you just need to remove a single variable from a data frame, using the <code>NULL</code> object in <code>R</code> in conjunction with the <code>&lt;-</code> operator can designate which variable to drop. For example, if we wish to drop the <code>startdate</code> variable from the <code>mergeddf</code> data frame, we simply note that <code>startdate</code> belongs to <code>mergeddf</code> by joining them with <code>$</code>. Next, we set <code>&lt;- NULL</code> adjacent to <code>mergeddf$startdate</code> to indicate that we wish to remove that variable from that data frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove variable</span>
+mergeddf<span class="op">$</span>startdate &lt;-<span class="st"> </span><span class="ot">NULL</span>
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 9 x 9
+##      id lastname   firstname gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1   153 Sanchez    Alejandro male       3.9     4.8     4.9     5   2016-01-01
+## 2   154 McDonald   Ronald    male      NA      NA      NA      NA   2016-01-09
+## 3   155 Smith      John      male      NA      NA      NA      NA   2016-01-09
+## 4   165 Doe        Jane      female    NA      NA      NA      NA   2016-01-04
+## 5   125 Franklin   Benjamin  male       2.1     1.9     2.1     2.3 2016-01-05
+## 6   111 Newton     Isaac     male       3.3     3.3     3.4     3.3 2016-01-09
+## 7   198 Morales    Linda     female     4.9     4.5     4.4     4.8 2016-01-07
+## 8   201 Providence Cindy     female     1.2     1.1     1       1   2016-01-09
+## 9   282 Legend     John      male       2.2     2.3     2.4     2.5 2016-01-09</code></pre>
+</div>
+<div id="select-multiple-variables-from-data-frame" class="section level2">
+<h2><span class="header-section-number">9.5</span> Select Multiple Variables from Data Frame</h2>
+<p>If you wish to <em>select multiple variables</em> from a data frame (and remove all others), the <code>select</code> function from <code>dplyr</code> and <code>subset</code> function from base <code>R</code> are quite useful. You can use either function, and I demonstrate both below.</p>
+</div>
+<div id="option-1-using-select-function-from-dplyr" class="section level2">
+<h2><span class="header-section-number">9.6</span> Option 1: Using <code>select</code> Function from <code>dplyr</code></h2>
+<p>We'll begin our quest to select multiple variables by applying the <code>select</code> function from the <code>dplyr</code> package. In addition, I demonstrate how to do so with and without pipes. If you don't want to use pipes, feel free to skip down to the section called <em>Without Pipes</em>.</p>
+<div id="with-pipe" class="section level3">
+<h3><span class="header-section-number">9.6.1</span> <em>With</em> Pipe</h3>
+<p>Using the pipe (<code>%&gt;%</code>) operator, first, decide whether you want to override an existing data frame or create a new data frame based on our seletion; here, I override the <code>mergeddf</code> data frame using the <code>&lt;-</code> operator, which results in <code>mergeddf &lt;-</code>. Second, type the name of the original data frame (<code>mergeddf</code>), followed by the pipe (<code>%&gt;%</code>) operator. Third, type the name of the <code>select</code> function. Fourth, in the parentheses, list the names of the variables you wish to select as arguments; all variables that are not listed will be dropped. Here, we are selecting (to retain) the <code>id</code>, <code>perf_q1</code>, <code>gender</code>, <code>lastname</code>, and <code>firstname</code> variables. Note that the updated date frame includes the selected variables in the order in which you listed them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Select multiple variables with pipe</span>
+mergeddf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(id, perf_q1, gender, lastname, firstname)
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 9 x 5
+##      id perf_q1 gender lastname   firstname
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    
+## 1   153     3.9 male   Sanchez    Alejandro
+## 2   154    NA   male   McDonald   Ronald   
+## 3   155    NA   male   Smith      John     
+## 4   165    NA   female Doe        Jane     
+## 5   125     2.1 male   Franklin   Benjamin 
+## 6   111     3.3 male   Newton     Isaac    
+## 7   198     4.9 female Morales    Linda    
+## 8   201     1.2 female Providence Cindy    
+## 9   282     2.2 male   Legend     John</code></pre>
+</div>
+<div id="without-pipe" class="section level3">
+<h3><span class="header-section-number">9.6.2</span> <em>Without</em> Pipe</h3>
+<p>If you decide not to use the pipe (<code>%&gt;%</code>) operator, the syntax remains almost the same except the name of the original data frame object (<code>mergeddf</code>) is moved from before the pipe (<code>%&gt;%</code>) operator to the first argument in the <code>select</code> function. Everything else remains the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Select multiple variables without pipe</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">select</span>(mergeddf, id, gender, lastname, firstname)
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+</div>
+</div>
+<div id="option-2-using-subset-function-from-base-r-1" class="section level2">
+<h2><span class="header-section-number">9.7</span> Option 2: Using <code>subset</code> Function from base <code>R</code></h2>
+<p>As an alternative to the <code>select</code> function from <code>dplyr</code>, if you wish to <em>select multiple variables</em> from a data frame (and remove all others), the <code>subset</code> function from base <code>R</code> has a special argument that can do this. As before, name the new data frame using the <code>&lt;-</code> symbol. As the first argument in the <code>subset</code> function, type the name of your original data frame object (<code>mergeddf</code>). As the second argument, type <code>select=</code> followed by a vector of variable name you wish to select/retain. The order in which you enter the variable names will correspond to the order in which they appear in the new data frame object. Use the <code>c</code> (combine) function from base <code>R</code> with each variable name you wish to select as arguments separated by commas.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Select multiple variables</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="dt">select=</span><span class="kw">c</span>(id, gender, lastname, firstname))
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+</div>
+<div id="remove-multiple-variables-from-data-frame" class="section level2">
+<h2><span class="header-section-number">9.8</span> Remove Multiple Variables from Data Frame</h2>
+<p>If you wish to <em>remove multiple variables</em> from a data frame, either the <code>select</code> function from <code>dplyr</code> or the <code>subset</code> function from base <code>R</code> will work. Choose whichever one is most intuitive to you.</p>
+</div>
+<div id="option-1-using-select-function-from-dplyr-1" class="section level2">
+<h2><span class="header-section-number">9.9</span> Option 1: Using <code>select</code> Function from <code>dplyr</code></h2>
+<p>As the first option, let's apply the <code>select</code> function from <code>dplyr</code>. I demonstrate how to do so with and without pipes. If you don't want to use pipes, feel free to skip down to the section called <em>Without Pipes</em>.</p>
+<div id="with-pipe-1" class="section level3">
+<h3><span class="header-section-number">9.9.1</span> <em>With</em> Pipe</h3>
+<p>Using the pipe (<code>%&gt;%</code>) operator, first, decide whether you want to override an existing data frame or create a new data frame from the subset; here, I override the <code>mergeddf</code> data frame using the <code>&lt;-</code> operator, which results in <code>mergeddf &lt;-</code>. Second, type the name of the original data frame (<code>mergeddf</code>), followed by the pipe (<code>%&gt;%</code>) operator. Third, enter the <code>select</code> function. Fourth, use the <code>c</code> (combine) function with <code>-</code> in front of it to note that you want to select all other variables <em>except</em> the ones listed in the <code>c</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove multiple variables with pipe</span>
+mergeddf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(lastname, firstname))
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 9 x 3
+##      id perf_q1 gender
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt; 
+## 1   153     3.9 male  
+## 2   154    NA   male  
+## 3   155    NA   male  
+## 4   165    NA   female
+## 5   125     2.1 male  
+## 6   111     3.3 male  
+## 7   198     4.9 female
+## 8   201     1.2 female
+## 9   282     2.2 male</code></pre>
+<p>Removing a single variable can also be done using the <code>select</code> function. To do so, just list a single variable with <code>-</code> in front of it (as the sole argument) to indicate that you wish to drop that variable.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove single variable with pipe</span>
+mergeddf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>gender)
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+<pre><code>## # A tibble: 9 x 2
+##      id perf_q1
+##   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   153     3.9
+## 2   154    NA  
+## 3   155    NA  
+## 4   165    NA  
+## 5   125     2.1
+## 6   111     3.3
+## 7   198     4.9
+## 8   201     1.2
+## 9   282     2.2</code></pre>
+</div>
+<div id="without-pipe-1" class="section level3">
+<h3><span class="header-section-number">9.9.2</span> <em>Without</em> Pipe</h3>
+<p>If you decide <em>not</em> to use the pipe (<code>%&gt;%</code>) operator, the syntax remains mostly the same except the name of the original data frame object (<code>mergeddf</code>) is moved from before the pipe (<code>%&gt;%</code>) operator to the first argument in the <code>select</code> function. Everything else remains the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove multiple variables without pipe</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">select</span>(mergeddf, <span class="op">-</span><span class="kw">c</span>(lastname, firstname))
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+<p>And here's the non-pipe equivalent to removing a single variable using this approach.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove single variable without pipe</span>
+mergeddf &lt;-<span class="st"> </span>mergeddf <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(<span class="op">-</span>gender)
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+</div>
+</div>
+<div id="option-2-using-subset-function-from-base-r-2" class="section level2">
+<h2><span class="header-section-number">9.10</span> Option 2: Using <code>subset</code> Function from base <code>R</code></h2>
+<p>As an alternative to the <code>select</code> function from <code>dplyr</code>, if our desire is to <em>remove multiple variables</em> from a data frame, we could use the <code>subset</code> function from base <code>R</code> instead. Use the same syntax as you did when selecting multiple variables, except insert a <code>-</code> (minus sign) in from the of the <code>c</code> function. This tells the function to <em>not</em> select those variables. Here, we remove the <code>id</code> and <code>gender</code> variables.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Remove multiple variables</span>
+mergeddf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="dt">select=</span> <span class="op">-</span><span class="kw">c</span>(id, gender))
+
+<span class="co"># View updated data frame</span>
+mergeddf</code></pre></div>
+</div>
+<div id="summary" class="section level2">
+<h2><span class="header-section-number">9.11</span> Summary</h2>
+<p>Applying filters and creating subsets of cases (rows) and variables (columns) from a data frame is an important part of data management. The <code>dplyr</code> package has two useful functions that can be used for these purposes: <code>filter</code> and <code>select</code>. In addition, the <code>subset</code> function from base <code>R</code> can tackle both types of filters.</p>
+
+</div>
+</div>
+
+
+
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-readr">
+<p>Wickham, Hadley, Jim Hester, and Romain Francois. 2018. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr" class="uri">https://CRAN.R-project.org/package=readr</a>.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="join.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="arrange-supplement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R for HR.pdf", "R for HR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
