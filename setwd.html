@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R Version: Under Construction</title>
+  <title>Chapter 4 Setting a Working Directory | R for HR: An Introduction to Human Resource Analytics Using R Version: Under Construction</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R Version: Under Construction" />
+  <meta property="og:title" content="Chapter 4 Setting a Working Directory | R for HR: An Introduction to Human Resource Analytics Using R Version: Under Construction" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R Version: Under Construction" />
+  <meta name="twitter:title" content="Chapter 4 Setting a Working Directory | R for HR: An Introduction to Human Resource Analytics Using R Version: Under Construction" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="gettingstarted.html"/>
+<link rel="prev" href="gentleintro.html"/>
+<link rel="next" href="read.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -294,52 +294,67 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="install" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Installing R &amp; RStudio</h1>
-<p>If you have a Windows, Mac, or Linux operating system, you have several ways in which you can begin working in R. Commonly, users install R on their computer along with an integrated development environment (IDE) software application like RStudio. Recently, RStudio Cloud (<a href="https://rstudio.cloud" class="uri">https://rstudio.cloud</a>) has emerged as an alternative to installing R and RStudio by allowing users to use R and RStudio via the cloud, which notably allows those using the Google Chrome operating system to access R and RStudio.</p>
+<div id="setwd" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Setting a Working Directory</h1>
+<p>A <strong>working directory</strong> refers to the location of a folder within a hierarchical file system. For our purposes, a working directory contains data files associated with a particular task or project. Ideally, a single working directory contains all of the data files you need for a task or project, but in some instances, it might make sense to have multiple working directories for a single project. From our designated working directory, we can read in data files (i.e., import files) to the R environment without adding long paths as prefixes in front of the variable names. Further, anytime you save a plot, data frame, or other object created in R, the default will be to save it to the folder you have set as your working directory (i.e., export files).</p>
 <div id="video-tutorial" class="section level4">
-<h4><span class="header-section-number">1.0.0.1</span> Video Tutorial</h4>
-<p>Link to video tutorial: <a href="https://youtu.be/b18IHQERT4A" class="uri">https://youtu.be/b18IHQERT4A</a>.</p>
+<h4><span class="header-section-number">4.0.0.1</span> Video Tutorial</h4>
+<p>Link to Video Tutorial: <a href="https://youtu.be/oSqOqvMkhSE" class="uri">https://youtu.be/oSqOqvMkhSE</a></p>
 </div>
-<div id="downloading-installing-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Downloading &amp; Installing R</h2>
-<p>In the following sections, you will learn how to download and install the R program for Windows and Mac operating systems. The base R program must be installed prior to installing the RStudio program. R is open-source software and free to download.</p>
-<div id="for-windows-operation-systems" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> For Windows Operation Systems</h3>
-<p>R can currently run under operating systems as old as Windows Vista (circa 2007). To download R for your Windows operating system for the first time, click on this link: <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a>. Once you are on the R download page, click on the hyperlink to download the current version of R for Windows. Once the file has downloaded, follow the installation prompts.</p>
+<div id="functions-packages-introduced" class="section level4">
+<h4><span class="header-section-number">4.0.0.2</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>getwd</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>setwd</code></td>
+<td>base <code>R</code></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="for-mac-operating-systems" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> For Mac Operating Systems</h3>
-<p>The current version of R works with Mac OS X (release 10.6 and higher). To download R for Mac OS X operating system for the first time, click on this link: <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a>. If you have Mac OS X 10.11 or higher, click on the hyperlink (with .pkg extension) under the “Latest release” section to begin your download. If you have Mac OS X 10.10 or lower, click on the appropriate hyperlink (with .pkg extension) under the “Binaries for legacy OS X systems” section. Once the file has downloaded, follow the installation prompts.</p>
-<p>I don’t advise using a Mac operating system that is older than Mac OS X 10.6 (which came out in 2009), as you may run into issues when using certain R packages for data analysis and visualization.</p>
+<div id="identifying-the-current-working-directory" class="section level3">
+<h3><span class="header-section-number">4.0.1</span> Identifying the Current Working Directory</h3>
+<p>To determine if a working directory has already been set, and if so, what that working directory is, use the <code>getwd</code> (get working directory) function from base R. Because this function comes standard with our R download, we don’t need to install an additional package to access it. For this function, you don’t need any arguments within the parentheses; in other words, leave the function parentheses empty. Alternatively, if you are using RStudio, you will see your current working directory next to the word “Console” in your Console window.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="setwd.html#cb142-1"></a><span class="co"># Find your current working directory</span></span>
+<span id="cb142-2"><a href="setwd.html#cb142-2"></a><span class="kw">getwd</span>()</span></code></pre></div>
+<p><img src="ConsoleWD.png" /></p>
 </div>
-</div>
-<div id="downloading-installing-rstudio" class="section level2">
-<h2><span class="header-section-number">1.2</span> Downloading &amp; Installing RStudio</h2>
-<p>RStudio is not required to use R; however, RStudio offers a number of helpful features and a user-friendly interface. More specifically, RStudio is an integrated development environment (IDE) for R. The desktop version of RStudio is free to download. To do so, click on this link: <a href="https://rstudio.com/products/rstudio/download/#download" class="uri">https://rstudio.com/products/rstudio/download/#download</a>.</p>
-<ol style="list-style-type: decimal">
-<li>Make sure that you have already installed the R program to your computer (see above).<br />
-</li>
-<li>Click on the download button below the “RStudio Desktop” followed by the version number. Again, this version is free.<br />
-</li>
-<li>Under the heading “Installers for Supported Platforms”, click on the link that corresponds to your operating system.<br />
-</li>
-<li>Once the file has downloaded, follow the installation prompts.</li>
-</ol>
+<div id="setting-a-new-working-directory" class="section level3">
+<h3><span class="header-section-number">4.0.2</span> Setting a New Working Directory</h3>
+<p>Let’s assume that the current working directory is <em>not</em> what we want; meaning, we need to set a new or different working directory. If you need to set a new working directory, you can use the <code>setwd</code> function from base R. Within the parentheses, your only argument will be the working directory in quotation marks. I recommend typing your <code>setwd</code> function into an R Script (.R) file so that it can be saved for future sessions. I also recommend using the <code>#</code> to annotate your script so that you can remind yourself (and others) what you are doing.</p>
+<p>When it comes to working directories, R likes the forward slash (<code>/</code>) (as opposed to backslash). Remember, the working directory is the location of the data files you wish to access and bring into the R environment. You can access any folder you would like and set it as your working directory. For example, in the code below, I set my working directory to <code>H:/RWorkshop</code>, as that folder at the end of that path contains the data files I would like to work with. The folder (and associated path) you set as your working directory will almost certainly be different than the one I set below.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="setwd.html#cb143-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb143-2"><a href="setwd.html#cb143-2"></a><span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Alternatively, you may use the drop-down menus to select a working directory folder. To do so, go to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>, and select the folder where your files live. Upon doing so, your working directory will appear in the Console. You can copy and paste the working directory into your <code>setwd</code> function.</p>
+<p><img src="Set%20Working%20Directory.png" /></p>
+<p>Once you have set your working directory, you can verify that it was set to the correct folder by (a) typing <code>getwd()</code> into your console or (b) looking at the working directory listed next to the word “Console” in your Console window.</p>
 </div>
 <div id="summary" class="section level2">
-<h2><span class="header-section-number">1.3</span> Summary</h2>
-<p>In this chapter, we learned how to install R and RStudio for our Windows or Mac operating systems.</p>
+<h2><span class="header-section-number">4.1</span> Summary</h2>
+<p>In this chapter, you learned how to get and set a working directory using the <code>getwd</code> and <code>setwd</code> functions from base R.</p>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="gettingstarted.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gentleintro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="read.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
