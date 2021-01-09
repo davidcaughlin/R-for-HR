@@ -1,0 +1,68 @@
+# Read Data: Chapter Supplement {.unnumbered #read_supplement}
+
+In addition to the `read_csv` function from the `readr` package covered in [Reading Data into R](#read), we can read .csv files into R using the `read.csv` function from base R and the `Read` function from the `lessR` package. 
+
+#### Functions & Packages Introduced {.unnumbered}
+
+Function           | Package
+------------------ | ------------------
+`read.csv`         | base `R`
+`Read`             | `lessR`
+
+#### Initial Steps {.unnumbered #initsteps_read_supp}
+
+If required, please refer to the [Initial Steps](#initsteps_read) section from the chapter for more information on these initial steps.
+
+```{r, eval=FALSE}
+# Set your working directory
+setwd("H:/RWorkshop")
+```
+
+## `read.csv` Function from Base R {.unnumbered #readcsv_supp}
+
+The `read.csv` file comes standard with base R, which means that you don't need to install a package to access the function. As the function name implies, this function is used when the source data file is in .csv format. Typically, the `read.csv` function requires only a single argument within the parentheses, which will be the *exact* name of the data file enclosed with quotation marks; the file should be located your working directory folder. Remember, R is a language where case and space sensitivity matters when it comes to names; meaning, if there are spaces in your file name, there needs to be spaces when the file name appears in your R script, and if some letters are upper case in your file name, there needs to be corresponding upper-case letters in your R script. Let's practice reading in a file called **"PersData.csv"** by entering the exact name of the file followed by the .csv extension, all within in quotation marks. Remember, the file called **"PersData.csv"** should already be saved in your working directory folder (see [Initial Steps](#initsteps_read_supp)).
+
+```{r}
+# Read data from working directory
+read.csv("PersData.csv")
+```
+
+As you can see, the data that appear in your Console contains only a handful of rows and columns; nonetheless, this gives you an idea of how the read.csv function works.
+  
+Often, you will want to assign your data frame to an object that is stored in your Global Environment for subsequent use. By creating a data frame object, you can manipulate and/or analyze the data within the object using a variety of functions (and without changing the data in the source file). To create a data frame object, we simply (a) use the same `read.csv` function from above, (b) add either a `<-` or `=` operator to the left of the `read.csv` function, and (c) create a name of our choosing for the data frame object by entering that name to the left of the `<-` or `=` operator. You can name your data frame object whatever you would like as long as it doesn't include spaces, doesn't start with a numeral, and doesn't include special characters like `*` or `-` (to name a few). I recommend choosing a name that is relatively short but descriptive, and that is not the same as another R function or variable name that you plan to use. Below, I name the new data frame object `personaldata`.
+
+```{r}
+# Read in data and name data frame object
+personaldata <- read.csv("PersData.csv")
+```
+
+## `Read` Function from `lessR` Package {.unnumbered #readlessr_supp}
+
+Just like the `read.csv` and `read_csv` functions, the `Read` function from the `lessR` package [@R-lessR2020] can read in .csv files; however, it can also read in other file formats like .xls/x, .sas7bdat (SAS), and .sav (SPSS). 
+  
+To use the `Read` function, the `lessR` package needs to be installed and accessed using the `install.packages` and `library` functions, respectively.
+
+```{r, eval=FALSE}
+# Install lessR package
+install.packages("lessR")
+```
+```{r}
+# Access lessR package
+library(lessR)
+```
+
+When reading in a .csv file using the `Read` function, type the *exact* name of your data file from your working directory as an argument (followed by .csv and surrounded by quotation marks). Further, either the `<-` or `=` operator can be used to name the data frame object. 
+
+```{r}
+# Read data and assign to data frame object
+personaldata <- Read("PersData.csv")
+```
+
+Let's print just the first six rows of the `personaldata` data frame object to the Console to verify that everything worked as intended.
+
+```{r}
+# Print just the first 6 rows of the data frame object in Console
+head(personaldata)
+```
+
+For more information on the `Read` function from the `lessR` package, check out David Gerbing's website: http://www.lessrstats.com/videos.html.

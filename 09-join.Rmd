@@ -1,0 +1,317 @@
+# Joining (Merging) Data {#join}
+
+**Joining** refers to the process of matching two data frames by either one or more key variables (i.e., horizontal join) or by variable names or columns (i.e., vertical join). Sometimes a **join** is referred to as a **merge**, and thus I will use these terms interchangeably. Broadly speaking, there are two types of joins (merges): horizontal and vertical.
+
+#### Joining Data Horizontally
+
+A **horizontal join (merge)** refers to the process of matching cases (i.e., rows, observations) between two data frames using a *key variable* (*matching variable*), which results in distinct sets of variables (i.e., fields, columns) being combined horizontally (laterally) across two data frames. The resulting joined data frame will be wider (in terms of the number of variables) than either of the original data frames in isolation. For example, imagine that we pull data from separate information systems, each with different variables (i.e., fields) but at least some employees (i.e., cases) in common; to combine these two data frames, we can perform a horizontal join. This is often a necessary step when creating a data frame that contains all of the variables we will need in subsequent data analyses. For instance, if we wish to estimate the criterion-related validities (see [Selection Tool Validation](#selectiontoolvalidation)) using the selection tool scores from one data frame with criterion (e.g., job performance) scores from another data frame, then we could perform a horizontal join.
+  
+![In a _horizontal join_, cases (or observations) are matched between two data frames using one or more key variables.](horizontal_join.png)  
+
+We will focus on four different types of horizontal joins:
+
+1. __Inner join__: All unmatched cases (or observations) are dropped, thereby retaining only those cases that are present in both the left (x, first) and right (y, second) data frames. In other words, a case is only included in the merged data frame if it appears in both of the original data data frames.
+  
+![In an _inner join_, all unmatched cases (or observations) are dropped, thereby retaining only those cases that are present in both the left (x, first) and right (y, second) data frames.](inner_join.png)
+
+2. __Full join__: All cases (or observations) are retained, including those cases that do not have a match in the other data data frame. In other words, a case is included in the merged data frame even if it only appears in one of the original data data frames. These type of join leads to the highest number of retained cases under conditions in which both data frames contain unique cases.
+  
+![In a _full join_, all cases (or observations) are retained, including those cases that do not have a match in the other data data frame.](full_join.png)
+
+3. __Left join__: All cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame. Consequently, cases from the right data frame that lack a match in the left data frame are dropped in the merged data frame.
+  
+![In a _left join_, all cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame.](left_join.png) 
+
+4. __Right join__: All cases (or observations) that appear in the right (y, second) data frame are retained, even if they lack a match in the left (x, first) data frame. Consequently, cases from the left data frame that lack a match in the right data frame are dropped in the merged data frame.
+  
+![In a _left join_, only cases (or observations) that appear in the left (x, first) data frame are retained, even if they lack a match in the right (y, second) data frame.](right_join.png) 
+
+Please note that I have illustrated different types of horizontal joins using a single key variable. It is entirely possible to perform horizontal joins using two or more key variables. For example, imagine that each morning we administered a pulse survey to employees and each afternoon we afternoon we administered a different pulse survey to the same employees, and that we repeated this process for five consecutive workdays. In this instance, we would likely need to horizontally join the data frames using both a unique employee identifier variable and a unique day-of-week variable.
+
+#### Joining Data Vertically
+
+A **vertical join (merge)** refers to the process of matching identical variables from two data frames, which results in distinct sets of cases or observations being combined vertically. The resulting joined data frame will be longer (in terms of the number of cases) than either of the original data frames in isolation. For example, imagine an organization administered the same survey to two facilities (i.e., independent groups) each with unique employees; we could combine the two resulting data frames by performing a vertical join.
+  
+![In a _vertical join_, identical variables are matched between two data frames, each with distinct sets of cases or observations.](vertical_join.png)
+
+#### Video Tutorial
+
+Link to Video Tutorial: https://youtu.be/wVwJQsLNbmw
+
+#### Functions & Packages Introduced
+
+Function           | Package
+------------------ | ------------------
+`merge`            | base `R`
+`right_join`       | `dplyr`
+`left_join`        | `dplyr`
+`inner_join`       | `dplyr`
+`full_join`        | `dplyr`
+`data.frame`       | base `R`
+`c`                | base `R`
+`rep`              | base `R`
+`rbind`            | base `R`
+
+#### Initial Steps {#initsteps_join}
+
+If you haven't already, save the files called **"PersData.csv"** and **"PerfData.csv"** into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., `"H:/RWorkshop"`). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: https://github.com/davidcaughlin/R-Tutorial-Data-Files; once you've followed the link to GitHub, just click "Code" (or "Download") followed by "Download ZIP", which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.
+  
+Next, using the `setwd` function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to *Session > Set Working Directory > Choose Directory...*. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to [Setting a Working Directory](#setwd) and [Creating & Saving an R Script](#createRscript).
+
+```{r, eval=FALSE}
+# Set your working directory
+setwd("H:/RWorkshop")
+```
+
+Next, read in the .csv data files called **"PersData.csv"** and **"PerfData.csv"** using your choice of read function. In this example, I use the `read_csv` function from the `readr` package [@R-readr]. If you choose to use the `read_csv` function, be sure that you have installed and accessed the `readr` package using the `install.packages` and `library` functions. *Note: You don't need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.* For refreshers on installing packages and reading data into R, please refer to [Packages](#packages) and [Reading Data into R](#read).
+
+```{r, eval=FALSE}
+# Install readr package if you haven't already
+# [Note: You don't need to install a package every 
+# time you wish to access it]
+install.packages("readr")
+```
+```{r}
+# Access readr package
+library(readr)
+
+# Read data and name data frame (tibble) objects
+personaldata <- read_csv("PersData.csv")
+performancedata <- read_csv("PerfData.csv")
+
+# View the names of the variables in the data frame (tibble) objects
+names(personaldata)
+names(performancedata)
+```
+```{r}
+# View data frame (tibble) objects
+personaldata
+performancedata
+```
+
+As you can see from the output generated in your console, on the one hand, the `personaldata` data frame object contains basic employee demographic information. The variable names include: `id`, `lastname`, `firstname`, `startdate`, and `gender`. On the other hand, the `personaldata` data frame object contains the same `id` unique identifer variable as the  `personaldata` data frame object, but instead of employee demographic information, this data frame object includes varuables associated with quarterly employee performance: `perf_q1`, `perf_q2`, `perf_q3`, and `perf_q4`.
+  
+In order to better illustrate certain join functions later on in this chapter, we'll begin by removing the case (i.e., employee) associated with the `id` variable value of 153 (i.e., Alejandro Sanchez); in terms of a rationale for doing so, let's imagine that Alejandro no longer works for the organization, and thus we would like to remove him from the `personaldata` data frame. If you don't completely understand the following process for removing this individual from the data frame, no need to worry, as you will learn more in the subsequent chapter on [filtering data](#filter).
+
+1. Type the name of the data frame object (`personaldata`) followed by the `<-` operator to overwrite the existing data frame object. 
+2. Type the name of the original data frame object (`personaldata`) followed by brackets (`[ ]`). 
+3. Within the brackets (`[ ]`), type the name of the data frame object (`personaldata`) again, followed by the `$` operator and the name of the variable we wish to use to select the case that will be removed, which in this instance is the `id` unique identifier variable. The `$` operator indicates to R that the `id` variable belongs to the `personaldata` data frame. 
+4. Type the "not equal to" operator, which is `!=` (the `!` means "not"), followed by the `id` variable value we wish to use to remove the case (i.e., 153). 
+5. Type a comma (`,`) to indicate that we are removing a row, not a column. *When referencing rows and columns in R, as we are doing in the brackets (`[ ]`), rows are entered first (before a comma), and columns are entered second (after a comma).* In doing so, we are telling R to retain all rows of data in `personaldata` except for the one corresponding to `id` equal to 153. 
+ 
+```{r}
+# Remove case with id variable equal to 153
+personaldata <- personaldata[personaldata$id != 153,]
+```
+
+Check out the first 6 rows of the updated data frame for `personaldata`, and note that the data corresponding to the case associated with `id` equal to 153 is gone.
+
+```{r}
+# View first 6 rows of first data frame object once more
+head(personaldata)
+```
+
+## Horizontal Join (Merge) {#horizontaljoin}
+
+Recall that a horizontal join (merge) means that cases are matched using one more more key variables, and as a result, variables (i.e., columns, fields) are combined across two data frames. We will review two options for performing horizontal joins.
+  
+To perform horizontal joins, we will learn how to use the `join` functions from the the `dplyr` package [@R-dplyr], which include: `right_join`, `left_join`, `inner_join`, and `full_join`. Please note that there are other functions we could use to perform horizontal joins, and if you're interested, in the [Joining (Merging) Data: Chapter Supplement](#join_supplement), I demonstrate how to use the `merge` function from base R to carry out the same operations we will cover below.
+  
+Using the aformentioned `join` functions, we will match cases from the `personaldata` and `performancedata` data frames using the `id` unique identifer variable as a key variable. So how can we verify that `id` is an appropriate key variable? Well, let's use the `names` function from base R to retrieve the list of variable names from the two data frames, which we already did above. Nevertheless, let's call up those variable names once more. Simply enter the name of the data frame as a parenthetical argument in the `names` function.
+
+```{r}
+# Retrieve variable names from first data frame
+names(personaldata)
+```
+```{r}
+# Retrieve variable names from second data frame
+names(performancedata)
+```
+
+As you can see in the variable names listed above, the `id` variable is common to both data frames, and thus it will serve as our key variable.
+  
+Now we are almost ready to begin joining the two data frames using the `id` unique identifer as a key variable. Before doing so, however, we should make sure that we have installed and accessed the `dplyr` package (if we haven't already), as the `join` functions come from that package.
+
+```{r, eval=FALSE}
+# Install dplyr package if you haven't already
+# [Note: You don't need to install a package every 
+# time you wish to access it]
+install.packages("dplyr")
+```
+```{r}
+# Access dplyr package
+library(dplyr)
+```
+
+I will demonstrate two techniques for applying the `join` function. 
+  
+The *first technique* uses the pipe operator (`%>%`). The pipe operator comes from a package called `magrittr` [@R-magrittr], on which the `dplyr` is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a **pipe** forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund's [-@wickham2017] chapter on pipes: https://r4ds.had.co.nz/pipes.html.
+  
+The *second technique* for applying the `join` function takes a more traditional approach in that it involves nested functions being nested parenthetically. If you don't want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called [Without Pipe](#opt2_join_withoutpipe).
+
+### *With* Pipe {#opt2_join_withpipe}
+
+Using the pipe (`%>%`) operator technique, let's begin with what is referred to as an **inner join** by doing the following:
+
+1. Use the `<-` symbol to name the joined (merged) data frame that we will create using the one of the `dplyr` join functions. For this example, I name the new joined data frame `mergeddf`, which is completely arbitrary; you could name it whatever you would like. Make sure you put the name of the new data frame object to the *left* of the `<-` operator.
+2. To the *right* of the `<-` operator, type the name of the first data frame, which we named `personaldata`, followed by the pipe (`%>%`) operator. This will "pipe" our data frame into the subsequent function.
+3. On the same line or on the next line, type the `inner_join` function, and within the parentheses as the first argument, type the name of the second data frame, which we called `performancedata`. As the second argument, use the `by=` argument to indicate the name of the key variable, which in this example is `id`; make sure the key variable is in quotation marks (`" "`), and remember, object and variable names in R are case and space sensitive.
+
+```{r}
+# Inner join (with pipe)
+mergeddf <- personaldata %>% inner_join(performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Now, let's revisit the original data frame objects that we read in initially.
+
+```{r}
+# View the first original data frame
+personaldata
+```
+```{r}
+# View the second original data frame
+performancedata
+```
+
+In the output, first, note how all of the variables from the original data frames (i.e., `personaldata`, `performancedata`) are represented in the merged data frame (i.e., `mergeddf`). Second, note how the cases are matched by the `id` key variable. Third, note that the `personaldata` data frame has 8 cases, the `performancedata` data frame has 6 cases, and the `mergeddf` data frame has 6 cases. By default, the `merge` function performs an *inner join* and retains only those matched cases that have data in *both* data frames. Because cases whose `id` values were `154`, `155`, and `165` had data in `personaldata` but not `performancedata` and because the case with an `id` value equal to 153 was in `performancedata` but not `personaldata`, only the 5 cases that had available data in both data frames were retained. 
+  
+To perform what is referred to as a **full join** in which we retain all cases and available data, we simply swap out the `inner_join` function from our previous code with the `full_join` function. 
+
+```{r}
+# Full join (with pipe)
+mergeddf <- personaldata %>% full_join(performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Note how the `full_join` function retains all available cases that had available data in at least one of the data frames, which in this example is 9 cases. *When in doubt, I recommend using the `full_join` function to retain all available data.*
+  
+To perform what is referred to as a **left join** in which we retain only those cases with data available in the first (left, x) data frame (`personaldata`), we use the `left_join` function instead, while keeping the rest of the previous code the same.
+
+```{r}
+# Left join (with pipe)
+mergeddf <- personaldata %>% left_join(performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Note how the `left_join` function retains only those cases for which the first (left, x) data frame (i.e., `personaldata`) has complete data, which in this case happens to be 8 cases. Notably absent is the case associated with `id` equal to 153 because the first (left, x) data frame (i.e., `personaldata`) lacked that case. An `NA` appears for each case from the second (right, y) data frame that contained missing values on variables from that data frame.  
+  
+To perform what is referred to as a **right join** in which we retain only those cases with data available in the second (right, y) data frame (`performancedata`), we use the `right_join` function instead, while keeping the rest of the previous code the same.
+
+```{r}
+# Right join (with pipe)
+mergeddf <- personaldata %>% right_join(performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Note how the `right_join` function retains only those cases for which the joined (second, right, y) data frame (i.e., `performancedata`) has complete data. Because the first (left, x) data frame lacks data for the case in which `id` is equal to 153, an `NA` appears for each case from the first data frame that contained missing values on variables from that data frame.
+
+### *Without* Pipe {#opt2_join_withoutpipe}
+
+In this section, I demonstrate the same `dplyr` join functions [as above](#opt2_join_withpipe), except here I demonstrate how to specify the functions *without* the use of a pipe (`%>%`) operator.
+  
+Let's begin with what is referred to as an **inner join** by doing the following:
+
+1. Use the `<-` operator to name the joined (merged) data frame that we will create using the one of the `dplyr` join functions. For this example, I name the new joined data frame `mergeddf`, which is completely arbitrary; you could name it whatever you would like. Make sure you put the name of the new data frame object to the *left* of the `<-` operator.
+2. To the *right* of the `<-` operator, type the name of the `inner_join` function. As the first argument within the parentheses, type the name of the first data frame, which we named `personaldata`. As the second argument, type the name of the second data frame we named `performancedata`. As the third argument, use the `by=` argument to indicate the name of the key variable, which in this example is `id`; make sure the key variable is in quotation marks (`" "`), and remember, object and variable names in R are case and space sensitive.
+
+```{r}
+# Inner join (without pipe)
+mergeddf <- inner_join(personaldata, performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Now, let's revisit the original data frame objects that we read in initially.
+
+```{r}
+# View the first original data frame
+personaldata
+```
+```{r}
+# View the second original data frame
+performancedata
+```
+
+In the output, first, note how all of the variables from the original data frames (i.e., `personaldata`, `performancedata`) are represented in the merged data frame (i.e., `mergeddf`). Second, note how the cases are matched by the `id` key variable. Third, note that the `personaldata` data frame has 8 cases, the `performancedata` data frame has 6 cases, and the `mergeddf` data frame has 6 cases. By default, the `merge` function performs an *inner join* and retains only those matched cases that have data in *both* data frames. Because cases whose `id` values were `154`, `155`, and `165` had data in `personaldata` but not `performancedata` and because the case with an `id` value equal to 153 was in `performancedata` but not `personaldata`, only the 5 cases that had available data in both data frames were retained. 
+  
+To perform what is referred to as a **full join** in which we retain all cases and available data, we simply swap out the `inner_join` function from our previous code with the `full_join` function. 
+
+```{r}
+# Full join (without pipe)
+mergeddf <- full_join(personaldata, performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Note how the `full_join` function retains all available cases that had available data in at least one of the data frames, which in this example is 9 cases. *When in doubt, I recommend using the `full_join` function to retain all available data.*
+  
+To perform what is referred to as a **left join** in which we retain only those cases with data available in the first (left, x) data frame (`personaldata`), we use the `left_join` function instead, while keeping the rest of the previous code the same.
+
+```{r}
+# Left join (without pipe)
+mergeddf <- left_join(personaldata, performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Note how the `left_join` function retains only those cases for which the first (left, x) data frame (i.e., `personaldata`) has complete data, which in this case happens to be 8 cases. Notably absent is the case associated with `id` equal to 153 because the first (left, x) data frame (i.e., `personaldata`) lacked that case. An `NA` appears for each case from the second (right, y) data frame that contained missing values on variables from that data frame.  
+  
+To perform what is referred to as a **right join** in which we retain only those cases with data available in the second (right, y) data frame (`performancedata`), we use the `right_join` function instead, while keeping the rest of the previous code the same.
+
+```{r}
+# Right join (without pipe)
+mergeddf <- right_join(personaldata, performancedata, by="id")
+
+# View the joined data frame
+mergeddf
+```
+
+Note how the `right_join` function retains only those cases for which the joined (second, right, y) data frame (i.e., `performancedata`) has complete data. Because the first (left, x) data frame lacks data for the case in which `id` is equal to 153, an `NA` appears for each case from the first data frame that contained missing values on variables from that data frame.
+
+## Vertical Join (Merge) {#verticaljoin}
+
+To perform a vertical join (merge), we will use the `rbind` function from base R, which stands for "row bind." As a reminder, with a horizontal join, our focus is on joining variables (i.e., columns, fields) from two data frames containing overlapping cases (i.e., rows). In contrast, with a vertical join, our focus is on joining cases from data frames with the same variables.
+  
+To illustrate how to perform a vertical join, we take a slightly different approach than what we did with [horizontal joins](#horizontaljoin). Instead of reading in data files, we will create two "toy" employee demographic data frames with the exact same variables but different cases. We will use the `data.frame` function from base R to indicate that we wish to create a data frame object; we use the `c` (combine) function from base R to combine values into a vector; and we use the `rep` (replicate) function from base R to replicate the same value a specified number of times. Also note that the `:` operator, when used between two numbers, creates a vector of consecutive values, beginning with the first value and ending with the second. Please note, that using and understanding the `data.frame`, `c`, and `rep` functions is not consequential for understanding how to do a vertical merge; rather, I merely use these functions in this tutorial to create quick toy data frames that we can use to illustrate how to do a vertical join. For more information on the `data.frame` function and the `c` function, please refer to the chapter called [Basic Features and Operations of the R Language](#gentleintro).
+
+```{r}
+# Create data frames with same variables but arbitrary values
+df1 <- data.frame(id=c(1:6), age=c(21:26), sex=c(rep("male", 6)))
+df2 <- data.frame(id=c(7:10), age=c(27:30), sex=c(rep("female", 4)))
+```
+```{r}
+# View first data frame
+df1
+```
+```{r}
+# View second data frame
+df2
+```
+
+Given that these two data frames (i.e., `df1`, `df2`) have the exact same variable names (`id`, `age`, and `sex`), we can easily perform a vertical join using the `rbind` function. To do so, enter the names of the two data frames as arguments, separated by a comma. Use the `<-` symbol to name the merged data frame something, which for this case, I arbitrarily named it `mergeddf2`.
+
+```{r}
+# Verticle merge
+mergeddf2 <- rbind(df1, df2)
+
+# View the merged data frame
+mergeddf2
+```
+
+Note how the two data frames are now "stacked" on one another. This was possible because they shared the same variables names and variables types (e.g., numeric and character).
+
+## Summary
+
+Joining (merging) data frames in R is a useful practice. In this chapter, we learned how to perform a horizontal join using the `right_join`, `left_join`, `inner_join`, and `full_join` functions from the `dplyr` package. We also learned how to perform a vertical join using the `rbind` function from base R. 

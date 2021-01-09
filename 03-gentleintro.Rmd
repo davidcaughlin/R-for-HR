@@ -1,0 +1,420 @@
+# Basic Features and Operations of the R Language {#gentleintro}
+
+In this chapter, you will learn about basic features of the R language along with key bits of terminology. Think of this chapter as the "gentle introduction to R" that nearly every book on R includes. Also, it is completely fine if you don't fully grasp certain concepts and functions upon completing this chapter. We will revisit many of these concepts and functions in the HR context in subsequent chapters. Until then, use this chapter as an opportunity to practice writing R code.
+
+#### Video Tutorial
+
+Link to Video Tutorial: https://youtu.be/yHbVbHEjhLQ
+
+#### Functions & Packages Introduced
+
+Function           | Package
+------------------ | ------------------
+`print`            | base `R`
+`class`            | base `R`
+`str`              | base `R`
+`install.packages` | base `R`
+`library`          | base `R`
+`is.numeric`       | base `R`
+`is.integer`       | base `R`
+`is.character`     | base `R`
+`is.logical`       | base `R`
+`as.Date`          | base `R`
+`as.POSIXct`       | base `R`
+`c`                | base `R`
+`data.frame`       | base `R`
+`names`            | base `R`
+
+## R as a Calculator
+
+In its simplest form, R is a calculator. You can use R to carry out basic arithmetic, algebra, and other mathematical operations. The arithmetic operators in R are `+` (addition), `-` (subtraction), `*` (multiplication), `/` (division), `^` (exponent), and `sqrt` (square root). Below, you will find an example of these different arithmetic operators in action. In this book, lines of output are preceded by double hashtags (`##`); however, in your own R Console, you will not see the double hashtags before your output -- unless, that is, you use double hashtags before your lines of script [annotations](#annotate). 
+
+```{r}
+3 + 2
+3 - 2
+3 * 2
+3 / 2
+3 ^ 2
+sqrt(3)
+```
+
+Note how the six lines of output we generated (see above) appear in the same order in your Console; relatedly, remember that in R (like many other languages) the order of operations is important.
+  
+In R it doesn't matter whether there are spaces between the numeric values and the arithmetic operators. As such, we can write our code as follows and arrive at the same output.
+
+```{r}
+3+2
+3-2
+3*2
+3/2
+3^2
+sqrt(3)
+```
+
+## Functions
+
+A **function** refers to an integrated set of instructions that can be applied consistently. Some functions also accept arguments, where an **argument** is used to further refine the instructions and resulting operations of the function. In R we can use functions that come standard from base R or functions that come from downloadable packages. Let's take a look at the `print` function that comes standard with base R, which means that we don't need a special package to access the function. This won't be terribly exciting, but we can enter `3` as an argument within the `print` function parentheses; in general, arguments will appear within the inclusive parentheses.
+
+```{r}
+print(3)
+```
+
+Note how the `print` function simply "printed" the numeric value `3` that we entered.
+  
+We can also do the classic - yet super cliche - "Hello world!" example to illustrate how R and the `print` function handle text/character/string data; except, let's change it to `"Hello HR Analytics!"`.
+
+```{r}
+print("Hello HR Analytics!")
+```
+
+Note how we have to put text/character/string data in quotation marks. We can use double (`" "`) or single quotes (`' '`). Some people prefer double quotes and some prefer single quotes. I happen to prefer double quotes.
+  
+Now, let's play around with the `class` function. The `class` function is used for determining the data type represented by a datum or by multiple data that are contained in a vector or variable. By entering `3` as an argument in the `class` variable, we find that the data type is `numeric`.
+
+```{r}
+class(3)
+```
+
+If you would like to learn more about a function and the types of arguments that can be used within the function, you can access the help feature in R to access documentation on the function. The easiest way to do this is to enter `?` before the name of the function. Upon doing so, a help window will open; if you're using RStudio, a specific window pane dedicated to Help will open.
+
+```{r, eval=FALSE}
+?class
+```
+
+## Packages {#packages}
+
+A **package** is a collection of functions with a common theme or that can be applied to address a similar set of problems. R packages go through a rigorous and laborious development and vetting process before being posted on the CRAN website (https://cran.r-project.org/).   
+   
+There are two functions that are important when it comes to installing and using packages. First, the `install.packages` function is used to install a package. The name of the package you wish to install should be surrounded with quotation marks (`" "` or `' '`) and entered as an argument in the function. For example, if we wish to install the `lessR` package [@R-lessR2020], we type `install.packages("lessR")`, as shown below. Please note that the names of packages (and functions, arguments, and objects) are case sensitive in R.
+
+```{r, eval=FALSE}
+install.packages("lessR")
+```
+
+Once you have installed a package, you use the `library` function to "check out" the package from your "library" of functions. To use the function, enter the exact name of the function *without* quotation marks.
+
+```{r}
+library(lessR)
+```
+
+## Variable Assignment
+
+**Variable assignment** is the process of assigning a value or multiple values to a variable. There are two assignment operators that can be used for variable assignment as well as for (re)naming objects such as tables and data frames: `<-` and `=`. Both work the same way. I prefer to use `<-`, but others prefer `=`. In the example below, we assign the value `3` to a variable (i.e., object) we are naming `x`. 
+
+```{r}
+x <- 3
+```
+```{r}
+x = 3
+```
+
+Both functions achieved the same end, and the function that was run most recently overrides the previous attempt at assigning `3` to `x`. Using the `print` function we check with this worked.
+
+```{r}
+print(x)
+```
+
+Or, instead of using the `print` function , we can simply run `x` by itself.
+
+```{r}
+x
+```
+
+## Types of Data
+
+In general, there are four different types of data in R: `numeric`, `character`, `Date`, and `logical`.
+
+### `numeric` Data
+
+`numeric` data are numbers or numeric values. This data type is  ready-made for quantitative analysis. We can apply the `is.numeric` function to determine whether a value or variable is `numeric`; if the value or variable entered as an argument is `numeric`, R will return `TRUE`, and if it is not `numeric`, R will return `FALSE`. [Note that `TRUE` and `FALSE` statements don't require quotation marks like text/character/string data, as they are handled differently in R.] Finally, let's see if that `"Hello data science!"` phrase is numeric.
+
+```{r}
+is.numeric(3)
+```
+```{r}
+is.numeric(TRUE)
+```
+```{r}
+is.numeric("Hello data science!")
+```
+
+An `integer` is a special type of `numeric` data. An `integer` does not have any decimals, and thus is a whole number. To specify that `numeric` data are of type `integer`, `L` must be appended to the value. For example, to specify that `3` is an `integer`, it should be written as `3L`. To verify that a value is in fact of type `integer`, we can apply the `as.integer` function.
+
+```{r}
+is.integer(3L)
+```
+```{r}
+is.integer(3)
+```
+
+Alternatively, we can use the `class` or `str` functions to determine whether a value or variable is `integer` or `numeric`. The function `str` is used to identify the structure of an object (e.g., data frame, variable, value).
+
+```{r}
+class(3L)
+```
+```{r}
+str(3L)
+```
+```{r}
+class(3)
+```
+```{r}
+str(3)
+```
+
+Finally, if we assign a `numeric` or `integer` value to a variable, the resulting variable will take on the `numeric` or `integer` data type (respectively). 
+```{r}
+x <- 3
+class(x)
+```
+```{r}
+x <- 3L
+class(x)
+```
+
+### `character` Data
+
+Data of type `character` do not explicitly or innately have quantitative properties. Sometimes this type of data is called "string" or "text" data. Data of type `factor` is similar to `character` but handled differently by R; this distinction becomes more important when working with vectors and analyses. That said, many analysis functions automatically convert `character` to `factor` for analyses, but when it comes to working with and manipulating data frames, this `character` versus `factor` distinction becomes more important. When data are of type `character`, we place quotation marks (`" "` or `' '`) around the text. For example, if the `character` of interest is `old`, then we place quotation marks around text like this `"old"`. Also note that `character` data are case sensitive, which means that `"old"` is not the same as `"Old"`. Using the function `is.character`, we can determine whether data are in fact of type `character`.
+
+```{r}
+is.character("old")
+```
+
+Note how omitting the `" "` results in an error message.
+```{r error=TRUE}
+is.character(old)
+```
+
+Finally, if we assign a `numeric` or `integer` value to a variable, the resulting variable will take on the `numeric` or `integer` data types. 
+```{r}
+y <- "old"
+class(y)
+```
+
+### `Date` Data
+
+When working with dates in R, there are two different types: `Date` and `POSIXct`. `Date` captures just the date, whereas `POSIXct` captures the date and time. Behind the scenes, R treats `Date` numerically as the number of days since January 1, 1970, and `POSIXct` as the number of seconds since January 1, 1970. To specify a value as a date, we can use the `as.Date` function.
+
+```{r}
+z <- as.Date("1970-03-01")
+class(z)
+```
+
+If we convert a variable of type `Date` to `numeric` using the `as.numeric` function, the result is the number of days since January 1, 1970.
+
+```{r}
+z <- as.Date("1970-03-01")
+as.numeric(z)
+```
+
+Now we can use the `as.POSIXct` function to specify a value as a date and time. Note the very specific format in which the data and time are to be written.
+
+```{r}
+z <- as.POSIXct("1970-03-01 13:10")
+class(z)
+```
+
+If we convert a variable of type `POSIXct` to `numeric` using the `as.numeric` function, the result is the number of seconds since January 1, 1970.
+
+```{r}
+z <- as.POSIXct("1970-03-01 13:10")
+as.numeric(z)
+```
+
+### `logical` Data
+
+Data that are of type `logical` can take on values of either `TRUE` or `FALSE`, which correspond to the integers `1` and `0`, respectively. As mentioned above, although `TRUE` and `FALSE` appear to be `character` or `factor` data, they are actually `logical` data, which means they do not require quotation marks (`" "` or `' '`).
+
+```{r}
+w <- FALSE
+class(w)
+```
+```{r}
+is.logical(w)
+```
+
+## Vectors
+
+A **vector** is a group of data elements in a particular order that are all the same data type. To create a vector, we can use the `c` function, which stands for "combine." Within the `c` function parentheses, we can list the data elements and separate them by commas, as commas separate arguments within a function's parentheses. We can also assign a vector to a variable using either the `<-` or `=` operator. We can create vectors for all of the data types: `numeric`, `character`, `Date`, and `logical`.
+  
+As an example, let's create a vector of `numeric` values, and let's call it `a`.
+
+```{r}
+a <- c(1, 4, 7, 11, 19)
+```
+
+Using the `class` and `print` functions, we can determine the class of our new `a` object and print its values, respectively. 
+
+```{r}
+class(a)
+print(a)
+```
+
+Let's repeat this process by creating vectors containing `integer`, `character`, `Date`, and `logical` values.
+
+```{r}
+b <- c(3L, 10L, 2L, 5L, 5L)
+class(b)
+print(b)
+```
+```{r}
+c <- c("old", "young", "young", "old", "young")
+class(c)
+print(c)
+```
+```{r}
+d <- as.Date(c("2018-06-01", "2018-06-01", "2018-10-31", "2018-01-01", "2018-06-01"))
+class(d)
+print(d)
+```
+```{r}
+e <- c(TRUE, TRUE, TRUE, FALSE, FALSE)
+class(e)
+print(e)
+```
+
+We can also perform mathematical operations on vectors. For instance, we can multiply vector `a` (which we created above) by a numeric value, and as a result each vector value will be multiplied by that value. This is an important type of operation to remember when it comes time to transform a variable.
+
+```{r}
+a * 11
+```
+
+Note that performing mathematical operations on a vector does not automatically change the properties of the vector itself. If you inspect the `a` vector, you will see that the original data (e.g., `1, 4, 7, 11, 19`) remain.
+
+```{r}
+print(a)
+```
+
+If we want to overwrite a vector with new values based on our operations, we can use `<-` or `=` to name the new vector (which, if named the same thing as the old vector, will override the old vector) and, ultimately, to create a vector with the operations applied to the original values.
+
+```{r}
+a <- a * 11
+print(a)
+```
+
+To revert back to the original vector values for object `a`, we can simply specify the original values using the `c` function once more. 
+
+```{r}
+a <- c(1, 4, 7, 11, 19)
+```
+
+Let's now apply subtraction, addition, and division operators to the vector. Note that R adheres to the standard mathematical orders of operation.
+
+```{r}
+(3 + a) / 2 - 1
+```
+
+We can also perform mathematical operations on vectors of the same length (i.e., with the same number of data elements). In order, the mathematical operator will be applied to each pair of vector values from the respective vectors. Let's begin by creating a new vector called `f`.
+
+```{r}
+f <- c(3, 1, 3, 5, 3)
+```
+
+Both `a` and `f` are the same length, which means we can multiply, add, divide, subtract, and exponentiate
+```{r}
+a * f
+```
+```{r}
+a + f
+```
+```{r}
+a / f
+```
+```{r}
+a - f
+```
+```{r}
+a ^ f
+```
+
+## Lists
+
+If we wish to combine data elements into a single list that with different data types, we can use the `list` function. The `list` function orders each data element and retains its value.
+
+```{r}
+g <- list(1, "dog", TRUE, "2018-05-30")
+print(g)
+```
+```{r}
+class(g)
+```
+
+## Data Frames
+
+A **data frame** is a specific type of table in which columns represent variables (i.e., fields) and rows represent cases (i.e., observations). We can create a simple data frame object by combining vectors of the same length. Let's begin by creating six vector objects, which we will label `a` through `f`.
+
+```{r}
+a <- c(1, 4, 7, 11, 19) 
+b <- c(3L, 10L, 2L, 5L, 5L) 
+c <- c("old", "young", "young", "old", "young") 
+d <- as.Date(c("2018-06-01", "2018-06-01", "2018-10-31", "2018-01-01", "2018-06-01")) 
+e <- c(TRUE, TRUE, TRUE, FALSE, FALSE)
+f <- c(3, 1, 3, 5, 3)
+```
+
+Using the `data.frame` function from base R we can combine the six vectors to create a data frame object. All we need to do is enter the names of the six vectors as separate arguments in the function parentheses. Just as we did with the vectors, we can name the data frame object using the `<-` operator (or `=` operator). Let's name this data frame object `r`.
+
+```{r}
+r <- data.frame(a, b, c, d, e, f)
+```
+
+Using the `print` function, we can view the contents of our new data frame object called `r`.
+
+```{r}
+print(r)
+```
+
+We can also rename the columns (i.e., variables) of the data frame object by using the `names` function from base R along with the `c` function from base R. 
+
+```{r}
+names(r) <- c("TenureSup", "TenureOrg", "Age", "HireDate", "FTE", "NumEmp")
+```
+
+To view the changes to our data frame object, use the `print` function once more.
+
+```{r}
+print(r)
+```
+
+Finally, we can use the `class` function to verify that the object is in fact a data frame.
+
+```{r}
+class(r)
+```
+
+## Annotations {#annotate}
+
+Part of the value of using a code/script-based program like R is that you can leave notes and explain your decisions and operations. When preceding text, the `#` symbol indicates that all text that follows on that line is a comment or annotation; as a result, R knows not to interpret or analyze the text that follows. To illustrate annotations, let's repeat the steps from the previous section; however, this time, let's include annotations.
+
+```{r}
+# Create six vectors 
+a <- c(1, 4, 7, 11, 19) # Vector a
+b <- c(3L, 10L, 2L, 5L, 5L) # Vector b
+c <- c("old", "young", "young", "old", "young") # Vector c
+d <- as.Date(c("2018-06-01", "2018-06-01", "2018-10-31", "2018-01-01", "2018-06-01")) # Vector d
+e <- c(TRUE, TRUE, TRUE, FALSE, FALSE) # Vector e
+f <- c(3, 1, 3, 5, 3) # Vector f
+
+# Combine vectors into data frame
+r <- data.frame(a, b, c, d, e, f)
+
+# Print data frame
+print(r)
+```
+```{r}
+# Rename columns in data frame
+names(r) <- c("TenureSup", "TenureOrg", "Age", "HireDate", "FTE", "NumEmp")
+
+# Print data frame
+print(r)
+```
+```{r}
+# Determine class of object
+class(r)
+```
+
+Can you start to envision how annotated code might help to tell a story about data-related decision-making processes?
+
+## Summary
+
+This chapter provided you with a gentle introduction to R. This chapter is by no means comprehensive and there were probably some concepts and functions that still don't quite make sense to you. Hopefully, this chapter provided you with a basic understanding of the basic operations and building blocks of R. We'll practice applying many of the operations and functions from this chapter in subsequent chapters, which means you'll have many more opportunities to learn and practice.

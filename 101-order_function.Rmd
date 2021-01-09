@@ -1,0 +1,106 @@
+# (PART\*) Chapter Supplements {-} 
+
+# Arranging (Sorting) Data: Chapter Supplement {.unnumbered #arrange_supplement}
+
+In addition to the `arrange` function from the `dplyr` package covered in [Arranging (Sorting) Data](#arrange), we can use the `order` function from base R to arrange (sort) data by values for one or more variable. Because this function comes from base R, we do not need to install and access an additional package like we do with the `arrange` functions, which some may find advantageous. 
+
+#### Functions & Packages Introduced {.unnumbered}
+
+Function           | Package
+------------------ | ------------------
+`order`            | base `R`
+`c`                | base `R`
+
+#### Initial Steps {.unnumbered #initsteps_arrange_supp}
+
+If required, please refer to the [Initial Steps](#initsteps_arrange) section from the chapter for more information on these initial steps.
+
+```{r, eval=FALSE}
+# Set your working directory
+setwd("H:/RWorkshop")
+```
+```{r, eval=FALSE}
+# Install readr package if you haven't already
+# [Note: You don't need to install a package every 
+# time you wish to access it]
+install.packages("readr")
+```
+```{r}
+# Access readr package
+library(readr)
+
+# Read data and name data frame (tibble) object
+personaldata <- read_csv("PersData.csv")
+
+# View the names of the variables in the data frame (tibble) object
+names(personaldata)
+```
+```{r}
+# View data frame (tibble) object
+personaldata
+```
+
+## `order` Function from Base R {.unnumbered #arrange_supp}
+  
+To sort a data frame object in ascending order based on a single variable, we will use the `order` function from base R to do the following:
+
+1. Type the name of the data frame object that you wish to arrange (sort) (`personaldata`). 
+2. Insert brackets (`[ ]`), which allow us to reference rows or columns depending on how we format the brackets. If we type a function or value before the comma, we are indicating that we wish to apply operations to row(s), and if we type a function or value after the comma, we are indicating that we wish to apply operations to column(s). 
+3. To sort the data frame into ascending rows by the `startdate` variable, type the name of the `order` function *before* the comma in the brackets. As the sole parenthetical argument of the `order` function, type the name of the `personaldata` data frame object, followed by the `$` operator and the name of the variable by which we wish to sort the data frame, which to reiterate is the `startdate` variable. The `$` operator signals to R that a variable belongs to a particular data frame object. By default, the `order` function sorts in ascending order.
+
+```{r}
+# Arrange (sort) data by variable in ascending order 
+personaldata[order(personaldata$startdate),]
+```
+
+To change the ordering of data in the `personaldata` data frame object itself, we will need to (re)name the data frame object using the `<-` variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the *exact* same name as it had originally (i.e., `personaldata`). To do so, to the *left* of the `<-` operator, type what you would like to name the new (updated) sorted data frame object (`personaldata`). Next, to the *right* of the `<-` operator, copy and paste the same code we wrote above. Finally, use the `head` function from base R to view the first six rows of the new data frame object.
+
+```{r}
+# Arrange (sort) data by variable in ascending order 
+# and overwrite existing data frame object
+personaldata <- personaldata[order(personaldata$startdate),]
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+To sort in *descending* order, add the argument `decreasing=TRUE` within the `order` function parentheses. *Remember, we use commas to separate arguments used in a function (if there are two or more arguments).*
+
+```{r}
+# Arrange (sort) data by variable in descending order
+personaldata <- personaldata[order(personaldata$startdate, decreasing=TRUE),]
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+If we wish to sort a data frame object by two variables, as the second argument in the `order` function parentheses, simply add the name of the data frame object, followed by the `$` operator and the name of the second second variable. We will sort the data frame in by `gender` and `startdate`. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so *within* the values/levels of the first variable listed. As shown below, `startdate` is sorted within the sorted levels of the `gender` variable. The default operation of the `arrange` function is to arrange (sort) the data in *ascending* order.
+
+```{r}
+# Arrange (sort) data by two variables in ascending order
+personaldata <- personaldata[order(personaldata$gender, personaldata$startdate),]
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+To sort by one of the variables in descending order and the other variable by the default ascending order, we need to add the `decreasing=` argument, but because we have two variables, we need to provide a vector containing logical values (`TRUE`, `FALSE`) to indicate which variable we wish to apply a *descending* order. If the logical value is `TRUE` for the `decreasing=` argument, then we sort in descending variable. Using the `c` (combine) function from base R, we create a vector of two logical values whose order corresponds to the order in which we listed the two variables in the `order` function. For example, if the argument is `decreasing=c(FALSE, TRUE)`, then we sort the first variable in the default ascending order and the second variable in descending order, which is what we do below. 
+
+```{r}
+# Arrange (sort) data by gender in ascending order and 
+# startdate in descending order
+personaldata <- personaldata[order(personaldata$gender, personaldata$startdate, decreasing=c(FALSE, TRUE)),]
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+Or, you could sort by both variables in descending order by change the argument to `decreasing=c(TRUE, TRUE)`.
+
+```{r}
+# Arrange (sort) data by gender and id variables descending order
+personaldata <- personaldata[order(personaldata$gender, personaldata$startdate, decreasing=c(TRUE, TRUE)),]
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```

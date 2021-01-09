@@ -1,0 +1,216 @@
+# (PART) Data Management {-} 
+
+# Arranging (Sorting) Data {#arrange}
+
+**Arranging (sorting) data** refers to the process of ordering rows numerically or alphabetically in a data frame by the values of one or more variables. When sorting data in R, the underlying source data file does not change; rather, the data frame object in the R Global Environment changes. Sorting can make it easier to visually scan raw data, particularly when used in conjunction with the `View`, `head`, or `tail` functions from base R.
+
+#### Video Tutorial
+
+Link to Video Tutorial: https://youtu.be/wVwJQsLNbmw
+
+#### Functions & Packages Introduced
+
+Function           | Package
+------------------ | ------------------
+`arrange`          | `dplyr`
+`desc`             | `dplyr`
+
+#### Initial Steps {#initsteps_arrange}
+
+Please note, that any function that appears in the *Initial Steps* section has been covered in a previous chapter. If you need a refresher, please view the relevant chapter. In addition, a previous chapter may show you how to perform the same action using different functions or packages.
+  
+If you haven't already, save the file called **"PersData.csv"** into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., `"H:/RWorkshop"`). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: https://github.com/davidcaughlin/R-Tutorial-Data-Files; once you've followed the link to GitHub, just click "Code" (or "Download") followed by "Download ZIP", which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.
+  
+Next, using the `setwd` function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to *Session > Set Working Directory > Choose Directory...*. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to [Setting a Working Directory](#setwd) and [Creating & Saving an R Script](#createRscript).
+
+```{r, eval=FALSE}
+# Set your working directory
+setwd("H:/RWorkshop")
+```
+
+Next, read in the .csv data file called **"PersData.csv"** using your choice of read function. In this example, I use the `read_csv` function from the `readr` package [@R-readr]. If you choose to use the `read_csv` function, be sure that you have installed and accessed the `readr` package using the `install.packages` and `library` functions. *Note: You don't need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.* For refreshers on installing packages and reading data into R, please refer to [Packages](#packages) and [Reading Data into R](#read).
+
+```{r, eval=FALSE}
+# Install readr package if you haven't already
+# [Note: You don't need to install a package every 
+# time you wish to access it]
+install.packages("readr")
+```
+```{r}
+# Access readr package
+library(readr)
+
+# Read data and name data frame (tibble) object
+personaldata <- read_csv("PersData.csv")
+
+# View the names of the variables in the data frame (tibble) object
+names(personaldata)
+```
+```{r}
+# View data frame (tibble) object
+personaldata
+```
+
+As you can see from the output generated in your console, the `personaldata` data frame object contains basic employee demographic information. The variable names include: `id`, `lastname`, `firstname`, `startdate`, and `gender`. Technically, the `read_csv` function reads in what is called a "tibble" object (as opposed to a data frame object), but for our purposes a tibble will behave similarly to a data frame. For more information on tibbles, check out Wickham and Grolemund's [-@wickham2017] chapter on tibbles: http://r4ds.had.co.nz/tibbles.html.
+
+## Arrange (Sort) Data {#arrangebyvalues}
+
+There are different functions we could use to arrange (sort) the data in the data frame, and in this chapter, we will focus on the `arrange` function from the `dplyr` package [@R-dplyr]. Please note that there are other functions we could use to sort data, and if you're interested, in the [Arranging (Sorting) Data: Chapter Supplement](#arrange_supplement), I demonstrate how to use the `order` function from base R to carry out the same operations we will cover below.
+  
+Because the `arrange` function comes from the `dplyr` package, which is part of the `tidyverse` of R packages [@R-tidyverse; @tidyverse2019]. If you haven't already, install and access the `dplyr` package using the `install.packages` and `library` functions, respectively.
+
+```{r, eval=FALSE}
+# Install dplyr package if you haven't already
+# [Note: You don't need to install a package every 
+# time you wish to access it]
+install.packages("dplyr")
+```
+```{r}
+# Access dplyr package
+library(dplyr)
+```   
+
+Before diving into arranging the data, as a disclaimer, I will demonstrate two techniques for arranging (sorting) data using the `arrange` function. 
+  
+The *first technique* uses a "pipe" which in R is represented by the `%>%` operator. The pipe operator comes from a package called `magrittr` [@R-magrittr], on which the `dplyr` is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a **pipe** forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund's [-@wickham2017] chapter on pipes: https://r4ds.had.co.nz/pipes.html.
+  
+This brings us to the *second technique* for arranging (sorting) data using the `arrange` function. The second technique uses a more traditional approach that some may argue lacks the efficiency and readability of the pipe. Conversely, others may argue against the use of pipes altogether. I'm not here to settle any "pipes versus no pipes" debate, and you're welcome to use either technique. If you don't want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called [Without Pipe](#opt1_arrange_withoutpipe). 
+
+### *With* Pipe {#opt1_arrange_withpipe}
+
+To use the "with pipe" technique, first, type the name of our data frame object, which we previously named `personaldata`, followed by the pipe (`%>%`) operator. This will "pipe" our data frame into the subsequent function. Second, either on the same line or on the next line, type the name of the `arrange` function, and within the parentheses, enter the variable name `startdate` as the argument to indicate that we want to arrange (sort) the data by the start date of the employees. The default operation of the `arrange` function is to arrange (sort) the data in *ascending* order. If you're wondering where I found the exact names of the variables in the data frame, revisit the use of the `names` function, which I demonstrated previously in this chapter in the [Initial Steps](#initsteps_arrange) section. 
+
+```{r}
+# Arrange (sort) data by variable in ascending order (single line) (with pipe)
+personaldata %>% arrange(startdate)
+```
+
+Alternatively, we can write this script over two lines and achieve the same output in our Console.
+
+```{r}
+# Arrange (sort) data by variable in ascending order (two lines) (with pipe)
+personaldata %>% 
+  arrange(startdate)
+```
+
+Please note that the operations we have performed thus far have not changed anything in the `personaldata` data frame object itself; rather, the output in the Console simply shows what it *looks like* if the data are sorted by the variable in question. We can verify this by viewing the first six rows of data in our data frame object using the `head` function. As you can see below, nothing changed in the data frame itself.
+
+```{r}
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+To change the ordering of data in the `personaldata` data frame object itself, we will need to (re)name the data frame object using the `<-` variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the *exact* same name as it had originally (i.e., `personaldata`). To do so, to the *left* of the `<-` operator, type what you would like to name the new (updated) sorted data frame object (`personaldata`). Next, to the *right* of the `<-` operator, copy and paste the same code we wrote above. Finally, use the `head` function from base R to view the first six rows of the new data frame object.
+
+```{r}
+# Arrange (sort) data by variable in ascending order and 
+# overwrite existing data frame object (with pipe)
+personaldata <- personaldata %>% arrange(startdate)
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+As you can see in the Console output, now the `personaldata` data frame object has been changed such that the data are arranged (sorted) by the `startdate` variable.
+  
+To arrange the data in *descending* order, just use the `desc` function from `dplyr` within the `arrange` function as shown below.
+
+```{r}
+# Arrange (sort) data by variable in ascending order and 
+# overwrite existing data frame object (with pipe)
+personaldata <- personaldata %>% arrange(desc(startdate))
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+To arrange (sort) data by values/levels of two variables, we simply enter the names of two variables as consecutive arguments. Let's enter the `gender` variable first, followed by the `startdate` variable. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so *within* the values/levels of the first variable listed. As shown below, `startdate` is sorted within the sorted levels of the `gender` variable. As a reminder, the default operation of the `arrange` function is to arrange (sort) the data in *ascending* order. *Remember, we use commas to separate arguments used in a function (if there are more than one arguments).*
+
+```{r}
+# Arrange (sort) data by two variables in ascending order (with pipe)
+personaldata %>% arrange(gender, startdate)
+```
+
+Watch what happens when we switch the order of the two variables we are using to sort the data.
+
+```{r}
+# Arrange (sort) data by two variables in ascending order (with pipe)
+personaldata %>% arrange(startdate, gender)
+```
+
+As you can see, the order of the two sorting variables matters.
+  
+To arrange the data in *descending* order, just use the `desc` function from `dplyr` within the `arrange` function.
+
+```{r}
+# Arrange (sort) data by variable in descending order (with pipe)
+personaldata %>% arrange(desc(gender,startdate))
+```
+
+Or, we can sort one variable in the default ascending order and the other in descending order.
+
+```{r}
+# Arrange (sort) data by two variables in ascending & descending order (with pipe)
+personaldata %>% arrange(gender, desc(startdate))
+```
+
+### *Without* Pipe {#opt1_arrange_withoutpipe}
+
+We can achieve the same output *without* using the pipe (`%>%`) operator as [*with* the pipe operator](#opt1_arrange_withpipe); again, your choice of using or not using the pipe operator is up to you. 
+  
+To use the `arrange` function without the pipe operator, type the name of the `arrange` function, and within the parentheses, as the first argument, type the name of the `personaldata` data frame object, and as the second argument, type the `startdate` variable, where the latter indicates that we want to arrange (sort) the data frame object by the start date of the employees. The default operation of the `arrange` function is to arrange (sort) the data in *ascending* order. *Remember, we use commas to separate arguments used in a function (if there are more than one arguments).* If you're wondering where I found the exact names of the variables in the data frame, revisit the use of the `names` function, which I demonstrated previously in this chapter in the [Initial Steps](#initsteps_arrange) section. 
+
+```{r}
+# Arrange (sort) data by variable in ascending order without pipe
+arrange(personaldata, startdate)
+```
+
+To change the ordering of data in the `personaldata` data frame object itself, we will need to (re)name the data frame object using the `<-` variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the *exact* same name as it had originally (i.e., `personaldata`). To do so, to the *left* of the `<-` operator, type what you would like to name the new (updated) sorted data frame object (`personaldata`). Next, to the *right* of the `<-` operator, copy and paste the same code we wrote above. Finally, use the `head` function from base R to view the first six rows of the new data frame object.
+
+```{r}
+# Arrange (sort) data by variable in ascending order and 
+# overwrite existing data frame object without pipe
+personaldata <- arrange(personaldata, startdate)
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+To arrange the data in *descending* order, just use the `desc` function from `dplyr` within the `arrange` function as shown below.
+
+```{r}
+# Arrange (sort) data by variable in descending order and 
+# overwrite existing data frame object without pipe
+personaldata <- arrange(personaldata, desc(startdate))
+
+# View just the first 6 rows of the data frame in Console
+head(personaldata)
+```
+
+To arrange (sort) data by values/levels of two variables, we simply enter the names of two variables as consecutive arguments (after the name of the data frame, which is the first argument). Let's enter the `gender` variable first, followed by the `startdate` variable. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so *within* the values/levels of the first variable listed. 
+
+```{r}
+# Arrange (sort) data by variable in ascending order without pipe
+personaldata <- arrange(personaldata, gender, startdate)
+```
+
+As shown in the output above, `startdate` is sorted within the sorted levels of the `gender` variable. This also verifies that the default operation of the `arrange` function is to arrange (sort) the data in *ascending* order.
+  
+To arrange the data in *descending* order, just use the `desc` function from `dplyr` within the `arrange` function as shown below. You can use the `desc` function on one or both sorting variables.
+
+```{r}
+# Arrange (sort) data by one variable in ascending order and 
+# the other in descending order without pipe
+personaldata <- arrange(personaldata, gender, desc(startdate))
+```
+
+Or we can apply the `desc` function to both variables.
+
+```{r}
+# Arrange (sort) data by both variables descending order without pipe
+personaldata <- arrange(personaldata, desc(gender, startdate))
+```
+
+## Summary
+
+In this chapter, we learned how to arrange (sort) data by one or more variables using the `arrange` and `desc` functions from the `dplyr` package. This chapter also introduced the pipe (`%>%`) operator, which can help make code easier to read in some contexts.
