@@ -296,14 +296,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="filter" class="section level1">
 <h1><span class="header-section-number">Chapter 10</span> Filtering Data</h1>
-<p>Applying a <strong>filter</strong> to data (i.e., creating a <strong>subset</strong> of data) is an important aspect of data management. When we filter data, we can (a) select a subset of cases based based on their scores on one or more variables, or we can (b) select or remove a subset of variables. In this tutorial, you will learn some fundamental techniques for filtering your data in R.</p>
+<p><strong>Filtering</strong> data (i.e., <strong>subsetting</strong> data) is an important data-management process, as it allows us to (a) select or remove a <em>subset of cases</em> from a data frame based on their scores on one or more variables, or to (b) select or remove a <em>subset of variables</em> from a data frame.</p>
+<div id="conceptual-review-of-logical-operators" class="section level4">
+<h4><span class="header-section-number">10.0.0.1</span> Conceptual Review of Logical Operators</h4>
+<p>When our goal is to select or remove a subset of cases (i.e., observations) from a data frame, we typically do so by applying logical operators. You may already be comfortable with the use of logical operators and expressions like “greater than” (<span class="math inline">\(&gt;\)</span>), “less than” (<span class="math inline">\(&lt;\)</span>), “equal to” (<span class="math inline">\(=\)</span>), “greater than or equal to” (<span class="math inline">\(\ge\)</span>), and “less than or equal to” (<span class="math inline">\(\le\)</span>), but you may be less comfortable with the use of the logical “OR” and the logical “AND”. Thus, before we start working with data, let’s do a quick review.</p>
+<p>When we wish to apply a single logical statement, our job is relatively straightforward. To keep things simple, let’s focus on a single vector, and we’ll call that vector <span class="math inline">\(X\)</span>. For example, we might choose to select only those cases with scores on <span class="math inline">\(X\)</span> that are “greater than or equal to” (<span class="math inline">\(\ge\)</span> or <span class="math inline">\(&gt;\)</span><span class="math inline">\(=\)</span>) 3, thereby retaining scores that are equal to or greater than 3, as highlighted in blue below. In other words, we select only those cases for which their score on <span class="math inline">\(X\)</span> would be true given the logical statement <span class="math inline">\(X \ge 3\)</span>.</p>
+<div class="figure">
+<img src="logical_greaterthanequalto.png" alt="" />
+<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we apply the logical statement that <span class="math inline">\(X\)</span> is “greater than or equal to” (<span class="math inline">\(\ge\)</span>) 3, we select only those cases with scores that are equal to or greater than 3 and up to the maximum possible score of 7.</p>
+</div>
+<p>As another example, we might choose to select only those cases with scores on <span class="math inline">\(X\)</span> that are “less than or equal to” (<span class="math inline">\(\le\)</span> or <span class="math inline">\(&lt;\)</span><span class="math inline">\(=\)</span>) 5, thereby retaining scores that are equal to or less than 5, as highlighted in red below. In other words, we select only those cases for which their score on <span class="math inline">\(X\)</span> would be true given the logical statement <span class="math inline">\(X \le 5\)</span>.</p>
+<div class="figure">
+<img src="logical_lessthanequalto.png" alt="" />
+<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we apply the logical statement that <span class="math inline">\(X\)</span> is “greater than or equal to” (<span class="math inline">\(\ge\)</span>) 3, we select only those cases with scores that are equal to or greater than 3 and down to the minimum possible score of 1.</p>
+</div>
+<p>If we apply the logical “OR” operator, things get a bit more interesting. The logical “OR” is used when our objective is to select cases based on two logical statements, and if <em>either</em> logical statement is true for a given case, then that case is selected. The logical “OR” is consistent with idea of a mathematical union (<span class="math inline">\(\cup\)</span>) from Set Theory. As an example, let’s combine the two logical statements from above with the logical “OR” operator. We retain those cases for which their score on <span class="math inline">\(X\)</span> is “greater than or equal to” 3 <strong>or</strong> “less than or equal to” 5. Given that <span class="math inline">\(X\)</span> has possible scores ranging from 1-7, below, we see that this logic retains all cases, as all scores (1-7) would satisfy one or both of the logical statements.</p>
+<div class="figure">
+<img src="logical_or.png" alt="" />
+<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we wish to retain those cases for which X$ is “greater than or equal to” 3 <strong>or</strong> “less than or equal to” 5, we select those cases that satisfy either (or both) logical statements.</p>
+</div>
+<p>Using the same to logical statements above, let’s replace the logical “OR” with the logical “AND”. The logical “AND” is used when our objective is to select cases based on two logical statements, and if <em>both</em> logical statements are true for a given case, then that case is selected. The logical “AND” is consistent with idea of a mathematical intersection (<span class="math inline">\(\cap\)</span>) from Set Theory. In this example, we retain only those cases for which their score on <span class="math inline">\(X\)</span> is “greater than or equal to” 3 <strong>and</strong> “less than or equal to” 5. Given that <span class="math inline">\(X\)</span> has possible scores ranging from 1-7, below, we see that this logic retain only cases with scores within the range 3-5, as only scores of 3, 4, or 5 would satisfy both of the logical statements.</p>
+<div class="figure">
+<img src="logical_and.png" alt="" />
+<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we wish to retain those cases for which X$ is “greater than or equal to” 3 <strong>and</strong> “less than or equal to” 5, we select only those cases that satisfy both logical statements.</p>
+</div>
+</div>
 <div id="video-tutorial" class="section level4">
-<h4><span class="header-section-number">10.0.0.1</span> Video Tutorial</h4>
-<p><img src="https://youtu.be/izVcbPmu0D0" /></p>
+<h4><span class="header-section-number">10.0.0.2</span> Video Tutorial</h4>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below. Both versions of the tutorial will show you how to filter (subset) data with or without the pipe (<code>%&gt;%</code>) operator. If you’re unfamiliar with the pipe operator, no need to worry: I provide a brief explanation and demonstration regarding their purpose in both versions of the tutorial.</p>
+<iframe src="https://youtube.com/embed/izVcbPmu0D0?rel=0" width="672" height="400px">
+</iframe>
 <p>Link to Video Tutorial: <a href="https://youtu.be/izVcbPmu0D0" class="uri">https://youtu.be/izVcbPmu0D0</a></p>
 </div>
 <div id="functions-packages-introduced" class="section level4">
-<h4><span class="header-section-number">10.0.0.2</span> Functions &amp; Packages Introduced</h4>
+<h4><span class="header-section-number">10.0.0.3</span> Functions &amp; Packages Introduced</h4>
 <table>
 <thead>
 <tr class="header">
@@ -340,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 </div>
 <div id="initsteps_filter" class="section level4">
-<h4><span class="header-section-number">10.0.0.3</span> Initial Steps</h4>
+<h4><span class="header-section-number">10.0.0.4</span> Initial Steps</h4>
 <p>If you haven’t already, save the files called <strong>“PersData.csv”</strong> and <strong>“PerfData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="filter.html#cb301-1"></a><span class="co"># Set your working directory</span></span>
@@ -947,6 +973,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
