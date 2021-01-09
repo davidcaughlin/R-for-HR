@@ -195,8 +195,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>4</b> Setting a Working Directory</a><ul>
-<li class="chapter" data-level="4.0.1" data-path="setwd.html"><a href="setwd.html#identifying-the-current-working-directory"><i class="fa fa-check"></i><b>4.0.1</b> Identifying the Current Working Directory</a></li>
-<li class="chapter" data-level="4.0.2" data-path="setwd.html"><a href="setwd.html#setting-a-new-working-directory"><i class="fa fa-check"></i><b>4.0.2</b> Setting a New Working Directory</a></li>
+<li class="chapter" data-level="4.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>4.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="4.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>4.0.2</b> Set a New Working Directory</a></li>
 <li class="chapter" data-level="4.1" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>4.1</b> Summary</a></li>
 </ul></li>
 <li class="part"><span><b>II Data Acquisition</b></span></li>
@@ -400,18 +400,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4><span class="header-section-number">9.0.0.5</span> Initial Steps</h4>
 <p>If you haven’t already, save the files called <strong>“PersData.csv”</strong> and <strong>“PerfData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="join.html#cb255-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb255-2"><a href="join.html#cb255-2"></a><span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="join.html#cb260-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb260-2"><a href="join.html#cb260-2"></a><span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data files called <strong>“PersData.csv”</strong> and <strong>“PerfData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(Wickham and Hester <a href="#ref-R-readr" role="doc-biblioref">2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="join.html#cb256-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb256-2"><a href="join.html#cb256-2"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb256-3"><a href="join.html#cb256-3"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb256-4"><a href="join.html#cb256-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="join.html#cb257-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb257-2"><a href="join.html#cb257-2"></a><span class="kw">library</span>(readr)</span>
-<span id="cb257-3"><a href="join.html#cb257-3"></a></span>
-<span id="cb257-4"><a href="join.html#cb257-4"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb257-5"><a href="join.html#cb257-5"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="join.html#cb261-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb261-2"><a href="join.html#cb261-2"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb261-3"><a href="join.html#cb261-3"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb261-4"><a href="join.html#cb261-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="join.html#cb262-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb262-2"><a href="join.html#cb262-2"></a><span class="kw">library</span>(readr)</span>
+<span id="cb262-3"><a href="join.html#cb262-3"></a></span>
+<span id="cb262-4"><a href="join.html#cb262-4"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
+<span id="cb262-5"><a href="join.html#cb262-5"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification --------------------------------------------------------
 ## cols(
@@ -421,7 +421,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   startdate = col_character(),
 ##   gender = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="join.html#cb259-1"></a>performancedata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="join.html#cb264-1"></a>performancedata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification --------------------------------------------------------
 ## cols(
@@ -431,13 +431,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   perf_q3 = col_double(),
 ##   perf_q4 = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="join.html#cb261-1"></a><span class="co"># View the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb261-2"><a href="join.html#cb261-2"></a><span class="kw">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="join.html#cb266-1"></a><span class="co"># View the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb266-2"><a href="join.html#cb266-2"></a><span class="kw">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="join.html#cb263-1"></a><span class="kw">names</span>(performancedata)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="join.html#cb268-1"></a><span class="kw">names</span>(performancedata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="join.html#cb265-1"></a><span class="co"># View data frame (tibble) objects</span></span>
-<span id="cb265-2"><a href="join.html#cb265-2"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="join.html#cb270-1"></a><span class="co"># View data frame (tibble) objects</span></span>
+<span id="cb270-2"><a href="join.html#cb270-2"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -450,7 +450,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="join.html#cb267-1"></a>performancedata</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="join.html#cb272-1"></a>performancedata</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -469,11 +469,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Type the “not equal to” operator, which is <code>!=</code> (the <code>!</code> means “not”), followed by the <code>id</code> variable value we wish to use to remove the case (i.e., 153).</li>
 <li>Type a comma (<code>,</code>) to indicate that we are removing a row, not a column. <em>When referencing rows and columns in R, as we are doing in the brackets (<code>[ ]</code>), rows are entered first (before a comma), and columns are entered second (after a comma).</em> In doing so, we are telling R to retain all rows of data in <code>personaldata</code> except for the one corresponding to <code>id</code> equal to 153.</li>
 </ol>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="join.html#cb269-1"></a><span class="co"># Remove case with id variable equal to 153</span></span>
-<span id="cb269-2"><a href="join.html#cb269-2"></a>personaldata &lt;-<span class="st"> </span>personaldata[personaldata<span class="op">$</span>id <span class="op">!=</span><span class="st"> </span><span class="dv">153</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="join.html#cb274-1"></a><span class="co"># Remove case with id variable equal to 153</span></span>
+<span id="cb274-2"><a href="join.html#cb274-2"></a>personaldata &lt;-<span class="st"> </span>personaldata[personaldata<span class="op">$</span>id <span class="op">!=</span><span class="st"> </span><span class="dv">153</span>,]</span></code></pre></div>
 <p>Check out the first 6 rows of the updated data frame for <code>personaldata</code>, and note that the data corresponding to the case associated with <code>id</code> equal to 153 is gone.</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="join.html#cb270-1"></a><span class="co"># View first 6 rows of first data frame object once more</span></span>
-<span id="cb270-2"><a href="join.html#cb270-2"></a><span class="kw">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="join.html#cb275-1"></a><span class="co"># View first 6 rows of first data frame object once more</span></span>
+<span id="cb275-2"><a href="join.html#cb275-2"></a><span class="kw">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -489,20 +489,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Recall that a horizontal join (merge) means that cases are matched using one more more key variables, and as a result, variables (i.e., columns, fields) are combined across two data frames. We will review two options for performing horizontal joins.</p>
 <p>To perform horizontal joins, we will learn how to use the <code>join</code> functions from the the <code>dplyr</code> package <span class="citation">(Wickham, François, et al. <a href="#ref-R-dplyr" role="doc-biblioref">2020</a>)</span>, which include: <code>right_join</code>, <code>left_join</code>, <code>inner_join</code>, and <code>full_join</code>. Please note that there are other functions we could use to perform horizontal joins, and if you’re interested, in the <a href="join-supplement.html#join_supplement">Joining (Merging) Data: Chapter Supplement</a>, I demonstrate how to use the <code>merge</code> function from base R to carry out the same operations we will cover below.</p>
 <p>Using the aformentioned <code>join</code> functions, we will match cases from the <code>personaldata</code> and <code>performancedata</code> data frames using the <code>id</code> unique identifer variable as a key variable. So how can we verify that <code>id</code> is an appropriate key variable? Well, let’s use the <code>names</code> function from base R to retrieve the list of variable names from the two data frames, which we already did above. Nevertheless, let’s call up those variable names once more. Simply enter the name of the data frame as a parenthetical argument in the <code>names</code> function.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="join.html#cb272-1"></a><span class="co"># Retrieve variable names from first data frame</span></span>
-<span id="cb272-2"><a href="join.html#cb272-2"></a><span class="kw">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="join.html#cb277-1"></a><span class="co"># Retrieve variable names from first data frame</span></span>
+<span id="cb277-2"><a href="join.html#cb277-2"></a><span class="kw">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="join.html#cb274-1"></a><span class="co"># Retrieve variable names from second data frame</span></span>
-<span id="cb274-2"><a href="join.html#cb274-2"></a><span class="kw">names</span>(performancedata)</span></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="join.html#cb279-1"></a><span class="co"># Retrieve variable names from second data frame</span></span>
+<span id="cb279-2"><a href="join.html#cb279-2"></a><span class="kw">names</span>(performancedata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
 <p>As you can see in the variable names listed above, the <code>id</code> variable is common to both data frames, and thus it will serve as our key variable.</p>
 <p>Now we are almost ready to begin joining the two data frames using the <code>id</code> unique identifer as a key variable. Before doing so, however, we should make sure that we have installed and accessed the <code>dplyr</code> package (if we haven’t already), as the <code>join</code> functions come from that package.</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="join.html#cb276-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
-<span id="cb276-2"><a href="join.html#cb276-2"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb276-3"><a href="join.html#cb276-3"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb276-4"><a href="join.html#cb276-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="join.html#cb277-1"></a><span class="co"># Access dplyr package</span></span>
-<span id="cb277-2"><a href="join.html#cb277-2"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="join.html#cb281-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb281-2"><a href="join.html#cb281-2"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb281-3"><a href="join.html#cb281-3"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb281-4"><a href="join.html#cb281-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="join.html#cb282-1"></a><span class="co"># Access dplyr package</span></span>
+<span id="cb282-2"><a href="join.html#cb282-2"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
 <p>I will demonstrate two techniques for applying the <code>join</code> function.</p>
 <p>The <em>first technique</em> uses the pipe operator (<code>%&gt;%</code>). The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(Bache and Wickham <a href="#ref-R-magrittr" role="doc-biblioref">2014</a>)</span>, on which the <code>dplyr</code> is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on pipes: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
 <p>The <em>second technique</em> for applying the <code>join</code> function takes a more traditional approach in that it involves nested functions being nested parenthetically. If you don’t want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called <a href="join.html#opt2_join_withoutpipe">Without Pipe</a>.</p>
@@ -514,11 +514,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>To the <em>right</em> of the <code>&lt;-</code> operator, type the name of the first data frame, which we named <code>personaldata</code>, followed by the pipe (<code>%&gt;%</code>) operator. This will “pipe” our data frame into the subsequent function.</li>
 <li>On the same line or on the next line, type the <code>inner_join</code> function, and within the parentheses as the first argument, type the name of the second data frame, which we called <code>performancedata</code>. As the second argument, use the <code>by=</code> argument to indicate the name of the key variable, which in this example is <code>id</code>; make sure the key variable is in quotation marks (<code>" "</code>), and remember, object and variable names in R are case and space sensitive.</li>
 </ol>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="join.html#cb278-1"></a><span class="co"># Inner join (with pipe)</span></span>
-<span id="cb278-2"><a href="join.html#cb278-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb278-3"><a href="join.html#cb278-3"></a></span>
-<span id="cb278-4"><a href="join.html#cb278-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb278-5"><a href="join.html#cb278-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="join.html#cb283-1"></a><span class="co"># Inner join (with pipe)</span></span>
+<span id="cb283-2"><a href="join.html#cb283-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">inner_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb283-3"><a href="join.html#cb283-3"></a></span>
+<span id="cb283-4"><a href="join.html#cb283-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb283-5"><a href="join.html#cb283-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -528,8 +528,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
 ## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Now, let’s revisit the original data frame objects that we read in initially.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="join.html#cb280-1"></a><span class="co"># View the first original data frame</span></span>
-<span id="cb280-2"><a href="join.html#cb280-2"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="join.html#cb285-1"></a><span class="co"># View the first original data frame</span></span>
+<span id="cb285-2"><a href="join.html#cb285-2"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -541,8 +541,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6   198 Morales    Linda     1/7/2016  female
 ## 7   201 Providence Cindy     1/9/2016  female
 ## 8   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="join.html#cb282-1"></a><span class="co"># View the second original data frame</span></span>
-<span id="cb282-2"><a href="join.html#cb282-2"></a>performancedata</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="join.html#cb287-1"></a><span class="co"># View the second original data frame</span></span>
+<span id="cb287-2"><a href="join.html#cb287-2"></a>performancedata</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -554,11 +554,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6   282     2.2     2.3     2.4     2.5</code></pre>
 <p>In the output, first, note how all of the variables from the original data frames (i.e., <code>personaldata</code>, <code>performancedata</code>) are represented in the merged data frame (i.e., <code>mergeddf</code>). Second, note how the cases are matched by the <code>id</code> key variable. Third, note that the <code>personaldata</code> data frame has 8 cases, the <code>performancedata</code> data frame has 6 cases, and the <code>mergeddf</code> data frame has 6 cases. By default, the <code>merge</code> function performs an <em>inner join</em> and retains only those matched cases that have data in <em>both</em> data frames. Because cases whose <code>id</code> values were <code>154</code>, <code>155</code>, and <code>165</code> had data in <code>personaldata</code> but not <code>performancedata</code> and because the case with an <code>id</code> value equal to 153 was in <code>performancedata</code> but not <code>personaldata</code>, only the 5 cases that had available data in both data frames were retained.</p>
 <p>To perform what is referred to as a <strong>full join</strong> in which we retain all cases and available data, we simply swap out the <code>inner_join</code> function from our previous code with the <code>full_join</code> function.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="join.html#cb284-1"></a><span class="co"># Full join (with pipe)</span></span>
-<span id="cb284-2"><a href="join.html#cb284-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb284-3"><a href="join.html#cb284-3"></a></span>
-<span id="cb284-4"><a href="join.html#cb284-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb284-5"><a href="join.html#cb284-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="join.html#cb289-1"></a><span class="co"># Full join (with pipe)</span></span>
+<span id="cb289-2"><a href="join.html#cb289-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">full_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb289-3"><a href="join.html#cb289-3"></a></span>
+<span id="cb289-4"><a href="join.html#cb289-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb289-5"><a href="join.html#cb289-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -573,11 +573,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9   153 &lt;NA&gt;       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;       3.9     4.8     4.9     5</code></pre>
 <p>Note how the <code>full_join</code> function retains all available cases that had available data in at least one of the data frames, which in this example is 9 cases. <em>When in doubt, I recommend using the <code>full_join</code> function to retain all available data.</em></p>
 <p>To perform what is referred to as a <strong>left join</strong> in which we retain only those cases with data available in the first (left, x) data frame (<code>personaldata</code>), we use the <code>left_join</code> function instead, while keeping the rest of the previous code the same.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="join.html#cb286-1"></a><span class="co"># Left join (with pipe)</span></span>
-<span id="cb286-2"><a href="join.html#cb286-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb286-3"><a href="join.html#cb286-3"></a></span>
-<span id="cb286-4"><a href="join.html#cb286-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb286-5"><a href="join.html#cb286-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="join.html#cb291-1"></a><span class="co"># Left join (with pipe)</span></span>
+<span id="cb291-2"><a href="join.html#cb291-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">left_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb291-3"><a href="join.html#cb291-3"></a></span>
+<span id="cb291-4"><a href="join.html#cb291-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb291-5"><a href="join.html#cb291-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -591,11 +591,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note how the <code>left_join</code> function retains only those cases for which the first (left, x) data frame (i.e., <code>personaldata</code>) has complete data, which in this case happens to be 8 cases. Notably absent is the case associated with <code>id</code> equal to 153 because the first (left, x) data frame (i.e., <code>personaldata</code>) lacked that case. An <code>NA</code> appears for each case from the second (right, y) data frame that contained missing values on variables from that data frame.</p>
 <p>To perform what is referred to as a <strong>right join</strong> in which we retain only those cases with data available in the second (right, y) data frame (<code>performancedata</code>), we use the <code>right_join</code> function instead, while keeping the rest of the previous code the same.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="join.html#cb288-1"></a><span class="co"># Right join (with pipe)</span></span>
-<span id="cb288-2"><a href="join.html#cb288-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb288-3"><a href="join.html#cb288-3"></a></span>
-<span id="cb288-4"><a href="join.html#cb288-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb288-5"><a href="join.html#cb288-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="join.html#cb293-1"></a><span class="co"># Right join (with pipe)</span></span>
+<span id="cb293-2"><a href="join.html#cb293-2"></a>mergeddf &lt;-<span class="st"> </span>personaldata <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">right_join</span>(performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb293-3"><a href="join.html#cb293-3"></a></span>
+<span id="cb293-4"><a href="join.html#cb293-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb293-5"><a href="join.html#cb293-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -615,11 +615,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Use the <code>&lt;-</code> operator to name the joined (merged) data frame that we will create using the one of the <code>dplyr</code> join functions. For this example, I name the new joined data frame <code>mergeddf</code>, which is completely arbitrary; you could name it whatever you would like. Make sure you put the name of the new data frame object to the <em>left</em> of the <code>&lt;-</code> operator.</li>
 <li>To the <em>right</em> of the <code>&lt;-</code> operator, type the name of the <code>inner_join</code> function. As the first argument within the parentheses, type the name of the first data frame, which we named <code>personaldata</code>. As the second argument, type the name of the second data frame we named <code>performancedata</code>. As the third argument, use the <code>by=</code> argument to indicate the name of the key variable, which in this example is <code>id</code>; make sure the key variable is in quotation marks (<code>" "</code>), and remember, object and variable names in R are case and space sensitive.</li>
 </ol>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="join.html#cb290-1"></a><span class="co"># Inner join (without pipe)</span></span>
-<span id="cb290-2"><a href="join.html#cb290-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">inner_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb290-3"><a href="join.html#cb290-3"></a></span>
-<span id="cb290-4"><a href="join.html#cb290-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb290-5"><a href="join.html#cb290-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="join.html#cb295-1"></a><span class="co"># Inner join (without pipe)</span></span>
+<span id="cb295-2"><a href="join.html#cb295-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">inner_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb295-3"><a href="join.html#cb295-3"></a></span>
+<span id="cb295-4"><a href="join.html#cb295-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb295-5"><a href="join.html#cb295-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -629,8 +629,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
 ## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Now, let’s revisit the original data frame objects that we read in initially.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="join.html#cb292-1"></a><span class="co"># View the first original data frame</span></span>
-<span id="cb292-2"><a href="join.html#cb292-2"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="join.html#cb297-1"></a><span class="co"># View the first original data frame</span></span>
+<span id="cb297-2"><a href="join.html#cb297-2"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -642,8 +642,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6   198 Morales    Linda     1/7/2016  female
 ## 7   201 Providence Cindy     1/9/2016  female
 ## 8   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="join.html#cb294-1"></a><span class="co"># View the second original data frame</span></span>
-<span id="cb294-2"><a href="join.html#cb294-2"></a>performancedata</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="join.html#cb299-1"></a><span class="co"># View the second original data frame</span></span>
+<span id="cb299-2"><a href="join.html#cb299-2"></a>performancedata</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -655,11 +655,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6   282     2.2     2.3     2.4     2.5</code></pre>
 <p>In the output, first, note how all of the variables from the original data frames (i.e., <code>personaldata</code>, <code>performancedata</code>) are represented in the merged data frame (i.e., <code>mergeddf</code>). Second, note how the cases are matched by the <code>id</code> key variable. Third, note that the <code>personaldata</code> data frame has 8 cases, the <code>performancedata</code> data frame has 6 cases, and the <code>mergeddf</code> data frame has 6 cases. By default, the <code>merge</code> function performs an <em>inner join</em> and retains only those matched cases that have data in <em>both</em> data frames. Because cases whose <code>id</code> values were <code>154</code>, <code>155</code>, and <code>165</code> had data in <code>personaldata</code> but not <code>performancedata</code> and because the case with an <code>id</code> value equal to 153 was in <code>performancedata</code> but not <code>personaldata</code>, only the 5 cases that had available data in both data frames were retained.</p>
 <p>To perform what is referred to as a <strong>full join</strong> in which we retain all cases and available data, we simply swap out the <code>inner_join</code> function from our previous code with the <code>full_join</code> function.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="join.html#cb296-1"></a><span class="co"># Full join (without pipe)</span></span>
-<span id="cb296-2"><a href="join.html#cb296-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">full_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb296-3"><a href="join.html#cb296-3"></a></span>
-<span id="cb296-4"><a href="join.html#cb296-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb296-5"><a href="join.html#cb296-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="join.html#cb301-1"></a><span class="co"># Full join (without pipe)</span></span>
+<span id="cb301-2"><a href="join.html#cb301-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">full_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb301-3"><a href="join.html#cb301-3"></a></span>
+<span id="cb301-4"><a href="join.html#cb301-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb301-5"><a href="join.html#cb301-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -674,11 +674,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9   153 &lt;NA&gt;       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;       3.9     4.8     4.9     5</code></pre>
 <p>Note how the <code>full_join</code> function retains all available cases that had available data in at least one of the data frames, which in this example is 9 cases. <em>When in doubt, I recommend using the <code>full_join</code> function to retain all available data.</em></p>
 <p>To perform what is referred to as a <strong>left join</strong> in which we retain only those cases with data available in the first (left, x) data frame (<code>personaldata</code>), we use the <code>left_join</code> function instead, while keeping the rest of the previous code the same.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="join.html#cb298-1"></a><span class="co"># Left join (without pipe)</span></span>
-<span id="cb298-2"><a href="join.html#cb298-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">left_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb298-3"><a href="join.html#cb298-3"></a></span>
-<span id="cb298-4"><a href="join.html#cb298-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb298-5"><a href="join.html#cb298-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="join.html#cb303-1"></a><span class="co"># Left join (without pipe)</span></span>
+<span id="cb303-2"><a href="join.html#cb303-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">left_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb303-3"><a href="join.html#cb303-3"></a></span>
+<span id="cb303-4"><a href="join.html#cb303-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb303-5"><a href="join.html#cb303-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -692,11 +692,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note how the <code>left_join</code> function retains only those cases for which the first (left, x) data frame (i.e., <code>personaldata</code>) has complete data, which in this case happens to be 8 cases. Notably absent is the case associated with <code>id</code> equal to 153 because the first (left, x) data frame (i.e., <code>personaldata</code>) lacked that case. An <code>NA</code> appears for each case from the second (right, y) data frame that contained missing values on variables from that data frame.</p>
 <p>To perform what is referred to as a <strong>right join</strong> in which we retain only those cases with data available in the second (right, y) data frame (<code>performancedata</code>), we use the <code>right_join</code> function instead, while keeping the rest of the previous code the same.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="join.html#cb300-1"></a><span class="co"># Right join (without pipe)</span></span>
-<span id="cb300-2"><a href="join.html#cb300-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">right_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb300-3"><a href="join.html#cb300-3"></a></span>
-<span id="cb300-4"><a href="join.html#cb300-4"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb300-5"><a href="join.html#cb300-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="join.html#cb305-1"></a><span class="co"># Right join (without pipe)</span></span>
+<span id="cb305-2"><a href="join.html#cb305-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">right_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb305-3"><a href="join.html#cb305-3"></a></span>
+<span id="cb305-4"><a href="join.html#cb305-4"></a><span class="co"># View the joined data frame</span></span>
+<span id="cb305-5"><a href="join.html#cb305-5"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -713,11 +713,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.2</span> Vertical Join (Merge)</h2>
 <p>To perform a vertical join (merge), we will use the <code>rbind</code> function from base R, which stands for “row bind.” As a reminder, with a horizontal join, our focus is on joining variables (i.e., columns, fields) from two data frames containing overlapping cases (i.e., rows). In contrast, with a vertical join, our focus is on joining cases from data frames with the same variables.</p>
 <p>To illustrate how to perform a vertical join, we take a slightly different approach than what we did with <a href="join.html#horizontaljoin">horizontal joins</a>. Instead of reading in data files, we will create two “toy” employee demographic data frames with the exact same variables but different cases. We will use the <code>data.frame</code> function from base R to indicate that we wish to create a data frame object; we use the <code>c</code> (combine) function from base R to combine values into a vector; and we use the <code>rep</code> (replicate) function from base R to replicate the same value a specified number of times. Also note that the <code>:</code> operator, when used between two numbers, creates a vector of consecutive values, beginning with the first value and ending with the second. Please note, that using and understanding the <code>data.frame</code>, <code>c</code>, and <code>rep</code> functions is not consequential for understanding how to do a vertical merge; rather, I merely use these functions in this tutorial to create quick toy data frames that we can use to illustrate how to do a vertical join. For more information on the <code>data.frame</code> function and the <code>c</code> function, please refer to the chapter called <a href="gentleintro.html#gentleintro">Basic Features and Operations of the R Language</a>.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="join.html#cb302-1"></a><span class="co"># Create data frames with same variables but arbitrary values</span></span>
-<span id="cb302-2"><a href="join.html#cb302-2"></a>df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">21</span><span class="op">:</span><span class="dv">26</span>), <span class="dt">sex=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;male&quot;</span>, <span class="dv">6</span>)))</span>
-<span id="cb302-3"><a href="join.html#cb302-3"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">27</span><span class="op">:</span><span class="dv">30</span>), <span class="dt">sex=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;female&quot;</span>, <span class="dv">4</span>)))</span></code></pre></div>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="join.html#cb303-1"></a><span class="co"># View first data frame</span></span>
-<span id="cb303-2"><a href="join.html#cb303-2"></a>df1</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="join.html#cb307-1"></a><span class="co"># Create data frames with same variables but arbitrary values</span></span>
+<span id="cb307-2"><a href="join.html#cb307-2"></a>df1 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">21</span><span class="op">:</span><span class="dv">26</span>), <span class="dt">sex=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;male&quot;</span>, <span class="dv">6</span>)))</span>
+<span id="cb307-3"><a href="join.html#cb307-3"></a>df2 &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">id=</span><span class="kw">c</span>(<span class="dv">7</span><span class="op">:</span><span class="dv">10</span>), <span class="dt">age=</span><span class="kw">c</span>(<span class="dv">27</span><span class="op">:</span><span class="dv">30</span>), <span class="dt">sex=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;female&quot;</span>, <span class="dv">4</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="join.html#cb308-1"></a><span class="co"># View first data frame</span></span>
+<span id="cb308-2"><a href="join.html#cb308-2"></a>df1</span></code></pre></div>
 <pre><code>##   id age  sex
 ## 1  1  21 male
 ## 2  2  22 male
@@ -725,19 +725,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  4  24 male
 ## 5  5  25 male
 ## 6  6  26 male</code></pre>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="join.html#cb305-1"></a><span class="co"># View second data frame</span></span>
-<span id="cb305-2"><a href="join.html#cb305-2"></a>df2</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="join.html#cb310-1"></a><span class="co"># View second data frame</span></span>
+<span id="cb310-2"><a href="join.html#cb310-2"></a>df2</span></code></pre></div>
 <pre><code>##   id age    sex
 ## 1  7  27 female
 ## 2  8  28 female
 ## 3  9  29 female
 ## 4 10  30 female</code></pre>
 <p>Given that these two data frames (i.e., <code>df1</code>, <code>df2</code>) have the exact same variable names (<code>id</code>, <code>age</code>, and <code>sex</code>), we can easily perform a vertical join using the <code>rbind</code> function. To do so, enter the names of the two data frames as arguments, separated by a comma. Use the <code>&lt;-</code> symbol to name the merged data frame something, which for this case, I arbitrarily named it <code>mergeddf2</code>.</p>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="join.html#cb307-1"></a><span class="co"># Verticle merge</span></span>
-<span id="cb307-2"><a href="join.html#cb307-2"></a>mergeddf2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2)</span>
-<span id="cb307-3"><a href="join.html#cb307-3"></a></span>
-<span id="cb307-4"><a href="join.html#cb307-4"></a><span class="co"># View the merged data frame</span></span>
-<span id="cb307-5"><a href="join.html#cb307-5"></a>mergeddf2</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="join.html#cb312-1"></a><span class="co"># Verticle merge</span></span>
+<span id="cb312-2"><a href="join.html#cb312-2"></a>mergeddf2 &lt;-<span class="st"> </span><span class="kw">rbind</span>(df1, df2)</span>
+<span id="cb312-3"><a href="join.html#cb312-3"></a></span>
+<span id="cb312-4"><a href="join.html#cb312-4"></a><span class="co"># View the merged data frame</span></span>
+<span id="cb312-5"><a href="join.html#cb312-5"></a>mergeddf2</span></code></pre></div>
 <pre><code>##    id age    sex
 ## 1   1  21   male
 ## 2   2  22   male
