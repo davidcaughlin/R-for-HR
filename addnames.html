@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Removing and Adding Variable Names | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 14 Removing and Adding Variable Names | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Removing and Adding Variable Names | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 14 Removing and Adding Variable Names | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Removing and Adding Variable Names | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 14 Removing and Adding Variable Names | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-01-10" />
+<meta name="date" content="2021-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="read.html"/>
 <link rel="next" href="write.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,22 +51,21 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,18 +134,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R for HR</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> HR Analytics Project Life Cycle</a><ul>
-<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#questform"><i class="fa fa-check"></i><b>0.3.1</b> Question Formulation</a></li>
-<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#dacquire"><i class="fa fa-check"></i><b>0.3.2</b> Data Acquisition</a></li>
-<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#dmanage"><i class="fa fa-check"></i><b>0.3.3</b> Data Management</a></li>
-<li class="chapter" data-level="0.3.4" data-path="index.html"><a href="index.html#danalysis"><i class="fa fa-check"></i><b>0.3.4</b> Data Analysis</a></li>
-<li class="chapter" data-level="0.3.5" data-path="index.html"><a href="index.html#dinterpret"><i class="fa fa-check"></i><b>0.3.5</b> Data Interpretion &amp; Storytelling</a></li>
-<li class="chapter" data-level="0.3.6" data-path="index.html"><a href="index.html#ddeploy"><i class="fa fa-check"></i><b>0.3.6</b> Deployment &amp; Implementation</a></li>
-</ul></li>
-<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a><ul>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a>
+<ul>
 <li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.4.1</b> Rationale for Using R</a></li>
 <li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.4.2</b> Audience</a></li>
 <li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.4.3</b> Structure</a></li>
@@ -153,122 +148,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.5</b> About the Author</a></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
 </ul></li>
-<li class="part"><span><b>I Introduction to R</b></span></li>
-<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R &amp; RStudio</a><ul>
-<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>1.1</b> Downloading &amp; Installing R</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>1.1.1</b> For Windows Operation Systems</a></li>
-<li class="chapter" data-level="1.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>1.1.2</b> For Mac Operating Systems</a></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>1.2</b> Downloading &amp; Installing RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
-<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>2.1</b> Orientation to RStudio</a></li>
-<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>2.2</b> Creating &amp; Saving an R Script</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>2.2.1</b> Creating a New R Script</a></li>
-<li class="chapter" data-level="2.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>2.2.2</b> Using an R Script</a></li>
-<li class="chapter" data-level="2.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.2.3</b> Saving an R Script</a></li>
-<li class="chapter" data-level="2.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>2.2.4</b> Opening a Saved R Script</a></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#conclusion"><i class="fa fa-check"></i><b>2.3</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>2.3</b> Creating an RStudio Project</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>2.3.1</b> Creating a New RStudio Project</a></li>
-<li class="chapter" data-level="2.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>2.3.2</b> Opening an Existing RStudio Project</a></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>2.4</b> Orientation to Written Tutorials</a></li>
-<li class="chapter" data-level="2.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>3</b> Basic Features and Operations of the R Language</a><ul>
-<li class="chapter" data-level="3.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.1</b> R as a Calculator</a></li>
-<li class="chapter" data-level="3.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a></li>
-<li class="chapter" data-level="3.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
-<li class="chapter" data-level="3.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>3.4</b> Variable Assignment</a></li>
-<li class="chapter" data-level="3.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>3.5</b> Types of Data</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>3.5.1</b> <code>numeric</code> Data</a></li>
-<li class="chapter" data-level="3.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>3.5.2</b> <code>character</code> Data</a></li>
-<li class="chapter" data-level="3.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>3.5.3</b> <code>Date</code> Data</a></li>
-<li class="chapter" data-level="3.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>3.5.4</b> <code>logical</code> Data</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>3.6</b> Vectors</a></li>
-<li class="chapter" data-level="3.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>3.7</b> Lists</a></li>
-<li class="chapter" data-level="3.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>3.8</b> Data Frames</a></li>
-<li class="chapter" data-level="3.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>3.9</b> Annotations</a></li>
-<li class="chapter" data-level="3.10" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>4</b> Setting a Working Directory</a><ul>
-<li class="chapter" data-level="4.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>4.0.1</b> Identify the Current Working Directory</a></li>
-<li class="chapter" data-level="4.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>4.0.2</b> Set a New Working Directory</a></li>
-<li class="chapter" data-level="4.1" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>4.1</b> Summary</a></li>
-</ul></li>
-<li class="part"><span><b>II Data Acquisition &amp; Management</b></span></li>
-<li class="chapter" data-level="5" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>5</b> Reading Data into R</a><ul>
-<li class="chapter" data-level="5.1" data-path="read.html"><a href="read.html#read-a-.csv-file"><i class="fa fa-check"></i><b>5.1</b> Read a .csv File</a></li>
-<li class="chapter" data-level="5.2" data-path="read.html"><a href="read.html#read-a-.xlsx-file"><i class="fa fa-check"></i><b>5.2</b> Read a .xlsx File</a></li>
-<li class="chapter" data-level="5.3" data-path="read.html"><a href="read.html#read_specialtopics"><i class="fa fa-check"></i><b>5.3</b> Special Topics</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="read.html"><a href="read.html#list-data-file-names-in-working-directory"><i class="fa fa-check"></i><b>5.3.1</b> List Data File Names in Working Directory</a></li>
-<li class="chapter" data-level="5.3.2" data-path="read.html"><a href="read.html#skip-rows-of-data-when-reading"><i class="fa fa-check"></i><b>5.3.2</b> Skip Rows of Data When Reading</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>6</b> Removing and Adding Variable Names</a><ul>
-<li class="chapter" data-level="6.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>6.1</b> Remove Variable Names from a Data Frame Object</a></li>
-<li class="chapter" data-level="6.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>6.2</b> Add Variable Names to a Data Frame Object</a></li>
-<li class="chapter" data-level="6.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>7</b> Writing Data from R</a><ul>
-<li class="chapter" data-level="7.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>7.1</b> Write Data Frame to Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>7.2</b> Write Table to Working Directory</a></li>
-<li class="chapter" data-level="7.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>7.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>8</b> Arranging (Sorting) Data</a><ul>
-<li class="chapter" data-level="8.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>8.1</b> Arrange (Sort) Data</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>8.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="8.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>8.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>9</b> Joining (Merging) Data</a><ul>
-<li class="chapter" data-level="9.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>9.1</b> Horizontal Join (Merge)</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>9.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="9.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>9.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>9.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
 <li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>10</b> Filtering Data</a><ul>
-<li class="chapter" data-level="10.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.1</b> Filter Cases from Data Frame</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>10.1.1</b> <em>With</em> Pipes</a></li>
-<li class="chapter" data-level="10.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>10.1.2</b> <em>Without</em> Pipes</a></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.2</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.3</b> Select Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>10.3.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>10.3.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.4</b> Remove Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>10.4.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>10.4.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-1"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
 </ul></li>
-<li class="part"><span><b>Chapter Supplements</b></span></li>
-<li class="chapter" data-level="" data-path="read-supplement.html"><a href="read-supplement.html"><i class="fa fa-check"></i>Read Data: Chapter Supplement</a><ul>
-<li><a href="read-supplement.html#readcsv_supp"><code>read.csv</code> Function from Base R</a></li>
-<li><a href="read-supplement.html#readlessr_supp"><code>Read</code> Function from <code>lessR</code> Package</a></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-2"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-3"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing and Adding Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#summary-4"><i class="fa fa-check"></i><b>14.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-5"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-6"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-7"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-8"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a></li>
+<li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a>
+<ul>
 <li><a href="arrange-supplement.html#arrange_supp"><code>order</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a>
+<ul>
 <li><a href="join-supplement.html#join_supp"><code>merge</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a><ul>
-<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.5.1</b> Filter Cases from Data Frame</a></li>
-<li class="chapter" data-level="10.5.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.2</b> Select Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.3</b> Select Multiple Variables from Data Frame</a></li>
-<li class="chapter" data-level="10.5.4" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.4</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.5" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.5</b> Remove Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a>
+<ul>
+<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="filter-supplement.html"><a href="filter-supplement.html#filter-cases-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.1</b> Filter Cases from Data Frame</a></li>
+<li class="chapter" data-level="19.0.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>19.0.2</b> Select Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.3" data-path="filter-supplement.html"><a href="filter-supplement.html#select-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.3</b> Select Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="19.0.4" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-single-variable-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.4</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.5" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.5</b> Remove Multiple Variables from Data Frame</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html#str_detect_supp"><i class="fa fa-check"></i>Filter by Pattern Contained within String</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -293,15 +343,17 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="addnames" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Removing and Adding Variable Names</h1>
+<div id="addnames" class="section level1" number="14">
+<h1><span class="header-section-number">Chapter 14</span> Removing and Adding Variable Names</h1>
 <p>Upon reading data into a data frame object, you may encounter situations in which it makes sense to remove the variable names (and not the data associated with the variable names) or to add or replace variables names. In this chapter, you will learn simple techniques for removing the variable names (i.e., column names) from a data frame object and adding (or replacing) variable names in a data frame object.</p>
-<div id="video-tutorial" class="section level4">
-<h4><span class="header-section-number">6.0.0.1</span> Video Tutorial</h4>
-<p>Link to Video Tutorial: XXXX</p>
+<div id="video-tutorial-7" class="section level4" number="14.0.0.1">
+<h4><span class="header-section-number">14.0.0.1</span> Video Tutorial</h4>
+<iframe src="https://youtube.com/embed/3m32O9f8gAI?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/3m32O9f8gAI" class="uri">https://youtu.be/3m32O9f8gAI</a></p>
 </div>
-<div id="functions-packages-introduced" class="section level4">
-<h4><span class="header-section-number">6.0.0.2</span> Functions &amp; Packages Introduced</h4>
+<div id="functions-packages-introduced-2" class="section level4" number="14.0.0.2">
+<h4><span class="header-section-number">14.0.0.2</span> Functions &amp; Packages Introduced</h4>
 <table>
 <thead>
 <tr class="header">
@@ -315,38 +367,34 @@ BOOK UNDER CONSTRUCTION</a>
 <td>base <code>R</code></td>
 </tr>
 <tr class="even">
-<td><code>colnames</code></td>
-<td>base <code>R</code></td>
-</tr>
-<tr class="odd">
 <td><code>c</code></td>
 <td>base <code>R</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>head</code></td>
 <td>base <code>R</code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="initial-steps" class="section level4">
-<h4><span class="header-section-number">6.0.0.3</span> Initial Steps</h4>
-<p>If you haven’t already, save the file called <strong>“PersData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<div id="initial-steps" class="section level4" number="14.0.0.3">
+<h4><span class="header-section-number">14.0.0.3</span> Initial Steps</h4>
+<p>If you haven’t already, save the file called <strong>“PersData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="addnames.html#cb183-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb183-2"><a href="addnames.html#cb183-2"></a><span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(Wickham and Hester <a href="#ref-R-readr" role="doc-biblioref">2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="addnames.html#cb184-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb184-2"><a href="addnames.html#cb184-2"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb184-3"><a href="addnames.html#cb184-3"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb184-4"><a href="addnames.html#cb184-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="addnames.html#cb185-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb185-2"><a href="addnames.html#cb185-2"></a><span class="kw">library</span>(readr)</span>
-<span id="cb185-3"><a href="addnames.html#cb185-3"></a></span>
-<span id="cb185-4"><a href="addnames.html#cb185-4"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb185-5"><a href="addnames.html#cb185-5"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="addnames.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb199-2"><a href="addnames.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="addnames.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb200-2"><a href="addnames.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb200-3"><a href="addnames.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb200-4"><a href="addnames.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="addnames.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb201-2"><a href="addnames.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb201-3"><a href="addnames.html#cb201-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb201-4"><a href="addnames.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb201-5"><a href="addnames.html#cb201-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -354,11 +402,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##   startdate = col_character(),
 ##   gender = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="addnames.html#cb187-1"></a><span class="co"># View the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb187-2"><a href="addnames.html#cb187-2"></a><span class="kw">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="addnames.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb203-2"><a href="addnames.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="addnames.html#cb189-1"></a><span class="co"># View data frame (tibble) object</span></span>
-<span id="cb189-2"><a href="addnames.html#cb189-2"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="addnames.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame (tibble) object</span></span>
+<span id="cb205-2"><a href="addnames.html#cb205-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -371,18 +419,19 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>As you can see from the output generated in your console, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. <em>Technically, the <code>read_csv</code> function reads in what is called a “tibble” object (as opposed to a data frame object), but for our purposes a tibble will behave similarly to a data frame. For more information on tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</em></p>
+<p>As you can see from the output generated in your console, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. <em>Technically, the <code>read_csv</code> function reads in what is called a “tibble” object (as opposed to a data frame object), but for our purposes a tibble will behave similarly to a data frame. For more information on tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="references.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</em></p>
 </div>
-<div id="remove-variable-names-from-a-data-frame-object" class="section level2">
-<h2><span class="header-section-number">6.1</span> Remove Variable Names from a Data Frame Object</h2>
-<p>In some instances, you may wish to remove the variable names from a data frame. For example, I sometimes write (i.e., export) a data frame object I’ve been cleaning in R so that I may use the data file with the statistical software program called Mplus <span class="citation">(Muthén and Muthén, <a href="#ref-mplus" role="doc-biblioref">n.d.</a>)</span>. Because Mplus doesn’t accept variable names within its data files, I may drop the variable names from the data frame object prior to writing to my working directory.</p>
+<div id="remove-variable-names-from-a-data-frame-object" class="section level2" number="14.1">
+<h2><span class="header-section-number">14.1</span> Remove Variable Names from a Data Frame Object</h2>
+<p>In some instances, you may wish to remove the variable names from a data frame. For example, I sometimes write (i.e., export) a data frame object I’ve been cleaning in R so that I may use the data file with the statistical software program called Mplus <span class="citation">(<a href="references.html#ref-mplus" role="doc-biblioref">Muthén and Muthén 1998-2018</a>)</span>. Because Mplus doesn’t accept variable names within its data files, I may drop the variable names from the data frame object prior to writing to my working directory.</p>
 <p>To remove variable names, just apply the <code>names</code> function with the data frame name as the argument, and then use either the <code>&lt;-</code> operator with <code>NULL</code> to remove the variable names.</p>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="addnames.html#cb191-1"></a><span class="co"># Remove variable names</span></span>
-<span id="cb191-2"><a href="addnames.html#cb191-2"></a><span class="kw">names</span>(personaldata) &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
-<span id="cb191-3"><a href="addnames.html#cb191-3"></a></span>
-<span id="cb191-4"><a href="addnames.html#cb191-4"></a><span class="co"># View just the first 6 rows of the data frame object in Console</span></span>
-<span id="cb191-5"><a href="addnames.html#cb191-5"></a><span class="kw">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="addnames.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable names</span></span>
+<span id="cb207-2"><a href="addnames.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb207-3"><a href="addnames.html#cb207-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-4"><a href="addnames.html#cb207-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of the data frame object in Console</span></span>
+<span id="cb207-5"><a href="addnames.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
+##      `` ``       ``        ``       ``    
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; 
 ## 1   153 Sanchez  Alejandro 1/1/2016 male  
 ## 2   154 McDonald Ronald    1/9/2016 male  
@@ -392,15 +441,15 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   111 Newton   Isaac     1/9/2016 male</code></pre>
 <p>As you can see, the variable names do not appear in the overwritten <code>personaldata</code> data frame object.</p>
 </div>
-<div id="add-variable-names-to-a-data-frame-object" class="section level2">
-<h2><span class="header-section-number">6.2</span> Add Variable Names to a Data Frame Object</h2>
+<div id="add-variable-names-to-a-data-frame-object" class="section level2" number="14.2">
+<h2><span class="header-section-number">14.2</span> Add Variable Names to a Data Frame Object</h2>
 <p>In other instances, you might find yourself with a dataset that lacks variable names (or has variable names that need to be replaced), which means that you will need to add those variable names to the data frame.</p>
-<p>Let’s work with the <code>personaldata</code> data frame object from the previous section for practice. To add variable names, we can use the <code>colnames</code> function from base R, and enter the name of the data frame as the argument. Using the <code>&lt;-</code> operator, we can specify the variable names using the <code>c</code> (combine) function that contains a vector of variable names in quotation marks (<code>" "</code>) as the arguments. <em>Remember to type a comma (<code>,</code>) between the function arguments, as commas are used to separate arguments from one another when there are more than one.</em> Please note that the it’s important that the vector of variable names contains the same number of names as the data frame object has columns.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="addnames.html#cb193-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
-<span id="cb193-2"><a href="addnames.html#cb193-2"></a><span class="kw">colnames</span>(personaldata) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;lastname&quot;</span>, <span class="st">&quot;firstname&quot;</span>, <span class="st">&quot;startdate&quot;</span>, <span class="st">&quot;gender&quot;</span>)</span>
-<span id="cb193-3"><a href="addnames.html#cb193-3"></a></span>
-<span id="cb193-4"><a href="addnames.html#cb193-4"></a><span class="co"># View just the first 6 rows of data in Console</span></span>
-<span id="cb193-5"><a href="addnames.html#cb193-5"></a><span class="kw">head</span>(personaldata)</span></code></pre></div>
+<p>Let’s work with the <code>personaldata</code> data frame object from the previous section for practice. To add variable names, we can use the <code>names</code> function from base R, and enter the name of the data frame as the argument. Using the <code>&lt;-</code> operator, we can specify the variable names using the <code>c</code> (combine) function that contains a vector of variable names in quotation marks (<code>" "</code>) as the arguments. <em>Remember to type a comma (<code>,</code>) between the function arguments, as commas are used to separate arguments from one another when there are more than one.</em> Please note that the it’s important that the vector of variable names contains the same number of names as the data frame object has columns.</p>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="addnames.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
+<span id="cb209-2"><a href="addnames.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;lastname&quot;</span>, <span class="st">&quot;firstname&quot;</span>, <span class="st">&quot;startdate&quot;</span>, <span class="st">&quot;gender&quot;</span>)</span>
+<span id="cb209-3"><a href="addnames.html#cb209-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-4"><a href="addnames.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of data in Console</span></span>
+<span id="cb209-5"><a href="addnames.html#cb209-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -412,22 +461,10 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   111 Newton   Isaac     1/9/2016  male</code></pre>
 <p>Now the data frame object has variable names!</p>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">6.3</span> Summary</h2>
+<div id="summary-4" class="section level2" number="14.3">
+<h2><span class="header-section-number">14.3</span> Summary</h2>
 <p>In this chapter, we reviewed how to remove variable names from a data frame object and how to add variable names to a data frame object using the <code>names</code>, <code>colnames</code>, and <code>c</code> functions, which all come standard with your base R installation.</p>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-mplus">
-<p>Muthén, B O, and L K Muthén. n.d. <em>Mplus Version 8.3.</em> Los Angeles, California: Muthén &amp; Muthén.</p>
-</div>
-<div id="ref-wickham2017">
-<p>Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.</p>
-</div>
-<div id="ref-R-readr">
-<p>Wickham, Hadley, and Jim Hester. 2020. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.</p>
 </div>
 </div>
             </section>

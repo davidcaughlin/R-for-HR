@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Joining (Merging) Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 1 Overview of HR Analytics Project Life Cycle | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Joining (Merging) Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 1 Overview of HR Analytics Project Life Cycle | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Joining (Merging) Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 1 Overview of HR Analytics Project Life Cycle | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="arrange-supplement.html"/>
-<link rel="next" href="filter-supplement.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="questionformulation.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -343,204 +343,36 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="join_supplement" class="section level1 unnumbered">
-<h1>Joining (Merging) Data: Chapter Supplement</h1>
-<p>In addition to the <code>join</code> functions from the <code>dplyr</code> package covered in <a href="join.html#join">Joining (Merging) Data</a>, we can use the <code>merge</code> function from base R to perform a <em>horizontal join</em>. Because this function comes from base R, we do not need to install and access an additional package like we do with the <code>join</code> functions, which some may find advantageous.</p>
-<div id="functions-packages-introduced-8" class="section level4 unnumbered">
-<h4>Functions &amp; Packages Introduced</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>Package</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>names</code></td>
-<td>base <code>R</code></td>
-</tr>
-<tr class="even">
-<td><code>merge</code></td>
-<td>base <code>R</code></td>
-</tr>
-</tbody>
-</table>
+<div id="overviewhraplc" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Overview of HR Analytics Project Life Cycle</h1>
+<p>The <strong>Human Resource Analytics Project Life Cycle (HRAPLC)</strong> offers a framework for conceptualizing the prototypical phases of a generic project life cycle. When learning how to apply HR analytics, I’ve found that it’s helpful to envision where and how contributions can be made at the project level and which specific knowledge, skills, abilities, and other characteristics (KSAOs) are required at each phase of a project. The HRAPLC phases are as follows.</p>
+<ul>
+<li><strong>Question Formulation:</strong> process of identifying and posing strategy-inspired and -aligned problems and/or questions that can be solved or answered using data.</li>
+<li><strong>Data Acquisition:</strong> process of collecting, retrieving, gathering, and sourcing data that can be used to solve problems and answer questions.</li>
+<li><strong>Data Management:</strong> process of wrangling, cleaning, manipulating, and structuring data.</li>
+<li><strong>Data Analysis:</strong> process of applying mathematical, statistical, and/or computational analyses to data to identify associations, differences, changes, or classes, as well as to predict the likelihood of future events, values, differences, or changes.</li>
+<li><strong>Data Interpretation and Storytelling:</strong> process of making sense of data-analysis findings in the context of the focal problem and/or question, and of disseminating and communicating the findings to different stakeholders.</li>
+<li><strong>Deployment and Implementation:</strong> process of prescribing or taking action based on interpretation of data-analysis findings.</li>
+</ul>
+<div class="figure">
+<img src="hraplc.png" alt="" />
+<p class="caption">The HR Analytics Project Life Cycle (HRAPLC) offers a way to conceptualize the prototypical phases of a generic HR analytics project life cycle.</p>
 </div>
-<div id="initsteps_join_supp" class="section level4 unnumbered">
-<h4>Initial Steps</h4>
-<p>If required, please refer to the <a href="join.html#initsteps_join">Initial Steps</a> section from the chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb407-1"><a href="join-supplement.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb407-2"><a href="join-supplement.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="join-supplement.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb408-2"><a href="join-supplement.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb408-3"><a href="join-supplement.html#cb408-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb408-4"><a href="join-supplement.html#cb408-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="join-supplement.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb409-2"><a href="join-supplement.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb409-3"><a href="join-supplement.html#cb409-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb409-4"><a href="join-supplement.html#cb409-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb409-5"><a href="join-supplement.html#cb409-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification ------------------------------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="join-supplement.html#cb411-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification ------------------------------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   perf_q1 = col_double(),
-##   perf_q2 = col_double(),
-##   perf_q3 = col_double(),
-##   perf_q4 = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb413"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb413-1"><a href="join-supplement.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb413-2"><a href="join-supplement.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb415-1"><a href="join-supplement.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(performancedata)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
-<div class="sourceCode" id="cb417"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb417-1"><a href="join-supplement.html#cb417-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame (tibble) objects</span></span>
-<span id="cb417-2"><a href="join-supplement.html#cb417-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez    Alejandro 1/1/2016  male  
-## 2   154 McDonald   Ronald    1/9/2016  male  
-## 3   155 Smith      John      1/9/2016  male  
-## 4   165 Doe        Jane      1/4/2016  female
-## 5   125 Franklin   Benjamin  1/5/2016  male  
-## 6   111 Newton     Isaac     1/9/2016  male  
-## 7   198 Morales    Linda     1/7/2016  female
-## 8   201 Providence Cindy     1/9/2016  female
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="join-supplement.html#cb419-1" aria-hidden="true" tabindex="-1"></a>performancedata</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id perf_q1 perf_q2 perf_q3 perf_q4
-##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1   153     3.9     4.8     4.9     5  
-## 2   125     2.1     1.9     2.1     2.3
-## 3   111     3.3     3.3     3.4     3.3
-## 4   198     4.9     4.5     4.4     4.8
-## 5   201     1.2     1.1     1       1  
-## 6   282     2.2     2.3     2.4     2.5</code></pre>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="join-supplement.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove case with id variable equal to 153</span></span>
-<span id="cb421-2"><a href="join-supplement.html#cb421-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[personaldata<span class="sc">$</span>id <span class="sc">!=</span> <span class="dv">153</span>,]</span></code></pre></div>
+<p>Notably, the phases of the HRAPLC generally align with the steps of the classic scientific process, which include formulating a hypothesis, designing a study, collecting data, analyzing data, and reporting findings. This similarity underscores how HR analytics is consistent with a scientific approach to HR management. and, more generally, to an empirical approach aimed at uncovering truth based on data. Like the scientific process, the HRAPLC is predicated on empiricism, which means truth comes from data. That is, the engine of the HRAPLC runs on data, and these data serve as evidence on which we build knowledge and glean insights.</p>
+<div class="figure">
+<img src="scientificprocess.png" alt="" />
+<p class="caption">The phases of the HR Analytics Project Life Cycle (HRAPLC) generally align with the classic steps of the scientific process.</p>
 </div>
-<div id="join_supp" class="section level2 unnumbered">
-<h2><code>merge</code> Function from Base R</h2>
-<p>We will use the <code>merge</code> function to horizontally match cases from the <code>personaldata</code> and <code>performancedata</code> data frames using <code>id</code> as a key variable. To identify what the key variable is, let’s use the <code>names</code> function from base R to retrieve the list of variable names from the two data frames, which we already did above. Nevertheless, let’s call up those variable names once more. Simply enter the name of the data frame as a parenthetical argument in the <code>names</code> function.</p>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="join-supplement.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve variable names from first data frame</span></span>
-<span id="cb422-2"><a href="join-supplement.html#cb422-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="join-supplement.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve variable names from second data frame</span></span>
-<span id="cb424-2"><a href="join-supplement.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(performancedata)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
-<p>As you can see in the variable names listed above, the <code>id</code> variable is common to both data frames, and thus it will serve as our key variable.</p>
-<p>Let’s begin with what is referred to as an <strong>inner join</strong>:</p>
-<ol style="list-style-type: decimal">
-<li>Use the <code>&lt;-</code> operator to name the joined data frame that we create using the <code>merge</code> function. For this example, I name the new joined data frame <code>mergeddf</code>, which is completely arbitrary; you could name it whatever you would like. Type the name of the new joined data frame to the <em>left</em> of the <code>&lt;-</code> operator.</li>
-<li>To the <em>right</em> of the <code>&lt;-</code> operator, type the name of the <code>merge</code> function. Within the <code>merge</code> function parentheses, we will provide the arguments needed to make this join a reality. First, enter the name of one of the data frames (e.g., <code>personaldata</code>), followed by a comma. Second, enter the name of of the other data frame (e.g., <code>performancedata</code>), followed by a comma. Third, use the <code>by=</code> argument to indicate the name of the key variable (e.g., <code>id</code>); make sure the key variable is in quotation marks (<code>" "</code>), and remember, object and variable names in R are case and space sensitive.</li>
-</ol>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="join-supplement.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inner join</span></span>
-<span id="cb426-2"><a href="join-supplement.html#cb426-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">merge</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb426-3"><a href="join-supplement.html#cb426-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb426-4"><a href="join-supplement.html#cb426-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb426-5"><a href="join-supplement.html#cb426-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
-<pre><code>##    id   lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
-## 1 111     Newton     Isaac  1/9/2016   male     3.3     3.3     3.4     3.3
-## 2 125   Franklin  Benjamin  1/5/2016   male     2.1     1.9     2.1     2.3
-## 3 198    Morales     Linda  1/7/2016 female     4.9     4.5     4.4     4.8
-## 4 201 Providence     Cindy  1/9/2016 female     1.2     1.1     1.0     1.0
-## 5 282     Legend      John  1/9/2016   male     2.2     2.3     2.4     2.5</code></pre>
-<p>Now, let’s revisit the original data frame objects that we read in initially.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="join-supplement.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first original data frame</span></span>
-<span id="cb428-2"><a href="join-supplement.html#cb428-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
-<pre><code>## # A tibble: 8 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   154 McDonald   Ronald    1/9/2016  male  
-## 2   155 Smith      John      1/9/2016  male  
-## 3   165 Doe        Jane      1/4/2016  female
-## 4   125 Franklin   Benjamin  1/5/2016  male  
-## 5   111 Newton     Isaac     1/9/2016  male  
-## 6   198 Morales    Linda     1/7/2016  female
-## 7   201 Providence Cindy     1/9/2016  female
-## 8   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="join-supplement.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the second original data frame</span></span>
-<span id="cb430-2"><a href="join-supplement.html#cb430-2" aria-hidden="true" tabindex="-1"></a>performancedata</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id perf_q1 perf_q2 perf_q3 perf_q4
-##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1   153     3.9     4.8     4.9     5  
-## 2   125     2.1     1.9     2.1     2.3
-## 3   111     3.3     3.3     3.4     3.3
-## 4   198     4.9     4.5     4.4     4.8
-## 5   201     1.2     1.1     1       1  
-## 6   282     2.2     2.3     2.4     2.5</code></pre>
-<p>In the output, first, note how all of the variables from the original data frames (i.e., <code>personaldata</code>, <code>performancedata</code>) are represented in the merged data frame (i.e., <code>mergeddf</code>). Second, note how the cases are matched by the <code>id</code> key variable. Third, note that the <code>personaldata</code> data frame has 8 cases, the <code>performancedata</code> data frame has 6 cases, and the <code>mergeddf</code> data frame has 6 cases. By default, the <code>merge</code> function performs an <em>inner join</em> and retains only those matched cases that have data in <em>both</em> data frames. Because cases whose <code>id</code> values were <code>154</code>, <code>155</code>, and <code>165</code> had data in <code>personaldata</code> but not <code>performancedata</code> and because the case with an <code>id</code> value equal to 153 was in <code>performancedata</code> but not <code>personaldata</code>, only the 5 cases that had available data in both data frames were retained.</p>
-<p>To perform what is referred to as a <strong>full join</strong> in which we retain all cases and available data, we can add the <code>all=</code> argument to our previous code and specify the logical value <code>TRUE</code>.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="join-supplement.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join</span></span>
-<span id="cb432-2"><a href="join-supplement.html#cb432-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">merge</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>, <span class="at">all=</span><span class="cn">TRUE</span>)</span>
-<span id="cb432-3"><a href="join-supplement.html#cb432-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb432-4"><a href="join-supplement.html#cb432-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb432-5"><a href="join-supplement.html#cb432-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
-<pre><code>##    id   lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
-## 1 111     Newton     Isaac  1/9/2016   male     3.3     3.3     3.4     3.3
-## 2 125   Franklin  Benjamin  1/5/2016   male     2.1     1.9     2.1     2.3
-## 3 153       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;     3.9     4.8     4.9     5.0
-## 4 154   McDonald    Ronald  1/9/2016   male      NA      NA      NA      NA
-## 5 155      Smith      John  1/9/2016   male      NA      NA      NA      NA
-## 6 165        Doe      Jane  1/4/2016 female      NA      NA      NA      NA
-## 7 198    Morales     Linda  1/7/2016 female     4.9     4.5     4.4     4.8
-## 8 201 Providence     Cindy  1/9/2016 female     1.2     1.1     1.0     1.0
-## 9 282     Legend      John  1/9/2016   male     2.2     2.3     2.4     2.5</code></pre>
-<p>Note how the <code>full_join</code> function retains all available cases that had available data in at least one of the data frames, which in this example is 9 cases. <em>When in doubt, I recommend using the <code>full_join</code> function to retain all available data.</em></p>
-<p>To perform what is referred to as a <strong>left join</strong> in which we retain only those cases with data available in the first (left, x) data frame (<code>personaldata</code>), we use the <code>all.x=TRUE</code> argument instead.</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="join-supplement.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Left join </span></span>
-<span id="cb434-2"><a href="join-supplement.html#cb434-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">merge</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>, <span class="at">all.x=</span><span class="cn">TRUE</span>)</span>
-<span id="cb434-3"><a href="join-supplement.html#cb434-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb434-4"><a href="join-supplement.html#cb434-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb434-5"><a href="join-supplement.html#cb434-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
-<pre><code>##    id   lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
-## 1 111     Newton     Isaac  1/9/2016   male     3.3     3.3     3.4     3.3
-## 2 125   Franklin  Benjamin  1/5/2016   male     2.1     1.9     2.1     2.3
-## 3 154   McDonald    Ronald  1/9/2016   male      NA      NA      NA      NA
-## 4 155      Smith      John  1/9/2016   male      NA      NA      NA      NA
-## 5 165        Doe      Jane  1/4/2016 female      NA      NA      NA      NA
-## 6 198    Morales     Linda  1/7/2016 female     4.9     4.5     4.4     4.8
-## 7 201 Providence     Cindy  1/9/2016 female     1.2     1.1     1.0     1.0
-## 8 282     Legend      John  1/9/2016   male     2.2     2.3     2.4     2.5</code></pre>
-<p>Note how the <em>left join</em> retains only those cases for which the first (left, x) data frame (i.e., <code>personaldata</code>) has complete data, which in this case happens to be 8 cases. Notably absent is the case associated with <code>id</code> equal to 153 because the first (left, x) data frame (i.e., <code>personaldata</code>) lacked that case. An <code>NA</code> appears for each case from the second (right, y) data frame that contained missing values on variables from that data frame.</p>
-<p>To perform what is referred to as a <strong>right join</strong> in which we retain only those cases with data available in the second (right, y) data frame (<code>performancedata</code>), we use the <code>all.y=TRUE</code> argument instead.</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="join-supplement.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Right join </span></span>
-<span id="cb436-2"><a href="join-supplement.html#cb436-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">merge</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>, <span class="at">all.y=</span><span class="cn">TRUE</span>)</span>
-<span id="cb436-3"><a href="join-supplement.html#cb436-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb436-4"><a href="join-supplement.html#cb436-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the joined data frame</span></span>
-<span id="cb436-5"><a href="join-supplement.html#cb436-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
-<pre><code>##    id   lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
-## 1 111     Newton     Isaac  1/9/2016   male     3.3     3.3     3.4     3.3
-## 2 125   Franklin  Benjamin  1/5/2016   male     2.1     1.9     2.1     2.3
-## 3 153       &lt;NA&gt;      &lt;NA&gt;      &lt;NA&gt;   &lt;NA&gt;     3.9     4.8     4.9     5.0
-## 4 198    Morales     Linda  1/7/2016 female     4.9     4.5     4.4     4.8
-## 5 201 Providence     Cindy  1/9/2016 female     1.2     1.1     1.0     1.0
-## 6 282     Legend      John  1/9/2016   male     2.2     2.3     2.4     2.5</code></pre>
-<p>Note how the <em>right join</em> retains only those cases for which the joined (second, right, y) data frame (i.e., <code>performancedata</code>) has complete data. Because the first (left, x) data frame lacks data for the case in which <code>id</code> is equal to 153, an <code>NA</code> appears for each case from the first data frame that contained missing values on variables from that data frame.</p>
+<p>In the following six chapters, I provide a detailed conceptual overview of each HRAPLC phase, beginning with <a href="questionformulation.html#questionformulation">Question Formulation</a>.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="arrange-supplement.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="filter-supplement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="questionformulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

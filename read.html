@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 13 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 13 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 13 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-01-10" />
+<meta name="date" content="2021-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="setwd.html"/>
 <link rel="next" href="addnames.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,22 +51,21 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,18 +134,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R for HR</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> HR Analytics Project Life Cycle</a><ul>
-<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#questform"><i class="fa fa-check"></i><b>0.3.1</b> Question Formulation</a></li>
-<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#dacquire"><i class="fa fa-check"></i><b>0.3.2</b> Data Acquisition</a></li>
-<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#dmanage"><i class="fa fa-check"></i><b>0.3.3</b> Data Management</a></li>
-<li class="chapter" data-level="0.3.4" data-path="index.html"><a href="index.html#danalysis"><i class="fa fa-check"></i><b>0.3.4</b> Data Analysis</a></li>
-<li class="chapter" data-level="0.3.5" data-path="index.html"><a href="index.html#dinterpret"><i class="fa fa-check"></i><b>0.3.5</b> Data Interpretion &amp; Storytelling</a></li>
-<li class="chapter" data-level="0.3.6" data-path="index.html"><a href="index.html#ddeploy"><i class="fa fa-check"></i><b>0.3.6</b> Deployment &amp; Implementation</a></li>
-</ul></li>
-<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a><ul>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a>
+<ul>
 <li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.4.1</b> Rationale for Using R</a></li>
 <li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.4.2</b> Audience</a></li>
 <li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.4.3</b> Structure</a></li>
@@ -153,122 +148,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.5</b> About the Author</a></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
 </ul></li>
-<li class="part"><span><b>I Introduction to R</b></span></li>
-<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R &amp; RStudio</a><ul>
-<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>1.1</b> Downloading &amp; Installing R</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>1.1.1</b> For Windows Operation Systems</a></li>
-<li class="chapter" data-level="1.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>1.1.2</b> For Mac Operating Systems</a></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>1.2</b> Downloading &amp; Installing RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
-<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>2.1</b> Orientation to RStudio</a></li>
-<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>2.2</b> Creating &amp; Saving an R Script</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>2.2.1</b> Creating a New R Script</a></li>
-<li class="chapter" data-level="2.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>2.2.2</b> Using an R Script</a></li>
-<li class="chapter" data-level="2.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.2.3</b> Saving an R Script</a></li>
-<li class="chapter" data-level="2.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>2.2.4</b> Opening a Saved R Script</a></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#conclusion"><i class="fa fa-check"></i><b>2.3</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>2.3</b> Creating an RStudio Project</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>2.3.1</b> Creating a New RStudio Project</a></li>
-<li class="chapter" data-level="2.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>2.3.2</b> Opening an Existing RStudio Project</a></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>2.4</b> Orientation to Written Tutorials</a></li>
-<li class="chapter" data-level="2.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>3</b> Basic Features and Operations of the R Language</a><ul>
-<li class="chapter" data-level="3.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.1</b> R as a Calculator</a></li>
-<li class="chapter" data-level="3.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a></li>
-<li class="chapter" data-level="3.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
-<li class="chapter" data-level="3.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>3.4</b> Variable Assignment</a></li>
-<li class="chapter" data-level="3.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>3.5</b> Types of Data</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>3.5.1</b> <code>numeric</code> Data</a></li>
-<li class="chapter" data-level="3.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>3.5.2</b> <code>character</code> Data</a></li>
-<li class="chapter" data-level="3.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>3.5.3</b> <code>Date</code> Data</a></li>
-<li class="chapter" data-level="3.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>3.5.4</b> <code>logical</code> Data</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>3.6</b> Vectors</a></li>
-<li class="chapter" data-level="3.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>3.7</b> Lists</a></li>
-<li class="chapter" data-level="3.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>3.8</b> Data Frames</a></li>
-<li class="chapter" data-level="3.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>3.9</b> Annotations</a></li>
-<li class="chapter" data-level="3.10" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>4</b> Setting a Working Directory</a><ul>
-<li class="chapter" data-level="4.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>4.0.1</b> Identify the Current Working Directory</a></li>
-<li class="chapter" data-level="4.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>4.0.2</b> Set a New Working Directory</a></li>
-<li class="chapter" data-level="4.1" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>4.1</b> Summary</a></li>
-</ul></li>
-<li class="part"><span><b>II Data Acquisition &amp; Management</b></span></li>
-<li class="chapter" data-level="5" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>5</b> Reading Data into R</a><ul>
-<li class="chapter" data-level="5.1" data-path="read.html"><a href="read.html#read-a-.csv-file"><i class="fa fa-check"></i><b>5.1</b> Read a .csv File</a></li>
-<li class="chapter" data-level="5.2" data-path="read.html"><a href="read.html#read-a-.xlsx-file"><i class="fa fa-check"></i><b>5.2</b> Read a .xlsx File</a></li>
-<li class="chapter" data-level="5.3" data-path="read.html"><a href="read.html#read_specialtopics"><i class="fa fa-check"></i><b>5.3</b> Special Topics</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="read.html"><a href="read.html#list-data-file-names-in-working-directory"><i class="fa fa-check"></i><b>5.3.1</b> List Data File Names in Working Directory</a></li>
-<li class="chapter" data-level="5.3.2" data-path="read.html"><a href="read.html#skip-rows-of-data-when-reading"><i class="fa fa-check"></i><b>5.3.2</b> Skip Rows of Data When Reading</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>6</b> Removing and Adding Variable Names</a><ul>
-<li class="chapter" data-level="6.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>6.1</b> Remove Variable Names from a Data Frame Object</a></li>
-<li class="chapter" data-level="6.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>6.2</b> Add Variable Names to a Data Frame Object</a></li>
-<li class="chapter" data-level="6.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>7</b> Writing Data from R</a><ul>
-<li class="chapter" data-level="7.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>7.1</b> Write Data Frame to Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>7.2</b> Write Table to Working Directory</a></li>
-<li class="chapter" data-level="7.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>7.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>8</b> Arranging (Sorting) Data</a><ul>
-<li class="chapter" data-level="8.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>8.1</b> Arrange (Sort) Data</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>8.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="8.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>8.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>9</b> Joining (Merging) Data</a><ul>
-<li class="chapter" data-level="9.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>9.1</b> Horizontal Join (Merge)</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>9.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="9.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>9.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>9.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
 <li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>10</b> Filtering Data</a><ul>
-<li class="chapter" data-level="10.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.1</b> Filter Cases from Data Frame</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>10.1.1</b> <em>With</em> Pipes</a></li>
-<li class="chapter" data-level="10.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>10.1.2</b> <em>Without</em> Pipes</a></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.2</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.3</b> Select Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>10.3.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>10.3.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.4</b> Remove Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>10.4.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>10.4.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-1"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
 </ul></li>
-<li class="part"><span><b>Chapter Supplements</b></span></li>
-<li class="chapter" data-level="" data-path="read-supplement.html"><a href="read-supplement.html"><i class="fa fa-check"></i>Read Data: Chapter Supplement</a><ul>
-<li><a href="read-supplement.html#readcsv_supp"><code>read.csv</code> Function from Base R</a></li>
-<li><a href="read-supplement.html#readlessr_supp"><code>Read</code> Function from <code>lessR</code> Package</a></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-2"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-3"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing and Adding Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#summary-4"><i class="fa fa-check"></i><b>14.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-5"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-6"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-7"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-8"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a></li>
+<li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a>
+<ul>
 <li><a href="arrange-supplement.html#arrange_supp"><code>order</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a>
+<ul>
 <li><a href="join-supplement.html#join_supp"><code>merge</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a><ul>
-<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.5.1</b> Filter Cases from Data Frame</a></li>
-<li class="chapter" data-level="10.5.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.2</b> Select Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.3</b> Select Multiple Variables from Data Frame</a></li>
-<li class="chapter" data-level="10.5.4" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.4</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.5" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.5</b> Remove Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a>
+<ul>
+<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="filter-supplement.html"><a href="filter-supplement.html#filter-cases-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.1</b> Filter Cases from Data Frame</a></li>
+<li class="chapter" data-level="19.0.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>19.0.2</b> Select Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.3" data-path="filter-supplement.html"><a href="filter-supplement.html#select-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.3</b> Select Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="19.0.4" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-single-variable-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.4</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.5" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.5</b> Remove Multiple Variables from Data Frame</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html#str_detect_supp"><i class="fa fa-check"></i>Filter by Pattern Contained within String</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -293,18 +343,18 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="read" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Reading Data into R</h1>
+<div id="read" class="section level1" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Reading Data into R</h1>
 <p><strong>Reading data</strong> refers to the process of importing data from a (working) directory or website into the R environment. When we read a data file into R, we often read it in as a <strong>data frame (df)</strong>, where a data frame is a tabular display with columns representing variables and rows representing cases. Many different data file formats can be read into R as data frames, such as .csv (comma separated values), .xlsx (Excel workbook), .txt (text), .sas7bdat (SAS), and .sav (SPSS). In this chapter, you will learn how to read .csv and .xlsx files into R.</p>
-<div id="video-tutorial" class="section level4">
-<h4><span class="header-section-number">5.0.0.1</span> Video Tutorial</h4>
-<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below. Both versions of the tutorial demonstrate how to identify what your current working directory is and how to set a new working directory.</p>
+<div id="read_videotutorial" class="section level4" number="13.0.0.1">
+<h4><span class="header-section-number">13.0.0.1</span> Video Tutorial</h4>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below. Both versions of the tutorial demonstrate how to read a .csv file into R; however, in the video tutorial I demonstrate multiple functions that can read in .csv files (<code>read.csv</code>, <code>read_csv</code>, <code>Read</code>), whereas in the written tutorial, I demonstrate just the function I prefer to use (<code>read_csv</code>). In this written tutorial, I also demonstrate how to read in a .xlsx file using the <code>read_excel</code> function as well as some additional operations, and for time considerations, I don’t demonstrate those approaches in the video.</p>
 <iframe src="https://youtube.com/embed/smWjqhaxHY8?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to Video Tutorial: <a href="https://youtu.be/smWjqhaxHY8" class="uri">https://youtu.be/smWjqhaxHY8</a></p>
 </div>
-<div id="functions-packages-introduced" class="section level4">
-<h4><span class="header-section-number">5.0.0.2</span> Functions &amp; Packages Introduced</h4>
+<div id="read_functions" class="section level4" number="13.0.0.2">
+<h4><span class="header-section-number">13.0.0.2</span> Functions &amp; Packages Introduced</h4>
 <table>
 <thead>
 <tr class="header">
@@ -349,39 +399,35 @@ BOOK UNDER CONSTRUCTION</a>
 <td><code>colnames</code></td>
 <td>base <code>R</code></td>
 </tr>
-<tr class="even">
-<td><code>list.files</code></td>
-<td>base <code>R</code></td>
-</tr>
 </tbody>
 </table>
 </div>
-<div id="initialsteps_read" class="section level4">
-<h4><span class="header-section-number">5.0.0.3</span> Initial Steps</h4>
+<div id="initialsteps_read" class="section level4" number="13.0.0.3">
+<h4><span class="header-section-number">13.0.0.3</span> Initial Steps</h4>
 <p>Please note, that any function that appears in the <em>Initial Steps</em> section has been covered in a previous chapter. If you need a refresher, please view the relevant chapter. In addition, a previous chapter may show you how to perform the same action using different functions or packages.</p>
-<p>To get started, please save the following data files into a folder on your computer that you will set as your working directory: <strong>“PersData.csv”</strong> and <strong>“PersData_Excel.xlsx”</strong>. As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>To get started, please save the following data files into a folder on your computer that you will set as your working directory: <strong>“PersData.csv”</strong> and <strong>“PersData_Excel.xlsx”</strong>. As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, set your working directory by using the <code>setwd</code> function (see below) or by doing it using drop-down menus. Your working directory folder will likely be different than the one shown below; “H:/RWorkshop” just happens to be the name of the folder that I save my data files to and that I set as my working directory. You can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. If you need a refresher on how to set a working directory, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a>.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="read.html#cb144-1"></a><span class="co"># Set your working directory to the folder containing your data file</span></span>
-<span id="cb144-2"><a href="read.html#cb144-2"></a><span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="read.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory to the folder containing your data file</span></span>
+<span id="cb144-2"><a href="read.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Finally, I highly recommend that you create a new R Script file (.R), which will allow you to edit and save your script and annotations. To learn more, please refer to <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
 </div>
-<div id="read-a-.csv-file" class="section level2">
-<h2><span class="header-section-number">5.1</span> Read a .csv File</h2>
+<div id="readcsv" class="section level2" number="13.1">
+<h2><span class="header-section-number">13.1</span> Read a .csv File</h2>
 <p>One of the easiest data file formats to work with when reading data into R is the .csv (comma-separated values) file format. Many HR analysts and other types of data analysts regularly work with .csv files, and .csv files can be created in Microsoft Excel and Google Sheets (as well as using many other programs). For example, many survey, data-analysis, and data-acquisition platforms allow data to be exported to .csv files.</p>
-<p>When getting started in R, the way in which the .csv file is formatted can make your life easier. Specifically, the most straightforward .csv file format to read is structured such that (a) the first row contains the names of the variables (i.e., columns, fields), and (b) the second, third, fourth, and fifth rows (and so on) contain the observed scores on the variables (i.e., data), where each row represents a case (i.e., observation, employee). In the <a href="read.html#read_specialtopics">Special Topics</a> section of this chapter, you will have an opportunity to read in .csv files in which the observed values do not begin until the third row or later.</p>
-<p>As part of the <code>tidyverse</code> of R packages <span class="citation">(Wickham <a href="#ref-R-tidyverse" role="doc-biblioref">2019</a>; Wickham, Averick, et al. <a href="#ref-tidyverse2019" role="doc-biblioref">2019</a>)</span>, the <code>readr</code> package <span class="citation">(Wickham and Hester <a href="#ref-R-readr" role="doc-biblioref">2020</a>)</span> and its functions can be used to read in a few different data file formats (as long as they are rectangular), including .csv files. To read in .csv files, we will use the <code>read_csv</code> function from the <code>readr</code> package, as it tends to be faster than some of the other functions developed to read in data. There are several other R functions that can read in .csv files (e.g., <code>read.csv</code>, <code>Read</code>), and if you’re interested in learning two of those functions, feel free to check out the end-of-book supplement called <a href="read-supplement.html#read_supplement">Reading Data: Chapter Supplement</a>.</p>
-<p>By default, the <code>read_csv</code> function reads data in as a data frame, where a data frame is a specific type of table in which columns contain variables and rows contain cases. Well, technically, the function reads data in as a <em>tibble</em> (as opposed to a data frame), where a tibble behaves a lot like a data frame. Thus, from here on out in the book, I’ll just use the term “data frame.” If you would like more information about tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</p>
+<p>When getting started in R, the way in which the .csv file is formatted can make your life easier. Specifically, the most straightforward .csv file format to read is structured such that (a) the first row contains the names of the variables (i.e., columns, fields), and (b) the second, third, fourth, and fifth rows (and so on) contain the observed scores on the variables (i.e., data), where each row represents a case (i.e., observation, employee). In the <a href="read.html#read_skiprows">chapter supplement</a> section of this chapter, you will have an opportunity to read in .csv files in which the observed values do not begin until the third row or later.</p>
+<p>As part of the <code>tidyverse</code> of R packages <span class="citation">(<a href="references.html#ref-R-tidyverse" role="doc-biblioref">Wickham 2021</a>; <a href="references.html#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>, the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span> and its functions can be used to read in a few different data file formats (as long as they are rectangular), including .csv files. To read in .csv files, we will use the <code>read_csv</code> function from the <code>readr</code> package, as it tends to be faster than some of the other functions developed to read in data. There are several other R functions that can read in .csv files (e.g., <code>read.csv</code>, <code>Read</code>), and if you’re interested in learning two of those functions, feel free to check out the end-of-book supplement called <a href="read.html#read_supplement">Reading Data: Chapter Supplement</a>.</p>
+<p>By default, the <code>read_csv</code> function reads data in as a data frame, where a data frame is a specific type of table in which columns contain variables and rows contain cases. Well, technically, the function reads data in as a <em>tibble</em> (as opposed to a data frame), where a tibble behaves a lot like a data frame. Thus, from here on out in the book, I’ll just use the term “data frame.” If you would like more information about tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="references.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</p>
 <p>To use the <code>read_csv</code> function, the <code>readr</code> package must be installed and accessed using the <code>install.packages</code> and <code>library</code> functions, respectively. Type <code>"readr"</code> (note the quotation marks) into the parentheses of the <code>install.packages</code> function, and run that line of code.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="read.html#cb145-1"></a><span class="co"># Install readr package</span></span>
-<span id="cb145-2"><a href="read.html#cb145-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="read.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package</span></span>
+<span id="cb145-2"><a href="read.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
 <p>Next, type <code>readr</code> (without quotation marks) into the parentheses of the <code>library</code> function. In other words, include <code>readr</code> as the <code>library</code> function’s sole parenthetical argument. Run that line of code.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="read.html#cb146-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb146-2"><a href="read.html#cb146-2"></a><span class="kw">library</span>(readr)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="read.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb146-2"><a href="read.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div>
 <p>Type the name of the <code>read_csv</code> function, and note that all of the letters in the function name are lowercase. As the sole argument within the function’s parentheses and within quotation marks (<code>" "</code>), type the <em>exact</em> name of the .csv data file as it is named in your working directory (“PersData.csv”), and be sure to follow it immediately with the .csv extension. Remember, R is a language where spaces matter in the context of file names; meaning, if there are spaces in your file name, there needs to be spaces when the file name appears in your R code. Remember, the file called “PersData.csv” should already be saved in your working directory folder (see <a href="read.html#initialsteps_read">Initial Steps</a>).</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="read.html#cb147-1"></a><span class="co"># Read .csv file into R as data frame</span></span>
-<span id="cb147-2"><a href="read.html#cb147-2"></a><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="read.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv file into R as data frame</span></span>
+<span id="cb147-2"><a href="read.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -403,10 +449,10 @@ BOOK UNDER CONSTRUCTION</a>
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <p>As you can see in your Console, the data frame that appears contains only a handful of rows and columns; nonetheless, this gives you an idea of how the <code>read_csv</code> function works.</p>
 <p>Often, you will want to assign a data frame to an object that will be stored in your (Global) Environment for subsequent use; once the data are assigned, the object becomes a data frame object. By creating a data frame object, you can manipulate and/or analyze the data within the object using a variety of functions (and without changing the data in the original .csv file). To assign the data frame to an object, we simply (a) use the same <code>read_csv</code> function and argument as above, (b) add either the <code>&lt;-</code> or <code>=</code> operator to the left of the <code>read_csv</code> function, and (c) create a name of our choosing for the data frame object by entering that name to the left of the <code>&lt;-</code> or <code>=</code> operator. You can name your data frame object whatever you would like as long as it doesn’t include spaces, doesn’t start with a numeral, and doesn’t include special characters like <code>*</code> or <code>-</code> (to name a few). I recommend choosing a name that is relatively short but descriptive, and that is not the same as another R function or variable name that you plan to use. Below, I name the new data frame object <code>personaldata</code>; note, however, that I could have just have easily called <code>PersonalData</code>, <code>pd</code>, <code>df</code>, or any other single-word name that doesn’t begin with a special character or a numeral.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="read.html#cb150-1"></a><span class="co"># Read .csv data file into R and name data frame object</span></span>
-<span id="cb150-2"><a href="read.html#cb150-2"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="read.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R and name data frame object</span></span>
+<span id="cb150-2"><a href="read.html#cb150-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -415,8 +461,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   gender = col_character()
 ## )</code></pre>
 <p>Using the <code>head</code> function from base R, let’s print just the first 6 rows of our data frame object that we named <code>personaldata</code>. This will allow us to verify that everything worked as planned.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="read.html#cb152-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
-<span id="cb152-2"><a href="read.html#cb152-2"></a><span class="kw">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="read.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
+<span id="cb152-2"><a href="read.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -429,11 +475,11 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If you are working in RStudio, you will see the data frame object appear in your Global Environment window panel, as shown below. If you click on the name of the data frame object in your Global Environment, a new tab will open up next to your R script editor tab, which will allow you to view the data.</p>
 <p><img src="dfobject.png" /></p>
 <p>Alternatively, you can use the <code>View</code> function from base R with the exact name of the data frame object we just created as the sole parenthetical argument. Note that the <code>View</code> function begins with an uppercase letter. Remember, R is case and space sensitive when it comes to function names. Further, the name of the data frame object you enter into the parentheses of the function must be <em>exactly</em> the same as the name of the object you created. That is, R won’t recognize the data frame object if you type it as <code>PersonalData</code>, but R will recognize it if you type it as <code>personaldata</code>. Sometimes it helps to copy and paste the exact names of functions and variables into the function parentheses.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="read.html#cb154-1"></a><span class="co"># View data within data frame object</span></span>
-<span id="cb154-2"><a href="read.html#cb154-2"></a><span class="kw">View</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="read.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data within data frame object</span></span>
+<span id="cb154-2"><a href="read.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(personaldata)</span></code></pre></div>
 <p>Instead of using the <code>View</code> function, you could just “run” the name of the data frame object by highlighting <code>personaldata</code> in your R Script and clicking “Run” (or you can enter the name of the data frame object directly into your Console command line and click Enter). Another option is to use the <code>print</code> function (from base R) with the name of the data frame object as the sole argument in the parentheses. Similarly, if you have many rows of data, you can use the <code>head</code> function from base R to see just the first 6 rows of data, or you can use the <code>tail</code> function from base R to see the last 6 rows of data.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="read.html#cb155-1"></a><span class="co"># Highlight the name of data frame object and run the code to view in Console</span></span>
-<span id="cb155-2"><a href="read.html#cb155-2"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="read.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight the name of data frame object and run the code to view in Console</span></span>
+<span id="cb155-2"><a href="read.html#cb155-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -446,8 +492,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="read.html#cb157-1"></a><span class="co"># Use print function with the name of the data frame object to view in Console</span></span>
-<span id="cb157-2"><a href="read.html#cb157-2"></a><span class="kw">print</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="read.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use print function with the name of the data frame object to view in Console</span></span>
+<span id="cb157-2"><a href="read.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -460,8 +506,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="read.html#cb159-1"></a><span class="co"># View just the first 6 rows of the data frame object in Console</span></span>
-<span id="cb159-2"><a href="read.html#cb159-2"></a><span class="kw">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="read.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of the data frame object in Console</span></span>
+<span id="cb159-2"><a href="read.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -471,8 +517,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 4   165 Doe      Jane      1/4/2016  female
 ## 5   125 Franklin Benjamin  1/5/2016  male  
 ## 6   111 Newton   Isaac     1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="read.html#cb161-1"></a><span class="co"># View just the last 6 rows of the data frame object in Console</span></span>
-<span id="cb161-2"><a href="read.html#cb161-2"></a><span class="kw">tail</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="read.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the last 6 rows of the data frame object in Console</span></span>
+<span id="cb161-2"><a href="read.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -483,14 +529,14 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   201 Providence Cindy     1/9/2016  female
 ## 6   282 Legend     John      1/9/2016  male</code></pre>
 <p>If your data file resides in a folder other than your set working directory, then you can type the exact name of the path directory where the file resides followed by a forward slash (<code>/</code>) before the file name. Please note that your path directory will almost certainly be different than the one I show below.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="read.html#cb163-1"></a><span class="co"># Read data and name data frame object</span></span>
-<span id="cb163-2"><a href="read.html#cb163-2"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;H:/RWorkshop/PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="read.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame object</span></span>
+<span id="cb163-2"><a href="read.html#cb163-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;H:/RWorkshop/PersData.csv&quot;</span>)</span></code></pre></div>
 <p>Note that by assigning this data frame to an object called <code>personaldata</code>, we have overwritten the previous version of the object with that same name. In this case, this isn’t a big deal because we just read in the exact data using two different methods. If you don’t wish to overwrite an existing object, just name the object something unique. When naming objects, I suggest that you avoid the names of functions that you plan to use.</p>
 <p>When needed, you can also use the <code>read_csv</code> function to read in .csv data from a website. For example, rather than save the .csv file to a folder on your computer, you can read in the raw data directly from my GitHub site. Within the quotation marks (<code>" "</code>), simply paste in the following URL: <a href="https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv" class="uri">https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv</a>.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="read.html#cb164-1"></a><span class="co"># Read .csv data file into R from a website</span></span>
-<span id="cb164-2"><a href="read.html#cb164-2"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="read.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R from a website</span></span>
+<span id="cb164-2"><a href="read.html#cb164-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -499,22 +545,22 @@ BOOK UNDER CONSTRUCTION</a>
 ##   gender = col_character()
 ## )</code></pre>
 </div>
-<div id="read-a-.xlsx-file" class="section level2">
-<h2><span class="header-section-number">5.2</span> Read a .xlsx File</h2>
-<p>Reading in Excel workbook files with more than one worksheet requires a bit more work. To read in a .xlsx file with multiple worksheets, we will use the <code>excel_sheets</code> and <code>read_excel</code> functions from the <code>readxl</code> package <span class="citation">(Wickham and Bryan <a href="#ref-R-readxl" role="doc-biblioref">2019</a>)</span>. Be sure to install and access the <code>read_xl</code> package if you haven’t already.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="read.html#cb166-1"></a><span class="co"># Install readxl package</span></span>
-<span id="cb166-2"><a href="read.html#cb166-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="read.html#cb167-1"></a><span class="co"># Access readxl package</span></span>
-<span id="cb167-2"><a href="read.html#cb167-2"></a><span class="kw">library</span>(readxl)</span></code></pre></div>
+<div id="readxlsx" class="section level2" number="13.2">
+<h2><span class="header-section-number">13.2</span> Read a .xlsx File</h2>
+<p>Reading in Excel workbook files with more than one worksheet requires a bit more work. To read in a .xlsx file with multiple worksheets, we will use the <code>excel_sheets</code> and <code>read_excel</code> functions from the <code>readxl</code> package <span class="citation">(<a href="references.html#ref-R-readxl" role="doc-biblioref">Wickham and Bryan 2019</a>)</span>. Be sure to install and access the <code>read_xl</code> package if you haven’t already.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="read.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readxl package</span></span>
+<span id="cb166-2"><a href="read.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="read.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readxl package</span></span>
+<span id="cb167-2"><a href="read.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
 <p>To view the worksheets within an Excel workbook file, simply type the name of the <code>excel_sheets</code> function, and as the sole parenthetical argument, type the exact name of the data file with the .xlsx extension – all within quotation marks (i.e., <code>"PersData_Excel.xlsx"</code>).</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="read.html#cb168-1"></a><span class="co"># View worksheets contained within .xlsx file</span></span>
-<span id="cb168-2"><a href="read.html#cb168-2"></a><span class="kw">excel_sheets</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="read.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View worksheets contained within .xlsx file</span></span>
+<span id="cb168-2"><a href="read.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">excel_sheets</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Year1&quot; &quot;Year2&quot;</code></pre>
-<p>Note that the .xlsx file contains two worksheets called “Year1” and “Year2”. We can now reference each of these worksheets when reading in the data from the Excel workbook file. To do so, we will use the <code>read_excel</code> function. As the first argument, enter the <em>exact</em> name of the data file (as named in your working directory), followed by .xlsx – and all within quotation marks (<code>" "</code>). As the second argument, type <code>sheets=</code> followed by the name of the worksheet containing the data you wish to read in; let’s read in the data from the worksheet called “Year1”. Finally, either the <code>&lt;-</code> or <code>=</code> operator can be used to name the data frame object. Below, I name the data frame object <code>personaldata_year1</code> to avoid overwriting the data frame object we created above called <code>personaldata</code>. <em>Remember to type a comma (<code>,</code>) before the second argument, as this is how we separate arguments from one another when there are more than one.</em></p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="read.html#cb170-1"></a><span class="co"># Read data from .xlsx sheet called &quot;Year1&quot; as data frame and assign to object</span></span>
-<span id="cb170-2"><a href="read.html#cb170-2"></a>personaldata_year1 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>, <span class="dt">sheet=</span><span class="st">&quot;Year1&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="read.html#cb171-1"></a><span class="co"># Print data frame object in Console</span></span>
-<span id="cb171-2"><a href="read.html#cb171-2"></a><span class="kw">print</span>(personaldata_year1)</span></code></pre></div>
+<p>Note that the .xlsx file contains two worksheets called “Year1” and “Year2.” We can now reference each of these worksheets when reading in the data from the Excel workbook file. To do so, we will use the <code>read_excel</code> function. As the first argument, enter the <em>exact</em> name of the data file (as named in your working directory), followed by .xlsx – and all within quotation marks (<code>" "</code>). As the second argument, type <code>sheets=</code> followed by the name of the worksheet containing the data you wish to read in; let’s read in the data from the worksheet called “Year1.” Finally, either the <code>&lt;-</code> or <code>=</code> operator can be used to name the data frame object. Below, I name the data frame object <code>personaldata_year1</code> to avoid overwriting the data frame object we created above called <code>personaldata</code>. <em>Remember to type a comma (<code>,</code>) before the second argument, as this is how we separate arguments from one another when there are more than one.</em></p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="read.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from .xlsx sheet called &quot;Year1&quot; as data frame and assign to object</span></span>
+<span id="cb170-2"><a href="read.html#cb170-2" aria-hidden="true" tabindex="-1"></a>personaldata_year1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>, <span class="at">sheet=</span><span class="st">&quot;Year1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="read.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
+<span id="cb171-2"><a href="read.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata_year1)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate           gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt; 
@@ -528,10 +574,10 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201 Providence Cindy     2016-01-09 00:00:00 female
 ## 9   282 Legend     John      2016-01-09 00:00:00 male</code></pre>
 <p>Let’s repeat the process for the worksheet called “Year2” and assign these data to a new object.</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="read.html#cb173-1"></a><span class="co"># Read data from .xlsx sheet called &quot;Year2&quot; as data frame and assign to object</span></span>
-<span id="cb173-2"><a href="read.html#cb173-2"></a>personaldata_year2 &lt;-<span class="st"> </span><span class="kw">read_excel</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>, <span class="dt">sheet=</span><span class="st">&quot;Year2&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="read.html#cb174-1"></a><span class="co"># Print data frame object in Console</span></span>
-<span id="cb174-2"><a href="read.html#cb174-2"></a><span class="kw">print</span>(personaldata_year2)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="read.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from .xlsx sheet called &quot;Year2&quot; as data frame and assign to object</span></span>
+<span id="cb173-2"><a href="read.html#cb173-2" aria-hidden="true" tabindex="-1"></a>personaldata_year2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>, <span class="at">sheet=</span><span class="st">&quot;Year2&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="read.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
+<span id="cb174-2"><a href="read.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata_year2)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate           gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt; 
@@ -545,27 +591,121 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   312 Ramos      Jorge     2017-03-01 00:00:00 male  
 ## 9   395 Lucas      Nadia     2017-03-04 00:00:00 female</code></pre>
 </div>
-<div id="read_specialtopics" class="section level2">
-<h2><span class="header-section-number">5.3</span> Special Topics</h2>
-<p>Thus far in this chapter, I have showcased some of the most common approaches to reading in data files, with an emphasis on reading in .csv files with the first row corresponding to the column (variable) names and the remaining rows containing the substantive data for cases. There are, however, other challenges and considerations you might encounter along the way, and this section, I cover some special topics related to reading data into R.</p>
-<div id="list-data-file-names-in-working-directory" class="section level3">
-<h3><span class="header-section-number">5.3.1</span> List Data File Names in Working Directory</h3>
-<p>If you would like to obtain the exact names of files located in a (working) directory, the <code>list.files</code> function from base R comes in handy. This function will return a list of all file names within a particular directory or file names that meet a particular pattern. For our purposes, let’s identify all of the .csv data file names contained within our current working directory. As the first argument, type <code>path=</code> followed by the path associated with your working directory. Second, because we are only pulling the file names associated with .csv files, enter the argument <code>all.files=FALSE</code>. Third, type the argument <code>full.names=FALSE</code> to indicate that we do not want the path to precede the file names. Finally, type the argument <code>pattern=".csv"</code> to request the names of only those file names that match the regular expression of “.csv” will be returned.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="read.html#cb176-1"></a><span class="co"># List data file names in working directory</span></span>
-<span id="cb176-2"><a href="read.html#cb176-2"></a><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;H:/RWorkshop&quot;</span>, </span>
-<span id="cb176-3"><a href="read.html#cb176-3"></a>           <span class="dt">all.files=</span><span class="ot">FALSE</span>, </span>
-<span id="cb176-4"><a href="read.html#cb176-4"></a>           <span class="dt">full.names=</span><span class="ot">FALSE</span>, </span>
-<span id="cb176-5"><a href="read.html#cb176-5"></a>           <span class="dt">pattern=</span><span class="st">&quot;.csv&quot;</span>)</span></code></pre></div>
-<p>In your Console, you should see the list of file names you requested. You could then copy specific file names that you wish to read into R.</p>
+<div id="read_summary" class="section level2" number="13.3">
+<h2><span class="header-section-number">13.3</span> Summary</h2>
+<p>In this chapter, we learned how to read data into the R environment. Reading data into R is an important first step, and often, it is the step that causes the most problems for new R users. We practiced applying the <code>read_csv</code> function from the <code>readr</code> pack and the <code>read_excel</code> function from the <code>read_xl</code> package to read .csv and .xlsx files, respectively, into the R environment.</p>
 </div>
-<div id="skip-rows-of-data-when-reading" class="section level3">
-<h3><span class="header-section-number">5.3.2</span> Skip Rows of Data When Reading</h3>
-<p>Some survey platforms like Qualtrics allow for data to be downloaded in .csv format; however, sometimes these platforms include variable name and label information in the second and even third rows of data as opposed to in just the first row. Fortunately, we can skip rows when reading in such data files.</p>
-<p>Let’s pretend that the first row of the <strong>“PersData.csv”</strong> data file contains variable names, and the second and third rows contain variable label information and explanations. We can nest the <code>read_csv</code> function (see above) within the <code>names</code> function, which will result in a vector of names from the first row of the data file. Using the <code>&lt;-</code> operator, let’s name this vector <code>var_names</code> so that we can reference it in the subsequent step.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="read.html#cb177-1"></a><span class="co"># Read variable names from first row of data</span></span>
-<span id="cb177-2"><a href="read.html#cb177-2"></a>var_names &lt;-<span class="st"> </span><span class="kw">names</span>(<span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>))</span></code></pre></div>
+<div id="read_supplement" class="section level2" number="13.4">
+<h2><span class="header-section-number">13.4</span> Chapter Supplement</h2>
+<p>In this chapter supplement, I demonstrate additional functions that can be used to read in .csv files and demonstrate how to list the names of data files located in a (working directory) folder and how to skip rows of data when reading in a .csv file.</p>
+<div id="read_supplement_functions" class="section level4" number="13.4.0.1">
+<h4><span class="header-section-number">13.4.0.1</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read.csv</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>Read</code></td>
+<td><code>lessR</code></td>
+</tr>
+<tr class="odd">
+<td><code>list.files</code></td>
+<td>base <code>R</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="read_initsteps_supplement" class="section level4" number="13.4.0.2">
+<h4><span class="header-section-number">13.4.0.2</span> Initial Steps</h4>
+<p>If required, please refer to the <a href="#initsteps_read">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="read.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb176-2"><a href="read.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+</div>
+<div id="read_additionalfunctions" class="section level3" number="13.4.1">
+<h3><span class="header-section-number">13.4.1</span> Additional Functions to Read a .csv File</h3>
+<p>In addition to the <code>read_csv</code> function from the <code>readr</code> package covered <a href="read.html#readcsv">earlier in the chapter</a>, we can read .csv files into R using the <code>read.csv</code> function from base R and the <code>Read</code> function from the <code>lessR</code> package, which we will review in this chapter supplement.</p>
+<div id="readcsv_supp" class="section level4" number="13.4.1.1">
+<h4><span class="header-section-number">13.4.1.1</span> <code>read.csv</code> Function from Base R</h4>
+<p>The <code>read.csv</code> file comes standard with base R, which means that you don’t need to install a package to access the function. As the function name implies, this function is used when the source data file is in .csv format. Typically, the <code>read.csv</code> function requires only a single argument within the parentheses, which will be the <em>exact</em> name of the data file enclosed with quotation marks; the file should be located your working directory folder. Remember, R is a language where case and space sensitivity matters when it comes to names; meaning, if there are spaces in your file name, there needs to be spaces when the file name appears in your R script, and if some letters are upper case in your file name, there needs to be corresponding upper-case letters in your R script. Let’s practice reading in a file called <strong>“PersData.csv”</strong> by entering the exact name of the file followed by the .csv extension, all within in quotation marks. Remember, the file called <strong>“PersData.csv”</strong> should already be saved in your working directory folder (see <a href="#initsteps_read_supp">Initial Steps</a>).</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="read.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data from working directory</span></span>
+<span id="cb177-2"><a href="read.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read.csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>##    id   lastname firstname startdate gender
+## 1 153    Sanchez Alejandro  1/1/2016   male
+## 2 154   McDonald    Ronald  1/9/2016   male
+## 3 155      Smith      John  1/9/2016   male
+## 4 165        Doe      Jane  1/4/2016 female
+## 5 125   Franklin  Benjamin  1/5/2016   male
+## 6 111     Newton     Isaac  1/9/2016   male
+## 7 198    Morales     Linda  1/7/2016 female
+## 8 201 Providence     Cindy  1/9/2016 female
+## 9 282     Legend      John  1/9/2016   male</code></pre>
+<p>As you can see, the data that appear in your Console contains only a handful of rows and columns; nonetheless, this gives you an idea of how the read.csv function works.</p>
+<p>Often, you will want to assign your data frame to an object that is stored in your Global Environment for subsequent use. By creating a data frame object, you can manipulate and/or analyze the data within the object using a variety of functions (and without changing the data in the source file). To create a data frame object, we simply (a) use the same <code>read.csv</code> function from above, (b) add either a <code>&lt;-</code> or <code>=</code> operator to the left of the <code>read.csv</code> function, and (c) create a name of our choosing for the data frame object by entering that name to the left of the <code>&lt;-</code> or <code>=</code> operator. You can name your data frame object whatever you would like as long as it doesn’t include spaces, doesn’t start with a numeral, and doesn’t include special characters like <code>*</code> or <code>-</code> (to name a few). I recommend choosing a name that is relatively short but descriptive, and that is not the same as another R function or variable name that you plan to use. Below, I name the new data frame object <code>personaldata</code>.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="read.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data and name data frame object</span></span>
+<span id="cb179-2"><a href="read.html#cb179-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="readlessr_supp" class="section level4" number="13.4.1.2">
+<h4><span class="header-section-number">13.4.1.2</span> <code>Read</code> Function from <code>lessR</code> Package</h4>
+<p>Just like the <code>read.csv</code> and <code>read_csv</code> functions, the <code>Read</code> function from the <code>lessR</code> package <span class="citation">(<a href="references.html#ref-R-lessR2020" role="doc-biblioref">Gerbing 2020</a>)</span> can read in .csv files; however, it can also read in other file formats like .xls/x, .sas7bdat (SAS), and .sav (SPSS).</p>
+<p>To use the <code>Read</code> function, the <code>lessR</code> package needs to be installed and accessed using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="read.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
+<span id="cb180-2"><a href="read.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="read.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access lessR package</span></span>
+<span id="cb181-2"><a href="read.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<p>When reading in a .csv file using the <code>Read</code> function, type the <em>exact</em> name of your data file from your working directory as an argument (followed by .csv and surrounded by quotation marks). Further, either the <code>&lt;-</code> or <code>=</code> operator can be used to name the data frame object.</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="read.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and assign to data frame object</span></span>
+<span id="cb182-2"><a href="read.html#cb182-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">Read</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## &gt;&gt;&gt; Suggestions
+## To read a csv or Excel file of variable labels, var_labels=TRUE
+##    Each row of the file:  Variable Name, Variable Label
+## Details about your data, Enter:  details()  for d, or  details(name)
+## 
+## Data Types
+## ------------------------------------------------------------
+## character: Non-numeric data values
+## integer: Numeric data values, integers only
+## ------------------------------------------------------------
+## 
+##      Variable                  Missing  Unique 
+##          Name     Type  Values  Values  Values   First and last values
+## ------------------------------------------------------------------------------------------
+##  1         id   integer      9       0       9   153  154  155 ... 198  201  282
+##  2   lastname character      9       0       9   Sanchez  McDonald ... Providence  Legend
+##  3  firstname character      9       0       8   Alejandro  Ronald ... Cindy  John
+##  4  startdate character      9       0       5   1/1/2016  1/9/2016 ... 1/9/2016  1/9/2016
+##  5     gender character      9       0       2   male  male  male ... female  female  male
+## ------------------------------------------------------------------------------------------</code></pre>
+<p>Let’s print just the first six rows of the <code>personaldata</code> data frame object to the Console to verify that everything worked as intended.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="read.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
+<span id="cb184-2"><a href="read.html#cb184-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<pre><code>##    id lastname firstname startdate gender
+## 1 153  Sanchez Alejandro  1/1/2016   male
+## 2 154 McDonald    Ronald  1/9/2016   male
+## 3 155    Smith      John  1/9/2016   male
+## 4 165      Doe      Jane  1/4/2016 female
+## 5 125 Franklin  Benjamin  1/5/2016   male
+## 6 111   Newton     Isaac  1/9/2016   male</code></pre>
+<p>For more information on the <code>Read</code> function from the <code>lessR</code> package, check out David Gerbing’s website: <a href="http://www.lessrstats.com/videos.html" class="uri">http://www.lessrstats.com/videos.html</a>.</p>
+</div>
+</div>
+<div id="read_skiprows" class="section level3" number="13.4.2">
+<h3><span class="header-section-number">13.4.2</span> Skip Rows of Data During Read</h3>
+<p>Thus far, I have showcased some of the most common approaches to reading in data files, with an emphasis on reading in .csv files with the first row corresponding to the column (variable) names and the remaining rows containing the substantive data for cases. There are, however, other challenges and considerations you might encounter along the way.</p>
+<p>For example, some survey platforms like Qualtrics allow for data to be downloaded in .csv format; however, sometimes these platforms include variable name and label information in the second and even third rows of data as opposed to in just the first row. Fortunately, we can skip rows when reading in such data files. We’ll first learn how to skip rows with the <code>read_csv</code> function from the <code>readr</code> package, and then we’ll learn to do so using the <code>read.csv</code> function from base R and the <code>Read</code> function from the <code>lessR</code> package.</p>
+<p>Let’s pretend that the first row of the <strong>“PersData.csv”</strong> data file contains variable names, and the second and third rows contain variable label information and explanations. We can nest the <code>read_csv</code> function (from the <code>readr</code> package) within the <code>names</code> function, which will result in a vector of names from the first row of the data file. Using the <code>&lt;-</code> operator, let’s name this vector <code>var_names</code> so that we can reference it in the subsequent step.</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="read.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read variable names from first row of data</span></span>
+<span id="cb186-2"><a href="read.html#cb186-2" aria-hidden="true" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>))</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -573,13 +713,14 @@ BOOK UNDER CONSTRUCTION</a>
 ##   startdate = col_character(),
 ##   gender = col_character()
 ## )</code></pre>
-<p>Next, using the <code>read_csv</code> function, we will read in the data file, skip the first three rows, and add the variable names we pulled in the previous step. As usual, as the first argument of the <code>read_csv</code> function, type the exact name of the data file you wish to read in within quotation marks (<code>" "</code>). As the second argument, type <code>skip=3</code> to indicate that you wish to skip the first three rows when reading in the data. As the third argument, type <code>col_names=</code> followed by the name of the <code>var_names</code> vector object we created in the previous step. Using the <code>&lt;-</code> operator, let’s name this data frame object <code>test</code>.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="read.html#cb179-1"></a><span class="co"># Read data file (but skip rows 1-3) &amp; introduce variable names</span></span>
-<span id="cb179-2"><a href="read.html#cb179-2"></a>test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>, </span>
-<span id="cb179-3"><a href="read.html#cb179-3"></a>                     <span class="dt">skip=</span><span class="dv">3</span>,</span>
-<span id="cb179-4"><a href="read.html#cb179-4"></a>                     <span class="dt">col_names=</span>var_names)</span></code></pre></div>
+<p>Next, using the <code>read_csv</code> function, we will read in the data file, skip the variable names row and the first two rows of actual values (which adds to three rows), and add the variable names we pulled in the previous step. Notably, the <code>read_csv</code> function assumes that the first of data in your data file contain the variable names when you use the <code>col_names</code> argument, as we will do below. As usual, as the first argument of the <code>read_csv</code> function, type the exact name of the data file you wish to read in within quotation marks (<code>" "</code>). As the second argument, type <code>skip=3</code> to indicate that you wish to skip the first three rows when reading in the data. As the third argument, type <code>col_names=</code> followed by the name of the <code>var_names</code> vector object we created in the previous step. Using the <code>&lt;-</code> operator, let’s name this data frame object <code>test</code>.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="read.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data file (but skip the variable names &amp; rows 1-2) </span></span>
+<span id="cb188-2"><a href="read.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &amp; introduce variable names</span></span>
+<span id="cb188-3"><a href="read.html#cb188-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>,</span>
+<span id="cb188-4"><a href="read.html#cb188-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">skip=</span><span class="dv">3</span>,</span>
+<span id="cb188-5"><a href="read.html#cb188-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_names=</span>var_names)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -588,8 +729,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   gender = col_character()
 ## )</code></pre>
 <p>Finally, let’s see the fruits of our labor by printing the contents of the <code>test</code> data frame object to our Console.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="read.html#cb181-1"></a><span class="co"># Print data frame object in Console</span></span>
-<span id="cb181-2"><a href="read.html#cb181-2"></a><span class="kw">print</span>(test)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="read.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
+<span id="cb190-2"><a href="read.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -600,30 +741,74 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   198 Morales    Linda     1/7/2016  female
 ## 6   201 Providence Cindy     1/9/2016  female
 ## 7   282 Legend     John      1/9/2016  male</code></pre>
+<p>The <code>read.csv</code> function from base R also allows for us to skip rows; however, to make the function operate like the <code>read_csv</code> function, we need to add the <code>header=FALSE</code> argument to pretend like the first row of data in the data file does not contain variable names. In doing so, we can keep the argument <code>rows=3</code> the same as we did in the <code>read_csv</code> function above. Alternatively, if we were to set <code>header=TRUE</code> (which is the default setting for this function), then we would need to change the argument <code>rows=3</code> to <code>rows=2</code>. It’s up to you which makes more intuitive sense to you. Finally, instead of <code>col_names</code>, the <code>read.csv</code> function equivalent argument is <code>col.names</code>.</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="read.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data file (but skip the variable names &amp; rows 1-2) </span></span>
+<span id="cb192-2"><a href="read.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &amp; introduce variable names</span></span>
+<span id="cb192-3"><a href="read.html#cb192-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;PersData.csv&quot;</span>,</span>
+<span id="cb192-4"><a href="read.html#cb192-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">header=</span><span class="cn">FALSE</span>,</span>
+<span id="cb192-5"><a href="read.html#cb192-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">skip=</span><span class="dv">3</span>,</span>
+<span id="cb192-6"><a href="read.html#cb192-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col.names=</span>var_names)</span>
+<span id="cb192-7"><a href="read.html#cb192-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb192-8"><a href="read.html#cb192-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
+<span id="cb192-9"><a href="read.html#cb192-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test)</span></code></pre></div>
+<pre><code>##    id   lastname firstname startdate gender
+## 1 155      Smith      John  1/9/2016   male
+## 2 165        Doe      Jane  1/4/2016 female
+## 3 125   Franklin  Benjamin  1/5/2016   male
+## 4 111     Newton     Isaac  1/9/2016   male
+## 5 198    Morales     Linda  1/7/2016 female
+## 6 201 Providence     Cindy  1/9/2016 female
+## 7 282     Legend      John  1/9/2016   male</code></pre>
+<p>Finally, if we take the code from above for the <code>read.csv</code> function and swap <code>read.csv</code> out with <code>Read</code> function (assuming we have already accessed the <code>lessR</code> package using the <code>library</code> function), then we can keep all of the arguments the same.</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="read.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data file (but skip the variable names &amp; rows 1-2) </span></span>
+<span id="cb194-2"><a href="read.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &amp; introduce variable names</span></span>
+<span id="cb194-3"><a href="read.html#cb194-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">Read</span>(<span class="st">&quot;PersData.csv&quot;</span>,</span>
+<span id="cb194-4"><a href="read.html#cb194-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">header=</span><span class="cn">FALSE</span>,</span>
+<span id="cb194-5"><a href="read.html#cb194-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">skip=</span><span class="dv">3</span>,</span>
+<span id="cb194-6"><a href="read.html#cb194-6" aria-hidden="true" tabindex="-1"></a>             <span class="at">col.names=</span>var_names)</span></code></pre></div>
+<pre><code>## 
+## &gt;&gt;&gt; Suggestions
+## To read a csv or Excel file of variable labels, var_labels=TRUE
+##    Each row of the file:  Variable Name, Variable Label
+## Details about your data, Enter:  details()  for d, or  details(name)
+## 
+## Data Types
+## ------------------------------------------------------------
+## character: Non-numeric data values
+## integer: Numeric data values, integers only
+## ------------------------------------------------------------
+## 
+##      Variable                  Missing  Unique 
+##          Name     Type  Values  Values  Values   First and last values
+## ------------------------------------------------------------------------------------------
+##  1         id   integer      7       0       7   155  165  125 ... 198  201  282
+##  2   lastname character      7       0       7   Smith  Doe ... Providence  Legend
+##  3  firstname character      7       0       6   John  Jane ... Cindy  John
+##  4  startdate character      7       0       4   1/9/2016  1/4/2016 ... 1/9/2016  1/9/2016
+##  5     gender character      7       0       2   male  female ... female  male
+## ------------------------------------------------------------------------------------------</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="read.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
+<span id="cb196-2"><a href="read.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test)</span></code></pre></div>
+<pre><code>##    id   lastname firstname startdate gender
+## 1 155      Smith      John  1/9/2016   male
+## 2 165        Doe      Jane  1/4/2016 female
+## 3 125   Franklin  Benjamin  1/5/2016   male
+## 4 111     Newton     Isaac  1/9/2016   male
+## 5 198    Morales     Linda  1/7/2016 female
+## 6 201 Providence     Cindy  1/9/2016 female
+## 7 282     Legend      John  1/9/2016   male</code></pre>
 </div>
-</div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">5.4</span> Summary</h2>
-<p>In this chapter, we learned how to read data into the R environment. Reading data into R is an important first step, and often, it is the step that causes the most problems for new R users. We practiced applying the <code>read_csv</code> function from the <code>readr</code> pack and the <code>read_excel</code> function from the <code>read_xl</code> package to read .csv and .xlsx files, respectively, into the R environment.</p>
+<div id="listdatafiles" class="section level3" number="13.4.3">
+<h3><span class="header-section-number">13.4.3</span> List Data File Names in Working Directory</h3>
+<p>If you’re like me, and you save a lot of data files into a single folder, sometimes you find yourself flipping back and forth from RStudio to your file folder to see the exact names of the files when you’re attempting to read them into your R environment. If you would like to obtain the exact names of files located in a (working) directory, the <code>list.files</code> function from base R comes in handy. This function will return a list of all file names within a particular directory or file names that meet a particular pattern. For our purposes, let’s identify all of the .csv data file names contained within our current working directory. As the first argument, type <code>path=</code> followed by the path associated with your working directory. Second, because we are only pulling the file names associated with .csv files, enter the argument <code>all.files=FALSE</code>. Third, type the argument <code>full.names=FALSE</code> to indicate that we do not want the path to precede the file names. Finally, type the argument <code>pattern=".csv"</code> to request the names of only those file names that match the regular expression of “.csv” will be returned.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="read.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List data file names in working directory</span></span>
+<span id="cb198-2"><a href="read.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;H:/RWorkshop&quot;</span>, </span>
+<span id="cb198-3"><a href="read.html#cb198-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">all.files=</span><span class="cn">FALSE</span>, </span>
+<span id="cb198-4"><a href="read.html#cb198-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">full.names=</span><span class="cn">FALSE</span>, </span>
+<span id="cb198-5"><a href="read.html#cb198-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">pattern=</span><span class="st">&quot;.csv&quot;</span>)</span></code></pre></div>
+<p>In your Console, you should see the list of file names you requested. You could then copy specific file names that you wish to read into R.</p>
 
 </div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-tidyverse">
-<p>Wickham, Hadley. 2019. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.</p>
-</div>
-<div id="ref-tidyverse2019">
-<p>Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.</p>
-</div>
-<div id="ref-R-readxl">
-<p>Wickham, Hadley, and Jennifer Bryan. 2019. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.</p>
-</div>
-<div id="ref-wickham2017">
-<p>Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.</p>
-</div>
-<div id="ref-R-readr">
-<p>Wickham, Hadley, and Jim Hester. 2020. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.</p>
 </div>
 </div>
             </section>

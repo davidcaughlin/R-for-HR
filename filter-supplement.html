@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Filtering Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Filtering Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-01-10" />
+<meta name="date" content="2021-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="join-supplement.html"/>
 <link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,22 +51,21 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,18 +134,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R for HR</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> HR Analytics Project Life Cycle</a><ul>
-<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#questform"><i class="fa fa-check"></i><b>0.3.1</b> Question Formulation</a></li>
-<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#dacquire"><i class="fa fa-check"></i><b>0.3.2</b> Data Acquisition</a></li>
-<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#dmanage"><i class="fa fa-check"></i><b>0.3.3</b> Data Management</a></li>
-<li class="chapter" data-level="0.3.4" data-path="index.html"><a href="index.html#danalysis"><i class="fa fa-check"></i><b>0.3.4</b> Data Analysis</a></li>
-<li class="chapter" data-level="0.3.5" data-path="index.html"><a href="index.html#dinterpret"><i class="fa fa-check"></i><b>0.3.5</b> Data Interpretion &amp; Storytelling</a></li>
-<li class="chapter" data-level="0.3.6" data-path="index.html"><a href="index.html#ddeploy"><i class="fa fa-check"></i><b>0.3.6</b> Deployment &amp; Implementation</a></li>
-</ul></li>
-<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a><ul>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a>
+<ul>
 <li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.4.1</b> Rationale for Using R</a></li>
 <li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.4.2</b> Audience</a></li>
 <li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.4.3</b> Structure</a></li>
@@ -153,122 +148,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.5</b> About the Author</a></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
 </ul></li>
-<li class="part"><span><b>I Introduction to R</b></span></li>
-<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R &amp; RStudio</a><ul>
-<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>1.1</b> Downloading &amp; Installing R</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>1.1.1</b> For Windows Operation Systems</a></li>
-<li class="chapter" data-level="1.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>1.1.2</b> For Mac Operating Systems</a></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>1.2</b> Downloading &amp; Installing RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
-<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>2.1</b> Orientation to RStudio</a></li>
-<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>2.2</b> Creating &amp; Saving an R Script</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>2.2.1</b> Creating a New R Script</a></li>
-<li class="chapter" data-level="2.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>2.2.2</b> Using an R Script</a></li>
-<li class="chapter" data-level="2.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.2.3</b> Saving an R Script</a></li>
-<li class="chapter" data-level="2.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>2.2.4</b> Opening a Saved R Script</a></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#conclusion"><i class="fa fa-check"></i><b>2.3</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>2.3</b> Creating an RStudio Project</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>2.3.1</b> Creating a New RStudio Project</a></li>
-<li class="chapter" data-level="2.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>2.3.2</b> Opening an Existing RStudio Project</a></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>2.4</b> Orientation to Written Tutorials</a></li>
-<li class="chapter" data-level="2.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>3</b> Basic Features and Operations of the R Language</a><ul>
-<li class="chapter" data-level="3.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.1</b> R as a Calculator</a></li>
-<li class="chapter" data-level="3.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a></li>
-<li class="chapter" data-level="3.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
-<li class="chapter" data-level="3.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>3.4</b> Variable Assignment</a></li>
-<li class="chapter" data-level="3.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>3.5</b> Types of Data</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>3.5.1</b> <code>numeric</code> Data</a></li>
-<li class="chapter" data-level="3.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>3.5.2</b> <code>character</code> Data</a></li>
-<li class="chapter" data-level="3.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>3.5.3</b> <code>Date</code> Data</a></li>
-<li class="chapter" data-level="3.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>3.5.4</b> <code>logical</code> Data</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>3.6</b> Vectors</a></li>
-<li class="chapter" data-level="3.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>3.7</b> Lists</a></li>
-<li class="chapter" data-level="3.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>3.8</b> Data Frames</a></li>
-<li class="chapter" data-level="3.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>3.9</b> Annotations</a></li>
-<li class="chapter" data-level="3.10" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>4</b> Setting a Working Directory</a><ul>
-<li class="chapter" data-level="4.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>4.0.1</b> Identify the Current Working Directory</a></li>
-<li class="chapter" data-level="4.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>4.0.2</b> Set a New Working Directory</a></li>
-<li class="chapter" data-level="4.1" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>4.1</b> Summary</a></li>
-</ul></li>
-<li class="part"><span><b>II Data Acquisition &amp; Management</b></span></li>
-<li class="chapter" data-level="5" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>5</b> Reading Data into R</a><ul>
-<li class="chapter" data-level="5.1" data-path="read.html"><a href="read.html#read-a-.csv-file"><i class="fa fa-check"></i><b>5.1</b> Read a .csv File</a></li>
-<li class="chapter" data-level="5.2" data-path="read.html"><a href="read.html#read-a-.xlsx-file"><i class="fa fa-check"></i><b>5.2</b> Read a .xlsx File</a></li>
-<li class="chapter" data-level="5.3" data-path="read.html"><a href="read.html#read_specialtopics"><i class="fa fa-check"></i><b>5.3</b> Special Topics</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="read.html"><a href="read.html#list-data-file-names-in-working-directory"><i class="fa fa-check"></i><b>5.3.1</b> List Data File Names in Working Directory</a></li>
-<li class="chapter" data-level="5.3.2" data-path="read.html"><a href="read.html#skip-rows-of-data-when-reading"><i class="fa fa-check"></i><b>5.3.2</b> Skip Rows of Data When Reading</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>6</b> Removing and Adding Variable Names</a><ul>
-<li class="chapter" data-level="6.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>6.1</b> Remove Variable Names from a Data Frame Object</a></li>
-<li class="chapter" data-level="6.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>6.2</b> Add Variable Names to a Data Frame Object</a></li>
-<li class="chapter" data-level="6.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>7</b> Writing Data from R</a><ul>
-<li class="chapter" data-level="7.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>7.1</b> Write Data Frame to Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>7.2</b> Write Table to Working Directory</a></li>
-<li class="chapter" data-level="7.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>7.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>8</b> Arranging (Sorting) Data</a><ul>
-<li class="chapter" data-level="8.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>8.1</b> Arrange (Sort) Data</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>8.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="8.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>8.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>9</b> Joining (Merging) Data</a><ul>
-<li class="chapter" data-level="9.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>9.1</b> Horizontal Join (Merge)</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>9.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="9.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>9.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>9.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
 <li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>10</b> Filtering Data</a><ul>
-<li class="chapter" data-level="10.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.1</b> Filter Cases from Data Frame</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>10.1.1</b> <em>With</em> Pipes</a></li>
-<li class="chapter" data-level="10.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>10.1.2</b> <em>Without</em> Pipes</a></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.2</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.3</b> Select Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>10.3.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>10.3.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.4</b> Remove Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>10.4.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>10.4.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-1"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
 </ul></li>
-<li class="part"><span><b>Chapter Supplements</b></span></li>
-<li class="chapter" data-level="" data-path="read-supplement.html"><a href="read-supplement.html"><i class="fa fa-check"></i>Read Data: Chapter Supplement</a><ul>
-<li><a href="read-supplement.html#readcsv_supp"><code>read.csv</code> Function from Base R</a></li>
-<li><a href="read-supplement.html#readlessr_supp"><code>Read</code> Function from <code>lessR</code> Package</a></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-2"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-3"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing and Adding Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#summary-4"><i class="fa fa-check"></i><b>14.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-5"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-6"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-7"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-8"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a></li>
+<li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a>
+<ul>
 <li><a href="arrange-supplement.html#arrange_supp"><code>order</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a>
+<ul>
 <li><a href="join-supplement.html#join_supp"><code>merge</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a><ul>
-<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.5.1</b> Filter Cases from Data Frame</a></li>
-<li class="chapter" data-level="10.5.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.2</b> Select Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.3</b> Select Multiple Variables from Data Frame</a></li>
-<li class="chapter" data-level="10.5.4" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.4</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.5" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.5</b> Remove Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a>
+<ul>
+<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="filter-supplement.html"><a href="filter-supplement.html#filter-cases-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.1</b> Filter Cases from Data Frame</a></li>
+<li class="chapter" data-level="19.0.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>19.0.2</b> Select Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.3" data-path="filter-supplement.html"><a href="filter-supplement.html#select-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.3</b> Select Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="19.0.4" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-single-variable-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.4</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.5" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.5</b> Remove Multiple Variables from Data Frame</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html#str_detect_supp"><i class="fa fa-check"></i>Filter by Pattern Contained within String</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -295,8 +345,8 @@ BOOK UNDER CONSTRUCTION</a>
             <section class="normal" id="section-">
 <div id="filter_supplement" class="section level1 unnumbered">
 <h1>Filtering Data: Chapter Supplement</h1>
-<p>In addition to the <code>filter</code> function from the <code>dplyr</code> package covered in <a href="filter.html#filter">Filtering Data</a>, we can use the <code>subset</code> function from base R to subset cases from a data frame and to select cases from a data frame. Because this function comes from base R, we do not need to install and access an additional package like we do with the <code>filter</code> function, which some may prefer or find advantageous.</p>
-<div id="functions-packages-introduced" class="section level4 unnumbered">
+<p>In addition to the <code>filter</code> function from the <code>dplyr</code> package covered in <a href="filter.html#filter">Filtering Data</a>, we can use the <code>subset</code> function from base R to subset cases from a data frame and to select cases from a data frame. Because this function comes from base R, we do not need to install and access an additional package like we do with the <code>filter</code> function, which some may prefer or find advantageous. Further, we can also apply the <code>str_detect</code> function from the <code>stringr</code> package with either the <code>subset</code> or the <code>filter</code> function to filter by a text pattern contained within a string (e.g., character) variable.</p>
+<div id="functions-packages-introduced-9" class="section level4 unnumbered">
 <h4>Functions &amp; Packages Introduced</h4>
 <table>
 <thead>
@@ -310,25 +360,29 @@ BOOK UNDER CONSTRUCTION</a>
 <td><code>subset</code></td>
 <td>base <code>R</code></td>
 </tr>
+<tr class="even">
+<td><code>str_detect</code></td>
+<td><code>stringr</code></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div id="initsteps_filter_supp" class="section level4 unnumbered">
 <h4>Initial Steps</h4>
 <p>If required, please refer to the <a href="filter.html#initsteps_filter">Initial Steps</a> section from the chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="filter-supplement.html#cb432-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb432-2"><a href="filter-supplement.html#cb432-2"></a><span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb433-1"><a href="filter-supplement.html#cb433-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb433-2"><a href="filter-supplement.html#cb433-2"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb433-3"><a href="filter-supplement.html#cb433-3"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb433-4"><a href="filter-supplement.html#cb433-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="filter-supplement.html#cb434-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb434-2"><a href="filter-supplement.html#cb434-2"></a><span class="kw">library</span>(readr)</span>
-<span id="cb434-3"><a href="filter-supplement.html#cb434-3"></a></span>
-<span id="cb434-4"><a href="filter-supplement.html#cb434-4"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb434-5"><a href="filter-supplement.html#cb434-5"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="filter-supplement.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb438-2"><a href="filter-supplement.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="filter-supplement.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb439-2"><a href="filter-supplement.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb439-3"><a href="filter-supplement.html#cb439-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb439-4"><a href="filter-supplement.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="filter-supplement.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb440-2"><a href="filter-supplement.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb440-3"><a href="filter-supplement.html#cb440-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb440-4"><a href="filter-supplement.html#cb440-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
+<span id="cb440-5"><a href="filter-supplement.html#cb440-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -336,9 +390,9 @@ BOOK UNDER CONSTRUCTION</a>
 ##   startdate = col_character(),
 ##   gender = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="filter-supplement.html#cb436-1"></a>performancedata &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="filter-supplement.html#cb442-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
@@ -346,13 +400,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##   perf_q3 = col_double(),
 ##   perf_q4 = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="filter-supplement.html#cb438-1"></a><span class="co"># View the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb438-2"><a href="filter-supplement.html#cb438-2"></a><span class="kw">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="filter-supplement.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb444-2"><a href="filter-supplement.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="filter-supplement.html#cb440-1"></a><span class="kw">names</span>(performancedata)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="filter-supplement.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(performancedata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="filter-supplement.html#cb442-1"></a><span class="co"># View data frame (tibble) objects</span></span>
-<span id="cb442-2"><a href="filter-supplement.html#cb442-2"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="filter-supplement.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame (tibble) objects</span></span>
+<span id="cb448-2"><a href="filter-supplement.html#cb448-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -365,7 +419,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="filter-supplement.html#cb444-1"></a>performancedata</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="filter-supplement.html#cb450-1" aria-hidden="true" tabindex="-1"></a>performancedata</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -375,17 +429,17 @@ BOOK UNDER CONSTRUCTION</a>
 ## 4   198     4.9     4.5     4.4     4.8
 ## 5   201     1.2     1.1     1       1  
 ## 6   282     2.2     2.3     2.4     2.5</code></pre>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="filter-supplement.html#cb446-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb446-2"><a href="filter-supplement.html#cb446-2"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb446-3"><a href="filter-supplement.html#cb446-3"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb446-4"><a href="filter-supplement.html#cb446-4"></a><span class="kw">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="filter-supplement.html#cb447-1"></a><span class="co"># Access package</span></span>
-<span id="cb447-2"><a href="filter-supplement.html#cb447-2"></a><span class="kw">library</span>(dplyr)</span></code></pre></div>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="filter-supplement.html#cb448-1"></a><span class="co"># Full join (without pipe)</span></span>
-<span id="cb448-2"><a href="filter-supplement.html#cb448-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">full_join</span>(personaldata, performancedata, <span class="dt">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb448-3"><a href="filter-supplement.html#cb448-3"></a></span>
-<span id="cb448-4"><a href="filter-supplement.html#cb448-4"></a><span class="co"># View joined (merged) data frame object</span></span>
-<span id="cb448-5"><a href="filter-supplement.html#cb448-5"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="filter-supplement.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb452-2"><a href="filter-supplement.html#cb452-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb452-3"><a href="filter-supplement.html#cb452-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb452-4"><a href="filter-supplement.html#cb452-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="filter-supplement.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb453-2"><a href="filter-supplement.html#cb453-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="filter-supplement.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (without pipe)</span></span>
+<span id="cb454-2"><a href="filter-supplement.html#cb454-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">full_join</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb454-3"><a href="filter-supplement.html#cb454-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb454-4"><a href="filter-supplement.html#cb454-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View joined (merged) data frame object</span></span>
+<span id="cb454-5"><a href="filter-supplement.html#cb454-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -402,8 +456,8 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="filter_supp" class="section level2 unnumbered">
 <h2><code>subset</code> Function from Base R</h2>
 <p>As an alternative to the <code>filter</code> function from the <code>dplyr</code> package, we will learn how to use the <code>subset</code> function from base R to filter cases from a data frame and to select or remove variables from a data frame.</p>
-<div id="filter-cases-from-data-frame" class="section level3">
-<h3><span class="header-section-number">10.5.1</span> Filter Cases from Data Frame</h3>
+<div id="filter-cases-from-data-frame-1" class="section level3" number="19.0.1">
+<h3><span class="header-section-number">19.0.1</span> Filter Cases from Data Frame</h3>
 <p>We’ll begin by filtering cases from a data frame object. In R, we can apply any one of the following logical operators when filtering cases from a data frame or table object.</p>
 <table>
 <thead>
@@ -451,12 +505,12 @@ BOOK UNDER CONSTRUCTION</a>
 </tr>
 </tbody>
 </table>
-<p>To filter cases from a data frame object using the <code>subset</code> function from base R, use the <code>&lt;-</code> operator to name the filtered data frame that we are about to create. For this example, I name the new joined data frame <code>filterdf</code>; you could name it whatever you would like. To the right of the <code>&lt;-</code> operator, type the name of <code>subset</code> function from base R. As the first argument in the function, enter the name of the data frame we created above (<code>mergeddf</code>). As the second argument, type the name of the variable we wish to filter the data frame by, which in this example is <code>gender</code> followed by a logical/conditional argument. For this example, we wish to to retain only those cases in which <code>gender</code> is equal to “female”, and we do so using this logical arguent <code>gender=="female"</code>. Because the <code>gender</code> variable is of type <em>character</em>, we need to put quotation marks (<code>" "</code>) around the value of the variable that we wish to filter by. Remember, object names in R are case and space sensitive; for instance, <code>gender</code> is different from <code>Gender</code>, and “female” is different from “Female”.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="filter-supplement.html#cb450-1"></a><span class="co"># Filter by gender</span></span>
-<span id="cb450-2"><a href="filter-supplement.html#cb450-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span>)</span>
-<span id="cb450-3"><a href="filter-supplement.html#cb450-3"></a></span>
-<span id="cb450-4"><a href="filter-supplement.html#cb450-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb450-5"><a href="filter-supplement.html#cb450-5"></a>filterdf</span></code></pre></div>
+<p>To filter cases from a data frame object using the <code>subset</code> function from base R, use the <code>&lt;-</code> operator to name the filtered data frame that we are about to create. For this example, I name the new joined data frame <code>filterdf</code>; you could name it whatever you would like. To the right of the <code>&lt;-</code> operator, type the name of <code>subset</code> function from base R. As the first argument in the function, enter the name of the data frame we created above (<code>mergeddf</code>). As the second argument, type the name of the variable we wish to filter the data frame by, which in this example is <code>gender</code> followed by a logical/conditional argument. For this example, we wish to to retain only those cases in which <code>gender</code> is equal to “female,” and we do so using this logical arguent <code>gender=="female"</code>. Because the <code>gender</code> variable is of type <em>character</em>, we need to put quotation marks (<code>" "</code>) around the value of the variable that we wish to filter by. Remember, object names in R are case and space sensitive; for instance, <code>gender</code> is different from <code>Gender</code>, and “female” is different from “Female.”</p>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="filter-supplement.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender</span></span>
+<span id="cb456-2"><a href="filter-supplement.html#cb456-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb456-3"><a href="filter-supplement.html#cb456-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb456-4"><a href="filter-supplement.html#cb456-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb456-5"><a href="filter-supplement.html#cb456-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -465,11 +519,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>Note how the data frame above contains only those cases with “female” as their <code>gender</code> variable designation. The filter worked as expected.</p>
 <p>Alternatively, we could filter <em>out</em> those cases in which <code>gender</code> is equal to “female” using the <code>!=</code> (not equal to) logical operator.</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="filter-supplement.html#cb452-1"></a><span class="co"># Filter by gender</span></span>
-<span id="cb452-2"><a href="filter-supplement.html#cb452-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">!=</span><span class="st">&quot;female&quot;</span>)</span>
-<span id="cb452-3"><a href="filter-supplement.html#cb452-3"></a></span>
-<span id="cb452-4"><a href="filter-supplement.html#cb452-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb452-5"><a href="filter-supplement.html#cb452-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="filter-supplement.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender</span></span>
+<span id="cb458-2"><a href="filter-supplement.html#cb458-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">!=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb458-3"><a href="filter-supplement.html#cb458-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb458-4"><a href="filter-supplement.html#cb458-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb458-5"><a href="filter-supplement.html#cb458-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -481,22 +535,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note how cases with <code>gender</code> equal to “female” are no longer in the data frame, while every other case is retained.</p>
 <p>Let’s now filter by a variable of type <em>numeric</em> (or <em>integer</em>). Specifically, let’s select those cases in which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is of type <em>numeric</em>, we don’t use quotation marks (<code>" "</code>) around the value we wish to filter by, which in this case is 4.0.</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="filter-supplement.html#cb454-1"></a><span class="co"># Filter by perf_q2</span></span>
-<span id="cb454-2"><a href="filter-supplement.html#cb454-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb454-3"><a href="filter-supplement.html#cb454-3"></a></span>
-<span id="cb454-4"><a href="filter-supplement.html#cb454-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb454-5"><a href="filter-supplement.html#cb454-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="filter-supplement.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by perf_q2</span></span>
+<span id="cb460-2"><a href="filter-supplement.html#cb460-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb460-3"><a href="filter-supplement.html#cb460-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb460-4"><a href="filter-supplement.html#cb460-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb460-5"><a href="filter-supplement.html#cb460-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
 ## 2   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
 <p>If we wish to filter by two variables, we can apply the logical “or” (<code>|</code>) operator or “and” (<code>&amp;</code>) operator. First, let’s select those cases in which either <code>gender</code> is equal to “female” or <code>perf_q2</code> is greater than 4.0 using the “or” (<code>|</code>) operator.</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="filter-supplement.html#cb456-1"></a><span class="co"># Filter by gender or perf_q2</span></span>
-<span id="cb456-2"><a href="filter-supplement.html#cb456-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">|</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb456-3"><a href="filter-supplement.html#cb456-3"></a></span>
-<span id="cb456-4"><a href="filter-supplement.html#cb456-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb456-5"><a href="filter-supplement.html#cb456-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="filter-supplement.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender or perf_q2</span></span>
+<span id="cb462-2"><a href="filter-supplement.html#cb462-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">|</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb462-3"><a href="filter-supplement.html#cb462-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb462-4"><a href="filter-supplement.html#cb462-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb462-5"><a href="filter-supplement.html#cb462-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -505,21 +559,21 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
 ## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>Watch what happens if we apply the logical “and” (<code>&amp;</code>) operator with the same syntax as above.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="filter-supplement.html#cb458-1"></a><span class="co"># Filter by gender and perf_q2</span></span>
-<span id="cb458-2"><a href="filter-supplement.html#cb458-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, gender<span class="op">==</span><span class="st">&quot;female&quot;</span> <span class="op">&amp;</span><span class="st"> </span>perf_q2<span class="op">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb458-3"><a href="filter-supplement.html#cb458-3"></a></span>
-<span id="cb458-4"><a href="filter-supplement.html#cb458-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb458-5"><a href="filter-supplement.html#cb458-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="filter-supplement.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender and perf_q2</span></span>
+<span id="cb464-2"><a href="filter-supplement.html#cb464-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">&amp;</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb464-3"><a href="filter-supplement.html#cb464-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb464-4"><a href="filter-supplement.html#cb464-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb464-5"><a href="filter-supplement.html#cb464-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
 <p>We can also use the logical “or” (<code>|</code>) operator to select two values of the same variable.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="filter-supplement.html#cb460-1"></a><span class="co"># Filter by two values of firstname</span></span>
-<span id="cb460-2"><a href="filter-supplement.html#cb460-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, firstname<span class="op">==</span><span class="st">&quot;John&quot;</span> <span class="op">|</span><span class="st"> </span>firstname<span class="op">==</span><span class="st">&quot;Jane&quot;</span>)</span>
-<span id="cb460-3"><a href="filter-supplement.html#cb460-3"></a></span>
-<span id="cb460-4"><a href="filter-supplement.html#cb460-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb460-5"><a href="filter-supplement.html#cb460-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="filter-supplement.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two values of firstname</span></span>
+<span id="cb466-2"><a href="filter-supplement.html#cb466-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, firstname<span class="sc">==</span><span class="st">&quot;John&quot;</span> <span class="sc">|</span> firstname<span class="sc">==</span><span class="st">&quot;Jane&quot;</span>)</span>
+<span id="cb466-3"><a href="filter-supplement.html#cb466-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb466-4"><a href="filter-supplement.html#cb466-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb466-5"><a href="filter-supplement.html#cb466-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -527,11 +581,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 2   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
 ## 3   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Or we can select two ranges of values from the same variable using the logical “or” (<code>|</code>) operator, assuming the variable is of type numeric, integer, or date.</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb462-1"><a href="filter-supplement.html#cb462-1"></a><span class="co"># Filter by two ranges of values of perf_q1</span></span>
-<span id="cb462-2"><a href="filter-supplement.html#cb462-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, perf_q1<span class="op">&lt;=</span><span class="fl">2.5</span> <span class="op">|</span><span class="st"> </span>perf_q1<span class="op">&gt;=</span><span class="fl">4.0</span>)</span>
-<span id="cb462-3"><a href="filter-supplement.html#cb462-3"></a></span>
-<span id="cb462-4"><a href="filter-supplement.html#cb462-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb462-5"><a href="filter-supplement.html#cb462-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="filter-supplement.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two ranges of values of perf_q1</span></span>
+<span id="cb468-2"><a href="filter-supplement.html#cb468-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, perf_q1<span class="sc">&lt;=</span><span class="fl">2.5</span> <span class="sc">|</span> perf_q1<span class="sc">&gt;=</span><span class="fl">4.0</span>)</span>
+<span id="cb468-3"><a href="filter-supplement.html#cb468-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb468-4"><a href="filter-supplement.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb468-5"><a href="filter-supplement.html#cb468-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -540,11 +594,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
 ## 4   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>The <code>subset</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you’ve identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let’s pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs R to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs R to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb464-1"><a href="filter-supplement.html#cb464-1"></a><span class="co"># Filter out id of 198 and 201</span></span>
-<span id="cb464-2"><a href="filter-supplement.html#cb464-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="op">!</span>id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
-<span id="cb464-3"><a href="filter-supplement.html#cb464-3"></a></span>
-<span id="cb464-4"><a href="filter-supplement.html#cb464-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb464-5"><a href="filter-supplement.html#cb464-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="filter-supplement.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 and 201</span></span>
+<span id="cb470-2"><a href="filter-supplement.html#cb470-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
+<span id="cb470-3"><a href="filter-supplement.html#cb470-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-4"><a href="filter-supplement.html#cb470-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb470-5"><a href="filter-supplement.html#cb470-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -557,25 +611,25 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note that in the output above cases with <code>id</code> variable values equal to 198 and 201 are no longer present.</p>
 <p>If you remove the <code>!</code> in front of the filter variable, only cases <code>198</code> and <code>201</code> are retained.</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb466-1"><a href="filter-supplement.html#cb466-1"></a><span class="co"># Filter in id of 198 and 201</span></span>
-<span id="cb466-2"><a href="filter-supplement.html#cb466-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, id <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
-<span id="cb466-3"><a href="filter-supplement.html#cb466-3"></a></span>
-<span id="cb466-4"><a href="filter-supplement.html#cb466-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb466-5"><a href="filter-supplement.html#cb466-5"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="filter-supplement.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 and 201</span></span>
+<span id="cb472-2"><a href="filter-supplement.html#cb472-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
+<span id="cb472-3"><a href="filter-supplement.html#cb472-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb472-4"><a href="filter-supplement.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb472-5"><a href="filter-supplement.html#cb472-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
 ## 2   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>You can also drop specific cases one by one using the not equal to operator (<code>!=</code>) and the a unique identifier value associated with the case you wish to remove. We accomplish the same result as above but use two steps instead. Also, note that in the second step below, the new data frame object (<code>filterdf</code>) is used as the first argument because we want to retain the changes we made in the prior step (i.e., dropping case with <code>id</code> equal to 198).</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="filter-supplement.html#cb468-1"></a><span class="co"># Filter out id of 198</span></span>
-<span id="cb468-2"><a href="filter-supplement.html#cb468-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, id<span class="op">!=</span><span class="dv">198</span>)</span>
-<span id="cb468-3"><a href="filter-supplement.html#cb468-3"></a></span>
-<span id="cb468-4"><a href="filter-supplement.html#cb468-4"></a><span class="co"># Filter out id of 201</span></span>
-<span id="cb468-5"><a href="filter-supplement.html#cb468-5"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(filterdf, id<span class="op">!=</span><span class="dv">201</span>)</span>
-<span id="cb468-6"><a href="filter-supplement.html#cb468-6"></a></span>
-<span id="cb468-7"><a href="filter-supplement.html#cb468-7"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb468-8"><a href="filter-supplement.html#cb468-8"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb474-1"><a href="filter-supplement.html#cb474-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198</span></span>
+<span id="cb474-2"><a href="filter-supplement.html#cb474-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, id<span class="sc">!=</span><span class="dv">198</span>)</span>
+<span id="cb474-3"><a href="filter-supplement.html#cb474-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb474-4"><a href="filter-supplement.html#cb474-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 201</span></span>
+<span id="cb474-5"><a href="filter-supplement.html#cb474-5" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(filterdf, id<span class="sc">!=</span><span class="dv">201</span>)</span>
+<span id="cb474-6"><a href="filter-supplement.html#cb474-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb474-7"><a href="filter-supplement.html#cb474-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb474-8"><a href="filter-supplement.html#cb474-8" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -587,12 +641,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
 ## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base R (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base R. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells R that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format="%m/%d/%Y"</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb470-1"><a href="filter-supplement.html#cb470-1"></a><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span></span>
-<span id="cb470-2"><a href="filter-supplement.html#cb470-2"></a>mergeddf<span class="op">$</span>startdate2 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="kw">as.character</span>(mergeddf<span class="op">$</span>startdate), <span class="dt">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb476-1"><a href="filter-supplement.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span></span>
+<span id="cb476-2"><a href="filter-supplement.html#cb476-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">as.character</span>(mergeddf<span class="sc">$</span>startdate), <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
 <p>To verify that the new <code>startdate2</code> variable is of type <em>Date</em>, use the <code>str</code> function from base R, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb471-1"><a href="filter-supplement.html#cb471-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span></span>
-<span id="cb471-2"><a href="filter-supplement.html#cb471-2"></a><span class="kw">str</span>(mergeddf)</span></code></pre></div>
-<pre><code>## tibble [9 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="filter-supplement.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span></span>
+<span id="cb477-2"><a href="filter-supplement.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,10] [9 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ id        : num [1:9] 153 154 155 165 125 111 198 201 282
 ##  $ lastname  : chr [1:9] &quot;Sanchez&quot; &quot;McDonald&quot; &quot;Smith&quot; &quot;Doe&quot; ...
 ##  $ firstname : chr [1:9] &quot;Alejandro&quot; &quot;Ronald&quot; &quot;John&quot; &quot;Jane&quot; ...
@@ -612,11 +666,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##   ..   gender = col_character()
 ##   .. )</code></pre>
 <p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>" "</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb473-1"><a href="filter-supplement.html#cb473-1"></a><span class="co"># Filter by startdate2</span></span>
-<span id="cb473-2"><a href="filter-supplement.html#cb473-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, startdate2 <span class="op">&gt;</span><span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
-<span id="cb473-3"><a href="filter-supplement.html#cb473-3"></a></span>
-<span id="cb473-4"><a href="filter-supplement.html#cb473-4"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb473-5"><a href="filter-supplement.html#cb473-5"></a><span class="kw">print</span>(filterdf)</span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="filter-supplement.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by startdate2</span></span>
+<span id="cb479-2"><a href="filter-supplement.html#cb479-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, startdate2 <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
+<span id="cb479-3"><a href="filter-supplement.html#cb479-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb479-4"><a href="filter-supplement.html#cb479-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb479-5"><a href="filter-supplement.html#cb479-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -626,14 +680,14 @@ BOOK UNDER CONSTRUCTION</a>
 ## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1   2016-01-09
 ## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5 2016-01-09</code></pre>
 </div>
-<div id="select-single-variable-from-data-frame" class="section level3">
-<h3><span class="header-section-number">10.5.2</span> Select Single Variable from Data Frame</h3>
+<div id="select-single-variable-from-data-frame" class="section level3" number="19.0.2">
+<h3><span class="header-section-number">19.0.2</span> Select Single Variable from Data Frame</h3>
 <p>To display a single variable from a data frame in our Console, within the <code>subset</code> function, we can enter the data frame object as the first argument (<code>filterdf</code>) and <code>select=</code> followed by the name of a single variable (<code>startdate</code>). Using the <code>&lt;-</code> operator, we can create a new data frame object and assign the single variable to that new object. Here, I’m calling this new object <code>temp</code>, as that signals to me that the object will be temporary and thus not used for subsequent operations.</p>
-<div class="sourceCode" id="cb475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb475-1"><a href="filter-supplement.html#cb475-1"></a><span class="co"># Select only one variable from a data frame</span></span>
-<span id="cb475-2"><a href="filter-supplement.html#cb475-2"></a>temp &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="dt">select=</span>startdate)</span>
-<span id="cb475-3"><a href="filter-supplement.html#cb475-3"></a></span>
-<span id="cb475-4"><a href="filter-supplement.html#cb475-4"></a><span class="co"># Print data frame</span></span>
-<span id="cb475-5"><a href="filter-supplement.html#cb475-5"></a><span class="kw">print</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="filter-supplement.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only one variable from a data frame</span></span>
+<span id="cb481-2"><a href="filter-supplement.html#cb481-2" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span>startdate)</span>
+<span id="cb481-3"><a href="filter-supplement.html#cb481-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb481-4"><a href="filter-supplement.html#cb481-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb481-5"><a href="filter-supplement.html#cb481-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(temp)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 1
 ##   startdate
 ##   &lt;chr&gt;    
@@ -647,14 +701,14 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8 1/9/2016 
 ## 9 1/9/2016</code></pre>
 </div>
-<div id="select-multiple-variables-from-data-frame" class="section level3">
-<h3><span class="header-section-number">10.5.3</span> Select Multiple Variables from Data Frame</h3>
+<div id="select-multiple-variables-from-data-frame-1" class="section level3" number="19.0.3">
+<h3><span class="header-section-number">19.0.3</span> Select Multiple Variables from Data Frame</h3>
 <p>If our goal is to select multiple variables from a data frame (and remove all others), we can use the <code>subset</code> function as follows. As we did above, name new data frame object using the <code>&lt;-</code> operator, and here we will overwrite the <code>filterdf</code> objec we previously created. As the first argument in the <code>subset</code> function, type the name of your original data frame object (<code>mergeddf</code>). As the second argument, type <code>select=</code> followed by a vector of variable name you wish to select/retain. The order in which you enter the variable names will correspond to the order in which they appear in the new data frame object. Use the <code>c</code> (combine) function from base R with each variable name you wish to select as arguments separated by commas.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="filter-supplement.html#cb477-1"></a><span class="co"># Select multiple variables</span></span>
-<span id="cb477-2"><a href="filter-supplement.html#cb477-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="dt">select=</span><span class="kw">c</span>(id, gender, lastname, firstname))</span>
-<span id="cb477-3"><a href="filter-supplement.html#cb477-3"></a></span>
-<span id="cb477-4"><a href="filter-supplement.html#cb477-4"></a><span class="co"># Print data frame</span></span>
-<span id="cb477-5"><a href="filter-supplement.html#cb477-5"></a><span class="kw">print</span>(filterdf)</span></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb483-1"><a href="filter-supplement.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple variables</span></span>
+<span id="cb483-2"><a href="filter-supplement.html#cb483-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span><span class="fu">c</span>(id, gender, lastname, firstname))</span>
+<span id="cb483-3"><a href="filter-supplement.html#cb483-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb483-4"><a href="filter-supplement.html#cb483-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb483-5"><a href="filter-supplement.html#cb483-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 4
 ##      id gender lastname   firstname
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    
@@ -668,14 +722,14 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201 female Providence Cindy    
 ## 9   282 male   Legend     John</code></pre>
 </div>
-<div id="remove-single-variable-from-data-frame" class="section level3">
-<h3><span class="header-section-number">10.5.4</span> Remove Single Variable from Data Frame</h3>
+<div id="remove-single-variable-from-data-frame-1" class="section level3" number="19.0.4">
+<h3><span class="header-section-number">19.0.4</span> Remove Single Variable from Data Frame</h3>
 <p>If you need to remove a single variable from a data frame, you can simply type the minus (<code>-</code>) operator before the name of the variable you wish to remove.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="filter-supplement.html#cb479-1"></a><span class="co"># Select only one variable from a data frame</span></span>
-<span id="cb479-2"><a href="filter-supplement.html#cb479-2"></a>filterdf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="dt">select=</span><span class="op">-</span>startdate)</span>
-<span id="cb479-3"><a href="filter-supplement.html#cb479-3"></a></span>
-<span id="cb479-4"><a href="filter-supplement.html#cb479-4"></a><span class="co"># Print data frame</span></span>
-<span id="cb479-5"><a href="filter-supplement.html#cb479-5"></a><span class="kw">print</span>(filterdf)</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb485-1"><a href="filter-supplement.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only one variable from a data frame</span></span>
+<span id="cb485-2"><a href="filter-supplement.html#cb485-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span><span class="sc">-</span>startdate)</span>
+<span id="cb485-3"><a href="filter-supplement.html#cb485-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb485-4"><a href="filter-supplement.html#cb485-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb485-5"><a href="filter-supplement.html#cb485-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -689,14 +743,14 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201 Providence Cindy     female     1.2     1.1     1       1   2016-01-09
 ## 9   282 Legend     John      male       2.2     2.3     2.4     2.5 2016-01-09</code></pre>
 </div>
-<div id="remove-multiple-variables-from-data-frame" class="section level3">
-<h3><span class="header-section-number">10.5.5</span> Remove Multiple Variables from Data Frame</h3>
+<div id="remove-multiple-variables-from-data-frame-1" class="section level3" number="19.0.5">
+<h3><span class="header-section-number">19.0.5</span> Remove Multiple Variables from Data Frame</h3>
 <p>If you wish to remove multiple variables from a data frame, you can apply the same syntax as you did when selecting multiple variables, except insert a minus (<code>-</code>) operator in from the of the <code>c</code> function. This tells the function to <em>not</em> select those variables. Here, we remove the <code>id</code> and <code>gender</code> variables from the <code>mergeddf</code> data frame by overwriting the original <code>mergeddf</code> object.</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb481-1"><a href="filter-supplement.html#cb481-1"></a><span class="co"># Remove multiple variables</span></span>
-<span id="cb481-2"><a href="filter-supplement.html#cb481-2"></a>mergeddf &lt;-<span class="st"> </span><span class="kw">subset</span>(mergeddf, <span class="dt">select=</span> <span class="op">-</span><span class="kw">c</span>(id, gender))</span>
-<span id="cb481-3"><a href="filter-supplement.html#cb481-3"></a></span>
-<span id="cb481-4"><a href="filter-supplement.html#cb481-4"></a><span class="co"># Print data frame</span></span>
-<span id="cb481-5"><a href="filter-supplement.html#cb481-5"></a><span class="kw">print</span>(mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb487-1"><a href="filter-supplement.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple variables</span></span>
+<span id="cb487-2"><a href="filter-supplement.html#cb487-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span> <span class="sc">-</span><span class="fu">c</span>(id, gender))</span>
+<span id="cb487-3"><a href="filter-supplement.html#cb487-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb487-4"><a href="filter-supplement.html#cb487-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb487-5"><a href="filter-supplement.html#cb487-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 8
 ##   lastname   firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -709,8 +763,97 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7 Morales    Linda     1/7/2016      4.9     4.5     4.4     4.8 2016-01-07
 ## 8 Providence Cindy     1/9/2016      1.2     1.1     1       1   2016-01-09
 ## 9 Legend     John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
-
 </div>
+</div>
+<div id="str_detect_supp" class="section level2 unnumbered">
+<h2>Filter by Pattern Contained within String</h2>
+<p>In some cases, we may wish to filter cases from a data frame object based on a pattern contained within a string (i.e., text, characters). For example, using the <code>mergeddf</code> data frame object we created above, perhaps we would like to select those cases for which their <code>firstname</code> string (i.e., value) contains a capital (“J”). To do so, we can use the <code>str_detect</code> function from the <code>stringr</code> package within either the <code>subset</code> function from base <code>R</code> or the <code>filter</code> function from the <code>dplyr</code> package.</p>
+<p>To get started, make sure that you have installed and accessed the <code>stringr</code> package.</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="filter-supplement.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install stringr package if you haven&#39;t already</span></span>
+<span id="cb489-2"><a href="filter-supplement.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb489-3"><a href="filter-supplement.html#cb489-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb489-4"><a href="filter-supplement.html#cb489-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="filter-supplement.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access stringr package</span></span>
+<span id="cb490-2"><a href="filter-supplement.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<p>Given that this chapter supplement has focused thus far on the <code>subset</code> function from base <code>R</code>, let’s continue to use that function, but please note that you could just as easily use the <code>filter</code> function from the <code>dplyr</code> package. Using the <code>&lt;-</code> operator, we’ll assign the resulting subset data frame to an object that I’m calling <code>sub_mergeddf</code>. To the right of the <code>&lt;-</code> operator, type the name of the <code>subset</code> function as usual, and as the first argument, type the name of the original data frame object that we’ve been working with called <code>mergeddf</code>. As the second argument, type the name of the <code>str_detect</code> function. As the first argument within the <code>str_detect</code> function, type the name of the variable we wish to filter by, which in this example is <code>firstname</code>; as the second argument and within quotation marks (<code>" "</code>), type a pattern you would like to detect within text strings from the <code>firstname</code> variable. For this example, let’s detect any text string containing an uppercase “J” while noting that case sensitivity matters (e.g., “J” vs. “j”). In other words, we are filtering the data frame such that we will retain only those cases for which their <code>firstname</code> variable text strings (i.e., values) contain an uppercase “J.”</p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="filter-supplement.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable contains a &quot;J&quot;</span></span>
+<span id="cb491-2"><a href="filter-supplement.html#cb491-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that case sensitivity matters (e.g., &quot;j&quot; vs. &quot;J&quot;)</span></span>
+<span id="cb491-3"><a href="filter-supplement.html#cb491-3" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;J&quot;</span>))</span></code></pre></div>
+<p>Now let’s print the new data frame object we created.</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="filter-supplement.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb492-2"><a href="filter-supplement.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 8
+##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1 Smith    John      1/9/2016     NA      NA      NA      NA   2016-01-09
+## 2 Doe      Jane      1/4/2016     NA      NA      NA      NA   2016-01-04
+## 3 Legend   John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
+<p>Note how the <code>str_detect</code> function helped us retain only those cases for which <code>firstname</code> contained an uppercase “J.” Notably missing are the individuals named Alejandro and Benjamin because, although they have a “j” within their first names, their names contain a lowercase “j” as opposed to an uppercase “J.”</p>
+<p>Using the same code as above, let’s swap out the uppercase “J” for a lowercase “j.”</p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="filter-supplement.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable contains a &quot;j&quot;</span></span>
+<span id="cb494-2"><a href="filter-supplement.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that case sensitivity matters (e.g., &quot;j&quot; vs. &quot;J&quot;)</span></span>
+<span id="cb494-3"><a href="filter-supplement.html#cb494-3" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;j&quot;</span>))</span>
+<span id="cb494-4"><a href="filter-supplement.html#cb494-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb494-5"><a href="filter-supplement.html#cb494-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb494-6"><a href="filter-supplement.html#cb494-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<pre><code>## # A tibble: 2 x 8
+##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1 Sanchez  Alejandro 1/1/2016      3.9     4.8     4.9     5   2016-01-01
+## 2 Franklin Benjamin  1/5/2016      2.1     1.9     2.1     2.3 2016-01-05</code></pre>
+<p>Because we filtered for a lowercase “j,” now our data frame object only includes Benjamin and Alejandro.</p>
+<p>If you wish to retain only those cases for which the string <em>begins</em> with a particular pattern, use the <code>^</code> operator before the pattern.</p>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="filter-supplement.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable starts with a &quot;J&quot;</span></span>
+<span id="cb496-2"><a href="filter-supplement.html#cb496-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;^J&quot;</span>))</span>
+<span id="cb496-3"><a href="filter-supplement.html#cb496-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-4"><a href="filter-supplement.html#cb496-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb496-5"><a href="filter-supplement.html#cb496-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 8
+##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1 Smith    John      1/9/2016     NA      NA      NA      NA   2016-01-09
+## 2 Doe      Jane      1/4/2016     NA      NA      NA      NA   2016-01-04
+## 3 Legend   John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
+<p>To retain only those cases for which the string <em>ends</em> with a particular pattern, use the <code>$</code> operator after the pattern.</p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb498-1"><a href="filter-supplement.html#cb498-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable ends with a &quot;n&quot;</span></span>
+<span id="cb498-2"><a href="filter-supplement.html#cb498-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;n$&quot;</span>))</span>
+<span id="cb498-3"><a href="filter-supplement.html#cb498-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb498-4"><a href="filter-supplement.html#cb498-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb498-5"><a href="filter-supplement.html#cb498-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 8
+##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1 Smith    John      1/9/2016     NA      NA      NA      NA   2016-01-09
+## 2 Franklin Benjamin  1/5/2016      2.1     1.9     2.1     2.3 2016-01-05
+## 3 Legend   John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
+<p>To retain only those cases for which the string <em>contains</em> any of the elements from set of elements anywhere in the text, wrap the brackets <code>[ ]</code> operator around the set of pattern elements.</p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb500-1"><a href="filter-supplement.html#cb500-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname contains any of the elements &quot;d&quot; or &quot;m&quot;</span></span>
+<span id="cb500-2"><a href="filter-supplement.html#cb500-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;[dm]&quot;</span>))</span>
+<span id="cb500-3"><a href="filter-supplement.html#cb500-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb500-4"><a href="filter-supplement.html#cb500-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb500-5"><a href="filter-supplement.html#cb500-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 8
+##   lastname   firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1 Sanchez    Alejandro 1/1/2016      3.9     4.8     4.9     5   2016-01-01
+## 2 McDonald   Ronald    1/9/2016     NA      NA      NA      NA   2016-01-09
+## 3 Franklin   Benjamin  1/5/2016      2.1     1.9     2.1     2.3 2016-01-05
+## 4 Morales    Linda     1/7/2016      4.9     4.5     4.4     4.8 2016-01-07
+## 5 Providence Cindy     1/9/2016      1.2     1.1     1       1   2016-01-09</code></pre>
+<p>Finally, if you would like to retain only those cases for which the <code>str_detect</code> logical statements are FALSE, then you can insert the “not” (<code>!</code>) operator before the name of the function.</p>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb502-1"><a href="filter-supplement.html#cb502-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname does not contain any of the elements &quot;d&quot; or &quot;m&quot;</span></span>
+<span id="cb502-2"><a href="filter-supplement.html#cb502-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="sc">!</span> <span class="fu">str_detect</span>(firstname, <span class="st">&quot;[dm]&quot;</span>))</span>
+<span id="cb502-3"><a href="filter-supplement.html#cb502-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb502-4"><a href="filter-supplement.html#cb502-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb502-5"><a href="filter-supplement.html#cb502-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<pre><code>## # A tibble: 4 x 8
+##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1 Smith    John      1/9/2016     NA      NA      NA      NA   2016-01-09
+## 2 Doe      Jane      1/4/2016     NA      NA      NA      NA   2016-01-04
+## 3 Newton   Isaac     1/9/2016      3.3     3.3     3.4     3.3 2016-01-09
+## 4 Legend   John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
+
 </div>
 </div>
             </section>

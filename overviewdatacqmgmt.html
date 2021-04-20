@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Read Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 13 Overview of Data Acquisition &amp; Data Management | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Read Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 13 Overview of Data Acquisition &amp; Data Management | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Read Data: Chapter Supplement | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 13 Overview of Data Acquisition &amp; Data Management | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="clean.html"/>
-<link rel="next" href="arrange-supplement.html"/>
+<link rel="prev" href="setwd.html"/>
+<link rel="next" href="read.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -327,106 +327,120 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="read_supplement" class="section level1 unnumbered">
-<h1>Read Data: Chapter Supplement</h1>
-<p>In addition to the <code>read_csv</code> function from the <code>readr</code> package covered in <a href="read.html#read">Reading Data into R</a>, we can read .csv files into R using the <code>read.csv</code> function from base R and the <code>Read</code> function from the <code>lessR</code> package.</p>
-<div id="functions-packages-introduced-8" class="section level4 unnumbered">
-<h4>Functions &amp; Packages Introduced</h4>
-<table>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>Package</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>read.csv</code></td>
-<td>base <code>R</code></td>
-</tr>
-<tr class="even">
-<td><code>Read</code></td>
-<td><code>lessR</code></td>
-</tr>
-</tbody>
-</table>
+<div id="overviewdatacqmgmt" class="section level1">
+<h1><span class="header-section-number">Chapter 13</span> Overview of Data Acquisition &amp; Data Management</h1>
+<p>Once we have defined a problem and/or formulated a question, we’re ready to proceed to the Data Acquisition and Data Management phases of the <a href="index.html#hraplc">HR Analytics Project Life Cycle</a>. These phases are critical for sourcing the data necessary to solve the problem or answer the question at hand and for prepping the data for eventual analysis and interpretation. In the sections that I follow, I provide an overview of the Data Acquisition and Data Management phases and describe their importance for a successful HR analytics project.</p>
+<div id="data-acquisition" class="section level2">
+<h2><span class="header-section-number">13.1</span> Data Acquisition</h2>
+<p><strong>Data acquisition</strong> refers to the process of collecting, retrieving, gathering, and sourcing data that can be used to solve problems, answer questions, and test hypotheses that were identified during the Question Formulation phase of the HR Analytics Project Life Cycle. Various tools can be used for data acquisition, such as employee surveys, (performance) rating forms, surveillance and monitoring, database queries, and scraping or crawling. In some instances, the required data may already reside in an HR information system (HRIS) or enterprise resource planning (ERP) platform, and such data are often referred to as archival. From ethical, legal, and practical perspectives, my general advice is to <em>acquire data with a purpose</em>. That is, if we don’t have a compelling and well-thought-out rationale to collect certain data – especially data about people – then we should probably should resist collecting such data.</p>
+<div class="figure">
+<img src="dataacquisition_hraplc.png" alt="" />
+<p class="caption">The Data Acquisition phase of the Human Resource Analytics Project Life Cycle (HRAPLC) involves gathering the data necessary for solving the problem or answering the question from the Question Formulation phase.</p>
 </div>
-<div id="initsteps_read_supp" class="section level4 unnumbered">
-<h4>Initial Steps</h4>
-<p>If required, please refer to the <a href="#initsteps_read">Initial Steps</a> section from the chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="read-supplement.html#cb390-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb390-2"><a href="read-supplement.html#cb390-2"></a><span class="kw">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div id="employee-surveys-1" class="section level3">
+<h3><span class="header-section-number">13.1.1</span> Employee Surveys</h3>
+<p>When it comes to acquiring data about employee attitudes, behaviors, and feelings, the employee survey is perhaps one of the most common (if not the most common) tools. If you’re unfamiliar with employee surveys, simply put, they consist of some number of items (e.g., questions) to which employees are asked to respond. Survey items can be open-ended (e.g., “Please describe our onboarding experience.”) or close-ended with fixed response options (e.g., “I am satisfied with my job.” [1 = <em>Strongly Disagree</em>, 5 = <em>Strongly Agree</em>]), and they can vary in length, ranging from shorter yet more frequent pulse surveys to longer yet less frequent annual engagement surveys. Further, surveys can be used to deploy multi-item measures of multi-faceted and nuanced concepts (i.e., constructs) such as engagement and organizational citizenship behaviors.</p>
+<p>The quality of the data acquired using an employee survey depends largely on the quality of the survey content (e.g., quality of item writing), the appropriateness of the survey for the target population, and respondents’ motivation (or lack thereof) for taking the survey. To learn more about writing high-quality items, avoiding common pitfalls, and other design and administration considerations, I recommend checking out the Google re:Work guide for developing and administering employee surveys (<a href="https://rework.withgoogle.com/guides/analytics-run-an-employee-survey" class="uri">https://rework.withgoogle.com/guides/analytics-run-an-employee-survey</a>), as it distills many best practices into a user-friendly and efficient format. Below, I list some potential advantages and disadvantages of using employee surveys for data acquisition.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>If designed well, they can be efficient and effective tools for acquiring self- or observer-report data on employee personality, attitudes, individual differences, and behaviors as well as perceptions of work, working environment, work-family interface, supervisor behavior, coworker behavior, and client behavior.</li>
+<li>They tend to be relatively affordable to administer and a variety of platforms exist today to facilitate this process (e.g., Qualtrics, SurveyMonkey).</li>
+<li>Employees are typically familiar with the concept of a survey and can exert more control over the information that is collected.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Some may argue that the date acquired may be more subjective in nature than the data acquired by other tools, as respondents may succumb to perceived social desirability pressures and/or fake or distort their responses.</li>
+<li>They can be time-consuming and resource-intensive to respond to and to develop.</li>
+<li>If surveyed too frequently, employees may experience “survey fatigue.”</li>
+</ul>
 </div>
-<div id="readcsv_supp" class="section level2 unnumbered">
-<h2><code>read.csv</code> Function from Base R</h2>
-<p>The <code>read.csv</code> file comes standard with base R, which means that you don’t need to install a package to access the function. As the function name implies, this function is used when the source data file is in .csv format. Typically, the <code>read.csv</code> function requires only a single argument within the parentheses, which will be the <em>exact</em> name of the data file enclosed with quotation marks; the file should be located your working directory folder. Remember, R is a language where case and space sensitivity matters when it comes to names; meaning, if there are spaces in your file name, there needs to be spaces when the file name appears in your R script, and if some letters are upper case in your file name, there needs to be corresponding upper-case letters in your R script. Let’s practice reading in a file called <strong>“PersData.csv”</strong> by entering the exact name of the file followed by the .csv extension, all within in quotation marks. Remember, the file called <strong>“PersData.csv”</strong> should already be saved in your working directory folder (see <a href="read.html#initsteps_read_supp">Initial Steps</a>).</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="read-supplement.html#cb391-1"></a><span class="co"># Read data from working directory</span></span>
-<span id="cb391-2"><a href="read-supplement.html#cb391-2"></a><span class="kw">read.csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>##    id   lastname firstname startdate gender
-## 1 153    Sanchez Alejandro  1/1/2016   male
-## 2 154   McDonald    Ronald  1/9/2016   male
-## 3 155      Smith      John  1/9/2016   male
-## 4 165        Doe      Jane  1/4/2016 female
-## 5 125   Franklin  Benjamin  1/5/2016   male
-## 6 111     Newton     Isaac  1/9/2016   male
-## 7 198    Morales     Linda  1/7/2016 female
-## 8 201 Providence     Cindy  1/9/2016 female
-## 9 282     Legend      John  1/9/2016   male</code></pre>
-<p>As you can see, the data that appear in your Console contains only a handful of rows and columns; nonetheless, this gives you an idea of how the read.csv function works.</p>
-<p>Often, you will want to assign your data frame to an object that is stored in your Global Environment for subsequent use. By creating a data frame object, you can manipulate and/or analyze the data within the object using a variety of functions (and without changing the data in the source file). To create a data frame object, we simply (a) use the same <code>read.csv</code> function from above, (b) add either a <code>&lt;-</code> or <code>=</code> operator to the left of the <code>read.csv</code> function, and (c) create a name of our choosing for the data frame object by entering that name to the left of the <code>&lt;-</code> or <code>=</code> operator. You can name your data frame object whatever you would like as long as it doesn’t include spaces, doesn’t start with a numeral, and doesn’t include special characters like <code>*</code> or <code>-</code> (to name a few). I recommend choosing a name that is relatively short but descriptive, and that is not the same as another R function or variable name that you plan to use. Below, I name the new data frame object <code>personaldata</code>.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="read-supplement.html#cb393-1"></a><span class="co"># Read in data and name data frame object</span></span>
-<span id="cb393-2"><a href="read-supplement.html#cb393-2"></a>personaldata &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div id="rating-forms-1" class="section level3">
+<h3><span class="header-section-number">13.1.2</span> Rating Forms</h3>
+<p>Rating forms often share some of the same characteristics as employee surveys (e.g, multiple close-ended items) but tend to be more focused on measuring work-related behaviors and job performance. Examples of common types of ratings forms include the behavioral observation scale and the behavioral-anchored rating scale. Given the breadth of the performance domain for most jobs, when targeting performance, ratings forms tend to consist of multiple items or dimensions. For example, the performance domain for the prototypical customer service representative job will involve interacting with customers but will likely also involve administrative tasks, for example, involving the documentation of customer complaints. Below, I offer some advantages and disadvantages of using ratings forms for data acquisition.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>If designed well, they allow raters to produce data efficiently.</li>
+<li>They can offer a standardized and consistent format that ultimately results in “cleaner” and more structured data than using no rating form at all to collect the same data.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Achieving sufficiently high reliability across raters can be challenging, even when they are using the same rating form.</li>
+<li>Some types of ratings forms likely the behavioral-anchored rating scale can be very time-consuming and resource-intensive to develop.</li>
+<li>Ratings may be influenced by office politics and idiosyncratic rater motivations (e.g., “I scored this person lower than they deserved to send a message.”)</li>
+</ul>
 </div>
-<div id="readlessr_supp" class="section level2 unnumbered">
-<h2><code>Read</code> Function from <code>lessR</code> Package</h2>
-<p>Just like the <code>read.csv</code> and <code>read_csv</code> functions, the <code>Read</code> function from the <code>lessR</code> package <span class="citation">(Gerbing <a href="#ref-R-lessR2020" role="doc-biblioref">2020</a>)</span> can read in .csv files; however, it can also read in other file formats like .xls/x, .sas7bdat (SAS), and .sav (SPSS).</p>
-<p>To use the <code>Read</code> function, the <code>lessR</code> package needs to be installed and accessed using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="read-supplement.html#cb394-1"></a><span class="co"># Install lessR package</span></span>
-<span id="cb394-2"><a href="read-supplement.html#cb394-2"></a><span class="kw">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="read-supplement.html#cb395-1"></a><span class="co"># Access lessR package</span></span>
-<span id="cb395-2"><a href="read-supplement.html#cb395-2"></a><span class="kw">library</span>(lessR)</span></code></pre></div>
-<p>When reading in a .csv file using the <code>Read</code> function, type the <em>exact</em> name of your data file from your working directory as an argument (followed by .csv and surrounded by quotation marks). Further, either the <code>&lt;-</code> or <code>=</code> operator can be used to name the data frame object.</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="read-supplement.html#cb396-1"></a><span class="co"># Read data and assign to data frame object</span></span>
-<span id="cb396-2"><a href="read-supplement.html#cb396-2"></a>personaldata &lt;-<span class="st"> </span><span class="kw">Read</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## &gt;&gt;&gt; Suggestions
-## To read a csv or Excel file of variable labels, var_labels=TRUE
-##    Each row of the file:  Variable Name, Variable Label
-## Details about your data, Enter:  details()  for d, or  details(name)
-## 
-## Data Types
-## ------------------------------------------------------------
-## character: Non-numeric data values
-## integer: Numeric data values, integers only
-## ------------------------------------------------------------
-## 
-##      Variable                  Missing  Unique 
-##          Name     Type  Values  Values  Values   First and last values
-## ------------------------------------------------------------------------------------------
-##  1         id   integer      9       0       9   153  154  155 ... 198  201  282
-##  2   lastname character      9       0       9   Sanchez  McDonald ... Providence  Legend
-##  3  firstname character      9       0       8   Alejandro  Ronald ... Cindy  John
-##  4  startdate character      9       0       5   1/1/2016  1/9/2016 ... 1/9/2016  1/9/2016
-##  5     gender character      9       0       2   male  male  male ... female  female  male
-## ------------------------------------------------------------------------------------------</code></pre>
-<p>Let’s print just the first six rows of the <code>personaldata</code> data frame object to the Console to verify that everything worked as intended.</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="read-supplement.html#cb398-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
-<span id="cb398-2"><a href="read-supplement.html#cb398-2"></a><span class="kw">head</span>(personaldata)</span></code></pre></div>
-<pre><code>##    id lastname firstname startdate gender
-## 1 153  Sanchez Alejandro  1/1/2016   male
-## 2 154 McDonald    Ronald  1/9/2016   male
-## 3 155    Smith      John  1/9/2016   male
-## 4 165      Doe      Jane  1/4/2016 female
-## 5 125 Franklin  Benjamin  1/5/2016   male
-## 6 111   Newton     Isaac  1/9/2016   male</code></pre>
-<p>For more information on the <code>Read</code> function from the <code>lessR</code> package, check out David Gerbing’s website: <a href="http://www.lessrstats.com/videos.html" class="uri">http://www.lessrstats.com/videos.html</a>.</p>
+<div id="surveillance-monitoring-1" class="section level3">
+<h3><span class="header-section-number">13.1.3</span> Surveillance &amp; Monitoring</h3>
+<p>Surveillance and monitoring offer a more discrete and less obtrusive approach to data acquisition. Examples include tracking system login information (e.g., dates, times), recording video or audio of employees, examining email correspondence, and deploying sensors and other wearable technologies (e.g., sociometric badges). Below, I offer some advantages and disadvantages of using surveillance and monitoring to acquire data.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>They tend to be nonintrusive and operate “behind the scenes” which can lead to the acquisition of more realistic and authentic employee behavior.</li>
+<li>Technological advances continue to expand surveillance and monitoring capabilities, such as those designed to measure geolocation, tone of voice, interactions, heart rate, sleep quantity and quality, and exposure to noxious chemicals.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Without clear and transparent communication regarding the use of such tools, employees may perceive a violation of trust.</li>
+<li>The technologies behind many surveillance and monitoring tools can produce truly big data (e.g., high velocity, massive amounts, unstructured) which can make wrangling and managing the data challenging and time-consuming.</li>
+<li>Employees may have ethical and privacy concerns about these tools, including about how they data are going to be used by the organization and how they are going to be protected.</li>
+</ul>
+</div>
+<div id="database-queries-1" class="section level3">
+<h3><span class="header-section-number">13.1.4</span> Database Queries</h3>
+<p>When acquiring data that already reside in an information system or enterprise resource planning platform, a database query is often the tool of choice, where A a database <em>query</em> refers to an action in which a request is made to access, acquire, restructure, and/or manipulate data housed in a database. Structured query language (SQL) is an example of a language that is commonly used to access data from a relational database. In many instances, the data retrieved from a database via a query meet the definition of archival data. Below, I offer some potential advantages and disadvantages of using database queries to acquire data.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>They can be an efficient way to gather archival data already residing in an information system or enterprise resource planning platform.</li>
+<li>They provide an opportunity to leverage data that an organization acquired previously.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Just because data reside in a database does not necessarily mean they are of high quality or are trustworthy.</li>
+<li>Unless carefully documented, important characteristics and definitions regarding the data residing in a database may be challenging to locate, which means even when queried, the definition and purpose of certain fields (i.e., variables) may remain unclear.</li>
+</ul>
+</div>
+<div id="scraping-1" class="section level3">
+<h3><span class="header-section-number">13.1.5</span> Scraping</h3>
+<p><em>Scraping</em> refers to the process of extracting data from websites, documents, and other sources of information. In many cases, we use scraping to gather data that were not originally intended to be used in the way that we plan to use them. For example, to predict changes in the stock market, an analyst might scraped tweets from Twitter over some period of time, use text analysis to code their sentiment, and then correlation tweet sentiment with market performance indicators. Scraping might also be applied to emails, internal company chat applications, and even electronic documents like applicant resumes. Below, I suggest some potential advantages and disadvantages of using scraping as a data-acquisition tool.</p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>New scraping tools and R packages have made it easier than ever to scrape data.</li>
+<li>Scraping tools can offer new insights based on previously difficult-to-reach or difficult-to-acquire text data that are rich with contextual information.</li>
+</ul>
+<p><strong>Disadvantages:</strong></p>
+<ul>
+<li>Scraping data that aren’t public or that weren’t intended to be used in the manner we plan to use them, can raise ethical and privacy concerns.</li>
+<li>Once scraped, the data often need to be structured into a format for subsequent, which can be a labor-intensive and exhausting process in terms of effort and time.</li>
+</ul>
+</div>
+</div>
+<div id="data-management" class="section level2">
+<h2><span class="header-section-number">13.2</span> Data Management</h2>
+<p><strong>Data management</strong> refers to the process of wrangling, cleaning, manipulating, and structuring data. Different tools can be used for data management, such as database management systems and data analysis software programs. The general rule of thumb is that you can expect to spend 80% of your time managing data and about 20% of your time analyzing data.</p>
+<div class="figure">
+<img src="datamanagement_hraplc.png" alt="" />
+<p class="caption">The Data Management phase of the Human Resource Analytics Project Life Cycle (HRAPLC) involves wrangling, cleaning, manipulating, and structuring the data gathered during the Data Acquisition phase.</p>
+</div>
+<p>XXXX</p>
+<div class="figure">
+<img src="cleaning_casesensitivity.png" alt="" />
+<p class="caption">By default, different spellings and cases (e.g., Beaverton, beverton, beaverton) for what is supposed to be the same category (e.g., Beaverton) will be treated as separate categories by many programs.</p>
+</div>
+<p>XXXX</p>
+<div class="figure">
+<img src="datamanagement_longwide.png" alt="" />
+<p class="caption">XXXX.</p>
+</div>
+<p>XXXX</p>
+<div class="figure">
+<img src="datamanagement_unstructured.png" alt="" />
+<p class="caption">XXXX.</p>
+</div>
+<p>XXXX</p>
+<div class="figure">
+<img src="datamanagement_structured.png" alt="" />
+<p class="caption">XXXX.</p>
+</div>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-R-lessR2020">
-<p>Gerbing, David. 2020. <em>LessR: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.</p>
 </div>
 </div>
             </section>
@@ -434,8 +448,8 @@ BOOK UNDER CONSTRUCTION</a>
           </div>
         </div>
       </div>
-<a href="clean.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="arrange-supplement.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="setwd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="read.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 9 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 9 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 9 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -24,15 +24,16 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-01-10" />
+<meta name="date" content="2021-04-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
+<link rel="prev" href="overviewR.html"/>
 <link rel="next" href="gettingstarted.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,22 +51,21 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +85,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -134,18 +134,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">R for HR</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
 <li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
 <li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
-<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> HR Analytics Project Life Cycle</a><ul>
-<li class="chapter" data-level="0.3.1" data-path="index.html"><a href="index.html#questform"><i class="fa fa-check"></i><b>0.3.1</b> Question Formulation</a></li>
-<li class="chapter" data-level="0.3.2" data-path="index.html"><a href="index.html#dacquire"><i class="fa fa-check"></i><b>0.3.2</b> Data Acquisition</a></li>
-<li class="chapter" data-level="0.3.3" data-path="index.html"><a href="index.html#dmanage"><i class="fa fa-check"></i><b>0.3.3</b> Data Management</a></li>
-<li class="chapter" data-level="0.3.4" data-path="index.html"><a href="index.html#danalysis"><i class="fa fa-check"></i><b>0.3.4</b> Data Analysis</a></li>
-<li class="chapter" data-level="0.3.5" data-path="index.html"><a href="index.html#dinterpret"><i class="fa fa-check"></i><b>0.3.5</b> Data Interpretion &amp; Storytelling</a></li>
-<li class="chapter" data-level="0.3.6" data-path="index.html"><a href="index.html#ddeploy"><i class="fa fa-check"></i><b>0.3.6</b> Deployment &amp; Implementation</a></li>
-</ul></li>
-<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a><ul>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a>
+<ul>
 <li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.4.1</b> Rationale for Using R</a></li>
 <li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.4.2</b> Audience</a></li>
 <li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.4.3</b> Structure</a></li>
@@ -153,122 +148,177 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.5</b> About the Author</a></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
 </ul></li>
-<li class="part"><span><b>I Introduction to R</b></span></li>
-<li class="chapter" data-level="1" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>1</b> Installing R &amp; RStudio</a><ul>
-<li class="chapter" data-level="1.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>1.1</b> Downloading &amp; Installing R</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>1.1.1</b> For Windows Operation Systems</a></li>
-<li class="chapter" data-level="1.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>1.1.2</b> For Mac Operating Systems</a></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>1.2</b> Downloading &amp; Installing RStudio</a></li>
-<li class="chapter" data-level="1.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>1.3</b> Summary</a></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>2</b> Getting Started with R</a><ul>
-<li class="chapter" data-level="2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>2.1</b> Orientation to RStudio</a></li>
-<li class="chapter" data-level="2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>2.2</b> Creating &amp; Saving an R Script</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>2.2.1</b> Creating a New R Script</a></li>
-<li class="chapter" data-level="2.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>2.2.2</b> Using an R Script</a></li>
-<li class="chapter" data-level="2.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>2.2.3</b> Saving an R Script</a></li>
-<li class="chapter" data-level="2.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>2.2.4</b> Opening a Saved R Script</a></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#conclusion"><i class="fa fa-check"></i><b>2.3</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>2.3</b> Creating an RStudio Project</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>2.3.1</b> Creating a New RStudio Project</a></li>
-<li class="chapter" data-level="2.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>2.3.2</b> Opening an Existing RStudio Project</a></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>2.4</b> Orientation to Written Tutorials</a></li>
-<li class="chapter" data-level="2.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>2.5</b> Summary</a></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#downloading-installing-r"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>3</b> Basic Features and Operations of the R Language</a><ul>
-<li class="chapter" data-level="3.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>3.1</b> R as a Calculator</a></li>
-<li class="chapter" data-level="3.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>3.2</b> Functions</a></li>
-<li class="chapter" data-level="3.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>3.3</b> Packages</a></li>
-<li class="chapter" data-level="3.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>3.4</b> Variable Assignment</a></li>
-<li class="chapter" data-level="3.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>3.5</b> Types of Data</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>3.5.1</b> <code>numeric</code> Data</a></li>
-<li class="chapter" data-level="3.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>3.5.2</b> <code>character</code> Data</a></li>
-<li class="chapter" data-level="3.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>3.5.3</b> <code>Date</code> Data</a></li>
-<li class="chapter" data-level="3.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>3.5.4</b> <code>logical</code> Data</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>3.6</b> Vectors</a></li>
-<li class="chapter" data-level="3.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>3.7</b> Lists</a></li>
-<li class="chapter" data-level="3.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>3.8</b> Data Frames</a></li>
-<li class="chapter" data-level="3.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>3.9</b> Annotations</a></li>
-<li class="chapter" data-level="3.10" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>3.10</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>4</b> Setting a Working Directory</a><ul>
-<li class="chapter" data-level="4.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>4.0.1</b> Identify the Current Working Directory</a></li>
-<li class="chapter" data-level="4.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>4.0.2</b> Set a New Working Directory</a></li>
-<li class="chapter" data-level="4.1" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>4.1</b> Summary</a></li>
-</ul></li>
-<li class="part"><span><b>II Data Acquisition &amp; Management</b></span></li>
-<li class="chapter" data-level="5" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>5</b> Reading Data into R</a><ul>
-<li class="chapter" data-level="5.1" data-path="read.html"><a href="read.html#read-a-.csv-file"><i class="fa fa-check"></i><b>5.1</b> Read a .csv File</a></li>
-<li class="chapter" data-level="5.2" data-path="read.html"><a href="read.html#read-a-.xlsx-file"><i class="fa fa-check"></i><b>5.2</b> Read a .xlsx File</a></li>
-<li class="chapter" data-level="5.3" data-path="read.html"><a href="read.html#read_specialtopics"><i class="fa fa-check"></i><b>5.3</b> Special Topics</a><ul>
-<li class="chapter" data-level="5.3.1" data-path="read.html"><a href="read.html#list-data-file-names-in-working-directory"><i class="fa fa-check"></i><b>5.3.1</b> List Data File Names in Working Directory</a></li>
-<li class="chapter" data-level="5.3.2" data-path="read.html"><a href="read.html#skip-rows-of-data-when-reading"><i class="fa fa-check"></i><b>5.3.2</b> Skip Rows of Data When Reading</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>5.4</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>6</b> Removing and Adding Variable Names</a><ul>
-<li class="chapter" data-level="6.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>6.1</b> Remove Variable Names from a Data Frame Object</a></li>
-<li class="chapter" data-level="6.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>6.2</b> Add Variable Names to a Data Frame Object</a></li>
-<li class="chapter" data-level="6.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>7</b> Writing Data from R</a><ul>
-<li class="chapter" data-level="7.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>7.1</b> Write Data Frame to Working Directory</a></li>
-<li class="chapter" data-level="7.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>7.2</b> Write Table to Working Directory</a></li>
-<li class="chapter" data-level="7.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>7.3</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>8</b> Arranging (Sorting) Data</a><ul>
-<li class="chapter" data-level="8.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>8.1</b> Arrange (Sort) Data</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>8.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="8.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>8.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>8.2</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>9</b> Joining (Merging) Data</a><ul>
-<li class="chapter" data-level="9.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>9.1</b> Horizontal Join (Merge)</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>9.1.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="9.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>9.1.2</b> <em>Without</em> Pipe</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>9.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#downloading-installing-rstudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
 <li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>10</b> Filtering Data</a><ul>
-<li class="chapter" data-level="10.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.1</b> Filter Cases from Data Frame</a><ul>
-<li class="chapter" data-level="10.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>10.1.1</b> <em>With</em> Pipes</a></li>
-<li class="chapter" data-level="10.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>10.1.2</b> <em>Without</em> Pipes</a></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.2</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.3</b> Select Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>10.3.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>10.3.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
 </ul></li>
-<li class="chapter" data-level="10.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.4</b> Remove Multiple Variables from Data Frame</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>10.4.1</b> <em>With</em> Pipe</a></li>
-<li class="chapter" data-level="10.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>10.4.2</b> <em>Without</em> Pipe</a></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-1"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10.5" data-path="install.html"><a href="install.html#summary"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
 </ul></li>
-<li class="part"><span><b>Chapter Supplements</b></span></li>
-<li class="chapter" data-level="" data-path="read-supplement.html"><a href="read-supplement.html"><i class="fa fa-check"></i>Read Data: Chapter Supplement</a><ul>
-<li><a href="read-supplement.html#readcsv_supp"><code>read.csv</code> Function from Base R</a></li>
-<li><a href="read-supplement.html#readlessr_supp"><code>Read</code> Function from <code>lessR</code> Package</a></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-2"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-3"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing and Adding Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#summary-4"><i class="fa fa-check"></i><b>14.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-5"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-6"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-7"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-8"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a></li>
+<li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="" data-path="arrange-supplement.html"><a href="arrange-supplement.html"><i class="fa fa-check"></i>Arranging (Sorting) Data: Chapter Supplement</a>
+<ul>
 <li><a href="arrange-supplement.html#arrange_supp"><code>order</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a><ul>
+<li class="chapter" data-level="" data-path="join-supplement.html"><a href="join-supplement.html"><i class="fa fa-check"></i>Joining (Merging) Data: Chapter Supplement</a>
+<ul>
 <li><a href="join-supplement.html#join_supp"><code>merge</code> Function from Base R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a><ul>
-<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a><ul>
-<li class="chapter" data-level="10.5.1" data-path="filter.html"><a href="filter.html#filter-cases-from-data-frame"><i class="fa fa-check"></i><b>10.5.1</b> Filter Cases from Data Frame</a></li>
-<li class="chapter" data-level="10.5.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.2</b> Select Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.3" data-path="filter.html"><a href="filter.html#select-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.3</b> Select Multiple Variables from Data Frame</a></li>
-<li class="chapter" data-level="10.5.4" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>10.5.4</b> Remove Single Variable from Data Frame</a></li>
-<li class="chapter" data-level="10.5.5" data-path="filter.html"><a href="filter.html#remove-multiple-variables-from-data-frame"><i class="fa fa-check"></i><b>10.5.5</b> Remove Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html"><i class="fa fa-check"></i>Filtering Data: Chapter Supplement</a>
+<ul>
+<li><a href="filter-supplement.html#filter_supp"><code>subset</code> Function from Base R</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="filter-supplement.html"><a href="filter-supplement.html#filter-cases-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.1</b> Filter Cases from Data Frame</a></li>
+<li class="chapter" data-level="19.0.2" data-path="filter-supplement.html"><a href="filter-supplement.html#select-single-variable-from-data-frame"><i class="fa fa-check"></i><b>19.0.2</b> Select Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.3" data-path="filter-supplement.html"><a href="filter-supplement.html#select-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.3</b> Select Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="19.0.4" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-single-variable-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.4</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="19.0.5" data-path="filter-supplement.html"><a href="filter-supplement.html#remove-multiple-variables-from-data-frame-1"><i class="fa fa-check"></i><b>19.0.5</b> Remove Multiple Variables from Data Frame</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="filter-supplement.html"><a href="filter-supplement.html#str_detect_supp"><i class="fa fa-check"></i>Filter by Pattern Contained within String</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -293,44 +343,44 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="install" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Installing R &amp; RStudio</h1>
+<div id="install" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Installing R &amp; RStudio</h1>
 <p>If you have a Windows, Mac, or Linux operating system, you have several ways in which you can begin working in R. Commonly, users install R on their computer along with an integrated development environment (IDE) software application like RStudio. Recently, RStudio Cloud (<a href="https://rstudio.cloud" class="uri">https://rstudio.cloud</a>) has emerged as an alternative to installing R and RStudio by allowing users to use R and RStudio via the cloud, which notably allows those using the Google Chrome operating system to access R and RStudio.</p>
-<div id="video-tutorial" class="section level4">
-<h4><span class="header-section-number">1.0.0.1</span> Video Tutorial</h4>
+<div id="video-tutorial" class="section level4" number="9.0.0.1">
+<h4><span class="header-section-number">9.0.0.1</span> Video Tutorial</h4>
 <p>When it comes to learning how to use and apply R I’ve found that some people prefer written tutorials, others prefer video tutorials, and some like to learn using a combination of written and video tutorials. When first starting out, you might find it easier to follow along with a video tutorial, and as you get more comfortable with R, you may begin to prefer the written tutorials that are integrated into each chapter. Generally, the written tutorials contain more information and often more functions and operations, whereas the video tutorial provides the “need to know” information, functions, and operations. Because this first chapter is just focused on downloading and installing the R and RStudio programs, the written tutorial provided below may suffice; however, if you get stuck, you might find it useful to check out the video tutorial. As a final note, I created the video tutorial embedded in this book using a Windows computer, and thus there might be some minor aesthetic differences in the RStudio interface – as well as differences in hot keys (e.g., Ctrl+C vs. Command+C).</p>
 <iframe src="https://youtube.com/embed/b18IHQERT4A?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/b18IHQERT4A" class="uri">https://youtu.be/b18IHQERT4A</a></p>
 </div>
-<div id="downloading-installing-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> Downloading &amp; Installing R</h2>
+<div id="downloading-installing-r" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Downloading &amp; Installing R</h2>
 <p>In the following sections, you will learn how to download and install the R program for Windows and Mac operating systems. The base R program must be installed prior to installing the RStudio program. R is open-source software and free to download.</p>
-<div id="for-windows-operation-systems" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> For Windows Operation Systems</h3>
+<div id="for-windows-operation-systems" class="section level3" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> For Windows Operation Systems</h3>
 <p>R can currently run under operating systems as old as Windows Vista (circa 2007). To download R for your Windows operating system for the first time, click on this link: <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a>. Once you are on the R download page, click on the hyperlink to download the current version of R for Windows. Once the file has downloaded, follow the installation prompts.</p>
 </div>
-<div id="for-mac-operating-systems" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> For Mac Operating Systems</h3>
+<div id="for-mac-operating-systems" class="section level3" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> For Mac Operating Systems</h3>
 <p>The current version of R works with Mac OS X (release 10.6 and higher). To download R for Mac OS X operating system for the first time, click on this link: <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a>. If you have Mac OS X 10.11 or higher, click on the hyperlink (with .pkg extension) under the “Latest release” section to begin your download. If you have Mac OS X 10.10 or lower, click on the appropriate hyperlink (with .pkg extension) under the “Binaries for legacy OS X systems” section. Once the file has downloaded, follow the installation prompts.</p>
 <p>I don’t advise using a Mac operating system that is older than Mac OS X 10.6 (which came out in 2009), as you may run into issues when using certain R packages for data analysis and visualization.</p>
 </div>
 </div>
-<div id="downloading-installing-rstudio" class="section level2">
-<h2><span class="header-section-number">1.2</span> Downloading &amp; Installing RStudio</h2>
+<div id="downloading-installing-rstudio" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Downloading &amp; Installing RStudio</h2>
 <p>RStudio is not required to use R; however, RStudio offers a number of helpful features and a user-friendly interface. More specifically, RStudio is an integrated development environment (IDE) for R. The desktop version of RStudio is free to download. To do so, click on this link: <a href="https://rstudio.com/products/rstudio/download/#download" class="uri">https://rstudio.com/products/rstudio/download/#download</a>.</p>
 <ol style="list-style-type: decimal">
 <li>Make sure that you have already installed the R program to your computer (see above).<br />
 </li>
 <li>Click on the download button below the “RStudio Desktop” followed by the version number. Again, this version is free.<br />
 </li>
-<li>Under the heading “Installers for Supported Platforms”, click on the link that corresponds to your operating system.<br />
+<li>Under the heading “Installers for Supported Platforms,” click on the link that corresponds to your operating system.<br />
 </li>
 <li>Once the file has downloaded, follow the installation prompts.</li>
 </ol>
 </div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">1.3</span> Summary</h2>
+<div id="summary" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Summary</h2>
 <p>In this chapter, we learned how to install R and RStudio for our Windows or Mac operating systems.</p>
 
 </div>
@@ -340,7 +390,7 @@ BOOK UNDER CONSTRUCTION</a>
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="overviewR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="gettingstarted.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
