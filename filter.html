@@ -377,12 +377,12 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If we apply the logical “OR” operator, things get a bit more interesting. The logical “OR” is used when our objective is to select cases based on two logical statements, and if <em>either</em> logical statement is true for a given case, then that case is selected. The logical “OR” is consistent with idea of a mathematical union (<span class="math inline">\(\cup\)</span>) from Set Theory. As an example, let’s combine the two logical statements from above with the logical “OR” operator. We retain those cases for which their score on <span class="math inline">\(X\)</span> is “greater than or equal to” 3 <strong>or</strong> “less than or equal to” 5. Given that <span class="math inline">\(X\)</span> has possible scores ranging from 1-7, below, we see that this logic retains all cases, as all scores (1-7) would satisfy one or both of the logical statements.</p>
 <div class="figure">
 <img src="logical_or.png" alt="" />
-<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we wish to retain those cases for which X$ is “greater than or equal to” 3 <strong>or</strong> “less than or equal to” 5, we select those cases that satisfy either (or both) logical statements.</p>
+<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we wish to retain those cases for which <span class="math inline">\(X\)</span> is “greater than or equal to” 3 <strong>or</strong> “less than or equal to” 5, we select those cases that satisfy either (or both) logical statements.</p>
 </div>
 <p>Using the same to logical statements above, let’s replace the logical “OR” with the logical “AND.” The logical “AND” is used when our objective is to select cases based on two logical statements, and if <em>both</em> logical statements are true for a given case, then that case is selected. The logical “AND” is consistent with idea of a mathematical intersection (<span class="math inline">\(\cap\)</span>) from Set Theory. In this example, we retain only those cases for which their score on <span class="math inline">\(X\)</span> is “greater than or equal to” 3 <strong>and</strong> “less than or equal to” 5. Given that <span class="math inline">\(X\)</span> has possible scores ranging from 1-7, below, we see that this logic retain only cases with scores within the range 3-5, as only scores of 3, 4, or 5 would satisfy both of the logical statements.</p>
 <div class="figure">
 <img src="logical_and.png" alt="" />
-<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we wish to retain those cases for which X$ is “greater than or equal to” 3 <strong>and</strong> “less than or equal to” 5, we select only those cases that satisfy both logical statements.</p>
+<p class="caption">The vector <span class="math inline">\(X\)</span> has seven possible scores, ranging from 1 to 7. If we wish to retain those cases for which <span class="math inline">\(X\)</span> is “greater than or equal to” 3 <strong>and</strong> “less than or equal to” 5, we select only those cases that satisfy both logical statements.</p>
 </div>
 </div>
 <div id="video-tutorial-11" class="section level4" number="18.0.0.2">
@@ -433,20 +433,20 @@ BOOK UNDER CONSTRUCTION</a>
 <h4><span class="header-section-number">18.0.0.4</span> Initial Steps</h4>
 <p>If you haven’t already, save the files called <strong>“PersData.csv”</strong> and <strong>“PerfData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="filter.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb321-2"><a href="filter.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="filter.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb317-2"><a href="filter.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data files called <strong>“PersData.csv”</strong> and <strong>“PerfData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="filter.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb322-2"><a href="filter.html#cb322-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb322-3"><a href="filter.html#cb322-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb322-4"><a href="filter.html#cb322-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="filter.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb323-2"><a href="filter.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb323-3"><a href="filter.html#cb323-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb323-4"><a href="filter.html#cb323-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb323-5"><a href="filter.html#cb323-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="filter.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb318-2"><a href="filter.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb318-3"><a href="filter.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb318-4"><a href="filter.html#cb318-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="filter.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb319-2"><a href="filter.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb319-3"><a href="filter.html#cb319-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb319-4"><a href="filter.html#cb319-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
+<span id="cb319-5"><a href="filter.html#cb319-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -454,9 +454,9 @@ BOOK UNDER CONSTRUCTION</a>
 ##   startdate = col_character(),
 ##   gender = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="filter.html#cb325-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="filter.html#cb321-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
@@ -464,13 +464,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##   perf_q3 = col_double(),
 ##   perf_q4 = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="filter.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb327-2"><a href="filter.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="filter.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb323-2"><a href="filter.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="filter.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(performancedata)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="filter.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(performancedata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="filter.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
-<span id="cb331-2"><a href="filter.html#cb331-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="filter.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
+<span id="cb327-2"><a href="filter.html#cb327-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -483,7 +483,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="filter.html#cb333-1" aria-hidden="true" tabindex="-1"></a>performancedata</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="filter.html#cb329-1" aria-hidden="true" tabindex="-1"></a>performancedata</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -495,17 +495,17 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   282     2.2     2.3     2.4     2.5</code></pre>
 <p>As you can see from the output generated in your console, on the one hand, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. On the other hand, the <code>personaldata</code> data frame object contains the same <code>id</code> unique identifier variable as the <code>personaldata</code> data frame object, but instead of employee demographic information, this data frame object includes variables associated with quarterly employee performance: <code>perf_q1</code>, <code>perf_q2</code>, <code>perf_q3</code>, and <code>perf_q4</code>.</p>
 <p>To make this chapter more interesting (and for the sake of practice), let’s use the <code>full_join</code> function from <code>dplyr</code> to join (merge) the two data frames we just read in (<code>personaldata</code>, <code>performancedata</code>) using the <code>id</code> variable as the key variable. Let’s arbitrarily name the new joined (merged) data frame <code>mergeddf</code> using the <code>&lt;-</code> operator. For more information on joining data, check out the chapter called <a href="join.html#join">Joining (Merging) Data</a>.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="filter.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb335-2"><a href="filter.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb335-3"><a href="filter.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb335-4"><a href="filter.html#cb335-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="filter.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb336-2"><a href="filter.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="filter.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (without pipe)</span></span>
-<span id="cb337-2"><a href="filter.html#cb337-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">full_join</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb337-3"><a href="filter.html#cb337-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb337-4"><a href="filter.html#cb337-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View joined (merged) data frame object</span></span>
-<span id="cb337-5"><a href="filter.html#cb337-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="filter.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb331-2"><a href="filter.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb331-3"><a href="filter.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb331-4"><a href="filter.html#cb331-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="filter.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb332-2"><a href="filter.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="filter.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (without pipe)</span></span>
+<span id="cb333-2"><a href="filter.html#cb333-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">full_join</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb333-3"><a href="filter.html#cb333-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb333-4"><a href="filter.html#cb333-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View joined (merged) data frame object</span></span>
+<span id="cb333-5"><a href="filter.html#cb333-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -524,8 +524,8 @@ BOOK UNDER CONSTRUCTION</a>
 <h2><span class="header-section-number">18.1</span> Filter Cases from Data Frame</h2>
 <p>Sometimes we want to select only a subset of cases from a data frame or table. There are different functions that can achieve this end. For example, the <code>subset</code> function filter from base <code>R</code> will do the trick. With that said, the <code>dplyr</code> package offers the <code>filter</code> function which has some advantages (e.g., faster with larger amounts of data), and thus, we will focus on the <code>filter</code> function in this chapter. If you would like to learn how to use the <code>subset</code> function from base R, check out the chapter supplement called <a href="filter-supplement.html#filter_supplement">Joining (Merging) Data</a>.</p>
 <p>In order to properly filter data by cases, we need to know the respective types (classes) of the variables in the data frame. Perhaps the quickest way to find out the type (class) of each variable in the data frame is to use the <code>str</code> (structure) function from base <code>R</code>, and the function’s parentheses, just enter the name of the data frame (<code>mergeddf</code>).</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="filter.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine class of variables</span></span>
-<span id="cb339-2"><a href="filter.html#cb339-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="filter.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine class of variables</span></span>
+<span id="cb335-2"><a href="filter.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,9] [9 x 9] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ id       : num [1:9] 153 154 155 165 125 111 198 201 282
 ##  $ lastname : chr [1:9] &quot;Sanchez&quot; &quot;McDonald&quot; &quot;Smith&quot; &quot;Doe&quot; ...
@@ -593,19 +593,19 @@ BOOK UNDER CONSTRUCTION</a>
 </tbody>
 </table>
 <p>To get started, install and access the <code>dplyr</code> package.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="filter.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb341-2"><a href="filter.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="filter.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb342-2"><a href="filter.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="filter.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb337-2"><a href="filter.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="filter.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb338-2"><a href="filter.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>I will demonstrate two approaches applying the <code>filter</code> function from <code>dplyr</code>. The first option uses “pipe(s),” which in R is represented by the <code>%&gt;%</code> operator. The pipe operator comes from a package called <code>magrittr</code>, on which the <code>dplyr</code> is partially dependent. In short, a pipe allows one to more efficiently code/script and to improve the readability of the code/script under certain conditions. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. The second option is more traditional and lacks the efficiency and readability of pipes. You can use either approach, and if don’t you want to use pipes, skip to the section below called <em>Without Pipes</em>. For more information on the pipe operator, check out this link: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
 <div id="with-pipes" class="section level3" number="18.1.1">
 <h3><span class="header-section-number">18.1.1</span> <em>With</em> Pipes</h3>
 <p>Using an approach with pipes, first, use the <code>&lt;-</code> operator to name the filtered data frame that we will create. For this example, I name the new joined data frame <code>filterdf</code>; you could name it whatever you would like. Second, type the name of the first data frame, which we named <code>mergeddf</code> (see above), followed by the pipe (<code>%&gt;%</code>) operator. This will “pipe” our data frame into the subsequent function. Third, either on the same line or on the next line, type the <code>filter</code> function. Fourth, within the function parentheses, type the name of the variable we wish to filter the data frame by, which in this example is <code>gender</code>. Fourth, type a logical operator, which for this example is <code>==</code>. Fifth, type a value for the filter variable, which in this example is “female”; because the <code>gender</code> variable is of type <em>character</em>, we need to put quotation marks (<code>" "</code>) around the value of the variable that we wish to filter by. Remember, object names in R are case and space sensitive; for instance, <code>gender</code> is different from <code>Gender</code>, and “female” is different from “Female.”</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="filter.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in by gender with pipe</span></span>
-<span id="cb343-2"><a href="filter.html#cb343-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">&quot;female&quot;</span>)</span>
-<span id="cb343-3"><a href="filter.html#cb343-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb343-4"><a href="filter.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb343-5"><a href="filter.html#cb343-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="filter.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in by gender with pipe</span></span>
+<span id="cb339-2"><a href="filter.html#cb339-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb339-3"><a href="filter.html#cb339-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb339-4"><a href="filter.html#cb339-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb339-5"><a href="filter.html#cb339-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -614,11 +614,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>Note how the data frame above contains only those cases with “female” as their <code>gender</code> variable designation. The filter worked as expected.</p>
 <p>Alternatively, we could filter <em>out</em> those cases in which <code>gender</code> is equal to “female” using the <code>!=</code> (not equal to) logical operator.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="filter.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out by gender with pipe</span></span>
-<span id="cb345-2"><a href="filter.html#cb345-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">!=</span><span class="st">&quot;female&quot;</span>)</span>
-<span id="cb345-3"><a href="filter.html#cb345-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-4"><a href="filter.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb345-5"><a href="filter.html#cb345-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="filter.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out by gender with pipe</span></span>
+<span id="cb341-2"><a href="filter.html#cb341-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">!=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb341-3"><a href="filter.html#cb341-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-4"><a href="filter.html#cb341-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb341-5"><a href="filter.html#cb341-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -630,22 +630,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note how cases with <code>gender</code> equal to “female” are no longer in the data frame, while every other case is retained.</p>
 <p>Let’s now filter by a variable of type numeric (or integer). Specifically, let’s select those cases in which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is of type <em>numeric</em>, we don’t use quotation marks (<code>" "</code>) around the value we wish to filter by, which in this case is 4.0.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="filter.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by perf_q2 with pipe</span></span>
-<span id="cb347-2"><a href="filter.html#cb347-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb347-3"><a href="filter.html#cb347-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb347-4"><a href="filter.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb347-5"><a href="filter.html#cb347-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="filter.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by perf_q2 with pipe</span></span>
+<span id="cb343-2"><a href="filter.html#cb343-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb343-3"><a href="filter.html#cb343-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb343-4"><a href="filter.html#cb343-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb343-5"><a href="filter.html#cb343-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
 ## 2   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
 <p>If we wish to filter by two variables, we can apply the logical “or” (<code>|</code>) operator or “and” (<code>&amp;</code>) operator. First, let’s select those cases in which either <code>gender</code> is equal to “female” or <code>perf_q2</code> is greater than 4.0 using the “or” (<code>|</code>) operator.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="filter.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender or perf_q2 with pipe</span></span>
-<span id="cb349-2"><a href="filter.html#cb349-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">|</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb349-3"><a href="filter.html#cb349-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb349-4"><a href="filter.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb349-5"><a href="filter.html#cb349-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="filter.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender or perf_q2 with pipe</span></span>
+<span id="cb345-2"><a href="filter.html#cb345-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">|</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb345-3"><a href="filter.html#cb345-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb345-4"><a href="filter.html#cb345-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb345-5"><a href="filter.html#cb345-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -654,21 +654,21 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
 ## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>Watch what happens if we apply the logical “and” (<code>&amp;</code>) operator with the same syntax as above.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="filter.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender and perf_q2 with pipe</span></span>
-<span id="cb351-2"><a href="filter.html#cb351-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">&amp;</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb351-3"><a href="filter.html#cb351-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-4"><a href="filter.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb351-5"><a href="filter.html#cb351-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="filter.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender and perf_q2 with pipe</span></span>
+<span id="cb347-2"><a href="filter.html#cb347-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">&amp;</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb347-3"><a href="filter.html#cb347-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-4"><a href="filter.html#cb347-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb347-5"><a href="filter.html#cb347-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
 <p>We can also use the logical “or” (<code>|</code>) operator to select two values of the same variable.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="filter.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two values of firstname with pipe</span></span>
-<span id="cb353-2"><a href="filter.html#cb353-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(firstname<span class="sc">==</span><span class="st">&quot;John&quot;</span> <span class="sc">|</span> firstname<span class="sc">==</span><span class="st">&quot;Jane&quot;</span>)</span>
-<span id="cb353-3"><a href="filter.html#cb353-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb353-4"><a href="filter.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb353-5"><a href="filter.html#cb353-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="filter.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two values of firstname with pipe</span></span>
+<span id="cb349-2"><a href="filter.html#cb349-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(firstname<span class="sc">==</span><span class="st">&quot;John&quot;</span> <span class="sc">|</span> firstname<span class="sc">==</span><span class="st">&quot;Jane&quot;</span>)</span>
+<span id="cb349-3"><a href="filter.html#cb349-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb349-4"><a href="filter.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb349-5"><a href="filter.html#cb349-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -676,11 +676,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 2   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
 ## 3   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Or we can select two ranges of values from the same variable using the logical “or” (<code>|</code>) operator, assuming the variable is of type numeric, integer, or date.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="filter.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two ranges of values of perf_q1 with pipe</span></span>
-<span id="cb355-2"><a href="filter.html#cb355-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(perf_q1<span class="sc">&lt;=</span><span class="fl">2.5</span> <span class="sc">|</span> perf_q1<span class="sc">&gt;=</span><span class="fl">4.0</span>)</span>
-<span id="cb355-3"><a href="filter.html#cb355-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-4"><a href="filter.html#cb355-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb355-5"><a href="filter.html#cb355-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="filter.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two ranges of values of perf_q1 with pipe</span></span>
+<span id="cb351-2"><a href="filter.html#cb351-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(perf_q1<span class="sc">&lt;=</span><span class="fl">2.5</span> <span class="sc">|</span> perf_q1<span class="sc">&gt;=</span><span class="fl">4.0</span>)</span>
+<span id="cb351-3"><a href="filter.html#cb351-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb351-4"><a href="filter.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb351-5"><a href="filter.html#cb351-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -689,11 +689,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
 ## 4   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>The <code>filter</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you’ve identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let’s pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs R to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs R to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="filter.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 and 201 with pipe</span></span>
-<span id="cb357-2"><a href="filter.html#cb357-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
-<span id="cb357-3"><a href="filter.html#cb357-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-4"><a href="filter.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb357-5"><a href="filter.html#cb357-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="filter.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 and 201 with pipe</span></span>
+<span id="cb353-2"><a href="filter.html#cb353-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
+<span id="cb353-3"><a href="filter.html#cb353-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb353-4"><a href="filter.html#cb353-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb353-5"><a href="filter.html#cb353-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -706,22 +706,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note that in the output above cases with <code>id</code> variable values equal to 198 and 201 are no longer present.</p>
 <p>If you remove the <code>!</code> in front of the filter variable, only cases <code>198</code> and <code>201</code> are retained.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="filter.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 and 201 with pipe</span></span>
-<span id="cb359-2"><a href="filter.html#cb359-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
-<span id="cb359-3"><a href="filter.html#cb359-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb359-4"><a href="filter.html#cb359-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb359-5"><a href="filter.html#cb359-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="filter.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 and 201 with pipe</span></span>
+<span id="cb355-2"><a href="filter.html#cb355-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
+<span id="cb355-3"><a href="filter.html#cb355-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb355-4"><a href="filter.html#cb355-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb355-5"><a href="filter.html#cb355-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
 ## 2   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>And if you wanted to remove just a single case, you could use the unique identifier variable (<code>id</code>) and the following script/code.</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="filter.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 with pipe</span></span>
-<span id="cb361-2"><a href="filter.html#cb361-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id<span class="sc">!=</span><span class="dv">198</span>)</span>
-<span id="cb361-3"><a href="filter.html#cb361-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb361-4"><a href="filter.html#cb361-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb361-5"><a href="filter.html#cb361-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="filter.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 with pipe</span></span>
+<span id="cb357-2"><a href="filter.html#cb357-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(id<span class="sc">!=</span><span class="dv">198</span>)</span>
+<span id="cb357-3"><a href="filter.html#cb357-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb357-4"><a href="filter.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb357-5"><a href="filter.html#cb357-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 8 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -734,11 +734,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
 ## 8   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base R (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base R. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells R that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format="%m/%d/%Y"</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year.</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="filter.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span></span>
-<span id="cb363-2"><a href="filter.html#cb363-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">as.character</span>(mergeddf<span class="sc">$</span>startdate), <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="filter.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span></span>
+<span id="cb359-2"><a href="filter.html#cb359-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">as.character</span>(mergeddf<span class="sc">$</span>startdate), <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
 <p>To verify that the new <code>startdate2</code> variable is of type date, use the <code>str</code> function from base R, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="filter.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span></span>
-<span id="cb364-2"><a href="filter.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="filter.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span></span>
+<span id="cb360-2"><a href="filter.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,10] [9 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ id        : num [1:9] 153 154 155 165 125 111 198 201 282
 ##  $ lastname  : chr [1:9] &quot;Sanchez&quot; &quot;McDonald&quot; &quot;Smith&quot; &quot;Doe&quot; ...
@@ -749,7 +749,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##  $ perf_q2   : num [1:9] 4.8 NA NA NA 1.9 3.3 4.5 1.1 2.3
 ##  $ perf_q3   : num [1:9] 4.9 NA NA NA 2.1 3.4 4.4 1 2.4
 ##  $ perf_q4   : num [1:9] 5 NA NA NA 2.3 3.3 4.8 1 2.5
-##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; ...
+##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; &quot;2016-01-09&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
 ##   ..   id = col_double(),
@@ -759,109 +759,108 @@ BOOK UNDER CONSTRUCTION</a>
 ##   ..   gender = col_character()
 ##   .. )</code></pre>
 <p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>" "</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="filter.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by startdate2 with pipe</span></span>
-<span id="cb366-2"><a href="filter.html#cb366-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(startdate2 <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
-<span id="cb366-3"><a href="filter.html#cb366-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb366-4"><a href="filter.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb366-5"><a href="filter.html#cb366-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="filter.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by startdate2 with pipe</span></span>
+<span id="cb362-2"><a href="filter.html#cb362-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">filter</span>(startdate2 <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
+<span id="cb362-3"><a href="filter.html#cb362-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-4"><a href="filter.html#cb362-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb362-5"><a href="filter.html#cb362-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
-## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
-## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
-## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
-## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
-## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA   2016-01-09
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA   2016-01-09
+## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3 2016-01-09
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1   2016-01-09
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5 2016-01-09</code></pre>
 </div>
 <div id="without-pipes" class="section level3" number="18.1.2">
 <h3><span class="header-section-number">18.1.2</span> <em>Without</em> Pipes</h3>
 <p>We can also filter using the <code>filter</code> function from the <code>dplyr</code> package without using the pipe (<code>%&gt;%</code>) operator. Note how I simply move the name of the data frame object from before the pipe (<code>%&gt;%</code>) operator to the first argument in the <code>filter</code> function. Everything else remains the same. For simplicity, I don’t display the output below as it is the same as the output as above using pipes. <em>Your decision whether to use a pipe operator is completely up to you.</em></p>
 <p>Let’s filter the <code>mergeddf</code> data frame object such that only those cases for which the <code>gender</code> variable is equal to “female” are retained. Note how we apply the equal to (<code>==</code>) logical operator. A table of logical operators is presented towards the beginning of this tutorial.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="filter.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in by gender without pipe</span></span>
-<span id="cb368-2"><a href="filter.html#cb368-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span>)</span>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="filter.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in by gender without pipe</span></span>
+<span id="cb364-2"><a href="filter.html#cb364-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb364-3"><a href="filter.html#cb364-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb364-4"><a href="filter.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb364-5"><a href="filter.html#cb364-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<p>Now let’s filter <em>out</em> those cases in which <code>gender</code> is <em>not</em> equal to “female.” We apply the not equal to (<code>!=</code>) logical operator to do so.</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="filter.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in by gender without pipe</span></span>
+<span id="cb365-2"><a href="filter.html#cb365-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">!=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb365-3"><a href="filter.html#cb365-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-4"><a href="filter.html#cb365-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb365-5"><a href="filter.html#cb365-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<p>Filter the data frame such that we retain those cases for which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is numeric, we <em>don’t</em> put the value 4.0 in quotation marks.</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="filter.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by perf_q2 without pipe</span></span>
+<span id="cb366-2"><a href="filter.html#cb366-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb366-3"><a href="filter.html#cb366-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb366-4"><a href="filter.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb366-5"><a href="filter.html#cb366-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<p>Using the logical “or” operator (<code>|</code>), select those cases for which <code>gender</code> is equal to “female” <em>or</em> for which <code>perf_q2</code> is greater than 4.0.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="filter.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender or perf_q2 without pipe</span></span>
+<span id="cb367-2"><a href="filter.html#cb367-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">|</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb367-3"><a href="filter.html#cb367-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb367-4"><a href="filter.html#cb367-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb367-5"><a href="filter.html#cb367-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<p>Using the logical “and” operator (<code>&amp;</code>), select those cases for which <code>gender</code> is equal to “female” <em>and</em> for which <code>perf_q2</code> is greater than 4.0. Note the difference in the resulting filtered data frame.</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="filter.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender and perf_q2 without pipe</span></span>
+<span id="cb368-2"><a href="filter.html#cb368-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">&amp;</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
 <span id="cb368-3"><a href="filter.html#cb368-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb368-4"><a href="filter.html#cb368-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
 <span id="cb368-5"><a href="filter.html#cb368-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>Now let’s filter <em>out</em> those cases in which <code>gender</code> is <em>not</em> equal to “female.” We apply the not equal to (<code>!=</code>) logical operator to do so.</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="filter.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in by gender without pipe</span></span>
-<span id="cb369-2"><a href="filter.html#cb369-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">!=</span><span class="st">&quot;female&quot;</span>)</span>
+<p>Using the logical “or” operator (<code>|</code>), select those cases for which <code>firstname</code> is equal to “John” <em>or</em> for which <code>firstname</code> is equal to “Jane.” In other words, select those individuals whose names are either “John” or “Jane.”</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="filter.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two values of firstname without pipe</span></span>
+<span id="cb369-2"><a href="filter.html#cb369-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, firstname<span class="sc">==</span><span class="st">&quot;John&quot;</span> <span class="sc">|</span> firstname<span class="sc">==</span><span class="st">&quot;Jane&quot;</span>)</span>
 <span id="cb369-3"><a href="filter.html#cb369-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb369-4"><a href="filter.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
 <span id="cb369-5"><a href="filter.html#cb369-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>Filter the data frame such that we retain those cases for which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is numeric, we <em>don’t</em> put the value 4.0 in quotation marks.</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="filter.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by perf_q2 without pipe</span></span>
-<span id="cb370-2"><a href="filter.html#cb370-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<p>Using the logical “or” operator (<code>|</code>), select the range of cases for which <code>perf_q1</code> is less than equal to (<code>&lt;=</code>) 2.5 <em>or</em> for which <code>perf_q1</code> is greater than or equal (<code>&gt;=</code>) to 4.0.</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="filter.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two ranges of values of perf_q1 without pipe</span></span>
+<span id="cb370-2"><a href="filter.html#cb370-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, perf_q1<span class="sc">&lt;=</span><span class="fl">2.5</span> <span class="sc">|</span> perf_q1<span class="sc">&gt;=</span><span class="fl">4.0</span>)</span>
 <span id="cb370-3"><a href="filter.html#cb370-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb370-4"><a href="filter.html#cb370-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
 <span id="cb370-5"><a href="filter.html#cb370-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>Using the logical “or” operator (<code>|</code>), select those cases for which <code>gender</code> is equal to “female” <em>or</em> for which <code>perf_q2</code> is greater than 4.0.</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="filter.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender or perf_q2 without pipe</span></span>
-<span id="cb371-2"><a href="filter.html#cb371-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">|</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<p>The <code>filter</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you’ve identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let’s pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs R to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs R to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="filter.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 and 201 without pipe</span></span>
+<span id="cb371-2"><a href="filter.html#cb371-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, <span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
 <span id="cb371-3"><a href="filter.html#cb371-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb371-4"><a href="filter.html#cb371-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
 <span id="cb371-5"><a href="filter.html#cb371-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>Using the logical “and” operator (<code>&amp;</code>), select those cases for which <code>gender</code> is equal to “female” <em>and</em> for which <code>perf_q2</code> is greater than 4.0. Note the difference in the resulting filtered data frame.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="filter.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender and perf_q2 without pipe</span></span>
-<span id="cb372-2"><a href="filter.html#cb372-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">&amp;</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<p>Or if you wish to retain only those cases for which the <code>id</code> variable is equal to 198 and 201, drop the not operator (<code>!</code>) from the previous script.</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="filter.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 and 201 without pipe</span></span>
+<span id="cb372-2"><a href="filter.html#cb372-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
 <span id="cb372-3"><a href="filter.html#cb372-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb372-4"><a href="filter.html#cb372-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
 <span id="cb372-5"><a href="filter.html#cb372-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>Using the logical “or” operator (<code>|</code>), select those cases for which <code>firstname</code> is equal to “John” <em>or</em> for which <code>firstname</code> is equal to “Jane.” In other words, select those individuals whose names are either “John” or “Jane.”</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="filter.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two values of firstname without pipe</span></span>
-<span id="cb373-2"><a href="filter.html#cb373-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, firstname<span class="sc">==</span><span class="st">&quot;John&quot;</span> <span class="sc">|</span> firstname<span class="sc">==</span><span class="st">&quot;Jane&quot;</span>)</span>
+<p>You can also drop specific cases one by one using the not equal to operator (<code>!=</code>) and the a unique identifier value associated with the case you wish to remove. We accomplish the same result as above but use two steps instead. Also, note that in the second step below, the new data frame object (<code>filterdf</code>) is used as the first argument because we want to retain the changes we made in the prior step (i.e., dropping case with <code>id</code> equal to 198).</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="filter.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 without pipe</span></span>
+<span id="cb373-2"><a href="filter.html#cb373-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, id<span class="sc">!=</span><span class="dv">198</span>)</span>
 <span id="cb373-3"><a href="filter.html#cb373-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb373-4"><a href="filter.html#cb373-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb373-5"><a href="filter.html#cb373-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>Using the logical “or” operator (<code>|</code>), select the range of cases for which <code>perf_q1</code> is less than equal to (<code>&lt;=</code>) 2.5 <em>or</em> for which <code>perf_q1</code> is greater than or equal (<code>&gt;=</code>) to 4.0.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="filter.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two ranges of values of perf_q1 without pipe</span></span>
-<span id="cb374-2"><a href="filter.html#cb374-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, perf_q1<span class="sc">&lt;=</span><span class="fl">2.5</span> <span class="sc">|</span> perf_q1<span class="sc">&gt;=</span><span class="fl">4.0</span>)</span>
+<span id="cb373-4"><a href="filter.html#cb373-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 201 without pipe</span></span>
+<span id="cb373-5"><a href="filter.html#cb373-5" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(filterdf, id<span class="sc">!=</span><span class="dv">201</span>)</span>
+<span id="cb373-6"><a href="filter.html#cb373-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-7"><a href="filter.html#cb373-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb373-8"><a href="filter.html#cb373-8" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base R (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base R. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells R that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format="%m/%d/%Y"</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year. To verify that the new <code>startdate2</code> variable is of type date, on the next line, use the <code>str</code> function from base R, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="filter.html#cb374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character startdate variable to the date type startdate2 variable</span></span>
+<span id="cb374-2"><a href="filter.html#cb374-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">as.character</span>(mergeddf<span class="sc">$</span>startdate), <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span>
 <span id="cb374-3"><a href="filter.html#cb374-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb374-4"><a href="filter.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb374-5"><a href="filter.html#cb374-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>The <code>filter</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you’ve identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let’s pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs R to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs R to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="filter.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 and 201 without pipe</span></span>
-<span id="cb375-2"><a href="filter.html#cb375-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, <span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
+<span id="cb374-4"><a href="filter.html#cb374-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type date</span></span>
+<span id="cb374-5"><a href="filter.html#cb374-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
+<p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>" "</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="filter.html#cb375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by startdate2 without pipe</span></span>
+<span id="cb375-2"><a href="filter.html#cb375-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, startdate2 <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
 <span id="cb375-3"><a href="filter.html#cb375-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb375-4"><a href="filter.html#cb375-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb375-5"><a href="filter.html#cb375-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>Or if you wish to retain only those cases for which the <code>id</code> variable is equal to 198 and 201, drop the not operator (<code>!</code>) from the previous script.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="filter.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 and 201 without pipe</span></span>
-<span id="cb376-2"><a href="filter.html#cb376-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
-<span id="cb376-3"><a href="filter.html#cb376-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb376-4"><a href="filter.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb376-5"><a href="filter.html#cb376-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>You can also drop specific cases one by one using the not equal to operator (<code>!=</code>) and the a unique identifier value associated with the case you wish to remove. We accomplish the same result as above but use two steps instead. Also, note that in the second step below, the new data frame object (<code>filterdf</code>) is used as the first argument because we want to retain the changes we made in the prior step (i.e., dropping case with <code>id</code> equal to 198).</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="filter.html#cb377-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 without pipe</span></span>
-<span id="cb377-2"><a href="filter.html#cb377-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, id<span class="sc">!=</span><span class="dv">198</span>)</span>
-<span id="cb377-3"><a href="filter.html#cb377-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb377-4"><a href="filter.html#cb377-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 201 without pipe</span></span>
-<span id="cb377-5"><a href="filter.html#cb377-5" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(filterdf, id<span class="sc">!=</span><span class="dv">201</span>)</span>
-<span id="cb377-6"><a href="filter.html#cb377-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb377-7"><a href="filter.html#cb377-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb377-8"><a href="filter.html#cb377-8" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
-<p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base R (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base R. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells R that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format="%m/%d/%Y"</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year. To verify that the new <code>startdate2</code> variable is of type date, on the next line, use the <code>str</code> function from base R, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="filter.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character startdate variable to the date type startdate2 variable</span></span>
-<span id="cb378-2"><a href="filter.html#cb378-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">as.character</span>(mergeddf<span class="sc">$</span>startdate), <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span>
-<span id="cb378-3"><a href="filter.html#cb378-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb378-4"><a href="filter.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type date</span></span>
-<span id="cb378-5"><a href="filter.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
-<p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>" "</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="filter.html#cb379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by startdate2 without pipe</span></span>
-<span id="cb379-2"><a href="filter.html#cb379-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">filter</span>(mergeddf, startdate2 <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
-<span id="cb379-3"><a href="filter.html#cb379-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb379-4"><a href="filter.html#cb379-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb379-5"><a href="filter.html#cb379-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
+<span id="cb375-5"><a href="filter.html#cb375-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 </div>
 </div>
 <div id="remove-single-variable-from-data-frame" class="section level2" number="18.2">
 <h2><span class="header-section-number">18.2</span> Remove Single Variable from Data Frame</h2>
 <p>If you just need to remove a single variable from a data frame, using the <code>NULL</code> object in R in conjunction with the <code>&lt;-</code> operator can designate which variable to drop. For example, if we wish to drop the <code>startdate</code> variable from the <code>mergeddf</code> data frame, we simply note that <code>startdate</code> belongs to <code>mergeddf</code> by joining them with <code>$</code>. Next, we set <code>&lt;- NULL</code> adjacent to <code>mergeddf$startdate</code> to indicate that we wish to remove that variable from that data frame.</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="filter.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable</span></span>
-<span id="cb380-2"><a href="filter.html#cb380-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb380-3"><a href="filter.html#cb380-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb380-4"><a href="filter.html#cb380-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
-<span id="cb380-5"><a href="filter.html#cb380-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="filter.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable</span></span>
+<span id="cb376-2"><a href="filter.html#cb376-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb376-3"><a href="filter.html#cb376-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb376-4"><a href="filter.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
+<span id="cb376-5"><a href="filter.html#cb376-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -881,11 +880,11 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="with-pipe" class="section level3" number="18.3.1">
 <h3><span class="header-section-number">18.3.1</span> <em>With</em> Pipe</h3>
 <p>Using the pipe (<code>%&gt;%</code>) operator, first, decide whether you want to override an existing data frame or create a new data frame based on our selection; here, I override the <code>mergeddf</code> data frame using the <code>&lt;-</code> operator, which results in <code>mergeddf &lt;-</code>. Second, type the name of the original data frame (<code>mergeddf</code>), followed by the pipe (<code>%&gt;%</code>) operator. Third, type the name of the <code>select</code> function. Fourth, in the parentheses, list the names of the variables you wish to select as arguments; all variables that are not listed will be dropped. Here, we are selecting (to retain) the <code>id</code>, <code>perf_q1</code>, <code>gender</code>, <code>lastname</code>, and <code>firstname</code> variables. Note that the updated date frame includes the selected variables in the order in which you listed them.</p>
-<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb382-1"><a href="filter.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple variables with pipe</span></span>
-<span id="cb382-2"><a href="filter.html#cb382-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, perf_q1, gender, lastname, firstname)</span>
-<span id="cb382-3"><a href="filter.html#cb382-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb382-4"><a href="filter.html#cb382-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
-<span id="cb382-5"><a href="filter.html#cb382-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="filter.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple variables with pipe</span></span>
+<span id="cb378-2"><a href="filter.html#cb378-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(id, perf_q1, gender, lastname, firstname)</span>
+<span id="cb378-3"><a href="filter.html#cb378-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb378-4"><a href="filter.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
+<span id="cb378-5"><a href="filter.html#cb378-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id perf_q1 gender lastname   firstname
 ##   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    
@@ -902,11 +901,11 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="without-pipe" class="section level3" number="18.3.2">
 <h3><span class="header-section-number">18.3.2</span> <em>Without</em> Pipe</h3>
 <p>If you decide not to use the pipe (<code>%&gt;%</code>) operator, the syntax remains almost the same except the name of the original data frame object (<code>mergeddf</code>) is moved from before the pipe (<code>%&gt;%</code>) operator to the first argument in the <code>select</code> function. Everything else remains the same.</p>
-<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="filter.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple variables without pipe</span></span>
-<span id="cb384-2"><a href="filter.html#cb384-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">select</span>(mergeddf, id, gender, lastname, firstname)</span>
-<span id="cb384-3"><a href="filter.html#cb384-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb384-4"><a href="filter.html#cb384-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
-<span id="cb384-5"><a href="filter.html#cb384-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="filter.html#cb380-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple variables without pipe</span></span>
+<span id="cb380-2"><a href="filter.html#cb380-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">select</span>(mergeddf, id, gender, lastname, firstname)</span>
+<span id="cb380-3"><a href="filter.html#cb380-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb380-4"><a href="filter.html#cb380-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
+<span id="cb380-5"><a href="filter.html#cb380-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 </div>
 </div>
 <div id="remove-multiple-variables-from-data-frame" class="section level2" number="18.4">
@@ -915,11 +914,11 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="with-pipe-1" class="section level3" number="18.4.1">
 <h3><span class="header-section-number">18.4.1</span> <em>With</em> Pipe</h3>
 <p>Using the pipe (<code>%&gt;%</code>) operator, first, decide whether you want to override an existing data frame or create a new data frame from the subset; here, I override the <code>mergeddf</code> data frame using the <code>&lt;-</code> operator, which results in <code>mergeddf &lt;-</code>. Second, type the name of the original data frame (<code>mergeddf</code>), followed by the pipe (<code>%&gt;%</code>) operator. Third, enter the <code>select</code> function. Fourth, use the <code>c</code> (combine) function with <code>-</code> in front of it to note that you want to select all other variables <em>except</em> the ones listed in the <code>c</code> function.</p>
-<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="filter.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple variables with pipe</span></span>
-<span id="cb385-2"><a href="filter.html#cb385-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(lastname, firstname))</span>
-<span id="cb385-3"><a href="filter.html#cb385-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb385-4"><a href="filter.html#cb385-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
-<span id="cb385-5"><a href="filter.html#cb385-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="filter.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple variables with pipe</span></span>
+<span id="cb381-2"><a href="filter.html#cb381-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(lastname, firstname))</span>
+<span id="cb381-3"><a href="filter.html#cb381-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb381-4"><a href="filter.html#cb381-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
+<span id="cb381-5"><a href="filter.html#cb381-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 3
 ##      id perf_q1 gender
 ##   &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt; 
@@ -933,11 +932,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201     1.2 female
 ## 9   282     2.2 male</code></pre>
 <p>Removing a single variable can also be done using the <code>select</code> function. To do so, just list a single variable with <code>-</code> in front of it (as the sole argument) to indicate that you wish to drop that variable.</p>
-<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="filter.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove single variable with pipe</span></span>
-<span id="cb387-2"><a href="filter.html#cb387-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gender)</span>
-<span id="cb387-3"><a href="filter.html#cb387-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb387-4"><a href="filter.html#cb387-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
-<span id="cb387-5"><a href="filter.html#cb387-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="filter.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove single variable with pipe</span></span>
+<span id="cb383-2"><a href="filter.html#cb383-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gender)</span>
+<span id="cb383-3"><a href="filter.html#cb383-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb383-4"><a href="filter.html#cb383-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
+<span id="cb383-5"><a href="filter.html#cb383-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 2
 ##      id perf_q1
 ##   &lt;dbl&gt;   &lt;dbl&gt;
@@ -954,17 +953,17 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="without-pipe-1" class="section level3" number="18.4.2">
 <h3><span class="header-section-number">18.4.2</span> <em>Without</em> Pipe</h3>
 <p>If you decide <em>not</em> to use the pipe (<code>%&gt;%</code>) operator, the syntax remains mostly the same except the name of the original data frame object (<code>mergeddf</code>) is moved from before the pipe (<code>%&gt;%</code>) operator to the first argument in the <code>select</code> function. Everything else remains the same.</p>
-<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="filter.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple variables without pipe</span></span>
-<span id="cb389-2"><a href="filter.html#cb389-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">select</span>(mergeddf, <span class="sc">-</span><span class="fu">c</span>(lastname, firstname))</span>
-<span id="cb389-3"><a href="filter.html#cb389-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb389-4"><a href="filter.html#cb389-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
-<span id="cb389-5"><a href="filter.html#cb389-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb385-1"><a href="filter.html#cb385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple variables without pipe</span></span>
+<span id="cb385-2"><a href="filter.html#cb385-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">select</span>(mergeddf, <span class="sc">-</span><span class="fu">c</span>(lastname, firstname))</span>
+<span id="cb385-3"><a href="filter.html#cb385-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb385-4"><a href="filter.html#cb385-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
+<span id="cb385-5"><a href="filter.html#cb385-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <p>And here’s the non-pipe equivalent to removing a single variable using this approach.</p>
-<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb390-1"><a href="filter.html#cb390-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove single variable without pipe</span></span>
-<span id="cb390-2"><a href="filter.html#cb390-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gender)</span>
-<span id="cb390-3"><a href="filter.html#cb390-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb390-4"><a href="filter.html#cb390-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
-<span id="cb390-5"><a href="filter.html#cb390-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb386-1"><a href="filter.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove single variable without pipe</span></span>
+<span id="cb386-2"><a href="filter.html#cb386-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> mergeddf <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>gender)</span>
+<span id="cb386-3"><a href="filter.html#cb386-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb386-4"><a href="filter.html#cb386-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View updated data frame</span></span>
+<span id="cb386-5"><a href="filter.html#cb386-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 </div>
 </div>
 <div id="summary-8" class="section level2" number="18.5">

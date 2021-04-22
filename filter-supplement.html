@@ -385,19 +385,19 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="initsteps_filter_supp" class="section level4 unnumbered">
 <h4>Initial Steps</h4>
 <p>If required, please refer to the <a href="filter.html#initsteps_filter">Initial Steps</a> section from the chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="filter-supplement.html#cb514-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb514-2"><a href="filter-supplement.html#cb514-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb515-1"><a href="filter-supplement.html#cb515-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb515-2"><a href="filter-supplement.html#cb515-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb515-3"><a href="filter-supplement.html#cb515-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb515-4"><a href="filter-supplement.html#cb515-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="filter-supplement.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb516-2"><a href="filter-supplement.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb516-3"><a href="filter-supplement.html#cb516-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb516-4"><a href="filter-supplement.html#cb516-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb516-5"><a href="filter-supplement.html#cb516-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb510"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb510-1"><a href="filter-supplement.html#cb510-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb510-2"><a href="filter-supplement.html#cb510-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb511-1"><a href="filter-supplement.html#cb511-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb511-2"><a href="filter-supplement.html#cb511-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb511-3"><a href="filter-supplement.html#cb511-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb511-4"><a href="filter-supplement.html#cb511-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb512-1"><a href="filter-supplement.html#cb512-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb512-2"><a href="filter-supplement.html#cb512-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb512-3"><a href="filter-supplement.html#cb512-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb512-4"><a href="filter-supplement.html#cb512-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
+<span id="cb512-5"><a href="filter-supplement.html#cb512-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -405,9 +405,9 @@ BOOK UNDER CONSTRUCTION</a>
 ##   startdate = col_character(),
 ##   gender = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="filter-supplement.html#cb518-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb514-1"><a href="filter-supplement.html#cb514-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
@@ -415,13 +415,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##   perf_q3 = col_double(),
 ##   perf_q4 = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="filter-supplement.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb520-2"><a href="filter-supplement.html#cb520-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb516-1"><a href="filter-supplement.html#cb516-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb516-2"><a href="filter-supplement.html#cb516-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="filter-supplement.html#cb522-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(performancedata)</span></code></pre></div>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb518-1"><a href="filter-supplement.html#cb518-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(performancedata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;      &quot;perf_q1&quot; &quot;perf_q2&quot; &quot;perf_q3&quot; &quot;perf_q4&quot;</code></pre>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="filter-supplement.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame (tibble) objects</span></span>
-<span id="cb524-2"><a href="filter-supplement.html#cb524-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb520-1"><a href="filter-supplement.html#cb520-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame (tibble) objects</span></span>
+<span id="cb520-2"><a href="filter-supplement.html#cb520-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -434,7 +434,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="filter-supplement.html#cb526-1" aria-hidden="true" tabindex="-1"></a>performancedata</span></code></pre></div>
+<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb522-1"><a href="filter-supplement.html#cb522-1" aria-hidden="true" tabindex="-1"></a>performancedata</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -444,17 +444,17 @@ BOOK UNDER CONSTRUCTION</a>
 ## 4   198     4.9     4.5     4.4     4.8
 ## 5   201     1.2     1.1     1       1  
 ## 6   282     2.2     2.3     2.4     2.5</code></pre>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="filter-supplement.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb528-2"><a href="filter-supplement.html#cb528-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb528-3"><a href="filter-supplement.html#cb528-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb528-4"><a href="filter-supplement.html#cb528-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb529-1"><a href="filter-supplement.html#cb529-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb529-2"><a href="filter-supplement.html#cb529-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="filter-supplement.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (without pipe)</span></span>
-<span id="cb530-2"><a href="filter-supplement.html#cb530-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">full_join</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>)</span>
-<span id="cb530-3"><a href="filter-supplement.html#cb530-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb530-4"><a href="filter-supplement.html#cb530-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View joined (merged) data frame object</span></span>
-<span id="cb530-5"><a href="filter-supplement.html#cb530-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
+<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb524-1"><a href="filter-supplement.html#cb524-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb524-2"><a href="filter-supplement.html#cb524-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb524-3"><a href="filter-supplement.html#cb524-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb524-4"><a href="filter-supplement.html#cb524-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb525-1"><a href="filter-supplement.html#cb525-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb525-2"><a href="filter-supplement.html#cb525-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb526-1"><a href="filter-supplement.html#cb526-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (without pipe)</span></span>
+<span id="cb526-2"><a href="filter-supplement.html#cb526-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">full_join</span>(personaldata, performancedata, <span class="at">by=</span><span class="st">&quot;id&quot;</span>)</span>
+<span id="cb526-3"><a href="filter-supplement.html#cb526-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb526-4"><a href="filter-supplement.html#cb526-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View joined (merged) data frame object</span></span>
+<span id="cb526-5"><a href="filter-supplement.html#cb526-5" aria-hidden="true" tabindex="-1"></a>mergeddf</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -521,11 +521,11 @@ BOOK UNDER CONSTRUCTION</a>
 </tbody>
 </table>
 <p>To filter cases from a data frame object using the <code>subset</code> function from base R, use the <code>&lt;-</code> operator to name the filtered data frame that we are about to create. For this example, I name the new joined data frame <code>filterdf</code>; you could name it whatever you would like. To the right of the <code>&lt;-</code> operator, type the name of <code>subset</code> function from base R. As the first argument in the function, enter the name of the data frame we created above (<code>mergeddf</code>). As the second argument, type the name of the variable we wish to filter the data frame by, which in this example is <code>gender</code> followed by a logical/conditional argument. For this example, we wish to to retain only those cases in which <code>gender</code> is equal to “female,” and we do so using this logical arguent <code>gender=="female"</code>. Because the <code>gender</code> variable is of type <em>character</em>, we need to put quotation marks (<code>" "</code>) around the value of the variable that we wish to filter by. Remember, object names in R are case and space sensitive; for instance, <code>gender</code> is different from <code>Gender</code>, and “female” is different from “Female.”</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="filter-supplement.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender</span></span>
-<span id="cb532-2"><a href="filter-supplement.html#cb532-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span>)</span>
-<span id="cb532-3"><a href="filter-supplement.html#cb532-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb532-4"><a href="filter-supplement.html#cb532-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb532-5"><a href="filter-supplement.html#cb532-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb528-1"><a href="filter-supplement.html#cb528-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender</span></span>
+<span id="cb528-2"><a href="filter-supplement.html#cb528-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb528-3"><a href="filter-supplement.html#cb528-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb528-4"><a href="filter-supplement.html#cb528-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb528-5"><a href="filter-supplement.html#cb528-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -534,11 +534,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>Note how the data frame above contains only those cases with “female” as their <code>gender</code> variable designation. The filter worked as expected.</p>
 <p>Alternatively, we could filter <em>out</em> those cases in which <code>gender</code> is equal to “female” using the <code>!=</code> (not equal to) logical operator.</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="filter-supplement.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender</span></span>
-<span id="cb534-2"><a href="filter-supplement.html#cb534-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">!=</span><span class="st">&quot;female&quot;</span>)</span>
-<span id="cb534-3"><a href="filter-supplement.html#cb534-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb534-4"><a href="filter-supplement.html#cb534-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb534-5"><a href="filter-supplement.html#cb534-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb530-1"><a href="filter-supplement.html#cb530-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender</span></span>
+<span id="cb530-2"><a href="filter-supplement.html#cb530-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">!=</span><span class="st">&quot;female&quot;</span>)</span>
+<span id="cb530-3"><a href="filter-supplement.html#cb530-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb530-4"><a href="filter-supplement.html#cb530-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb530-5"><a href="filter-supplement.html#cb530-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -550,22 +550,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note how cases with <code>gender</code> equal to “female” are no longer in the data frame, while every other case is retained.</p>
 <p>Let’s now filter by a variable of type <em>numeric</em> (or <em>integer</em>). Specifically, let’s select those cases in which the <code>perf_q2</code> variable is greater than (<code>&gt;</code>) 4.0. Because the <code>perf_q2</code> variable is of type <em>numeric</em>, we don’t use quotation marks (<code>" "</code>) around the value we wish to filter by, which in this case is 4.0.</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="filter-supplement.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by perf_q2</span></span>
-<span id="cb536-2"><a href="filter-supplement.html#cb536-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb536-3"><a href="filter-supplement.html#cb536-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb536-4"><a href="filter-supplement.html#cb536-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb536-5"><a href="filter-supplement.html#cb536-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb532-1"><a href="filter-supplement.html#cb532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by perf_q2</span></span>
+<span id="cb532-2"><a href="filter-supplement.html#cb532-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb532-3"><a href="filter-supplement.html#cb532-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb532-4"><a href="filter-supplement.html#cb532-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb532-5"><a href="filter-supplement.html#cb532-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   153 Sanchez  Alejandro 1/1/2016  male       3.9     4.8     4.9     5  
 ## 2   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
 <p>If we wish to filter by two variables, we can apply the logical “or” (<code>|</code>) operator or “and” (<code>&amp;</code>) operator. First, let’s select those cases in which either <code>gender</code> is equal to “female” or <code>perf_q2</code> is greater than 4.0 using the “or” (<code>|</code>) operator.</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="filter-supplement.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender or perf_q2</span></span>
-<span id="cb538-2"><a href="filter-supplement.html#cb538-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">|</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb538-3"><a href="filter-supplement.html#cb538-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb538-4"><a href="filter-supplement.html#cb538-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb538-5"><a href="filter-supplement.html#cb538-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb534-1"><a href="filter-supplement.html#cb534-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender or perf_q2</span></span>
+<span id="cb534-2"><a href="filter-supplement.html#cb534-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">|</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb534-3"><a href="filter-supplement.html#cb534-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb534-4"><a href="filter-supplement.html#cb534-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb534-5"><a href="filter-supplement.html#cb534-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -574,21 +574,21 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
 ## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>Watch what happens if we apply the logical “and” (<code>&amp;</code>) operator with the same syntax as above.</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="filter-supplement.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender and perf_q2</span></span>
-<span id="cb540-2"><a href="filter-supplement.html#cb540-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">&amp;</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
-<span id="cb540-3"><a href="filter-supplement.html#cb540-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb540-4"><a href="filter-supplement.html#cb540-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb540-5"><a href="filter-supplement.html#cb540-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb536-1"><a href="filter-supplement.html#cb536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by gender and perf_q2</span></span>
+<span id="cb536-2"><a href="filter-supplement.html#cb536-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, gender<span class="sc">==</span><span class="st">&quot;female&quot;</span> <span class="sc">&amp;</span> perf_q2<span class="sc">&gt;</span><span class="fl">4.0</span>)</span>
+<span id="cb536-3"><a href="filter-supplement.html#cb536-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb536-4"><a href="filter-supplement.html#cb536-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb536-5"><a href="filter-supplement.html#cb536-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   198 Morales  Linda     1/7/2016  female     4.9     4.5     4.4     4.8</code></pre>
 <p>We can also use the logical “or” (<code>|</code>) operator to select two values of the same variable.</p>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="filter-supplement.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two values of firstname</span></span>
-<span id="cb542-2"><a href="filter-supplement.html#cb542-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, firstname<span class="sc">==</span><span class="st">&quot;John&quot;</span> <span class="sc">|</span> firstname<span class="sc">==</span><span class="st">&quot;Jane&quot;</span>)</span>
-<span id="cb542-3"><a href="filter-supplement.html#cb542-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb542-4"><a href="filter-supplement.html#cb542-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb542-5"><a href="filter-supplement.html#cb542-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb538-1"><a href="filter-supplement.html#cb538-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two values of firstname</span></span>
+<span id="cb538-2"><a href="filter-supplement.html#cb538-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, firstname<span class="sc">==</span><span class="st">&quot;John&quot;</span> <span class="sc">|</span> firstname<span class="sc">==</span><span class="st">&quot;Jane&quot;</span>)</span>
+<span id="cb538-3"><a href="filter-supplement.html#cb538-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb538-4"><a href="filter-supplement.html#cb538-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb538-5"><a href="filter-supplement.html#cb538-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -596,11 +596,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 2   165 Doe      Jane      1/4/2016  female    NA      NA      NA      NA  
 ## 3   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Or we can select two ranges of values from the same variable using the logical “or” (<code>|</code>) operator, assuming the variable is of type numeric, integer, or date.</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="filter-supplement.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two ranges of values of perf_q1</span></span>
-<span id="cb544-2"><a href="filter-supplement.html#cb544-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, perf_q1<span class="sc">&lt;=</span><span class="fl">2.5</span> <span class="sc">|</span> perf_q1<span class="sc">&gt;=</span><span class="fl">4.0</span>)</span>
-<span id="cb544-3"><a href="filter-supplement.html#cb544-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb544-4"><a href="filter-supplement.html#cb544-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb544-5"><a href="filter-supplement.html#cb544-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="filter-supplement.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by two ranges of values of perf_q1</span></span>
+<span id="cb540-2"><a href="filter-supplement.html#cb540-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, perf_q1<span class="sc">&lt;=</span><span class="fl">2.5</span> <span class="sc">|</span> perf_q1<span class="sc">&gt;=</span><span class="fl">4.0</span>)</span>
+<span id="cb540-3"><a href="filter-supplement.html#cb540-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb540-4"><a href="filter-supplement.html#cb540-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb540-5"><a href="filter-supplement.html#cb540-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -609,11 +609,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
 ## 4   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>The <code>subset</code> function can also be used to remove multiple specific cases (such as from a unique identifier variable), which might be useful when you’ve identified outliers that need to be removed. As a first step, identify a vector of values that need to be removed. In this example, let’s pretend that cases with <code>id</code> variable values of 198 and 201 no longer work for this company, so they should be removed from the sample. To create a vector of these two values, use the <code>c</code> function like this: <code>c(198,201)</code>. Next, because you are now filtering by a vector, you will need to use the <code>%in%</code> operator, which is an operator that instructs R to go through each value of the filter variable (<code>id</code>) and identify instances of 198 and 201 (<code>c(198,201)</code>); if the values match, then those cases are retained. However, because we entered <code>!</code> in front of the filter variable, this actually reverses our logic and instructs R to <em>remove</em> those cases in which a value of the filter variable matches a value contained in the vector.</p>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="filter-supplement.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 and 201</span></span>
-<span id="cb546-2"><a href="filter-supplement.html#cb546-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
-<span id="cb546-3"><a href="filter-supplement.html#cb546-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb546-4"><a href="filter-supplement.html#cb546-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb546-5"><a href="filter-supplement.html#cb546-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb542-1"><a href="filter-supplement.html#cb542-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198 and 201</span></span>
+<span id="cb542-2"><a href="filter-supplement.html#cb542-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="sc">!</span>id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
+<span id="cb542-3"><a href="filter-supplement.html#cb542-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb542-4"><a href="filter-supplement.html#cb542-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb542-5"><a href="filter-supplement.html#cb542-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -626,25 +626,25 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>Note that in the output above cases with <code>id</code> variable values equal to 198 and 201 are no longer present.</p>
 <p>If you remove the <code>!</code> in front of the filter variable, only cases <code>198</code> and <code>201</code> are retained.</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="filter-supplement.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 and 201</span></span>
-<span id="cb548-2"><a href="filter-supplement.html#cb548-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
-<span id="cb548-3"><a href="filter-supplement.html#cb548-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb548-4"><a href="filter-supplement.html#cb548-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb548-5"><a href="filter-supplement.html#cb548-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb544-1"><a href="filter-supplement.html#cb544-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter in id of 198 and 201</span></span>
+<span id="cb544-2"><a href="filter-supplement.html#cb544-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">198</span>,<span class="dv">201</span>))</span>
+<span id="cb544-3"><a href="filter-supplement.html#cb544-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb544-4"><a href="filter-supplement.html#cb544-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb544-5"><a href="filter-supplement.html#cb544-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 9
 ##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1   198 Morales    Linda     1/7/2016  female     4.9     4.5     4.4     4.8
 ## 2   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1</code></pre>
 <p>You can also drop specific cases one by one using the not equal to operator (<code>!=</code>) and the a unique identifier value associated with the case you wish to remove. We accomplish the same result as above but use two steps instead. Also, note that in the second step below, the new data frame object (<code>filterdf</code>) is used as the first argument because we want to retain the changes we made in the prior step (i.e., dropping case with <code>id</code> equal to 198).</p>
-<div class="sourceCode" id="cb550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb550-1"><a href="filter-supplement.html#cb550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198</span></span>
-<span id="cb550-2"><a href="filter-supplement.html#cb550-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, id<span class="sc">!=</span><span class="dv">198</span>)</span>
-<span id="cb550-3"><a href="filter-supplement.html#cb550-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb550-4"><a href="filter-supplement.html#cb550-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 201</span></span>
-<span id="cb550-5"><a href="filter-supplement.html#cb550-5" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(filterdf, id<span class="sc">!=</span><span class="dv">201</span>)</span>
-<span id="cb550-6"><a href="filter-supplement.html#cb550-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb550-7"><a href="filter-supplement.html#cb550-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb550-8"><a href="filter-supplement.html#cb550-8" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb546-1"><a href="filter-supplement.html#cb546-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 198</span></span>
+<span id="cb546-2"><a href="filter-supplement.html#cb546-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, id<span class="sc">!=</span><span class="dv">198</span>)</span>
+<span id="cb546-3"><a href="filter-supplement.html#cb546-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb546-4"><a href="filter-supplement.html#cb546-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out id of 201</span></span>
+<span id="cb546-5"><a href="filter-supplement.html#cb546-5" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(filterdf, id<span class="sc">!=</span><span class="dv">201</span>)</span>
+<span id="cb546-6"><a href="filter-supplement.html#cb546-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb546-7"><a href="filter-supplement.html#cb546-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb546-8"><a href="filter-supplement.html#cb546-8" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 9
 ##      id lastname firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -656,11 +656,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   111 Newton   Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
 ## 7   282 Legend   John      1/9/2016  male       2.2     2.3     2.4     2.5</code></pre>
 <p>When working with variables of type <em>Date</em>, things can get a bit trickier. When we applied the <code>str</code> function from base R (see above), we found that the <code>startdate</code> variable was read in and joined as a character variable as opposed to a date variable. As such, we need to convert the <code>startdate</code> variable using the <code>as.Date</code> function from base R. First, type the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name of whatever you want to call the new variable (<code>startdate2</code>); remember, the <code>$</code> operator tells R that a variable belongs to (or will belong to) a particular data frame. Second, type the <code>&lt;-</code> operator. Third, type the name of the <code>as.Date</code> function. Fourth, in the function parentheses, as the first argument, enter the <code>as.character</code> function with the name of the data frame object (<code>mergeddf</code>), followed by the <code>$</code> operator and the name the original variable (<code>startdate</code>) as the sole argument. Fifth, as the second argument in the <code>as.Date</code> function, type <code>format="%m/%d/%Y"</code> to indicate the format for the data variable; note that the capital <code>Y</code> in <code>%Y</code> implies a 4-digit year, whereas a lower case would imply a 2-digit year.</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb552-1"><a href="filter-supplement.html#cb552-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span></span>
-<span id="cb552-2"><a href="filter-supplement.html#cb552-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">as.character</span>(mergeddf<span class="sc">$</span>startdate), <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb548-1"><a href="filter-supplement.html#cb548-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert character startdate variable to the Date type startdate2 variable</span></span>
+<span id="cb548-2"><a href="filter-supplement.html#cb548-2" aria-hidden="true" tabindex="-1"></a>mergeddf<span class="sc">$</span>startdate2 <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">as.character</span>(mergeddf<span class="sc">$</span>startdate), <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
 <p>To verify that the new <code>startdate2</code> variable is of type <em>Date</em>, use the <code>str</code> function from base R, and enter the name of the data frame object (<code>mergeddf</code>) as the sole argument. As you will see, the new <code>startdate2</code> variable is now of type <em>Date</em>.</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="filter-supplement.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span></span>
-<span id="cb553-2"><a href="filter-supplement.html#cb553-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb549-1"><a href="filter-supplement.html#cb549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify that the startdate2 variable is now a variable of type Date</span></span>
+<span id="cb549-2"><a href="filter-supplement.html#cb549-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mergeddf)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,10] [9 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ id        : num [1:9] 153 154 155 165 125 111 198 201 282
 ##  $ lastname  : chr [1:9] &quot;Sanchez&quot; &quot;McDonald&quot; &quot;Smith&quot; &quot;Doe&quot; ...
@@ -671,7 +671,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##  $ perf_q2   : num [1:9] 4.8 NA NA NA 1.9 3.3 4.5 1.1 2.3
 ##  $ perf_q3   : num [1:9] 4.9 NA NA NA 2.1 3.4 4.4 1 2.4
 ##  $ perf_q4   : num [1:9] 5 NA NA NA 2.3 3.3 4.8 1 2.5
-##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; ...
+##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; &quot;2016-01-09&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
 ##   ..   id = col_double(),
@@ -681,29 +681,28 @@ BOOK UNDER CONSTRUCTION</a>
 ##   ..   gender = col_character()
 ##   .. )</code></pre>
 <p>Now we are ready to filter using the new <code>startdate2</code> variable. When specify the value of the <code>startdate2</code> variable by which you wish to filter by, make sure to use the <code>as.Date</code> function once more with the date (formatted as YYYY-MM-DD) in quotation marks (<code>" "</code>) as the sole argument. Here, I filter for those cases in which their <code>startdate2</code> values are greater than 2016-01-07.</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="filter-supplement.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by startdate2</span></span>
-<span id="cb555-2"><a href="filter-supplement.html#cb555-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, startdate2 <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
-<span id="cb555-3"><a href="filter-supplement.html#cb555-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb555-4"><a href="filter-supplement.html#cb555-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
-<span id="cb555-5"><a href="filter-supplement.html#cb555-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb551-1"><a href="filter-supplement.html#cb551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter by startdate2</span></span>
+<span id="cb551-2"><a href="filter-supplement.html#cb551-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, startdate2 <span class="sc">&gt;</span> <span class="fu">as.Date</span>(<span class="st">&quot;2016-01-07&quot;</span>))</span>
+<span id="cb551-3"><a href="filter-supplement.html#cb551-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb551-4"><a href="filter-supplement.html#cb551-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View filtered data frame</span></span>
+<span id="cb551-5"><a href="filter-supplement.html#cb551-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
-## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
-## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
-## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
-## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
-## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA   2016-01-09
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA   2016-01-09
+## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3 2016-01-09
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1   2016-01-09
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5 2016-01-09</code></pre>
 </div>
 <div id="select-single-variable-from-data-frame" class="section level3" number="19.5.2">
 <h3><span class="header-section-number">19.5.2</span> Select Single Variable from Data Frame</h3>
 <p>To display a single variable from a data frame in our Console, within the <code>subset</code> function, we can enter the data frame object as the first argument (<code>filterdf</code>) and <code>select=</code> followed by the name of a single variable (<code>startdate</code>). Using the <code>&lt;-</code> operator, we can create a new data frame object and assign the single variable to that new object. Here, I’m calling this new object <code>temp</code>, as that signals to me that the object will be temporary and thus not used for subsequent operations.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="filter-supplement.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only one variable from a data frame</span></span>
-<span id="cb557-2"><a href="filter-supplement.html#cb557-2" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span>startdate)</span>
-<span id="cb557-3"><a href="filter-supplement.html#cb557-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb557-4"><a href="filter-supplement.html#cb557-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
-<span id="cb557-5"><a href="filter-supplement.html#cb557-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(temp)</span></code></pre></div>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb553-1"><a href="filter-supplement.html#cb553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only one variable from a data frame</span></span>
+<span id="cb553-2"><a href="filter-supplement.html#cb553-2" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span>startdate)</span>
+<span id="cb553-3"><a href="filter-supplement.html#cb553-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb553-4"><a href="filter-supplement.html#cb553-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb553-5"><a href="filter-supplement.html#cb553-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(temp)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 1
 ##   startdate
 ##   &lt;chr&gt;    
@@ -720,11 +719,11 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="select-multiple-variables-from-data-frame-1" class="section level3" number="19.5.3">
 <h3><span class="header-section-number">19.5.3</span> Select Multiple Variables from Data Frame</h3>
 <p>If our goal is to select multiple variables from a data frame (and remove all others), we can use the <code>subset</code> function as follows. As we did above, name new data frame object using the <code>&lt;-</code> operator, and here we will overwrite the <code>filterdf</code> objec we previously created. As the first argument in the <code>subset</code> function, type the name of your original data frame object (<code>mergeddf</code>). As the second argument, type <code>select=</code> followed by a vector of variable name you wish to select/retain. The order in which you enter the variable names will correspond to the order in which they appear in the new data frame object. Use the <code>c</code> (combine) function from base R with each variable name you wish to select as arguments separated by commas.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="filter-supplement.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple variables</span></span>
-<span id="cb559-2"><a href="filter-supplement.html#cb559-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span><span class="fu">c</span>(id, gender, lastname, firstname))</span>
-<span id="cb559-3"><a href="filter-supplement.html#cb559-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb559-4"><a href="filter-supplement.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
-<span id="cb559-5"><a href="filter-supplement.html#cb559-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb555-1"><a href="filter-supplement.html#cb555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select multiple variables</span></span>
+<span id="cb555-2"><a href="filter-supplement.html#cb555-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span><span class="fu">c</span>(id, gender, lastname, firstname))</span>
+<span id="cb555-3"><a href="filter-supplement.html#cb555-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb555-4"><a href="filter-supplement.html#cb555-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb555-5"><a href="filter-supplement.html#cb555-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 4
 ##      id gender lastname   firstname
 ##   &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;chr&gt;    
@@ -741,11 +740,11 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="remove-single-variable-from-data-frame-1" class="section level3" number="19.5.4">
 <h3><span class="header-section-number">19.5.4</span> Remove Single Variable from Data Frame</h3>
 <p>If you need to remove a single variable from a data frame, you can simply type the minus (<code>-</code>) operator before the name of the variable you wish to remove.</p>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="filter-supplement.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only one variable from a data frame</span></span>
-<span id="cb561-2"><a href="filter-supplement.html#cb561-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span><span class="sc">-</span>startdate)</span>
-<span id="cb561-3"><a href="filter-supplement.html#cb561-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb561-4"><a href="filter-supplement.html#cb561-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
-<span id="cb561-5"><a href="filter-supplement.html#cb561-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="filter-supplement.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only one variable from a data frame</span></span>
+<span id="cb557-2"><a href="filter-supplement.html#cb557-2" aria-hidden="true" tabindex="-1"></a>filterdf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span><span class="sc">-</span>startdate)</span>
+<span id="cb557-3"><a href="filter-supplement.html#cb557-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb557-4"><a href="filter-supplement.html#cb557-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb557-5"><a href="filter-supplement.html#cb557-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 9
 ##      id lastname   firstname gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -762,11 +761,11 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="remove-multiple-variables-from-data-frame-1" class="section level3" number="19.5.5">
 <h3><span class="header-section-number">19.5.5</span> Remove Multiple Variables from Data Frame</h3>
 <p>If you wish to remove multiple variables from a data frame, you can apply the same syntax as you did when selecting multiple variables, except insert a minus (<code>-</code>) operator in from the of the <code>c</code> function. This tells the function to <em>not</em> select those variables. Here, we remove the <code>id</code> and <code>gender</code> variables from the <code>mergeddf</code> data frame by overwriting the original <code>mergeddf</code> object.</p>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="filter-supplement.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple variables</span></span>
-<span id="cb563-2"><a href="filter-supplement.html#cb563-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span> <span class="sc">-</span><span class="fu">c</span>(id, gender))</span>
-<span id="cb563-3"><a href="filter-supplement.html#cb563-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb563-4"><a href="filter-supplement.html#cb563-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
-<span id="cb563-5"><a href="filter-supplement.html#cb563-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="filter-supplement.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple variables</span></span>
+<span id="cb559-2"><a href="filter-supplement.html#cb559-2" aria-hidden="true" tabindex="-1"></a>mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="at">select=</span> <span class="sc">-</span><span class="fu">c</span>(id, gender))</span>
+<span id="cb559-3"><a href="filter-supplement.html#cb559-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb559-4"><a href="filter-supplement.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame</span></span>
+<span id="cb559-5"><a href="filter-supplement.html#cb559-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 8
 ##   lastname   firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -785,19 +784,19 @@ BOOK UNDER CONSTRUCTION</a>
 <h2>Filter by Pattern Contained within String</h2>
 <p>In some cases, we may wish to filter cases from a data frame object based on a pattern contained within a string (i.e., text, characters). For example, using the <code>mergeddf</code> data frame object we created above, perhaps we would like to select those cases for which their <code>firstname</code> string (i.e., value) contains a capital (“J”). To do so, we can use the <code>str_detect</code> function from the <code>stringr</code> package within either the <code>subset</code> function from base <code>R</code> or the <code>filter</code> function from the <code>dplyr</code> package.</p>
 <p>To get started, make sure that you have installed and accessed the <code>stringr</code> package.</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="filter-supplement.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install stringr package if you haven&#39;t already</span></span>
-<span id="cb565-2"><a href="filter-supplement.html#cb565-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb565-3"><a href="filter-supplement.html#cb565-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb565-4"><a href="filter-supplement.html#cb565-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="filter-supplement.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access stringr package</span></span>
-<span id="cb566-2"><a href="filter-supplement.html#cb566-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="filter-supplement.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install stringr package if you haven&#39;t already</span></span>
+<span id="cb561-2"><a href="filter-supplement.html#cb561-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb561-3"><a href="filter-supplement.html#cb561-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb561-4"><a href="filter-supplement.html#cb561-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="filter-supplement.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access stringr package</span></span>
+<span id="cb562-2"><a href="filter-supplement.html#cb562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span></code></pre></div>
 <p>Given that this chapter supplement has focused thus far on the <code>subset</code> function from base <code>R</code>, let’s continue to use that function, but please note that you could just as easily use the <code>filter</code> function from the <code>dplyr</code> package. Using the <code>&lt;-</code> operator, we’ll assign the resulting subset data frame to an object that I’m calling <code>sub_mergeddf</code>. To the right of the <code>&lt;-</code> operator, type the name of the <code>subset</code> function as usual, and as the first argument, type the name of the original data frame object that we’ve been working with called <code>mergeddf</code>. As the second argument, type the name of the <code>str_detect</code> function. As the first argument within the <code>str_detect</code> function, type the name of the variable we wish to filter by, which in this example is <code>firstname</code>; as the second argument and within quotation marks (<code>" "</code>), type a pattern you would like to detect within text strings from the <code>firstname</code> variable. For this example, let’s detect any text string containing an uppercase “J” while noting that case sensitivity matters (e.g., “J” vs. “j”). In other words, we are filtering the data frame such that we will retain only those cases for which their <code>firstname</code> variable text strings (i.e., values) contain an uppercase “J.”</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="filter-supplement.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable contains a &quot;J&quot;</span></span>
-<span id="cb567-2"><a href="filter-supplement.html#cb567-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that case sensitivity matters (e.g., &quot;j&quot; vs. &quot;J&quot;)</span></span>
-<span id="cb567-3"><a href="filter-supplement.html#cb567-3" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;J&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="filter-supplement.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable contains a &quot;J&quot;</span></span>
+<span id="cb563-2"><a href="filter-supplement.html#cb563-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that case sensitivity matters (e.g., &quot;j&quot; vs. &quot;J&quot;)</span></span>
+<span id="cb563-3"><a href="filter-supplement.html#cb563-3" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;J&quot;</span>))</span></code></pre></div>
 <p>Now let’s print the new data frame object we created.</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="filter-supplement.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
-<span id="cb568-2"><a href="filter-supplement.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="filter-supplement.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb564-2"><a href="filter-supplement.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 8
 ##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -806,12 +805,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 3 Legend   John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
 <p>Note how the <code>str_detect</code> function helped us retain only those cases for which <code>firstname</code> contained an uppercase “J.” Notably missing are the individuals named Alejandro and Benjamin because, although they have a “j” within their first names, their names contain a lowercase “j” as opposed to an uppercase “J.”</p>
 <p>Using the same code as above, let’s swap out the uppercase “J” for a lowercase “j.”</p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="filter-supplement.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable contains a &quot;j&quot;</span></span>
-<span id="cb570-2"><a href="filter-supplement.html#cb570-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that case sensitivity matters (e.g., &quot;j&quot; vs. &quot;J&quot;)</span></span>
-<span id="cb570-3"><a href="filter-supplement.html#cb570-3" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;j&quot;</span>))</span>
-<span id="cb570-4"><a href="filter-supplement.html#cb570-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb570-5"><a href="filter-supplement.html#cb570-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
-<span id="cb570-6"><a href="filter-supplement.html#cb570-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="filter-supplement.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable contains a &quot;j&quot;</span></span>
+<span id="cb566-2"><a href="filter-supplement.html#cb566-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that case sensitivity matters (e.g., &quot;j&quot; vs. &quot;J&quot;)</span></span>
+<span id="cb566-3"><a href="filter-supplement.html#cb566-3" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;j&quot;</span>))</span>
+<span id="cb566-4"><a href="filter-supplement.html#cb566-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb566-5"><a href="filter-supplement.html#cb566-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb566-6"><a href="filter-supplement.html#cb566-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 8
 ##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -819,11 +818,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 2 Franklin Benjamin  1/5/2016      2.1     1.9     2.1     2.3 2016-01-05</code></pre>
 <p>Because we filtered for a lowercase “j,” now our data frame object only includes Benjamin and Alejandro.</p>
 <p>If you wish to retain only those cases for which the string <em>begins</em> with a particular pattern, use the <code>^</code> operator before the pattern.</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="filter-supplement.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable starts with a &quot;J&quot;</span></span>
-<span id="cb572-2"><a href="filter-supplement.html#cb572-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;^J&quot;</span>))</span>
-<span id="cb572-3"><a href="filter-supplement.html#cb572-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb572-4"><a href="filter-supplement.html#cb572-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
-<span id="cb572-5"><a href="filter-supplement.html#cb572-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="filter-supplement.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable starts with a &quot;J&quot;</span></span>
+<span id="cb568-2"><a href="filter-supplement.html#cb568-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;^J&quot;</span>))</span>
+<span id="cb568-3"><a href="filter-supplement.html#cb568-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb568-4"><a href="filter-supplement.html#cb568-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb568-5"><a href="filter-supplement.html#cb568-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 8
 ##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -831,11 +830,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 2 Doe      Jane      1/4/2016     NA      NA      NA      NA   2016-01-04
 ## 3 Legend   John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
 <p>To retain only those cases for which the string <em>ends</em> with a particular pattern, use the <code>$</code> operator after the pattern.</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="filter-supplement.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable ends with a &quot;n&quot;</span></span>
-<span id="cb574-2"><a href="filter-supplement.html#cb574-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;n$&quot;</span>))</span>
-<span id="cb574-3"><a href="filter-supplement.html#cb574-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb574-4"><a href="filter-supplement.html#cb574-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
-<span id="cb574-5"><a href="filter-supplement.html#cb574-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="filter-supplement.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname variable ends with a &quot;n&quot;</span></span>
+<span id="cb570-2"><a href="filter-supplement.html#cb570-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;n$&quot;</span>))</span>
+<span id="cb570-3"><a href="filter-supplement.html#cb570-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb570-4"><a href="filter-supplement.html#cb570-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb570-5"><a href="filter-supplement.html#cb570-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 8
 ##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -843,11 +842,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 2 Franklin Benjamin  1/5/2016      2.1     1.9     2.1     2.3 2016-01-05
 ## 3 Legend   John      1/9/2016      2.2     2.3     2.4     2.5 2016-01-09</code></pre>
 <p>To retain only those cases for which the string <em>contains</em> any of the elements from set of elements anywhere in the text, wrap the brackets <code>[ ]</code> operator around the set of pattern elements.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="filter-supplement.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname contains any of the elements &quot;d&quot; or &quot;m&quot;</span></span>
-<span id="cb576-2"><a href="filter-supplement.html#cb576-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;[dm]&quot;</span>))</span>
-<span id="cb576-3"><a href="filter-supplement.html#cb576-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb576-4"><a href="filter-supplement.html#cb576-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
-<span id="cb576-5"><a href="filter-supplement.html#cb576-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="filter-supplement.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname contains any of the elements &quot;d&quot; or &quot;m&quot;</span></span>
+<span id="cb572-2"><a href="filter-supplement.html#cb572-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="fu">str_detect</span>(firstname, <span class="st">&quot;[dm]&quot;</span>))</span>
+<span id="cb572-3"><a href="filter-supplement.html#cb572-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb572-4"><a href="filter-supplement.html#cb572-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb572-5"><a href="filter-supplement.html#cb572-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 8
 ##   lastname   firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
@@ -857,11 +856,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 4 Morales    Linda     1/7/2016      4.9     4.5     4.4     4.8 2016-01-07
 ## 5 Providence Cindy     1/9/2016      1.2     1.1     1       1   2016-01-09</code></pre>
 <p>Finally, if you would like to retain only those cases for which the <code>str_detect</code> logical statements are FALSE, then you can insert the “not” (<code>!</code>) operator before the name of the function.</p>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="filter-supplement.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname does not contain any of the elements &quot;d&quot; or &quot;m&quot;</span></span>
-<span id="cb578-2"><a href="filter-supplement.html#cb578-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="sc">!</span> <span class="fu">str_detect</span>(firstname, <span class="st">&quot;[dm]&quot;</span>))</span>
-<span id="cb578-3"><a href="filter-supplement.html#cb578-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb578-4"><a href="filter-supplement.html#cb578-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
-<span id="cb578-5"><a href="filter-supplement.html#cb578-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="filter-supplement.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select cases for which firstname does not contain any of the elements &quot;d&quot; or &quot;m&quot;</span></span>
+<span id="cb574-2"><a href="filter-supplement.html#cb574-2" aria-hidden="true" tabindex="-1"></a>sub_mergeddf <span class="ot">&lt;-</span> <span class="fu">subset</span>(mergeddf, <span class="sc">!</span> <span class="fu">str_detect</span>(firstname, <span class="st">&quot;[dm]&quot;</span>))</span>
+<span id="cb574-3"><a href="filter-supplement.html#cb574-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb574-4"><a href="filter-supplement.html#cb574-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the data frame object</span></span>
+<span id="cb574-5"><a href="filter-supplement.html#cb574-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(sub_mergeddf)</span></code></pre></div>
 <pre><code>## # A tibble: 4 x 8
 ##   lastname firstname startdate perf_q1 perf_q2 perf_q3 perf_q4 startdate2
 ##   &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    

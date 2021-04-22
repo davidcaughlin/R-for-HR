@@ -467,20 +467,20 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 <h4><span class="header-section-number">19.0.0.3</span> Initial Steps</h4>
 <p>If you haven’t already, save the file called <strong>“DataCleaningExample.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="clean.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb391-2"><a href="clean.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb387-1"><a href="clean.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb387-2"><a href="clean.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data file called <strong>“DataCleaningExample.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb392-1"><a href="clean.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb392-2"><a href="clean.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb392-3"><a href="clean.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb392-4"><a href="clean.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="clean.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb393-2"><a href="clean.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb393-3"><a href="clean.html#cb393-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-4"><a href="clean.html#cb393-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb393-5"><a href="clean.html#cb393-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb388-1"><a href="clean.html#cb388-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb388-2"><a href="clean.html#cb388-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb388-3"><a href="clean.html#cb388-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb388-4"><a href="clean.html#cb388-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb389-1"><a href="clean.html#cb389-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb389-2"><a href="clean.html#cb389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb389-3"><a href="clean.html#cb389-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb389-4"><a href="clean.html#cb389-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb389-5"><a href="clean.html#cb389-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_character(),
 ##   Facility = col_character(),
@@ -489,12 +489,12 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##   Org_Tenure_Yrs = col_double(),
 ##   OnboardingCompleted = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="clean.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb395-2"><a href="clean.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;           
-## [4] &quot;StartDate&quot;           &quot;Org_Tenure_Yrs&quot;      &quot;OnboardingCompleted&quot;</code></pre>
-<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="clean.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
-<span id="cb397-2"><a href="clean.html#cb397-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb391-1"><a href="clean.html#cb391-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb391-2"><a href="clean.html#cb391-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;            &quot;StartDate&quot;          
+## [5] &quot;Org_Tenure_Yrs&quot;      &quot;OnboardingCompleted&quot;</code></pre>
+<div class="sourceCode" id="cb393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb393-1"><a href="clean.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
+<span id="cb393-2"><a href="clean.html#cb393-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -513,21 +513,21 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 <div id="review-data" class="section level2" number="19.1">
 <h2><span class="header-section-number">19.1</span> Review Data</h2>
 <p>There are different tools and techniques we can use to review the cleanliness or integrity of the available data. Often, it’s a good idea to give the data a once over with what I refer to as the “ocular test,” which simply means to scan the raw data using your eyes. The ocular test can give you an idea of the types of data cleaning issues you’ll need to address. The <code>View</code> function from base <code>R</code> is a great tool for this, as it allows you to look at the data frame object in a viewer tab, and using the arrows at the top of each column, you can sort each field (i.e., variable) manually.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb399-1"><a href="clean.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame object using View function</span></span>
-<span id="cb399-2"><a href="clean.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="clean.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame object using View function</span></span>
+<span id="cb395-2"><a href="clean.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(df)</span></code></pre></div>
 <div class="figure">
 <img src="DataCleaning.png" alt="" />
-<p class="caption">Reviewing data using the <code>View</code> function from base <code>R</code></p>
+<p class="caption">Reviewing data using the <code>View</code> function from base <code>R</code>.</p>
 </div>
 <p>In addition, applying the <code>count</code> function from the <code>dplyr</code> package can provide us with an understanding of the values (or lack thereof) associated with each variable in your data frame object. The <code>count</code> function groups and tallies the number of observations (i.e., frequencies) by value/level within a variable. Using this function we can (hopefully) identify any values that might be considered “out of bounds” or erroneous. Because the <code>count</code> function comes from the <code>dplyr</code> package, if you haven’t already, install and access the <code>dplyr</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="clean.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
-<span id="cb400-2"><a href="clean.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb401-1"><a href="clean.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
-<span id="cb401-2"><a href="clean.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="clean.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb396-2"><a href="clean.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb397-1"><a href="clean.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
+<span id="cb397-2"><a href="clean.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>We can achieve the same output with and without the use of the pipe (<code>%&gt;%</code>) operator (because the <code>dplyr</code> package is built upon the <code>magrittr</code> package). For more information on the pipe operator, check out this link: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>. If you don’t want to use the pipe operator with the <code>dplyr</code> functions, just skip down below to see how to specify the function without using pipes.</p>
 <p>Using the pipe (<code>%&gt;%</code>) operator, first, type the name of the data frame object to which a variable belongs (e.g., <code>df</code>). Second, type the <code>%&gt;%</code> operator. Third, type the name of the <code>count</code> function, and within the parentheses, enter the exact name of the variable (e.g., <code>Facility</code>) as the sole argument.</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="clean.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to Facility variable using pipe</span></span>
-<span id="cb402-2"><a href="clean.html#cb402-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(Facility)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="clean.html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to Facility variable using pipe</span></span>
+<span id="cb398-2"><a href="clean.html#cb398-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(Facility)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   Facility      n
 ##   &lt;chr&gt;     &lt;int&gt;
@@ -538,8 +538,8 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ## 5 &lt;NA&gt;          1</code></pre>
 <p>Note that the output yields a table object (or more specifically a “tibble,” which is used in the <code>tidyverse</code> collection of functions). There are two columns: (a) the variable name, below which appears all values/levels of that variable, and (b) the <code>n</code> column, which displays the number of cases/observations associated with each value/level of the variable in question. As you can see, there appear to be some errors. Perhaps the database used to gather these data lacked data validation rules for certain variables, which allowed users to enter different spellings or formatting of the same value/level of the variables. For example, the Beaverton facility is spelled/formatted in three ways: <em>Beaverton</em>, <em>beaverton</em>, and <em>beverton</em>. Because <code>R</code> is case sensitive, <em>Beaverton</em> and <em>beaverton</em> are treated as to distinct levels/values of the <code>Facility</code> variable. Further, <em>beverton</em> is a misspelling of <em>Beaverton</em> and lacks the capital <em>B</em>. Finally, note that there is one <code>NA</code> value, which indicates that someone forgot to enter the name of the facility where that employee works. Clearly, we need to correct these errors and clean up the data residing within this variable; later in the tutorial, you will learn how to correct/replace these values in the <code>R</code> environment.</p>
 <p>To perform the operation above <em>without</em> the pipe (<code>%&gt;%</code>) operator,type the name of the <code>count</code> function, and within the parentheses, type the name of the data frame object (<code>df</code>) as the first argument, followed by a comma. As the second argument, type the exact name of the variable (e.g., <code>Facility</code>).</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="clean.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to Facility variable without using pipe</span></span>
-<span id="cb404-2"><a href="clean.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(df, Facility)</span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb400-1"><a href="clean.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to Facility variable without using pipe</span></span>
+<span id="cb400-2"><a href="clean.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(df, Facility)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 2
 ##   Facility      n
 ##   &lt;chr&gt;     &lt;int&gt;
@@ -550,8 +550,8 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ## 5 &lt;NA&gt;          1</code></pre>
 <p>As you can see, the output is the same with and without the use of the pipe (<code>%&gt;%</code>) operator.</p>
 <p>Now let’s apply the <code>count</code> function to the <code>JobLevel</code> variable. To save space, I only show how to do this using the pipe operator (<code>%&gt;%</code>). All we need to do is replace <code>Facility</code> with <code>JobLevel</code> in the syntax/code we wrote previously.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="clean.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to JobLevel variable using pipe</span></span>
-<span id="cb406-2"><a href="clean.html#cb406-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(JobLevel)</span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb402-1"><a href="clean.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to JobLevel variable using pipe</span></span>
+<span id="cb402-2"><a href="clean.html#cb402-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(JobLevel)</span></code></pre></div>
 <pre><code>## # A tibble: 7 x 2
 ##   JobLevel     n
 ##      &lt;dbl&gt; &lt;int&gt;
@@ -564,8 +564,8 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ## 7       11     1</code></pre>
 <p>For the sake of this example, let’s assume that the company has only five job levels (1 = lowest, 5 = highest). In the output, it is apparent that there are two out-of-bounds values: <em>-9999</em> and <em>11</em>. Rather than leave cell blank when entering data, some people prefer to use extreme negative values, such as <em>-9999</em>, to flag missing data, and let’s assume that is the case in this example. A potential issue with this approach to coding missing data is that <code>R</code> assumes <em>-9999</em> is a real value, and in <code>R</code>, <code>NA</code> is often used to indicate missing data to avoid this issue. Regarding the <em>11</em> value, it is likely that someone made an error when entering the data value in the database by typing <em>1</em> twice by mistake; let’s assume that we verified that this was the case and that <em>11</em> should be replaced with <em>1</em>.</p>
 <p>Lastly, let’s apply the <code>count</code> function to the <code>OnboardingCompleted</code> variable.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="clean.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to OnboardingCompleted variable using pipe</span></span>
-<span id="cb408-2"><a href="clean.html#cb408-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(OnboardingCompleted)</span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb404-1"><a href="clean.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply count function to OnboardingCompleted variable using pipe</span></span>
+<span id="cb404-2"><a href="clean.html#cb404-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> <span class="fu">count</span>(OnboardingCompleted)</span></code></pre></div>
 <pre><code>## # A tibble: 1 x 2
 ##   OnboardingCompleted     n
 ##   &lt;chr&gt;               &lt;int&gt;
@@ -586,13 +586,13 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 <li>Type the name of the <code>mutate</code> function. Within the <code>mutate</code> function parentheses, provide the name of an existing or new variable; in this case, we will overwrite the existing <code>Facility</code> variable by typing the same variable name. Next, enter the <code>=</code> operator to the right of the <code>mutate</code> function to specify how values for the <code>Facility</code> variable will be determined.</li>
 <li>Type the name of the <code>replace</code> function, which is a function that allows one to replace values in specific location within a vector or data frame. Within the <code>replace</code> function parentheses, as the first argument, type the name of the variable for which you wish to replace specific values (<code>Facility</code>). As the second argument, type the name of the <code>match</code> function, which is a function that allows us to find matched value(s) within a variable (i.e., vector); s the first argument within the <code>match</code> function, enter the value you wish to find a match for (<em>“EP1202”</em>), and as the second argument, enter the name of the variable (<code>EmpID</code>) to which that value belongs. Essentially, this <code>match</code> function and its two arguments will instruct <code>R</code> to identify the case in which <code>EmpID</code> (variable name) is equal to <em>“EP1202”</em>. Because the variable <code>EmpID</code> is of type <em>character</em> (<em>chr</em>), the value identified from that variable should be placed in quotation marks (<code>" "</code>); if the variable were of type <em>numeric</em>, you would not include the quotation marks (<code>" "</code>), and as shown below, the <code>str</code> (structure) function can be used to identify the variable type for the variables within a data frame object (e.g., <code>df</code>); as the final (third) argument within the <code>replace</code> function, enter the new value (e.g., <em>“Beaverton”</em>) that you would like to replace the existing value with for the particular case you identified.</li>
 </ol>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="clean.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify variable type</span></span>
-<span id="cb410-2"><a href="clean.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb406-1"><a href="clean.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify variable type</span></span>
+<span id="cb406-2"><a href="clean.html#cb406-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,6] [10 x 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmpID              : chr [1:10] &quot;EP1201&quot; &quot;EP1202&quot; &quot;EP1203&quot; &quot;EP1204&quot; ...
 ##  $ Facility           : chr [1:10] &quot;Beaverton&quot; &quot;beaverton&quot; &quot;Beaverton&quot; &quot;Portland&quot; ...
 ##  $ JobLevel           : num [1:10] 1 1 -9999 5 2 ...
-##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; ...
+##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; &quot;2017-02-05&quot; ...
 ##  $ Org_Tenure_Yrs     : num [1:10] 8.6 10.9 1.9 0.3 0.3 8.8 7.6 8.6 7.7 6.5
 ##  $ OnboardingCompleted: chr [1:10] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
@@ -604,14 +604,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##   ..   Org_Tenure_Yrs = col_double(),
 ##   ..   OnboardingCompleted = col_character()
 ##   .. )</code></pre>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="clean.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1202, replace &quot;beaverton&quot; with &quot;Beaverton&quot; using pipe</span></span>
-<span id="cb412-2"><a href="clean.html#cb412-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
-<span id="cb412-3"><a href="clean.html#cb412-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Facility =</span> <span class="fu">replace</span>(Facility, </span>
-<span id="cb412-4"><a href="clean.html#cb412-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1202&quot;</span>, EmpID), </span>
-<span id="cb412-5"><a href="clean.html#cb412-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Beaverton&quot;</span>))</span>
-<span id="cb412-6"><a href="clean.html#cb412-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-7"><a href="clean.html#cb412-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb412-8"><a href="clean.html#cb412-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="clean.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1202, replace &quot;beaverton&quot; with &quot;Beaverton&quot; using pipe</span></span>
+<span id="cb408-2"><a href="clean.html#cb408-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb408-3"><a href="clean.html#cb408-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Facility =</span> <span class="fu">replace</span>(Facility, </span>
+<span id="cb408-4"><a href="clean.html#cb408-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1202&quot;</span>, EmpID), </span>
+<span id="cb408-5"><a href="clean.html#cb408-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Beaverton&quot;</span>))</span>
+<span id="cb408-6"><a href="clean.html#cb408-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb408-7"><a href="clean.html#cb408-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb408-8"><a href="clean.html#cb408-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -627,14 +627,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>In the new data frame object (<code>newdf1</code>), you should now see that <em>“beaverton”</em> has been replaced with <em>“Beaverton”</em> for the case in which <code>EmpID</code> is equal to <em>“EP1202”</em>. Assuming you save your script as an <code>R</code> script file (.R), you will have a paper trail that shows that you replaced an existing value with a new (correct) value.</p>
 <p>To apply the <code>mutate</code> function <em>without</em> a pipe (<code>%&gt;%</code>) operator, we simply remove the pipe (<code>%&gt;%</code>) operator and enter the name of our original data frame object (<code>df</code>) as the first argument of the <code>mutate</code> function.</p>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="clean.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1202, replace &quot;beaverton&quot; with &quot;Beaverton&quot; without using pipe</span></span>
-<span id="cb414-2"><a href="clean.html#cb414-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, </span>
-<span id="cb414-3"><a href="clean.html#cb414-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Facility =</span> <span class="fu">replace</span>(Facility,</span>
-<span id="cb414-4"><a href="clean.html#cb414-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">match</span>(<span class="st">&quot;EP1202&quot;</span>,EmpID),</span>
-<span id="cb414-5"><a href="clean.html#cb414-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;Beaverton&quot;</span>))</span>
-<span id="cb414-6"><a href="clean.html#cb414-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb414-7"><a href="clean.html#cb414-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb414-8"><a href="clean.html#cb414-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb410-1"><a href="clean.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1202, replace &quot;beaverton&quot; with &quot;Beaverton&quot; without using pipe</span></span>
+<span id="cb410-2"><a href="clean.html#cb410-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df, </span>
+<span id="cb410-3"><a href="clean.html#cb410-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">Facility =</span> <span class="fu">replace</span>(Facility,</span>
+<span id="cb410-4"><a href="clean.html#cb410-4" aria-hidden="true" tabindex="-1"></a>                                    <span class="fu">match</span>(<span class="st">&quot;EP1202&quot;</span>,EmpID),</span>
+<span id="cb410-5"><a href="clean.html#cb410-5" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">&quot;Beaverton&quot;</span>))</span>
+<span id="cb410-6"><a href="clean.html#cb410-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb410-7"><a href="clean.html#cb410-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb410-8"><a href="clean.html#cb410-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -649,14 +649,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>Now let’s take the <code>newdf1</code> data frame object we just created and replace <em>“beverton”</em> with <em>“Beaverton”</em> for the case in which the <code>EmpID</code> variable value is equal to <em>“EP1207”</em>. All we need to do in this instance is to (a) swap out <code>df</code> with <code>newdf1</code> as the original data frame name and (b) swap out <em>“EP1202”</em> with <em>“EP1207”</em> from the previous piped code we wrote.</p>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="clean.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1207, replace &quot;beverton&quot; with &quot;Beaverton&quot; using pipe</span></span>
-<span id="cb416-2"><a href="clean.html#cb416-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb416-3"><a href="clean.html#cb416-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Facility =</span> <span class="fu">replace</span>(Facility, </span>
-<span id="cb416-4"><a href="clean.html#cb416-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1207&quot;</span>, EmpID), </span>
-<span id="cb416-5"><a href="clean.html#cb416-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Beaverton&quot;</span>))</span>
-<span id="cb416-6"><a href="clean.html#cb416-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb416-7"><a href="clean.html#cb416-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb416-8"><a href="clean.html#cb416-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="clean.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1207, replace &quot;beverton&quot; with &quot;Beaverton&quot; using pipe</span></span>
+<span id="cb412-2"><a href="clean.html#cb412-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb412-3"><a href="clean.html#cb412-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Facility =</span> <span class="fu">replace</span>(Facility, </span>
+<span id="cb412-4"><a href="clean.html#cb412-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1207&quot;</span>, EmpID), </span>
+<span id="cb412-5"><a href="clean.html#cb412-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Beaverton&quot;</span>))</span>
+<span id="cb412-6"><a href="clean.html#cb412-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb412-7"><a href="clean.html#cb412-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb412-8"><a href="clean.html#cb412-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -671,14 +671,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>Let’s assume that after looking through other organizational records we found that the employee with <code>EmpID</code> equal to <em>“EP1205”</em> works at the <em>“Portland”</em> facility. Accordingly, we want to replace the <code>NA</code> value for the <code>Facility</code> variable for that employee with <em>“Portland”</em>. When adapting the previous script/code, all we need to do is replace <em>“EP1207”</em> with <em>“EP1205”</em> and <em>“Beaverton”</em> with <em>“Portland”</em>.</p>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="clean.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1205, replace NA with &quot;Portland&quot; using pipe</span></span>
-<span id="cb418-2"><a href="clean.html#cb418-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb418-3"><a href="clean.html#cb418-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Facility =</span> <span class="fu">replace</span>(Facility, </span>
-<span id="cb418-4"><a href="clean.html#cb418-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1205&quot;</span>, EmpID), </span>
-<span id="cb418-5"><a href="clean.html#cb418-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Portland&quot;</span>))</span>
-<span id="cb418-6"><a href="clean.html#cb418-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb418-7"><a href="clean.html#cb418-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb418-8"><a href="clean.html#cb418-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="clean.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1205, replace NA with &quot;Portland&quot; using pipe</span></span>
+<span id="cb414-2"><a href="clean.html#cb414-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb414-3"><a href="clean.html#cb414-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Facility =</span> <span class="fu">replace</span>(Facility, </span>
+<span id="cb414-4"><a href="clean.html#cb414-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1205&quot;</span>, EmpID), </span>
+<span id="cb414-5"><a href="clean.html#cb414-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">&quot;Portland&quot;</span>))</span>
+<span id="cb414-6"><a href="clean.html#cb414-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb414-7"><a href="clean.html#cb414-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb414-8"><a href="clean.html#cb414-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -693,14 +693,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>Now that the <code>Facility</code> variable has been cleaned, let’s move on to the <code>JobLevel</code> variable. If you recall, in the previous section, we determined that there were two problematic values for two cases: <em>-9999</em> (associated with <code>EmpID</code> equal to <em>“1203”</em>) and <em>11</em> (associated with <code>EmpID</code> equal to <em>“1210”</em>). We decided that <em>-9999</em> should be replace with <code>NA</code> because it represents a missing value, and <em>11</em> should be replaced with <em>1</em> because it represents a data entry error. Check out the script/code below to see how these replacements were handled. Also, note that because the <code>JobLevel</code> variable is of type <em>numeric</em>, we don’t put the replacement values of <code>NA</code> and <em>1</em> in direct quotations.</p>
-<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="clean.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1203, replace -9999 with NA using pipe</span></span>
-<span id="cb420-2"><a href="clean.html#cb420-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb420-3"><a href="clean.html#cb420-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">JobLevel =</span> <span class="fu">replace</span>(JobLevel, </span>
-<span id="cb420-4"><a href="clean.html#cb420-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1203&quot;</span>, EmpID), </span>
-<span id="cb420-5"><a href="clean.html#cb420-5" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">NA</span>))</span>
-<span id="cb420-6"><a href="clean.html#cb420-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb420-7"><a href="clean.html#cb420-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb420-8"><a href="clean.html#cb420-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="clean.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1203, replace -9999 with NA using pipe</span></span>
+<span id="cb416-2"><a href="clean.html#cb416-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb416-3"><a href="clean.html#cb416-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">JobLevel =</span> <span class="fu">replace</span>(JobLevel, </span>
+<span id="cb416-4"><a href="clean.html#cb416-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1203&quot;</span>, EmpID), </span>
+<span id="cb416-5"><a href="clean.html#cb416-5" aria-hidden="true" tabindex="-1"></a>                            <span class="cn">NA</span>))</span>
+<span id="cb416-6"><a href="clean.html#cb416-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb416-7"><a href="clean.html#cb416-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb416-8"><a href="clean.html#cb416-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -714,14 +714,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  8 EP1208 Portland         4 2010-05-15            8.6 No                 
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
-<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="clean.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1210, replace 11 with 1 using pipe</span></span>
-<span id="cb422-2"><a href="clean.html#cb422-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb422-3"><a href="clean.html#cb422-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">JobLevel =</span> <span class="fu">replace</span>(JobLevel, </span>
-<span id="cb422-4"><a href="clean.html#cb422-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1210&quot;</span>, EmpID), </span>
-<span id="cb422-5"><a href="clean.html#cb422-5" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>))</span>
-<span id="cb422-6"><a href="clean.html#cb422-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb422-7"><a href="clean.html#cb422-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb422-8"><a href="clean.html#cb422-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="clean.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1210, replace 11 with 1 using pipe</span></span>
+<span id="cb418-2"><a href="clean.html#cb418-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb418-3"><a href="clean.html#cb418-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">JobLevel =</span> <span class="fu">replace</span>(JobLevel, </span>
+<span id="cb418-4"><a href="clean.html#cb418-4" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">match</span>(<span class="st">&quot;EP1210&quot;</span>, EmpID), </span>
+<span id="cb418-5"><a href="clean.html#cb418-5" aria-hidden="true" tabindex="-1"></a>                            <span class="dv">1</span>))</span>
+<span id="cb418-6"><a href="clean.html#cb418-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-7"><a href="clean.html#cb418-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb418-8"><a href="clean.html#cb418-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -736,20 +736,20 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton        1 2012-07-11            6.5 No</code></pre>
 <p>Finally, let’s assume that for the <code>OnboardingCompleted</code> variable, two of the cases have values that should in fact be <code>NA</code> (missing). Specifically, because the hypothetical onboarding program takes 1.0 year to complete, the two employees (cases) with <code>Org_Tenure_Yrs</code> (organizational tenure in years) equal to <em>0.3</em> have not worked in the company long enough to have completed the 1-year-long onboarding program. Consequently, we decide that it is not appropriate to put <em>“No”</em> or <em>“Yes”</em> for these two employees, which means treating those values as missing (<code>NA</code>) would be most appropriate. The two employees in question have <code>EmpID</code> variable values of <em>“EP1204”</em> and <em>“EP1205”</em>. Note that we can enter <code>NA</code> as the final argument within the <code>replace</code> function parentheses, just as we would with an actual value. Check out the script/code below to see how we replace <em>0.3</em> with <code>NA</code> on the <code>OnboardingCompleted</code> variable for the cases with the <code>EmpID</code> unique identifier variable equal to <em>“EP1204”</em> and <em>“EP1205”</em>.</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="clean.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1204, replace 0.3 with NA using pipe</span></span>
-<span id="cb424-2"><a href="clean.html#cb424-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb424-3"><a href="clean.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">replace</span>(OnboardingCompleted, </span>
-<span id="cb424-4"><a href="clean.html#cb424-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">match</span>(<span class="st">&quot;EP1204&quot;</span>, EmpID), </span>
-<span id="cb424-5"><a href="clean.html#cb424-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="cn">NA</span>))</span>
-<span id="cb424-6"><a href="clean.html#cb424-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-7"><a href="clean.html#cb424-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1205, replace 0.3 with NA using pipe</span></span>
-<span id="cb424-8"><a href="clean.html#cb424-8" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb424-9"><a href="clean.html#cb424-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">replace</span>(OnboardingCompleted, </span>
-<span id="cb424-10"><a href="clean.html#cb424-10" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">match</span>(<span class="st">&quot;EP1205&quot;</span>, EmpID), </span>
-<span id="cb424-11"><a href="clean.html#cb424-11" aria-hidden="true" tabindex="-1"></a>                                       <span class="cn">NA</span>))</span>
-<span id="cb424-12"><a href="clean.html#cb424-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb424-13"><a href="clean.html#cb424-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb424-14"><a href="clean.html#cb424-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="clean.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1204, replace 0.3 with NA using pipe</span></span>
+<span id="cb420-2"><a href="clean.html#cb420-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb420-3"><a href="clean.html#cb420-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">replace</span>(OnboardingCompleted, </span>
+<span id="cb420-4"><a href="clean.html#cb420-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">match</span>(<span class="st">&quot;EP1204&quot;</span>, EmpID), </span>
+<span id="cb420-5"><a href="clean.html#cb420-5" aria-hidden="true" tabindex="-1"></a>                                       <span class="cn">NA</span>))</span>
+<span id="cb420-6"><a href="clean.html#cb420-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-7"><a href="clean.html#cb420-7" aria-hidden="true" tabindex="-1"></a><span class="co"># For EmpID equal to EP1205, replace 0.3 with NA using pipe</span></span>
+<span id="cb420-8"><a href="clean.html#cb420-8" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb420-9"><a href="clean.html#cb420-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">replace</span>(OnboardingCompleted, </span>
+<span id="cb420-10"><a href="clean.html#cb420-10" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">match</span>(<span class="st">&quot;EP1205&quot;</span>, EmpID), </span>
+<span id="cb420-11"><a href="clean.html#cb420-11" aria-hidden="true" tabindex="-1"></a>                                       <span class="cn">NA</span>))</span>
+<span id="cb420-12"><a href="clean.html#cb420-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb420-13"><a href="clean.html#cb420-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb420-14"><a href="clean.html#cb420-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -775,14 +775,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 <li>Type the name of the <code>mutate</code> function. Within the <code>mutate</code> function parentheses, provide the name of an existing or a new variable; in this case, we will overwrite the existing <code>OnboardingCompleted</code> variable by typing the same name as the existing variable. To the right of the <code>mutate</code> function, type the <code>=</code> operator to specify how values for the <code>OnboardingCompleted</code> variable will be determined.</li>
 <li>Type the name of the <code>ifelse</code> function, which is a function that can be used for conditional value (element) selection (identification) and replacement. As the first argument, type a conditional statement for the variable whose values you wish to replace; because we wish to replace all <em>“No”</em> values with <em>“Yes”</em> for the <code>OnboardingCompleted</code> variable, we’ll specify the conditional statement as <code>OnboardingCompleted=="No"</code>; for a review of the different logical operators, please refer to the chapter called <a href="filter.html#filter">Filtering Data</a>. As the second argument in the <code>ifelse</code> function, type the replacement value when the aforementioned conditional statement is true for a given value of the <code>OnboardingCompleted</code> variable, which is <em>“Yes”</em> in this example. Because the <code>OnboardingCompleted</code> variable is of type character, this value needs to be in quotation marks (<code>" "</code>). As the final argument function, instruct the <code>ifelse</code> function what the replacement value should be when the aforementioned conditional statement is false, which in this; in this example, we will replace all other values with the existing values of the <code>OnboardingCompleted</code> variable, and thus we’ll enter that variable name as the third argument.</li>
 </ol>
-<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="clean.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace &quot;No&quot; values with &quot;Yes&quot; using pipe</span></span>
-<span id="cb426-2"><a href="clean.html#cb426-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb426-3"><a href="clean.html#cb426-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">ifelse</span>(OnboardingCompleted<span class="sc">==</span><span class="st">&quot;No&quot;</span>, </span>
-<span id="cb426-4"><a href="clean.html#cb426-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Yes&quot;</span>, </span>
-<span id="cb426-5"><a href="clean.html#cb426-5" aria-hidden="true" tabindex="-1"></a>                                      OnboardingCompleted))</span>
-<span id="cb426-6"><a href="clean.html#cb426-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb426-7"><a href="clean.html#cb426-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb426-8"><a href="clean.html#cb426-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="clean.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace &quot;No&quot; values with &quot;Yes&quot; using pipe</span></span>
+<span id="cb422-2"><a href="clean.html#cb422-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb422-3"><a href="clean.html#cb422-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">ifelse</span>(OnboardingCompleted<span class="sc">==</span><span class="st">&quot;No&quot;</span>, </span>
+<span id="cb422-4"><a href="clean.html#cb422-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">&quot;Yes&quot;</span>, </span>
+<span id="cb422-5"><a href="clean.html#cb422-5" aria-hidden="true" tabindex="-1"></a>                                      OnboardingCompleted))</span>
+<span id="cb422-6"><a href="clean.html#cb422-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb422-7"><a href="clean.html#cb422-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb422-8"><a href="clean.html#cb422-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -797,14 +797,14 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 Yes                
 ## 10 EP1210 Beaverton        1 2012-07-11            6.5 Yes</code></pre>
 <p>Now let’s pretend that we wish to convert the <em>“Yes”</em> values for the <code>OnboardingCompleted</code> variable with the numeric value of <em>1</em>. The format of the code remains virtually the same, except that we change the conditional statement to <code>OnboardingCompleted=="Yes"</code> as the first argument in the <code>ifelse</code> function, and in the second argument, we change the replacement value to <em>1</em>.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="clean.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace &quot;Yes&quot; values with 1 using pipe</span></span>
-<span id="cb428-2"><a href="clean.html#cb428-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
-<span id="cb428-3"><a href="clean.html#cb428-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">ifelse</span>(OnboardingCompleted<span class="sc">==</span><span class="st">&quot;Yes&quot;</span>, </span>
-<span id="cb428-4"><a href="clean.html#cb428-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">1</span>, </span>
-<span id="cb428-5"><a href="clean.html#cb428-5" aria-hidden="true" tabindex="-1"></a>                                      OnboardingCompleted))</span>
-<span id="cb428-6"><a href="clean.html#cb428-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb428-7"><a href="clean.html#cb428-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
-<span id="cb428-8"><a href="clean.html#cb428-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="clean.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace &quot;Yes&quot; values with 1 using pipe</span></span>
+<span id="cb424-2"><a href="clean.html#cb424-2" aria-hidden="true" tabindex="-1"></a>newdf1 <span class="ot">&lt;-</span> newdf1 <span class="sc">%&gt;%</span> </span>
+<span id="cb424-3"><a href="clean.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">OnboardingCompleted =</span> <span class="fu">ifelse</span>(OnboardingCompleted<span class="sc">==</span><span class="st">&quot;Yes&quot;</span>, </span>
+<span id="cb424-4"><a href="clean.html#cb424-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="dv">1</span>, </span>
+<span id="cb424-5"><a href="clean.html#cb424-5" aria-hidden="true" tabindex="-1"></a>                                      OnboardingCompleted))</span>
+<span id="cb424-6"><a href="clean.html#cb424-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb424-7"><a href="clean.html#cb424-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object</span></span>
+<span id="cb424-8"><a href="clean.html#cb424-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt;               &lt;dbl&gt;
@@ -819,11 +819,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7                   1
 ## 10 EP1210 Beaverton        1 2012-07-11            6.5                   1</code></pre>
 <p>As an alternative approach, we can write the following code. First, specify the name of the data frame object (<code>newdf1</code>), followed by the <code>$</code> operator and the name of the variable in question (<code>OnboardingCompleted</code>). Second, type brackets (<code>[ ]</code>). Third, within the brackets, enter a conditional statement; for the sake of example, let’s say that we want to identify all instances in which the <code>OnboardingCompleted</code> variable is equal to <em>1</em> (<code>newdf1$OnboardingCompleted==1</code>). Fourth, type the <code>&lt;-</code> operator, followed by the value you wish to use to replace the existing values for which the conditional statement you previously specified is true; in this example, we enter <em>2</em>. Because the two values are <code>numeric</code>, we do not use quotation marks (<code>" "</code>).</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="clean.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace 1 values with 2</span></span>
-<span id="cb430-2"><a href="clean.html#cb430-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[newdf1<span class="sc">$</span>OnboardingCompleted<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb430-3"><a href="clean.html#cb430-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb430-4"><a href="clean.html#cb430-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb430-5"><a href="clean.html#cb430-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="clean.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace 1 values with 2</span></span>
+<span id="cb426-2"><a href="clean.html#cb426-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[newdf1<span class="sc">$</span>OnboardingCompleted<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb426-3"><a href="clean.html#cb426-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb426-4"><a href="clean.html#cb426-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb426-5"><a href="clean.html#cb426-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt;               &lt;dbl&gt;
@@ -838,11 +838,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7                   2
 ## 10 EP1210 Beaverton        1 2012-07-11            6.5                   2</code></pre>
 <p>If we wish to change <em>numeric</em> values to <em>character</em> values, be sure to put the <em>character</em> values in quotation marks (<code>" "</code>). In the following example, all instances in which the <code>OnboardingCompleted</code> variable is equal to <em>2</em> are changed to <em>“Yes”</em>.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="clean.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace 2 values with &quot;Yes&quot;</span></span>
-<span id="cb432-2"><a href="clean.html#cb432-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[newdf1<span class="sc">$</span>OnboardingCompleted<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Yes&quot;</span></span>
-<span id="cb432-3"><a href="clean.html#cb432-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb432-4"><a href="clean.html#cb432-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb432-5"><a href="clean.html#cb432-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="clean.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace 2 values with &quot;Yes&quot;</span></span>
+<span id="cb428-2"><a href="clean.html#cb428-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[newdf1<span class="sc">$</span>OnboardingCompleted<span class="sc">==</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="st">&quot;Yes&quot;</span></span>
+<span id="cb428-3"><a href="clean.html#cb428-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb428-4"><a href="clean.html#cb428-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb428-5"><a href="clean.html#cb428-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -857,11 +857,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 Yes                
 ## 10 EP1210 Beaverton        1 2012-07-11            6.5 Yes</code></pre>
 <p>Just for fun, let’s change all of the <em>“Yes”</em> values for the <code>OnboardingCompleted</code> variable back to <em>“No”</em> using the code below.</p>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="clean.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace &quot;Yes&quot; values with &quot;No&quot;</span></span>
-<span id="cb434-2"><a href="clean.html#cb434-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[newdf1<span class="sc">$</span>OnboardingCompleted<span class="sc">==</span><span class="st">&quot;Yes&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;No&quot;</span></span>
-<span id="cb434-3"><a href="clean.html#cb434-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb434-4"><a href="clean.html#cb434-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb434-5"><a href="clean.html#cb434-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="clean.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace &quot;Yes&quot; values with &quot;No&quot;</span></span>
+<span id="cb430-2"><a href="clean.html#cb430-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[newdf1<span class="sc">$</span>OnboardingCompleted<span class="sc">==</span><span class="st">&quot;Yes&quot;</span>] <span class="ot">&lt;-</span> <span class="st">&quot;No&quot;</span></span>
+<span id="cb430-3"><a href="clean.html#cb430-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb430-4"><a href="clean.html#cb430-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb430-5"><a href="clean.html#cb430-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -876,11 +876,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton        1 2012-07-11            6.5 No</code></pre>
 <p>Finally, imagine we wish to replace the <code>NA</code> values in the <code>OnboardingCompleted</code> variable with the value <em>2</em> using this approach. To do so, instead of making our own conditional statement, within the brackets (<code>[ ]</code>), apply the <code>is.na</code> function from base <code>R</code>, and type the name of the data frame, followed by the <code>$</code> operator and the name of the variable containing the <code>NA</code>s. To the right of the bracket, use the <code>&lt;-</code> operator followed by the value with which you wish to replace the <code>NA</code>s.</p>
-<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="clean.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace NA values with 2</span></span>
-<span id="cb436-2"><a href="clean.html#cb436-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[<span class="fu">is.na</span>(newdf1<span class="sc">$</span>OnboardingCompleted)] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb436-3"><a href="clean.html#cb436-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb436-4"><a href="clean.html#cb436-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb436-5"><a href="clean.html#cb436-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="clean.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="co"># For OnboardingCompleted variable, replace NA values with 2</span></span>
+<span id="cb432-2"><a href="clean.html#cb432-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>OnboardingCompleted[<span class="fu">is.na</span>(newdf1<span class="sc">$</span>OnboardingCompleted)] <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb432-3"><a href="clean.html#cb432-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb432-4"><a href="clean.html#cb432-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb432-5"><a href="clean.html#cb432-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -900,11 +900,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 <h2><span class="header-section-number">19.3</span> Rename Variables</h2>
 <p>In some cases you may wish to rename an existing variable. One of the simplest ways to do this is to create a new variable and then delete the old variable. Let’s rename the <code>Org_Tenure_Yrs</code> variable as simply <code>Tenure</code>.</p>
 <p>First, specify the name of the data frame object (<code>newdf1</code>), followed by the <code>$</code> operator and the new name of the variable (<code>Tenure</code>). Second, type the <code>&lt;-</code> operator. Third, specify the name of the data frame object (<code>newdf1</code>), followed by the <code>$</code> operator and the name of the old variable (<code>Org_Tenure_Yrs</code>).</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="clean.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new variable called Tenure based on Org_Tenure_Yrs variable</span></span>
-<span id="cb438-2"><a href="clean.html#cb438-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> newdf1<span class="sc">$</span>Org_Tenure_Yrs</span>
-<span id="cb438-3"><a href="clean.html#cb438-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-4"><a href="clean.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb438-5"><a href="clean.html#cb438-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb434-1"><a href="clean.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new variable called Tenure based on Org_Tenure_Yrs variable</span></span>
+<span id="cb434-2"><a href="clean.html#cb434-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> newdf1<span class="sc">$</span>Org_Tenure_Yrs</span>
+<span id="cb434-3"><a href="clean.html#cb434-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb434-4"><a href="clean.html#cb434-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb434-5"><a href="clean.html#cb434-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 7
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted Tenure
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;
@@ -919,11 +919,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                     7.7
 ## 10 EP1210 Beaverton        1 2012-07-11            6.5 No                     6.5</code></pre>
 <p>Note that there is now a new variable called <code>Tenure</code> and that the old variable called <code>Org_Tenure_Yrs</code> remains. To remove the old variable called <code>Org_Tenure_Yrs</code>, first, specify the name of the data frame object (<code>newdf1</code>), followed by the <code>$</code> operator and the name of the old variable (<code>Org_Tenure_Yrs</code>). Second, type the <code>&lt;-</code> operator. Third, enter <code>NULL</code>.</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="clean.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove Org_Tenure_Yrs variable from data frame</span></span>
-<span id="cb440-2"><a href="clean.html#cb440-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>Org_Tenure_Yrs <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb440-3"><a href="clean.html#cb440-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb440-4"><a href="clean.html#cb440-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb440-5"><a href="clean.html#cb440-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb436-1"><a href="clean.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove Org_Tenure_Yrs variable from data frame</span></span>
+<span id="cb436-2"><a href="clean.html#cb436-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>Org_Tenure_Yrs <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb436-3"><a href="clean.html#cb436-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb436-4"><a href="clean.html#cb436-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb436-5"><a href="clean.html#cb436-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  OnboardingCompleted Tenure
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;                &lt;dbl&gt;
@@ -945,17 +945,17 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 <div id="changing-the-case-of-variable-names" class="section level3" number="19.4.1">
 <h3><span class="header-section-number">19.4.1</span> Changing the Case of Variable Names</h3>
 <p>In some instances, we may wish to systematically change the case of all variable or column names. There are a few functions that can be quite handy in this regard. Let’s revert back the name of the data frame object we initially read in and names: <code>df</code>.</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb442-1"><a href="clean.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb442-2"><a href="clean.html#cb442-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb442-3"><a href="clean.html#cb442-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb442-4"><a href="clean.html#cb442-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in set of data as data frame</span></span>
-<span id="cb442-5"><a href="clean.html#cb442-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb438-1"><a href="clean.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb438-2"><a href="clean.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb438-3"><a href="clean.html#cb438-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb438-4"><a href="clean.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in set of data as data frame</span></span>
+<span id="cb438-5"><a href="clean.html#cb438-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
 <p>To change the case of variable or column names such that they are all lower case, we can use the <code>tolower</code> function from base <code>R</code>. Let’s change the variable names to be all lower case. We will need to use the <code>names</code> function from base <code>R</code> as well to signal that we are referencing the column names as opposed to the values for each variable. First, type the name of the <code>names</code> function with the name of the new data frame object you are creating and naming as the sole argument; here, we will put in the same name of the existing data frame to overwrite it. Second, enter the <code>&lt;-</code> operator to create and name the new data frame object. Third, enter the <code>tolower</code> function, and as the sole argument, include the <code>names</code> function again with the name of the focal data frame object as its sole argument.</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="clean.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of variable names to all lower case</span></span>
-<span id="cb443-2"><a href="clean.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">names</span>(df))</span>
-<span id="cb443-3"><a href="clean.html#cb443-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb443-4"><a href="clean.html#cb443-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb443-5"><a href="clean.html#cb443-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb439-1"><a href="clean.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of variable names to all lower case</span></span>
+<span id="cb439-2"><a href="clean.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">tolower</span>(<span class="fu">names</span>(df))</span>
+<span id="cb439-3"><a href="clean.html#cb439-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-4"><a href="clean.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb439-5"><a href="clean.html#cb439-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    empid  facility  joblevel startdate  org_tenure_yrs onboardingcompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -970,11 +970,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>We can use the <code>toupper</code> function to change the variable names to all upper case.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb445-1"><a href="clean.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of variable names to all upper case</span></span>
-<span id="cb445-2"><a href="clean.html#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">toupper</span>(<span class="fu">names</span>(df))</span>
-<span id="cb445-3"><a href="clean.html#cb445-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb445-4"><a href="clean.html#cb445-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb445-5"><a href="clean.html#cb445-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb441-1"><a href="clean.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of variable names to all upper case</span></span>
+<span id="cb441-2"><a href="clean.html#cb441-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">toupper</span>(<span class="fu">names</span>(df))</span>
+<span id="cb441-3"><a href="clean.html#cb441-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb441-4"><a href="clean.html#cb441-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb441-5"><a href="clean.html#cb441-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EMPID  FACILITY  JOBLEVEL STARTDATE  ORG_TENURE_YRS ONBOARDINGCOMPLETED
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -989,16 +989,16 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>If you wanted to capitalize just the first letter in each variable name, we can create our function to do so. Let’s call this function <code>firstletterupper</code> and use the function called <code>function</code> from base <code>R</code> to program our own function. In this function, we will define what the function will do. Essentially, we are going to create two strings of text and then concatenate them using the <code>paste</code> function. As the first argument in the <code>paste</code> function and to select a string of text, we will pull just the first letter of each variable name using the <code>substring</code> function; the second and third numeric arguments in this function indicate the range of letters that we will pull out, and because we put <em>1</em> and <em>1</em>, we are saying retain just the first letter in each name. We then enter this <code>substring</code> function as an argument in the <code>toupper</code> function so that we will just capitalize the first letter of each variable. We will then enter the second argument in the <code>paste</code> function, which is another <code>substring</code> function; this time, we will indicate that we simply wish to retain the second letter in each name followed by any remaining letters, and we do so by entering the numeral <em>2</em> as the second argument. We then enter this <code>substring</code> function as an argument in the <code>tolower</code> function to make all but the first letter in each variable name lower case. As the final argument in the <code>paste</code> function, we enter <code>sep=""</code> to signify that we do <em>not</em> want any space between these letters when they are concatenated; note that there is no space within the quotation marks. We can now run this script to program our new function called <code>firstletterupper</code>.</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="clean.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to change just first letter of variable name to upper case</span></span>
-<span id="cb447-2"><a href="clean.html#cb447-2" aria-hidden="true" tabindex="-1"></a>firstletterupper <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">paste</span>(<span class="fu">toupper</span>(<span class="fu">substring</span>(x, <span class="dv">1</span>, <span class="dv">1</span>)), </span>
-<span id="cb447-3"><a href="clean.html#cb447-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">tolower</span>(<span class="fu">substring</span>(x, <span class="dv">2</span>)), </span>
-<span id="cb447-4"><a href="clean.html#cb447-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">sep=</span><span class="st">&quot;&quot;</span>)}</span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb443-1"><a href="clean.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to change just first letter of variable name to upper case</span></span>
+<span id="cb443-2"><a href="clean.html#cb443-2" aria-hidden="true" tabindex="-1"></a>firstletterupper <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">paste</span>(<span class="fu">toupper</span>(<span class="fu">substring</span>(x, <span class="dv">1</span>, <span class="dv">1</span>)), </span>
+<span id="cb443-3"><a href="clean.html#cb443-3" aria-hidden="true" tabindex="-1"></a>                                       <span class="fu">tolower</span>(<span class="fu">substring</span>(x, <span class="dv">2</span>)), </span>
+<span id="cb443-4"><a href="clean.html#cb443-4" aria-hidden="true" tabindex="-1"></a>                                       <span class="at">sep=</span><span class="st">&quot;&quot;</span>)}</span></code></pre></div>
 <p>With our new DIY function called <code>firstletterupper</code> we can apply it to the variable names using the same approach we did above with the <code>toupper</code> and <code>tolower</code> functions.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="clean.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change just first letter of variable name to upper case</span></span>
-<span id="cb448-2"><a href="clean.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">firstletterupper</span>(<span class="fu">names</span>(df))</span>
-<span id="cb448-3"><a href="clean.html#cb448-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb448-4"><a href="clean.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb448-5"><a href="clean.html#cb448-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb444-1"><a href="clean.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change just first letter of variable name to upper case</span></span>
+<span id="cb444-2"><a href="clean.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df) <span class="ot">&lt;-</span> <span class="fu">firstletterupper</span>(<span class="fu">names</span>(df))</span>
+<span id="cb444-3"><a href="clean.html#cb444-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb444-4"><a href="clean.html#cb444-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb444-5"><a href="clean.html#cb444-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    Empid  Facility  Joblevel Startdate  Org_tenure_yrs Onboardingcompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -1013,16 +1013,16 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>Alternatively, we could use the <code>clean_names</code> function from the <code>janitor</code> package. Be sure to install and access the package if you haven’t already.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="clean.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install janitor package if you haven&#39;t already</span></span>
-<span id="cb450-2"><a href="clean.html#cb450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;janitor&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="clean.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access janitor package</span></span>
-<span id="cb451-2"><a href="clean.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb446-1"><a href="clean.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install janitor package if you haven&#39;t already</span></span>
+<span id="cb446-2"><a href="clean.html#cb446-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;janitor&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb447-1"><a href="clean.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access janitor package</span></span>
+<span id="cb447-2"><a href="clean.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code></pre></div>
 <p>When coupled with the <code>case=upper_camel</code> argument, the <code>clean_names</code> function will capitalize the first letter in variable names, and if there is an underscore within the variable name (<code>_</code>), the function will capitalize the letter that comes immediately after the underscore.</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="clean.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change just first letter of variable name to upper case</span></span>
-<span id="cb452-2"><a href="clean.html#cb452-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(df, <span class="at">case=</span><span class="st">&quot;upper_camel&quot;</span>)</span>
-<span id="cb452-3"><a href="clean.html#cb452-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb452-4"><a href="clean.html#cb452-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb452-5"><a href="clean.html#cb452-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb448-1"><a href="clean.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change just first letter of variable name to upper case</span></span>
+<span id="cb448-2"><a href="clean.html#cb448-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">clean_names</span>(df, <span class="at">case=</span><span class="st">&quot;upper_camel&quot;</span>)</span>
+<span id="cb448-3"><a href="clean.html#cb448-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-4"><a href="clean.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb448-5"><a href="clean.html#cb448-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    Empid  Facility  Joblevel Startdate  OrgTenureYrs Onboardingcompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;            &lt;dbl&gt; &lt;chr&gt;              
@@ -1037,23 +1037,23 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 Portland         3 2011-04-29          7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11          6.5 No</code></pre>
 <p>There are many other <code>case=</code> arguments that you could use for the <code>clean_name</code> functions to different variations of capitalization. Just access the help menu for the function as shown below.</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="clean.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access help information for clean_names function</span></span>
-<span id="cb454-2"><a href="clean.html#cb454-2" aria-hidden="true" tabindex="-1"></a>?<span class="fu">clean_names</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb450-1"><a href="clean.html#cb450-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access help information for clean_names function</span></span>
+<span id="cb450-2"><a href="clean.html#cb450-2" aria-hidden="true" tabindex="-1"></a>?<span class="fu">clean_names</span>()</span></code></pre></div>
 </div>
 <div id="changing-the-case-of-character-variable-values" class="section level3" number="19.4.2">
 <h3><span class="header-section-number">19.4.2</span> Changing the Case of Character Variable Values</h3>
 <p>In other instances, we may wish to systematically change the case of values for a character variable. As before, let’s revert back the name of the data frame object we initially read in and names: <code>df</code>.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb455-1"><a href="clean.html#cb455-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb455-2"><a href="clean.html#cb455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb455-3"><a href="clean.html#cb455-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb455-4"><a href="clean.html#cb455-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in set of data as data frame</span></span>
-<span id="cb455-5"><a href="clean.html#cb455-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb451-1"><a href="clean.html#cb451-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb451-2"><a href="clean.html#cb451-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb451-3"><a href="clean.html#cb451-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb451-4"><a href="clean.html#cb451-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in set of data as data frame</span></span>
+<span id="cb451-5"><a href="clean.html#cb451-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
 <p>To change the case of variable or column names such that they are all lower case, we can use the <code>tolower</code> function from base <code>R</code>. Let’s change the variable names to be all lower case. We will need to use the <code>names</code> function from base <code>R</code> as well to signal that we are referencing the column names as opposed to the values for each variable. First, type the name of the <code>names</code> function with the name of the new data frame object you are creating and naming as the sole argument; here, we will put in the same name of the existing data frame to overwrite it. Second, enter the <code>&lt;-</code> operator to create and name the new data frame object. Third, enter the <code>tolower</code> function, and as the sole argument, include the <code>names</code> function again with the name of the focal data frame object as its sole argument.</p>
-<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="clean.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of Facility variable&#39;s values to all lower case</span></span>
-<span id="cb456-2"><a href="clean.html#cb456-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Facility <span class="ot">&lt;-</span> <span class="fu">tolower</span>(df<span class="sc">$</span>Facility)</span>
-<span id="cb456-3"><a href="clean.html#cb456-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb456-4"><a href="clean.html#cb456-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb456-5"><a href="clean.html#cb456-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb452-1"><a href="clean.html#cb452-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of Facility variable&#39;s values to all lower case</span></span>
+<span id="cb452-2"><a href="clean.html#cb452-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Facility <span class="ot">&lt;-</span> <span class="fu">tolower</span>(df<span class="sc">$</span>Facility)</span>
+<span id="cb452-3"><a href="clean.html#cb452-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb452-4"><a href="clean.html#cb452-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb452-5"><a href="clean.html#cb452-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -1068,11 +1068,11 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>We can similarly use the <code>toupper</code> function to change a character variable’s values to all upper case.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb458-1"><a href="clean.html#cb458-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of Facility variable&#39;s values to all upper case</span></span>
-<span id="cb458-2"><a href="clean.html#cb458-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Facility <span class="ot">&lt;-</span> <span class="fu">toupper</span>(df<span class="sc">$</span>Facility)</span>
-<span id="cb458-3"><a href="clean.html#cb458-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb458-4"><a href="clean.html#cb458-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb458-5"><a href="clean.html#cb458-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb454-1"><a href="clean.html#cb454-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change case of Facility variable&#39;s values to all upper case</span></span>
+<span id="cb454-2"><a href="clean.html#cb454-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Facility <span class="ot">&lt;-</span> <span class="fu">toupper</span>(df<span class="sc">$</span>Facility)</span>
+<span id="cb454-3"><a href="clean.html#cb454-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb454-4"><a href="clean.html#cb454-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb454-5"><a href="clean.html#cb454-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -1087,17 +1087,17 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  9 EP1209 PORTLAND         3 2011-04-29            7.7 No                 
 ## 10 EP1210 BEAVERTON       11 2012-07-11            6.5 No</code></pre>
 <p>If you wanted to capitalize just the first letter in a character variable’s values, we can create our function to do so. Let’s call this function <code>firstletterupper</code> and use the function called <code>function</code> from base <code>R</code> to program our own function. In this function, we will define what the function will do. Essentially, we are going to create two strings of text and then concatenate them using the <code>paste</code> function. As the first argument in the <code>paste</code> function and to select a string of text, we will pull just the first letter of the character variable’s values using the <code>substring</code> function; the second and third numeric arguments in this function indicate the range of letters that we will pull out, and because we put <em>1</em> and <em>1</em>, we are saying retain just the first letter in each name. We then enter this <code>substring</code> function as an argument in the <code>toupper</code> function so that we will just capitalize the first letter of the variable’s values. We will then enter the second argument in the <code>paste</code> function, which is another <code>substring</code> function; this time, we will indicate that we simply wish to retain the second letter in each value followed by any remaining letters, and we do so by entering the numeral <em>2</em> as the second argument. We then enter this <code>substring</code> function as an argument in the <code>tolower</code> function to make all but the first letter in each variable name lower case. As the final argument in the <code>paste</code> function, we enter <code>sep=""</code> to signify that we do <em>not</em> want any space between these letters when they are concatenated; note that there is no space within the quotation marks. We can now run this script to program our new function called <code>firstletterupper</code>. Note that this is the same function we created above for changing the case of variable names, but we will take it to another level in this instance. Specifically, we are now ready to insert the <code>paste</code> function we just specified into the <code>ifelse</code> function from base <code>R</code>. Specifically, in case there are any missing values (<code>NA</code>s), we want to exclude those when running this <code>paste</code> function. As the first argument in the <code>ifelse</code> function enter <code>!is.na(x)</code> to indicate we want to select those values for that are <em>not</em> <code>NA</code>. As the second argument, we enter what we wrote for the <code>paste</code> function. As the third argument, we address the “else” part of the <code>ifelse</code> function; meaning, we need to indicate how values that are <code>NA</code> should be treated. By entering the name of the object <code>x</code> as this final argument, we are indicating that the original value (which in this case is actually missing as <code>NA</code>) will be retained.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="clean.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to change just first letter of character variable&#39;s values to upper case</span></span>
-<span id="cb460-2"><a href="clean.html#cb460-2" aria-hidden="true" tabindex="-1"></a>firstletterupper <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(x), </span>
-<span id="cb460-3"><a href="clean.html#cb460-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">paste</span>(<span class="fu">toupper</span>(<span class="fu">substring</span>(x, <span class="dv">1</span>, <span class="dv">1</span>)), </span>
-<span id="cb460-4"><a href="clean.html#cb460-4" aria-hidden="true" tabindex="-1"></a>                                              <span class="fu">tolower</span>(<span class="fu">substring</span>(x, <span class="dv">2</span>)),</span>
-<span id="cb460-5"><a href="clean.html#cb460-5" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">sep=</span><span class="st">&quot;&quot;</span>), x)}</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb456-1"><a href="clean.html#cb456-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to change just first letter of character variable&#39;s values to upper case</span></span>
+<span id="cb456-2"><a href="clean.html#cb456-2" aria-hidden="true" tabindex="-1"></a>firstletterupper <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">ifelse</span>(<span class="sc">!</span><span class="fu">is.na</span>(x), </span>
+<span id="cb456-3"><a href="clean.html#cb456-3" aria-hidden="true" tabindex="-1"></a>                                        <span class="fu">paste</span>(<span class="fu">toupper</span>(<span class="fu">substring</span>(x, <span class="dv">1</span>, <span class="dv">1</span>)), </span>
+<span id="cb456-4"><a href="clean.html#cb456-4" aria-hidden="true" tabindex="-1"></a>                                              <span class="fu">tolower</span>(<span class="fu">substring</span>(x, <span class="dv">2</span>)),</span>
+<span id="cb456-5"><a href="clean.html#cb456-5" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">sep=</span><span class="st">&quot;&quot;</span>), x)}</span></code></pre></div>
 <p>With our new DIY function called <code>firstletterupper</code> we can apply it to the character variable we wish to change (<code>Facility</code>).</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb461-1"><a href="clean.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change just first letter of character variable&#39;s values to upper case</span></span>
-<span id="cb461-2"><a href="clean.html#cb461-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Facility <span class="ot">&lt;-</span> <span class="fu">firstletterupper</span>(df<span class="sc">$</span>Facility)</span>
-<span id="cb461-3"><a href="clean.html#cb461-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb461-4"><a href="clean.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb461-5"><a href="clean.html#cb461-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb457-1"><a href="clean.html#cb457-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change just first letter of character variable&#39;s values to upper case</span></span>
+<span id="cb457-2"><a href="clean.html#cb457-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Facility <span class="ot">&lt;-</span> <span class="fu">firstletterupper</span>(df<span class="sc">$</span>Facility)</span>
+<span id="cb457-3"><a href="clean.html#cb457-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb457-4"><a href="clean.html#cb457-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb457-5"><a href="clean.html#cb457-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
