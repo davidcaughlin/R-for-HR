@@ -175,7 +175,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
 <li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_clean"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.2" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_manipulate"><i class="fa fa-check"></i><b>4.2</b> Data Manipulation &amp; Structuring</a></li>
+<li class="chapter" data-level="4.3" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_tools"><i class="fa fa-check"></i><b>4.3</b> Common Data-Management Tools</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a></li>
 <li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a></li>
 <li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
@@ -354,13 +359,13 @@ BOOK UNDER CONSTRUCTION</a>
             <section class="normal" id="section-">
 <div id="clean" class="section level1" number="19">
 <h1><span class="header-section-number">Chapter 19</span> Cleaning Data</h1>
-<p><strong>Cleaning data</strong> is an essential part of the <a href="#dmanage">Data Management</a> phase of the <a href="index.html#hraplc">HR Analytics Project Life Cycle</a>. When we clean data, broadly speaking, we identify, correct, or remove problematic observations, scores, or variables. More specifically, data cleaning often entails (but is not limited to):</p>
+<p><strong>Cleaning data</strong> is an essential part of the <a href="datamanagement.html#datamanagement">Data Management</a> phase of the <a href="overviewhraplc.html#overviewhraplc">HR Analytics Project Life Cycle</a>. When we clean data, broadly speaking, we identify, correct, or remove problematic observations, scores, or variables. More specifically, data cleaning often entails (but is not limited to):</p>
 <ol style="list-style-type: decimal">
-<li>Identifying and correcting data-entry errors and inconsistent coding</li>
-<li>Evaluating missing data and determining how to handle them</li>
-<li>Flagging and correcting out-of-bounds scores for variables</li>
-<li>Addressing open-ended and/or “other” responses from employee surveys</li>
-<li>Flagging and potentially removing untrustworthy variables</li>
+<li>Identifying and correcting data-entry errors and inconsistent coding;</li>
+<li>Evaluating missing data and determining how to handle them;</li>
+<li>Flagging and correcting out-of-bounds scores for variables;</li>
+<li>Addressing open-ended and/or “other” responses from employee surveys;</li>
+<li>Flagging and potentially removing untrustworthy variables.</li>
 </ol>
 <p>With categorical (i.e., nominal, ordinal) variables containing text values, sometimes different spellings or formatting (e.g., uppercase, lowercase) are used (mistakenly) to represent the same category. Such issues broadly fall under <em>data-entry errors and inconsistent coding</em> reason for data cleaning. While the human eye can usually discern what the intended category is, many software programs and programming languages will be unable to automatically or correctly determine which text values represent which category. For example, in the table below, the facility variable is categorical and contains text values meant to represent different facilities at this hypothetical organization. Human eyes can quickly pick out that there are two facility locations represented in this table: Beaverton and Portland. With that said, for the R programming language, without direction, the different spellings and different cases (i.e., lowercase vs. uppercase “B”) for the Beaverton facility (i.e., Beaverton, beaverton, beverton) will be treated as unique categories (i.e., facilities in this context). Often this is the result of data-entry errors and/or the lack of data validation. To clean the Facility variable, we could convert all instances of “beaverton” and “beverton” to “Beaverton.”</p>
 <div class="figure">

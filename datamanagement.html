@@ -175,7 +175,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
 <li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_clean"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.2" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_manipulate"><i class="fa fa-check"></i><b>4.2</b> Data Manipulation &amp; Structuring</a></li>
+<li class="chapter" data-level="4.3" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_tools"><i class="fa fa-check"></i><b>4.3</b> Common Data-Management Tools</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a></li>
 <li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a></li>
 <li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
@@ -354,32 +359,54 @@ BOOK UNDER CONSTRUCTION</a>
             <section class="normal" id="section-">
 <div id="datamanagement" class="section level1" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Data Management</h1>
-<p><strong>Data management</strong> refers to the process of wrangling, cleaning, manipulating, and structuring data. Different tools can be used for data management, such as database management systems and data analysis software programs. The general rule of thumb is that you can expect to spend 80% of your time managing data and about 20% of your time analyzing data.</p>
+<p><strong>Data management</strong> refers to the process of wrangling, cleaning, manipulating, and structuring the data attained during the <a href="dataacquisition.html#dataacquisition">Data Acquisition</a> phase of the <a href="overviewhraplc.html#overviewhraplc">HR Analytics Project Life Cycle</a>. In many instances, the overarching goal of data management is to prepare the data for subsequent analysis during the <a href="dataanalysis.html#dataanalysis">Data Analysis</a> phase. In general, you can expect to spend 80% of your time managing data and about 20% of your time analyzing data; however, upon reflection of my own personal experiences, I generally spend about 90% of my time managing data for a project and only 5% of my time actually analyzing the data. My point is that we shouldn’t underestimate how long the data manage process will take.</p>
 <div class="figure">
 <img src="datamanagement_hraplc.png" alt="" />
 <p class="caption">The Data Management phase of the Human Resource Analytics Project Life Cycle (HRAPLC) involves wrangling, cleaning, manipulating, and structuring the data gathered during the Data Acquisition phase.</p>
 </div>
-<p>XXXX</p>
+<p>Data analysts and database administrators manage data to complete tasks like:</p>
+<ul>
+<li>Defining the characteristics of the data (e.g., quantitative vs. qualitative; structured vs. unstructured);</li>
+<li>Organizing the data in a manner that promotes integration, data quality, and accessibility, particularly when data are longitudinal or multisource;</li>
+<li>Cleaning the data by addressing data-validation issues, missing data, and untrustworthy data or variables;</li>
+<li>Manipulating and joining (i.e., merging) data, and adding structure if needed;</li>
+<li>Maintaining the data security and privacy, including restricting access to only authorized individuals.</li>
+</ul>
+<div id="datamanage_clean" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Data Cleaning</h2>
+<p>Data cleaning is an essential part of data management and is discussed in greater detail in the <a href="clean.html#clean">Data Cleaning</a> chapter. Broadly speaking, when we clean data, we attempt to identify, correct, or remove problematic observations, scores, or variables. More specifically, data cleaning often entails (but is not limited to):</p>
+<ol style="list-style-type: decimal">
+<li>Identifying and correcting data-entry errors and inconsistent coding;</li>
+<li>Evaluating missing data and determining how to handle them;</li>
+<li>Flagging and correcting out-of-bounds scores for variables;</li>
+<li>Addressing open-ended and/or “other” responses from employee surveys;</li>
+<li>Flagging and potentially removing untrustworthy variables.</li>
+</ol>
 <div class="figure">
 <img src="cleaning_casesensitivity.png" alt="" />
-<p class="caption">By default, different spellings and cases (e.g., Beaverton, beverton, beaverton) for what is supposed to be the same category (e.g., Beaverton) will be treated as separate categories by many programs.</p>
+<p class="caption">By default, different spellings and cases (e.g., Beaverton, beverton, beaverton) for what is supposed to be the same category (e.g., Beaverton) will be treated as separate categories by many programs; therefore, it is important to clean the data by creating consistent category labels.</p>
 </div>
-<p>XXXX</p>
-<div class="figure">
-<img src="datamanagement_longwide.png" alt="" />
-<p class="caption">XXXX.</p>
 </div>
-<p>XXXX</p>
+<div id="datamanage_manipulate" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Data Manipulation &amp; Structuring</h2>
+<p>Often, data require manipulation or (re)structuring prior to analysis or visualization. A common type of data manipulation is to pivot data from “wide” to “long” format or from “long to wide” format. When data are in <em>wide format</em>, each row contains all of the variable values for a single case (i.e., entity). For example, imagine a data table containing data related to each employee’s performance on the exact same tests administered at two points in time (e.g., pre-test, post-test) as well as their employee unique identifier number (e.g., employee ID). If this table is in wide format, then each employee’s data will be contained within a single row, such that their scores one each test belong to a separate variable (i.e., column, field). In contrast, when data are in <em>long format</em>, a single case’s data may be spread across multiple rows of data, where commonly each row belonging to a given case represents the a different observation for that case. Separation observations for a single case may have to do with the time (e.g., Time 1 vs. Time 2) or source (e.g., employee rating vs. supervisor rating) of measurement for common target. For example, the same imaginary data described above could be manipulated into long format, such that each employee would have up to two rows of data: one for each test (i.e., pre-test vs. post-test). Again, our decision regarding whether to manipulate data to wide or long format often has to do with what type of analysis or visualization we plan to apply to the data subsequently.</p>
+<p><img src="datamanagement_longwide.png" alt="The following data tables display the same data, except one table displays the data in “wide” format and the other in “long” format." />
+As a prerequisite for applying many common types of analyses and visualizations, we need to apply structure to the data, which often means putting the data into rows and columns (e.g., table). Some data-acquisition tools (e.g., survey platforms) make this process relatively easy for us, as they typically export data in the form of a spreadsheet. Other data-acquisition tools (e.g., data scraping), however, will require that the data be structured prior to analysis. For example, imagine we wish to scrape data from employee emails (with their consent). In their raw form, the data contained within the typical email does not inherently fall within rows and columns, where columns represent variables and rows represent cases or observations.</p>
 <div class="figure">
 <img src="datamanagement_unstructured.png" alt="" />
-<p class="caption">XXXX.</p>
+<p class="caption">When data are acquired, they don’t always arrive in a structure that is amenable for subsequent analysis or visualization. For example, the data from these four emails are not yet structured in neat rows and columns.</p>
 </div>
-<p>XXXX</p>
+<p>We might restructure the email data by creating separate variables, such as an email unique identifier number, sender, receiver, and subject line. Each row might then contain a single email’s data for those variables. By structuring the data into a table, we are now one step closer to applying perhaps some sort of text analysis or to construct a social network analysis.</p>
 <div class="figure">
 <img src="datamanagement_structured.png" alt="" />
-<p class="caption">XXXX.</p>
+<p class="caption">Structure can be applied to the same unstructured email data shown in the previous figure by organizing the data into columns (e.g., variables, fields) and rows (e.g., cases) – or in other words, organizing the data into a table.</p>
 </div>
+</div>
+<div id="datamanage_tools" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Common Data-Management Tools</h2>
+<p>A variety of tools can facilitate data management, including database management systems and information systems, data analysis software programs, and programming languages. Even widely available spreadsheet tools like Microsoft Excel and Google Sheets offer some data management capabilities. Enterprise database management systems and information system platforms often feature functions that enable joining and arranging data stored in tables. For example, Microsoft Access is perhaps one of the simplest relational database management tools, and it is not uncommon for instructors to teach beginners fundamental database management concepts using the program given its easy-to-understand graphic interface. Other examples of database management systems and vendors include <a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.microsoft.com/en-us/sql-server/">Microsoft SQL Server</a>, <a href="https://www.sqlite.org/index.html">SQLite</a>, <a href="https://www.mongodb.com/2">MongoDB</a>, <a href="https://www.oracle.com/database/">Oracle</a>, and <a href="https://www.sap.com/products/database-data-management.html">SAP</a>. A number of common database management platforms can be accessed using Structured Query Language (SQL). Finally, programming languages like R and Python can be used to manage data.</p>
 
+</div>
 </div>
             </section>
 
