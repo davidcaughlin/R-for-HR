@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-04-25" />
+<meta name="date" content="2021-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="filter.html"/>
-<link rel="next" href="create-portfolio.html"/>
+<link rel="next" href="aggregatesegment.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -332,6 +332,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="19.5" data-path="clean.html"><a href="clean.html#summary-9"><i class="fa fa-check"></i><b>19.5</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="20" data-path="aggregatesegment.html"><a href="aggregatesegment.html"><i class="fa fa-check"></i><b>20</b> Aggregating &amp; Segmenting Data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup"><i class="fa fa-check"></i><b>20.1</b> Counts By Group</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_pipes"><i class="fa fa-check"></i><b>20.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.1.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_nopipes"><i class="fa fa-check"></i><b>20.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup"><i class="fa fa-check"></i><b>20.2</b> Measures of Central Tendency and Dispersion By Group</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_pipes"><i class="fa fa-check"></i><b>20.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.2.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_nopipes"><i class="fa fa-check"></i><b>20.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable"><i class="fa fa-check"></i><b>20.3</b> Add Variable to Data Frame Containing Aggregated Values</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_pipes"><i class="fa fa-check"></i><b>20.3.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.3.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_nopipes"><i class="fa fa-check"></i><b>20.3.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#visualize_bygroup"><i class="fa fa-check"></i><b>20.4</b> Visualize Data By Group</a></li>
+<li class="chapter" data-level="20.5" data-path="aggregatesegment.html"><a href="aggregatesegment.html#summary-10"><i class="fa fa-check"></i><b>20.5</b> Summary</a></li>
+<li class="chapter" data-level="20.6" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement"><i class="fa fa-check"></i><b>20.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_subset_supplement"><i class="fa fa-check"></i><b>20.6.1</b> <code>describeBy</code> Function from <code>psych</code> Package</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IV Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -373,8 +397,11 @@ BOOK UNDER CONSTRUCTION</a>
 <p class="caption"><em>Data-entry errors and inconsistent coding:</em> In this table, different spelling and letter cases (e.g., uppercase vs. lowercase) appear for what is supposed to be the same facility location: Beaverton.</p>
 </div>
 <p><em>Missing data</em> (i.e., missing scores) for certain observations (i.e., cases) should also be addressed during data cleaning. For the Facility variable in the table shown below, note how facility location data are missing for the employees with IDs EP9746 and EP9952. In this example, we could likely find other employee records or contact the employees (or their supervisors) in question to verify the facility location where these to employees work. Provided we find the facility locations for these two employees, we could then replace the missing values with the correct facility location information. In other instances, it may prove to be more difficult to replace missing data, such as when organization administers an anonymous employee survey and certain respondents have missing responses to certain questions or items. In such instances, we may decide to tolerate a small percentage of missing data (e.g., &lt; 10%) when we go to analyze the data; however, if the percentage of missing data is sufficiently large and if we plan to analyze the data to make inferences about underlying population from which the sample data were attained, we may begin to think more seriously about whether the data are missing completely at random, missing at random, or missing at not at random. A proper discussion of missing data theory is beyond the scope of this chapter.</p>
-<p><img src="cleaning_missingdata.png" alt="Missing data: In this table, data are missing for the employees with IDs EP9746 and EP9952." />
-In some instances, we might encounter <em>out-of-bounds scores</em>, which refer to values that simply are too high or low, or that are just unrealistic or implausible to be correct. In the table below, the Base Salary variable includes salaries that are all below 75,000 – with the notable exception of salary associated with employee ID EP0214. Let’s imagine that this table is only supposed to include data for a specific job category; knowing that, a base salary of 789,120,000 seems excessively high in a global sense and extraordinarily high in a local sense. It could be that someone entered the base salary data incorrectly for this employee, perhaps by adding four extra zeroes at the end of the actual base salary amount. In this case, we would try to find verify the correct base salary for this individual and then make the correction to the data.</p>
+<div class="figure">
+<img src="cleaning_missingdata.png" alt="" />
+<p class="caption"><em>Missing data:</em> In this table, data are missing for the employees with IDs EP9746 and EP9952.</p>
+</div>
+<p>In some instances, we might encounter <em>out-of-bounds scores</em>, which refer to values that simply are too high or low, or that are just too unrealistic or implausible to be correct. In the table below, the Base Salary variable includes salaries that are all below 75,000 – with the notable exception of salary associated with employee ID EP0214. Let’s imagine that this table is only supposed to include data for a specific job category; knowing that, a base salary of 789,120,000 seems excessively high in a global sense and extraordinarily high in a local sense. It could be that someone entered the base salary data incorrectly for this employee, perhaps by adding four extra zeroes at the end of the actual base salary amount. In this case, we would try to find verify the correct base salary for this individual and then make the correction to the data.</p>
 <div class="figure">
 <img src="cleaning_outofbounds.png" alt="" />
 <p class="caption"><em>Out-of-bounds scores:</em> In this table, the base salary for the individual with employee ID EP0214 seems extraordinarily high and is almost certainly a data entry error.</p>
@@ -479,7 +506,7 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 <span id="cb488-4"><a href="clean.html#cb488-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb488-5"><a href="clean.html#cb488-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_character(),
 ##   Facility = col_character(),
@@ -490,8 +517,8 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ## )</code></pre>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="clean.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb490-2"><a href="clean.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;            &quot;StartDate&quot;          
-## [5] &quot;Org_Tenure_Yrs&quot;      &quot;OnboardingCompleted&quot;</code></pre>
+<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;            &quot;StartDate&quot;           &quot;Org_Tenure_Yrs&quot;     
+## [6] &quot;OnboardingCompleted&quot;</code></pre>
 <div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="clean.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
 <span id="cb492-2"><a href="clean.html#cb492-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
@@ -591,7 +618,7 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 ##  $ EmpID              : chr [1:10] &quot;EP1201&quot; &quot;EP1202&quot; &quot;EP1203&quot; &quot;EP1204&quot; ...
 ##  $ Facility           : chr [1:10] &quot;Beaverton&quot; &quot;beaverton&quot; &quot;Beaverton&quot; &quot;Portland&quot; ...
 ##  $ JobLevel           : num [1:10] 1 1 -9999 5 2 ...
-##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; &quot;2017-02-05&quot; ...
+##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; &quot;2017-02-05&quot; &quot;2018-09-19&quot; ...
 ##  $ Org_Tenure_Yrs     : num [1:10] 8.6 10.9 1.9 0.3 0.3 8.8 7.6 8.6 7.7 6.5
 ##  $ OnboardingCompleted: chr [1:10] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
@@ -1118,16 +1145,13 @@ In some instances, we might encounter <em>out-of-bounds scores</em>, which refer
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="filter.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aggregatesegment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

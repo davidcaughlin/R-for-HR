@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-04-25" />
+<meta name="date" content="2021-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -332,6 +332,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="19.5" data-path="clean.html"><a href="clean.html#summary-9"><i class="fa fa-check"></i><b>19.5</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="20" data-path="aggregatesegment.html"><a href="aggregatesegment.html"><i class="fa fa-check"></i><b>20</b> Aggregating &amp; Segmenting Data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup"><i class="fa fa-check"></i><b>20.1</b> Counts By Group</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_pipes"><i class="fa fa-check"></i><b>20.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.1.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_nopipes"><i class="fa fa-check"></i><b>20.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup"><i class="fa fa-check"></i><b>20.2</b> Measures of Central Tendency and Dispersion By Group</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_pipes"><i class="fa fa-check"></i><b>20.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.2.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_nopipes"><i class="fa fa-check"></i><b>20.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable"><i class="fa fa-check"></i><b>20.3</b> Add Variable to Data Frame Containing Aggregated Values</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_pipes"><i class="fa fa-check"></i><b>20.3.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.3.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_nopipes"><i class="fa fa-check"></i><b>20.3.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#visualize_bygroup"><i class="fa fa-check"></i><b>20.4</b> Visualize Data By Group</a></li>
+<li class="chapter" data-level="20.5" data-path="aggregatesegment.html"><a href="aggregatesegment.html#summary-10"><i class="fa fa-check"></i><b>20.5</b> Summary</a></li>
+<li class="chapter" data-level="20.6" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement"><i class="fa fa-check"></i><b>20.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_subset_supplement"><i class="fa fa-check"></i><b>20.6.1</b> <code>describeBy</code> Function from <code>psych</code> Package</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IV Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -479,7 +503,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb280-4"><a href="join.html#cb280-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
 <span id="cb280-5"><a href="join.html#cb280-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -489,7 +513,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="join.html#cb282-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
@@ -863,7 +887,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb333-4"><a href="join.html#cb333-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
 <span id="cb333-5"><a href="join.html#cb333-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -873,7 +897,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="join.html#cb335-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
