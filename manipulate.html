@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 21 Manipulating &amp; Restructuring Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 21 Manipulating &amp; Restructuring Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 21 Manipulating &amp; Restructuring Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="overviewhraplc.html"/>
-<link rel="next" href="dataacquisition.html"/>
+<link rel="prev" href="aggregatesegment.html"/>
+<link rel="next" href="create-portfolio.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -436,133 +436,286 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="questionformulation" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Question Formulation</h1>
-<p>The first phase of the HR Analytics Project Life Cycle (HRAPLC) is Question Formulation. <strong>Question formulation</strong> refers to the process of posing strategy-inspired and -aligned questions or hypotheses (that can be answered using data) in order to investigate why or how a problem occurs, what a problem might lead to or be associated with, or who is affected by the problem. Thoughtful question formulation results in (a) more effective and efficient data acquisition, management, and analysis, and (b) answers that are more useful to stakeholders. Question formulation is closely associated with <strong>problem definition</strong>, which refers to the process of framing and diagnosing a problem (e.g., challenge, opportunity, threat) for which finding a solution will bring value.</p>
+<div id="manipulate" class="section level1" number="21">
+<h1><span class="header-section-number">Chapter 21</span> Manipulating &amp; Restructuring Data</h1>
+<p><strong>Data manipulation and restructuring</strong> refers to the process in which data are restructured or formatted in a different manner. When we think about structured data, we often think in terms of wide versus long formats. <strong>Wide format</strong> data are structured such that there are more columns (i.e., variables) and fewer rows than with long format data. For example, most survey platforms allow you to download the survey responses in a wide format, such that each variable (that corresponds to a survey item/question) will have its own column. <strong>Long format</strong> data are structured such that that are (sometimes) fewer columns yet more rows than with wide-format data. For example, we can restructure survey data from wide format such that one variable (i.e., column) contains the names of the different survey items/questions, and another variable contains the responses/scores for each item/question. Often our decision to manipulate data into wide versus long formats has to do with the type of analysis or visualization we plan to perform. As such, understanding how to manipulate and restructure your data is an important data-science skill.</p>
 <div class="figure">
-<img src="questionformulation_hraplc.png" alt="" />
-<p class="caption">The Question Formulation phase of the HR Analytics Project Life Cycle (HRAPLC) involves defining problems and formulating questions.</p>
+<img src="datastructure.png" alt="" />
+<p class="caption">Data can be manipulated into different structures to accomplish different goals. For example, a dataset in wide format might include employees’ scores on pre-test and post-test assessments as separate variables (i.e., columns), where one column includes the pre-test scores and one column includes the post-test scores. The same dataset could, alternatively, be manipulated or restructured into long format, such that the time of the test administration becomes a categorical variable and a separate variable contains the scores; In the wide-format dataset, each employee has a single row of data, whereas in the long-format dataset each employee has one row of data for their pre-test and one row of data for their post-test.</p>
 </div>
-<div id="adoptstrategicmindset" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Adopting a Strategic Mindset</h2>
-<p>When our goal is to improve the organization and the employee experience, adopting a strategic mindset sets us up for defining the right problems and formulating the right questions. A <strong>strategic mindset</strong> involves:</p>
-<ul>
-<li><em>Familiarity with strategic goals and roles</em>, which requires recognizing and understanding strategic objects of the department and the organization, and the roles that key decision makers and stakeholders play.</li>
-<li><em>Understanding of organization systems</em>, which requires the application of systems thinking when defining problems and formulating questions.</li>
-<li><em>Focus on opportunities for innovation</em>, which requires thinking broadly and openly prior to narrowing focus.</li>
-<li><em>Application of (intellectual) curiosity</em>, which entails asking “why,” “why not,” and “how” type questions.</li>
-</ul>
-<div class="figure">
-<img src="stategicmindset_problem_question_framework.png" alt="" />
-<p class="caption">Before defining a problem and formulating a question, it is important to adopt a strategic mindset and to engage in divergent and convergent thinking processes.</p>
+<div id="video-tutorial-14" class="section level4" number="21.0.0.1">
+<h4><span class="header-section-number">21.0.0.1</span> Video Tutorial</h4>
+<p>In the video tutorial below, I demonstrate how to use two data-manipulation functions that have since been deprecated by the <code>tidyr</code> package, which are called <code>gather</code> and <code>spread</code>. In this chapter, I review how to use the new data-manipulation functions from the <code>tidyr</code> package called <code>pivot_longer</code> and <code>pivot_wider</code>, respectively. I personally find the new functions to be more intuitive to use, but perhaps you’ll disagree. Regardless of which you choose, both will help you manipulate data from wide to long format and from long to wide format.</p>
+<iframe src="https://youtube.com/embed/5DgEAKLRjhw?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to Video Tutorial: <a href="https://youtu.be/5DgEAKLRjhw" class="uri">https://youtu.be/5DgEAKLRjhw</a></p>
 </div>
-<div id="strategy" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Strategy</h3>
-<p>Because adopting a strategy necessitates and understanding of strategy, let’s take a moment to review the concept of a strategy. Simply put, a <strong>strategy</strong> refers to “a well-devised and thoughtful plan for achieving an objective” <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019, 35</a>)</span>. Notably, a strategy is future oriented and provides a “roadmap” towards completion of a desired objective. Moreover, realizing a strategy requires coordinating business activities to achieve both short- and long-term objectives. When creating a new strategy, we often focus on two distinguishable phases: (a) strategy formulation and (b) strategy implementation.</p>
+<div id="functions-packages-introduced-9" class="section level4" number="21.0.0.2">
+<h4><span class="header-section-number">21.0.0.2</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>pivot_longer</code></td>
+<td><code>tidyr</code></td>
+</tr>
+<tr class="even">
+<td><code>c</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>pivot_wider</code></td>
+<td><code>tidyr</code></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="strategyformulation" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Strategy Formulation</h3>
-<p><strong>Strategy formulation</strong> involves “planning what to do to achieve organizational objectives – or in other words, the development and/or refinement of a strategy” <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019, 35–36</a>)</span>. The prototypical strategy formulation often includes the following steps:</p>
+<div id="initsteps_manipulate" class="section level4" number="21.0.0.3">
+<h4><span class="header-section-number">21.0.0.3</span> Initial Steps</h4>
+<p>If you haven’t already, save the file called <strong>“ManipulatingData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="manipulate.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb625-2"><a href="manipulate.html#cb625-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“ManipulatingData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="manipulate.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb626-2"><a href="manipulate.html#cb626-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb626-3"><a href="manipulate.html#cb626-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb626-4"><a href="manipulate.html#cb626-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="manipulate.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb627-2"><a href="manipulate.html#cb627-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb627-3"><a href="manipulate.html#cb627-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb627-4"><a href="manipulate.html#cb627-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb627-5"><a href="manipulate.html#cb627-5" aria-hidden="true" tabindex="-1"></a>datam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ManipulatingData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ---------------------------------------------------------------------------------------
+## cols(
+##   SurveyID = col_double(),
+##   JobSatisfaction = col_double(),
+##   TurnoverIntentions = col_double(),
+##   OrgCommitment = col_double(),
+##   JobInvolvement = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="manipulate.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb629-2"><a href="manipulate.html#cb629-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam)</span></code></pre></div>
+<pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;      &quot;JobInvolvement&quot;</code></pre>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="manipulate.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
+<span id="cb631-2"><a href="manipulate.html#cb631-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(datam)</span></code></pre></div>
+<pre><code>## # A tibble: 20 x 5
+##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
+##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
+##  1        1            55.4               97.2          32.3           50.5
+##  2        2            51.5               96            53.4           50.3
+##  3        3            46.2               94.5          63.9           50.2
+##  4        4            42.8               91.4          70.3           50.3
+##  5        5            40.8               88.3          34.1           50.5
+##  6        6            38.7               84.9          67.7           30.5
+##  7        7            35.6               79.9          53.3           30.5
+##  8        8            33.1               77.6          63.5           30.5
+##  9        9            29                 74.5          68             30.5
+## 10       10            26.2               71.4          67.4           30.5
+## 11       11            23.1               66.4          15.6           30.5
+## 12       12            22.3               61.8          71.8           30.5
+## 13       13            22.3               57.2          70.2           30.6
+## 14       14            23.3               52.9          64.9           30.5
+## 15       15            25.9               51            62.2           30.5
+## 16       16            29.5               51            67.3           30.5
+## 17       17            32.8               51            40.6           30.5
+## 18       18            35.4               51.4          74.7           30.5
+## 19       19            40.3               51.4          71.8           50.1
+## 20       20            56.7               56            84.3           69.5</code></pre>
+<p>Note in the data frame that the <code>SurveyID</code> variable (i.e., column, field) is a unique identifier variable, which means that each case (i.e., observation) has a unique value on this variable. Each row represents a unique employee’s composite score on four measures (i.e., <code>JobSatisfaction</code>, <code>TurnoverIntentions</code>, <code>OrgCommitment</code>, <code>JobInvolvement</code>), where higher scores indicate higher levels of the concept (i.e., construct) being measured.</p>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="manipulate.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine number of rows in data frame</span></span>
+<span id="cb633-2"><a href="manipulate.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam)</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<p>Note how the data frame currently has 20 rows (cases) of data, as shown by the output to the <code>nrow</code> function from base <code>R</code>.</p>
+</div>
+<div id="widetolong" class="section level2" number="21.1">
+<h2><span class="header-section-number">21.1</span> Wide-to-Long Format Data Manipulation</h2>
+<p>The data frame we read in called <code>datam</code> is in <em>wide format</em>, as each substantive variable has its own column. To restructure the data from wide to long format, we will use the <code>pivot_longer</code> function from the <code>tidyr</code> package. Along with <code>readr</code> and <code>dplyr</code> (as well as other useful packages), the <code>tidyr</code> package is part of the <code>tidyverse</code> of packages. Let’s begin by installing and accessing the <code>tidyr</code> package so that we can use the <code>pivot_longer</code> function.</p>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="manipulate.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package if you haven&#39;t already</span></span>
+<span id="cb635-2"><a href="manipulate.html#cb635-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="manipulate.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package</span></span>
+<span id="cb636-2"><a href="manipulate.html#cb636-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<p><strong>If you received an error when attempting to access the <code>tidyr</code> package using the <code>library</code> function, you may need to install the following packages using the <code>install.packages</code> function: <code>rlang</code> and <code>glue</code>. Alternatively, you may try installing the entire <code>tidyverse</code> package.</strong></p>
+<p>Now that we’ve accessed the <code>tidyr</code> package, I will demonstrate two techniques for applying the <code>pivot_longer</code> function.</p>
+<p>The <em>first technique</em> uses the pipe operator (<code>%&gt;%</code>). The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(<a href="references.html#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2020</a>)</span>, on which the <code>tidyr</code> package is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="references.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on pipes: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
+<p>The <em>second technique</em> for applying the <code>pivot_longer</code> function takes a more traditional approach in that it involves nested functions being nested parenthetically. If you don’t want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called <a href="manipulate.html#widetolong_withoutpipe">Without Pipe</a>.</p>
+<div id="widetolong_withpipe" class="section level3" number="21.1.1">
+<h3><span class="header-section-number">21.1.1</span> <em>With</em> Pipe</h3>
+<p>Using the pipe (<code>%&gt;%</code>) operator technique, let’s apply the <code>pivot_longer</code> function to manipulate the <code>datam</code> data frame object from wide format to long format.</p>
+<p>We can specify the wide-to-long manipulation as follows.</p>
 <ol style="list-style-type: decimal">
-<li><em>Creating a mission statement, articulating a vision, and defining core values.</em> The mission, vision, and values can serve as a compass by guiding organizational actions in the direction of a desired future state and by providing parameters and guidelines for reaching that future state.</li>
-<li><em>Analyzing the internal and external environments.</em> Decision-making tools like a SWOT (strengths, weaknesses, opportunities, threats) analysis provide frameworks for understanding and describing the characteristics that are internal to the organization (e.g., employees) and characteristics that are external to the organization (e.g., labor market).</li>
-<li><em>Selecting a broad type of strategy.</em> The type of strategy refers to the general approach an organization takes when bringing the mission, vision, and values to life, such as differentiation or cost leadership.</li>
-<li><em>Defining specific strategic objectives aimed at satisfying relevant stakeholders.</em> This involves considering the needs of key stakeholders (e.g., customers, investors, shareholders, employees, broader communities) and considering what will result in a sustainable competitive advantage.</li>
-<li><em>Finalizing and temporarily “crystallizing” the strategy prior to strategy implementation.</em> This step often results in a clear strategic plan that summarizes the previous four steps.</li>
+<li>Create a name for a new data frame object to which we will eventually assign a long-format data frame object; here, I name the new data frame object <code>datam_long</code>.</li>
+<li>Use the <code>&lt;-</code> operator to assign the new long-form data frame object to the object named <code>datam_long</code> in the step above.</li>
+<li>Type the name of the original data frame object (<code>datam</code>), followed by the pipe (<code>%&gt;%</code>) operator.</li>
+<li>Type the name of the <code>pivot_longer</code> function.</li>
 </ol>
+<ol style="list-style-type: lower-roman">
+<li>As the first argument in the <code>pivot_longer</code> function, type <code>cols=</code> followed by the <code>c</code> (combine) function. As the arguments within the <code>c</code> function, list the names of the variables that you wish to pivot from separate variables (wide) to levels or categories of a new variable, effectively stacking them vertically. In this example, let’s list the names of the four survey measures: <code>JobSatisfaction</code>, <code>TurnoverIntentions</code>, <code>OrgCommitment</code>, and <code>JobInvolvement</code>.</li>
+<li>As the second argument in the <code>pivot_longer</code> function, type <code>names_to=</code> followed by what you would like to name the new stacked variable (see previous) created from the four survey measure variables. Let’s call the new variable containing the names of the measures the following: <code>"Measure"</code>.</li>
+<li>As the third argument in the <code>pivot_longer</code> function, type <code>values_to=</code> followed by what you would like to name the new variable that contains the scores for the four survey variables that are now stacked vertically for each case. Let’s call the new variable containing the scores on the four measures the following: <code>"Score"</code>.</li>
+</ol>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="manipulate.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (using pipe)</span></span>
+<span id="cb637-2"><a href="manipulate.html#cb637-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> datam <span class="sc">%&gt;%</span> </span>
+<span id="cb637-3"><a href="manipulate.html#cb637-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
+<span id="cb637-4"><a href="manipulate.html#cb637-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
+<span id="cb637-5"><a href="manipulate.html#cb637-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb637-6"><a href="manipulate.html#cb637-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb637-7"><a href="manipulate.html#cb637-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb637-8"><a href="manipulate.html#cb637-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 3
+##    SurveyID Measure            Score
+##       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+##  1        1 JobSatisfaction     55.4
+##  2        1 TurnoverIntentions  97.2
+##  3        1 OrgCommitment       32.3
+##  4        1 JobInvolvement      50.5
+##  5        2 JobSatisfaction     51.5
+##  6        2 TurnoverIntentions  96  
+##  7        2 OrgCommitment       53.4
+##  8        2 JobInvolvement      50.3
+##  9        3 JobSatisfaction     46.2
+## 10        3 TurnoverIntentions  94.5
+## 11        3 OrgCommitment       63.9
+## 12        3 JobInvolvement      50.2</code></pre>
+<p>As you can see, in the output, each respondent now has four rows of data – one row for each measure and the associated score. The giveaway is that each respondent’s unique <code>SurveyID</code> value is repeated four times.</p>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="manipulate.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
+<span id="cb639-2"><a href="manipulate.html#cb639-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_long)</span></code></pre></div>
+<pre><code>## [1] &quot;SurveyID&quot; &quot;Measure&quot;  &quot;Score&quot;</code></pre>
+<p>Note how there are now just three variables: <code>SurveyID</code>, <code>Measure</code>, and <code>Score</code>. Further, by applying the <code>nrow</code> function to the new data frame (as shown below), we can see that the new data frame is now much longer in terms of the number of rows; specifically, the original <code>datam</code> data frame in wide format has 20 rows, and now the new <code>datam_long</code> data frame in long format has 80 rows.</p>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="manipulate.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
+<span id="cb641-2"><a href="manipulate.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_long)</span></code></pre></div>
+<pre><code>## [1] 80</code></pre>
+<p>Now apply the <code>View</code> function from base <code>R</code> to view and scroll through the whole data frame. Note that the unique identifier variable (i.e., <code>SurveyID</code>) repeats multiple times to indicate that the same survey respondent has scores in multiple rows.</p>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb643-1"><a href="manipulate.html#cb643-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View entire data frame</span></span>
+<span id="cb643-2"><a href="manipulate.html#cb643-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datam_long)</span></code></pre></div>
 </div>
-<div id="strategyimplementation" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Strategy Implementation</h3>
-<p>Once we’ve completed the strategy formulation phase, we’re ready to move onto strategy implementation, where <strong>strategy implementation</strong> refers to the process of following through on the strategic plan developed and/or refined during the strategy formulation phase <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. This phase involves building and leveraging the organization’s human capital capabilities in order to enact and realize the strategic plan, and aligning HR policies and practices with the strategic plan. For example, if a strategic objective outlined in the strategic plan requires acquiring, managing, or retaining the best software engineers, then the organization should focus on how HR systems like recruitment, selection, performance management, and reward systems can help support that requirement.</p>
-</div>
-<div id="strategichrm" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Strategic Human Resource Management</h3>
-<p>When HR management aligns with and supports the realization of organizational strategic objects, <strong>strategic human resource management</strong> emerges. In other words, strategic human resource management involves a strategy-oriented approach to human resource management. While most specific HR policies and practices will vary across organizations, there are practices that are generally strategically relevant for all organizations, and examples include selectively hiring new employees to ensure sufficiently high qualifications and good fit, and training employees to enhance job- and work-relevant knowledge, skills, abilities, and other characteristics (KSAOs) <span class="citation">(<a href="references.html#ref-pfeffer1998" role="doc-biblioref">Pfeffer 1998</a>)</span>.</p>
-<div id="adoptstrategicmindset_video" class="section level4" number="2.1.4.1">
-<h4><span class="header-section-number">2.1.4.1</span> Video Lecture</h4>
-<iframe src="https://youtube.com/embed/08whYkgFiQI?rel=0" width="672" height="400px">
-</iframe>
-<p>Link to video lecture: <a href="https://youtu.be/08whYkgFiQI" class="uri">https://youtu.be/08whYkgFiQI</a></p>
-</div>
-</div>
-</div>
-<div id="defining-problems-formulating-questions" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Defining Problems &amp; Formulating Questions</h2>
-<p>The overarching purpose of the Question Formulation phase of the HRAPLC is to define problems and formulate questions for which solutions and answers, respectively, can improve the organization and push it towards its goals. In the sections that follow, we will focus on the processes of problem definition and question formulation, and ultimately learn the value of applying both divergent and convergent thinking during both of these processes.</p>
-<div id="definingaproblem" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Defining a Problem</h3>
-<p>With a department’s and/or organization’s strategy in mind, we’re ready to define an organizationally relevant problem in need of a solution. While we typically know a problem when we see one, I found it’s helpful to take a step back and think about what a problem actual is. For our purposes, we can think of a <strong>problem</strong> as a gap between the current state of affairs and a desired state of affairs. Given that, <strong>problem definition</strong> refers to the process of framing and diagnosing a problem (e.g., challenge, opportunity, threat) for which finding a solution will be of value. As shown below, key problem-definition components often include articulating the problem statement, decision makers and stakeholders, scope, and goals <span class="citation">(<a href="references.html#ref-chevallier2016" role="doc-biblioref">Chevallier 2016</a>; <a href="references.html#ref-connmclean2018" role="doc-biblioref">Conn and McLean 2018</a>)</span>.</p>
-<div class="figure">
-<img src="problemdefinition_components.png" alt="" />
-<p class="caption">A fully formed problem definition often involves articulating key problem definition components, such as articulating the problem statement, decision makers and stakeholders, scope, and goals.</p>
-</div>
-<p>With respect to the HR context, in the figure below, I provide an example focused on problem of voluntary turnover among new customer service representatives, and provide hypothetical examples of key problem-definition components.</p>
-<div class="figure">
-<img src="problemdefinition_components_example.png" alt="" />
-<p class="caption">Articulating the problem definition components is appropriate for most problems, including those specific to HR, such as the one in this example.</p>
-</div>
-</div>
-<div id="formulatingaquestion" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Formulating a Question</h3>
-<p>Once a general problem has been defined, we’re ready to begin <strong>question formulation</strong>, which refers to the process of posing a question or hypothesis to investigate why or how a problem occurs, what a problem might lead to or be associated with, or who is affected by the problem. Question formulation can even help us flesh out the typical problem definition components outlined in the <a href="questionformulation.html#definingaproblem">previous section</a>. Just as we did with problem definition, we should continue to apply our strategic mindset when formulating questions. Moreover, we should focus on posing questions for which finding answers hold value for the organization, as doing so can contribute to the following (for example):</p>
-<ul>
-<li>a better understanding of the focal problem,</li>
-<li>the identification of potential solutions to the focal problem,</li>
-<li>solutions that meet the needs of key decision makers and stakeholders,</li>
-<li>more efficient and targeted literature searches and reviews, and</li>
-<li>more effective and focused storytelling.</li>
-</ul>
-<p>So what is a question in this context? A <strong>question</strong> can be described as general line of inquiry regarding a problem or phenomenon of interest. Examples of questions are as follows.</p>
-<ul>
-<li><em>What</em> factors influence voluntary turnover?</li>
-<li><em>Does</em> engagement predict voluntary turnover?</li>
-<li><em>How</em> does engagement relate to voluntary turnover?</li>
-<li><em>Which</em> work characteristics predict voluntary turnover?</li>
-<li><em>Why</em> do new employees turn over in the first 6 months?</li>
-</ul>
-<p>If, based on prior research or theory, an informed prediction can be made, we might choose to restate a question a s hypothesis, where a <strong>hypothesis</strong> can be thought of as a statement about an expected association, difference, change, or classification. Examples of hypotheses are as follows.</p>
-<ul>
-<li>Engagement is negatively related to voluntary turnover.</li>
-<li>Turnover intention mediates the relationship between engagement and voluntary turnover.</li>
-<li>Autonomy and task significance negatively predict voluntary turnover.</li>
-<li>New employees who participate in the formal onboarding program are less likely to quit during their first 6 months.</li>
-</ul>
-<p>Regardless of whether we pose a question or state a hypothesis, it’s important to remember that question formulation is often an iterative process, which means that answering one question (or testing one hypothesis) often leads to additional questions (or hypotheses).</p>
-<div class="figure">
-<img src="iterativenature.png" alt="" />
-<p class="caption">Question formulation is often an iterative process, meaning that answering one question (or testing hypothesis) often leads to additional questions (or hypotheses).</p>
-</div>
-<p>Further, we can draw upon existing theory and research to inform the types of questions we pose (or hypotheses we state). A theory provides a way to understand or explain a phenomenon of interest in parsimonious manner. As an example, the <em>theory of planned behavior</em> <span class="citation">(<a href="references.html#ref-ajzen1991" role="doc-biblioref">Ajzen 1991</a>)</span> is based on a voluminous body of research, and <em>some</em> of the basic tenets of the theory are as follows. First, an individual’s attitude towards a behavior, perception of the norms associated with the behavior, and sense of control over enacting a behavior contribute to their intention to perform a behavior. Second, an individual’s intention to perform a behavior often leads them to perform a behavior. This theory can be applied to any number of behaviors. Given that HR professionals (and organizational leadership) are often concerned with voluntary turnover (i.e., an employee-initiated organizational separation), let’s focus on voluntary turnover. Using the theoretical tenets, we can reason that an individual’s voluntary turnover behavior might be explained by their attitudes, norms, and sense of control related to voluntary turnover, and ultimately to their intentions to turn over voluntarily. Thus, based on the theory of planned behavior, we might first focus on the proposed link between attitudes and behavioral intention, and formulate the following question: <em>Are more positive attitudes towards leaving the organization associated with a stronger intention to voluntarily turn over?</em> Further, by focusing on the proposed link between behavioral intention and actually enacting the behavior, we might hypothesize the following: <em>Stronger turnover intention is associated with a higher probability of quitting.</em></p>
-<div class="figure">
-<img src="tpb.png" alt="" />
-<p class="caption">Existing theories, such as the theory of planned behavior (Azjen, 1991) can be used to inform and direct the types of questions or hypotheses that are posed during question formulation.</p>
-</div>
-</div>
-<div id="divergentconvergentthinking" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Thinking Divergently &amp; Convergently</h3>
-<p>Throughout the processes of defining a problem and formulating a question, it is advisable to apply both divergent and convergent thinking. On the one hand, <strong>divergent thinking</strong> refers to the process of adopting a broadened and imaginative mindset in which many ideas, possibilities, and alternatives are considered, which can lead to a large quantity of creative or novel ideas; on the other hand, <strong>convergent thinking</strong> refers to the process of adopting a critical and evaluative mindset in which various alternatives are judged, which can lead to a more refined set of high-quality ideas <span class="citation">(<a href="references.html#ref-basaduretal1986" role="doc-biblioref">Basadur, Graen, and Scandura 1986</a>; <a href="references.html#ref-basaduretal2000" role="doc-biblioref">Basadur, Runco, and Vega 2000</a>; <a href="references.html#ref-reiterillies2004" role="doc-biblioref">Reiter-Palmon and Illies 2004</a>)</span>. When used effectively, these two ways of thinking can improve problem definition and question formulation.</p>
-<p>More specifically, once we have adopted a strategic mindset, the identification, framing, and defining of problems should involve: (a) a phase of ideation with <em>divergent</em> thinking, such that many potential ideas, possibilities, and ultimately problems are entertained and considered –- with the primary focus being on novelty, creativity, and quantity; and (b) a phase with deliberate <em>convergent</em> thinking, such that the list of potential problems generated during the previous phase is winnowed to those that will contribute the most to the organization’s strategic goals, ends, or initiatives. A similar two-phase process can be applied when formulating questions.</p>
-<div id="definingproblemformulatingquestions_video" class="section level4" number="2.2.3.1">
-<h4><span class="header-section-number">2.2.3.1</span> Video Lecture</h4>
-<iframe src="https://youtube.com/embed/w1104yS-zJU?rel=0" width="672" height="400px">
-</iframe>
-<p>Link to video lecture: <a href="https://youtu.be/w1104yS-zJU" class="uri">https://youtu.be/w1104yS-zJU</a></p>
+<div id="widetolong_withoutpipe" class="section level3" number="21.1.2">
+<h3><span class="header-section-number">21.1.2</span> <em>Without</em> Pipe</h3>
+<p>We can also apply the <code>pivot_longer</code> function <em>without</em> using the pipe (<code>%&gt;%</code>) operator. To do so, use the same code as above, except drop the pipe (<code>%&gt;%</code>) operator and type <code>data=</code> followed by the name of the original data frame (<code>datam</code>) as the first argument within the <code>pivot_longer</code> function parentheses.</p>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb644-1"><a href="manipulate.html#cb644-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (without using pipe)</span></span>
+<span id="cb644-2"><a href="manipulate.html#cb644-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data=</span>datam,</span>
+<span id="cb644-3"><a href="manipulate.html#cb644-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
+<span id="cb644-4"><a href="manipulate.html#cb644-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
+<span id="cb644-5"><a href="manipulate.html#cb644-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb644-6"><a href="manipulate.html#cb644-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb644-7"><a href="manipulate.html#cb644-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb644-8"><a href="manipulate.html#cb644-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 3
+##    SurveyID Measure            Score
+##       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+##  1        1 JobSatisfaction     55.4
+##  2        1 TurnoverIntentions  97.2
+##  3        1 OrgCommitment       32.3
+##  4        1 JobInvolvement      50.5
+##  5        2 JobSatisfaction     51.5
+##  6        2 TurnoverIntentions  96  
+##  7        2 OrgCommitment       53.4
+##  8        2 JobInvolvement      50.3
+##  9        3 JobSatisfaction     46.2
+## 10        3 TurnoverIntentions  94.5
+## 11        3 OrgCommitment       63.9
+## 12        3 JobInvolvement      50.2</code></pre>
+<p>Regardless of whether we use the pipe (<code>%&gt;%</code>) operator, we end up with the same wide-to-long format manipulation.</p>
 </div>
 </div>
+<div id="longtowide" class="section level2" number="21.2">
+<h2><span class="header-section-number">21.2</span> Long-to-Wide Format Data Manipulation</h2>
+<p>Using the long-format data frame we just created called <code>datam_long</code>, let’s manipulate it back to wide format using the <code>pivot_wider</code> function from the <code>tidyr</code> package. As we did above, we’ll do the long-to-wide data manipulation with and without the pipe (<code>%&gt;%</code>) operator.</p>
+<div id="longtowide_withpipe" class="section level3" number="21.2.1">
+<h3><span class="header-section-number">21.2.1</span> <em>With</em> Pipe</h3>
+<p>Using the pipe (<code>%&gt;%</code>) operator technique, let’s apply the <code>pivot_wider</code> function to manipulate the <code>datam_long</code> data frame object from long format back to wide format.</p>
+<p>We can specify the long-to-wide manipulation as follows.</p>
+<ol style="list-style-type: decimal">
+<li>Create a name for a new data frame object to which we will eventually assign a long-format data frame object; here, I name the new data frame object <code>datam_wide</code>.</li>
+<li>Use the <code>&lt;-</code> operator to assign the new wide-form data frame object to the object named <code>datam_wide</code> in the step above.</li>
+<li>Type the name of the long-format data frame object (<code>datam_long</code>), followed by the pipe (<code>%&gt;%</code>) operator.</li>
+<li>Type the name of the <code>pivot_wider</code> function.</li>
+</ol>
+<ol style="list-style-type: lower-roman">
+<li>As the first argument in the <code>pivot_wider</code> function, type <code>names_from=</code> followed by the name of the variable that contains the names of the different survey measures: <code>Measure</code>. The levels or categories of this <code>Measure</code> variable will become the names of separate columns (i.e., variables) when the long-format data frame object is converted to a wide-format data frame object.</li>
+<li>As the second argument in the <code>pivot_wider</code> function, type <code>values_from=</code> followed by the name of the variable that contains the values (i.e., scores) for each of the survey measures: <code>Score</code>. The values from the <code>Score</code> variable will provide the data for the new survey-measure variables when the data frame object is in wide format.</li>
+</ol>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb646-1"><a href="manipulate.html#cb646-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (using pipe)</span></span>
+<span id="cb646-2"><a href="manipulate.html#cb646-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> datam_long <span class="sc">%&gt;%</span> </span>
+<span id="cb646-3"><a href="manipulate.html#cb646-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>Measure,</span>
+<span id="cb646-4"><a href="manipulate.html#cb646-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from=</span>Score)</span>
+<span id="cb646-5"><a href="manipulate.html#cb646-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb646-6"><a href="manipulate.html#cb646-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb646-7"><a href="manipulate.html#cb646-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 5
+##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
+##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
+##  1        1            55.4               97.2          32.3           50.5
+##  2        2            51.5               96            53.4           50.3
+##  3        3            46.2               94.5          63.9           50.2
+##  4        4            42.8               91.4          70.3           50.3
+##  5        5            40.8               88.3          34.1           50.5
+##  6        6            38.7               84.9          67.7           30.5
+##  7        7            35.6               79.9          53.3           30.5
+##  8        8            33.1               77.6          63.5           30.5
+##  9        9            29                 74.5          68             30.5
+## 10       10            26.2               71.4          67.4           30.5
+## 11       11            23.1               66.4          15.6           30.5
+## 12       12            22.3               61.8          71.8           30.5</code></pre>
+<p>Now let’s print the variable names in the new <code>datam_wide</code> data frame object.</p>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="manipulate.html#cb648-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
+<span id="cb648-2"><a href="manipulate.html#cb648-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_wide)</span></code></pre></div>
+<pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;      &quot;JobInvolvement&quot;</code></pre>
+<p>Note how we are now back to the same variables from our original wide-format data frame called <code>datam</code>: <code>SurveyID</code>, <code>JobInvolvement</code>, <code>JobSatisfaction</code>, <code>OrgCommitment</code>, and <code>TurnoverIntentions</code>. Further, by applying the <code>nrow</code> function to the new data frame (as shown below), we can see that the new wide-format data frame is now back to 20 rows. We have come full circle, as the <code>pivot_wider</code> function complements the <code>pivot_longer</code> function.</p>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb650-1"><a href="manipulate.html#cb650-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
+<span id="cb650-2"><a href="manipulate.html#cb650-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_wide)</span></code></pre></div>
+<pre><code>## [1] 20</code></pre>
 </div>
-<div id="summary" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Summary</h2>
-<p>In this chapter, we did a conceptual deep dive into the Question Formulation phase of the HR Analytics Project Life Cycle. In doing so, we reviewed the importance of adopting a strategic mindset, and then engaging in thoughtful problem definition and question formulation. Finally, we learned how a two-phase process of deliberate divergent and convergent thinking can help us identify the most important problems and questions for which solutions and answers, respectively, would provide the most value to the organization.</p>
+<div id="longtowide_withoutpipe" class="section level3" number="21.2.2">
+<h3><span class="header-section-number">21.2.2</span> <em>Without</em> Pipe</h3>
+<p>We can also apply the <code>pivot_wider</code> function <em>without</em> the pipe (<code>%&gt;%</code>) operator. Simply use the same code as above, except drop the pipe (<code>%&gt;%</code>) operator and type <code>data=</code> followed by the name of the long-format data frame object (<code>datam_long</code>) as the first argument within the <code>pivot_wider</code> function parentheses.</p>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb652-1"><a href="manipulate.html#cb652-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (without using pipe)</span></span>
+<span id="cb652-2"><a href="manipulate.html#cb652-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>datam_long, </span>
+<span id="cb652-3"><a href="manipulate.html#cb652-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">names_from=</span>Measure,</span>
+<span id="cb652-4"><a href="manipulate.html#cb652-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">values_from=</span>Score)</span>
+<span id="cb652-5"><a href="manipulate.html#cb652-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb652-6"><a href="manipulate.html#cb652-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb652-7"><a href="manipulate.html#cb652-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 5
+##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
+##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
+##  1        1            55.4               97.2          32.3           50.5
+##  2        2            51.5               96            53.4           50.3
+##  3        3            46.2               94.5          63.9           50.2
+##  4        4            42.8               91.4          70.3           50.3
+##  5        5            40.8               88.3          34.1           50.5
+##  6        6            38.7               84.9          67.7           30.5
+##  7        7            35.6               79.9          53.3           30.5
+##  8        8            33.1               77.6          63.5           30.5
+##  9        9            29                 74.5          68             30.5
+## 10       10            26.2               71.4          67.4           30.5
+## 11       11            23.1               66.4          15.6           30.5
+## 12       12            22.3               61.8          71.8           30.5</code></pre>
+<p>Regardless of whether we use the pipe (<code>%&gt;%</code>) operator, we end up with the same long-to-wide format manipulation.</p>
+</div>
+</div>
+<div id="summary-17" class="section level2" number="21.3">
+<h2><span class="header-section-number">21.3</span> Summary</h2>
+<p>In this tutorial, we learned how to manipulate a data frame from wide format to long format using the <code>pivot_longer</code>, and how to manipulate a data frame from long format to wide format using the <code>pivot_wider</code>. Both functions are from the <code>tidyr</code> package. Manipulating and restructuring data into different formats or structures is often an essential data-management step prior to running certain analyses or generating certain data visualizations.</p>
 
 </div>
 </div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="overviewhraplc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dataacquisition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="aggregatesegment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
