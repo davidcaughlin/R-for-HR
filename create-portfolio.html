@@ -24,14 +24,14 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-07-07" />
+<meta name="date" content="2021-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="manipulate.html"/>
+<link rel="prev" href="tables-crosstabs.html"/>
 <link rel="next" href="references.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -51,6 +51,35 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/jquery-ui-1.11.4/jquery.ui.touch-punch.min.js"></script>
+<link href="libs/c3-0.4.11/c3.min.css" rel="stylesheet" />
+<script src="libs/c3-0.4.11/c3.min.js"></script>
+<script src="libs/d3-3.5.5/d3.v3.min.js"></script>
+<link href="libs/pivottable-2.19.0/pivot.min.css" rel="stylesheet" />
+<script src="libs/pivottable-2.19.0/pivot.min.js"></script>
+<script src="libs/pivottable-2.19.0/d3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/c3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.cs.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.da.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.de.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.es.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.fr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.it.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.nl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pt.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.ru.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.sq.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.tr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.zh.min.js"></script>
+<link href="libs/subtotal-1.10.0/subtotal.min.css" rel="stylesheet" />
+<script src="libs/subtotal-1.10.0/subtotal.min.js"></script>
+<script src="libs/polyfill-0.1/polyfill.min.js"></script>
+<link href="libs/rpivotTable_style-0.1/rpivotTable.css" rel="stylesheet" />
+<script src="libs/rpivotTable-binding-0.3.0/rpivotTable.js"></script>
 
 
 <style type="text/css">
@@ -257,11 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
 <li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
 <li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
-<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
-<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
 <ul>
 <li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
 <li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
@@ -270,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
 <li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
-<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
 <li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
 <li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
@@ -411,6 +440,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="21.3" data-path="manipulate.html"><a href="manipulate.html#summary-17"><i class="fa fa-check"></i><b>21.3</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="22" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html"><i class="fa fa-check"></i><b>22</b> Creating Tables &amp; Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable"><i class="fa fa-check"></i><b>22.1</b> One-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_table"><i class="fa fa-check"></i><b>22.1.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.1.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_xtabs"><i class="fa fa-check"></i><b>22.1.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.1.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_CrossTable"><i class="fa fa-check"></i><b>22.1.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable"><i class="fa fa-check"></i><b>22.2</b> Two-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_table"><i class="fa fa-check"></i><b>22.2.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.2.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_xtabs"><i class="fa fa-check"></i><b>22.2.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.2.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_CrossTable"><i class="fa fa-check"></i><b>22.2.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable"><i class="fa fa-check"></i><b>22.3</b> Three-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_table"><i class="fa fa-check"></i><b>22.3.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.3.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_xtabs"><i class="fa fa-check"></i><b>22.3.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#summary-18"><i class="fa fa-check"></i><b>22.4</b> Summary</a></li>
+<li class="chapter" data-level="22.5" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_supplement"><i class="fa fa-check"></i><b>22.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_subset_supplement"><i class="fa fa-check"></i><b>22.5.1</b> Creating a Pivot Table</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IV Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -513,7 +567,7 @@ BOOK UNDER CONSTRUCTION</a>
           </div>
         </div>
       </div>
-<a href="manipulate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tables-crosstabs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

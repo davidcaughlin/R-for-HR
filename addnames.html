@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-07-07" />
+<meta name="date" content="2021-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,35 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/jquery-ui-1.11.4/jquery.ui.touch-punch.min.js"></script>
+<link href="libs/c3-0.4.11/c3.min.css" rel="stylesheet" />
+<script src="libs/c3-0.4.11/c3.min.js"></script>
+<script src="libs/d3-3.5.5/d3.v3.min.js"></script>
+<link href="libs/pivottable-2.19.0/pivot.min.css" rel="stylesheet" />
+<script src="libs/pivottable-2.19.0/pivot.min.js"></script>
+<script src="libs/pivottable-2.19.0/d3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/c3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.cs.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.da.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.de.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.es.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.fr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.it.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.nl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pt.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.ru.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.sq.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.tr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.zh.min.js"></script>
+<link href="libs/subtotal-1.10.0/subtotal.min.css" rel="stylesheet" />
+<script src="libs/subtotal-1.10.0/subtotal.min.js"></script>
+<script src="libs/polyfill-0.1/polyfill.min.js"></script>
+<link href="libs/rpivotTable_style-0.1/rpivotTable.css" rel="stylesheet" />
+<script src="libs/rpivotTable-binding-0.3.0/rpivotTable.js"></script>
 
 
 <style type="text/css">
@@ -257,11 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
 <li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
 <li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
-<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
-<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
 <ul>
 <li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
 <li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
@@ -270,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
 <li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
-<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
 <li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
 <li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
@@ -411,6 +440,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="21.3" data-path="manipulate.html"><a href="manipulate.html#summary-17"><i class="fa fa-check"></i><b>21.3</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="22" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html"><i class="fa fa-check"></i><b>22</b> Creating Tables &amp; Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable"><i class="fa fa-check"></i><b>22.1</b> One-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_table"><i class="fa fa-check"></i><b>22.1.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.1.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_xtabs"><i class="fa fa-check"></i><b>22.1.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.1.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_CrossTable"><i class="fa fa-check"></i><b>22.1.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable"><i class="fa fa-check"></i><b>22.2</b> Two-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_table"><i class="fa fa-check"></i><b>22.2.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.2.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_xtabs"><i class="fa fa-check"></i><b>22.2.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.2.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_CrossTable"><i class="fa fa-check"></i><b>22.2.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable"><i class="fa fa-check"></i><b>22.3</b> Three-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_table"><i class="fa fa-check"></i><b>22.3.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.3.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_xtabs"><i class="fa fa-check"></i><b>22.3.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#summary-18"><i class="fa fa-check"></i><b>22.4</b> Summary</a></li>
+<li class="chapter" data-level="22.5" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_supplement"><i class="fa fa-check"></i><b>22.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_subset_supplement"><i class="fa fa-check"></i><b>22.5.1</b> Creating a Pivot Table</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IV Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -474,20 +528,20 @@ BOOK UNDER CONSTRUCTION</a>
 <h4><span class="header-section-number">14.0.0.3</span> Initial Steps</h4>
 <p>If you haven’t already, save the file called <strong>“PersData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="addnames.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb199-2"><a href="addnames.html#cb199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="addnames.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb200-2"><a href="addnames.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="addnames.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb200-2"><a href="addnames.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb200-3"><a href="addnames.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb200-4"><a href="addnames.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="addnames.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb201-2"><a href="addnames.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb201-3"><a href="addnames.html#cb201-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb201-4"><a href="addnames.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb201-5"><a href="addnames.html#cb201-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="addnames.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb201-2"><a href="addnames.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb201-3"><a href="addnames.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb201-4"><a href="addnames.html#cb201-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="addnames.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb202-2"><a href="addnames.html#cb202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb202-3"><a href="addnames.html#cb202-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-4"><a href="addnames.html#cb202-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb202-5"><a href="addnames.html#cb202-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -495,11 +549,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##   startdate = col_character(),
 ##   gender = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="addnames.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb203-2"><a href="addnames.html#cb203-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="addnames.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb204-2"><a href="addnames.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="addnames.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame (tibble) object</span></span>
-<span id="cb205-2"><a href="addnames.html#cb205-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="addnames.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame (tibble) object</span></span>
+<span id="cb206-2"><a href="addnames.html#cb206-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -518,11 +572,11 @@ BOOK UNDER CONSTRUCTION</a>
 <h2><span class="header-section-number">14.1</span> Remove Variable Names from a Data Frame Object</h2>
 <p>In some instances, you may wish to remove the variable names from a data frame. For example, I sometimes write (i.e., export) a data frame object I’ve been cleaning in R so that I may use the data file with the statistical software program called Mplus <span class="citation">(<a href="references.html#ref-mplus" role="doc-biblioref">Muthén and Muthén 1998-2018</a>)</span>. Because Mplus doesn’t accept variable names within its data files, I may drop the variable names from the data frame object prior to writing to my working directory.</p>
 <p>To remove variable names, just apply the <code>names</code> function with the data frame name as the argument, and then use either the <code>&lt;-</code> operator with <code>NULL</code> to remove the variable names.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="addnames.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable names</span></span>
-<span id="cb207-2"><a href="addnames.html#cb207-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb207-3"><a href="addnames.html#cb207-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-4"><a href="addnames.html#cb207-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of the data frame object in Console</span></span>
-<span id="cb207-5"><a href="addnames.html#cb207-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="addnames.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable names</span></span>
+<span id="cb208-2"><a href="addnames.html#cb208-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb208-3"><a href="addnames.html#cb208-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb208-4"><a href="addnames.html#cb208-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of the data frame object in Console</span></span>
+<span id="cb208-5"><a href="addnames.html#cb208-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      `` ``       ``        ``       ``    
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; 
@@ -538,11 +592,11 @@ BOOK UNDER CONSTRUCTION</a>
 <h2><span class="header-section-number">14.2</span> Add Variable Names to a Data Frame Object</h2>
 <p>In other instances, you might find yourself with a dataset that lacks variable names (or has variable names that need to be replaced), which means that you will need to add those variable names to the data frame.</p>
 <p>Let’s work with the <code>personaldata</code> data frame object from the previous section for practice. To add variable names, we can use the <code>names</code> function from base R, and enter the name of the data frame as the argument. Using the <code>&lt;-</code> operator, we can specify the variable names using the <code>c</code> (combine) function that contains a vector of variable names in quotation marks (<code>" "</code>) as the arguments. <em>Remember to type a comma (<code>,</code>) between the function arguments, as commas are used to separate arguments from one another when there are more than one.</em> Please note that the it’s important that the vector of variable names contains the same number of names as the data frame object has columns.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="addnames.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
-<span id="cb209-2"><a href="addnames.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;lastname&quot;</span>, <span class="st">&quot;firstname&quot;</span>, <span class="st">&quot;startdate&quot;</span>, <span class="st">&quot;gender&quot;</span>)</span>
-<span id="cb209-3"><a href="addnames.html#cb209-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb209-4"><a href="addnames.html#cb209-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of data in Console</span></span>
-<span id="cb209-5"><a href="addnames.html#cb209-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="addnames.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
+<span id="cb210-2"><a href="addnames.html#cb210-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;lastname&quot;</span>, <span class="st">&quot;firstname&quot;</span>, <span class="st">&quot;startdate&quot;</span>, <span class="st">&quot;gender&quot;</span>)</span>
+<span id="cb210-3"><a href="addnames.html#cb210-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb210-4"><a href="addnames.html#cb210-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of data in Console</span></span>
+<span id="cb210-5"><a href="addnames.html#cb210-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 

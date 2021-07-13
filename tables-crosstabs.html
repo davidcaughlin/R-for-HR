@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 22 Creating Tables &amp; Cross-Tabulations | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 22 Creating Tables &amp; Cross-Tabulations | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rforhr.com" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="github-repo" content="davidcaughlin/R-for-HR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 22 Creating Tables &amp; Cross-Tabulations | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+
+<meta name="author" content="David E. Caughlin" />
+
+
+<meta name="date" content="2021-07-13" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="manipulate.html"/>
+<link rel="next" href="create-portfolio.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/jquery-ui-1.11.4/jquery.ui.touch-punch.min.js"></script>
+<link href="libs/c3-0.4.11/c3.min.css" rel="stylesheet" />
+<script src="libs/c3-0.4.11/c3.min.js"></script>
+<script src="libs/d3-3.5.5/d3.v3.min.js"></script>
+<link href="libs/pivottable-2.19.0/pivot.min.css" rel="stylesheet" />
+<script src="libs/pivottable-2.19.0/pivot.min.js"></script>
+<script src="libs/pivottable-2.19.0/d3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/c3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.cs.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.da.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.de.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.es.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.fr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.it.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.nl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pt.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.ru.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.sq.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.tr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.zh.min.js"></script>
+<link href="libs/subtotal-1.10.0/subtotal.min.css" rel="stylesheet" />
+<script src="libs/subtotal-1.10.0/subtotal.min.js"></script>
+<script src="libs/polyfill-0.1/polyfill.min.js"></script>
+<link href="libs/rpivotTable_style-0.1/rpivotTable.css" rel="stylesheet" />
+<script src="libs/rpivotTable-binding-0.3.0/rpivotTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for HR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.4</b> My Philosophy for This Book</a>
+<ul>
+<li class="chapter" data-level="0.4.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.4.1</b> Rationale for Using R</a></li>
+<li class="chapter" data-level="0.4.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.4.2</b> Audience</a></li>
+<li class="chapter" data-level="0.4.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.4.3</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.5</b> About the Author</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.6</b> Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
+<li class="chapter" data-level="3.6" data-path="dataacquisition.html"><a href="dataacquisition.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_clean"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.2" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_manipulate"><i class="fa fa-check"></i><b>4.2</b> Data Manipulation &amp; Structuring</a></li>
+<li class="chapter" data-level="4.3" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_tools"><i class="fa fa-check"></i><b>4.3</b> Common Data-Management Tools</a></li>
+<li class="chapter" data-level="4.4" data-path="datamanagement.html"><a href="datamanagement.html#summary-2"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataanalysis.html"><a href="dataanalysis.html#dataanalysis_toolstechniques"><i class="fa fa-check"></i><b>5.1</b> Tools &amp; Techniques</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="dataanalysis.html"><a href="dataanalysis.html#mathematics"><i class="fa fa-check"></i><b>5.1.1</b> Mathematics</a></li>
+<li class="chapter" data-level="5.1.2" data-path="dataanalysis.html"><a href="dataanalysis.html#statistics"><i class="fa fa-check"></i><b>5.1.2</b> Statistics</a></li>
+<li class="chapter" data-level="5.1.3" data-path="dataanalysis.html"><a href="dataanalysis.html#machinelearning"><i class="fa fa-check"></i><b>5.1.3</b> Machine Learning</a></li>
+<li class="chapter" data-level="5.1.4" data-path="dataanalysis.html"><a href="dataanalysis.html#computationalmodelsimulation"><i class="fa fa-check"></i><b>5.1.4</b> Computational Modeling &amp; Simulations</a></li>
+<li class="chapter" data-level="5.1.5" data-path="dataanalysis.html"><a href="dataanalysis.html#textqualitativeanalyses"><i class="fa fa-check"></i><b>5.1.5</b> Text Analyses &amp; Qualitative Analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="dataanalysis.html"><a href="dataanalysis.html#continuum_dataanalytics"><i class="fa fa-check"></i><b>5.2</b> Continuum of Data Analytics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="dataanalysis.html"><a href="dataanalysis.html#descriptive_analytics"><i class="fa fa-check"></i><b>5.2.1</b> Descriptive Analytics</a></li>
+<li class="chapter" data-level="5.2.2" data-path="dataanalysis.html"><a href="dataanalysis.html#predictish_analytics"><i class="fa fa-check"></i><b>5.2.2</b> Predict-ish Analytics</a></li>
+<li class="chapter" data-level="5.2.3" data-path="dataanalysis.html"><a href="dataanalysis.html#predictive_analytics"><i class="fa fa-check"></i><b>5.2.3</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="5.2.4" data-path="dataanalysis.html"><a href="dataanalysis.html#prescriptive_analytics"><i class="fa fa-check"></i><b>5.2.4</b> Prescriptive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summary-3"><i class="fa fa-check"></i><b>5.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datainterpretation"><i class="fa fa-check"></i><b>6.1</b> Data Interpretation</a></li>
+<li class="chapter" data-level="6.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling"><i class="fa fa-check"></i><b>6.2</b> Storytelling</a></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary-4"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="overviewR.html"><a href="overviewR.html#R_overview"><i class="fa fa-check"></i><b>8.1</b> R Programming Language</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="overviewR.html"><a href="overviewR.html#R_what"><i class="fa fa-check"></i><b>8.1.1</b> What Is R?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="overviewR.html"><a href="overviewR.html#R_why"><i class="fa fa-check"></i><b>8.1.2</b> Why Use R?</a></li>
+<li class="chapter" data-level="8.1.3" data-path="overviewR.html"><a href="overviewR.html#R_who"><i class="fa fa-check"></i><b>8.1.3</b> Who Uses R?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_overview"><i class="fa fa-check"></i><b>8.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="overviewR.html"><a href="overviewR.html#RStudio_what"><i class="fa fa-check"></i><b>8.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="8.2.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_why"><i class="fa fa-check"></i><b>8.2.2</b> Why RStudio?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="overviewR.html"><a href="overviewR.html#RStudio_who"><i class="fa fa-check"></i><b>8.2.3</b> Who Uses RStudio?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="overviewR.html"><a href="overviewR.html#packages_overview"><i class="fa fa-check"></i><b>8.3</b> Packages</a></li>
+<li class="chapter" data-level="8.4" data-path="overviewR.html"><a href="overviewR.html#summary-5"><i class="fa fa-check"></i><b>8.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#installR"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#installRStudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
+<li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary-6"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-7"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-9"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing and Adding Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#summary-10"><i class="fa fa-check"></i><b>14.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-11"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-12"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="arrange.html"><a href="arrange.html#arrange_supplement"><i class="fa fa-check"></i><b>16.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="arrange.html"><a href="arrange.html#arrange_orderfunction"><i class="fa fa-check"></i><b>16.3.1</b> <code>order</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-13"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+<li class="chapter" data-level="17.4" data-path="join.html"><a href="join.html#join_supplement"><i class="fa fa-check"></i><b>17.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="join.html"><a href="join.html#join_mergefunction"><i class="fa fa-check"></i><b>17.4.1</b> <code>merge</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter_cases"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select_multiplevariables"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove_multiplevariables"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-14"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+<li class="chapter" data-level="18.6" data-path="filter.html"><a href="filter.html#filter_supplement"><i class="fa fa-check"></i><b>18.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="filter.html"><a href="filter.html#filter_subset_supplement"><i class="fa fa-check"></i><b>18.6.1</b> <code>subset</code> Function from Base R</a></li>
+<li class="chapter" data-level="18.6.2" data-path="filter.html"><a href="filter.html#str_detect_supp"><i class="fa fa-check"></i><b>18.6.2</b> Filter by Pattern Contained within String</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="clean.html"><a href="clean.html#review-data"><i class="fa fa-check"></i><b>19.1</b> Review Data</a></li>
+<li class="chapter" data-level="19.2" data-path="clean.html"><a href="clean.html#clean-data"><i class="fa fa-check"></i><b>19.2</b> Clean Data</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-a-specific-case"><i class="fa fa-check"></i><b>19.2.1</b> Replace a Specific Value for a Specific Case</a></li>
+<li class="chapter" data-level="19.2.2" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-all-cases-with-a-particular-value"><i class="fa fa-check"></i><b>19.2.2</b> Replace a Specific Value for All Cases with a Particular Value</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="clean.html"><a href="clean.html#rename-variables"><i class="fa fa-check"></i><b>19.3</b> Rename Variables</a></li>
+<li class="chapter" data-level="19.4" data-path="clean.html"><a href="clean.html#other-approaches-to-cleaning-data"><i class="fa fa-check"></i><b>19.4</b> Other Approaches to Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="clean.html"><a href="clean.html#changing-the-case-of-variable-names"><i class="fa fa-check"></i><b>19.4.1</b> Changing the Case of Variable Names</a></li>
+<li class="chapter" data-level="19.4.2" data-path="clean.html"><a href="clean.html#changing-the-case-of-character-variable-values"><i class="fa fa-check"></i><b>19.4.2</b> Changing the Case of Character Variable Values</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="clean.html"><a href="clean.html#summary-15"><i class="fa fa-check"></i><b>19.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="aggregatesegment.html"><a href="aggregatesegment.html"><i class="fa fa-check"></i><b>20</b> Aggregating &amp; Segmenting Data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup"><i class="fa fa-check"></i><b>20.1</b> Counts By Group</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_pipes"><i class="fa fa-check"></i><b>20.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.1.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_nopipes"><i class="fa fa-check"></i><b>20.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup"><i class="fa fa-check"></i><b>20.2</b> Measures of Central Tendency and Dispersion By Group</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_pipes"><i class="fa fa-check"></i><b>20.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.2.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_nopipes"><i class="fa fa-check"></i><b>20.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable"><i class="fa fa-check"></i><b>20.3</b> Add Variable to Data Frame Containing Aggregated Values</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_pipes"><i class="fa fa-check"></i><b>20.3.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.3.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_nopipes"><i class="fa fa-check"></i><b>20.3.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#visualize_bygroup"><i class="fa fa-check"></i><b>20.4</b> Visualize Data By Group</a></li>
+<li class="chapter" data-level="20.5" data-path="aggregatesegment.html"><a href="aggregatesegment.html#summary-16"><i class="fa fa-check"></i><b>20.5</b> Summary</a></li>
+<li class="chapter" data-level="20.6" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement"><i class="fa fa-check"></i><b>20.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_subset_supplement"><i class="fa fa-check"></i><b>20.6.1</b> <code>describeBy</code> Function from <code>psych</code> Package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="manipulate.html"><a href="manipulate.html"><i class="fa fa-check"></i><b>21</b> Manipulating &amp; Restructuring Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="manipulate.html"><a href="manipulate.html#widetolong"><i class="fa fa-check"></i><b>21.1</b> Wide-to-Long Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="manipulate.html"><a href="manipulate.html#widetolong_withpipe"><i class="fa fa-check"></i><b>21.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.1.2" data-path="manipulate.html"><a href="manipulate.html#widetolong_withoutpipe"><i class="fa fa-check"></i><b>21.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="manipulate.html"><a href="manipulate.html#longtowide"><i class="fa fa-check"></i><b>21.2</b> Long-to-Wide Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="manipulate.html"><a href="manipulate.html#longtowide_withpipe"><i class="fa fa-check"></i><b>21.2.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.2.2" data-path="manipulate.html"><a href="manipulate.html#longtowide_withoutpipe"><i class="fa fa-check"></i><b>21.2.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="manipulate.html"><a href="manipulate.html#summary-17"><i class="fa fa-check"></i><b>21.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html"><i class="fa fa-check"></i><b>22</b> Creating Tables &amp; Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable"><i class="fa fa-check"></i><b>22.1</b> One-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_table"><i class="fa fa-check"></i><b>22.1.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.1.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_xtabs"><i class="fa fa-check"></i><b>22.1.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.1.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_CrossTable"><i class="fa fa-check"></i><b>22.1.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable"><i class="fa fa-check"></i><b>22.2</b> Two-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_table"><i class="fa fa-check"></i><b>22.2.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.2.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_xtabs"><i class="fa fa-check"></i><b>22.2.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.2.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_CrossTable"><i class="fa fa-check"></i><b>22.2.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable"><i class="fa fa-check"></i><b>22.3</b> Three-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_table"><i class="fa fa-check"></i><b>22.3.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.3.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_xtabs"><i class="fa fa-check"></i><b>22.3.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#summary-18"><i class="fa fa-check"></i><b>22.4</b> Summary</a></li>
+<li class="chapter" data-level="22.5" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_supplement"><i class="fa fa-check"></i><b>22.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_subset_supplement"><i class="fa fa-check"></i><b>22.5.1</b> Creating a Pivot Table</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IV Odds &amp; Ends</b></span></li>
+<li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for HR:<br />
+<em>An Introduction to Human Resource Analytics Using R</em><br />
+BOOK UNDER CONSTRUCTION</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tables_crosstabs" class="section level1" number="22">
+<h1><span class="header-section-number">Chapter 22</span> Creating Tables &amp; Cross-Tabulations</h1>
+<p>A <strong>table</strong> in its simplest form is simply an object in which data are stored in rows and columns, and sometimes a table is referred to as a <em>tabular display</em> in the context of data visualization. Broadly speaking, in the <code>R</code> environment you can think of a <a href="gentleintro.html#dataframes">data frame</a> as a specific type of data table.</p>
+<p>In this chapter, we focus on creating tables to describe or summarize frequency (i.e., count) data from one or more <em>categorical</em> (i.e., nominal, ordinal) variables. Specifically, we will learn how to create different types of two-way and three-way tables, where <em>two-way</em> implies that we are summarizing two variables and <em>three-way</em> implies that we are summarizing three variables.</p>
+<p>When we create a table involving two or more categorical variables, we often refer to the the table as a <strong>cross-tabulation (cross-tabs)</strong>. A cross-tabulation can be described more specifically as the process of creating a table from two or more categorical variables (i.e., dimensions), which frequencies (i.e., counts) of observations are displayed per combination of variable categories or levels. The table resulting from a cross tabulation is sometimes referred to as a <strong>contingency table</strong>. Cross-tabulation is a relatively simple way in which we can summarize data, but it serves as the foundation for the chi-square test of independence and allows for deriving insights via segmentation. Cross-tabulation is often most useful when the variables involved are nominal or ordinal.</p>
+<p>As a side note, the <a href="aggregatesegment.html#aggregatesegment">Aggregating &amp; Segmenting Data</a> chapter provides additional approaches for creating descriptive or summary data tables (well, technically <em>tibbles</em>) using functions from the <code>dplyr</code> package; in that chapter, you can learn how to create tables when one variable is continuous (i.e., interval ratio) and one variable is categorical. Finally, please note that there is a package called <code>data.table</code> that has functions that allow one to convert data frames to a special kind of data table object that allows for faster and enhanced manipulations; if you’re interested, follow <a href="https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html">this link to learn more</a>.</p>
+<div id="video-tutorial-15" class="section level4" number="22.0.0.1">
+<h4><span class="header-section-number">22.0.0.1</span> Video Tutorial</h4>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/Ja_CM253oDQ?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to Video Tutorial: <a href="https://youtu.be/Ja_CM253oDQ" class="uri">https://youtu.be/Ja_CM253oDQ</a></p>
+</div>
+<div id="functions-packages-introduced-10" class="section level4" number="22.0.0.2">
+<h4><span class="header-section-number">22.0.0.2</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>table</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>prop.table</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>round</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>ftable</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>xtabs</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>CrossTable</code></td>
+<td><code>gmodels</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_tables" class="section level4" number="22.0.0.3">
+<h4><span class="header-section-number">22.0.0.3</span> Initial Steps</h4>
+<p>If you haven’t already, save the file called <strong>“EmployeeDemographics.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="tables-crosstabs.html#cb658-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb658-2"><a href="tables-crosstabs.html#cb658-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“EmployeeDemographics.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="tables-crosstabs.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb659-2"><a href="tables-crosstabs.html#cb659-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb659-3"><a href="tables-crosstabs.html#cb659-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb659-4"><a href="tables-crosstabs.html#cb659-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="tables-crosstabs.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb660-2"><a href="tables-crosstabs.html#cb660-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb660-3"><a href="tables-crosstabs.html#cb660-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb660-4"><a href="tables-crosstabs.html#cb660-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb660-5"><a href="tables-crosstabs.html#cb660-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ------------------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   OrgTenureYrs_2019 = col_double(),
+##   JobLevel = col_double(),
+##   Sex = col_character(),
+##   RaceEthnicity = col_character(),
+##   AgeYrs_2019 = col_double(),
+##   Veteran = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="tables-crosstabs.html#cb662-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb662-2"><a href="tables-crosstabs.html#cb662-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;               &quot;RaceEthnicity&quot;    
+## [6] &quot;AgeYrs_2019&quot;       &quot;Veteran&quot;</code></pre>
+<p>Note in the data frame that the <code>EmployeeID</code> variable (i.e., column, field) is a unique identifier variable, and each row contains an individual employee’s demographic data on the following variables: organizational tenure (<code>OrgTenureYrs_2019</code>), job level (<code>JobLevel</code>), sex (<code>Sex</code>), race/ethnicity (<code>RaceEthnicity</code>), age (<code>AgeYrs_2019</code>), and veteran status (<code>Veteran</code>).</p>
+</div>
+<div id="onewaytable" class="section level2" number="22.1">
+<h2><span class="header-section-number">22.1</span> One-Way Table</h2>
+<p>A <em>one-way</em> table summarizes the frequencies (i.e., counts) of a single categorical (i.e., nominal, ordinal) variable. Using the data found in the data frame we named <code>demodata</code>, we will begin by creating one-way tables using the categorical <code>JobLevel</code> variable. I’ll demonstrate how to create one-way tables using three different functions (i.e., <code>table</code>, <code>xtabs</code>, <code>CrossTable</code>), and you can choose to follow along with all three or just one or two.</p>
+<div id="onewaytable_table" class="section level3" number="22.1.1">
+<h3><span class="header-section-number">22.1.1</span> Option 1: Using the <code>table</code> Function</h3>
+<p>Using the <code>table</code> function from base <code>R</code>, let’s begin by creating a one-way table containing frequencies based on the <code>JobLevel</code> variable contained in the <code>demodata</code> data frame object. To begin, type the name of the <code>table</code> function. As the first argument in the function, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the variable (<code>JobLevel</code>).</p>
+<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="tables-crosstabs.html#cb664-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create one-way table from JobLevel variable</span></span>
+<span id="cb664-2"><a href="tables-crosstabs.html#cb664-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel)</span></code></pre></div>
+<pre><code>## 
+##  1  2  3  4  5 
+## 82 44 18 10  9</code></pre>
+<p>As you can see, the levels of the <code>JobLevel</code> variable (i.e., 1-5) appear as the column labels. Each “cell” in the table contains the frequency (i.e., count) of employees who fall in each level of the <code>JobLevel</code> categorical variable. For example, the table shows us that 82 employees are in job level 1.</p>
+<p>Using the same code as above, let’s assign the table we created to an object that we’ll (arbitrarily) call <code>table_1</code>. We’ll use the <code>&lt;-</code> operator to do this.</p>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="tables-crosstabs.html#cb666-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign one-way table to object</span></span>
+<span id="cb666-2"><a href="tables-crosstabs.html#cb666-2" aria-hidden="true" tabindex="-1"></a>table_1 <span class="ot">&lt;-</span> <span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel)</span></code></pre></div>
+<p>Using the table object we created above (<code>table_1</code>), we can apply the <code>prop.table</code> function from base <code>R</code> to estimate the proportions in each table cell. To calculate the cell proportions, simply type the name of the <code>prop.table</code> function, and as the only parenthetical argument, type the name of the table object we created above (<code>table_1</code>).</p>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="tables-crosstabs.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Present the cell proportions for the table</span></span>
+<span id="cb667-2"><a href="tables-crosstabs.html#cb667-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_1)</span></code></pre></div>
+<pre><code>## 
+##          1          2          3          4          5 
+## 0.50306748 0.26993865 0.11042945 0.06134969 0.05521472</code></pre>
+<p>When inspecting the cell proportion table displayed above, you might find it challenging to read given that number of decimal places after zero that are reported. To round values to 2 places after the decimal, let’s wrap the code from above in the <code>round</code> function from base <code>R</code>. As the first argument, let’s copy in our <code>prop.table</code> code from above, and as the second argument, let’s type the number of decimals after zero to which we wish to round (e.g., 2).</p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="tables-crosstabs.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb669-2"><a href="tables-crosstabs.html#cb669-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_1), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## 
+##    1    2    3    4    5 
+## 0.50 0.27 0.11 0.06 0.06</code></pre>
+<p>If you were to sum all of the proportions in the table, you would get a total of 1 (100%). To demonstrate, let’s apply the <code>sum</code> function base <code>R</code> by wrapping our <code>prop.table</code> function code in the <code>sum</code> function.</p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="tables-crosstabs.html#cb671-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb671-2"><a href="tables-crosstabs.html#cb671-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_1))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>As expected, all of the proportions in the table sum to 1 (100%).</p>
+<p>Next, let’s convert those proportions to percentages by multiplying the previous code by 100. If you recall, the multiplication operator in <code>R</code> is the <code>*</code> symbol. Just be sure to remember that the values presented in the subsequent output represent percentages and <em>not</em> raw frequencies (i.e., counts).</p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="tables-crosstabs.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
+<span id="cb673-2"><a href="tables-crosstabs.html#cb673-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_1), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## 
+##  1  2  3  4  5 
+## 50 27 11  6  6</code></pre>
+</div>
+<div id="onewaytable_xtabs" class="section level3" number="22.1.2">
+<h3><span class="header-section-number">22.1.2</span> Option 2: Using the <code>xtabs</code> Function</h3>
+<p>The <code>xtabs</code> function from base <code>R</code> can also be used to create a one-way table. As you will see below, the argument structure for the <code>xtabs</code> function is a bit different than what we saw for the <code>table</code> function; in addition, the <code>xtabs</code> output provides the variable names in the table, whereas the <code>table</code> function does not.</p>
+<p>To begin, type the name of the <code>xtabs</code> function. As the first argument in the function parentheses, insert the tilde (<code>~</code>) operator followed by the name of the variable (<code>JobLevel</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object two which the aforementioned variables belong (<code>demodata</code>).</p>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="tables-crosstabs.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create one-way table from JobLevel variable </span></span>
+<span id="cb675-2"><a href="tables-crosstabs.html#cb675-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel, <span class="at">data=</span>demodata)</span></code></pre></div>
+<pre><code>## JobLevel
+##  1  2  3  4  5 
+## 82 44 18 10  9</code></pre>
+<p>Using the same code as above, let’s assign the table we created to an object that we’ll (arbitrarily) call <code>table_1</code>. We’ll use the <code>&lt;-</code> operator to do this.</p>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="tables-crosstabs.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign one-way table to object</span></span>
+<span id="cb677-2"><a href="tables-crosstabs.html#cb677-2" aria-hidden="true" tabindex="-1"></a>table_1 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel, <span class="at">data=</span>demodata)</span></code></pre></div>
+<p>Using the table object we created above (<code>table_1</code>), we can apply the <code>prop.table</code> function from base <code>R</code> to estimate the proportions in each table cell. To calculate the cell proportions, simply type the name of the <code>prop.table</code> function, and as the only parenthetical argument, type the name of the table object we created above (<code>table_1</code>).</p>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="tables-crosstabs.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the cell proportions for the table</span></span>
+<span id="cb678-2"><a href="tables-crosstabs.html#cb678-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_1)</span></code></pre></div>
+<pre><code>## JobLevel
+##          1          2          3          4          5 
+## 0.50306748 0.26993865 0.11042945 0.06134969 0.05521472</code></pre>
+<p>When inspecting the cell proportion table displayed above, you might find it challenging to read given that number of decimal places after zero that are reported. To round values to 2 places after the decimal, let’s wrap the code from above in the <code>round</code> function from base <code>R</code>. As the first argument, let’s copy in our <code>prop.table</code> code from above, and as the second argument, let’s type the number of decimals after zero to which we wish to round (e.g., 2).</p>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="tables-crosstabs.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb680-2"><a href="tables-crosstabs.html#cb680-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_1), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## JobLevel
+##    1    2    3    4    5 
+## 0.50 0.27 0.11 0.06 0.06</code></pre>
+<p>If you were to sum all of the proportions in the table, you would get a total of 1 (100%). To demonstrate, let’s apply the <code>sum</code> function base <code>R</code> by wrapping our <code>prop.table</code> function code in the <code>sum</code> function.</p>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="tables-crosstabs.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb682-2"><a href="tables-crosstabs.html#cb682-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_1))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>As expected, all of the proportions in the table sum to 1 (100%).</p>
+<p>Next, let’s convert those proportions to percentages by multiplying the previous code by 100. If you recall, the multiplication operator in <code>R</code> is the <code>*</code> symbol. Just be sure to remember that the values presented in the subsequent output represent percentages and <em>not</em> raw frequencies (i.e., counts).</p>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="tables-crosstabs.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
+<span id="cb684-2"><a href="tables-crosstabs.html#cb684-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_1), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## JobLevel
+##  1  2  3  4  5 
+## 50 27 11  6  6</code></pre>
+</div>
+<div id="onewaytable_CrossTable" class="section level3" number="22.1.3">
+<h3><span class="header-section-number">22.1.3</span> Option 3: Using the <code>CrossTable</code> Function</h3>
+<p>The <code>CrossTable</code> function from the <code>gmodels</code> package is another option when it comes to creating a one-way table. The function includes multiple arguments that can eliminate additional steps (e.g., rounding) that would be required when using the <code>table</code> or <code>xtabs</code> function from base <code>R</code>. Before using the <code>CrossTable</code> function, we must install and access the <code>gmodels</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. The downside of the <code>CrossTable</code> function is that it can only be used to create one- and two-way tables.</p>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="tables-crosstabs.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install gmodels package if you haven&#39;t already</span></span>
+<span id="cb686-2"><a href="tables-crosstabs.html#cb686-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gmodels&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="tables-crosstabs.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access gmodels package</span></span>
+<span id="cb687-2"><a href="tables-crosstabs.html#cb687-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span></code></pre></div>
+<p>To create a one-way table using the <code>JobLevel</code>variable, type the name of the <code>CrossTable</code> function. As the first argument in the function parentheses, type the name of variable you wish to use to make the table, and use the <code>$</code> symbol to indicate that the variable (<code>JobLevel</code>) belongs to the data frame in question (<code>demodata</code>), which should look like this: <code>demodata$JobLevel</code>.</p>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="tables-crosstabs.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create one-way table from JobLevel variable</span></span>
+<span id="cb688-2"><a href="tables-crosstabs.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(demodata<span class="sc">$</span>JobLevel)</span></code></pre></div>
+<pre><code>## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  163 
+## 
+##  
+##           |         1 |         2 |         3 |         4 |         5 | 
+##           |-----------|-----------|-----------|-----------|-----------|
+##           |        82 |        44 |        18 |        10 |         9 | 
+##           |     0.503 |     0.270 |     0.110 |     0.061 |     0.055 | 
+##           |-----------|-----------|-----------|-----------|-----------|
+## 
+## 
+## 
+## </code></pre>
+<p>The resulting table is packed with information! Fortunately, there is a key titled “Cell Contents” that explains how to interpret the value displayed in each row within each cell. As you can see, by default, the table displays the raw frequencies (i.e., counts) and the overall cell proportions – and we only had to use a single function!</p>
+</div>
+</div>
+<div id="twowaytable" class="section level2" number="22.2">
+<h2><span class="header-section-number">22.2</span> Two-Way Table</h2>
+<p>A <em>two-way</em> table (or two-way cross-tabulation) summarizes the association between two categorical (i.e., nominal, ordinal) variables. Using the data found in the data frame we named <code>demodata</code>, we will begin by creating two-way tables using the categorical <code>JobLevel</code> and <code>Sex</code> variables. I’ll demonstrate how to create two-way tables using three different functions (i.e., <code>table</code>, <code>xtabs</code>, <code>CrossTable</code>), and you can choose to follow along with all three or just one or two.</p>
+<div id="twowaytable_table" class="section level3" number="22.2.1">
+<h3><span class="header-section-number">22.2.1</span> Option 1: Using the <code>table</code> Function</h3>
+<p>Using the <code>table</code> function from base <code>R</code>, let’s create a two-way table containing frequencies based on the <code>JobLevel</code> and <code>Sex</code> variables contained in the <code>demodata</code> data frame object. To begin, type the name of the <code>table</code> function. As the first argument in the function, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the first variable (<code>JobLevel</code>). As the second argument, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the second variable (<code>Sex</code>).</p>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="tables-crosstabs.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two-way table from JobLevel and Sex variables</span></span>
+<span id="cb690-2"><a href="tables-crosstabs.html#cb690-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
+<pre><code>##    
+##     Female Male
+##   1     47   35
+##   2     22   22
+##   3      7   11
+##   4      3    7
+##   5      1    8</code></pre>
+<p>As you can see, the levels of the <code>JobLevel</code> variable (i.e., 1-5) appear as the row labels, and the categories of the <code>Sex</code> variable (i.e., Female, Male) appear as the column labels. If we wanted the categories of the <code>Sex</code> variable to appear as the row labels and the levels of the <code>JobLevel</code> variable to appear as the column labels, we would reverse the order of the two variables in our <code>table</code> function.</p>
+<p>Each “cell” in the table contains the frequency (i.e., count) of employees who are in the intersecting categories. For example, the table shows that 47 female employees are in job level 1, whereas 35 male employees are in job level 2. Because there are five levels associated with the <code>JobLevel</code> variable (i.e., 1-5) and two levels associated with the <code>Sex</code> variable (i.e., Female, Male), the 5x2 table has a total of 10 cells.</p>
+<p>Using the same code as above, let’s assign the table we created to an object that we’ll (arbitrarily) call <code>table_2</code>. We’ll use the <code>&lt;-</code> operator to do this.</p>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="tables-crosstabs.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign two-way table to object</span></span>
+<span id="cb692-2"><a href="tables-crosstabs.html#cb692-2" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> <span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
+<p>Using the table object we created above (<code>table_2</code>), we can apply the <code>prop.table</code> function from base <code>R</code> to estimate the proportions in each table cell. To calculate the cell proportions, simply type the name of the <code>prop.table</code> function, and as the only parenthetical argument, type the name of the table object we created above (<code>table_2</code>).</p>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="tables-crosstabs.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Present the cell proportions for the table</span></span>
+<span id="cb693-2"><a href="tables-crosstabs.html#cb693-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2)</span></code></pre></div>
+<pre><code>##    
+##          Female        Male
+##   1 0.288343558 0.214723926
+##   2 0.134969325 0.134969325
+##   3 0.042944785 0.067484663
+##   4 0.018404908 0.042944785
+##   5 0.006134969 0.049079755</code></pre>
+<p>When inspecting the cell proportion table displayed above, you might find it challenging to read given that number of decimal places after zero that are reported. To round values to 2 places after the decimal, let’s wrap the code from above in the <code>round</code> function from base <code>R</code>. As the first argument, let’s copy in our <code>prop.table</code> code from above, and as the second argument, let’s type the number of decimals after zero to which we wish to round (e.g., 2).</p>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="tables-crosstabs.html#cb695-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb695-2"><a href="tables-crosstabs.html#cb695-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##    
+##     Female Male
+##   1   0.29 0.21
+##   2   0.13 0.13
+##   3   0.04 0.07
+##   4   0.02 0.04
+##   5   0.01 0.05</code></pre>
+<p>If you were to sum all of the proportions in the table, you would get a total of 1 (100%). To demonstrate, let’s apply the <code>sum</code> function base <code>R</code> by wrapping our <code>prop.table</code> function code in the <code>sum</code> function.</p>
+<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="tables-crosstabs.html#cb697-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb697-2"><a href="tables-crosstabs.html#cb697-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_2))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>As expected, all of the proportions in the table sum to 1 (100%).</p>
+<p>What if we wish to compute the proportions by row or by column? Well, to compute those row-by-row or column-by-column proportions, we simply add an argument to the <code>prop.table</code> function. To compute the <em>row</em> proportions, enter <code>1</code> as the second argument.</p>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="tables-crosstabs.html#cb699-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the table</span></span>
+<span id="cb699-2"><a href="tables-crosstabs.html#cb699-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##    
+##        Female      Male
+##   1 0.5731707 0.4268293
+##   2 0.5000000 0.5000000
+##   3 0.3888889 0.6111111
+##   4 0.3000000 0.7000000
+##   5 0.1111111 0.8888889</code></pre>
+<p>In the output, you can see that the proportions in each row now sum to 1 (100%). Now, let’s round the row proportions to 2 places after the decimal.</p>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="tables-crosstabs.html#cb701-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal</span></span>
+<span id="cb701-2"><a href="tables-crosstabs.html#cb701-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##    
+##     Female Male
+##   1   0.57 0.43
+##   2   0.50 0.50
+##   3   0.39 0.61
+##   4   0.30 0.70
+##   5   0.11 0.89</code></pre>
+<p>Next, let’s convert those proportions to percentages by multiplying the previous code by 100. If you recall, the multiplication operator in <code>R</code> is the <code>*</code> symbol. Just be sure to remember that the values presented in the subsequent output represent percentages and <em>not</em> raw frequencies (i.e., counts).</p>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="tables-crosstabs.html#cb703-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
+<span id="cb703-2"><a href="tables-crosstabs.html#cb703-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##    
+##     Female Male
+##   1     57   43
+##   2     50   50
+##   3     39   61
+##   4     30   70
+##   5     11   89</code></pre>
+<p>Alternatively, we can compute the <em>column</em> proportions by typing <code>2</code> instead of <code>1</code> in the second argument of the <code>prop.table</code> function. As you can see below, each column now adds up to 1 (100%).</p>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="tables-crosstabs.html#cb705-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the table</span></span>
+<span id="cb705-2"><a href="tables-crosstabs.html#cb705-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##    
+##         Female       Male
+##   1 0.58750000 0.42168675
+##   2 0.27500000 0.26506024
+##   3 0.08750000 0.13253012
+##   4 0.03750000 0.08433735
+##   5 0.01250000 0.09638554</code></pre>
+<p>Now, let’s round to 2 places after the decimal and multiply by 100 to convert the proportions to percentages.</p>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="tables-crosstabs.html#cb707-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal and convert to percentages</span></span>
+<span id="cb707-2"><a href="tables-crosstabs.html#cb707-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##    
+##     Female Male
+##   1     59   42
+##   2     28   27
+##   3      9   13
+##   4      4    8
+##   5      1   10</code></pre>
+</div>
+<div id="twowaytable_xtabs" class="section level3" number="22.2.2">
+<h3><span class="header-section-number">22.2.2</span> Option 2: Using the <code>xtabs</code> Function</h3>
+<p>The <code>xtabs</code> function from base <code>R</code> can also be used to create a two-way table. To begin, type the name of the <code>xtabs</code> function. As the first argument in the function parentheses, insert the tilde (<code>~</code>) operator followed by the name of the first variable (<code>JobLevel</code>), the addition (<code>+</code>) operator, and the name of the second variable (<code>Sex</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object two which the aforementioned variables belong (<code>demodata</code>).</p>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="tables-crosstabs.html#cb709-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from JobLevel and Sex variables </span></span>
+<span id="cb709-2"><a href="tables-crosstabs.html#cb709-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex, <span class="at">data=</span>demodata)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel Female Male
+##        1     47   35
+##        2     22   22
+##        3      7   11
+##        4      3    7
+##        5      1    8</code></pre>
+<p>Using the same code as above, let’s assign the table we created to an object that we’ll (arbitrarily) call <code>table_2</code>. We’ll use the <code>&lt;-</code> operator to do this.</p>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="tables-crosstabs.html#cb711-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign two-way table to object</span></span>
+<span id="cb711-2"><a href="tables-crosstabs.html#cb711-2" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex, <span class="at">data=</span>demodata)</span></code></pre></div>
+<p>Using the table object we created above (<code>table_2</code>), we can apply the <code>prop.table</code> function from base <code>R</code> to estimate the proportions in each table cell. To calculate the cell proportions, simply type the name of the <code>prop.table</code> function, and as the only parenthetical argument, type the name of the table object we created above (<code>table_2</code>).</p>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="tables-crosstabs.html#cb712-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the cell proportions for the table</span></span>
+<span id="cb712-2"><a href="tables-crosstabs.html#cb712-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel      Female        Male
+##        1 0.288343558 0.214723926
+##        2 0.134969325 0.134969325
+##        3 0.042944785 0.067484663
+##        4 0.018404908 0.042944785
+##        5 0.006134969 0.049079755</code></pre>
+<p>When inspecting the cell proportion table displayed above, you might find it challenging to read given that number of decimal places after zero that are reported. To round values to 2 places after the decimal, let’s wrap the code from above in the <code>round</code> function from base <code>R</code>. As the first argument, let’s copy in our <code>prop.table</code> code from above, and as the second argument, let’s type the number of decimals after zero to which we wish to round (e.g., 2).</p>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="tables-crosstabs.html#cb714-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb714-2"><a href="tables-crosstabs.html#cb714-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel Female Male
+##        1   0.29 0.21
+##        2   0.13 0.13
+##        3   0.04 0.07
+##        4   0.02 0.04
+##        5   0.01 0.05</code></pre>
+<p>If you were to sum all of the proportions in the table, you would get a total of 1 (100%). To demonstrate, let’s apply the <code>sum</code> function base <code>R</code> by wrapping our <code>prop.table</code> function code in the <code>sum</code> function.</p>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="tables-crosstabs.html#cb716-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb716-2"><a href="tables-crosstabs.html#cb716-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_2))</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<p>As expected, all of the proportions in the table sum to 1 (100%).</p>
+<p>What if we wish to compute the proportions by row or by column? Well, to compute those row-by-row or column-by-column proportions, we simply add an argument to the <code>prop.table</code> function. To compute the <em>row</em> proportions, enter <code>1</code> as the second argument.</p>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="tables-crosstabs.html#cb718-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the table</span></span>
+<span id="cb718-2"><a href="tables-crosstabs.html#cb718-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel    Female      Male
+##        1 0.5731707 0.4268293
+##        2 0.5000000 0.5000000
+##        3 0.3888889 0.6111111
+##        4 0.3000000 0.7000000
+##        5 0.1111111 0.8888889</code></pre>
+<p>In the output, you can see that the proportions in each row now sum to 1 (100%). Now, let’s round the row proportions to 2 places after the decimal.</p>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="tables-crosstabs.html#cb720-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal</span></span>
+<span id="cb720-2"><a href="tables-crosstabs.html#cb720-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel Female Male
+##        1   0.57 0.43
+##        2   0.50 0.50
+##        3   0.39 0.61
+##        4   0.30 0.70
+##        5   0.11 0.89</code></pre>
+<p>Next, let’s convert those proportions to percentages by multiplying the previous code by 100. If you recall, the multiplication operator in <code>R</code> is the <code>*</code> symbol. Just be sure to remember that the values presented in the subsequent output represent percentages and <em>not</em> raw frequencies (i.e., counts).</p>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="tables-crosstabs.html#cb722-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
+<span id="cb722-2"><a href="tables-crosstabs.html#cb722-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel Female Male
+##        1     57   43
+##        2     50   50
+##        3     39   61
+##        4     30   70
+##        5     11   89</code></pre>
+<p>Alternatively, we can compute the <em>column</em> proportions by typing <code>2</code> instead of <code>1</code> in the second argument of the <code>prop.table</code> function. As you can see below, each column now adds up to 1 (100%).</p>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="tables-crosstabs.html#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the table</span></span>
+<span id="cb724-2"><a href="tables-crosstabs.html#cb724-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel     Female       Male
+##        1 0.58750000 0.42168675
+##        2 0.27500000 0.26506024
+##        3 0.08750000 0.13253012
+##        4 0.03750000 0.08433735
+##        5 0.01250000 0.09638554</code></pre>
+<p>Now, let’s round to 2 places after the decimal and multiply by 100 to convert the proportions to percentages.</p>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="tables-crosstabs.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal and convert to percentages</span></span>
+<span id="cb726-2"><a href="tables-crosstabs.html#cb726-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##         Sex
+## JobLevel Female Male
+##        1     59   42
+##        2     28   27
+##        3      9   13
+##        4      4    8
+##        5      1   10</code></pre>
+</div>
+<div id="twowaytable_CrossTable" class="section level3" number="22.2.3">
+<h3><span class="header-section-number">22.2.3</span> Option 3: Using the <code>CrossTable</code> Function</h3>
+<p>The <code>CrossTable</code> function from the <code>gmodels</code> package is another option when it comes to creating a two-way table. The function includes multiple arguments that can eliminate additional steps (e.g., rounding) that would be required when using the <code>table</code> or <code>xtabs</code> function from base <code>R</code>. Before using the <code>CrossTable</code> function, we must install and access the <code>gmodels</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. The downside of the <code>CrossTable</code> function is that it can only be used to create one- and two-way tables.</p>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="tables-crosstabs.html#cb728-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install gmodels package if you haven&#39;t already</span></span>
+<span id="cb728-2"><a href="tables-crosstabs.html#cb728-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gmodels&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb729-1"><a href="tables-crosstabs.html#cb729-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access gmodels package</span></span>
+<span id="cb729-2"><a href="tables-crosstabs.html#cb729-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span></code></pre></div>
+<p>To create a two-way table using the <code>JobLevel</code> and <code>Sex</code> variables, type the name of the <code>CrossTable</code> function. As the first argument in the function parentheses, type the name of first variable you wish to use to make the table, and use the <code>$</code> symbol to indicate that the variable (<code>JobLevel</code>) belongs to the data frame in question (<code>demodata</code>), which should look like this: <code>demodata$JobLevel</code>. As the second argument, type the name of the second variable you wish to use to make the table, and use the <code>$</code> symbol to indicate that the variable (<code>Sex</code>) belongs to the data frame in question (<code>demodata</code>), which should look like this: <code>demodata$Sex</code>. Make sure you use a comma (<code>,</code>) to separate the two arguments.</p>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="tables-crosstabs.html#cb730-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from JobLevel and Sex variables from demodata data frame</span></span>
+<span id="cb730-2"><a href="tables-crosstabs.html#cb730-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
+<pre><code>## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## | Chi-square contribution |
+## |           N / Row Total |
+## |           N / Col Total |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  163 
+## 
+##  
+##                   | demodata$Sex 
+## demodata$JobLevel |    Female |      Male | Row Total | 
+## ------------------|-----------|-----------|-----------|
+##                 1 |        47 |        35 |        82 | 
+##                   |     1.134 |     1.093 |           | 
+##                   |     0.573 |     0.427 |     0.503 | 
+##                   |     0.588 |     0.422 |           | 
+##                   |     0.288 |     0.215 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 2 |        22 |        22 |        44 | 
+##                   |     0.008 |     0.007 |           | 
+##                   |     0.500 |     0.500 |     0.270 | 
+##                   |     0.275 |     0.265 |           | 
+##                   |     0.135 |     0.135 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 3 |         7 |        11 |        18 | 
+##                   |     0.381 |     0.367 |           | 
+##                   |     0.389 |     0.611 |     0.110 | 
+##                   |     0.087 |     0.133 |           | 
+##                   |     0.043 |     0.067 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 4 |         3 |         7 |        10 | 
+##                   |     0.742 |     0.715 |           | 
+##                   |     0.300 |     0.700 |     0.061 | 
+##                   |     0.037 |     0.084 |           | 
+##                   |     0.018 |     0.043 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 5 |         1 |         8 |         9 | 
+##                   |     2.644 |     2.548 |           | 
+##                   |     0.111 |     0.889 |     0.055 | 
+##                   |     0.012 |     0.096 |           | 
+##                   |     0.006 |     0.049 |           | 
+## ------------------|-----------|-----------|-----------|
+##      Column Total |        80 |        83 |       163 | 
+##                   |     0.491 |     0.509 |           | 
+## ------------------|-----------|-----------|-----------|
+## 
+## </code></pre>
+<p>The resulting table is packed with information! Fortunately, there is a key titled “Cell Contents” that explains how to interpret the value displayed in each row within each cell. As you can see, by default, the table displays the raw frequencies (i.e., counts), the proportions by row, the proportions by column, and the overall cell proportions – and we only had to use a single function!</p>
+<p>In some cases, you may wish to reduce the amount of information displayed. To find additional documentation, use the help (<code>?</code>) feature for the <code>CrossTable</code> function.</p>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="tables-crosstabs.html#cb732-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access background information on function</span></span>
+<span id="cb732-2"><a href="tables-crosstabs.html#cb732-2" aria-hidden="true" tabindex="-1"></a>?CrossTable</span></code></pre></div>
+<p>Once the Help window opens, you can explore the different arguments that can be used within the function to change the default settings. The default number of digits displayed after the decimal is 3, but let’s change to 2 by adding the argument <code>digits=2</code>. Next, let’s add the following arguments: (a) <code>prop.r=FALSE</code> to hide the row proportions, (b) <code>prop.c=FALSE</code> to hide the column proportions, (c) <code>prop.t=TRUE</code> to keep the total proportions visible, and (d) <code>prop.chisq=FALSE</code> to hide the chi-square contribution of each cell.</p>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb733-1"><a href="tables-crosstabs.html#cb733-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from JobLevel and Sex variables from demodata data frame</span></span>
+<span id="cb733-2"><a href="tables-crosstabs.html#cb733-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, <span class="at">digits=</span><span class="dv">2</span>,</span>
+<span id="cb733-3"><a href="tables-crosstabs.html#cb733-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">prop.r=</span><span class="cn">FALSE</span>, <span class="at">prop.c=</span><span class="cn">FALSE</span>, <span class="at">prop.t=</span><span class="cn">TRUE</span>, <span class="at">prop.chisq=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## 
+##  
+##    Cell Contents
+## |-------------------------|
+## |                       N |
+## |         N / Table Total |
+## |-------------------------|
+## 
+##  
+## Total Observations in Table:  163 
+## 
+##  
+##                   | demodata$Sex 
+## demodata$JobLevel |    Female |      Male | Row Total | 
+## ------------------|-----------|-----------|-----------|
+##                 1 |        47 |        35 |        82 | 
+##                   |      0.29 |      0.21 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 2 |        22 |        22 |        44 | 
+##                   |      0.13 |      0.13 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 3 |         7 |        11 |        18 | 
+##                   |      0.04 |      0.07 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 4 |         3 |         7 |        10 | 
+##                   |      0.02 |      0.04 |           | 
+## ------------------|-----------|-----------|-----------|
+##                 5 |         1 |         8 |         9 | 
+##                   |      0.01 |      0.05 |           | 
+## ------------------|-----------|-----------|-----------|
+##      Column Total |        80 |        83 |       163 | 
+## ------------------|-----------|-----------|-----------|
+## 
+## </code></pre>
+</div>
+</div>
+<div id="threewaytable" class="section level2" number="22.3">
+<h2><span class="header-section-number">22.3</span> Three-Way Table</h2>
+<p>A <em>three-way</em> table (or three-way cross-tabulation) summarizes the association between three categorical (i.e., nominal, ordinal) variables. Using the data found in the data frame we named <code>demodata</code>, we will begin by creating two-way tables using the categorical <code>JobLevel</code>, <code>Sex</code>, and <code>RaceEthnicity</code> variables. I’ll demonstrate how to create three-way tables using two different functions (i.e., <code>table</code>, <code>xtabs</code>), and you can choose to follow along with all three or just one or two.</p>
+<div id="threewaytable_table" class="section level3" number="22.3.1">
+<h3><span class="header-section-number">22.3.1</span> Option 1: Using the <code>table</code> Function</h3>
+<p>Using the <code>table</code> function from base <code>R</code>, let’s create a three-way table containing frequencies based on the <code>JobLevel</code>, <code>Sex</code>, and <code>RaceEthnicity</code> variables contained in the <code>demodata</code> data frame object. To begin, type the name of the <code>table</code> function. As the first argument in the function, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the first variable (<code>JobLevel</code>). As the second argument, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the second variable (<code>Sex</code>). As the third argument, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the third variable (<code>RaceEthnicity</code>).</p>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb735-1"><a href="tables-crosstabs.html#cb735-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three-way table from JobLevel, Sex, and RaceEthnicity variables</span></span>
+<span id="cb735-2"><a href="tables-crosstabs.html#cb735-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, demodata<span class="sc">$</span>RaceEthnicity)</span></code></pre></div>
+<pre><code>## , ,  = Asian
+## 
+##    
+##     Female Male
+##   1     14   11
+##   2      6   10
+##   3      1    6
+##   4      0    5
+##   5      0    3
+## 
+## , ,  = Black
+## 
+##    
+##     Female Male
+##   1      2    0
+##   2      0    1
+##   3      0    0
+##   4      0    0
+##   5      0    0
+## 
+## , ,  = HispanicLatino
+## 
+##    
+##     Female Male
+##   1     14   14
+##   2      3    5
+##   3      3    2
+##   4      3    2
+##   5      0    3
+## 
+## , ,  = White
+## 
+##    
+##     Female Male
+##   1     17   10
+##   2     13    6
+##   3      3    3
+##   4      0    0
+##   5      1    2</code></pre>
+<p>As you can see, when used to create a three-way table, the <code>table</code> function creates one two-way table based on the first two variables for each category or level of the third variable. Let’s assign this table to an object that we’ll call <code>table3</code>.</p>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb737-1"><a href="tables-crosstabs.html#cb737-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign three-way table to object</span></span>
+<span id="cb737-2"><a href="tables-crosstabs.html#cb737-2" aria-hidden="true" tabindex="-1"></a>table_3 <span class="ot">&lt;-</span> <span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, demodata<span class="sc">$</span>RaceEthnicity)</span></code></pre></div>
+<p>If you would prefer to view the frequencies (i.e., counts) in a single table, then use the <code>ftable</code> function from base <code>R</code>. Simply type the name of the table object we created in the previous step (<code>table_3</code>) as the sole argument in the <code>ftable</code> function.</p>
+<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="tables-crosstabs.html#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print three-way table in a different format</span></span>
+<span id="cb738-2"><a href="tables-crosstabs.html#cb738-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(table_3)</span></code></pre></div>
+<pre><code>##           Asian Black HispanicLatino White
+##                                           
+## 1 Female     14     2             14    17
+##   Male       11     0             14    10
+## 2 Female      6     0              3    13
+##   Male       10     1              5     6
+## 3 Female      1     0              3     3
+##   Male        6     0              2     3
+## 4 Female      0     0              3     0
+##   Male        5     0              2     0
+## 5 Female      0     0              0     1
+##   Male        3     0              3     2</code></pre>
+<p>Just as we did with the <a href="tables-crosstabs.html#twowaytable_table">two-way tables above</a>, you can also apply the <code>prop.table</code> function and <code>round</code> functions to this three-way table object.</p>
+</div>
+<div id="threewaytable_xtabs" class="section level3" number="22.3.2">
+<h3><span class="header-section-number">22.3.2</span> Option 2: Using the <code>xtabs</code> Function</h3>
+<p>The <code>xtabs</code> function from base <code>R</code> can also be used to create a three-way table. To begin, type the name of the <code>xtabs</code> function. As the first argument in the function parentheses, insert the tilde (<code>~</code>) operator followed by the name of the first variable (<code>JobLevel</code>), the addition (<code>+</code>) operator, and the name of the second variable (<code>Sex</code>), the addition (<code>+</code>) operator, and the name of the third variable (<code>RaceEthnicity</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object two which the aforementioned variables belong (<code>demodata</code>).</p>
+<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="tables-crosstabs.html#cb740-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from JobLevel and Sex variables </span></span>
+<span id="cb740-2"><a href="tables-crosstabs.html#cb740-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex <span class="sc">+</span> RaceEthnicity, <span class="at">data=</span>demodata)</span></code></pre></div>
+<pre><code>## , , RaceEthnicity = Asian
+## 
+##         Sex
+## JobLevel Female Male
+##        1     14   11
+##        2      6   10
+##        3      1    6
+##        4      0    5
+##        5      0    3
+## 
+## , , RaceEthnicity = Black
+## 
+##         Sex
+## JobLevel Female Male
+##        1      2    0
+##        2      0    1
+##        3      0    0
+##        4      0    0
+##        5      0    0
+## 
+## , , RaceEthnicity = HispanicLatino
+## 
+##         Sex
+## JobLevel Female Male
+##        1     14   14
+##        2      3    5
+##        3      3    2
+##        4      3    2
+##        5      0    3
+## 
+## , , RaceEthnicity = White
+## 
+##         Sex
+## JobLevel Female Male
+##        1     17   10
+##        2     13    6
+##        3      3    3
+##        4      0    0
+##        5      1    2</code></pre>
+<p>As you can see, when used to create a three-way table, the <code>xtabs</code> function creates one two-way table based on the first two variables for each category or level of the third variable. Let’s assign this table to an object that we’ll call <code>table3</code>.</p>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="tables-crosstabs.html#cb742-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign three-way table to object</span></span>
+<span id="cb742-2"><a href="tables-crosstabs.html#cb742-2" aria-hidden="true" tabindex="-1"></a>table_3 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex <span class="sc">+</span> RaceEthnicity, <span class="at">data=</span>demodata)</span></code></pre></div>
+<p>If you would prefer to view the frequencies (i.e., counts) in a single table, then use the <code>ftable</code> function from base <code>R</code>. Simply type the name of the table object we created in the previous step (<code>table_3</code>) as the sole argument in the <code>ftable</code> function.</p>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="tables-crosstabs.html#cb743-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print three-way table in a different format</span></span>
+<span id="cb743-2"><a href="tables-crosstabs.html#cb743-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(table_3)</span></code></pre></div>
+<pre><code>##                 RaceEthnicity Asian Black HispanicLatino White
+## JobLevel Sex                                                  
+## 1        Female                  14     2             14    17
+##          Male                    11     0             14    10
+## 2        Female                   6     0              3    13
+##          Male                    10     1              5     6
+## 3        Female                   1     0              3     3
+##          Male                     6     0              2     3
+## 4        Female                   0     0              3     0
+##          Male                     5     0              2     0
+## 5        Female                   0     0              0     1
+##          Male                     3     0              3     2</code></pre>
+<p>Just as we did with the <a href="tables-crosstabs.html#twowaytable_xtabs">two-way tables above</a>, you can also apply the <code>prop.table</code> function and <code>round</code> functions to this three-way table object.</p>
+</div>
+</div>
+<div id="summary-18" class="section level2" number="22.4">
+<h2><span class="header-section-number">22.4</span> Summary</h2>
+<p>In this chapter, we learned how to create one- and two-way tables using the <code>table</code> and <code>xtabs</code> functions from base <code>R</code> and the <code>CrossTable</code> function from the <code>gmodels</code> package. In addition, we learned how to create three-way tables using the <code>table</code> and <code>xtabs</code> functions from base <code>R</code>.</p>
+</div>
+<div id="tables_supplement" class="section level2" number="22.5">
+<h2><span class="header-section-number">22.5</span> Chapter Supplement</h2>
+<p>In the main portion of this chapter, we learned how to create one-, two-, and three-way tables. In this chapter supplement, we will learn how to create interactive <strong>pivot tables</strong> that can be saved as an HTML file and opened in a web browser. If you are a Microsoft Excel user, you are probably familiar with the infamous pivot table (or PivotTable). If you’re not familiar with Excel, you are likely asking yourself the question: What is a PivotTable? A <strong>PivotTable</strong> is a fancy type of table that allows one to manipulate, arrange, or “pivot” data and descriptive and statistics interactively. The pivot table can be a useful tool for exploring and processing data.</p>
+<div id="tables_supplement_functions" class="section level4" number="22.5.0.1">
+<h4><span class="header-section-number">22.5.0.1</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N/A</td>
+<td><code>htmlwidgets</code></td>
+</tr>
+<tr class="even">
+<td>N/A</td>
+<td><code>knitr</code></td>
+</tr>
+<tr class="odd">
+<td><code>rpivotTable</code></td>
+<td><code>rpivotTable</code></td>
+</tr>
+<tr class="even">
+<td><code>c</code></td>
+<td>base <code>R</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="tables_initsteps_supplement" class="section level4" number="22.5.0.2">
+<h4><span class="header-section-number">22.5.0.2</span> Initial Steps</h4>
+<p>If required, please refer to the <a href="tables-crosstabs.html#initsteps_tables">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="tables-crosstabs.html#cb745-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb745-2"><a href="tables-crosstabs.html#cb745-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb746-1"><a href="tables-crosstabs.html#cb746-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb746-2"><a href="tables-crosstabs.html#cb746-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb746-3"><a href="tables-crosstabs.html#cb746-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb746-4"><a href="tables-crosstabs.html#cb746-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb746-5"><a href="tables-crosstabs.html#cb746-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ------------------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   OrgTenureYrs_2019 = col_double(),
+##   JobLevel = col_double(),
+##   Sex = col_character(),
+##   RaceEthnicity = col_character(),
+##   AgeYrs_2019 = col_double(),
+##   Veteran = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb748-1"><a href="tables-crosstabs.html#cb748-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb748-2"><a href="tables-crosstabs.html#cb748-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;               &quot;RaceEthnicity&quot;    
+## [6] &quot;AgeYrs_2019&quot;       &quot;Veteran&quot;</code></pre>
+</div>
+<div id="tables_subset_supplement" class="section level3" number="22.5.1">
+<h3><span class="header-section-number">22.5.1</span> Creating a Pivot Table</h3>
+<p>Creating a pivot table is relatively simple. Before doing so, however, we need to make sure the following packages are installed: <code>htmlwidgets</code>, <code>knitr</code>, and <code>rpivotTable</code>.</p>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb750-1"><a href="tables-crosstabs.html#cb750-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install htmlwidgets package if you haven&#39;t already</span></span>
+<span id="cb750-2"><a href="tables-crosstabs.html#cb750-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;htmlwidgets&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="tables-crosstabs.html#cb751-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install knitr package if you haven&#39;t already</span></span>
+<span id="cb751-2"><a href="tables-crosstabs.html#cb751-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb752-1"><a href="tables-crosstabs.html#cb752-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install rpivotTable package if you haven&#39;t already</span></span>
+<span id="cb752-2"><a href="tables-crosstabs.html#cb752-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;rpivotTable&quot;</span>)</span></code></pre></div>
+<p>Now that you’ve installed those packages, you only need to access the <code>rpivotTable</code> package.</p>
+<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="tables-crosstabs.html#cb753-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access rpivotTable package</span></span>
+<span id="cb753-2"><a href="tables-crosstabs.html#cb753-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpivotTable)</span></code></pre></div>
+<p>The simplest way to create a pivot table is to enter the name of the data frame of interest (<code>demodata</code>) as the sole argument in the function parentheses. The interactive pivot table will likely appear in the Plots window of the <code>R</code>Studio interface. You can expand the size of the window to see the entire pivot table Just like a pivot table in Excel, you can drag variables to the rows and columns areas and select the type of object (e.g., Table, Treemap, Bar Chart) and descriptive statistic (e.g., Count, Average) from the dropdown menus.</p>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb754-1"><a href="tables-crosstabs.html#cb754-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pivot table</span></span>
+<span id="cb754-2"><a href="tables-crosstabs.html#cb754-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpivotTable</span>(demodata)</span></code></pre></div>
+<div id="htmlwidget-7f769de38cb52c4f171d" style="width:800px;height:600px;" class="rpivotTable html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7f769de38cb52c4f171d">{"x":{"data":{"EmployeeID":[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163],"OrgTenureYrs_2019":[4.8,0.4,3.5,2.8,2.7,1.5,2.6,5.3,3.2,2.6,4.6,2.5,0.8,2.5,4.5,5.1,4.5,0.5,3.1,5.1,2.5,4.4,2.4,null,2.4,2.4,5,4.4,0.9,4.9,2.9,2.4,4.4,2.8,4.8,0.8,4.8,2.8,4.8,2.7,4.4,4.6,4.4,2.3,0.6,0.6,4.6,2.6,4.4,4.4,2.3,4.2,2.4,2.4,4.2,2.2,4.1,2.1,4.4,0.1,2.1,4,4.4,2.4,2.3,4,1.8,3.8,1.8,4.3,1.8,4.2,4.2,0.8,0.7,4.2,4.2,2.9,11.5,2.1,2.1,1.9,9,4,3.6,3.6,1.5,0.5,1.5,3.4,6.6,3.3,3.9,2.9,5.5,1.3,3.3,3.8,3.2,1.8,3.8,1.2,1.8,3.8,3.2,3.8,1.2,0.3,3.2,1.2,3.2,3.7,1.7,3.6,6.2,1.9,3.2,1,3.5,1.1,1.4,6.8,3.3,3.1,1.3,3.3,3.1,1.3,4,1.1,3.3,3.3,1,3.1,3.2,3.1,0.2,0.1,1.6,3.2,1.2,2.3,1.2,3.2,1.1,1.1,3.2,3.8,3.1,0.4,1.6,0.8,1.5,3.1,1.6,3.1,99999,1.2,3.2,3.1,1.2,1.1,0.2],"JobLevel":[2,1,1,1,1,2,1,3,1,1,2,1,1,1,2,1,1,1,1,2,1,1,3,1,1,1,5,1,1,2,1,1,2,5,3,1,2,2,5,1,2,3,2,3,1,1,3,1,2,5,2,2,2,1,2,1,2,1,2,1,1,2,3,1,2,2,1,2,1,2,1,3,2,1,1,2,3,2,5,5,1,2,5,5,2,2,1,1,1,3,5,1,3,2,2,1,2,2,2,1,4,1,1,2,2,1,1,1,4,1,1,2,1,3,4,1,3,1,2,1,1,4,3,4,1,3,3,1,4,1,2,2,1,2,1,3,1,1,1,2,1,1,1,1,1,1,4,1,2,1,1,1,4,3,1,4,1,1,2,4,1,1,1],"Sex":["Female","Male","Male","Female","Female","Male","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Female","Female","Male","Female","Female","Female","Male","Male","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Female","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Female","Male","Male","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Male","Male","Female","Male","Male","Female"],"RaceEthnicity":["Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","Black","White","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","HispanicLatino","White","Asian","White","White","HispanicLatino","White","Asian","White","Asian","White","Asian","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","White","Asian","HispanicLatino","White","White","White","HispanicLatino","White","HispanicLatino","HispanicLatino","Asian","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","White","Asian","White","HispanicLatino","White","Asian","White","Asian","Asian","Black","White","HispanicLatino","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","Asian","HispanicLatino","Asian","White","Asian","HispanicLatino","White","Asian","HispanicLatino","Asian","Asian","HispanicLatino","HispanicLatino","White","White","White","Asian","Asian","White","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","Asian","Asian","Asian","HispanicLatino","Asian","Asian","White","Asian","Asian","HispanicLatino","White","HispanicLatino","White","Asian","HispanicLatino","Asian","HispanicLatino","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","White","Asian","White","Asian","White","White","Asian","HispanicLatino","White","Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","White","HispanicLatino","Asian","White","HispanicLatino","HispanicLatino","Asian","Asian","Black"],"AgeYrs_2019":[49.8,25.4,23.5,40.8,28.7,50.5,23.2,61.3,40.2,39.6,47.6,21.5,18.9,26.5,40.5,45.1,37.5,38.5,30.1,26.1,34.5,47.4,42.4,null,21.4,45.4,48,43.4,31.9,44.9,34.9,26.4,36.4,39.8,37.8,33.8,34.8,24.8,42.8,25.7,45.4,46.6,55.4,38.3,29.6,21.6,49.6,22.6,36.4,44.4,31.3,39.2,46.4,43.4,49.2,34.2,42.1,26.1,42.4,44.1,32.1,46,47.4,53.4,37.3,44,22.8,46.8,42.8,47.3,38.8,39.2,42.2,25.8,26.7,52.2,37.2,43.9,51.5,33.1,22.8,43.9,45,42,51.6,49.6,38.5,31.5,59.5,44.4,53.6,41.3,35.9,41.9,44.5,33.3,45.3,32.8,33.2,23.8,39.8,46.2,40.8,35.8,28.2,34.8,34.2,37.3,36.2,33.2,33.2,40.7,22.7,46.6,41.2,44.9,37.2,43,34.5,39.1,36.4,44.8,41.3,49.1,23.3,34.3,39.1,28.3,37,43.1,47.3,25.3,27,42.1,40.2,48.1,33.2,18.1,27.6,32.2,24.2,36.3,32.2,47.2,33.1,38.1,50.2,24.8,53.1,33.4,24.6,40.8,42.5,37.1,19.6,49.1,28,26.2,40.2,45.1,44.2,45.1,31.2],"Veteran":["No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","Yes","No"]},"params":{},"locale":"en","subtotals":false},"evals":[],"jsHooks":[]}</script>
+<p>The pivot table can also be exported to an HTML file, which allows one to open it as an interactive web browser, and even better, you can send the HTML file to colleagues, which allows them to use the pivot table without having access to or changing the source data. In the <em>Viewer</em> window of <code>R</code>Studio, select the <em>Export</em> drop-down menu, followed by <em>Save as Web Page…</em>. You may be prompted to downloaded additional required packages; please click “Yes” to download these packages if you would like to save the pivot table as an HTML file. Once you have done that, you can proceed to save the file in your working directory or elsewhere. When you open (e.g., double-click on) the HTML file in the folder in which you saved it, a web browser will open with your interactive pivot table.</p>
+<div class="figure">
+<img src="PivotTable.png" alt="" />
+<p class="caption">To export the pivot table as a HTML web page file, click on the Export dropdown menu in the Viewer window pane and select “Save as Web Page….”</p>
+</div>
+<p>You can also preemptively specify the row variable(s), column variable(s), and descriptive statistic in the <code>rpivotTable</code> function itself. This allows you to keep a record of the different “pivots” you have applied and avoid having to drag-and-drop and point-and-click in the interactive interface. To add these specifications, we just add additional arguments (separated by commas) to the <code>rpivotTable</code> function. First, let’s type <code>rows="JobLevel"</code> (make sure the variable is in quotation marks) to set the <code>JobLevel</code> variable as a row. Second, let’s type <code>cols="Sex"</code> to set the <code>Sex</code> variable as a column.</p>
+<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="tables-crosstabs.html#cb755-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pivot table</span></span>
+<span id="cb755-2"><a href="tables-crosstabs.html#cb755-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpivotTable</span>(demodata, <span class="at">rows=</span><span class="st">&quot;JobLevel&quot;</span>, <span class="at">cols=</span><span class="st">&quot;Sex&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-e46d5188e400d842581f" style="width:800px;height:600px;" class="rpivotTable html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e46d5188e400d842581f">{"x":{"data":{"EmployeeID":[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163],"OrgTenureYrs_2019":[4.8,0.4,3.5,2.8,2.7,1.5,2.6,5.3,3.2,2.6,4.6,2.5,0.8,2.5,4.5,5.1,4.5,0.5,3.1,5.1,2.5,4.4,2.4,null,2.4,2.4,5,4.4,0.9,4.9,2.9,2.4,4.4,2.8,4.8,0.8,4.8,2.8,4.8,2.7,4.4,4.6,4.4,2.3,0.6,0.6,4.6,2.6,4.4,4.4,2.3,4.2,2.4,2.4,4.2,2.2,4.1,2.1,4.4,0.1,2.1,4,4.4,2.4,2.3,4,1.8,3.8,1.8,4.3,1.8,4.2,4.2,0.8,0.7,4.2,4.2,2.9,11.5,2.1,2.1,1.9,9,4,3.6,3.6,1.5,0.5,1.5,3.4,6.6,3.3,3.9,2.9,5.5,1.3,3.3,3.8,3.2,1.8,3.8,1.2,1.8,3.8,3.2,3.8,1.2,0.3,3.2,1.2,3.2,3.7,1.7,3.6,6.2,1.9,3.2,1,3.5,1.1,1.4,6.8,3.3,3.1,1.3,3.3,3.1,1.3,4,1.1,3.3,3.3,1,3.1,3.2,3.1,0.2,0.1,1.6,3.2,1.2,2.3,1.2,3.2,1.1,1.1,3.2,3.8,3.1,0.4,1.6,0.8,1.5,3.1,1.6,3.1,99999,1.2,3.2,3.1,1.2,1.1,0.2],"JobLevel":[2,1,1,1,1,2,1,3,1,1,2,1,1,1,2,1,1,1,1,2,1,1,3,1,1,1,5,1,1,2,1,1,2,5,3,1,2,2,5,1,2,3,2,3,1,1,3,1,2,5,2,2,2,1,2,1,2,1,2,1,1,2,3,1,2,2,1,2,1,2,1,3,2,1,1,2,3,2,5,5,1,2,5,5,2,2,1,1,1,3,5,1,3,2,2,1,2,2,2,1,4,1,1,2,2,1,1,1,4,1,1,2,1,3,4,1,3,1,2,1,1,4,3,4,1,3,3,1,4,1,2,2,1,2,1,3,1,1,1,2,1,1,1,1,1,1,4,1,2,1,1,1,4,3,1,4,1,1,2,4,1,1,1],"Sex":["Female","Male","Male","Female","Female","Male","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Female","Female","Male","Female","Female","Female","Male","Male","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Female","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Female","Male","Male","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Male","Male","Female","Male","Male","Female"],"RaceEthnicity":["Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","Black","White","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","HispanicLatino","White","Asian","White","White","HispanicLatino","White","Asian","White","Asian","White","Asian","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","White","Asian","HispanicLatino","White","White","White","HispanicLatino","White","HispanicLatino","HispanicLatino","Asian","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","White","Asian","White","HispanicLatino","White","Asian","White","Asian","Asian","Black","White","HispanicLatino","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","Asian","HispanicLatino","Asian","White","Asian","HispanicLatino","White","Asian","HispanicLatino","Asian","Asian","HispanicLatino","HispanicLatino","White","White","White","Asian","Asian","White","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","Asian","Asian","Asian","HispanicLatino","Asian","Asian","White","Asian","Asian","HispanicLatino","White","HispanicLatino","White","Asian","HispanicLatino","Asian","HispanicLatino","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","White","Asian","White","Asian","White","White","Asian","HispanicLatino","White","Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","White","HispanicLatino","Asian","White","HispanicLatino","HispanicLatino","Asian","Asian","Black"],"AgeYrs_2019":[49.8,25.4,23.5,40.8,28.7,50.5,23.2,61.3,40.2,39.6,47.6,21.5,18.9,26.5,40.5,45.1,37.5,38.5,30.1,26.1,34.5,47.4,42.4,null,21.4,45.4,48,43.4,31.9,44.9,34.9,26.4,36.4,39.8,37.8,33.8,34.8,24.8,42.8,25.7,45.4,46.6,55.4,38.3,29.6,21.6,49.6,22.6,36.4,44.4,31.3,39.2,46.4,43.4,49.2,34.2,42.1,26.1,42.4,44.1,32.1,46,47.4,53.4,37.3,44,22.8,46.8,42.8,47.3,38.8,39.2,42.2,25.8,26.7,52.2,37.2,43.9,51.5,33.1,22.8,43.9,45,42,51.6,49.6,38.5,31.5,59.5,44.4,53.6,41.3,35.9,41.9,44.5,33.3,45.3,32.8,33.2,23.8,39.8,46.2,40.8,35.8,28.2,34.8,34.2,37.3,36.2,33.2,33.2,40.7,22.7,46.6,41.2,44.9,37.2,43,34.5,39.1,36.4,44.8,41.3,49.1,23.3,34.3,39.1,28.3,37,43.1,47.3,25.3,27,42.1,40.2,48.1,33.2,18.1,27.6,32.2,24.2,36.3,32.2,47.2,33.1,38.1,50.2,24.8,53.1,33.4,24.6,40.8,42.5,37.1,19.6,49.1,28,26.2,40.2,45.1,44.2,45.1,31.2],"Veteran":["No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","Yes","No"]},"params":{"rows":["JobLevel"],"cols":["Sex"]},"locale":"en","subtotals":false},"evals":[],"jsHooks":[]}</script>
+<p>Using the <code>c</code> (combine) function within the <code>rpivotTable</code> function, we can specify multiple row or column variables as a vector. For example, let’s build upon the previous syntax by adding <code>RaceEthnicity</code> as another column variable by typing <code>cols=c("Sex", "RaceEthnicity")</code>.</p>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb756-1"><a href="tables-crosstabs.html#cb756-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pivot table</span></span>
+<span id="cb756-2"><a href="tables-crosstabs.html#cb756-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpivotTable</span>(demodata, <span class="at">rows=</span><span class="st">&quot;JobLevel&quot;</span>, <span class="at">cols=</span><span class="fu">c</span>(<span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;RaceEthnicity&quot;</span>))</span></code></pre></div>
+<div id="htmlwidget-0a7b054bf6c1a1823229" style="width:800px;height:600px;" class="rpivotTable html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0a7b054bf6c1a1823229">{"x":{"data":{"EmployeeID":[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163],"OrgTenureYrs_2019":[4.8,0.4,3.5,2.8,2.7,1.5,2.6,5.3,3.2,2.6,4.6,2.5,0.8,2.5,4.5,5.1,4.5,0.5,3.1,5.1,2.5,4.4,2.4,null,2.4,2.4,5,4.4,0.9,4.9,2.9,2.4,4.4,2.8,4.8,0.8,4.8,2.8,4.8,2.7,4.4,4.6,4.4,2.3,0.6,0.6,4.6,2.6,4.4,4.4,2.3,4.2,2.4,2.4,4.2,2.2,4.1,2.1,4.4,0.1,2.1,4,4.4,2.4,2.3,4,1.8,3.8,1.8,4.3,1.8,4.2,4.2,0.8,0.7,4.2,4.2,2.9,11.5,2.1,2.1,1.9,9,4,3.6,3.6,1.5,0.5,1.5,3.4,6.6,3.3,3.9,2.9,5.5,1.3,3.3,3.8,3.2,1.8,3.8,1.2,1.8,3.8,3.2,3.8,1.2,0.3,3.2,1.2,3.2,3.7,1.7,3.6,6.2,1.9,3.2,1,3.5,1.1,1.4,6.8,3.3,3.1,1.3,3.3,3.1,1.3,4,1.1,3.3,3.3,1,3.1,3.2,3.1,0.2,0.1,1.6,3.2,1.2,2.3,1.2,3.2,1.1,1.1,3.2,3.8,3.1,0.4,1.6,0.8,1.5,3.1,1.6,3.1,99999,1.2,3.2,3.1,1.2,1.1,0.2],"JobLevel":[2,1,1,1,1,2,1,3,1,1,2,1,1,1,2,1,1,1,1,2,1,1,3,1,1,1,5,1,1,2,1,1,2,5,3,1,2,2,5,1,2,3,2,3,1,1,3,1,2,5,2,2,2,1,2,1,2,1,2,1,1,2,3,1,2,2,1,2,1,2,1,3,2,1,1,2,3,2,5,5,1,2,5,5,2,2,1,1,1,3,5,1,3,2,2,1,2,2,2,1,4,1,1,2,2,1,1,1,4,1,1,2,1,3,4,1,3,1,2,1,1,4,3,4,1,3,3,1,4,1,2,2,1,2,1,3,1,1,1,2,1,1,1,1,1,1,4,1,2,1,1,1,4,3,1,4,1,1,2,4,1,1,1],"Sex":["Female","Male","Male","Female","Female","Male","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Female","Female","Male","Female","Female","Female","Male","Male","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Female","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Female","Male","Male","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Male","Male","Female","Male","Male","Female"],"RaceEthnicity":["Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","Black","White","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","HispanicLatino","White","Asian","White","White","HispanicLatino","White","Asian","White","Asian","White","Asian","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","White","Asian","HispanicLatino","White","White","White","HispanicLatino","White","HispanicLatino","HispanicLatino","Asian","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","White","Asian","White","HispanicLatino","White","Asian","White","Asian","Asian","Black","White","HispanicLatino","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","Asian","HispanicLatino","Asian","White","Asian","HispanicLatino","White","Asian","HispanicLatino","Asian","Asian","HispanicLatino","HispanicLatino","White","White","White","Asian","Asian","White","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","Asian","Asian","Asian","HispanicLatino","Asian","Asian","White","Asian","Asian","HispanicLatino","White","HispanicLatino","White","Asian","HispanicLatino","Asian","HispanicLatino","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","White","Asian","White","Asian","White","White","Asian","HispanicLatino","White","Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","White","HispanicLatino","Asian","White","HispanicLatino","HispanicLatino","Asian","Asian","Black"],"AgeYrs_2019":[49.8,25.4,23.5,40.8,28.7,50.5,23.2,61.3,40.2,39.6,47.6,21.5,18.9,26.5,40.5,45.1,37.5,38.5,30.1,26.1,34.5,47.4,42.4,null,21.4,45.4,48,43.4,31.9,44.9,34.9,26.4,36.4,39.8,37.8,33.8,34.8,24.8,42.8,25.7,45.4,46.6,55.4,38.3,29.6,21.6,49.6,22.6,36.4,44.4,31.3,39.2,46.4,43.4,49.2,34.2,42.1,26.1,42.4,44.1,32.1,46,47.4,53.4,37.3,44,22.8,46.8,42.8,47.3,38.8,39.2,42.2,25.8,26.7,52.2,37.2,43.9,51.5,33.1,22.8,43.9,45,42,51.6,49.6,38.5,31.5,59.5,44.4,53.6,41.3,35.9,41.9,44.5,33.3,45.3,32.8,33.2,23.8,39.8,46.2,40.8,35.8,28.2,34.8,34.2,37.3,36.2,33.2,33.2,40.7,22.7,46.6,41.2,44.9,37.2,43,34.5,39.1,36.4,44.8,41.3,49.1,23.3,34.3,39.1,28.3,37,43.1,47.3,25.3,27,42.1,40.2,48.1,33.2,18.1,27.6,32.2,24.2,36.3,32.2,47.2,33.1,38.1,50.2,24.8,53.1,33.4,24.6,40.8,42.5,37.1,19.6,49.1,28,26.2,40.2,45.1,44.2,45.1,31.2],"Veteran":["No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","Yes","No"]},"params":{"rows":["JobLevel"],"cols":["Sex","RaceEthnicity"]},"locale":"en","subtotals":false},"evals":[],"jsHooks":[]}</script>
+<p>Building upon the previous syntax even further, let’s add the argument <code>rendererName="Heatmap"</code> to specify that we want the pivot table to be rendered as a heatmap display.</p>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="tables-crosstabs.html#cb757-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access rpivotTable package</span></span>
+<span id="cb757-2"><a href="tables-crosstabs.html#cb757-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpivotTable</span>(demodata, <span class="at">rows=</span><span class="st">&quot;JobLevel&quot;</span>, <span class="at">cols=</span><span class="fu">c</span>(<span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;RaceEthnicity&quot;</span>), <span class="at">rendererName=</span><span class="st">&quot;Heatmap&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-d8437a22c957e4605f3d" style="width:800px;height:600px;" class="rpivotTable html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d8437a22c957e4605f3d">{"x":{"data":{"EmployeeID":[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163],"OrgTenureYrs_2019":[4.8,0.4,3.5,2.8,2.7,1.5,2.6,5.3,3.2,2.6,4.6,2.5,0.8,2.5,4.5,5.1,4.5,0.5,3.1,5.1,2.5,4.4,2.4,null,2.4,2.4,5,4.4,0.9,4.9,2.9,2.4,4.4,2.8,4.8,0.8,4.8,2.8,4.8,2.7,4.4,4.6,4.4,2.3,0.6,0.6,4.6,2.6,4.4,4.4,2.3,4.2,2.4,2.4,4.2,2.2,4.1,2.1,4.4,0.1,2.1,4,4.4,2.4,2.3,4,1.8,3.8,1.8,4.3,1.8,4.2,4.2,0.8,0.7,4.2,4.2,2.9,11.5,2.1,2.1,1.9,9,4,3.6,3.6,1.5,0.5,1.5,3.4,6.6,3.3,3.9,2.9,5.5,1.3,3.3,3.8,3.2,1.8,3.8,1.2,1.8,3.8,3.2,3.8,1.2,0.3,3.2,1.2,3.2,3.7,1.7,3.6,6.2,1.9,3.2,1,3.5,1.1,1.4,6.8,3.3,3.1,1.3,3.3,3.1,1.3,4,1.1,3.3,3.3,1,3.1,3.2,3.1,0.2,0.1,1.6,3.2,1.2,2.3,1.2,3.2,1.1,1.1,3.2,3.8,3.1,0.4,1.6,0.8,1.5,3.1,1.6,3.1,99999,1.2,3.2,3.1,1.2,1.1,0.2],"JobLevel":[2,1,1,1,1,2,1,3,1,1,2,1,1,1,2,1,1,1,1,2,1,1,3,1,1,1,5,1,1,2,1,1,2,5,3,1,2,2,5,1,2,3,2,3,1,1,3,1,2,5,2,2,2,1,2,1,2,1,2,1,1,2,3,1,2,2,1,2,1,2,1,3,2,1,1,2,3,2,5,5,1,2,5,5,2,2,1,1,1,3,5,1,3,2,2,1,2,2,2,1,4,1,1,2,2,1,1,1,4,1,1,2,1,3,4,1,3,1,2,1,1,4,3,4,1,3,3,1,4,1,2,2,1,2,1,3,1,1,1,2,1,1,1,1,1,1,4,1,2,1,1,1,4,3,1,4,1,1,2,4,1,1,1],"Sex":["Female","Male","Male","Female","Female","Male","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Female","Female","Male","Female","Female","Female","Male","Male","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Female","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Female","Male","Male","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Male","Male","Female","Male","Male","Female"],"RaceEthnicity":["Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","Black","White","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","HispanicLatino","White","Asian","White","White","HispanicLatino","White","Asian","White","Asian","White","Asian","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","White","Asian","HispanicLatino","White","White","White","HispanicLatino","White","HispanicLatino","HispanicLatino","Asian","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","White","Asian","White","HispanicLatino","White","Asian","White","Asian","Asian","Black","White","HispanicLatino","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","Asian","HispanicLatino","Asian","White","Asian","HispanicLatino","White","Asian","HispanicLatino","Asian","Asian","HispanicLatino","HispanicLatino","White","White","White","Asian","Asian","White","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","Asian","Asian","Asian","HispanicLatino","Asian","Asian","White","Asian","Asian","HispanicLatino","White","HispanicLatino","White","Asian","HispanicLatino","Asian","HispanicLatino","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","White","Asian","White","Asian","White","White","Asian","HispanicLatino","White","Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","White","HispanicLatino","Asian","White","HispanicLatino","HispanicLatino","Asian","Asian","Black"],"AgeYrs_2019":[49.8,25.4,23.5,40.8,28.7,50.5,23.2,61.3,40.2,39.6,47.6,21.5,18.9,26.5,40.5,45.1,37.5,38.5,30.1,26.1,34.5,47.4,42.4,null,21.4,45.4,48,43.4,31.9,44.9,34.9,26.4,36.4,39.8,37.8,33.8,34.8,24.8,42.8,25.7,45.4,46.6,55.4,38.3,29.6,21.6,49.6,22.6,36.4,44.4,31.3,39.2,46.4,43.4,49.2,34.2,42.1,26.1,42.4,44.1,32.1,46,47.4,53.4,37.3,44,22.8,46.8,42.8,47.3,38.8,39.2,42.2,25.8,26.7,52.2,37.2,43.9,51.5,33.1,22.8,43.9,45,42,51.6,49.6,38.5,31.5,59.5,44.4,53.6,41.3,35.9,41.9,44.5,33.3,45.3,32.8,33.2,23.8,39.8,46.2,40.8,35.8,28.2,34.8,34.2,37.3,36.2,33.2,33.2,40.7,22.7,46.6,41.2,44.9,37.2,43,34.5,39.1,36.4,44.8,41.3,49.1,23.3,34.3,39.1,28.3,37,43.1,47.3,25.3,27,42.1,40.2,48.1,33.2,18.1,27.6,32.2,24.2,36.3,32.2,47.2,33.1,38.1,50.2,24.8,53.1,33.4,24.6,40.8,42.5,37.1,19.6,49.1,28,26.2,40.2,45.1,44.2,45.1,31.2],"Veteran":["No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","Yes","No"]},"params":{"rows":["JobLevel"],"cols":["Sex","RaceEthnicity"],"rendererName":["Heatmap"]},"locale":"en","subtotals":false},"evals":[],"jsHooks":[]}</script>
+<p>We can also render the pivot table as a treemap, where a <strong>treemap</strong> is type of data visualization in which hierarchical data are displayed as nested rectangles, such that the area of each rectangle correlates with its relative quantitative value. To create the treemap, let’s specify <code>rows=c("Sex", "JobLevel")</code> to indicate that the row variables are <code>Sex</code> and <code>JobLevel</code>. Next, specify <code>rendererName="Treemap"</code> to indicate that we want the pivot table to be rendered as a treemap.</p>
+<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="tables-crosstabs.html#cb758-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pivot table</span></span>
+<span id="cb758-2"><a href="tables-crosstabs.html#cb758-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpivotTable</span>(demodata, <span class="at">rows=</span><span class="fu">c</span>(<span class="st">&quot;Sex&quot;</span>, <span class="st">&quot;JobLevel&quot;</span>), <span class="at">rendererName=</span><span class="st">&quot;Treemap&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-8dabe2001c7aa99b5030" style="width:800px;height:600px;" class="rpivotTable html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8dabe2001c7aa99b5030">{"x":{"data":{"EmployeeID":[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163],"OrgTenureYrs_2019":[4.8,0.4,3.5,2.8,2.7,1.5,2.6,5.3,3.2,2.6,4.6,2.5,0.8,2.5,4.5,5.1,4.5,0.5,3.1,5.1,2.5,4.4,2.4,null,2.4,2.4,5,4.4,0.9,4.9,2.9,2.4,4.4,2.8,4.8,0.8,4.8,2.8,4.8,2.7,4.4,4.6,4.4,2.3,0.6,0.6,4.6,2.6,4.4,4.4,2.3,4.2,2.4,2.4,4.2,2.2,4.1,2.1,4.4,0.1,2.1,4,4.4,2.4,2.3,4,1.8,3.8,1.8,4.3,1.8,4.2,4.2,0.8,0.7,4.2,4.2,2.9,11.5,2.1,2.1,1.9,9,4,3.6,3.6,1.5,0.5,1.5,3.4,6.6,3.3,3.9,2.9,5.5,1.3,3.3,3.8,3.2,1.8,3.8,1.2,1.8,3.8,3.2,3.8,1.2,0.3,3.2,1.2,3.2,3.7,1.7,3.6,6.2,1.9,3.2,1,3.5,1.1,1.4,6.8,3.3,3.1,1.3,3.3,3.1,1.3,4,1.1,3.3,3.3,1,3.1,3.2,3.1,0.2,0.1,1.6,3.2,1.2,2.3,1.2,3.2,1.1,1.1,3.2,3.8,3.1,0.4,1.6,0.8,1.5,3.1,1.6,3.1,99999,1.2,3.2,3.1,1.2,1.1,0.2],"JobLevel":[2,1,1,1,1,2,1,3,1,1,2,1,1,1,2,1,1,1,1,2,1,1,3,1,1,1,5,1,1,2,1,1,2,5,3,1,2,2,5,1,2,3,2,3,1,1,3,1,2,5,2,2,2,1,2,1,2,1,2,1,1,2,3,1,2,2,1,2,1,2,1,3,2,1,1,2,3,2,5,5,1,2,5,5,2,2,1,1,1,3,5,1,3,2,2,1,2,2,2,1,4,1,1,2,2,1,1,1,4,1,1,2,1,3,4,1,3,1,2,1,1,4,3,4,1,3,3,1,4,1,2,2,1,2,1,3,1,1,1,2,1,1,1,1,1,1,4,1,2,1,1,1,4,3,1,4,1,1,2,4,1,1,1],"Sex":["Female","Male","Male","Female","Female","Male","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Female","Female","Male","Female","Female","Female","Male","Male","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Female","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Female","Male","Male","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Male","Male","Female","Male","Male","Female"],"RaceEthnicity":["Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","Black","White","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","HispanicLatino","White","Asian","White","White","HispanicLatino","White","Asian","White","Asian","White","Asian","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","White","Asian","HispanicLatino","White","White","White","HispanicLatino","White","HispanicLatino","HispanicLatino","Asian","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","White","Asian","White","HispanicLatino","White","Asian","White","Asian","Asian","Black","White","HispanicLatino","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","Asian","HispanicLatino","Asian","White","Asian","HispanicLatino","White","Asian","HispanicLatino","Asian","Asian","HispanicLatino","HispanicLatino","White","White","White","Asian","Asian","White","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","Asian","Asian","Asian","HispanicLatino","Asian","Asian","White","Asian","Asian","HispanicLatino","White","HispanicLatino","White","Asian","HispanicLatino","Asian","HispanicLatino","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","White","Asian","White","Asian","White","White","Asian","HispanicLatino","White","Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","White","HispanicLatino","Asian","White","HispanicLatino","HispanicLatino","Asian","Asian","Black"],"AgeYrs_2019":[49.8,25.4,23.5,40.8,28.7,50.5,23.2,61.3,40.2,39.6,47.6,21.5,18.9,26.5,40.5,45.1,37.5,38.5,30.1,26.1,34.5,47.4,42.4,null,21.4,45.4,48,43.4,31.9,44.9,34.9,26.4,36.4,39.8,37.8,33.8,34.8,24.8,42.8,25.7,45.4,46.6,55.4,38.3,29.6,21.6,49.6,22.6,36.4,44.4,31.3,39.2,46.4,43.4,49.2,34.2,42.1,26.1,42.4,44.1,32.1,46,47.4,53.4,37.3,44,22.8,46.8,42.8,47.3,38.8,39.2,42.2,25.8,26.7,52.2,37.2,43.9,51.5,33.1,22.8,43.9,45,42,51.6,49.6,38.5,31.5,59.5,44.4,53.6,41.3,35.9,41.9,44.5,33.3,45.3,32.8,33.2,23.8,39.8,46.2,40.8,35.8,28.2,34.8,34.2,37.3,36.2,33.2,33.2,40.7,22.7,46.6,41.2,44.9,37.2,43,34.5,39.1,36.4,44.8,41.3,49.1,23.3,34.3,39.1,28.3,37,43.1,47.3,25.3,27,42.1,40.2,48.1,33.2,18.1,27.6,32.2,24.2,36.3,32.2,47.2,33.1,38.1,50.2,24.8,53.1,33.4,24.6,40.8,42.5,37.1,19.6,49.1,28,26.2,40.2,45.1,44.2,45.1,31.2],"Veteran":["No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","Yes","No"]},"params":{"rows":["Sex","JobLevel"],"rendererName":["Treemap"]},"locale":"en","subtotals":false},"evals":[],"jsHooks":[]}</script>
+<p>Now it’s time to play around with applying a different type of descriptive (aggregate) statistic (as opposed to the default count (i.e., frequency) statistic). First, type <code>rows="JobLevel"</code> to specify <code>JobLevel</code> as the row variable. Second, type <code>cols="Sex"</code> to specify <code>Sex</code> as the column variable. Third, type <code>rendererName="Bar Chart"</code> to request that the pivot table be rendered as a <code>Bar Chart</code>. Fourth, type <code>aggregatorName="Average"</code> to specify that the average (mean) be computed for values (<code>vals</code>) on a specific variable (see next). Finally, type <code>vals="AgeYrs_2019"</code> to specify the variable (<code>AgeYrs_2019</code>) to be used for the calculation of the average.</p>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="tables-crosstabs.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create pivot table</span></span>
+<span id="cb759-2"><a href="tables-crosstabs.html#cb759-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpivotTable</span>(demodata, <span class="at">rows=</span><span class="st">&quot;JobLevel&quot;</span>, <span class="at">cols=</span><span class="st">&quot;Sex&quot;</span>, <span class="at">rendererName=</span><span class="st">&quot;Bar Chart&quot;</span>, </span>
+<span id="cb759-3"><a href="tables-crosstabs.html#cb759-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">aggregatorName=</span><span class="st">&quot;Average&quot;</span>, <span class="at">vals=</span><span class="st">&quot;AgeYrs_2019&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-92548dedd18683a49b73" style="width:800px;height:600px;" class="rpivotTable html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92548dedd18683a49b73">{"x":{"data":{"EmployeeID":[1001,1002,1003,1004,1005,1006,1007,1008,1009,1010,1011,1012,1013,1014,1015,1016,1017,1018,1019,1020,1021,1022,1023,1024,1025,1026,1027,1028,1029,1030,1031,1032,1033,1034,1035,1036,1037,1038,1039,1040,1041,1042,1043,1044,1045,1046,1047,1048,1049,1050,1051,1052,1053,1054,1055,1056,1057,1058,1059,1060,1061,1062,1063,1064,1065,1066,1067,1068,1069,1070,1071,1072,1073,1074,1075,1076,1077,1078,1079,1080,1081,1082,1083,1084,1085,1086,1087,1088,1089,1090,1091,1092,1093,1094,1095,1096,1097,1098,1099,1100,1101,1102,1103,1104,1105,1106,1107,1108,1109,1110,1111,1112,1113,1114,1115,1116,1117,1118,1119,1120,1121,1122,1123,1124,1125,1126,1127,1128,1129,1130,1131,1132,1133,1134,1135,1136,1137,1138,1139,1140,1141,1142,1143,1144,1145,1146,1147,1148,1149,1150,1151,1152,1153,1154,1155,1156,1157,1158,1159,1160,1161,1162,1163],"OrgTenureYrs_2019":[4.8,0.4,3.5,2.8,2.7,1.5,2.6,5.3,3.2,2.6,4.6,2.5,0.8,2.5,4.5,5.1,4.5,0.5,3.1,5.1,2.5,4.4,2.4,null,2.4,2.4,5,4.4,0.9,4.9,2.9,2.4,4.4,2.8,4.8,0.8,4.8,2.8,4.8,2.7,4.4,4.6,4.4,2.3,0.6,0.6,4.6,2.6,4.4,4.4,2.3,4.2,2.4,2.4,4.2,2.2,4.1,2.1,4.4,0.1,2.1,4,4.4,2.4,2.3,4,1.8,3.8,1.8,4.3,1.8,4.2,4.2,0.8,0.7,4.2,4.2,2.9,11.5,2.1,2.1,1.9,9,4,3.6,3.6,1.5,0.5,1.5,3.4,6.6,3.3,3.9,2.9,5.5,1.3,3.3,3.8,3.2,1.8,3.8,1.2,1.8,3.8,3.2,3.8,1.2,0.3,3.2,1.2,3.2,3.7,1.7,3.6,6.2,1.9,3.2,1,3.5,1.1,1.4,6.8,3.3,3.1,1.3,3.3,3.1,1.3,4,1.1,3.3,3.3,1,3.1,3.2,3.1,0.2,0.1,1.6,3.2,1.2,2.3,1.2,3.2,1.1,1.1,3.2,3.8,3.1,0.4,1.6,0.8,1.5,3.1,1.6,3.1,99999,1.2,3.2,3.1,1.2,1.1,0.2],"JobLevel":[2,1,1,1,1,2,1,3,1,1,2,1,1,1,2,1,1,1,1,2,1,1,3,1,1,1,5,1,1,2,1,1,2,5,3,1,2,2,5,1,2,3,2,3,1,1,3,1,2,5,2,2,2,1,2,1,2,1,2,1,1,2,3,1,2,2,1,2,1,2,1,3,2,1,1,2,3,2,5,5,1,2,5,5,2,2,1,1,1,3,5,1,3,2,2,1,2,2,2,1,4,1,1,2,2,1,1,1,4,1,1,2,1,3,4,1,3,1,2,1,1,4,3,4,1,3,3,1,4,1,2,2,1,2,1,3,1,1,1,2,1,1,1,1,1,1,4,1,2,1,1,1,4,3,1,4,1,1,2,4,1,1,1],"Sex":["Female","Male","Male","Female","Female","Male","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Female","Male","Male","Female","Female","Female","Male","Female","Female","Male","Female","Male","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Male","Male","Male","Male","Male","Male","Female","Female","Male","Male","Female","Female","Female","Female","Male","Female","Female","Female","Male","Male","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Female","Male","Male","Male","Male","Male","Male","Male","Female","Male","Female","Female","Female","Female","Female","Female","Male","Female","Male","Female","Female","Female","Female","Male","Female","Male","Male","Female","Male","Male","Female","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Female","Female","Male","Female","Male","Male","Male","Female","Male","Male","Female","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Male","Male","Male","Male","Female","Male","Male","Female","Female","Male","Female","Female","Female","Female","Male","Male","Female","Female","Female","Male","Male","Male","Female","Male","Male","Female"],"RaceEthnicity":["Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","Black","White","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","HispanicLatino","White","Asian","White","White","HispanicLatino","White","Asian","White","Asian","White","Asian","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","White","White","Asian","HispanicLatino","White","White","White","HispanicLatino","White","HispanicLatino","HispanicLatino","Asian","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","White","Asian","White","HispanicLatino","White","Asian","White","Asian","Asian","Black","White","HispanicLatino","White","HispanicLatino","HispanicLatino","White","HispanicLatino","Asian","Asian","Asian","White","Asian","Asian","White","Asian","HispanicLatino","Asian","White","Asian","HispanicLatino","White","Asian","HispanicLatino","Asian","Asian","HispanicLatino","HispanicLatino","White","White","White","Asian","Asian","White","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","Asian","Asian","Asian","HispanicLatino","Asian","Asian","White","Asian","Asian","HispanicLatino","White","HispanicLatino","White","Asian","HispanicLatino","Asian","HispanicLatino","HispanicLatino","HispanicLatino","HispanicLatino","White","Asian","HispanicLatino","White","Asian","White","Asian","White","HispanicLatino","White","Asian","White","Asian","White","White","Asian","HispanicLatino","White","Asian","Asian","HispanicLatino","White","HispanicLatino","HispanicLatino","HispanicLatino","Asian","White","White","HispanicLatino","Asian","White","HispanicLatino","HispanicLatino","Asian","Asian","Black"],"AgeYrs_2019":[49.8,25.4,23.5,40.8,28.7,50.5,23.2,61.3,40.2,39.6,47.6,21.5,18.9,26.5,40.5,45.1,37.5,38.5,30.1,26.1,34.5,47.4,42.4,null,21.4,45.4,48,43.4,31.9,44.9,34.9,26.4,36.4,39.8,37.8,33.8,34.8,24.8,42.8,25.7,45.4,46.6,55.4,38.3,29.6,21.6,49.6,22.6,36.4,44.4,31.3,39.2,46.4,43.4,49.2,34.2,42.1,26.1,42.4,44.1,32.1,46,47.4,53.4,37.3,44,22.8,46.8,42.8,47.3,38.8,39.2,42.2,25.8,26.7,52.2,37.2,43.9,51.5,33.1,22.8,43.9,45,42,51.6,49.6,38.5,31.5,59.5,44.4,53.6,41.3,35.9,41.9,44.5,33.3,45.3,32.8,33.2,23.8,39.8,46.2,40.8,35.8,28.2,34.8,34.2,37.3,36.2,33.2,33.2,40.7,22.7,46.6,41.2,44.9,37.2,43,34.5,39.1,36.4,44.8,41.3,49.1,23.3,34.3,39.1,28.3,37,43.1,47.3,25.3,27,42.1,40.2,48.1,33.2,18.1,27.6,32.2,24.2,36.3,32.2,47.2,33.1,38.1,50.2,24.8,53.1,33.4,24.6,40.8,42.5,37.1,19.6,49.1,28,26.2,40.2,45.1,44.2,45.1,31.2],"Veteran":["No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","No","No","No","No","No","No","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","No","No","No","No","Yes","No"]},"params":{"rows":["JobLevel"],"cols":["Sex"],"aggregatorName":["Average"],"vals":["AgeYrs_2019"],"rendererName":["Bar Chart"]},"locale":"en","subtotals":false},"evals":[],"jsHooks":[]}</script>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="manipulate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

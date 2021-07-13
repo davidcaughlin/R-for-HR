@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-07-07" />
+<meta name="date" content="2021-07-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,6 +51,35 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet" />
+<script src="libs/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+<script src="libs/jquery-ui-1.11.4/jquery.ui.touch-punch.min.js"></script>
+<link href="libs/c3-0.4.11/c3.min.css" rel="stylesheet" />
+<script src="libs/c3-0.4.11/c3.min.js"></script>
+<script src="libs/d3-3.5.5/d3.v3.min.js"></script>
+<link href="libs/pivottable-2.19.0/pivot.min.css" rel="stylesheet" />
+<script src="libs/pivottable-2.19.0/pivot.min.js"></script>
+<script src="libs/pivottable-2.19.0/d3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/c3_renderers.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.cs.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.da.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.de.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.es.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.fr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.it.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.nl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pl.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.pt.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.ru.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.sq.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.tr.min.js"></script>
+<script src="libs/pivottable-2.19.0/pivot.zh.min.js"></script>
+<link href="libs/subtotal-1.10.0/subtotal.min.css" rel="stylesheet" />
+<script src="libs/subtotal-1.10.0/subtotal.min.js"></script>
+<script src="libs/polyfill-0.1/polyfill.min.js"></script>
+<link href="libs/rpivotTable_style-0.1/rpivotTable.css" rel="stylesheet" />
+<script src="libs/rpivotTable-binding-0.3.0/rpivotTable.js"></script>
 
 
 <style type="text/css">
@@ -257,11 +286,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r-as-a-calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
 <li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
 <li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
-<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variable-assignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
-<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#types-of-data"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
 <ul>
 <li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
 <li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
@@ -270,7 +299,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
 <li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
-<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#data-frames"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
 <li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
 <li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
 </ul></li>
@@ -411,6 +440,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="21.3" data-path="manipulate.html"><a href="manipulate.html#summary-17"><i class="fa fa-check"></i><b>21.3</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="22" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html"><i class="fa fa-check"></i><b>22</b> Creating Tables &amp; Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable"><i class="fa fa-check"></i><b>22.1</b> One-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_table"><i class="fa fa-check"></i><b>22.1.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.1.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_xtabs"><i class="fa fa-check"></i><b>22.1.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.1.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#onewaytable_CrossTable"><i class="fa fa-check"></i><b>22.1.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable"><i class="fa fa-check"></i><b>22.2</b> Two-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_table"><i class="fa fa-check"></i><b>22.2.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.2.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_xtabs"><i class="fa fa-check"></i><b>22.2.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="22.2.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#twowaytable_CrossTable"><i class="fa fa-check"></i><b>22.2.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable"><i class="fa fa-check"></i><b>22.3</b> Three-Way Table</a>
+<ul>
+<li class="chapter" data-level="22.3.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_table"><i class="fa fa-check"></i><b>22.3.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="22.3.2" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#threewaytable_xtabs"><i class="fa fa-check"></i><b>22.3.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="22.4" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#summary-18"><i class="fa fa-check"></i><b>22.4</b> Summary</a></li>
+<li class="chapter" data-level="22.5" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_supplement"><i class="fa fa-check"></i><b>22.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="22.5.1" data-path="tables-crosstabs.html"><a href="tables-crosstabs.html#tables_subset_supplement"><i class="fa fa-check"></i><b>22.5.1</b> Creating a Pivot Table</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IV Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -470,16 +524,16 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="identify-the-current-working-directory" class="section level3" number="12.0.1">
 <h3><span class="header-section-number">12.0.1</span> Identify the Current Working Directory</h3>
 <p>To determine if a working directory has already been set, and if so, what that working directory is, use the <code>getwd</code> (get working directory) function from base R. Because this function comes standard with our R download, we don’t need to install an additional package to access it. For this function, you don’t need any arguments within the parentheses; in other words, leave the function parentheses empty. Alternatively, if you are using RStudio, you will see your current working directory next to the word “Console” in your Console window.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="setwd.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find your current working directory</span></span>
-<span id="cb142-2"><a href="setwd.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="setwd.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find your current working directory</span></span>
+<span id="cb143-2"><a href="setwd.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 <p><img src="ConsoleWD.png" /></p>
 </div>
 <div id="set-a-new-working-directory" class="section level3" number="12.0.2">
 <h3><span class="header-section-number">12.0.2</span> Set a New Working Directory</h3>
 <p>Let’s assume that the current working directory is <em>not</em> what we want; meaning, we need to set a new or different working directory. If you need to set a new working directory, you can use the <code>setwd</code> function from base R. Within the parentheses, your only argument will be the working directory in quotation marks. I recommend typing your <code>setwd</code> function into an R Script (.R) file so that it can be saved for future sessions. I also recommend using the <code>#</code> to annotate your script so that you can remind yourself (and others) what you are doing.</p>
 <p>When it comes to working directories, R likes the forward slash (<code>/</code>) (as opposed to backslash). Remember, the working directory is the location of the data files you wish to access and bring into the R environment. You can access any folder you would like and set it as your working directory. For example, in the code below, I set my working directory to <code>H:/RWorkshop</code>, as that folder at the end of that path contains the data files I would like to work with. The folder (and associated path) you set as your working directory will almost certainly be different than the one I set below.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="setwd.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb143-2"><a href="setwd.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="setwd.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb144-2"><a href="setwd.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Alternatively, you may use the drop-down menus to select a working directory folder. To do so, go to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>, and select the folder where your files live. Upon doing so, your working directory will appear in the Console. You can copy and paste the working directory into your <code>setwd</code> function.</p>
 <p><img src="Set%20Working%20Directory.png" /></p>
 <p>Once you have set your working directory, you can verify that it was set to the correct folder by (a) typing <code>getwd()</code> into your console or (b) looking at the working directory listed next to the word “Console” in your Console window.</p>
