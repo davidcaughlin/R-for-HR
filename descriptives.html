@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 23 Descriptive Statistics | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 23 Descriptive Statistics | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 23 Descriptive Statistics | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="overviewhraplc.html"/>
-<link rel="next" href="dataacquisition.html"/>
+<link rel="prev" href="tables-crosstabs.html"/>
+<link rel="next" href="create-portfolio.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -479,133 +479,254 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="questionformulation" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Question Formulation</h1>
-<p>The first phase of the HR Analytics Project Life Cycle (HRAPLC) is Question Formulation. <strong>Question formulation</strong> refers to the process of posing strategy-inspired and -aligned questions or hypotheses (that can be answered using data) in order to investigate why or how a problem occurs, what a problem might lead to or be associated with, or who is affected by the problem. Thoughtful question formulation results in (a) more effective and efficient data acquisition, management, and analysis, and (b) answers that are more useful to stakeholders. Question formulation is closely associated with <strong>problem definition</strong>, which refers to the process of framing and diagnosing a problem (e.g., challenge, opportunity, threat) for which finding a solution will bring value.</p>
+<div id="descriptives" class="section level1" number="23">
+<h1><span class="header-section-number">Chapter 23</span> Descriptive Statistics</h1>
+<p><strong>Descriptive statistics</strong> are used to describe the characteristics of a sample drawn from a population; often, when dealing with data about human beings in organizations, it’s not feasible to attain data for the entire population, so instead we settle for what is hopefully a representative sample of individuals from the focal population. Common types of descriptive statistics include counts (i.e., frequencies), measures of central tendency (e.g., mean, median, mode), and measures of dispersion (e.g., variance, standard deviation, interquartile range). When we analyze employee demographic data, for example, we often compute descriptive statistics like the number of employees who identify with each race/ethnicity category or the average employee age and standard deviation. It’s important to remember that descriptive statistics are, well, descriptive. That is, they help us <em>summarize</em> characteristics of a sample, which is why they are sometimes referred to as <strong>summary statistics</strong>. As discussed in the chapter on the <a href="dataanalysis.html#dataanalysis">Data Analysis</a> phase of the HR Analytics Project Life Cycle, descriptive statistics are a specific type of <a href="dataanalysis.html#descriptive_analytics">descriptive analytics</a>, as they summarize data that were collected in the past.</p>
+<div id="measurementscales" class="section level2" number="23.1">
+<h2><span class="header-section-number">23.1</span> Measurement Scales</h2>
+<p>When determining what type of descriptive statistic is appropriate for summarizing data contained within a particular variable, it is important to determine the measurement scale of the variable. <strong>Measurement scale</strong> (i.e., scale of measurement, level of measurement) refers to the type of information contained within a vector of data (e.g., variable), and the four measurement scales are: nominal, ordinal, interval, and ratio.</p>
+<div id="nominal_measurementscale" class="section level3" number="23.1.1">
+<h3><span class="header-section-number">23.1.1</span> Nominal</h3>
+<p>Variables with a <strong>nominal</strong> measurement scale have different <em>category labels</em>, which are sometimes referred to as <em>levels</em>. The category labels, however, do not have any inherent numeric properties. As an example, let’s operationalize gender identity as having a nominal measurement scale, such that gender identity includes the following category labels: agender, man, nonbinary, trans man, trans woman, and woman. These category labels do not have any inherent numeric values, and although we could assign numeric values to the gender identity category labels (e.g., agender = 1, man = 2, nonbinary = 3, etc.), doing so wouldn’t imply that one category label has a higher value than another. Variables with a nominal measurement scale are sometimes referred to as <em>categorical</em> variables.</p>
 <div class="figure">
-<img src="questionformulation_hraplc.png" alt="" />
-<p class="caption">The Question Formulation phase of the HR Analytics Project Life Cycle (HRAPLC) involves defining problems and formulating questions.</p>
+<img src="nominal.png" alt="" />
+<p class="caption">The Facility and Gender variables (i.e., columns) contain examples of nominal measurement scales, as each variable has category labels that lack any inherent numeric values and cannot be ordered in a meaningful way.</p>
 </div>
-<div id="adoptstrategicmindset" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Adopting a Strategic Mindset</h2>
-<p>When our goal is to improve the organization and the employee experience, adopting a strategic mindset sets us up for defining the right problems and formulating the right questions. A <strong>strategic mindset</strong> involves:</p>
-<ul>
-<li><em>Familiarity with strategic goals and roles</em>, which requires recognizing and understanding strategic objects of the department and the organization, and the roles that key decision makers and stakeholders play.</li>
-<li><em>Understanding of organization systems</em>, which requires the application of systems thinking when defining problems and formulating questions.</li>
-<li><em>Focus on opportunities for innovation</em>, which requires thinking broadly and openly prior to narrowing focus.</li>
-<li><em>Application of (intellectual) curiosity</em>, which entails asking “why,” “why not,” and “how” type questions.</li>
-</ul>
+</div>
+<div id="ordinal_measurementscale" class="section level3" number="23.1.2">
+<h3><span class="header-section-number">23.1.2</span> Ordinal</h3>
+<p>Like variables with a nominal measurement scale, variables with an <strong>ordinal</strong> measurement scale are a specific type of categorical variable; however, unlike nominal variables, the category labels (i.e., levels) associated with ordinal variables can be ordered or ranked. It should be noted that the gaps – or intervals – between categorical labels of an ordinal variable are unknown. For example, let’s operationalize employee education levels with the following ordered category labels: high school diploma, some college, and college degree. That is, completing some portion of a college degree is a higher level of education than earning a high school diploma, and completing a college degree is a higher level of education than completing some portion of a college degree. We don’t know, though, the size of the interval between earning a high school diploma and completing some college, and between some completing some college and earning a college degree; thus, as operationalized in this example, employee education level demonstrates an ordinal measurement scale (as opposed to an interval measurement scale, which is described in the following section).</p>
+<p>A classic example of an ordinal measurement scale is any type of Likert (or Likert-type) scale or response format. Examples of Likert scales include agreement response formats (e.g., Strongly Disagree, Disagree, Neither Disagree Nor Agree, Agree, Strongly Agree) and frequency response formats (e.g., Never, Rarely, Sometimes, Never). Likert scales are commonly used in employee surveys; for example, survey respondents might be asked to indicate their level of agreement with the following survey item that is designed to assess job satisfaction: “In general, I am satisfied with my job.” Just like any variable with an ordinal measurement scale, we don’t know the intervals between each category label (i.e., response option) from a Likert scale. Nonetheless, in the social sciences, it is relatively common for researchers to treat Likert scales as though they have <em>interval</em> measurement scales for the purposes of data analysis, particularly when composite variables (i.e., overall scale score variables) are created by summing or averaging respondents’ scores across multiple survey items.</p>
 <div class="figure">
-<img src="stategicmindset_problem_question_framework.png" alt="" />
-<p class="caption">Before defining a problem and formulating a question, it is important to adopt a strategic mindset and to engage in divergent and convergent thinking processes.</p>
+<img src="ordinal.png" alt="" />
+<p class="caption">The Education and Job Level variables (i.e., columns) contain examples of ordinal measurement scales, as each variable has category labels can be ordered in a meaningful way but where intervals between category labels are unknown or undefined.</p>
 </div>
-<div id="strategy" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Strategy</h3>
-<p>Because adopting a strategy necessitates and understanding of strategy, let’s take a moment to review the concept of a strategy. Simply put, a <strong>strategy</strong> refers to “a well-devised and thoughtful plan for achieving an objective” <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019, 35</a>)</span>. Notably, a strategy is future oriented and provides a “roadmap” towards completion of a desired objective. Moreover, realizing a strategy requires coordinating business activities to achieve both short- and long-term objectives. When creating a new strategy, we often focus on two distinguishable phases: (a) strategy formulation and (b) strategy implementation.</p>
 </div>
-<div id="strategyformulation" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Strategy Formulation</h3>
-<p><strong>Strategy formulation</strong> involves “planning what to do to achieve organizational objectives – or in other words, the development and/or refinement of a strategy” <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019, 35–36</a>)</span>. The prototypical strategy formulation often includes the following steps:</p>
-<ol style="list-style-type: decimal">
-<li><em>Creating a mission statement, articulating a vision, and defining core values.</em> The mission, vision, and values can serve as a compass by guiding organizational actions in the direction of a desired future state and by providing parameters and guidelines for reaching that future state.</li>
-<li><em>Analyzing the internal and external environments.</em> Decision-making tools like a SWOT (strengths, weaknesses, opportunities, threats) analysis provide frameworks for understanding and describing the characteristics that are internal to the organization (e.g., employees) and characteristics that are external to the organization (e.g., labor market).</li>
-<li><em>Selecting a broad type of strategy.</em> The type of strategy refers to the general approach an organization takes when bringing the mission, vision, and values to life, such as differentiation or cost leadership.</li>
-<li><em>Defining specific strategic objectives aimed at satisfying relevant stakeholders.</em> This involves considering the needs of key stakeholders (e.g., customers, investors, shareholders, employees, broader communities) and considering what will result in a sustainable competitive advantage.</li>
-<li><em>Finalizing and temporarily “crystallizing” the strategy prior to strategy implementation.</em> This step often results in a clear strategic plan that summarizes the previous four steps.</li>
-</ol>
+<div id="interval_measurementscale" class="section level3" number="23.1.3">
+<h3><span class="header-section-number">23.1.3</span> Interval</h3>
+<p>Variables with an <strong>interval</strong> measurement scale have a numeric scale with, and not only is there an order to the numeric values, equally sized intervals between values have the same meaning or interpretation – hence, the term <em>interval</em> measurement scale; with all the being said, interval variables lack a true or meaningful zero value. As an example, suppose we purchase a cognitive ability (i.e., intelligence) test that we plan to administer to job applicants. Let’s now imagine that this test operationalize cognitive ability, such that scores can range from 0 to 200, where 100 indicates the average level of cognitive ability in the population. Further, the test is designed such that every 1-point interval holds the same interpretation, such that, for instance, the 1-point interval between 78 and 79 has the same meaning as the 1-point interval between 110-111; in other words, equally sized intervals between values have the same meaning or interpretation in terms of incremental differences in cognitive ability. Even though this cognitive ability test can produce a score of zero, the zero value is not meaningful, as it does not imply the absence of cognitive ability; rather, it just indicates the lowest point on the numeric scale used to assess cognitive ability.</p>
+<div class="figure">
+<img src="interval.png" alt="" />
+<p class="caption">The Cognitive Ability and BARS (Behaviorally Anchored Rating Scale) variables (i.e., columns) contain examples of interval measurement scales, as each variable has a numeric scale in which equally sized intervals between values have the same meaning or interpretation; however, both variables lack a meaningful or true zero.</p>
 </div>
-<div id="strategyimplementation" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Strategy Implementation</h3>
-<p>Once we’ve completed the strategy formulation phase, we’re ready to move onto strategy implementation, where <strong>strategy implementation</strong> refers to the process of following through on the strategic plan developed and/or refined during the strategy formulation phase <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. This phase involves building and leveraging the organization’s human capital capabilities in order to enact and realize the strategic plan, and aligning HR policies and practices with the strategic plan. For example, if a strategic objective outlined in the strategic plan requires acquiring, managing, or retaining the best software engineers, then the organization should focus on how HR systems like recruitment, selection, performance management, and reward systems can help support that requirement.</p>
 </div>
-<div id="strategichrm" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Strategic Human Resource Management</h3>
-<p>When HR management aligns with and supports the realization of organizational strategic objects, <strong>strategic human resource management</strong> emerges. In other words, strategic human resource management involves a strategy-oriented approach to human resource management. While most specific HR policies and practices will vary across organizations, there are practices that are generally strategically relevant for all organizations, and examples include selectively hiring new employees to ensure sufficiently high qualifications and good fit, and training employees to enhance job- and work-relevant knowledge, skills, abilities, and other characteristics (KSAOs) <span class="citation">(<a href="references.html#ref-pfeffer1998" role="doc-biblioref">Pfeffer 1998</a>)</span>.</p>
-<div id="adoptstrategicmindset_video" class="section level4" number="2.1.4.1">
-<h4><span class="header-section-number">2.1.4.1</span> Video Lecture</h4>
-<iframe src="https://youtube.com/embed/08whYkgFiQI?rel=0" width="672" height="400px">
+<div id="ratio_measurementscale" class="section level3" number="23.1.4">
+<h3><span class="header-section-number">23.1.4</span> Ratio</h3>
+<p><strong>Ratio</strong> variables have all of the properties of **interval* variables, <em>and</em> they have a true, meaningful zero value that implies the absence of whatever the variable represents. For example, variables representing time (as measured in seconds, minutes, hours, days, months, years, decades, centuries, etc.) have equal intervals between values/scores, and a value/score of zero implies the absence of time having passed. Because their is a true zero for this type of measurement scale, we can make statements like “this individual is twice as old as that individual” or “this individual has worked here one third as long as that individual.” Fun fact: When temperature is measured in Kelvin (which is a common practice in physics), it possesses a true zero (called absolute zero) that signifies the absence of temperature.</p>
+<p><img src="ratio.png" /></p>
+</div>
+</div>
+<div id="constructs_measures_measurementscales" class="section level2" number="23.2">
+<h2><span class="header-section-number">23.2</span> Constructs, Measures, &amp; Measurement Scales</h2>
+<p>Importantly, we use <strong>measures</strong> to assess <strong>constructs</strong> (i.e., <strong>concepts</strong>), and often there are different ways in which we can measure or operationalize the same construct. Consequently, different measures might have a different measurement scale, even though they are each designed to assess the same construct. For example, if wish to assess the construct of job performance for sales professionals, we could have supervisors rate employee performance using a three-point scale, ranging from “Does Not Meet Expectations” to “Meets Expectations” to “Exceeds Expectations,” which could be described as an <em>ordinal</em> measurement scale. Alternatively, we might also assess the construct of job performance for sales professionals based on how much revenue they generate (in US dollars), which could be described as a <em>ratio</em> measurement scale.</p>
+<div id="video-tutorial-16" class="section level4" number="23.2.0.1">
+<h4><span class="header-section-number">23.2.0.1</span> Video Tutorial</h4>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/yoPGwvUzjgQ?rel=0" width="672" height="400px">
 </iframe>
-<p>Link to video lecture: <a href="https://youtu.be/08whYkgFiQI" class="uri">https://youtu.be/08whYkgFiQI</a></p>
+<p>Link to Video Tutorial: <a href="https://youtu.be/yoPGwvUzjgQ" class="uri">https://youtu.be/yoPGwvUzjgQ</a></p>
+</div>
+<div id="functions-packages-introduced-11" class="section level4" number="23.2.0.2">
+<h4><span class="header-section-number">23.2.0.2</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>table</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>count</code></td>
+<td><code>dplyr</code></td>
+</tr>
+<tr class="odd">
+<td><code>xtabs</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>BarChart</code></td>
+<td><code>lessR</code></td>
+</tr>
+<tr class="odd">
+<td><code>c</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>PieChart</code></td>
+<td><code>lessR</code></td>
+</tr>
+<tr class="odd">
+<td><code>hist</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>Plot</code></td>
+<td><code>lessR</code></td>
+</tr>
+<tr class="odd">
+<td><code>mean</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>var</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>sd</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>median</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>min</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>max</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>range</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>describe</code></td>
+<td><code>psych</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_descriptives" class="section level4" number="23.2.0.3">
+<h4><span class="header-section-number">23.2.0.3</span> Initial Steps</h4>
+<p>If you haven’t already, save the file called <strong>“EmployeeDemographics.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="descriptives.html#cb766-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb766-2"><a href="descriptives.html#cb766-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“EmployeeDemographics.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="descriptives.html#cb767-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb767-2"><a href="descriptives.html#cb767-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb767-3"><a href="descriptives.html#cb767-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb767-4"><a href="descriptives.html#cb767-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="descriptives.html#cb768-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb768-2"><a href="descriptives.html#cb768-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb768-3"><a href="descriptives.html#cb768-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb768-4"><a href="descriptives.html#cb768-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb768-5"><a href="descriptives.html#cb768-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ----------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   OrgTenureYrs_2019 = col_double(),
+##   JobLevel = col_double(),
+##   Sex = col_character(),
+##   RaceEthnicity = col_character(),
+##   AgeYrs_2019 = col_double(),
+##   Veteran = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb770-1"><a href="descriptives.html#cb770-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb770-2"><a href="descriptives.html#cb770-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;               &quot;RaceEthnicity&quot;    
+## [6] &quot;AgeYrs_2019&quot;       &quot;Veteran&quot;</code></pre>
+<p>Note in the data frame that the <code>EmployeeID</code> variable (i.e., column, field) is a unique identifier variable, and each row contains an individual employee’s demographic data on the following variables: organizational tenure (<code>OrgTenureYrs_2019</code>), job level (<code>JobLevel</code>), sex (<code>Sex</code>), race/ethnicity (<code>RaceEthnicity</code>), age (<code>AgeYrs_2019</code>), and veteran status (<code>Veteran</code>).</p>
 </div>
 </div>
+<div id="xxxxx" class="section level2" number="23.3">
+<h2><span class="header-section-number">23.3</span> XXXXX</h2>
+<p>XXXXX</p>
 </div>
-<div id="defining-problems-formulating-questions" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Defining Problems &amp; Formulating Questions</h2>
-<p>The overarching purpose of the Question Formulation phase of the HRAPLC is to define problems and formulate questions for which solutions and answers, respectively, can improve the organization and push it towards its goals. In the sections that follow, we will focus on the processes of problem definition and question formulation, and ultimately learn the value of applying both divergent and convergent thinking during both of these processes.</p>
-<div id="definingaproblem" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Defining a Problem</h3>
-<p>With a department’s and/or organization’s strategy in mind, we’re ready to define an organizationally relevant problem in need of a solution. While we typically know a problem when we see one, I found it’s helpful to take a step back and think about what a problem actual is. For our purposes, we can think of a <strong>problem</strong> as a gap between the current state of affairs and a desired state of affairs. Given that, <strong>problem definition</strong> refers to the process of framing and diagnosing a problem (e.g., challenge, opportunity, threat) for which finding a solution will be of value. As shown below, key problem-definition components often include articulating the problem statement, decision makers and stakeholders, scope, and goals <span class="citation">(<a href="references.html#ref-chevallier2016" role="doc-biblioref">Chevallier 2016</a>; <a href="references.html#ref-connmclean2018" role="doc-biblioref">Conn and McLean 2018</a>)</span>.</p>
-<div class="figure">
-<img src="problemdefinition_components.png" alt="" />
-<p class="caption">A fully formed problem definition often involves articulating key problem definition components, such as articulating the problem statement, decision makers and stakeholders, scope, and goals.</p>
+<div id="summary-19" class="section level2" number="23.4">
+<h2><span class="header-section-number">23.4</span> Summary</h2>
+<p>In this chapter, XXXXX</p>
 </div>
-<p>With respect to the HR context, in the figure below, I provide an example focused on problem of voluntary turnover among new customer service representatives, and provide hypothetical examples of key problem-definition components.</p>
-<div class="figure">
-<img src="problemdefinition_components_example.png" alt="" />
-<p class="caption">Articulating the problem definition components is appropriate for most problems, including those specific to HR, such as the one in this example.</p>
-</div>
-</div>
-<div id="formulatingaquestion" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Formulating a Question</h3>
-<p>Once a general problem has been defined, we’re ready to begin <strong>question formulation</strong>, which refers to the process of posing a question or hypothesis to investigate why or how a problem occurs, what a problem might lead to or be associated with, or who is affected by the problem. Question formulation can even help us flesh out the typical problem definition components outlined in the <a href="questionformulation.html#definingaproblem">previous section</a>. Just as we did with problem definition, we should continue to apply our strategic mindset when formulating questions. Moreover, we should focus on posing questions for which finding answers hold value for the organization, as doing so can contribute to the following (for example):</p>
-<ul>
-<li>a better understanding of the focal problem,</li>
-<li>the identification of potential solutions to the focal problem,</li>
-<li>solutions that meet the needs of key decision makers and stakeholders,</li>
-<li>more efficient and targeted literature searches and reviews, and</li>
-<li>more effective and focused storytelling.</li>
-</ul>
-<p>So what is a question in this context? A <strong>question</strong> can be described as general line of inquiry regarding a problem or phenomenon of interest. Examples of questions are as follows.</p>
-<ul>
-<li><em>What</em> factors influence voluntary turnover?</li>
-<li><em>Does</em> engagement predict voluntary turnover?</li>
-<li><em>How</em> does engagement relate to voluntary turnover?</li>
-<li><em>Which</em> work characteristics predict voluntary turnover?</li>
-<li><em>Why</em> do new employees turn over in the first 6 months?</li>
-</ul>
-<p>If, based on prior research or theory, an informed prediction can be made, we might choose to restate a question a s hypothesis, where a <strong>hypothesis</strong> can be thought of as a statement about an expected association, difference, change, or classification. Examples of hypotheses are as follows.</p>
-<ul>
-<li>Engagement is negatively related to voluntary turnover.</li>
-<li>Turnover intention mediates the relationship between engagement and voluntary turnover.</li>
-<li>Autonomy and task significance negatively predict voluntary turnover.</li>
-<li>New employees who participate in the formal onboarding program are less likely to quit during their first 6 months.</li>
-</ul>
-<p>Regardless of whether we pose a question or state a hypothesis, it’s important to remember that question formulation is often an iterative process, which means that answering one question (or testing one hypothesis) often leads to additional questions (or hypotheses).</p>
-<div class="figure">
-<img src="iterativenature.png" alt="" />
-<p class="caption">Question formulation is often an iterative process, meaning that answering one question (or testing hypothesis) often leads to additional questions (or hypotheses).</p>
-</div>
-<p>Further, we can draw upon existing theory and research to inform the types of questions we pose (or hypotheses we state). A theory provides a way to understand or explain a phenomenon of interest in parsimonious manner. As an example, the <em>theory of planned behavior</em> <span class="citation">(<a href="references.html#ref-ajzen1991" role="doc-biblioref">Ajzen 1991</a>)</span> is based on a voluminous body of research, and <em>some</em> of the basic tenets of the theory are as follows. First, an individual’s attitude towards a behavior, perception of the norms associated with the behavior, and sense of control over enacting a behavior contribute to their intention to perform a behavior. Second, an individual’s intention to perform a behavior often leads them to perform a behavior. This theory can be applied to any number of behaviors. Given that HR professionals (and organizational leadership) are often concerned with voluntary turnover (i.e., an employee-initiated organizational separation), let’s focus on voluntary turnover. Using the theoretical tenets, we can reason that an individual’s voluntary turnover behavior might be explained by their attitudes, norms, and sense of control related to voluntary turnover, and ultimately to their intentions to turn over voluntarily. Thus, based on the theory of planned behavior, we might first focus on the proposed link between attitudes and behavioral intention, and formulate the following question: <em>Are more positive attitudes towards leaving the organization associated with a stronger intention to voluntarily turn over?</em> Further, by focusing on the proposed link between behavioral intention and actually enacting the behavior, we might hypothesize the following: <em>Stronger turnover intention is associated with a higher probability of quitting.</em></p>
-<div class="figure">
-<img src="tpb.png" alt="" />
-<p class="caption">Existing theories, such as the theory of planned behavior (Azjen, 1991) can be used to inform and direct the types of questions or hypotheses that are posed during question formulation.</p>
-</div>
-</div>
-<div id="divergentconvergentthinking" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Thinking Divergently &amp; Convergently</h3>
-<p>Throughout the processes of defining a problem and formulating a question, it is advisable to apply both divergent and convergent thinking. On the one hand, <strong>divergent thinking</strong> refers to the process of adopting a broadened and imaginative mindset in which many ideas, possibilities, and alternatives are considered, which can lead to a large quantity of creative or novel ideas; on the other hand, <strong>convergent thinking</strong> refers to the process of adopting a critical and evaluative mindset in which various alternatives are judged, which can lead to a more refined set of high-quality ideas <span class="citation">(<a href="references.html#ref-basaduretal1986" role="doc-biblioref">Basadur, Graen, and Scandura 1986</a>; <a href="references.html#ref-basaduretal2000" role="doc-biblioref">Basadur, Runco, and Vega 2000</a>; <a href="references.html#ref-reiterillies2004" role="doc-biblioref">Reiter-Palmon and Illies 2004</a>)</span>. When used effectively, these two ways of thinking can improve problem definition and question formulation.</p>
-<p>More specifically, once we have adopted a strategic mindset, the identification, framing, and defining of problems should involve: (a) a phase of ideation with <em>divergent</em> thinking, such that many potential ideas, possibilities, and ultimately problems are entertained and considered –- with the primary focus being on novelty, creativity, and quantity; and (b) a phase with deliberate <em>convergent</em> thinking, such that the list of potential problems generated during the previous phase is winnowed to those that will contribute the most to the organization’s strategic goals, ends, or initiatives. A similar two-phase process can be applied when formulating questions.</p>
-<div id="definingproblemformulatingquestions_video" class="section level4" number="2.2.3.1">
-<h4><span class="header-section-number">2.2.3.1</span> Video Lecture</h4>
-<iframe src="https://youtube.com/embed/w1104yS-zJU?rel=0" width="672" height="400px">
+<div id="descriptives_supplement" class="section level2" number="23.5">
+<h2><span class="header-section-number">23.5</span> Chapter Supplement</h2>
+<p>XXXXX</p>
+<div id="descriptives_supplement_videotutorial" class="section level4" number="23.5.0.1">
+<h4><span class="header-section-number">23.5.0.1</span> Video Tutorial</h4>
+<p>A video version of this chapter supplement on XXXXX is provided below.</p>
+<iframe src="https://youtube.com/embed/98UvbWW6fLo?rel=0" width="672" height="400px">
 </iframe>
-<p>Link to video lecture: <a href="https://youtu.be/w1104yS-zJU" class="uri">https://youtu.be/w1104yS-zJU</a></p>
+<p>Link to Video Tutorial: <a href="https://youtu.be/98UvbWW6fLo" class="uri">https://youtu.be/98UvbWW6fLo</a></p>
 </div>
+<div id="descriptives_supplement_functions" class="section level4" number="23.5.0.2">
+<h4><span class="header-section-number">23.5.0.2</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N/A</td>
+<td><code>htmlwidgets</code></td>
+</tr>
+<tr class="even">
+<td>N/A</td>
+<td><code>knitr</code></td>
+</tr>
+<tr class="odd">
+<td><code>rpivotTable</code></td>
+<td><code>rpivotTable</code></td>
+</tr>
+<tr class="even">
+<td><code>c</code></td>
+<td>base <code>R</code></td>
+</tr>
+</tbody>
+</table>
 </div>
+<div id="descriptives_initsteps_supplement" class="section level4" number="23.5.0.3">
+<h4><span class="header-section-number">23.5.0.3</span> Initial Steps</h4>
+<p>If required, please refer to the <a href="descriptives.html#initsteps_descriptives">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
+<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb772-1"><a href="descriptives.html#cb772-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb772-2"><a href="descriptives.html#cb772-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="descriptives.html#cb773-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb773-2"><a href="descriptives.html#cb773-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb773-3"><a href="descriptives.html#cb773-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb773-4"><a href="descriptives.html#cb773-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb773-5"><a href="descriptives.html#cb773-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ----------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   OrgTenureYrs_2019 = col_double(),
+##   JobLevel = col_double(),
+##   Sex = col_character(),
+##   RaceEthnicity = col_character(),
+##   AgeYrs_2019 = col_double(),
+##   Veteran = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb775-1"><a href="descriptives.html#cb775-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb775-2"><a href="descriptives.html#cb775-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;               &quot;RaceEthnicity&quot;    
+## [6] &quot;AgeYrs_2019&quot;       &quot;Veteran&quot;</code></pre>
 </div>
-<div id="summary" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Summary</h2>
-<p>In this chapter, we did a conceptual deep dive into the Question Formulation phase of the HR Analytics Project Life Cycle. In doing so, we reviewed the importance of adopting a strategic mindset, and then engaging in thoughtful problem definition and question formulation. Finally, we learned how a two-phase process of deliberate divergent and convergent thinking can help us identify the most important problems and questions for which solutions and answers, respectively, would provide the most value to the organization.</p>
+<div id="xxxxx-1" class="section level3" number="23.5.1">
+<h3><span class="header-section-number">23.5.1</span> XXXXX</h3>
+<p>XXXXX</p>
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="overviewhraplc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dataacquisition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tables-crosstabs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
