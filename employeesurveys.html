@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 26 Introduction to Employee Surveys | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 26 Introduction to Employee Surveys | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Question Formulation | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 26 Introduction to Employee Surveys | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="overviewhraplc.html"/>
-<link rel="next" href="dataacquisition.html"/>
+<link rel="prev" href="pivottables.html"/>
+<link rel="next" href="create-portfolio.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -475,133 +475,21 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="questionformulation" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Question Formulation</h1>
-<p>The first phase of the HR Analytics Project Life Cycle (HRAPLC) is Question Formulation. <strong>Question formulation</strong> refers to the process of posing strategy-inspired and -aligned questions or hypotheses (that can be answered using data) in order to investigate why or how a problem occurs, what a problem might lead to or be associated with, or who is affected by the problem. Thoughtful question formulation results in (a) more effective and efficient data acquisition, management, and analysis, and (b) answers that are more useful to stakeholders. Question formulation is closely associated with <strong>problem definition</strong>, which refers to the process of framing and diagnosing a problem (e.g., challenge, opportunity, threat) for which finding a solution will bring value.</p>
-<div class="figure">
-<img src="questionformulation_hraplc.png" alt="" />
-<p class="caption">The Question Formulation phase of the HR Analytics Project Life Cycle (HRAPLC) involves defining problems and formulating questions.</p>
-</div>
-<div id="adoptstrategicmindset" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Adopting a Strategic Mindset</h2>
-<p>When our goal is to improve the organization and the employee experience, adopting a strategic mindset sets us up for defining the right problems and formulating the right questions. A <strong>strategic mindset</strong> involves:</p>
-<ul>
-<li><em>Familiarity with strategic goals and roles</em>, which requires recognizing and understanding strategic objects of the department and the organization, and the roles that key decision makers and stakeholders play.</li>
-<li><em>Understanding of organization systems</em>, which requires the application of systems thinking when defining problems and formulating questions.</li>
-<li><em>Focus on opportunities for innovation</em>, which requires thinking broadly and openly prior to narrowing focus.</li>
-<li><em>Application of (intellectual) curiosity</em>, which entails asking “why”, “why not”, and “how” type questions.</li>
-</ul>
-<div class="figure">
-<img src="stategicmindset_problem_question_framework.png" alt="" />
-<p class="caption">Before defining a problem and formulating a question, it is important to adopt a strategic mindset and to engage in divergent and convergent thinking processes.</p>
-</div>
-<div id="strategy" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Strategy</h3>
-<p>Because adopting a strategy necessitates and understanding of strategy, let’s take a moment to review the concept of a strategy. Simply put, a <strong>strategy</strong> refers to “a well-devised and thoughtful plan for achieving an objective” <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019, 35</a>)</span>. Notably, a strategy is future oriented and provides a “roadmap” towards completion of a desired objective. Moreover, realizing a strategy requires coordinating business activities to achieve both short- and long-term objectives. When creating a new strategy, we often focus on two distinguishable phases: (a) strategy formulation and (b) strategy implementation.</p>
-</div>
-<div id="strategyformulation" class="section level3" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Strategy Formulation</h3>
-<p><strong>Strategy formulation</strong> involves “planning what to do to achieve organizational objectives – or in other words, the development and/or refinement of a strategy” <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019, 35–36</a>)</span>. The prototypical strategy formulation often includes the following steps:</p>
-<ol style="list-style-type: decimal">
-<li><em>Creating a mission statement, articulating a vision, and defining core values.</em> The mission, vision, and values can serve as a compass by guiding organizational actions in the direction of a desired future state and by providing parameters and guidelines for reaching that future state.</li>
-<li><em>Analyzing the internal and external environments.</em> Decision-making tools like a SWOT (strengths, weaknesses, opportunities, threats) analysis provide frameworks for understanding and describing the characteristics that are internal to the organization (e.g., employees) and characteristics that are external to the organization (e.g., labor market).</li>
-<li><em>Selecting a broad type of strategy.</em> The type of strategy refers to the general approach an organization takes when bringing the mission, vision, and values to life, such as differentiation or cost leadership.</li>
-<li><em>Defining specific strategic objectives aimed at satisfying relevant stakeholders.</em> This involves considering the needs of key stakeholders (e.g., customers, investors, shareholders, employees, broader communities) and considering what will result in a sustainable competitive advantage.</li>
-<li><em>Finalizing and temporarily “crystallizing” the strategy prior to strategy implementation.</em> This step often results in a clear strategic plan that summarizes the previous four steps.</li>
-</ol>
-</div>
-<div id="strategyimplementation" class="section level3" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> Strategy Implementation</h3>
-<p>Once we’ve completed the strategy formulation phase, we’re ready to move onto strategy implementation, where <strong>strategy implementation</strong> refers to the process of following through on the strategic plan developed and/or refined during the strategy formulation phase <span class="citation">(<a href="references.html#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. This phase involves building and leveraging the organization’s human capital capabilities in order to enact and realize the strategic plan, and aligning HR policies and practices with the strategic plan. For example, if a strategic objective outlined in the strategic plan requires acquiring, managing, or retaining the best software engineers, then the organization should focus on how HR systems like recruitment, selection, performance management, and reward systems can help support that requirement.</p>
-</div>
-<div id="strategichrm" class="section level3" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> Strategic Human Resource Management</h3>
-<p>When HR management aligns with and supports the realization of organizational strategic objects, <strong>strategic human resource management</strong> emerges. In other words, strategic human resource management involves a strategy-oriented approach to human resource management. While most specific HR policies and practices will vary across organizations, there are practices that are generally strategically relevant for all organizations, and examples include selectively hiring new employees to ensure sufficiently high qualifications and good fit, and training employees to enhance job- and work-relevant knowledge, skills, abilities, and other characteristics (KSAOs) <span class="citation">(<a href="references.html#ref-pfeffer1998" role="doc-biblioref">Pfeffer 1998</a>)</span>.</p>
-<div id="adoptstrategicmindset_video" class="section level4" number="2.1.4.1">
-<h4><span class="header-section-number">2.1.4.1</span> Video Lecture</h4>
-<iframe src="https://youtube.com/embed/08whYkgFiQI?rel=0" width="672" height="400px">
-</iframe>
-<p>Link to video lecture: <a href="https://youtu.be/08whYkgFiQI" class="uri">https://youtu.be/08whYkgFiQI</a></p>
-</div>
-</div>
-</div>
-<div id="defining-problems-formulating-questions" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Defining Problems &amp; Formulating Questions</h2>
-<p>The overarching purpose of the Question Formulation phase of the HRAPLC is to define problems and formulate questions for which solutions and answers, respectively, can improve the organization and push it towards its goals. In the sections that follow, we will focus on the processes of problem definition and question formulation, and ultimately learn the value of applying both divergent and convergent thinking during both of these processes.</p>
-<div id="definingaproblem" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Defining a Problem</h3>
-<p>With a department’s and/or organization’s strategy in mind, we’re ready to define an organizationally relevant problem in need of a solution. While we typically know a problem when we see one, I found it’s helpful to take a step back and think about what a problem actual is. For our purposes, we can think of a <strong>problem</strong> as a gap between the current state of affairs and a desired state of affairs. Given that, <strong>problem definition</strong> refers to the process of framing and diagnosing a problem (e.g., challenge, opportunity, threat) for which finding a solution will be of value. As shown below, key problem-definition components often include articulating the problem statement, decision makers and stakeholders, scope, and goals <span class="citation">(<a href="references.html#ref-chevallier2016" role="doc-biblioref">Chevallier 2016</a>; <a href="references.html#ref-connmclean2018" role="doc-biblioref">Conn and McLean 2018</a>)</span>.</p>
-<div class="figure">
-<img src="problemdefinition_components.png" alt="" />
-<p class="caption">A fully formed problem definition often involves articulating key problem definition components, such as articulating the problem statement, decision makers and stakeholders, scope, and goals.</p>
-</div>
-<p>With respect to the HR context, in the figure below, I provide an example focused on problem of voluntary turnover among new customer service representatives, and provide hypothetical examples of key problem-definition components.</p>
-<div class="figure">
-<img src="problemdefinition_components_example.png" alt="" />
-<p class="caption">Articulating the problem definition components is appropriate for most problems, including those specific to HR, such as the one in this example.</p>
-</div>
-</div>
-<div id="formulatingaquestion" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> Formulating a Question</h3>
-<p>Once a general problem has been defined, we’re ready to begin <strong>question formulation</strong>, which refers to the process of posing a question or hypothesis to investigate why or how a problem occurs, what a problem might lead to or be associated with, or who is affected by the problem. Question formulation can even help us flesh out the typical problem definition components outlined in the <a href="questionformulation.html#definingaproblem">previous section</a>. Just as we did with problem definition, we should continue to apply our strategic mindset when formulating questions. Moreover, we should focus on posing questions for which finding answers hold value for the organization, as doing so can contribute to the following (for example):</p>
-<ul>
-<li>a better understanding of the focal problem,</li>
-<li>the identification of potential solutions to the focal problem,</li>
-<li>solutions that meet the needs of key decision makers and stakeholders,</li>
-<li>more efficient and targeted literature searches and reviews, and</li>
-<li>more effective and focused storytelling.</li>
-</ul>
-<p>So what is a question in this context? A <strong>question</strong> can be described as general line of inquiry regarding a problem or phenomenon of interest. Examples of questions are as follows.</p>
-<ul>
-<li><em>What</em> factors influence voluntary turnover?</li>
-<li><em>Does</em> engagement predict voluntary turnover?</li>
-<li><em>How</em> does engagement relate to voluntary turnover?</li>
-<li><em>Which</em> work characteristics predict voluntary turnover?</li>
-<li><em>Why</em> do new employees turn over in the first 6 months?</li>
-</ul>
-<p>If, based on prior research or theory, an informed prediction can be made, we might choose to restate a question a s hypothesis, where a <strong>hypothesis</strong> can be thought of as a statement about an expected association, difference, change, or classification. Examples of hypotheses are as follows.</p>
-<ul>
-<li>Engagement is negatively related to voluntary turnover.</li>
-<li>Turnover intention mediates the relationship between engagement and voluntary turnover.</li>
-<li>Autonomy and task significance negatively predict voluntary turnover.</li>
-<li>New employees who participate in the formal onboarding program are less likely to quit during their first 6 months.</li>
-</ul>
-<p>Regardless of whether we pose a question or state a hypothesis, it’s important to remember that question formulation is often an iterative process, which means that answering one question (or testing one hypothesis) often leads to additional questions (or hypotheses).</p>
-<div class="figure">
-<img src="iterativenature.png" alt="" />
-<p class="caption">Question formulation is often an iterative process, meaning that answering one question (or testing hypothesis) often leads to additional questions (or hypotheses).</p>
-</div>
-<p>Further, we can draw upon existing theory and research to inform the types of questions we pose (or hypotheses we state). A theory provides a way to understand or explain a phenomenon of interest in parsimonious manner. As an example, the <em>theory of planned behavior</em> <span class="citation">(<a href="references.html#ref-ajzen1991" role="doc-biblioref">Ajzen 1991</a>)</span> is based on a voluminous body of research, and <em>some</em> of the basic tenets of the theory are as follows. First, an individual’s attitude towards a behavior, perception of the norms associated with the behavior, and sense of control over enacting a behavior contribute to their intention to perform a behavior. Second, an individual’s intention to perform a behavior often leads them to perform a behavior. This theory can be applied to any number of behaviors. Given that HR professionals (and organizational leadership) are often concerned with voluntary turnover (i.e., an employee-initiated organizational separation), let’s focus on voluntary turnover. Using the theoretical tenets, we can reason that an individual’s voluntary turnover behavior might be explained by their attitudes, norms, and sense of control related to voluntary turnover, and ultimately to their intentions to turn over voluntarily. Thus, based on the theory of planned behavior, we might first focus on the proposed link between attitudes and behavioral intention, and formulate the following question: <em>Are more positive attitudes towards leaving the organization associated with a stronger intention to voluntarily turn over?</em> Further, by focusing on the proposed link between behavioral intention and actually enacting the behavior, we might hypothesize the following: <em>Stronger turnover intention is associated with a higher probability of quitting.</em></p>
-<div class="figure">
-<img src="tpb.png" alt="" />
-<p class="caption">Existing theories, such as the theory of planned behavior (Azjen, 1991) can be used to inform and direct the types of questions or hypotheses that are posed during question formulation.</p>
-</div>
-</div>
-<div id="divergentconvergentthinking" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Thinking Divergently &amp; Convergently</h3>
-<p>Throughout the processes of defining a problem and formulating a question, it is advisable to apply both divergent and convergent thinking. On the one hand, <strong>divergent thinking</strong> refers to the process of adopting a broadened and imaginative mindset in which many ideas, possibilities, and alternatives are considered, which can lead to a large quantity of creative or novel ideas; on the other hand, <strong>convergent thinking</strong> refers to the process of adopting a critical and evaluative mindset in which various alternatives are judged, which can lead to a more refined set of high-quality ideas <span class="citation">(<a href="references.html#ref-basaduretal1986" role="doc-biblioref">Basadur, Graen, and Scandura 1986</a>; <a href="references.html#ref-basaduretal2000" role="doc-biblioref">Basadur, Runco, and Vega 2000</a>; <a href="references.html#ref-reiterillies2004" role="doc-biblioref">Reiter-Palmon and Illies 2004</a>)</span>. When used effectively, these two ways of thinking can improve problem definition and question formulation.</p>
-<p>More specifically, once we have adopted a strategic mindset, the identification, framing, and defining of problems should involve: (a) a phase of ideation with <em>divergent</em> thinking, such that many potential ideas, possibilities, and ultimately problems are entertained and considered –- with the primary focus being on novelty, creativity, and quantity; and (b) a phase with deliberate <em>convergent</em> thinking, such that the list of potential problems generated during the previous phase is winnowed to those that will contribute the most to the organization’s strategic goals, ends, or initiatives. A similar two-phase process can be applied when formulating questions.</p>
-<div id="definingproblemformulatingquestions_video" class="section level4" number="2.2.3.1">
-<h4><span class="header-section-number">2.2.3.1</span> Video Lecture</h4>
-<iframe src="https://youtube.com/embed/w1104yS-zJU?rel=0" width="672" height="400px">
-</iframe>
-<p>Link to video lecture: <a href="https://youtu.be/w1104yS-zJU" class="uri">https://youtu.be/w1104yS-zJU</a></p>
-</div>
-</div>
-</div>
-<div id="summary" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Summary</h2>
-<p>In this chapter, we did a conceptual deep dive into the Question Formulation phase of the HR Analytics Project Life Cycle. In doing so, we reviewed the importance of adopting a strategic mindset, and then engaging in thoughtful problem definition and question formulation. Finally, we learned how a two-phase process of deliberate divergent and convergent thinking can help us identify the most important problems and questions for which solutions and answers, respectively, would provide the most value to the organization.</p>
+<div id="employeesurveys" class="section level1" number="26">
+<h1><span class="header-section-number">Chapter 26</span> Introduction to Employee Surveys</h1>
+<p>XXXXX</p>
 
 </div>
-</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="overviewhraplc.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dataacquisition.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pivottables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
