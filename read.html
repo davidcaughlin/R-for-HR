@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-11-22" />
+<meta name="date" content="2021-12-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -205,8 +205,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datainterpretation"><i class="fa fa-check"></i><b>6.1</b> Data Interpretation</a></li>
-<li class="chapter" data-level="6.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling"><i class="fa fa-check"></i><b>6.2</b> Storytelling</a></li>
-<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary-4"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
+<li class="chapter" data-level="6.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling"><i class="fa fa-check"></i><b>6.2</b> Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#structure"><i class="fa fa-check"></i><b>6.2.1</b> Structure</a></li>
+<li class="chapter" data-level="6.2.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#clarity-parsimony"><i class="fa fa-check"></i><b>6.2.2</b> Clarity &amp; Parsimony</a></li>
+<li class="chapter" data-level="6.2.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#influence-persuasion"><i class="fa fa-check"></i><b>6.2.3</b> Influence &amp; Persuasion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling_withdata"><i class="fa fa-check"></i><b>6.3</b> Storytelling with Data</a></li>
+<li class="chapter" data-level="6.4" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary-4"><i class="fa fa-check"></i><b>6.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
@@ -570,7 +576,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="read.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv file into R as data frame</span></span>
 <span id="cb148-2"><a href="read.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -595,7 +601,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="read.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R and name data frame object</span></span>
 <span id="cb151-2"><a href="read.html#cb151-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -679,7 +685,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="read.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R from a website</span></span>
 <span id="cb165-2"><a href="read.html#cb165-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -848,7 +854,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="read.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read variable names from first row of data</span></span>
 <span id="cb187-2"><a href="read.html#cb187-2" aria-hidden="true" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -863,7 +869,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb189-4"><a href="read.html#cb189-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">skip=</span><span class="dv">3</span>,</span>
 <span id="cb189-5"><a href="read.html#cb189-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_names=</span>var_names)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
