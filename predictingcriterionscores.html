@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 30 Predicting Criterion Scores Using Simple Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 30 Predicting Criterion Scores Using Simple Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rforhr.com" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="github-repo" content="davidcaughlin/R-for-HR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 30 Predicting Criterion Scores Using Simple Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+
+<meta name="author" content="David E. Caughlin" />
+
+
+<meta name="date" content="2021-12-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="criterionrelatedvalidity.html"/>
+<link rel="next" href="create-portfolio.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for HR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#overview-of-hris-hr-analytics"><i class="fa fa-check"></i><b>0.4</b> Overview of HRIS &amp; HR Analytics</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.5</b> My Philosophy for This Book</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.5.1</b> Rationale for Using R</a></li>
+<li class="chapter" data-level="0.5.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.5.2</b> Audience</a></li>
+<li class="chapter" data-level="0.5.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.5.3</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.6</b> About the Author</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.7</b> Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
+<li class="chapter" data-level="3.6" data-path="dataacquisition.html"><a href="dataacquisition.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_clean"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.2" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_manipulate"><i class="fa fa-check"></i><b>4.2</b> Data Manipulation &amp; Structuring</a></li>
+<li class="chapter" data-level="4.3" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_tools"><i class="fa fa-check"></i><b>4.3</b> Common Data-Management Tools</a></li>
+<li class="chapter" data-level="4.4" data-path="datamanagement.html"><a href="datamanagement.html#summary-2"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataanalysis.html"><a href="dataanalysis.html#dataanalysis_toolstechniques"><i class="fa fa-check"></i><b>5.1</b> Tools &amp; Techniques</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="dataanalysis.html"><a href="dataanalysis.html#mathematics"><i class="fa fa-check"></i><b>5.1.1</b> Mathematics</a></li>
+<li class="chapter" data-level="5.1.2" data-path="dataanalysis.html"><a href="dataanalysis.html#statistics"><i class="fa fa-check"></i><b>5.1.2</b> Statistics</a></li>
+<li class="chapter" data-level="5.1.3" data-path="dataanalysis.html"><a href="dataanalysis.html#machinelearning"><i class="fa fa-check"></i><b>5.1.3</b> Machine Learning</a></li>
+<li class="chapter" data-level="5.1.4" data-path="dataanalysis.html"><a href="dataanalysis.html#computationalmodelsimulation"><i class="fa fa-check"></i><b>5.1.4</b> Computational Modeling &amp; Simulations</a></li>
+<li class="chapter" data-level="5.1.5" data-path="dataanalysis.html"><a href="dataanalysis.html#textqualitativeanalyses"><i class="fa fa-check"></i><b>5.1.5</b> Text Analyses &amp; Qualitative Analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="dataanalysis.html"><a href="dataanalysis.html#continuum_dataanalytics"><i class="fa fa-check"></i><b>5.2</b> Continuum of Data Analytics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="dataanalysis.html"><a href="dataanalysis.html#descriptive_analytics"><i class="fa fa-check"></i><b>5.2.1</b> Descriptive Analytics</a></li>
+<li class="chapter" data-level="5.2.2" data-path="dataanalysis.html"><a href="dataanalysis.html#predictish_analytics"><i class="fa fa-check"></i><b>5.2.2</b> Predict-ish Analytics</a></li>
+<li class="chapter" data-level="5.2.3" data-path="dataanalysis.html"><a href="dataanalysis.html#predictive_analytics"><i class="fa fa-check"></i><b>5.2.3</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="5.2.4" data-path="dataanalysis.html"><a href="dataanalysis.html#prescriptive_analytics"><i class="fa fa-check"></i><b>5.2.4</b> Prescriptive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summary-3"><i class="fa fa-check"></i><b>5.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datainterpretation"><i class="fa fa-check"></i><b>6.1</b> Data Interpretation</a></li>
+<li class="chapter" data-level="6.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling"><i class="fa fa-check"></i><b>6.2</b> Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#structure"><i class="fa fa-check"></i><b>6.2.1</b> Structure</a></li>
+<li class="chapter" data-level="6.2.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#clarity-parsimony"><i class="fa fa-check"></i><b>6.2.2</b> Clarity &amp; Parsimony</a></li>
+<li class="chapter" data-level="6.2.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#influence-persuasion"><i class="fa fa-check"></i><b>6.2.3</b> Influence &amp; Persuasion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling_withdata"><i class="fa fa-check"></i><b>6.3</b> Storytelling with Data</a></li>
+<li class="chapter" data-level="6.4" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary-4"><i class="fa fa-check"></i><b>6.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="overviewR.html"><a href="overviewR.html#R_overview"><i class="fa fa-check"></i><b>8.1</b> R Programming Language</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="overviewR.html"><a href="overviewR.html#R_what"><i class="fa fa-check"></i><b>8.1.1</b> What Is R?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="overviewR.html"><a href="overviewR.html#R_why"><i class="fa fa-check"></i><b>8.1.2</b> Why Use R?</a></li>
+<li class="chapter" data-level="8.1.3" data-path="overviewR.html"><a href="overviewR.html#R_who"><i class="fa fa-check"></i><b>8.1.3</b> Who Uses R?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_overview"><i class="fa fa-check"></i><b>8.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="overviewR.html"><a href="overviewR.html#RStudio_what"><i class="fa fa-check"></i><b>8.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="8.2.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_why"><i class="fa fa-check"></i><b>8.2.2</b> Why RStudio?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="overviewR.html"><a href="overviewR.html#RStudio_who"><i class="fa fa-check"></i><b>8.2.3</b> Who Uses RStudio?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="overviewR.html"><a href="overviewR.html#packages_overview"><i class="fa fa-check"></i><b>8.3</b> Packages</a></li>
+<li class="chapter" data-level="8.4" data-path="overviewR.html"><a href="overviewR.html#summary-5"><i class="fa fa-check"></i><b>8.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#installR"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#installRStudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
+<li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary-6"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-7"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-9"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing and Adding Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove-variable-names-from-a-data-frame-object"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add-variable-names-to-a-data-frame-object"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#summary-10"><i class="fa fa-check"></i><b>14.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-11"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-12"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="arrange.html"><a href="arrange.html#arrange_supplement"><i class="fa fa-check"></i><b>16.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="arrange.html"><a href="arrange.html#arrange_orderfunction"><i class="fa fa-check"></i><b>16.3.1</b> <code>order</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-13"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+<li class="chapter" data-level="17.4" data-path="join.html"><a href="join.html#join_supplement"><i class="fa fa-check"></i><b>17.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="join.html"><a href="join.html#join_mergefunction"><i class="fa fa-check"></i><b>17.4.1</b> <code>merge</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter_cases"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select_multiplevariables"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove_multiplevariables"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-14"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+<li class="chapter" data-level="18.6" data-path="filter.html"><a href="filter.html#filter_supplement"><i class="fa fa-check"></i><b>18.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="filter.html"><a href="filter.html#filter_subset_supplement"><i class="fa fa-check"></i><b>18.6.1</b> <code>subset</code> Function from Base R</a></li>
+<li class="chapter" data-level="18.6.2" data-path="filter.html"><a href="filter.html#str_detect_supp"><i class="fa fa-check"></i><b>18.6.2</b> Filter by Pattern Contained within String</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="clean.html"><a href="clean.html#review-data"><i class="fa fa-check"></i><b>19.1</b> Review Data</a></li>
+<li class="chapter" data-level="19.2" data-path="clean.html"><a href="clean.html#clean-data"><i class="fa fa-check"></i><b>19.2</b> Clean Data</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-a-specific-case"><i class="fa fa-check"></i><b>19.2.1</b> Replace a Specific Value for a Specific Case</a></li>
+<li class="chapter" data-level="19.2.2" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-all-cases-with-a-particular-value"><i class="fa fa-check"></i><b>19.2.2</b> Replace a Specific Value for All Cases with a Particular Value</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="clean.html"><a href="clean.html#rename-variables"><i class="fa fa-check"></i><b>19.3</b> Rename Variables</a></li>
+<li class="chapter" data-level="19.4" data-path="clean.html"><a href="clean.html#other-approaches-to-cleaning-data"><i class="fa fa-check"></i><b>19.4</b> Other Approaches to Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="clean.html"><a href="clean.html#changing-the-case-of-variable-names"><i class="fa fa-check"></i><b>19.4.1</b> Changing the Case of Variable Names</a></li>
+<li class="chapter" data-level="19.4.2" data-path="clean.html"><a href="clean.html#changing-the-case-of-character-variable-values"><i class="fa fa-check"></i><b>19.4.2</b> Changing the Case of Character Variable Values</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="clean.html"><a href="clean.html#summary-15"><i class="fa fa-check"></i><b>19.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="aggregatesegment.html"><a href="aggregatesegment.html"><i class="fa fa-check"></i><b>20</b> Aggregating &amp; Segmenting Data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup"><i class="fa fa-check"></i><b>20.1</b> Counts By Group</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_pipes"><i class="fa fa-check"></i><b>20.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.1.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_nopipes"><i class="fa fa-check"></i><b>20.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup"><i class="fa fa-check"></i><b>20.2</b> Measures of Central Tendency and Dispersion By Group</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_pipes"><i class="fa fa-check"></i><b>20.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.2.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_nopipes"><i class="fa fa-check"></i><b>20.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable"><i class="fa fa-check"></i><b>20.3</b> Add Variable to Data Frame Containing Aggregated Values</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_pipes"><i class="fa fa-check"></i><b>20.3.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.3.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_nopipes"><i class="fa fa-check"></i><b>20.3.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#visualize_bygroup"><i class="fa fa-check"></i><b>20.4</b> Visualize Data By Group</a></li>
+<li class="chapter" data-level="20.5" data-path="aggregatesegment.html"><a href="aggregatesegment.html#summary-16"><i class="fa fa-check"></i><b>20.5</b> Summary</a></li>
+<li class="chapter" data-level="20.6" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement"><i class="fa fa-check"></i><b>20.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_subset_supplement"><i class="fa fa-check"></i><b>20.6.1</b> <code>describeBy</code> Function from <code>psych</code> Package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="manipulate.html"><a href="manipulate.html"><i class="fa fa-check"></i><b>21</b> Manipulating &amp; Restructuring Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="manipulate.html"><a href="manipulate.html#widetolong"><i class="fa fa-check"></i><b>21.1</b> Wide-to-Long Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="manipulate.html"><a href="manipulate.html#widetolong_withpipe"><i class="fa fa-check"></i><b>21.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.1.2" data-path="manipulate.html"><a href="manipulate.html#widetolong_withoutpipe"><i class="fa fa-check"></i><b>21.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="manipulate.html"><a href="manipulate.html#longtowide"><i class="fa fa-check"></i><b>21.2</b> Long-to-Wide Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="manipulate.html"><a href="manipulate.html#longtowide_withpipe"><i class="fa fa-check"></i><b>21.2.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.2.2" data-path="manipulate.html"><a href="manipulate.html#longtowide_withoutpipe"><i class="fa fa-check"></i><b>21.2.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="manipulate.html"><a href="manipulate.html#summary-17"><i class="fa fa-check"></i><b>21.3</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>IV Employee Demographics</b></span></li>
+<li class="chapter" data-level="22" data-path="employeedemographics.html"><a href="employeedemographics.html"><i class="fa fa-check"></i><b>22</b> Introduction to Employee Demographics</a></li>
+<li class="chapter" data-level="23" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>23</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="descriptives.html"><a href="descriptives.html#determine_measurementscale"><i class="fa fa-check"></i><b>23.1</b> Determine the Measurement Scale</a></li>
+<li class="chapter" data-level="23.2" data-path="descriptives.html"><a href="descriptives.html#describe_nominal_ordinal"><i class="fa fa-check"></i><b>23.2</b> Describe Nominal &amp; Ordinal (Categorical) Variables</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="descriptives.html"><a href="descriptives.html#compute_counts"><i class="fa fa-check"></i><b>23.2.1</b> Compute Counts &amp; Frequencies</a></li>
+<li class="chapter" data-level="23.2.2" data-path="descriptives.html"><a href="descriptives.html#datavisualizations_nominal_ordinal"><i class="fa fa-check"></i><b>23.2.2</b> Create Data Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="descriptives.html"><a href="descriptives.html#describe_interval_ratio"><i class="fa fa-check"></i><b>23.3</b> Describe Interval &amp; Ratio (Continuous) Variables</a>
+<ul>
+<li class="chapter" data-level="23.3.1" data-path="descriptives.html"><a href="descriptives.html#datavisualizations_interval_ratio"><i class="fa fa-check"></i><b>23.3.1</b> Create Data Visualizations</a></li>
+<li class="chapter" data-level="23.3.2" data-path="descriptives.html"><a href="descriptives.html#compute_measures_centraltendency_dispersion"><i class="fa fa-check"></i><b>23.3.2</b> Compute Measures of Central Tendency &amp; Dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="descriptives.html"><a href="descriptives.html#summary-18"><i class="fa fa-check"></i><b>23.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="crosstabs.html"><a href="crosstabs.html"><i class="fa fa-check"></i><b>24</b> Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs"><i class="fa fa-check"></i><b>24.1</b> Two-Way Cross-Tabulation</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_table"><i class="fa fa-check"></i><b>24.1.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="24.1.2" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_xtabs"><i class="fa fa-check"></i><b>24.1.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="24.1.3" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_CrossTable"><i class="fa fa-check"></i><b>24.1.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs"><i class="fa fa-check"></i><b>24.2</b> Three-Way Cross-Tabulation</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs_table"><i class="fa fa-check"></i><b>24.2.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="24.2.2" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs_xtabs"><i class="fa fa-check"></i><b>24.2.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="crosstabs.html"><a href="crosstabs.html#summary-19"><i class="fa fa-check"></i><b>24.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="pivottables.html"><a href="pivottables.html"><i class="fa fa-check"></i><b>25</b> Pivot Tables</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="pivottables.html"><a href="pivottables.html#create_pivottables"><i class="fa fa-check"></i><b>25.1</b> Create a Pivot Table</a></li>
+<li class="chapter" data-level="25.2" data-path="pivottables.html"><a href="pivottables.html#summary-20"><i class="fa fa-check"></i><b>25.2</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>V Employee Surveys</b></span></li>
+<li class="chapter" data-level="26" data-path="employeesurveys.html"><a href="employeesurveys.html"><i class="fa fa-check"></i><b>26</b> Introduction to Employee Surveys</a></li>
+<li class="part"><span><b>VI Employee Selection</b></span></li>
+<li class="chapter" data-level="27" data-path="selection.html"><a href="selection.html"><i class="fa fa-check"></i><b>27</b> Introduction to Employee Selection</a></li>
+<li class="chapter" data-level="28" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>28</b> Investigating Disparate Impact</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="disparateimpact.html"><a href="disparateimpact.html#fourfifthsrule"><i class="fa fa-check"></i><b>28.1</b> 4/5ths Rule</a></li>
+<li class="chapter" data-level="28.2" data-path="disparateimpact.html"><a href="disparateimpact.html#chisquaretest_disparateimpact"><i class="fa fa-check"></i><b>28.2</b> Chi-Squared (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
+<li class="chapter" data-level="28.3" data-path="disparateimpact.html"><a href="disparateimpact.html#fisherexacttest"><i class="fa fa-check"></i><b>28.3</b> Fisher Exact Test</a></li>
+<li class="chapter" data-level="28.4" data-path="disparateimpact.html"><a href="disparateimpact.html#zdifference_test_disparateimpact"><i class="fa fa-check"></i><b>28.4</b> <span class="math inline">\(Z_{D}\)</span> test</a></li>
+<li class="chapter" data-level="28.5" data-path="disparateimpact.html"><a href="disparateimpact.html#z_impactratiotest"><i class="fa fa-check"></i><b>28.5</b> <span class="math inline">\(Z_{IR}\)</span> Test</a></li>
+<li class="chapter" data-level="28.6" data-path="disparateimpact.html"><a href="disparateimpact.html#summary_disparatetreatment"><i class="fa fa-check"></i><b>28.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html"><i class="fa fa-check"></i><b>29</b> Estimating Criterion-Related Validity Using Correlation</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#review_correlation"><i class="fa fa-check"></i><b>29.1</b> Review of Correlation</a></li>
+<li class="chapter" data-level="29.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#visualize-association-using-a-scatter-plot"><i class="fa fa-check"></i><b>29.2</b> Visualize Association Using a Scatter Plot</a></li>
+<li class="chapter" data-level="29.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#estimate_correlation"><i class="fa fa-check"></i><b>29.3</b> Estimate Correlation</a></li>
+<li class="chapter" data-level="29.4" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#summary_criterionrelatedvalidity"><i class="fa fa-check"></i><b>29.4</b> Summary</a></li>
+<li class="chapter" data-level="29.5" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_supplement"><i class="fa fa-check"></i><b>29.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="29.5.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cor_function"><i class="fa fa-check"></i><b>29.5.1</b> <code>cor</code> Function from Base R</a></li>
+<li class="chapter" data-level="29.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>29.5.2</b> <code>cor.test</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>30</b> Predicting Criterion Scores Using Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.1</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.2</b> Predicting Criterion Scores</a></li>
+<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.3</b> Summary</a></li>
+<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="30.4.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.4.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.4.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.4.2</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
+<li class="chapter" data-level="31" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>31</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="32" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>32</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for HR:<br />
+<em>An Introduction to Human Resource Analytics Using R</em><br />
+BOOK UNDER CONSTRUCTION</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="predictingcriterionscores" class="section level1" number="30">
+<h1><span class="header-section-number">Chapter 30</span> Predicting Criterion Scores Using Simple Linear Regression</h1>
+<p>Like correlation, <strong>regression</strong> can provide us with information about the strength and sign of the relationship between a predictor variable and an outcome variable. Regression expands upon basic correlation by providing additional information about the nature of a linear relation, such that we can predict changes in a criterion (i.e., outcome) variable based on changes in a predictor variable. More specifically, regression provides us with the basic equation for predicting scores on the outcome variable based on one or more predictor variable scores. Regression equations include information about the <em>Y</em>-intercept and the estimated regression coefficients (i.e., weights, slopes) associated with each predictor in the model. There are many different types of regression models, and we’re going to review one of the most foundational types: simple linear regression.</p>
+<div id="review_slr" class="section level4" number="30.0.0.1">
+<h4><span class="header-section-number">30.0.0.1</span> Review of Simple Linear Regression</h4>
+<p>A <strong>simple linear regression</strong> model has <em>one</em> predictor (i.e., independent) variable and one outcome (i.e., dependent) variable. In this tutorial, we will learn how to estimate an <em>ordinary least squares (OLS)</em> simple linear regression model, where OLS refers to the process of estimating the unknown components (i.e., parameters) of the regression model by attempting to minimize the sum of squared residuals. The sum of the squared residuals are the result of a process in which the differences between the observed outcome variable values and the predicted outcome variable values are calculated, squared, and then summed in order to identify a model with the least amount of error (residuals). This is the where the “line of best fit” comes into play, as the line of best fit represents the regression model (equation) in which the error (residuals) between the predicted and observed outcome variable values are minimized. In other words, the goal is to find the linear model that best fits the data at hand.</p>
+<p>The equation for a simple linear regression with <em>unstandardized</em> regression coefficients (<span class="math inline">\(b\)</span>) is as follows:</p>
+<p><span class="math inline">\(\hat{Y} = b_{0} + b_{1}X + e\)</span></p>
+<p>where <span class="math inline">\(\hat{Y}\)</span> represents the predicted score on the outcome variable (<span class="math inline">\(Y\)</span>), <span class="math inline">\(b_{0}\)</span> represents the <span class="math inline">\(\hat{Y}\)</span>-intercept value (i.e., model constant) when he predictor variable <span class="math inline">\(X\)</span> is equal to zero, <span class="math inline">\(b_{1}\)</span> represents the unstandardized coefficient (i.e., weight, slope) of the association between the predictor variable <span class="math inline">\(X\)</span> and the outcome variable <span class="math inline">\(\hat{Y}\)</span>, and <span class="math inline">\(e\)</span> represents the (residual) error in prediction. Importantly, the unstandardized regression coefficient <span class="math inline">\(b_{1}\)</span> represents the “raw” slope (i.e., weight, coefficient) – or rather, how many unstandardized units of <span class="math inline">\(\hat{Y}\)</span> increase or decrease as a result of a single unit increase in <span class="math inline">\(X\)</span>. That is, unstandardized regression coefficients reflect the nature of the association between two variables when the variables retain their original scaling. Often this is why we choose to use the unstandardized regression coefficients when making predictions about <span class="math inline">\(\hat{Y}\)</span>, as the predicted scores will be have the same scaling as the outcome variable in its original form.</p>
+<p>As shown below, we can conceptualize the our simple linear regression model as depicting a “line of best fit,” wherein the estimate linear equation attempts to minimize the errors in prediction in <span class="math inline">\(\hat{Y}\)</span> based on observed scores of <span class="math inline">\(X\)</span>.</p>
+<div class="figure">
+<img src="lineofbestfit.png" alt="" />
+<p class="caption">A simple linear regression equation can be thought of as a “line of best fit.”</p>
+</div>
+<p>We can map our regression equation estimates and concepts onto the “line of best fit” as shown below.</p>
+<div class="figure">
+<img src="lineofbestfit_augmented.png" alt="" />
+<p class="caption">The intercept and regression coefficient values signal how the “line of best fit” is constructed.</p>
+</div>
+<p>We can also obtain <em>standardized</em> regression coefficients. To do so, the predictor variable (<span class="math inline">\(X\)</span>) and outcome variable (<span class="math inline">\(Y\)</span>) scores must be standardized. To standardize variables, we convert the predictor and outcome variables to <em>z</em>-scores, such that their respective means are standardized to 0 and their variances and standard deviations are standardized to 1. When standardized, our simple linear regression model equation will have a <span class="math inline">\(\hat{Y}\)</span>-intercept value equal to zero (and thus is not typically reported) and the standardized regression coefficient is commonly signified using the Greek letter <span class="math inline">\(\beta\)</span>:</p>
+<p><span class="math inline">\(\hat{Y} = \beta_{1}X + e\)</span></p>
+<p>where <span class="math inline">\(\hat{Y}\)</span> represents the predicted <em>standardized</em> score on the outcome variable (<span class="math inline">\(Y\)</span>), <span class="math inline">\(\beta_{1}\)</span> represents the <em>standardized</em> coefficient (i.e., weight, slope) of the association between the predictor variable <span class="math inline">\(X\)</span> and the outcome variable <span class="math inline">\(\hat{Y}\)</span>, and <span class="math inline">\(e\)</span> represents the (residual) error in prediction. When we have obtain standardized regression coefficients in a simple linear regression model, the <span class="math inline">\(\beta_{1}\)</span> value will be equal to the correlation (<em>r</em>) between <span class="math inline">\(X\)</span> and <span class="math inline">\(\hat{Y}\)</span>. A standardized regression coefficient (<span class="math inline">\(\beta\)</span>) also allows us to also compare the relative magnitude of one <span class="math inline">\(\beta\)</span> to another <span class="math inline">\(\beta\)</span>; with that being said, in the case of a multiple linear regression model (in which there are 2+ more predictor variables), comparing <span class="math inline">\(\beta\)</span> coefficients is only appropriate when the predictor variables in the model share little to no intercorrelation (i.e., have low collinearity). Given that, I recommend that you proceed with caution should you choose to make such comparisons.</p>
+<p>In terms of interpretation, in a simple linear regression model, the standardized regression coefficient (<span class="math inline">\(\beta_{1}\)</span>) indicates the standardized slope or, rather, how many standard units of <span class="math inline">\(\hat{Y}\)</span> increase or decrease as a result of a single standard unit increase in <span class="math inline">\(X\)</span>.</p>
+</div>
+<div id="statisticalassumptions_slr" class="section level4" number="30.0.0.2">
+<h4><span class="header-section-number">30.0.0.2</span> Statistical Assumptions</h4>
+<p>The statistical assumptions that should be met prior to running and/or interpreting estimates from a simple linear regression model include:</p>
+<ul>
+<li>Cases are randomly sampled from the population, such that the variable scores for one individual are independent of the variable scores of another individual;</li>
+<li>Data are free of bivariate outliers;</li>
+<li>The association between predictor and outcome variables is linear;</li>
+<li>Variables demonstrate a bivariate normal distribution;</li>
+<li>Average residual error value is zero for each level of the predictor variable;</li>
+<li>Variances of residual errors are equal for all levels of the predictor variable, which is referred to as the assumption of homoscedasticity;</li>
+<li>Residual errors are normally distributed for each level of the predictor variable.</li>
+</ul>
+<p><em>Note:</em> Regarding the first statistical assumption (i.e., cases randomly sampled from population), we will assume in this sample that this is not an issue. If we were to suspect, however, that there were some clustering or nesting of cases in units/groups (e.g., by supervisors, units, or facilities) with respect to our outcome variable, then we would need to run some type of multilevel model (e.g., hierarchical linear model, multilevel structural equation model), which is beyond the scope of this tutorial. An <em>intraclass correlation (ICC)</em> can be used to diagnose such nesting or cluster. Failing to account for clustering or nesting in the data can bias estimates of standard errors, which ultimately influences the <em>p</em>-values and inferences of statistical significance.</p>
+</div>
+<div id="statisticalsignficance_slr" class="section level4" number="30.0.0.3">
+<h4><span class="header-section-number">30.0.0.3</span> Statistical Signficance</h4>
+<p>Using null hypothesis significance testing (NHST), we interpret a <em>p</em>-value that is <em>less than .05</em> (or whatever two- or one-tailed alpha level we set) to meet the standard for statistical significance, meaning that we reject the null hypothesis that the regression coefficient is equal to zero. In other words, if a regression coefficient’s <em>p</em>-value is less than .05, we conclude that the regression coefficient differs from zero to a statistically significant extent. In contrast, if the regression coefficient’s <em>p</em>-value is <em>equal to or greater than .05</em>, then we fail to reject the null hypothesis that the regression coefficient is equal to zero. Put differently, if a regression coefficient’s <em>p</em>-value is equal to or greater than .05, we conclude that the regression coefficient does <em>not</em> differ from zero to a statistically significant extent, leading us to conclude that there is no association between the predictor variable and the outcome variable in the population.</p>
+<p>When setting an alpha threshold, such as the conventional two-tailed .05 level, sometimes the question comes up regarding whether borderline <em>p</em>-values signify significance or nonsignificance. For our purposes, let’s be very strict in our application of the chosen alpha level. For example, if we set our alpha level at .05, <em>p</em> = .049 would be considered statistically significant, and <em>p</em> = .050 would be considered statistically _non_significant.</p>
+<p>Because our regression model estimates are based on data from a sample that is drawn from an underlying population, sampling error will affect the extent to which our sample is representative of the population from which its drawn. That is, a regression coefficient estimate (<em>b</em>) is a <em>point estimate</em> of the population parameter that is subject to sampling error. Fortunately, confidence intervals can give us a better idea of what the true population parameter value might be. If we apply an alpha level of .05 (two-tailed), then the equivalent confidence interval (CI) is a 95% CI. In terms of whether a regression coefficient is statistically significant, if the lower and upper limits of 95% CI do <em>not</em> include zero, then this tells us the same thing as a <em>p</em>-value that is less than .05. Strictly speaking, a 95% CI indicates that if we were to hypothetically draw many more samples from the underlying population and construct CIs for each of those samples, then the true parameter (i.e., true value of the regression coefficient in the population) would likely fall within the lower and upper bounds of 95% of the estimated CIs. In other words, the 95% CI gives us an indication of plausible values for the population parameter while taking into consideration sampling error. A wide CI (i.e., large difference between the lower and upper limits) signifies more sampling error, and a narrow CI signifies less sampling error.</p>
+</div>
+<div id="practicalsignficance_slr" class="section level4" number="30.0.0.4">
+<h4><span class="header-section-number">30.0.0.4</span> Practical Significance</h4>
+<p>As a reminder, an effect size a standardized metric that can be compared across samples. In a simple linear regression model, an <em>unstandardized</em> regression coefficient (<span class="math inline">\(b\)</span>) is <em>not</em> an effect size. The reason being, an unstandardized regression coefficient estimate is based on the original scaling of the predictor and outcome variables, and thus the same effect will take on different regression coefficients to the extent that the predictor and outcome variables have different scalings across samples.</p>
+<p>As noted <a href="predictingcriterionscores.html#review_slr">above</a>, a <em>standardized</em> regression coefficient (<span class="math inline">\(\beta\)</span>) will be equal to a correlation coefficient (<em>r</em>) in the specific case of a simple linear regression model in which there is just one predictor variable and a single outcome variable. Thus, a <em>standardized</em> regression coefficient (<span class="math inline">\(\beta\)</span>) can be interpreted as an effect size (and thus an indicator of practical significance) using the same interpretation thresholds as a correlation coefficient. Accordingly, in the case of a simple linear regression model, we could just estimate a correlation coefficient to get an idea of the level of practical significance.</p>
+<p>The size of a correlation coefficient (<em>r</em>) – or a standardized regression coefficient (<span class="math inline">\(\beta\)</span>) in the case of a simple linear regression model – can be described using qualitative labels, such as small, medium, and large. The quantitative values tied to such qualitative labels of magnitude should really be treated as context specific; with that said, there are some very general rules we can apply when interpreting the magnitude of correlation coefficients, which are presented in the table below <span class="citation">(<a href="references.html#ref-cohen1992power" role="doc-biblioref">Cohen 1992</a>)</span>. Please note that the <em>r</em> values in the table are absolute values, which means, for example, that correlation coefficients of .50 and -.50 would both have the same absolute value and thus would both be considered large.</p>
+<table>
+<thead>
+<tr class="header">
+<th><em>r</em></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.10</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.30</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.50</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p>In a simple linear regression model, we can also describe the magnitude of the effect in terms of the proportion of variance explained in the outcome variable by the predictor variable (i.e., <em>R</em><sup>2</sup>). In fact, in the case of a simple linear regression, the <em>R</em><sup>2</sup> estimate will be equal to the <strong>coefficient of determination</strong> (<em>r</em><sup>2</sup>), as described in the <a href="criterionrelatedvalidity.html#practicalsignficance_correlation">chapter on estimating criterion-related validity using correlations</a>. Conceptually, we can think of the overlap between the variability in the predictor and outcome variables as the variance explained (<em>R</em><sup>2</sup>). I’ve found that the <em>R</em><sup>2</sup> is often more readily interpretable by non-analytics audiences. For example, an <em>R</em><sup>2</sup> of .10 in a simple linear regression model can be interpreted as: 10% of the variability in scores on the outcome variable can be explained by scores on the predictor variable. That is, to convert an <em>R</em><sup>2</sup> from a proportion to a percent, we just multiply by 100.</p>
+<div class="figure">
+<img src="Rsquared.png" alt="" />
+<p class="caption">As an effect size, <em>R</em><sup>2</sup> indicates the proportion of variance explained by the predictor variable in the outcome variable – or in other words, the shared variance between the two variables.</p>
+</div>
+<p><em>Note: Typically, we only interpret the practical significance of an effect if the effect was found to be statistically significant. The logic is that if an effect (e.g., association, difference) is not statistically significant, then we should treat it as no different than zero, and thus it wouldn’t make sense to the interpret the size of something that statistically has no effect.</em></p>
+</div>
+<div id="samplewriteup_slr" class="section level4" number="30.0.0.5">
+<h4><span class="header-section-number">30.0.0.5</span> Sample Write-Up</h4>
+<p>A team of researchers is interested in whether a basketball player’s height relates to the number of points scored during a 10-game season, and they use a sample of 100 basketball players to estimate a simple linear regression model. In this case, the predictor variable is basketball players’ heights (in inches), and the outcome variable is the number of points scored by the basketball players. Our hypothesis for such a situation might be: Basketball players’ heights will be positively associated with the number of points players score in a 10-game season, such that taller players will tend to score more points in a season. If we find that the unstandardized regression coefficient associated with player height in relation to points scored is statistically significant and positive (<em>b</em> = 2.44, <em>p</em> = .01) and the <em>R</em><sup>2</sup> value is .05 (<em>p</em> = .01), we could summarize the findings as follows: Based on a sample of 100 basketball players, basketball player height was found to predict points scored in a 10-game season, such that taller players tended to score more points (<em>b</em> = 2.44, <em>p</em> = .01). Specifically, for every 1 inch increase in height, players tended to score 2.44 additional points during the season. Further, this reflects a small-to-medium effect, as approximately 5% of the variability in points scored was explained by players’ heights (<em>R</em><sup>2</sup> = .05, <em>p</em> = .01).</p>
+</div>
+<div id="review_prediction_slr" class="section level4" number="30.0.0.6">
+<h4><span class="header-section-number">30.0.0.6</span> Predicting Future Criterion Scores Using Simple Linear Regression</h4>
+<p>As noted above, the intercept and coefficients estimated from a simple linear regression model can be used to construct a linear equation. This equation can be estimated based on one sample of data and then applied to a second sample of data. In doing so, new data for the predictor variable from the second sample can be “plugged into” the model that we estimated from the first sample, thereby allowing us to predict future criterion (i.e., outcome variable) scores. This two-sample process moves us a step towards true predictive analytics. <em>[Note: In the employee selection context, we often refer to the outcome variables as the “criterion.”]</em></p>
+<p>In the context of selection tool validation, the process of predicting criterion scores can be quite useful. It allows us to estimate a model for a given selection tool (e.g., assessment, procedure, test) based on data from a criterion-related validity study (e.g., concurrent validation design/study, predictive validation design/study). We can then apply that model to data from actual job applicants who have taken the same selection tool, which allows us to make predictions on their future criterion scores (e.g., job performance scores). Often, we can improve the accuracy of predicted criterion scores by adding additional predictor variables to our model, which transitions the model from a simple linear regression model to a multiple linear regression model.</p>
+</div>
+<div id="video-tutorial-19" class="section level4" number="30.0.0.7">
+<h4><span class="header-section-number">30.0.0.7</span> Video Tutorial</h4>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/TxUaAAR55bs?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to Video Tutorial: <a href="https://youtu.be/TxUaAAR55bs" class="uri">https://youtu.be/TxUaAAR55bs</a></p>
+<p>Additionally, in the following video tutorial, I go into greater depth on how to test the statistical assumptions of a simple linear regression model – just as do in the written tutorial below.</p>
+<iframe src="https://youtube.com/embed/Qe6LLJAmJ6c?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to Video Tutorial: <a href="https://youtu.be/Qe6LLJAmJ6c" class="uri">https://youtu.be/Qe6LLJAmJ6c</a></p>
+</div>
+<div id="functions-packages-introduced-15" class="section level4" number="30.0.0.8">
+<h4><span class="header-section-number">30.0.0.8</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ScatterPlot</code></td>
+<td><code>lessR</code></td>
+</tr>
+<tr class="even">
+<td><code>Regression</code></td>
+<td><code>lessR</code></td>
+</tr>
+<tr class="odd">
+<td><code>order</code></td>
+<td>base <code>R</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_slr" class="section level4" number="30.0.0.9">
+<h4><span class="header-section-number">30.0.0.9</span> Initial Steps</h4>
+<p>If you haven’t already, save the file called <strong>“SelectionData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="predictingcriterionscores.html#cb903-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb903-2"><a href="predictingcriterionscores.html#cb903-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“SelectionData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb904-1"><a href="predictingcriterionscores.html#cb904-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb904-2"><a href="predictingcriterionscores.html#cb904-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb904-3"><a href="predictingcriterionscores.html#cb904-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb904-4"><a href="predictingcriterionscores.html#cb904-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="predictingcriterionscores.html#cb905-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb905-2"><a href="predictingcriterionscores.html#cb905-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb905-3"><a href="predictingcriterionscores.html#cb905-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb905-4"><a href="predictingcriterionscores.html#cb905-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb905-5"><a href="predictingcriterionscores.html#cb905-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ---------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   Conscientiousness = col_double(),
+##   Interview = col_double(),
+##   Performance = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb907-1"><a href="predictingcriterionscores.html#cb907-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb907-2"><a href="predictingcriterionscores.html#cb907-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;         &quot;Performance&quot;</code></pre>
+<div class="sourceCode" id="cb909"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb909-1"><a href="predictingcriterionscores.html#cb909-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb909-2"><a href="predictingcriterionscores.html#cb909-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,4] [163 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ EmployeeID       : num [1:163] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Conscientiousness: num [1:163] 3.33 3.83 3.33 4 3.67 ...
+##  $ Interview        : num [1:163] 3.5 3.61 3.42 4.48 4.82 3.54 3.87 3.54 4.08 5 ...
+##  $ Performance      : num [1:163] 2.35 1.54 3.99 3.78 3.77 3.51 3.65 1.55 2.51 3.63 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   EmployeeID = col_double(),
+##   ..   Conscientiousness = col_double(),
+##   ..   Interview = col_double(),
+##   ..   Performance = col_double()
+##   .. )</code></pre>
+<div class="sourceCode" id="cb911"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb911-1"><a href="predictingcriterionscores.html#cb911-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb911-2"><a href="predictingcriterionscores.html#cb911-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   EmployeeID Conscientiousness Interview Performance
+##        &lt;dbl&gt;             &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1          1              3.33      3.5         2.35
+## 2          2              3.83      3.61        1.54
+## 3          3              3.33      3.42        3.99
+## 4          4              4         4.48        3.78
+## 5          5              3.67      4.82        3.77
+## 6          6              4         3.54        3.51</code></pre>
+<p>The data frame contains 4 variables and 163 cases (i.e., employees): <code>EmployeeID</code>, <code>Conscientiousness</code>, <code>Interview</code>, and <code>Performance</code>. Let’s assume that these data were collected as part of a concurrent validation study aimed at estimating the criterion-related validity of selection tools (e.g., procedures, assessments, tests); this means that the selection tools (i.e., <code>Conscientiousness</code>, <code>Interview</code>) were administered to job incumbents and the criterion measure (<code>Performance</code>) was administered at about the same time. To begin, <code>EmployeeID</code> is the unique identifier variable. The <code>Conscientiousness</code> variable contains the scores on a personality test designed to “tap into” the psychological concept of conscientiousness; potential scores on this variable could range from 1 (<em>low conscientiousness</em>) to 5 (<em>high conscientiousness</em>). The <code>Interview</code> variable contains the scores for a structured interview designed to assess interviewees’ level customer-service knowledge and skills; potential scores on this variable could range from 1 (<em>poor customer service</em>) to 5 (<em>strong customer service</em>). Finally, the <em>criterion</em> for this concurrent validation study is the <code>Performance</code> variable, which contains the job performance evaluation ratings for the job incumbents; potential scores on this variable could range from 1 (<em>does not meet performance standards</em>) to 5 (<em>exceeds performance standards</em>).</p>
+</div>
+<div id="estimate_slr" class="section level2" number="30.1">
+<h2><span class="header-section-number">30.1</span> Estimate Simple Linear Regression Model</h2>
+<p>When we estimate the criterion-related validity of a selection tool, we typically use a correlation coefficient, and in this context, the correlation coefficient can be referred to as a <em>validity coefficient</em>. That being said, if we would like to make predictions based on selection tool scores, simple linear regression (or multiple linear regression) is the way to go. Thus, when it comes to selection tool validation, my recommendation is to run a correlation when estimating criterion-related validity and to estimate a simple linear regression model when attempting to predict criterion scores based on selection tool scores. As the name implies, a simple <em>linear</em> regression model assumes a linear association between the predictor and outcome scores. Check out the <a href="criterionrelatedvalidity.html#criterionrelatedvalidity">chapter on estimating criterion-related validity using a correlation</a> if you need a refresher on how to interpret a correlation coefficient as an indicator of criterion-related validity.</p>
+<p>In this chapter, we’ll specify a simple linear regression model in which the selection tool called <code>Conscientiousness</code> is the predictor variable and the job performance variable called <code>Performance</code> is our criterion.</p>
+<div id="teststatisticalassumptions_slr" class="section level4" number="30.1.0.1">
+<h4><span class="header-section-number">30.1.0.1</span> Test Statistical Assumptions</h4>
+<p>To determine whether it’s appropriate to interpret the results of a simple linear regression model, we need to first test the <a href="predictingcriterionscores.html#statisticalassumptions_slr">statstical assumptions</a>. To begin, let’s generate a scatter plot to visualize the association between the two variables and get a rough idea of whether a few of the statistical assumptions have been met. To do so, we’ll use the <code>ScatterPlot</code> function from the <code>lessR</code> package. If you haven’t already install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
+<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb913-1"><a href="predictingcriterionscores.html#cb913-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb913-2"><a href="predictingcriterionscores.html#cb913-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb914-1"><a href="predictingcriterionscores.html#cb914-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb914-2"><a href="predictingcriterionscores.html#cb914-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<p>Type the name of the <code>ScatterPlot</code> function. As the first argument within the function, type <code>x=</code> followed by the name of the predictor variable (<code>Conscientiousness</code>). As the second argument, type <code>y=</code> followed by the name of the outcome variable (<code>Performance</code>). As the third argument, type <code>data=</code> followed by the name of the data frame (<code>df</code>). As the fourth argument, type <code>ellipse=TRUE</code> to generate an ellipse around the data points.</p>
+<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb915-1"><a href="predictingcriterionscores.html#cb915-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot of Conscientiousness &amp; Performance variables</span></span>
+<span id="cb915-2"><a href="predictingcriterionscores.html#cb915-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, </span>
+<span id="cb915-3"><a href="predictingcriterionscores.html#cb915-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>df, </span>
+<span id="cb915-4"><a href="predictingcriterionscores.html#cb915-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-535-1.png" width="672" /></p>
+<pre><code>## &gt;&gt;&gt; Suggestions
+## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
+## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
+## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options 
+## 
+## 
+## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
+##  
+## Number of paired values with neither missing, n = 163 
+## 
+## 
+## Sample Correlation of Conscientiousness and Performance: r = 0.469 
+## 
+## 
+## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
+## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
+<p>Based on the output from the <code>ScatterPlot</code> function, first, note that the association between the two variables appears to be linear, which means that a simple linear regression model might be appropriate. Second, note that the association between the two variables seems to have a bivariate normal distribution, as we can see a general ellipse (or American football) shape of the data points. Third, it does look like we might have one or more bivariate outliers, which are those points that seem to notably deviate from the rest. As you can see, we can “eyeball” the data to give us an initial (yet rough) idea of whether three of the statistical assumptions may have been met: (a) data are free of bivariate outliers, (b) association between variables is linear, and (c) variables display a bivariate normal distribution. Fortunately, we have some other diagnostic tools that we will use to further test some of these assumptions (as well as the others) when we estimate our simple linear regression model.</p>
+<p>To generate these additional statistical assumption tests, we need to estimate our simple linear regression model. There are different functions we could use to estimate a simple linear regression model, but we’ll begin by focusing on the <code>Regression</code> function from the <code>lessR</code> package. In the chapter supplement, you can learn how to carry how the same tests using the <code>lm</code> function from base R.</p>
+<p>To use the <code>Regression</code> function from the <code>lessR</code> package, type the name of the <code>Regression</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome (i.e., criterion) variable (<code>Performance</code>) to the left of the tilde (<code>~</code>) operator and the name of the predictor (e.g., selection tool) variable (<code>Conscientiousness</code>) to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>Conscientiousness</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>).</p>
+<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb918-1"><a href="predictingcriterionscores.html#cb918-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate simple linear regression model</span></span>
+<span id="cb918-2"><a href="predictingcriterionscores.html#cb918-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-536-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-536-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-536-3.png" width="672" /></p>
+<pre><code>## &gt;&gt;&gt; Suggestion
+## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
+## Regression(my_formula=Performance ~ Conscientiousness, data=df, Rmd=&quot;eg&quot;)  
+## 
+## 
+##   BACKGROUND
+## 
+## Data Frame:  df 
+##  
+## Response Variable: Performance 
+## Predictor Variable: Conscientiousness 
+##  
+## Number of cases (rows) of data:  163 
+## Number of cases retained for analysis:  163 
+## 
+## 
+##   BASIC ANALYSIS
+## 
+##                    Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
+##       (Intercept)     0.780      0.333    2.343    0.020       0.123       1.437 
+## Conscientiousness     0.631      0.094    6.732    0.000       0.446       0.817 
+## 
+## 
+## Standard deviation of residuals:  0.856 for 161 degrees of freedom 
+##  
+## R-squared:  0.220    Adjusted R-squared:  0.215    PRESS R-squared:  0.199 
+## 
+## Null hypothesis that all population slope coefficients are 0:
+##   F-statistic: 45.317     df: 1 and 161     p-value:  0.000 
+## 
+## 
+##                     df    Sum Sq   Mean Sq   F-value   p-value 
+## Model                1    33.176    33.176    45.317     0.000 
+## Residuals          161   117.866     0.732 
+## Performance        162   151.043     0.932 
+## 
+## 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##                     Performance Conscientiousness 
+##         Performance        1.00              0.47 
+##   Conscientiousness        0.47              1.00 
+## 
+## 
+##   RESIDUALS AND INFLUENCE
+## 
+## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
+##    [sorted by Cook&#39;s Distance] 
+##    [res_rows = 20, out of 163 rows of data, or do res_rows=&quot;all&quot;] 
+## --------------------------------------------------------------------- 
+##       Conscientiousness Performance fitted  resid rstdnt dffits cooks 
+##   134             1.667       3.350  1.832  1.518  1.829  0.399 0.078 
+##   161             4.667       1.820  3.726 -1.906 -2.283 -0.352 0.060 
+##   130             4.833       2.200  3.831 -1.631 -1.951 -0.333 0.054 
+##   116             4.333       1.880  3.516 -1.636 -1.943 -0.240 0.028 
+##    64             5.000       5.000  3.936  1.064  1.267  0.238 0.028 
+##   110             3.833       1.000  3.200 -2.200 -2.628 -0.231 0.026 
+##    39             2.000       1.000  2.042 -1.042 -1.241 -0.227 0.026 
+##   106             2.167       1.000  2.148 -1.148 -1.363 -0.226 0.025 
+##    43             2.333       1.000  2.253 -1.253 -1.486 -0.222 0.024 
+##    99             2.500       1.000  2.358 -1.358 -1.609 -0.215 0.023 
+##   127             2.500       1.000  2.358 -1.358 -1.609 -0.215 0.023 
+##    34             3.000       4.560  2.674  1.886  2.242  0.212 0.022 
+##   143             4.167       5.000  3.410  1.590  1.884  0.207 0.021 
+##   126             2.333       3.390  2.253  1.137  1.347  0.201 0.020 
+##    55             3.000       4.450  2.674  1.776  2.107  0.199 0.019 
+##   132             2.833       1.000  2.569 -1.569 -1.858 -0.197 0.019 
+##    92             4.000       5.000  3.305  1.695  2.009  0.196 0.019 
+##    95             4.333       4.800  3.516  1.284  1.519  0.187 0.017 
+##    28             3.000       1.000  2.674 -1.674 -1.983 -0.187 0.017 
+##   142             3.000       1.000  2.674 -1.674 -1.983 -0.187 0.017 
+## 
+## 
+##   PREDICTION ERROR 
+## 
+## Data, Predicted, Standard Error of Forecast, 
+## 95% Prediction Intervals 
+##    [sorted by lower bound of prediction interval] 
+##    [to see all intervals do pred_rows=&quot;all&quot;] 
+##  ----------------------------------------------
+## 
+##       Conscientiousness Performance  pred    sf pi.lwr pi.upr width 
+##   134             1.667       3.350 1.832 0.875  0.104  3.560 3.455 
+##   144             1.667       1.880 1.832 0.875  0.104  3.560 3.455 
+## ... 
+##   150             3.333       2.600 2.884 0.858  1.189  4.579 3.390 
+##    27             3.500       2.500 2.989 0.858  1.295  4.684 3.390 
+##    32             3.500       2.220 2.989 0.858  1.295  4.684 3.390 
+## ... 
+##    36             5.000       3.420 3.936 0.870  2.218  5.655 3.436 
+##    64             5.000       5.000 3.936 0.870  2.218  5.655 3.436 
+##   107             5.000       3.220 3.936 0.870  2.218  5.655 3.436 
+## 
+## 
+## ----------------------------------------------------- 
+## Plot 1: Distribution of Residuals 
+## Plot 2: Residuals vs Fitted Values 
+## Plot 3: Reg Line, Confidence and Prediction Intervals 
+## -----------------------------------------------------</code></pre>
+<p>By default, the output for the <code>Regression</code> function produces three plots that are useful for assessing statistical assumptions and for interpreting the results, as well as text output.</p>
+<p>Let’s begin by reviewing the first two plots depicting the residuals and the section of the text called <em>Residuals and Influence</em>. We previously saw using the <code>ScatterPlot</code> function from <code>lessR</code> that the association between the two variables appeared to be linear and showed evidence of a bivariate normal distribution. We did note, however, that there might be some <em>bivariate outliers</em> that could influence the estimated regression model. Let’s take a look at the second plot in your Plot window; you may need to hit the back arrow button to review the three plots.</p>
+<p><strong>Fitted Values &amp; Residuals Plot:</strong> The second plot is scatterplot that shows the association between the fitted values (x-axis) and the residuals (y-axis). If you recall, the residuals are the error in our estimates – or in other words, how much our predicted values for the outcome variable deviate from the observed (actual) values for the outcome variable. The term “fitted values” is another way of saying predicted values for the outcome variable. The horizontal dotted line is drawn at the residual value of zero; remember, our goal is to minimize the size of residuals (i.e., error). The solid line shows the deviations from zero of the residuals for each fitted value, and the greater the solid line deviates from the dotted line, the more likely that (a) variances of the residuals may <em>not</em> be equal for each level of the predictor variable (violation of the assumption of homoscedasticity), (b) the average residual error value may <em>not</em> be zero for each level of the predictor variable, and (c) there may be potential bivariate outliers influencing the fitted (predicted) values. In this plot, we can see that the variances of the residuals seem to be about equal across observations (evidence of homoscedasticity), the average residual error value appears to be about zero (which is good), and there appears to be only one case that is flagged as a potential bivariate outlier (case associated with row number <em>134</em>). This case was flagged based on an outlier/influence statistic called <em>Cook’s distance (D)</em>.</p>
+<p><strong>Residuals &amp; Influence Output:</strong> Moving to the text output section called <em>Residuals and Influence</em>, we see a table with a unique identifiers column (that shows the row number in your data frame object), the observed (actual) predictor and outcome variable values, the fitted (predicted) outcome variable values, the residual (error) between the fitted values and the observed outcome variable values, and the following three outlier/influence statistics: (a) studentized residual (rstdnt), (b) number of standard error units that a fitted value shifts when the flagged case is removed (dffits), and (c) Cook’s distance (cooks). Corroborating what we saw in the plot, the case associated with row number <em>134</em> has the highest Cook’s distance value (.078) and standards somewhat apart from the next highest values (i.e., .060, .054). There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed 1, where values in excess of 1 would indicate a problematic case. Regardless, as a sensitivity analysis, we would perhaps want to estimate our model once more after removing the case associated with row number <em>134</em> from our data frame. Overall, we may have found what seems to be one potentially influential bivariate outlier case, but we can feel reasonably good about satisfying the assumptions of average residuals being approximately zero and homoscedasticity of residuals. Next, let’s consider the only statistical assumption we haven’t yet tested: Residual errors are normally distributed for each level of the predictor variable.</p>
+<p><strong>Distribution of Residuals Plot:</strong> Moving on to the first plot, which displays the distribution of the residuals, we can use the display to determine whether or not we have satisfied that final statistical assumption. We see a histogram and density distribution of our residuals with the shape of a normal distribution superimposed. As you can see, our residuals show a mostly normal distribution, which is great and in line with the assumption. Because we have satisfied this and other assumptions to a reasonable extent, we should feel confident that we can interpret our statistical tests, confidence intervals, and prediction intervals in a meaningful way, beginning with the <em>Background</em> section of the output.</p>
+</div>
+<div id="interpret_slr" class="section level4" number="30.1.0.2">
+<h4><span class="header-section-number">30.1.0.2</span> Interpret Simple Linear Regression Model Results</h4>
+<p><strong>Background:</strong> The <em>Background</em> section of the text output section shows which data frame object was used to estimate the model, the name of the response (outcome, criterion) variable, and the name of the predictor variable. In addition, it shows the number of cases in the data frame as well as how many were used in the estimation of the model; by default, the <code>Regression</code> function uses listwise deletion when one or more of the variables in the model has a missing value, which means that a case with any missing value on one of the focal variables is removed as part of the analysis. Here we can see that all 163 cases in the data frame were retained for the analysis, which means that neither <code>Performance</code> or <code>Conscientiousness</code> had missing values.</p>
+<p><strong>Basic Analysis:</strong> The <em>Basic Analysis</em> section of the output first displays a table containing the estimated regression model (<strong>Estimated Model for [INSERT OUTCOME VARIABLE NAME]</strong>), including the regression coefficients (slopes, weights) and their standard errors, <em>t</em>-values, <em>p</em>-values, and lower and upper limits of their 95% confidence intervals. Typically, the intercept value and its significance test are not of interest, unless we wish to use the value to specify the regression model equation (more on that later). The regression coefficient associated with the predictor variable (<code>Conscientiousness</code>) in relation to the outcome variable (<code>Performance</code>) is often of substantive interest. Here, we see that the <em>unstandardized</em> regression coefficient for <code>SJT</code> is .682, and its associated <em>p</em>-value is less than .001 (<em>b</em> = .631, <em>p</em> &lt; .001). [<em>NOTE: Because the regression coefficient is unstandardized, its practical significance cannot be directly interpreted, and it is not a standardized effect size like a correlation coefficient.</em>] Given that the <em>p</em>-value is less than our conventional two-tailed alpha level of .05, we reject the null hypothesis that the regression coefficient is equal to zero, which means that we conclude that the regression coefficient is statistically significantly different from zero. Further, the 95% confidence interval ranges from .446 to .817 (i.e., 95% CI[.446, .817]), which indicates that the true population parameter for association likely falls somewhere between those two values. We can interpret the significant regression coefficient as follows: <em>For every one unit increase in the predictor variable (<code>Conscientiousness</code>), the outcome variable (<code>Performance</code>) increases by .631 (unstandardized) units.</em> Using the intercept and predictor variable coefficient estimates, we can write out the equation for the regression model as follows:</p>
+<p><span class="math inline">\(Performance_{predicted} = .780 + (.631 * Conscientiousness_{observed})\)</span></p>
+<p>Note that the equation above is simply the equation for a line: <span class="math inline">\(Y_{predicted} = .780 + (.631 * X_{observed})\)</span>. If we plug in, for instance, the value 3 as an observed value of <code>Conscientiousness</code>, then we get a predicted criterion score of 2.673, as shown below:</p>
+<p><span class="math inline">\(2.673 = .780 + (.631 * 3)\)</span></p>
+<p>Thus, based on our estimate model (i.e., equation), we are able to predict values of <code>Performance</code>. We’ll bring this process to life in the following section.</p>
+<p>The <strong>Model Fit</strong> section of the output appears below the table containing the regression coefficient estimates. In this section, you will find the (unadjusted) <em>R</em>-squared (<em>R</em><sup>2</sup>) estimate, which is an indicator of the model’s fit to the data as well as the extent to which the predictor variable explains variance (i.e., variability) in the outcome variable. The <em>R</em>-squared (<em>R</em><sup>2</sup>) value of .220 indicates the extent to which the predictor variable explains variance in the outcome variable in this sample - or in other words, how much errors are minimized in the sample given the specified model; if you multiply the value by 100, you get a percentage. In this case, we find that 22.0% of the variance in <code>Performance</code> is explained by <code>Conscientiousness</code>. You can also think of the <em>R</em><sup>2</sup> values as <strong>effect sizes</strong> (i.e., indicators of <em>practical</em> significance) at the model level. Here are some rules of thumb for qualitatively interpreting the magnitude of the <em>R</em><sup>2</sup> effect size, which is another way of saying “determining the level of practical significance”:</p>
+<table>
+<thead>
+<tr class="header">
+<th><em>R</em><sup>2</sup></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.01</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.09</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.25</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p>The raw, unadjusted <em>R</em>-squared (<em>R</em><sup>2</sup>) value, however, is sensitive to the sample size and the number of predictor variables in the model. The <em>adjusted</em> <em>R</em><sup>2</sup> value corrects for the sample size relative to the number of predictor variables in the model, which results in a lower estimate than its unadjusted counterpart. The <em>adjusted</em> <em>R</em><sup>2</sup> is a better indicator of the magnitude of the association in the underlying <em>population</em> and thus tends to be more accurate. Here we see that the adjusted <em>R</em><sup>2</sup> value is slightly smaller at .215 (or 21.5%). If space permits, it’s a good idea to report both values, but given how close the unadjusted and adjusted <em>R</em><sup>2</sup> estimates tend to be, reporting and interpreting just the unadjusted <em>R</em><sup>2</sup> is usually fine.</p>
+<p>The <em>Model Fit</em> section also contains the sum of squares, <em>F</em>-value, and <em>p</em>-value includes detailed information about overall model fit, which was estimated using ordinary least squares (OLS).. In this table, we are mostly interested in the <em>F</em>-value and its associated <em>p</em>-value, as it indicates whether the estimated model fits the data significantly better than the null model, where the <em>null model</em> does not include any predictor variable(s). In other words, the <em>F</em>-value and <em>p</em>-value are associated with the <em>R</em><sup>2</sup> value and whether the unadjusted and adjusted <em>R</em><sup>2</sup> values are significantly different from zero. In this example, we see that the <em>F</em>-value is 45.317 and that its associated <em>p</em>-value is less than .001 – the latter of which is less than our conventional alpha level of .05. Thus, we reject the null hypothesis that the <em>R</em><sup>2</sup> values are equal to zero, which leads us to conclude that the estimated model outperforms a model with no predictor variable(s). You can think of the <em>R</em><sup>2</sup> value as an indicator of <strong>effect size</strong> at the model level, and in the table above, you will find the conventional thresholds for qualitatively describing a small, medium, or large <em>R</em><sup>2</sup> value.</p>
+<p><strong>Relations Among the Variables:</strong> The section called <em>Relations Among the Variables</em> displays the zero-order (Pearson product-moment) correlation between the predictor variable and outcome variable. This correlation can be used to gauge the <strong>effect size</strong> of the predictor variable in relation to the outcome variable, as a correlation coefficient is a standardized metric that can be compared across samples - unlike an unstandardized regression coefficient. In the specific case of a <em>simple</em> linear regression model, the square-root of the unadjusted <em>R</em><sup>2</sup> value for the model and the correlation coefficient (<em>r</em>) between the predictor variable and the outcome variable will be equivalent. For example:</p>
+<p><span class="math inline">\(R_{unadjusted}^{2} = .220\)</span></p>
+<p><span class="math inline">\(r = \sqrt{R_{unadjusted}^{2}}\)</span></p>
+<p><span class="math inline">\(r = \sqrt{.220}\)</span></p>
+<p><span class="math inline">\(r = .469\)</span></p>
+<p>As you can see in the <em>Correlation Matrix</em> section, the correlation coefficient between <code>Conscientiousness</code> and <code>Performance</code> is indeed approximately .47 (after rounding to two digits after the decimal). By conventional standards, in terms of practical significance, this association can be described qualitatively as medium or medium-large. Below, I provide a table containing conventional rules of thumb for interpreting a correlation coefficient as an effect size (<em>r</em>); you can find a more detailed overview of interpreting correlation coefficients in the <a href="criterionrelatedvalidity.html#criterionrelatedvalidity">chapter on estimating criterion-related validity using correlation</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th><em>r</em></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.10</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.30</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.50</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prediction Error:</strong> In the output section called <em>Prediction Error</em>, information about the forecasting error and prediction intervals. This section moves us toward what would be considered true <em>predictive analytics</em> and <em>machine learning</em>; however, because we only have a single dataset to train our model and test it, we’re not performing true predictive analytics. As such, we won’t pay much attention to interpreting this section of the output in this tutorial. With that said, if you’re curious, feel free to read on. When performing true predictive analytics, we typically divide our data into at least two datasets. Often, we have at least one <em>training</em> dataset that we use to “train” or estimate a given model; often, we have more than one training dataset, though. After training the model on one or more training datasets, we then evaluate the model on a <em>test</em> dataset that should contain data from an entirely different set of cases than the training dataset(s). As a more rigorous approach, we can instead use a <em>validation</em> dataset to evaluate the training dataset(s), and after we’ve picked the model that performs best on the validation set, we then pass the model along to the test dataset to see if we can confirm the results. What <code>lessR</code> is doing in the <em>Prediction Error</em> section is taking the model you estimated using the focal dataset, which we could call our training dataset, and then it takes the values for our predictor and outcome variables from our sample and plugs them into the model and accounts for forecasting error for each set of values. Specifically, the standard error of forecast (sf) for each set of values is base on a combination of the standard deviation of the residuals for the entire model (modeling error) and the sampling error for the value on the regression line. Consequently, each set of values is assigned a lower and upper bound of a prediction interval for the outcome variable. The width of the prediction interval is specific to the values used to test the model, so the widths vary across the values. In fact, the further one gets from the mean of the outcome variable (in either direction), the wider the prediction intervals become. The 95% prediction intervals, along with the 95% confidence intervals and regression line of best fit, are plotted on the third and final plot of the function output. As you can, see the prediction intervals are the outermost lines as they include both sampling error and the modeling error, whereas the confidence intervals are the inner lines, as they reflect just the sampling error.</p>
+<p><strong>Sample Technical Write-Up of Results:</strong> A concurrent validation study was conducted to assess the criterion-related validity of a conscientiousness personality test in relation to the criterion of job performance. A simple linear regression model was estimated based on a sample of 163 job incumbents’ scores on the conscientiousness test and job performance. A statistically significant association was found between scores on the conscientiousness test and job performance, such that for every one point increase in conscientiousness, job performance tended to increase by .631 points (<em>b</em> = .631, <em>p</em> &lt; .001, 95% CI[.446, .817]. The unadjusted <em>R</em><sup>2</sup> value of .220 indicated that the model fit the data reasonably well, as evidenced by what can be described as a medium or medium-large effect by conventional standards. Specifically, the adjusted <em>R</em><sup>2</sup> value of .220 indicates that scores on the conscientiousness test explained 22.0% of the variability in job performance scores. In corroboration, the zero-order correlation coefficient for conscientiousness test in relation to the criterion of job performance was medium or medium-large in magnitude (<em>r</em> = .47), where the correlation coefficient can be referred to as a validity coefficient in this context.</p>
+</div>
+<div id="standardized_slr" class="section level4" number="30.1.0.3">
+<h4><span class="header-section-number">30.1.0.3</span> Optional: Obtaining Standardized Coefficients</h4>
+<p>As an optional detour, if you would like to estimate the same simple linear regression model but view the <em>standardized</em> regression coefficients, simply add the argument <code>new_scale="z"</code> to your previous <code>Regression</code> function; that argument rescales your outcome and predictor variables to <em>z</em>-scores prior to estimating the model, which in effect produces standardized coefficients.</p>
+<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb920-1"><a href="predictingcriterionscores.html#cb920-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model with standardized coefficients</span></span>
+<span id="cb920-2"><a href="predictingcriterionscores.html#cb920-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df, </span>
+<span id="cb920-3"><a href="predictingcriterionscores.html#cb920-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">new_scale=</span><span class="st">&quot;z&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## Rescaled Data, First Six Rows
+##     Performance Conscientiousness
+## 134       0.389            -2.523
+## 144      -1.133            -2.523
+## 11       -0.180            -2.058
+## 39       -2.044            -2.058
+## 49       -0.822            -1.826
+## 106      -2.044            -1.826</code></pre>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-537-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-537-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-537-3.png" width="672" /></p>
+<pre><code>## &gt;&gt;&gt; Suggestion
+## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
+## Regression(my_formula=Performance ~ Conscientiousness, data=df, new_scale=&quot;z&quot;, Rmd=&quot;eg&quot;)  
+## 
+## 
+##   BACKGROUND
+## 
+## Data Frame:  df 
+##  
+## Response Variable: Performance 
+## Predictor Variable: Conscientiousness 
+##  
+## Number of cases (rows) of data:  163 
+## Number of cases retained for analysis:  163 
+##  
+## Data are Standardized 
+## 
+## 
+##   BASIC ANALYSIS
+## 
+##                    Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
+##       (Intercept)     0.000      0.069    0.000    1.000      -0.137       0.137 
+## Conscientiousness     0.469      0.070    6.732    0.000       0.331       0.606 
+## 
+## 
+## Standard deviation of residuals:  0.886 for 161 degrees of freedom 
+##  
+## R-squared:  0.220    Adjusted R-squared:  0.215    PRESS R-squared:  0.199 
+## 
+## Null hypothesis that all population slope coefficients are 0:
+##   F-statistic: 45.326     df: 1 and 161     p-value:  0.000 
+## 
+## 
+##                     df    Sum Sq   Mean Sq   F-value   p-value 
+## Model                1    35.584    35.584    45.326     0.000 
+## Residuals          161   126.396     0.785 
+## Performance        162   161.981     1.000 
+## 
+## 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##                     Performance Conscientiousness 
+##         Performance        1.00              0.47 
+##   Conscientiousness        0.47              1.00 
+## 
+## 
+##   RESIDUALS AND INFLUENCE
+## 
+## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
+##    [sorted by Cook&#39;s Distance] 
+##    [res_rows = 20, out of 163 rows of data, or do res_rows=&quot;all&quot;] 
+## --------------------------------------------------------------------- 
+##       Conscientiousness Performance fitted  resid rstdnt dffits cooks 
+##   134            -2.523       0.389 -1.183  1.572  1.829  0.399 0.078 
+##   161             1.662      -1.195  0.779 -1.974 -2.283 -0.352 0.060 
+##   130             1.894      -0.802  0.888 -1.690 -1.951 -0.333 0.054 
+##   116             1.197      -1.133  0.561 -1.694 -1.943 -0.240 0.028 
+##    64             2.127       2.098  0.997  1.101  1.267  0.238 0.028 
+##   110             0.499      -2.044  0.234 -2.278 -2.628 -0.231 0.026 
+##    39            -2.058      -2.044 -0.965 -1.079 -1.240 -0.227 0.026 
+##   106            -1.826      -2.044 -0.856 -1.188 -1.363 -0.226 0.025 
+##    43            -1.593      -2.044 -0.747 -1.297 -1.486 -0.222 0.024 
+##    99            -1.361      -2.044 -0.638 -1.406 -1.609 -0.215 0.023 
+##   127            -1.361      -2.044 -0.638 -1.406 -1.609 -0.215 0.023 
+##    34            -0.663       1.643 -0.311  1.954  2.242  0.212 0.022 
+##   143             0.964       2.098  0.452  1.646  1.884  0.206 0.021 
+##   126            -1.593       0.431 -0.747  1.178  1.347  0.201 0.020 
+##    55            -0.663       1.529 -0.311  1.840  2.108  0.199 0.019 
+##   132            -0.896      -2.044 -0.420 -1.624 -1.857 -0.197 0.019 
+##    92             0.732       2.098  0.343  1.755  2.009  0.196 0.019 
+##    95             1.197       1.891  0.561  1.330  1.518  0.187 0.017 
+##    28            -0.663      -2.044 -0.311 -1.733 -1.983 -0.187 0.017 
+##   142            -0.663      -2.044 -0.311 -1.733 -1.983 -0.187 0.017 
+## 
+## 
+##   PREDICTION ERROR 
+## 
+## Data, Predicted, Standard Error of Forecast, 
+## 95% Prediction Intervals 
+##    [sorted by lower bound of prediction interval] 
+##    [to see all intervals do pred_rows=&quot;all&quot;] 
+##  ----------------------------------------------
+## 
+##       Conscientiousness Performance   pred    sf pi.lwr pi.upr width 
+##   134            -2.523       0.389 -1.183 0.906 -2.972  0.607 3.578 
+##   144            -2.523      -1.133 -1.183 0.906 -2.972  0.607 3.578 
+## ... 
+##   150            -0.198      -0.387 -0.093 0.889 -1.848  1.663 3.511 
+##    27             0.034      -0.491  0.016 0.889 -1.739  1.771 3.510 
+##    32             0.034      -0.781  0.016 0.889 -1.739  1.771 3.510 
+## ... 
+##    36             2.127       0.462  0.997 0.901 -0.782  2.776 3.559 
+##    64             2.127       2.098  0.997 0.901 -0.782  2.776 3.559 
+##   107             2.127       0.255  0.997 0.901 -0.782  2.776 3.559 
+## 
+## 
+## ----------------------------------------------------- 
+## Plot 1: Distribution of Residuals 
+## Plot 2: Residuals vs Fitted Values 
+## Plot 3: Reg Line, Confidence and Prediction Intervals 
+## -----------------------------------------------------</code></pre>
+<p>In the <em>Estimated Model</em> section of the output, note that the intercept value is zeroed out due to the standardization, and the regression coefficient associated with <code>Conscientiousness</code> is now in standardized units (<span class="math inline">\(\beta\)</span> = .469, <em>p</em> &lt; .001). Note that the <em>p</em>-value is the same as the unstandardized regression coefficient we saw above. The interpretation of this statistically significant standardized regression coefficient is as follows: For every one standardized unit increase in <code>Conscientiousness</code>, <code>Performance</code> increases by .469 standardized units. In the special case of a simple linear regression model, the standardized coefficient associated with the single predictor variable will be equal to the correlation coefficient between the predictor and outcome variables.</p>
+</div>
+</div>
+<div id="predictingcriterionscores_slr" class="section level2" number="30.2">
+<h2><span class="header-section-number">30.2</span> Predicting Criterion Scores</h2>
+<p>Using the simple linear regression model we estimated above, we can write code that generates predicted criterion scores based on new data we feed into the model. In fact, we can even add these predictions to the new data frame to which the new data belong. As we did above, let’s practice using the conscientiousness selection tool (<code>Conscientiousness</code>) and the job performance criterion (<code>Performance</code>).</p>
+<p>We’ll begin by specifying the same simple linear regression model as above – except this time we will assign the estimated model to an object that we can subsequently reference. To do so, we’ll use the <code>&lt;-</code> operator. In this example, I’m naming the model <code>reg_mod</code>.</p>
+<div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="predictingcriterionscores.html#cb923-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign simple linear regression model to object</span></span>
+<span id="cb923-2"><a href="predictingcriterionscores.html#cb923-2" aria-hidden="true" tabindex="-1"></a>reg_mod <span class="ot">&lt;-</span> <span class="fu">Regression</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df)</span></code></pre></div>
+<p>Now that we have assigned the simple linear regression model to the object <code>reg_mod</code>, we can reference specific elements from that model, such as the regression coefficients. We’re going to do so to build our regression model equation as an <code>R</code> formula.</p>
+<p>Let’s begin by referencing the model intercept value and assigning it to an object called <code>b0</code>. I’m calling this object <code>b0</code> because conventionally the “b” or “B” notation is used to signify regression coefficients and because the “0” (zero) is often used as a subscript to signify our intercept value in a regression model equation. To “pull” or reference the intercept value from our regression model, we can specify the name of our regression model object (<code>reg_mod</code>) followed by the <code>$</code> operator and <code>coefficients</code>. If we were to run this by itself, it would print all of the regression coefficient values estimated for the model; we, however, want just the intercept value. Given that, immediately following <code>coefficients</code>, include brackets (<code>[ ]</code>). Within the brackets, include the exact text: <code>"(Intercept)"</code>. This will call up the intercept coefficient for any model estimated using the <code>Regression</code> function from <code>lessR</code>.</p>
+<div class="sourceCode" id="cb924"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb924-1"><a href="predictingcriterionscores.html#cb924-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model intercept and assign to object</span></span>
+<span id="cb924-2"><a href="predictingcriterionscores.html#cb924-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;(Intercept)&quot;</span>]</span></code></pre></div>
+<p>Next, let’s “pull” the regression coefficient associated with the slope, which in a simple linear regression is the coefficient associated with the sole predictor variable (<code>Conscientiousness</code>). This time, let’s assign this regression coefficient to an object called <code>b1</code>, which adheres to conventional notation. To reference this coefficient, we can specify the name of our regression model object (<code>reg_mod</code>) followed by the <code>$</code> operator and <code>coefficients</code> – just as we did above with the model intercept. Immediately following <code>coefficients</code>, include brackets (<code>[ ]</code>). Within the brackets, include the exact name of the predictor variable associated with the coefficient you wish to reference: <code>"Conscientiousness"</code>.</p>
+<div class="sourceCode" id="cb925"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb925-1"><a href="predictingcriterionscores.html#cb925-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model slope coefficient and assign to object</span></span>
+<span id="cb925-2"><a href="predictingcriterionscores.html#cb925-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;Conscientiousness&quot;</span>]</span></code></pre></div>
+<p>Now that we’ve pulled the coefficients and assigned them to objects (<code>b0</code>, <code>b1</code>) that we can reference in our regression model equation, let’s read in new data so that we can reference new applicants’ scores on the same conscientiousness selection tool. As we did above in the <em>Initial Steps</em> section, let’s read in the data file called <em>“ApplicantData.csv”</em> and assign it to a new object. Here I call this new object <code>new_df</code>.</p>
+<div class="sourceCode" id="cb926"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb926-1"><a href="predictingcriterionscores.html#cb926-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
+<span id="cb926-2"><a href="predictingcriterionscores.html#cb926-2" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;ApplicantData.csv&quot;</span>)</span></code></pre></div>
+<p>Let’s take a peek at first six rows of the <code>new_df</code> data frame object.</p>
+<div class="sourceCode" id="cb927"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb927-1"><a href="predictingcriterionscores.html#cb927-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first six rows</span></span>
+<span id="cb927-2"><a href="predictingcriterionscores.html#cb927-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_df)</span></code></pre></div>
+<pre><code>##   ApplicantID Conscientiousness Interview
+## 1         AA1               4.3       4.1
+## 2         AA2               3.1       4.9
+## 3         AA3               1.1       2.5
+## 4         AA4               1.0       3.3
+## 5         AA5               2.4       4.4
+## 6         AA6               2.9       3.3</code></pre>
+<p>Note that the data frame object includes an <code>ApplicantID</code> unique identifier variable as well as variables associated with two selection tools: <code>Conscientiousness</code> and <code>Interview</code>. Note that we don’t have any criterion (<code>Performance</code>) scores here because these folks are still applicants. Our goal then is to predict their future criterion scores using our regression model from above.</p>
+<p>To make criterion-score predictions based on the new conscientiousness test data for applicants, we’ll need to create a regression equation based on estimates from the simple linear regression model. Fortunately, we’ve already created objects corresponding to our model intercept (<code>b0</code>) and slope coefficient (<code>b1</code>). Using these values, we’ll specify the equation for a line (e.g., Y = b0 + b1 * X).</p>
+<p>In our model equation, we’ll start by specifying a new variable containing what will be our vector of criterion-score predictions based on the <code>Conscientiousness</code> selection tool variable. I’m going to call this new variable <code>Perf_Predict_Consc</code>, as hopefully that name signals that the variable contains performance predictions based on the conscientiousness test scores. Using the <code>$</code> operator, we can attach this new variable to the new data frame object we read in called <code>new_df</code>. To the right of the <code>&lt;-</code> operator, we’ll specify the rest of the equation; in this context, you can think of the <code>&lt;-</code> operator as being the equal sign in our equation; in fact, you could replace the <code>&lt;-</code> operator with <code>=</code> if you wanted to. First, type in the object associated with model intercept (<code>b0</code>) followed by the <code>+</code> operator. Second, type in the object associated with the slope coefficient associated with the predictor variable (<code>b1</code>), and follow that with the multiplication operator (<code>*</code>) so that we can multiple the slope coefficient by values of the predictor variable (<code>Conscientiousness</code>). Finally, after the <code>*</code> operator, type in the name of the predictor variable from the <em>new</em> data frame object: <code>new_df$Conscientiousness</code>.</p>
+<div class="sourceCode" id="cb929"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb929-1"><a href="predictingcriterionscores.html#cb929-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assemble regression equation and assign to new variable in second data frame</span></span>
+<span id="cb929-2"><a href="predictingcriterionscores.html#cb929-2" aria-hidden="true" tabindex="-1"></a>new_df<span class="sc">$</span>Perf_Predict_Consc <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> new_df<span class="sc">$</span>Conscientiousness</span></code></pre></div>
+<p>Let’s take a look at the <code>new_df</code> data frame object to verify that the new <code>Perf_Predict_Consc</code> variable (containing the predicted criterion scores) was added successfully.</p>
+<div class="sourceCode" id="cb930"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb930-1"><a href="predictingcriterionscores.html#cb930-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame object</span></span>
+<span id="cb930-2"><a href="predictingcriterionscores.html#cb930-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(new_df)</span></code></pre></div>
+<p>In the viewer tab, we can use the up and down arrows to sort by variable scores.</p>
+<p>Alternatively and optionally, we can use the <code>order</code> function from base <code>R</code> and bracket (<code>[ ]</code>) notation to sort in <em>ascending</em> order (by default). Simply type the name of the data frame object (<code>new_df</code>), followed by brackets (<code>[ ]</code>). Within the brackets type the name of the <code>order</code> function, and within the function parentheses by the name of the variable(s) we wish to sort by, which is <code>Perf_Predict_Consc</code> from the <code>new_df</code> data frame in this example. After the function parentheses (<code>( )</code>) and still within the brackets, type a comma (<code>,</code>), as anything within brackets that comes to the left of the comma indicates that columns (not rows) are being referenced.</p>
+<div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb931-1"><a href="predictingcriterionscores.html#cb931-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default ascending order</span></span>
+<span id="cb931-2"><a href="predictingcriterionscores.html#cb931-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(new_df<span class="sc">$</span>Perf_Predict_Consc), ]</span></code></pre></div>
+<pre><code>##    ApplicantID Conscientiousness Interview Perf_Predict_Consc
+## 4          AA4               1.0       3.3           1.411143
+## 3          AA3               1.1       2.5           1.474276
+## 5          AA5               2.4       4.4           2.295012
+## 6          AA6               2.9       3.3           2.610680
+## 2          AA2               3.1       4.9           2.736947
+## 9          AA9               3.9       4.2           3.242015
+## 1          AA1               4.3       4.1           3.494549
+## 7          AA7               4.4       5.0           3.557682
+## 10        AA10               4.7       4.6           3.747083
+## 8          AA8               4.9       4.5           3.873350</code></pre>
+<p>Conversely, we can sort in <em>descending</em> order by typing a minus (<code>-</code>) before the variable(s) we wish to sort by.</p>
+<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="predictingcriterionscores.html#cb933-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in descending order</span></span>
+<span id="cb933-2"><a href="predictingcriterionscores.html#cb933-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(<span class="sc">-</span>new_df<span class="sc">$</span>Perf_Predict_Consc), ]</span></code></pre></div>
+<pre><code>##    ApplicantID Conscientiousness Interview Perf_Predict_Consc
+## 8          AA8               4.9       4.5           3.873350
+## 10        AA10               4.7       4.6           3.747083
+## 7          AA7               4.4       5.0           3.557682
+## 1          AA1               4.3       4.1           3.494549
+## 9          AA9               3.9       4.2           3.242015
+## 2          AA2               3.1       4.9           2.736947
+## 6          AA6               2.9       3.3           2.610680
+## 5          AA5               2.4       4.4           2.295012
+## 3          AA3               1.1       2.5           1.474276
+## 4          AA4               1.0       3.3           1.411143</code></pre>
+<p>As you can see, applicant AA8 has the highest predicted criterion score, where the criterion in this context is future job performance.</p>
+<p>Importantly, this process of applying a model to make predictions using new data can be expanded to <em>multiple</em> linear regression models. We would simply expand our regression equation to include the coefficients associated with the other predictor variables in such a model.</p>
+</div>
+<div id="summary_predictingcriterionscores" class="section level2" number="30.3">
+<h2><span class="header-section-number">30.3</span> Summary</h2>
+<p>In this tutorial, we learned how to estimate a simple linear regression model using the <code>Regression</code> function from the <code>lessR</code> package, and how to apply the model to subsequent data to predict criterion scores based on employee selection tool scores.</p>
+</div>
+<div id="predictingcriterionscores_supplement" class="section level2" number="30.4">
+<h2><span class="header-section-number">30.4</span> Chapter Supplement</h2>
+<p>In addition to the <code>Regression</code> function from the <code>lessR</code> package covered <a href="predictingcriterionscores.html#estimate_slr">above</a>, we can use the <code>lm</code> function from base R to estimate a simple linear regression model. Because this function comes from base R, we do not need to install and access an additional package. In this supplement, you will also have an opportunity to learn how to make an APA (American Psychological Association) style table of regression results.</p>
+<div id="predictingcriterionscores_supplement_functions" class="section level4" number="30.4.0.1">
+<h4><span class="header-section-number">30.4.0.1</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lm</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>print</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>plot</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>cooks.distance</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>sort</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>head</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>summary</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>confint</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>cor</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>scale</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>apa.reg.table</code></td>
+<td><code>apaTables</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="predictingcriterionscores_initsteps_supplement" class="section level4" number="30.4.0.2">
+<h4><span class="header-section-number">30.4.0.2</span> Initial Steps</h4>
+<p>If required, please refer to the <a href="predictingcriterionscores.html#initsteps_slr">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
+<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb935-1"><a href="predictingcriterionscores.html#cb935-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb935-2"><a href="predictingcriterionscores.html#cb935-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb936-1"><a href="predictingcriterionscores.html#cb936-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb936-2"><a href="predictingcriterionscores.html#cb936-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb936-3"><a href="predictingcriterionscores.html#cb936-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb936-4"><a href="predictingcriterionscores.html#cb936-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb937-1"><a href="predictingcriterionscores.html#cb937-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb937-2"><a href="predictingcriterionscores.html#cb937-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb937-3"><a href="predictingcriterionscores.html#cb937-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb937-4"><a href="predictingcriterionscores.html#cb937-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb937-5"><a href="predictingcriterionscores.html#cb937-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ---------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   Conscientiousness = col_double(),
+##   Interview = col_double(),
+##   Performance = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="predictingcriterionscores.html#cb939-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb939-2"><a href="predictingcriterionscores.html#cb939-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;         &quot;Performance&quot;</code></pre>
+<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="predictingcriterionscores.html#cb941-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb941-2"><a href="predictingcriterionscores.html#cb941-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,4] [163 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ EmployeeID       : num [1:163] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Conscientiousness: num [1:163] 3.33 3.83 3.33 4 3.67 ...
+##  $ Interview        : num [1:163] 3.5 3.61 3.42 4.48 4.82 3.54 3.87 3.54 4.08 5 ...
+##  $ Performance      : num [1:163] 2.35 1.54 3.99 3.78 3.77 3.51 3.65 1.55 2.51 3.63 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   EmployeeID = col_double(),
+##   ..   Conscientiousness = col_double(),
+##   ..   Interview = col_double(),
+##   ..   Performance = col_double()
+##   .. )</code></pre>
+<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="predictingcriterionscores.html#cb943-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb943-2"><a href="predictingcriterionscores.html#cb943-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 4
+##   EmployeeID Conscientiousness Interview Performance
+##        &lt;dbl&gt;             &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1          1              3.33      3.5         2.35
+## 2          2              3.83      3.61        1.54
+## 3          3              3.33      3.42        3.99
+## 4          4              4         4.48        3.78
+## 5          5              3.67      4.82        3.77
+## 6          6              4         3.54        3.51</code></pre>
+</div>
+<div id="lm_function" class="section level3" number="30.4.1">
+<h3><span class="header-section-number">30.4.1</span> <code>lm</code> Function from Base R</h3>
+<p>As a critical first step, we must specify the regression model using the <code>lm</code> function. To use the <code>lm</code> (linear model) function, create a name for your regression model (<code>reg.mod1</code>) using the <code>&lt;-</code> symbol. Next, type the name of the <code>lm</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome variable (<code>Performance</code>) to the left of the <code>~</code> operator and the name of the predictor variable (<code>Conscientiousness</code>) to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>Conscientiousness</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>). Now we are ready to determine whether we have satisfied key statistical assumptions and, if so, review the summary of our model estimation results.</p>
+<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="predictingcriterionscores.html#cb945-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
+<span id="cb945-2"><a href="predictingcriterionscores.html#cb945-2" aria-hidden="true" tabindex="-1"></a>reg.mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df)</span></code></pre></div>
+<p><em>Note:</em> You won’t see any output in your console by specifying the regression model above. If you print the model (<code>reg.mod1</code>) to your console using the <code>print</code> function from base <code>R</code>, you only get the regression coefficients (but no statistical tests or model fit information). Later on, we’ll apply a different function to obtain the full model results.</p>
+<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="predictingcriterionscores.html#cb946-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print very brief model information (NOT NECESSARY)</span></span>
+<span id="cb946-2"><a href="predictingcriterionscores.html#cb946-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(reg.mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Performance ~ Conscientiousness, data = df)
+## 
+## Coefficients:
+##       (Intercept)  Conscientiousness  
+##            0.7798             0.6313</code></pre>
+<p><strong>Statistical Assumptions:</strong> Recall, towards the beginning of this tutorial, we used the <code>ScatterPlot</code> function from <code>lessR</code> to generate a bivariate scatterplot between the <code>Conscientiousness</code> and <code>Performance</code> variables to assess the assumption of linearity, look for bivariate outliers, and assess whether the assumption of bivariate normality has been satisfied. Now we will generate additional plots and other output to inform our conclusions whether we have satisfied certain statistical assumptions.</p>
+<p>We will begin by generating a scatterplot displaying the association between the <em>fitted (predicted) values and residuals</em>. To do so, we will use the <code>plot</code> function from base <code>R</code>. As the first argument, enter the name of the regression model object you created above (<code>reg.mod1</code>). As the second argument, type the numeral <em>1</em>, which will request the first of four possible diagnostic plots, of which we will review three.</p>
+<div class="sourceCode" id="cb948"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb948-1"><a href="predictingcriterionscores.html#cb948-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
+<span id="cb948-2"><a href="predictingcriterionscores.html#cb948-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">1</span>)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-554-1.png" width="672" /></p>
+<p>We previously saw using the <code>ScatterPlot</code> function from <code>lessR</code> that the association between the two variables appeared to be linear and evidenced a bivariate normal distribution. We did, however, note that there might be some <em>bivariate outliers</em> that could influence the estimated regression model. The current plot shows the association between the fitted values (x-axis) and the residuals (y-axis). If you recall, the residuals are the error in our estimations - or in other words, how much our fitted values for the outcome variable deviate from the observed (actual) values for the outcome variable. The term “fitted values” is another way of saying predicted values for the outcome variable, but the language “fitted” is more precise here. The horizontal dotted line is drawn at the residual value of zero; remember, our goal is to minimize the size of residuals (i.e., error). The solid line shows the deviations from zero of the residuals for each fitted value, and the greater the solid line deviates from the dotted line, the more likely that (a) variances of the residuals may <em>not</em> be equal for each level of the predictor variable (violation of the assumption of homoscedasticity), (b) the average residual error value may <em>not</em> be zero for each level of the predictor variable, and (c) there may be potential bivariate outliers influencing the fitted (predicted) values. In this plot, we can see that the variances of the residuals seem to be about equal across observations (evidence of homoscedasticity), the average residual error value appears to be about zero (which is good), and there appears to be three cases that are flagged as a potential bivariate outlier (i.e., row numbers <em>34</em>, <em>110</em>, and <em>161</em>).</p>
+<p>As an additional diagnostic tool, we can plot a Q-Q plot, which provides an indication as to whether the residuals are normality distributed (one of our statistical assumptions). Simply adapt the <code>plot</code> script from above, but this time, enter the numeral <em>2</em> (instead of <em>1</em>) to request the second diagnostic plot.</p>
+<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="predictingcriterionscores.html#cb949-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
+<span id="cb949-2"><a href="predictingcriterionscores.html#cb949-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-555-1.png" width="672" /></p>
+<p>Normally distributed residuals will fall along the dotted diagonal line. As you can see, the residuals fall, for the most part, on or near the line with the exception of those three potential outlier cases that we identified in the previous plot: row numbers <em>34</em>, <em>110</em>, and <em>161</em>.</p>
+<p>As the last diagnostic plot, let’s look at Cook’s distance (D) across cases. Once again, adapt the <code>plot</code> script from above, but this time, enter the numeral <em>4</em> to request the fourth diagnostic plot. We’re skipping the third plot.</p>
+<div class="sourceCode" id="cb950"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb950-1"><a href="predictingcriterionscores.html#cb950-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
+<span id="cb950-2"><a href="predictingcriterionscores.html#cb950-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">4</span>)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-556-1.png" width="672" /></p>
+<p>Here we see flagged cases associated with row numbers <em>130</em>, <em>134</em>, and <em>161</em> based on Cook’s distance.</p>
+<p>We can also grab the cases with the highest Cook’s distances. Let’s create an object called <code>cooksD</code> that we will assign a vector of Cook’s distance values to using the <code>cooks.distance</code> function from base <code>R</code>. Just enter the name of the regression model object (<code>reg.mod1</code>) as the sole parenthetical argument. Next, update the object we called <code>cooksD</code> by applying the <code>sort</code> function from base <code>R</code> and entering the <code>cooksD</code> object as the first object and <code>decreasing=TRUE</code> as the second argument; this will sort the Cook’s distance values in descending order. Finally, apply the <code>head</code> function from base <code>R</code>, and as the first argument enter the name of the <code>cooksD</code> object that we just sorted; as the second argument, type <code>n=20</code> to show the top 20 rows, as opposed to the default top 6 rows.</p>
+<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="predictingcriterionscores.html#cb951-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
+<span id="cb951-2"><a href="predictingcriterionscores.html#cb951-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.mod1)</span>
+<span id="cb951-3"><a href="predictingcriterionscores.html#cb951-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb951-4"><a href="predictingcriterionscores.html#cb951-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort Cook&#39;s distance values in descending order               </span></span>
+<span id="cb951-5"><a href="predictingcriterionscores.html#cb951-5" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">sort</span>(cooksD, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb951-6"><a href="predictingcriterionscores.html#cb951-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb951-7"><a href="predictingcriterionscores.html#cb951-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
+<span id="cb951-8"><a href="predictingcriterionscores.html#cb951-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##        134        161        130        116         64        110         39        106         43         99 
+## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 0.02443426 0.02292889 
+##        127         34        143        126         55        132         92         95         28        142 
+## 0.02292889 0.02189203 0.02098965 0.02012473 0.01941305 0.01905427 0.01887586 0.01739145 0.01723973 0.01723973</code></pre>
+<p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>134</em> is by far the largest, and the next largest values are clustered closer together. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed 1.</p>
+<p>Across the three diagnostic plots and the vector of Cook’s distances, <em>134</em> appears to be consistently the most extreme outlier, but it still may not be extreme enough to consider removing. One could perform a sensitivity analysis by estimating the model with and without case <em>134</em> to see if the pattern of results remains the same.</p>
+<p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base <code>R</code> and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod1</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>
+<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="predictingcriterionscores.html#cb953-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of simple linear regression model results</span></span>
+<span id="cb953-2"><a href="predictingcriterionscores.html#cb953-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Performance ~ Conscientiousness, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.19993 -0.49687 -0.00948  0.66074  1.88619 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value      Pr(&gt;|t|)    
+## (Intercept)        0.77981    0.33276   2.343        0.0203 *  
+## Conscientiousness  0.63134    0.09378   6.732 0.00000000028 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8556 on 161 degrees of freedom
+## Multiple R-squared:  0.2196, Adjusted R-squared:  0.2148 
+## F-statistic: 45.32 on 1 and 161 DF,  p-value: 0.0000000002801</code></pre>
+<p>The output first displays the model you specified, followed by descriptive statistics about the residuals (i.e., estimation errors). The table called <em>Coefficients</em> contains the estimated regression model, including the regression coefficients (slopes, weights) and their standard errors, <em>t</em>-values, and <em>p</em>-values. Typically, the intercept value and its significance test are not of interest, unless we wish to use the value to specify the regression model equation (which we do later in this tutorial). The estimate of the regression coefficient for the predictor variable (<code>Conscientiousness</code>) in relation to the outcome variable (<code>Performance</code>) is often of substantive interest. Here, we see that the unstandardized regression coefficient for <code>Conscientiousness</code> is .631, and its associated <em>p</em>-value is less than .001 (<em>b</em> = .631, <em>p</em> &lt; .001). Given that the <em>p</em>-value is less than our conventional two-tailed alpha level of .05, we reject the null hypothesis that the regression coefficient is equal to zero, which means that we conclude that the regression coefficient is statistically significantly different from zero. We can interpret the significant regression coefficient as follows: <em>For every one unit increase in the predictor variable (<code>Conscientiousness</code>), the outcome variable (<code>Performance</code>) increases by .631 (unstandardized) units.</em> Using the intercept and predictor variable coefficient estimates, we can write out the equation for the regression model as follows:</p>
+<p><span class="math inline">\(Performance_{predicted} = .780 + (.631 * Conscientiousness_{observed})\)</span></p>
+<p>Note that the equation above is simply the equation for a line: <span class="math inline">\(Y_{predicted} = .780 + (.631 * X_{observed})\)</span>. If we plug in, for instance, the value 3 as an observed value of <code>Conscientiousness</code>, then we get a predicted criterion score of 2.673, as shown below:</p>
+<p><span class="math inline">\(2.673 = .780 + (.631 * 3)\)</span></p>
+<p>Thus, we are able to predict future values of <code>Performance</code> based on our estimated regression model.</p>
+<p>Below the table containing the regression coefficient estimates, the (unadjusted, multiple) <em>R</em>-squared (<em>R</em><sup>2</sup>) and <em>adjusted</em> <em>R</em><sup>2</sup> values appear, which are indicators of the model’s fit to the data as well as the extent to which the predictor variable explains variability in the outcome variable. First, the <em>R</em>-squared (<em>R</em><sup>2</sup>) value of .220 indicates the extent to which the predictor variable explains variance in the outcome variable in this sample - or in other words, how much errors are minimized in the sample given the specified model; if you multiply the value by 100, you get a percentage. In this case, we find that 22.0% of the variance in <code>Performance</code> is explained by <code>Conscientiousness</code>. This raw, unadjusted <em>R</em>-squared (<em>R</em><sup>2</sup>) value, however, is sensitive to the sample size and the number of predictor variables in the model. The <em>adjusted</em> <em>R</em><sup>2</sup> value corrects for the sample size relative to the number of predictor variables in the model, which results in a lower estimate than its unadjusted counterpart. The <em>adjusted</em> <em>R</em><sup>2</sup> is a better indicator of the magnitude of the association in the underlying <em>population</em> and thus tends to be more accurate. Here we see that the adjusted <em>R</em><sup>2</sup> value is slightly smaller at .215 (or 21.5%).</p>
+<p>Below the <em>R</em>-squared (<em>R</em><sup>2</sup>) and <em>adjusted</em> <em>R</em><sup>2</sup> values, the <em>F</em>-value and <em>p</em>-value is a statitical test of overall model fit, which was estimated using ordinary least squares (OLS), as described earlier in this tutorial. The <em>F</em>-value and its associated <em>p</em>-value indicate whether the estimated model fits the data significantly better than the null model, where the <em>null model</em> does not include any predictor variable(s). In other words, the <em>F</em>-value and <em>p</em>-value are associated with the <em>R</em><sup>2</sup> value and whether the unadjusted and adjusted <em>R</em><sup>2</sup> values are significantly different from zero. In this example, we see that the <em>F</em>-value is 45.32 and its associated <em>p</em>-value is very small (less than .001), the latter of which is less than our conventional alpha level of .05. Thus, we reject the null hypothesis that the <em>R</em><sup>2</sup> values are equal to zero, which leads us to conclude that the estimated model outperforms a model with no predictor variable(s). You can think of the <em>R</em><sup>2</sup> values as indicators of <strong>effect size</strong> at the model level. Here are some rules of thumb for qualitatively interpreting the magnitude of the effect size, which is another way of saying “determining the level of practical signficance”:</p>
+<table>
+<thead>
+<tr class="header">
+<th><em>R</em><sup>2</sup></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.01</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.09</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.25</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p>To estimate the 95% confidence intervals, we can apply the <code>confint</code> function from base <code>R</code>, and enter the name of the regression model (<code>reg.mod1</code>) as the sole argument.</p>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="predictingcriterionscores.html#cb955-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate 95% confidence intervals</span></span>
+<span id="cb955-2"><a href="predictingcriterionscores.html#cb955-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(reg.mod1)</span></code></pre></div>
+<pre><code>##                       2.5 %    97.5 %
+## (Intercept)       0.1226692 1.4369466
+## Conscientiousness 0.4461298 0.8165403</code></pre>
+<p>The 95% confidence interval ranges from .446 to .817 (i.e., 95% CI[.446, .817]), which indicates that the true population parameter for association likely falls somewhere between those two values.</p>
+<p>As a direct indicator of the effect size (practical significance), we can calculate the zero-order (Pearson product-moment) correlation between <code>Conscientiousness</code> and <code>Performance</code>. Keep the <code>method="pearson"</code> as is to request a Pearson product-moment correlation, and be sure to include the name of the data frame object (<code>Selection</code>) followed by the <code>$</code> operator in front of each variable.</p>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="predictingcriterionscores.html#cb957-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate zero-order correlation (effect size)</span></span>
+<span id="cb957-2"><a href="predictingcriterionscores.html#cb957-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>Conscientiousness, df<span class="sc">$</span>Performance, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 0.4686663</code></pre>
+<p>The correlation coefficient is medium-large in magnitude (<em>r</em> = .47), which indicates a moderate-strong, positive, linear association between <code>Conscientiousness</code> and <code>Performance</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th><em>r</em></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.10</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.30</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.50</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sample Technical Write-Up of Results:</strong> A concurrent validation study was conducted to assess the criterion-related validity of a conscientiousness personality test in relation to the criterion of job performance. A simple linear regression model was estimated based on a sample of 163 job incumbents’ scores on the conscientiousness test and job performance. A statistically significant association was found between scores on the conscientiousness test and job performance, such that for every one point increase in conscientiousness, job performance tended to increase by .631 points (<em>b</em> = .631, <em>p</em> &lt; .001, 95% CI[.446, .817]. The unadjusted <em>R</em><sup>2</sup> value of .220 indicated that the model fit the data reasonably well, as evidenced by what can be described as a medium or medium-large effect by conventional standards. Specifically, the adjusted <em>R</em><sup>2</sup> value of .220 indicates that scores on the conscientiousness test explained 22.0% of the variability in job performance scores. In corroboration, the zero-order correlation coefficient for conscientiousness test in relation to the criterion of job performance was medium or medium-large in magnitude (<em>r</em> = .47), where the correlation coefficient can be referred to as a validity coefficient in this context.</p>
+<p><strong>Obtaining Standardized Coefficients:</strong> If you would like to estimate the same simple linear regression model but view the <em>standardized</em> regression coefficients, just do small tweaks to the <code>lm</code> code/script that we specified above. First, let’s name the model something different given that it will include standardized coefficients; here, I decided to name the model <code>st_reg.mod1</code>. Next, within the <code>lm</code> function, apply the <code>scale</code> function from base <code>R</code> to the predictor and outcome variables as shown; doing so will standardize our variables and center them around zero.</p>
+<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="predictingcriterionscores.html#cb959-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate simple linear regression model with standardized coefficient estimates</span></span>
+<span id="cb959-2"><a href="predictingcriterionscores.html#cb959-2" aria-hidden="true" tabindex="-1"></a>st_reg.mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">scale</span>(Performance) <span class="sc">~</span> <span class="fu">scale</span>(Conscientiousness), <span class="at">data=</span>df)</span>
+<span id="cb959-3"><a href="predictingcriterionscores.html#cb959-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(st_reg.mod1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = scale(Performance) ~ scale(Conscientiousness), data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.27833 -0.51458 -0.00982  0.68429  1.95341 
+## 
+## Coefficients:
+##                                         Estimate              Std. Error t value      Pr(&gt;|t|)    
+## (Intercept)              -0.00000000000000000661  0.06940583793586863059   0.000             1    
+## scale(Conscientiousness)  0.46866634251609151640  0.06961972392189001713   6.732 0.00000000028 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8861 on 161 degrees of freedom
+## Multiple R-squared:  0.2196, Adjusted R-squared:  0.2148 
+## F-statistic: 45.32 on 1 and 161 DF,  p-value: 0.0000000002801</code></pre>
+<p>In the <em>Coefficients</em> portion of the output, note that the intercept value is virtually zeroed out due to the standardization, and the regression coefficient associated with <code>Conscientiousness</code> is now in standardized units (<span class="math inline">\(\beta\)</span> = .47, <em>p</em> &lt; .001). The reason that the intercept value is not exactly zero is rounding error. Note that the <em>p</em>-value is the same as the unstandardized regression coefficient we saw above. The interpretation of this statistically significant standardized regression coefficient is as follows: For every one standardized unit increase in <code>Conscientiousness</code>, <code>Performance</code> increases by .47 standardized units. Note that in the case of a simple linear regression model, the standardized regression coefficient is equal to the corresponding correlation coefficient between the same two variables.</p>
+</div>
+<div id="apatable_slr" class="section level3" number="30.4.2">
+<h3><span class="header-section-number">30.4.2</span> APA-Style Results Table</h3>
+<p>If you want to present the results of your simple linear regression to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package.</p>
+<p>Using the <code>lm</code> function from base <code>R</code>, as we did above, let’s begin by estimating a simple linear regression model and naming the model object (<code>reg.mod1</code>).</p>
+<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="predictingcriterionscores.html#cb961-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate simple linear regression model</span></span>
+<span id="cb961-2"><a href="predictingcriterionscores.html#cb961-2" aria-hidden="true" tabindex="-1"></a>reg.mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df)</span></code></pre></div>
+<p>If you haven’t already, install and access the <code>apaTables</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
+<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb962-1"><a href="predictingcriterionscores.html#cb962-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb962-2"><a href="predictingcriterionscores.html#cb962-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;apaTables&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb963-1"><a href="predictingcriterionscores.html#cb963-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb963-2"><a href="predictingcriterionscores.html#cb963-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(apaTables)</span></code></pre></div>
+<p>The <code>apa.reg.table</code> function from <code>apaTables</code> is pretty straightforward. Simply enter your regression model object (<code>reg.mod1</code>) as the sole parenthetical argument. This will generate a table as output in your Console.</p>
+<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb964-1"><a href="predictingcriterionscores.html#cb964-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style regression table</span></span>
+<span id="cb964-2"><a href="predictingcriterionscores.html#cb964-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.reg.table</span>(reg.mod1)</span></code></pre></div>
+<pre><code>## 
+## 
+## Regression results using Performance as the criterion
+##  
+## 
+##          Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r             Fit
+##        (Intercept)  0.78* [0.12, 1.44]                                                       
+##  Conscientiousness 0.63** [0.45, 0.82] 0.47 [0.33, 0.61] .22 [.12, .32] .47**                
+##                                                                                   R2 = .220**
+##                                                                               95% CI[.12,.32]
+##                                                                                              
+## 
+## Note. A significant b-weight indicates the beta-weight and semi-partial correlation are also significant.
+## b represents unstandardized regression weights. beta indicates the standardized regression weights. 
+## sr2 represents the semi-partial correlation squared. r represents the zero-order correlation.
+## Square brackets are used to enclose the lower and upper limits of a confidence interval.
+## * indicates p &lt; .05. ** indicates p &lt; .01.
+## </code></pre>
+<p>If we add a <code>filename=</code> as a second argument, we can specify the name of a .doc file that we can write to our working directory. Here, I name the file “APA Simple Linear Regression Table.doc”. The .doc file that appears in your working directory will be nicely formatted and include critical regression model results in an organized manner.</p>
+<div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb966-1"><a href="predictingcriterionscores.html#cb966-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style regression table and write to working directory</span></span>
+<span id="cb966-2"><a href="predictingcriterionscores.html#cb966-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.reg.table</span>(reg.mod1, <span class="at">filename=</span><span class="st">&quot;APA Simple Linear Regression Table.doc&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## 
+## Regression results using Performance as the criterion
+##  
+## 
+##          Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r             Fit
+##        (Intercept)  0.78* [0.12, 1.44]                                                       
+##  Conscientiousness 0.63** [0.45, 0.82] 0.47 [0.33, 0.61] .22 [.12, .32] .47**                
+##                                                                                   R2 = .220**
+##                                                                               95% CI[.12,.32]
+##                                                                                              
+## 
+## Note. A significant b-weight indicates the beta-weight and semi-partial correlation are also significant.
+## b represents unstandardized regression weights. beta indicates the standardized regression weights. 
+## sr2 represents the semi-partial correlation squared. r represents the zero-order correlation.
+## Square brackets are used to enclose the lower and upper limits of a confidence interval.
+## * indicates p &lt; .05. ** indicates p &lt; .01.
+## </code></pre>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="criterionrelatedvalidity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 30 Creating a Data Analytics Portfolio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 31 Creating a Data Analytics Portfolio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 30 Creating a Data Analytics Portfolio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 31 Creating a Data Analytics Portfolio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 30 Creating a Data Analytics Portfolio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 31 Creating a Data Analytics Portfolio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -24,14 +24,14 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-06" />
+<meta name="date" content="2021-12-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="criterionrelatedvalidity.html"/>
+<link rel="prev" href="predictingcriterionscores.html"/>
 <link rel="next" href="literature-search-review.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -480,9 +480,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>29.5.2</b> <code>cor.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="30" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>30</b> Predicting Criterion Scores Using Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.1</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.2</b> Predicting Criterion Scores</a></li>
+<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.3</b> Summary</a></li>
+<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="30.4.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.4.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.4.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.4.2</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="30" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>30</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="31" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>31</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="31" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>31</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="32" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>32</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -506,8 +517,8 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="create_portfolio" class="section level1" number="30">
-<h1><span class="header-section-number">Chapter 30</span> Creating a Data Analytics Portfolio</h1>
+<div id="create_portfolio" class="section level1" number="31">
+<h1><span class="header-section-number">Chapter 31</span> Creating a Data Analytics Portfolio</h1>
 <p>When searching for a job in data analytics, it can be tricky to (a) demonstrate what you know how to do or have done previously and (b) distinguish yourself from other job candidates. Creating a portfolio of your work can be one way to set yourself apart on the job market and can, in some instances, help compensate for fewer years of relevant work experience. In this document, I will provide some suggestions on how to set up a portfolio, with an emphasis on applying the R programming language.</p>
 <div id="identify-a-content-area-or-context-that-excites-you." class="section level4 unnumbered">
 <h4>Identify a content area or context that excites you.</h4>
@@ -583,7 +594,7 @@ BOOK UNDER CONSTRUCTION</a>
           </div>
         </div>
       </div>
-<a href="criterionrelatedvalidity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="predictingcriterionscores.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="literature-search-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

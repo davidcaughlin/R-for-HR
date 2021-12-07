@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-06" />
+<meta name="date" content="2021-12-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -480,9 +480,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>29.5.2</b> <code>cor.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="30" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>30</b> Predicting Criterion Scores Using Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.1</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.2</b> Predicting Criterion Scores</a></li>
+<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.3</b> Summary</a></li>
+<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="30.4.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.4.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.4.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.4.2</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="30" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>30</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="31" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>31</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="31" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>31</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="32" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>32</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -611,7 +622,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb560-4"><a href="aggregatesegment.html#cb560-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb560-5"><a href="aggregatesegment.html#cb560-5" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Unit = col_character(),
@@ -635,26 +646,26 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="aggregatesegment.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb562-2"><a href="aggregatesegment.html#cb562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;    &quot;TurnInt2&quot;   
-##  [9] &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot;
-## [17] &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;   
+##  [8] &quot;TurnInt2&quot;    &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;    
+## [15] &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot; &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot;</code></pre>
 <div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="aggregatesegment.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
 <span id="cb564-2"><a href="aggregatesegment.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(EmpSurvData)</span></code></pre></div>
 <pre><code>## # A tibble: 156 x 19
-##    EmployeeID Unit     Supervisor JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4 Engage5
-##    &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-##  1 EID294     Marketi~ EID373           3       3       3        3        3        3       2       1       2       2       3
-##  2 EID295     Marketi~ EID373           2       3       2        3        4        2       2       1       3       3       3
-##  3 EID296     Marketi~ EID373           2       2       3        3        3        3       1       1       2       1       2
-##  4 EID301     Marketi~ EID367           2       2       3        4        4        4       3       2       3       2       2
-##  5 EID306     Marketi~ EID367           2       2       2        4        4        4       3       2       3       4       3
-##  6 EID213     HumanRe~ EID370           4       3       4        3        3        3       3       2       4       3       3
-##  7 EID217     HumanRe~ EID370           3       3       2        3        2        2       3       2       3       3       4
-##  8 EID254     Manufac~ EID371           4       4       4        2        2        2       3       2       3       3       2
-##  9 EID260     Manufac~ EID371           3       4       4        2        2        2       3       2       2       1       2
-## 10 EID315     Researc~ EID372           3       2       3        2        2        2       2       2       3       4       2
-## # ... with 146 more rows, and 5 more variables: ExpIncivil1 &lt;dbl&gt;, ExpIncivil2 &lt;dbl&gt;, ExpIncivil3 &lt;dbl&gt;, ExpIncivil4 &lt;dbl&gt;,
-## #   ExpIncivil5 &lt;dbl&gt;</code></pre>
+##    EmployeeID Unit        Supervisor JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3
+##    &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1 EID294     Marketing   EID373           3       3       3        3        3        3       2       1       2
+##  2 EID295     Marketing   EID373           2       3       2        3        4        2       2       1       3
+##  3 EID296     Marketing   EID373           2       2       3        3        3        3       1       1       2
+##  4 EID301     Marketing   EID367           2       2       3        4        4        4       3       2       3
+##  5 EID306     Marketing   EID367           2       2       2        4        4        4       3       2       3
+##  6 EID213     HumanResou~ EID370           4       3       4        3        3        3       3       2       4
+##  7 EID217     HumanResou~ EID370           3       3       2        3        2        2       3       2       3
+##  8 EID254     Manufactur~ EID371           4       4       4        2        2        2       3       2       3
+##  9 EID260     Manufactur~ EID371           3       4       4        2        2        2       3       2       2
+## 10 EID315     ResearchDe~ EID372           3       2       3        2        2        2       2       2       3
+## # ... with 146 more rows, and 7 more variables: Engage4 &lt;dbl&gt;, Engage5 &lt;dbl&gt;, ExpIncivil1 &lt;dbl&gt;,
+## #   ExpIncivil2 &lt;dbl&gt;, ExpIncivil3 &lt;dbl&gt;, ExpIncivil4 &lt;dbl&gt;, ExpIncivil5 &lt;dbl&gt;</code></pre>
 <p>The data for this exercise include employees’ unique identifiers (<code>EmployeeID</code>), the unit they work in (<code>unit</code>), their direct supervisor (<code>Supervisor</code>), and annual employee survey responses to three job satisfaction items (<code>JobSat1</code>, <code>JobSat2_rev</code>, <code>JobSat3</code>), three turnover intentions items (<code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>), five engagement items (<code>Engage1</code>, <code>Engage2</code>, <code>Engage3</code>, <code>Engage4</code>, <code>Engage5</code>), and five exposure to incivility items (<code>ExpIncivil1</code>, <code>ExpIncivil2</code>, <code>ExpIncivil3</code>, <code>ExpIncivil4</code>, <code>ExpIncivil5_rev</code>). All response scales are 5 points, ranging from strongly disagree (1) to strongly agree (5).</p>
 </div>
 <div id="counts_bygroup" class="section level2" number="20.1">
@@ -897,9 +908,9 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To verify that we added the new <code>UnitCount</code> variable to our <code>EmpSurvData</code> data frame object, let’s print the variable names using the <code>names</code> function from base R.</p>
 <div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb595-1"><a href="aggregatesegment.html#cb595-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame</span></span>
 <span id="cb595-2"><a href="aggregatesegment.html#cb595-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;    &quot;TurnInt2&quot;   
-##  [9] &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot;
-## [17] &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot; &quot;UnitCount&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;   
+##  [8] &quot;TurnInt2&quot;    &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;    
+## [15] &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot; &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot; &quot;UnitCount&quot;</code></pre>
 <p>Let’s work through another example. This time we will add a new variable that contains values for the mean level of <code>JobSat1</code> for each level of the <code>Unit</code> variable. Again, we will use the <code>mutate</code> function; however, we will apply the <code>mean</code> function from base R. Let’s call the new aggregated variable <code>Mean_JobSat1</code>.</p>
 <div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb597-1"><a href="aggregatesegment.html#cb597-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new variable based on means by group (with pipes)</span></span>
 <span id="cb597-2"><a href="aggregatesegment.html#cb597-2" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> EmpSurvData <span class="sc">%&gt;%</span></span>
@@ -909,9 +920,9 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb597-6"><a href="aggregatesegment.html#cb597-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb597-7"><a href="aggregatesegment.html#cb597-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame</span></span>
 <span id="cb597-8"><a href="aggregatesegment.html#cb597-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;     &quot;TurnInt2&quot;    
-##  [9] &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot; 
-## [17] &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;    
+##  [8] &quot;TurnInt2&quot;     &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;     
+## [15] &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot;  &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
 </div>
 <div id="addaggregatedvariable_nopipes" class="section level3" number="20.3.2">
 <h3><span class="header-section-number">20.3.2</span> <em>Without</em> Pipes</h3>
@@ -927,9 +938,9 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To verify that we added the new <code>UnitCount</code> variable to our <code>EmpSurvData</code> data frame object, let’s print the variable names using the <code>names</code> function from base R.</p>
 <div class="sourceCode" id="cb600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb600-1"><a href="aggregatesegment.html#cb600-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame</span></span>
 <span id="cb600-2"><a href="aggregatesegment.html#cb600-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;     &quot;TurnInt2&quot;    
-##  [9] &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot; 
-## [17] &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;    
+##  [8] &quot;TurnInt2&quot;     &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;     
+## [15] &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot;  &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
 <p>You should see that a new variable called <code>UnitCount</code> is now a part of the <code>EmpSurvData</code> data frame. You can view your data using the following function and argument: <code>View(EmpSurvData)</code>.</p>
 <p>Let’s work through another example. This time we will add a new variable that contains values for the mean level of <code>JobSat1</code> for each level of the <code>Unit</code> variable. Again, we will use the <code>mutate</code> function; however, we will apply the <code>mean</code> function from base R. Let’s call the new aggregated variable <code>Mean_JobSat1</code>.</p>
 <div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb602-1"><a href="aggregatesegment.html#cb602-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new variable based on means by group (without pipes)</span></span>
@@ -942,9 +953,9 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb602-8"><a href="aggregatesegment.html#cb602-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb602-9"><a href="aggregatesegment.html#cb602-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame</span></span>
 <span id="cb602-10"><a href="aggregatesegment.html#cb602-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;     &quot;TurnInt2&quot;    
-##  [9] &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot; 
-## [17] &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;    
+##  [8] &quot;TurnInt2&quot;     &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;     
+## [15] &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot;  &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
 <p>You should see that a new variable called <code>Mean_JobSat1</code> is now a part of the <code>EmpSurvData</code> data frame. You can view your data using the following function and argument: <code>View(EmpSurvData)</code>.</p>
 </div>
 </div>
@@ -1015,7 +1026,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="aggregatesegment.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trellis of histograms corresponding to different values of grouping variable</span></span>
 <span id="cb611-2"><a href="aggregatesegment.html#cb611-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Histogram</span>(JobSat1, <span class="at">by1=</span>Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
 <pre><code>## [Trellis graphics from Deepayan Sarkar&#39;s lattice package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-340-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
 <pre><code>## JobSat1 
 ##   - by levels of - 
 ## Unit 
@@ -1029,7 +1040,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If we want to look at the counts (i.e., frequencies) of cases for each unique value of a grouping variable, we can apply the <code>BarChart</code> from the <code>lessR</code> package. Simply type <code>BarChart</code> as the function. As the first argument, enter the name of the grouping variable (<code>Unit</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object (<code>EmpSurvData</code>).</p>
 <div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="aggregatesegment.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart that shows counts for each level of grouping variable</span></span>
 <span id="cb614-2"><a href="aggregatesegment.html#cb614-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-341-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-350-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## BarChart(Unit, horiz=TRUE)  # horizontal bar chart
 ## BarChart(Unit, fill=&quot;reds&quot;)  # red bars of varying lightness
@@ -1093,7 +1104,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb617-4"><a href="aggregatesegment.html#cb617-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb617-5"><a href="aggregatesegment.html#cb617-5" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Unit = col_character(),
@@ -1117,9 +1128,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="aggregatesegment.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb619-2"><a href="aggregatesegment.html#cb619-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;    &quot;TurnInt2&quot;   
-##  [9] &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot;
-## [17] &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;   
+##  [8] &quot;TurnInt2&quot;    &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;    
+## [15] &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot; &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot;</code></pre>
 </div>
 <div id="aggregatesegment_subset_supplement" class="section level3" number="20.6.1">
 <h3><span class="header-section-number">20.6.1</span> <code>describeBy</code> Function from <code>psych</code> Package</h3>
@@ -1154,7 +1165,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 11 2.45 0.52      2    2.44 0.00   2   3     1  0.16    -2.15 0.16
 ## ExpIncivil4   18 11 2.55 0.52      3    2.56 0.00   2   3     1 -0.16    -2.15 0.16
 ## ExpIncivil5   19 11 2.55 0.52      3    2.56 0.00   2   3     1 -0.16    -2.15 0.16
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------------------- 
 ## group: Manufacturing
 ##             vars  n  mean    sd median trimmed   mad min max range  skew kurtosis   se
 ## EmployeeID*    1 72 36.50 20.93   36.5   36.50 26.69   1  72    71  0.00    -1.25 2.47
@@ -1176,7 +1187,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 72  2.50  0.75    2.0    2.48  1.48   1   4     3  0.10    -0.40 0.09
 ## ExpIncivil4   18 72  2.56  0.65    3.0    2.57  0.00   1   4     3 -0.20    -0.25 0.08
 ## ExpIncivil5   19 72  2.57  0.67    3.0    2.57  0.74   1   4     3 -0.11    -0.26 0.08
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------------------- 
 ## group: Marketing
 ##             vars  n  mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## EmployeeID*    1 19 10.00 5.63     10   10.00 7.41   1  19    18  0.00    -1.39 1.29
@@ -1198,7 +1209,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 19  2.58 0.69      2    2.53 0.00   2   4     2  0.68    -0.83 0.16
 ## ExpIncivil4   18 19  2.53 0.70      2    2.47 0.00   2   4     2  0.85    -0.64 0.16
 ## ExpIncivil5   19 19  2.58 0.69      3    2.59 0.00   1   4     3 -0.27    -0.39 0.16
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------------------- 
 ## group: ResearchDevelopment
 ##             vars  n mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## EmployeeID*    1 18 9.50 5.34    9.5    9.50 6.67   1  18    17  0.00    -1.40 1.26
@@ -1220,7 +1231,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 18 2.39 0.70    2.0    2.38 0.00   1   4     3  0.37    -0.30 0.16
 ## ExpIncivil4   18 18 2.44 0.62    2.5    2.50 0.74   1   3     2 -0.52    -0.86 0.15
 ## ExpIncivil5   19 18 2.22 0.65    2.0    2.25 0.00   1   3     2 -0.19    -0.88 0.15
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------------------- 
 ## group: Sales
 ##             vars  n  mean    sd median trimmed   mad min max range  skew kurtosis   se
 ## EmployeeID*    1 36 18.50 10.54   18.5   18.50 13.34   1  36    35  0.00    -1.30 1.76

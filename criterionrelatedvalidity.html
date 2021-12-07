@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-06" />
+<meta name="date" content="2021-12-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="disparateimpact.html"/>
-<link rel="next" href="create-portfolio.html"/>
+<link rel="next" href="predictingcriterionscores.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -480,9 +480,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>29.5.2</b> <code>cor.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="30" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>30</b> Predicting Criterion Scores Using Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.1</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.2</b> Predicting Criterion Scores</a></li>
+<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.3</b> Summary</a></li>
+<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="30.4.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.4.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.4.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.4.2</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="30" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>30</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="31" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>31</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="31" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>31</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="32" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>32</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -528,14 +539,14 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="statisticalsignficance_correlation" class="section level4" number="29.1.0.2">
 <h4><span class="header-section-number">29.1.0.2</span> Statistical Significance</h4>
-<p>The significance level of a correlation coefficient is determined by the sample size and the magnitude of the correlation coefficient. Specifically, a <em>t</em>-statistic with <em>N</em>-2 degrees of freedom (df) is calculated and compared to a Student’s <em>t</em>-distribution with <em>N</em>-2 df and a given alpha level (usually two-tailed, alpha = .05). If the calculated <em>t</em>-statistic is greater in magnitude than the chosen t-distribution, we conclude that the population correlation coefficient is significantly greater than zero. We use the following formula to calculate the <em>t</em>-statistic:</p>
-<p><span class="math inline">\(t = \frac{r \sqrt{(N-2)}}{1-r^{2}}\)</span></p>
-<p>where <span class="math inline">\(r\)</span> refers to the correlation coefficient and <span class="math inline">\(N\)</span> refers to the sample size. Alternatively, the exact <em>p</em>-value can be computed using a statistical software program like R if we know the df and <em>t</em>-value.</p>
-<p>In practice, however, we don’t always report the associated <em>t</em>-value; instead, we almost always report the <em>p</em>-value associated with the <em>t</em>-value when reporting information about statistical significance. When using null hypothesis significance testing, we interpret a <em>p</em>-value that is less than our chosen alpha level (which is conventionally .05, two-tailed) to meet the standard for statistical significance. This means that we reject the null hypothesis that the correlation is equal to zero. By rejecting this null hypothesis, we conclude that the correlation is significantly different from zero. If the <em>p</em>-value is equal to or greater than our chosen alpha level (e.g., .05, two-tailed), then we fail to reject the null hypothesis that the correlation is equal to zero; meaning, we conclude that there is no evidence of linear association between the two variables.</p>
+<p>The significance level of a correlation coefficient is determined by the sample size and the magnitude of the correlation coefficient. Specifically, a <em>t</em>-statistic with <em>N</em>-2 degrees of freedom (df) is calculated and compared to a Student’s <em>t</em>-distribution with <em>N</em>-2 df and a given alpha level (usually two-tailed, alpha = .05). If the calculated <em>t</em>-statistic is greater in magnitude than the chosen <em>t</em>-distribution, we conclude that the population correlation coefficient is significantly greater than zero. We use the following formula to calculate the <em>t</em>-statistic:</p>
+<p><span class="math inline">\(t = \frac{r \sqrt{N-2}}{1-r^{2}}\)</span></p>
+<p>where <span class="math inline">\(r\)</span> refers to the estimated correlation coefficient and <span class="math inline">\(N\)</span> refers to the sample size. Alternatively, the exact <em>p</em>-value can be computed using a statistical software program like R if we know the df and <em>t</em>-value.</p>
+<p>In practice, however, we don’t always report the associated <em>t</em>-value; instead, we almost always report the exact <em>p</em>-value associated with the <em>t</em>-value when reporting information about statistical significance. When using null hypothesis significance testing, we interpret a <em>p</em>-value that is less than our chosen alpha level (which is conventionally .05, two-tailed) to meet the standard for statistical significance. This means that we reject the null hypothesis that the correlation is equal to zero. By rejecting this null hypothesis, we conclude that the correlation is significantly different from zero. If the <em>p</em>-value is equal to or greater than our chosen alpha level (e.g., .05, two-tailed), then we fail to reject the null hypothesis that the correlation is equal to zero; meaning, we conclude that there is no evidence of linear association between the two variables.</p>
 </div>
 <div id="practicalsignficance_correlation" class="section level4" number="29.1.0.3">
 <h4><span class="header-section-number">29.1.0.3</span> Practical Significance</h4>
-<p>As an effect size, correlation coefficients are a standardized metric that can be compared across samples. The size of a correlation coefficient can be described using qualitative labels, such as small, medium, and large. The quantitative values tied to such qualitative labels of magnitude should really be treated as context specific; with that said, there are some very general rules we can apply when interpreting the magnitude of correlation coefficients, which are presented in the table below <span class="citation">(<a href="references.html#ref-cohen1992power" role="doc-biblioref">Cohen 1992</a>)</span>. Please note that the <em>r</em> values in the table are absolute values, which means, for example, that correlation coefficients of .50 and -.50 would both have the same absolute value and thus would both be considered large.</p>
+<p>The size of a correlation coefficient can be described using qualitative labels, such as small, medium, and large. The quantitative values tied to such qualitative labels of magnitude should really be treated as context specific; with that said, there are some very general rules we can apply when interpreting the magnitude of correlation coefficients, which are presented in the table below <span class="citation">(<a href="references.html#ref-cohen1992power" role="doc-biblioref">Cohen 1992</a>)</span>. Please note that the <em>r</em> values in the table are absolute values, which means, for example, that correlation coefficients of .50 and -.50 would both have the same absolute value and thus would both be considered large.</p>
 <table>
 <thead>
 <tr class="header">
@@ -559,6 +570,7 @@ BOOK UNDER CONSTRUCTION</a>
 </tbody>
 </table>
 <p>Some people like to also report the <strong>coefficient of determination</strong> as an indicator of effect size. The coefficient of determination is calculated by squaring the correlation coefficient to create <em>r</em><sup>2</sup>. When multiplied by 100, the coefficient of determination (<em>r</em><sup>2</sup>) can be interpreted as the percentage of variance/variability shared between the two variables, which is sometimes stated as follows: Variable <span class="math inline">\(X\)</span> explains <span class="math inline">\(X\)</span>% of the variance in Variable <span class="math inline">\(Y\)</span> (or vice versa). Please note that we use the lower-case <em>r</em> in <em>r</em><sup>2</sup> to indicate that we are reporting the variance overlap between only two variables.</p>
+<p><em>Note: Typically, we only interpret the practical significance of an effect if the effect was found to be statistically significant. The logic is that if an effect (e.g., association, difference) is not statistically significant, then we should treat it as no different than zero, and thus it wouldn’t make sense to the interpret the size of something that statistically has no effect.</em></p>
 </div>
 <div id="datavisualization_correlation" class="section level4" number="29.1.0.4">
 <h4><span class="header-section-number">29.1.0.4</span> Data Visualization</h4>
@@ -614,7 +626,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb868-4"><a href="criterionrelatedvalidity.html#cb868-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb868-5"><a href="criterionrelatedvalidity.html#cb868-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -663,7 +675,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To begin, type the name of the <code>ScatterPlot</code> function. As the first two arguments of the function, type the names of the two variables you wish to visualize; let’s start by visualizing the association between the <code>Conscientiousness</code> selection tool and the criterion (<code>Performance</code>). The variable name that we type after the <code>x=</code> argument will set the x-axis, and the variable name that we type after the <code>y=</code> argument will set the y-axis. Conventionally, we place the criterion variable on the y-axis, as it is the outcome. As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="criterionrelatedvalidity.html#cb878-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using ScatterPlot function from lessR</span></span>
 <span id="cb878-2"><a href="criterionrelatedvalidity.html#cb878-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-505-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-514-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -688,7 +700,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb880-2"><a href="criterionrelatedvalidity.html#cb880-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
 <span id="cb880-3"><a href="criterionrelatedvalidity.html#cb880-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
 <span id="cb880-4"><a href="criterionrelatedvalidity.html#cb880-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-506-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-515-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -712,7 +724,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb882-4"><a href="criterionrelatedvalidity.html#cb882-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>,</span>
 <span id="cb882-5"><a href="criterionrelatedvalidity.html#cb882-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-507-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-516-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -800,7 +812,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb889-4"><a href="criterionrelatedvalidity.html#cb889-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb889-5"><a href="criterionrelatedvalidity.html#cb889-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -878,16 +890,13 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="disparateimpact.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="predictingcriterionscores.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
