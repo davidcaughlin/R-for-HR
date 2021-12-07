@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 28 Disparate Impact | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 28 Investigating Disparate Impact | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 28 Disparate Impact | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 28 Investigating Disparate Impact | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 28 Disparate Impact | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 28 Investigating Disparate Impact | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-05" />
+<meta name="date" content="2021-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="selection.html"/>
-<link rel="next" href="create-portfolio.html"/>
+<link rel="next" href="criterionrelatedvalidity.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -458,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26" data-path="employeesurveys.html"><a href="employeesurveys.html"><i class="fa fa-check"></i><b>26</b> Introduction to Employee Surveys</a></li>
 <li class="part"><span><b>VI Employee Selection</b></span></li>
 <li class="chapter" data-level="27" data-path="selection.html"><a href="selection.html"><i class="fa fa-check"></i><b>27</b> Introduction to Employee Selection</a></li>
-<li class="chapter" data-level="28" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>28</b> Disparate Impact</a>
+<li class="chapter" data-level="28" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>28</b> Investigating Disparate Impact</a>
 <ul>
 <li class="chapter" data-level="28.1" data-path="disparateimpact.html"><a href="disparateimpact.html#fourfifthsrule"><i class="fa fa-check"></i><b>28.1</b> 4/5ths Rule</a></li>
 <li class="chapter" data-level="28.2" data-path="disparateimpact.html"><a href="disparateimpact.html#chisquaretest_disparateimpact"><i class="fa fa-check"></i><b>28.2</b> Chi-Squared (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
@@ -466,6 +466,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="28.4" data-path="disparateimpact.html"><a href="disparateimpact.html#zdifference_test_disparateimpact"><i class="fa fa-check"></i><b>28.4</b> <span class="math inline">\(Z_{D}\)</span> test</a></li>
 <li class="chapter" data-level="28.5" data-path="disparateimpact.html"><a href="disparateimpact.html#z_impactratiotest"><i class="fa fa-check"></i><b>28.5</b> <span class="math inline">\(Z_{IR}\)</span> Test</a></li>
 <li class="chapter" data-level="28.6" data-path="disparateimpact.html"><a href="disparateimpact.html#summary_disparatetreatment"><i class="fa fa-check"></i><b>28.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html"><i class="fa fa-check"></i><b>29</b> Estimating Criterion-Related Validity Using Correlation</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#review_correlation"><i class="fa fa-check"></i><b>29.1</b> Review of Correlation</a></li>
+<li class="chapter" data-level="29.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#visualize-association-using-a-scatter-plot"><i class="fa fa-check"></i><b>29.2</b> Visualize Association Using a Scatter Plot</a></li>
+<li class="chapter" data-level="29.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#estimate_correlation"><i class="fa fa-check"></i><b>29.3</b> Estimate Correlation</a></li>
+<li class="chapter" data-level="29.4" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#summary_criterionrelatedvalidity"><i class="fa fa-check"></i><b>29.4</b> Summary</a></li>
+<li class="chapter" data-level="29.5" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_supplement"><i class="fa fa-check"></i><b>29.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="29.5.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cor_function"><i class="fa fa-check"></i><b>29.5.1</b> <code>cor</code> Function from Base R</a></li>
+<li class="chapter" data-level="29.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>29.5.2</b> <code>cor.test</code> Function from Base R</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
@@ -493,7 +505,7 @@ BOOK UNDER CONSTRUCTION</a>
 
             <section class="normal" id="section-">
 <div id="disparateimpact" class="section level1" number="28">
-<h1><span class="header-section-number">Chapter 28</span> Disparate Impact</h1>
+<h1><span class="header-section-number">Chapter 28</span> Investigating Disparate Impact</h1>
 <p><strong>Disparate impact</strong>, which is also referred to as <strong>adverse impact</strong>, refers to situations in which organizations “use seemingly neutral criteria that have a discriminatory effect on a protected group” (Bauer, Erdogan, Caughlin, &amp; Truxillo, 2019, p. 117). There are various tests – both statistical and nonstatistical – that may be used to evaluate whether there is evidence of disparate impact, such as the 4/5ths Rule (80% Rule), <span class="math inline">\(Z_{Difference}\)</span>-test, <span class="math inline">\(Z_{Impact Ratio}\)</span>-test, <span class="math inline">\(\chi^2\)</span> test of independence (i.e., chi-squared test of independence), and Fisher exact test. In the United States, it is legally advisable to begin with testing the 4/5ths Rule followed by a statistical test like the <span class="math inline">\(Z_{Impact Ratio}\)</span>-test, <span class="math inline">\(\chi^2\)</span> test of independence, or Fisher exact test.</p>
 <p>If you would like to learn more about how to evaluate disparate impact along with empirical evidence regarding under which conditions various tests perform best, consider reading the following:</p>
 <ul>
@@ -601,7 +613,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb795-4"><a href="disparateimpact.html#cb795-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb795-5"><a href="disparateimpact.html#cb795-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DisparateImpact.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------------------------------
 ## cols(
 ##   ID = col_double(),
 ##   Cognitive_Test = col_character(),
@@ -927,16 +939,13 @@ BOOK UNDER CONSTRUCTION</a>
 
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="selection.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="criterionrelatedvalidity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-05" />
+<meta name="date" content="2021-12-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -458,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="26" data-path="employeesurveys.html"><a href="employeesurveys.html"><i class="fa fa-check"></i><b>26</b> Introduction to Employee Surveys</a></li>
 <li class="part"><span><b>VI Employee Selection</b></span></li>
 <li class="chapter" data-level="27" data-path="selection.html"><a href="selection.html"><i class="fa fa-check"></i><b>27</b> Introduction to Employee Selection</a></li>
-<li class="chapter" data-level="28" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>28</b> Disparate Impact</a>
+<li class="chapter" data-level="28" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>28</b> Investigating Disparate Impact</a>
 <ul>
 <li class="chapter" data-level="28.1" data-path="disparateimpact.html"><a href="disparateimpact.html#fourfifthsrule"><i class="fa fa-check"></i><b>28.1</b> 4/5ths Rule</a></li>
 <li class="chapter" data-level="28.2" data-path="disparateimpact.html"><a href="disparateimpact.html#chisquaretest_disparateimpact"><i class="fa fa-check"></i><b>28.2</b> Chi-Squared (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
@@ -466,6 +466,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="28.4" data-path="disparateimpact.html"><a href="disparateimpact.html#zdifference_test_disparateimpact"><i class="fa fa-check"></i><b>28.4</b> <span class="math inline">\(Z_{D}\)</span> test</a></li>
 <li class="chapter" data-level="28.5" data-path="disparateimpact.html"><a href="disparateimpact.html#z_impactratiotest"><i class="fa fa-check"></i><b>28.5</b> <span class="math inline">\(Z_{IR}\)</span> Test</a></li>
 <li class="chapter" data-level="28.6" data-path="disparateimpact.html"><a href="disparateimpact.html#summary_disparatetreatment"><i class="fa fa-check"></i><b>28.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html"><i class="fa fa-check"></i><b>29</b> Estimating Criterion-Related Validity Using Correlation</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#review_correlation"><i class="fa fa-check"></i><b>29.1</b> Review of Correlation</a></li>
+<li class="chapter" data-level="29.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#visualize-association-using-a-scatter-plot"><i class="fa fa-check"></i><b>29.2</b> Visualize Association Using a Scatter Plot</a></li>
+<li class="chapter" data-level="29.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#estimate_correlation"><i class="fa fa-check"></i><b>29.3</b> Estimate Correlation</a></li>
+<li class="chapter" data-level="29.4" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#summary_criterionrelatedvalidity"><i class="fa fa-check"></i><b>29.4</b> Summary</a></li>
+<li class="chapter" data-level="29.5" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_supplement"><i class="fa fa-check"></i><b>29.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="29.5.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cor_function"><i class="fa fa-check"></i><b>29.5.1</b> <code>cor</code> Function from Base R</a></li>
+<li class="chapter" data-level="29.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>29.5.2</b> <code>cor.test</code> Function from Base R</a></li>
+</ul></li>
 </ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i>Creating a Data Analytics Portfolio</a></li>
@@ -617,7 +629,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb488-4"><a href="clean.html#cb488-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb488-5"><a href="clean.html#cb488-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_character(),
 ##   Facility = col_character(),
@@ -628,8 +640,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb490-1"><a href="clean.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb490-2"><a href="clean.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;            &quot;StartDate&quot;          
-## [5] &quot;Org_Tenure_Yrs&quot;      &quot;OnboardingCompleted&quot;</code></pre>
+<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;            &quot;StartDate&quot;           &quot;Org_Tenure_Yrs&quot;     
+## [6] &quot;OnboardingCompleted&quot;</code></pre>
 <div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb492-1"><a href="clean.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
 <span id="cb492-2"><a href="clean.html#cb492-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
@@ -729,7 +741,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##  $ EmpID              : chr [1:10] &quot;EP1201&quot; &quot;EP1202&quot; &quot;EP1203&quot; &quot;EP1204&quot; ...
 ##  $ Facility           : chr [1:10] &quot;Beaverton&quot; &quot;beaverton&quot; &quot;Beaverton&quot; &quot;Portland&quot; ...
 ##  $ JobLevel           : num [1:10] 1 1 -9999 5 2 ...
-##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; &quot;2017-02-05&quot; ...
+##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; &quot;2017-02-05&quot; &quot;2018-09-19&quot; ...
 ##  $ Org_Tenure_Yrs     : num [1:10] 8.6 10.9 1.9 0.3 0.3 8.8 7.6 8.6 7.7 6.5
 ##  $ OnboardingCompleted: chr [1:10] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
