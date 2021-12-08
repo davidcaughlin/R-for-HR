@@ -482,13 +482,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="30" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>30</b> Predicting Criterion Scores Using Simple Linear Regression</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.1</b> Estimate Simple Linear Regression Model</a></li>
-<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.2</b> Predicting Criterion Scores</a></li>
-<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.3</b> Summary</a></li>
-<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.4</b> Chapter Supplement</a>
+<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#review_slr"><i class="fa fa-check"></i><b>30.1</b> Review of Simple Linear Regression</a></li>
+<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.2</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.3</b> Predicting Criterion Scores</a></li>
+<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.4</b> Summary</a></li>
+<li class="chapter" data-level="30.5" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.5</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="30.4.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.4.1</b> <code>lm</code> Function from Base R</a></li>
-<li class="chapter" data-level="30.4.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.4.2</b> APA-Style Results Table</a></li>
+<li class="chapter" data-level="30.5.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.5.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.5.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.5.2</b> APA-Style Results Table</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
@@ -1026,7 +1027,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="aggregatesegment.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trellis of histograms corresponding to different values of grouping variable</span></span>
 <span id="cb611-2"><a href="aggregatesegment.html#cb611-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Histogram</span>(JobSat1, <span class="at">by1=</span>Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
 <pre><code>## [Trellis graphics from Deepayan Sarkar&#39;s lattice package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-348-1.png" width="672" /></p>
 <pre><code>## JobSat1 
 ##   - by levels of - 
 ## Unit 
@@ -1040,7 +1041,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If we want to look at the counts (i.e., frequencies) of cases for each unique value of a grouping variable, we can apply the <code>BarChart</code> from the <code>lessR</code> package. Simply type <code>BarChart</code> as the function. As the first argument, enter the name of the grouping variable (<code>Unit</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object (<code>EmpSurvData</code>).</p>
 <div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="aggregatesegment.html#cb614-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart that shows counts for each level of grouping variable</span></span>
 <span id="cb614-2"><a href="aggregatesegment.html#cb614-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-350-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## BarChart(Unit, horiz=TRUE)  # horizontal bar chart
 ## BarChart(Unit, fill=&quot;reds&quot;)  # red bars of varying lightness

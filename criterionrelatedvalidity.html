@@ -482,13 +482,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="30" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>30</b> Predicting Criterion Scores Using Simple Linear Regression</a>
 <ul>
-<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.1</b> Estimate Simple Linear Regression Model</a></li>
-<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.2</b> Predicting Criterion Scores</a></li>
-<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.3</b> Summary</a></li>
-<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.4</b> Chapter Supplement</a>
+<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#review_slr"><i class="fa fa-check"></i><b>30.1</b> Review of Simple Linear Regression</a></li>
+<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.2</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.3</b> Predicting Criterion Scores</a></li>
+<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.4</b> Summary</a></li>
+<li class="chapter" data-level="30.5" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.5</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="30.4.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.4.1</b> <code>lm</code> Function from Base R</a></li>
-<li class="chapter" data-level="30.4.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.4.2</b> APA-Style Results Table</a></li>
+<li class="chapter" data-level="30.5.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function"><i class="fa fa-check"></i><b>30.5.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.5.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.5.2</b> APA-Style Results Table</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
@@ -675,7 +676,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To begin, type the name of the <code>ScatterPlot</code> function. As the first two arguments of the function, type the names of the two variables you wish to visualize; let’s start by visualizing the association between the <code>Conscientiousness</code> selection tool and the criterion (<code>Performance</code>). The variable name that we type after the <code>x=</code> argument will set the x-axis, and the variable name that we type after the <code>y=</code> argument will set the y-axis. Conventionally, we place the criterion variable on the y-axis, as it is the outcome. As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="criterionrelatedvalidity.html#cb878-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using ScatterPlot function from lessR</span></span>
 <span id="cb878-2"><a href="criterionrelatedvalidity.html#cb878-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-514-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-513-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -700,7 +701,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb880-2"><a href="criterionrelatedvalidity.html#cb880-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
 <span id="cb880-3"><a href="criterionrelatedvalidity.html#cb880-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
 <span id="cb880-4"><a href="criterionrelatedvalidity.html#cb880-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-515-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-514-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -724,7 +725,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb882-4"><a href="criterionrelatedvalidity.html#cb882-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>,</span>
 <span id="cb882-5"><a href="criterionrelatedvalidity.html#cb882-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-516-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-515-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
