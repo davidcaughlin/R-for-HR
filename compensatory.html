@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 32 Compensatory Approach to Selection Decisions | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 32 Compensatory Approach to Selection Decisions | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rforhr.com" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="github-repo" content="davidcaughlin/R-for-HR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 32 Compensatory Approach to Selection Decisions | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+
+<meta name="author" content="David E. Caughlin" />
+
+
+<meta name="date" content="2021-12-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="incrementalvalidity.html"/>
+<link rel="next" href="create-portfolio.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for HR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#overview-of-hris-hr-analytics"><i class="fa fa-check"></i><b>0.4</b> Overview of HRIS &amp; HR Analytics</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.5</b> My Philosophy for This Book</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.5.1</b> Rationale for Using R</a></li>
+<li class="chapter" data-level="0.5.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.5.2</b> Audience</a></li>
+<li class="chapter" data-level="0.5.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.5.3</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.6</b> About the Author</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.7</b> Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
+<li class="chapter" data-level="3.6" data-path="dataacquisition.html"><a href="dataacquisition.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_clean"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.2" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_manipulate"><i class="fa fa-check"></i><b>4.2</b> Data Manipulation &amp; Structuring</a></li>
+<li class="chapter" data-level="4.3" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_tools"><i class="fa fa-check"></i><b>4.3</b> Common Data-Management Tools</a></li>
+<li class="chapter" data-level="4.4" data-path="datamanagement.html"><a href="datamanagement.html#summary-2"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataanalysis.html"><a href="dataanalysis.html#dataanalysis_toolstechniques"><i class="fa fa-check"></i><b>5.1</b> Tools &amp; Techniques</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="dataanalysis.html"><a href="dataanalysis.html#mathematics"><i class="fa fa-check"></i><b>5.1.1</b> Mathematics</a></li>
+<li class="chapter" data-level="5.1.2" data-path="dataanalysis.html"><a href="dataanalysis.html#statistics"><i class="fa fa-check"></i><b>5.1.2</b> Statistics</a></li>
+<li class="chapter" data-level="5.1.3" data-path="dataanalysis.html"><a href="dataanalysis.html#machinelearning"><i class="fa fa-check"></i><b>5.1.3</b> Machine Learning</a></li>
+<li class="chapter" data-level="5.1.4" data-path="dataanalysis.html"><a href="dataanalysis.html#computationalmodelsimulation"><i class="fa fa-check"></i><b>5.1.4</b> Computational Modeling &amp; Simulations</a></li>
+<li class="chapter" data-level="5.1.5" data-path="dataanalysis.html"><a href="dataanalysis.html#textqualitativeanalyses"><i class="fa fa-check"></i><b>5.1.5</b> Text Analyses &amp; Qualitative Analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="dataanalysis.html"><a href="dataanalysis.html#continuum_dataanalytics"><i class="fa fa-check"></i><b>5.2</b> Continuum of Data Analytics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="dataanalysis.html"><a href="dataanalysis.html#descriptive_analytics"><i class="fa fa-check"></i><b>5.2.1</b> Descriptive Analytics</a></li>
+<li class="chapter" data-level="5.2.2" data-path="dataanalysis.html"><a href="dataanalysis.html#predictish_analytics"><i class="fa fa-check"></i><b>5.2.2</b> Predict-ish Analytics</a></li>
+<li class="chapter" data-level="5.2.3" data-path="dataanalysis.html"><a href="dataanalysis.html#predictive_analytics"><i class="fa fa-check"></i><b>5.2.3</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="5.2.4" data-path="dataanalysis.html"><a href="dataanalysis.html#prescriptive_analytics"><i class="fa fa-check"></i><b>5.2.4</b> Prescriptive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summary-3"><i class="fa fa-check"></i><b>5.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datainterpretation"><i class="fa fa-check"></i><b>6.1</b> Data Interpretation</a></li>
+<li class="chapter" data-level="6.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling"><i class="fa fa-check"></i><b>6.2</b> Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#structure"><i class="fa fa-check"></i><b>6.2.1</b> Structure</a></li>
+<li class="chapter" data-level="6.2.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#clarity-parsimony"><i class="fa fa-check"></i><b>6.2.2</b> Clarity &amp; Parsimony</a></li>
+<li class="chapter" data-level="6.2.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#influence-persuasion"><i class="fa fa-check"></i><b>6.2.3</b> Influence &amp; Persuasion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling_withdata"><i class="fa fa-check"></i><b>6.3</b> Storytelling with Data</a></li>
+<li class="chapter" data-level="6.4" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary-4"><i class="fa fa-check"></i><b>6.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="overviewR.html"><a href="overviewR.html#R_overview"><i class="fa fa-check"></i><b>8.1</b> R Programming Language</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="overviewR.html"><a href="overviewR.html#R_what"><i class="fa fa-check"></i><b>8.1.1</b> What Is R?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="overviewR.html"><a href="overviewR.html#R_why"><i class="fa fa-check"></i><b>8.1.2</b> Why Use R?</a></li>
+<li class="chapter" data-level="8.1.3" data-path="overviewR.html"><a href="overviewR.html#R_who"><i class="fa fa-check"></i><b>8.1.3</b> Who Uses R?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_overview"><i class="fa fa-check"></i><b>8.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="overviewR.html"><a href="overviewR.html#RStudio_what"><i class="fa fa-check"></i><b>8.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="8.2.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_why"><i class="fa fa-check"></i><b>8.2.2</b> Why RStudio?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="overviewR.html"><a href="overviewR.html#RStudio_who"><i class="fa fa-check"></i><b>8.2.3</b> Who Uses RStudio?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="overviewR.html"><a href="overviewR.html#packages_overview"><i class="fa fa-check"></i><b>8.3</b> Packages</a></li>
+<li class="chapter" data-level="8.4" data-path="overviewR.html"><a href="overviewR.html#summary-5"><i class="fa fa-check"></i><b>8.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#installR"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#installRStudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
+<li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary-6"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-7"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-9"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing, Adding, &amp; Changing Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove_variablenames"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add_variablenames"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#change_variablenames"><i class="fa fa-check"></i><b>14.3</b> Change Specific Variable Names in a Data Frame Object</a></li>
+<li class="chapter" data-level="14.4" data-path="addnames.html"><a href="addnames.html#summary-10"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-11"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-12"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="arrange.html"><a href="arrange.html#arrange_supplement"><i class="fa fa-check"></i><b>16.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="arrange.html"><a href="arrange.html#arrange_orderfunction"><i class="fa fa-check"></i><b>16.3.1</b> <code>order</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-13"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+<li class="chapter" data-level="17.4" data-path="join.html"><a href="join.html#join_supplement"><i class="fa fa-check"></i><b>17.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="join.html"><a href="join.html#join_mergefunction"><i class="fa fa-check"></i><b>17.4.1</b> <code>merge</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter_cases"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select_multiplevariables"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove_multiplevariables"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-14"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+<li class="chapter" data-level="18.6" data-path="filter.html"><a href="filter.html#filter_supplement"><i class="fa fa-check"></i><b>18.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="filter.html"><a href="filter.html#filter_subset_supplement"><i class="fa fa-check"></i><b>18.6.1</b> <code>subset</code> Function from Base R</a></li>
+<li class="chapter" data-level="18.6.2" data-path="filter.html"><a href="filter.html#str_detect_supp"><i class="fa fa-check"></i><b>18.6.2</b> Filter by Pattern Contained within String</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="clean.html"><a href="clean.html#review-data"><i class="fa fa-check"></i><b>19.1</b> Review Data</a></li>
+<li class="chapter" data-level="19.2" data-path="clean.html"><a href="clean.html#clean-data"><i class="fa fa-check"></i><b>19.2</b> Clean Data</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-a-specific-case"><i class="fa fa-check"></i><b>19.2.1</b> Replace a Specific Value for a Specific Case</a></li>
+<li class="chapter" data-level="19.2.2" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-all-cases-with-a-particular-value"><i class="fa fa-check"></i><b>19.2.2</b> Replace a Specific Value for All Cases with a Particular Value</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="clean.html"><a href="clean.html#rename-variables"><i class="fa fa-check"></i><b>19.3</b> Rename Variables</a></li>
+<li class="chapter" data-level="19.4" data-path="clean.html"><a href="clean.html#other-approaches-to-cleaning-data"><i class="fa fa-check"></i><b>19.4</b> Other Approaches to Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="clean.html"><a href="clean.html#changing-the-case-of-variable-names"><i class="fa fa-check"></i><b>19.4.1</b> Changing the Case of Variable Names</a></li>
+<li class="chapter" data-level="19.4.2" data-path="clean.html"><a href="clean.html#changing-the-case-of-character-variable-values"><i class="fa fa-check"></i><b>19.4.2</b> Changing the Case of Character Variable Values</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="clean.html"><a href="clean.html#summary-15"><i class="fa fa-check"></i><b>19.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="aggregatesegment.html"><a href="aggregatesegment.html"><i class="fa fa-check"></i><b>20</b> Aggregating &amp; Segmenting Data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup"><i class="fa fa-check"></i><b>20.1</b> Counts By Group</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_pipes"><i class="fa fa-check"></i><b>20.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.1.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_nopipes"><i class="fa fa-check"></i><b>20.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup"><i class="fa fa-check"></i><b>20.2</b> Measures of Central Tendency and Dispersion By Group</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_pipes"><i class="fa fa-check"></i><b>20.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.2.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_nopipes"><i class="fa fa-check"></i><b>20.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable"><i class="fa fa-check"></i><b>20.3</b> Add Variable to Data Frame Containing Aggregated Values</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_pipes"><i class="fa fa-check"></i><b>20.3.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.3.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_nopipes"><i class="fa fa-check"></i><b>20.3.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#visualize_bygroup"><i class="fa fa-check"></i><b>20.4</b> Visualize Data By Group</a></li>
+<li class="chapter" data-level="20.5" data-path="aggregatesegment.html"><a href="aggregatesegment.html#summary-16"><i class="fa fa-check"></i><b>20.5</b> Summary</a></li>
+<li class="chapter" data-level="20.6" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement"><i class="fa fa-check"></i><b>20.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_subset_supplement"><i class="fa fa-check"></i><b>20.6.1</b> <code>describeBy</code> Function from <code>psych</code> Package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="manipulate.html"><a href="manipulate.html"><i class="fa fa-check"></i><b>21</b> Manipulating &amp; Restructuring Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="manipulate.html"><a href="manipulate.html#widetolong"><i class="fa fa-check"></i><b>21.1</b> Wide-to-Long Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="manipulate.html"><a href="manipulate.html#widetolong_withpipe"><i class="fa fa-check"></i><b>21.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.1.2" data-path="manipulate.html"><a href="manipulate.html#widetolong_withoutpipe"><i class="fa fa-check"></i><b>21.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="manipulate.html"><a href="manipulate.html#longtowide"><i class="fa fa-check"></i><b>21.2</b> Long-to-Wide Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="manipulate.html"><a href="manipulate.html#longtowide_withpipe"><i class="fa fa-check"></i><b>21.2.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.2.2" data-path="manipulate.html"><a href="manipulate.html#longtowide_withoutpipe"><i class="fa fa-check"></i><b>21.2.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="manipulate.html"><a href="manipulate.html#summary-17"><i class="fa fa-check"></i><b>21.3</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>IV Employee Demographics</b></span></li>
+<li class="chapter" data-level="22" data-path="employeedemographics.html"><a href="employeedemographics.html"><i class="fa fa-check"></i><b>22</b> Introduction to Employee Demographics</a></li>
+<li class="chapter" data-level="23" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>23</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="descriptives.html"><a href="descriptives.html#determine_measurementscale"><i class="fa fa-check"></i><b>23.1</b> Determine the Measurement Scale</a></li>
+<li class="chapter" data-level="23.2" data-path="descriptives.html"><a href="descriptives.html#describe_nominal_ordinal"><i class="fa fa-check"></i><b>23.2</b> Describe Nominal &amp; Ordinal (Categorical) Variables</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="descriptives.html"><a href="descriptives.html#compute_counts"><i class="fa fa-check"></i><b>23.2.1</b> Compute Counts &amp; Frequencies</a></li>
+<li class="chapter" data-level="23.2.2" data-path="descriptives.html"><a href="descriptives.html#datavisualizations_nominal_ordinal"><i class="fa fa-check"></i><b>23.2.2</b> Create Data Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="23.3" data-path="descriptives.html"><a href="descriptives.html#describe_interval_ratio"><i class="fa fa-check"></i><b>23.3</b> Describe Interval &amp; Ratio (Continuous) Variables</a>
+<ul>
+<li class="chapter" data-level="23.3.1" data-path="descriptives.html"><a href="descriptives.html#datavisualizations_interval_ratio"><i class="fa fa-check"></i><b>23.3.1</b> Create Data Visualizations</a></li>
+<li class="chapter" data-level="23.3.2" data-path="descriptives.html"><a href="descriptives.html#compute_measures_centraltendency_dispersion"><i class="fa fa-check"></i><b>23.3.2</b> Compute Measures of Central Tendency &amp; Dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="23.4" data-path="descriptives.html"><a href="descriptives.html#summary-18"><i class="fa fa-check"></i><b>23.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="crosstabs.html"><a href="crosstabs.html"><i class="fa fa-check"></i><b>24</b> Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs"><i class="fa fa-check"></i><b>24.1</b> Two-Way Cross-Tabulation</a>
+<ul>
+<li class="chapter" data-level="24.1.1" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_table"><i class="fa fa-check"></i><b>24.1.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="24.1.2" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_xtabs"><i class="fa fa-check"></i><b>24.1.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="24.1.3" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_CrossTable"><i class="fa fa-check"></i><b>24.1.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="24.2" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs"><i class="fa fa-check"></i><b>24.2</b> Three-Way Cross-Tabulation</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs_table"><i class="fa fa-check"></i><b>24.2.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="24.2.2" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs_xtabs"><i class="fa fa-check"></i><b>24.2.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="crosstabs.html"><a href="crosstabs.html#summary-19"><i class="fa fa-check"></i><b>24.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="pivottables.html"><a href="pivottables.html"><i class="fa fa-check"></i><b>25</b> Pivot Tables</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="pivottables.html"><a href="pivottables.html#create_pivottables"><i class="fa fa-check"></i><b>25.1</b> Create a Pivot Table</a></li>
+<li class="chapter" data-level="25.2" data-path="pivottables.html"><a href="pivottables.html#summary-20"><i class="fa fa-check"></i><b>25.2</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>V Employee Surveys</b></span></li>
+<li class="chapter" data-level="26" data-path="employeesurveys.html"><a href="employeesurveys.html"><i class="fa fa-check"></i><b>26</b> Introduction to Employee Surveys</a></li>
+<li class="part"><span><b>VI Employee Selection</b></span></li>
+<li class="chapter" data-level="27" data-path="selection.html"><a href="selection.html"><i class="fa fa-check"></i><b>27</b> Introduction to Employee Selection</a></li>
+<li class="chapter" data-level="28" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>28</b> Investigating Disparate Impact</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="disparateimpact.html"><a href="disparateimpact.html#fourfifthsrule"><i class="fa fa-check"></i><b>28.1</b> 4/5ths Rule</a></li>
+<li class="chapter" data-level="28.2" data-path="disparateimpact.html"><a href="disparateimpact.html#chisquaretest_disparateimpact"><i class="fa fa-check"></i><b>28.2</b> Chi-Squared (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
+<li class="chapter" data-level="28.3" data-path="disparateimpact.html"><a href="disparateimpact.html#fisherexacttest"><i class="fa fa-check"></i><b>28.3</b> Fisher Exact Test</a></li>
+<li class="chapter" data-level="28.4" data-path="disparateimpact.html"><a href="disparateimpact.html#zdifference_test_disparateimpact"><i class="fa fa-check"></i><b>28.4</b> <span class="math inline">\(Z_{D}\)</span> test</a></li>
+<li class="chapter" data-level="28.5" data-path="disparateimpact.html"><a href="disparateimpact.html#z_impactratiotest"><i class="fa fa-check"></i><b>28.5</b> <span class="math inline">\(Z_{IR}\)</span> Test</a></li>
+<li class="chapter" data-level="28.6" data-path="disparateimpact.html"><a href="disparateimpact.html#summary_disparatetreatment"><i class="fa fa-check"></i><b>28.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="29" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html"><i class="fa fa-check"></i><b>29</b> Estimating Criterion-Related Validity Using Correlation</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#review_correlation"><i class="fa fa-check"></i><b>29.1</b> Review of Correlation</a></li>
+<li class="chapter" data-level="29.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#visualize-association-using-a-scatter-plot"><i class="fa fa-check"></i><b>29.2</b> Visualize Association Using a Scatter Plot</a></li>
+<li class="chapter" data-level="29.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#estimate_correlation"><i class="fa fa-check"></i><b>29.3</b> Estimate Correlation</a></li>
+<li class="chapter" data-level="29.4" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#summary_criterionrelatedvalidity"><i class="fa fa-check"></i><b>29.4</b> Summary</a></li>
+<li class="chapter" data-level="29.5" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_supplement"><i class="fa fa-check"></i><b>29.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="29.5.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cor_function"><i class="fa fa-check"></i><b>29.5.1</b> <code>cor</code> Function from Base R</a></li>
+<li class="chapter" data-level="29.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>29.5.2</b> <code>cor.test</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>30</b> Predicting Criterion Scores Using Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#review_slr"><i class="fa fa-check"></i><b>30.1</b> Review of Simple Linear Regression</a></li>
+<li class="chapter" data-level="30.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>30.2</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="30.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>30.3</b> Predict Criterion Scores</a></li>
+<li class="chapter" data-level="30.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>30.4</b> Summary</a></li>
+<li class="chapter" data-level="30.5" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>30.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="30.5.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function_slr"><i class="fa fa-check"></i><b>30.5.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.5.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predict_function_slr"><i class="fa fa-check"></i><b>30.5.2</b> <code>predict</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.5.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.5.3</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html"><i class="fa fa-check"></i><b>31</b> Estimating Incremental Validity Using Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#review_mlr"><i class="fa fa-check"></i><b>31.1</b> Review of Multiple Linear Regression</a></li>
+<li class="chapter" data-level="31.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#estimate_mlr"><i class="fa fa-check"></i><b>31.2</b> Estimate Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="31.3" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#summary_incrementalvalidity"><i class="fa fa-check"></i><b>31.3</b> Summary</a></li>
+<li class="chapter" data-level="31.4" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#incrementalvalidity_supplement"><i class="fa fa-check"></i><b>31.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="31.4.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#lm_function_mlr"><i class="fa fa-check"></i><b>31.4.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="31.4.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#apatable_mlr"><i class="fa fa-check"></i><b>31.4.2</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="compensatory.html"><a href="compensatory.html"><i class="fa fa-check"></i><b>32</b> Compensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="32.1" data-path="compensatory.html"><a href="compensatory.html#review_compensatory"><i class="fa fa-check"></i><b>32.1</b> Review of Compensatory Approach</a></li>
+<li class="chapter" data-level="32.2" data-path="compensatory.html"><a href="compensatory.html#estimate_compensatory"><i class="fa fa-check"></i><b>32.2</b> Estimate Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="32.3" data-path="compensatory.html"><a href="compensatory.html#predictcriterionscores_compensatory"><i class="fa fa-check"></i><b>32.3</b> Predict Criterion Scores</a></li>
+<li class="chapter" data-level="32.4" data-path="compensatory.html"><a href="compensatory.html#summary_compensatory"><i class="fa fa-check"></i><b>32.4</b> Summary</a></li>
+<li class="chapter" data-level="32.5" data-path="compensatory.html"><a href="compensatory.html#compensatory_supplement"><i class="fa fa-check"></i><b>32.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="32.5.1" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>32.5.1</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
+<li class="chapter" data-level="33" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>33</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="34" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>34</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for HR:<br />
+<em>An Introduction to Human Resource Analytics Using R</em><br />
+BOOK UNDER CONSTRUCTION</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="compensatory" class="section level1" number="32">
+<h1><span class="header-section-number">Chapter 32</span> Compensatory Approach to Selection Decisions</h1>
+<p>Just as we can use multiple linear regression to evaluate whether evidence of incremental validity exists for a selection tool, we can also use multiple linear regression to apply a compensatory approach to making selection decisions.</p>
+<div id="review_compensatory" class="section level2" number="32.1">
+<h2><span class="header-section-number">32.1</span> Review of Compensatory Approach</h2>
+<p>In the context of employee selection, a <strong>compensatory approach</strong> refers to the process of using applicants’ scores on multiple selection tools to predict who will have the highest scores on the criterion. In doing so, applicants can compensate for lower scores on one selection tool with higher scores on one or more other selection tools – hence the name “compensatory approach.” One of the simpler ways to apply a compensatory approach is to apply equal weights to scores from the various selection tools when predicting future criterion scores; however, such an approach does not acknowledge that some selection tools may explain more variance in the criterion (e.g., job performance) than others. Using regression coefficients from a multiple linear regression model, we can weight scores on selection tools differentially when predicting criterion scores. Notably, these weights are empirically driven (e.g., data informed) as opposed to judgment informed (e.g., subject matter expert ratings). In essence, applying a compensatory approach using multiple linear regression allows us to apply our estimated regression model equation to predict criterion scores for applicants. Subsequently, we can sort the predicted criterion scores to determine which applicants are most promising and to inform selection decisions.</p>
+<p>This chapter is an extension of the <a href="incrementalvalidity.html#incrementalvalidity">chapter on estimating the incremental validity of a selection tool using multiple linear regression</a>. Thus, to save space and time, in this chapter, I will forgo a review of ordinary least squares (OLS) multiple linear regression, as that is already covered in the chapter.</p>
+<p>To understand how a compensatory approach works, let’s consider a hypothetical scenario in which we administer three selection tools to applicants: cognitive ability test (CA), work simulation (WS), and structured interview (SI). Let’s assume that a predictive validation study was conducted previously to estimate the criterion-related validities of these three selection tools and whether they each showed evidence of incremental validity with respect to each other – and let’s imagine that our criterion of interest is job performance. Finally let’s assume that the following equation represents the general framework for the multiple linear regression model we estimated for investigating incremental validity:</p>
+<p><span class="math inline">\(\hat{Y}_{Performance} = b_{Intercept} + b_{CA}X_{CA} + b_{WS}X_{WS} + b_{SI}X_{SI}\)</span></p>
+<p>where <span class="math inline">\(\hat{Y}_{Performance}\)</span> represents the predicted score on the performance criterion variable, <span class="math inline">\(b_{Intercept}\)</span> represents the <span class="math inline">\(\hat{Y}\)</span>-intercept value (i.e., model constant) when the predictor variables are equal to zero, <span class="math inline">\(b_{CA}\)</span>, <span class="math inline">\(b_{WS}\)</span>, and <span class="math inline">\(b_{SI}\)</span> represent the unstandardized coefficients (i.e., weights, slopes) of the associations between the predictor variables <span class="math inline">\(X_{CA}\)</span> (cognitive ability), <span class="math inline">\(X_{WS}\)</span> (work simulation), and <span class="math inline">\(X_{SI} (structured interview)\)</span>, respectively, and the outcome variable <span class="math inline">\(\hat{Y}_{Performance}\)</span>.</p>
+<p>Now, let’s plug some hypothetical intercept and regression coefficient estimates into the equation, and assume that these estimates were pulled from our unstandardized multiple linear regression output.</p>
+<p><span class="math inline">\(\hat{Y}_{Performance} = 1.32 + .42_{CA}X_{CA} + .50_{WS}X_{WS} + .22_{SI}X_{SI}\)</span></p>
+<p>Finally, let’s imagine that we administered the cognitive ability test, work simulation, and structured interview to two applicants with the goal of predicting their future job performance scores. The first applicant received the following scores on the selection tools, where all tests happened to be out of a possible 10 points: cognitive ability (CA) = 5, work simulation (WS) = 7, and structured interview (SI) = 9. If we plug those values into the regression equation, we get a predicted job performance score of 8.90.</p>
+<p><span class="math inline">\(8.90_{Performance} = 1.32 + .42_{CA}*5_{CA} + .50_{WS}*7_{WS} + .22_{SI}*9_{SI}\)</span></p>
+<p>In contrast, the second applicant received the following scores on the selection tools: cognitive ability (CA) = 7, work simulation (WS) = 5, and structured interview (SI) = 9. Notice that the structured interview score was the same for both applicants but that the cognitive ability and work simulation scores were flipped-flopped. In this hypothetical example, if you were to add up each applicants total score across the three selection tools, the sum would be the same: 21 points. Because each test in this example has maximum potential score of 10, the total possible points is 30 points. Thus, if we were to simply add up both applicants’ scores, these applicants would be “tied.” Fortunately, just like we did for the first applicant, we can apply our regression coefficients (i.e., weights) to these three scores to generated a score that reflects a weighted compensatory approach. For the second applicant, the predicted performance score is 8.74.</p>
+<p><span class="math inline">\(8.74_{Performance} = 1.32 + .42_{CA}*7_{CA} + .50_{WS}*5_{WS} + .22_{SI}*9_{SI}\)</span></p>
+<p>As you can see, the first applicant has a higher predicted performance score (8.90) than the second applicant (8.74), so based purely off of this information, we would rank the first applicant higher. Hopefully, you can see how the selection tool scores are differentially weighted based on their corresponding regression coefficient estimates.</p>
+<div id="video-tutorial-21" class="section level4" number="32.1.0.1">
+<h4><span class="header-section-number">32.1.0.1</span> Video Tutorial</h4>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/vtnYvcs1yUQ?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to Video Tutorial: <a href="https://youtu.be/vtnYvcs1yUQ" class="uri">https://youtu.be/vtnYvcs1yUQ</a></p>
+</div>
+<div id="functions-packages-introduced-17" class="section level4" number="32.1.0.2">
+<h4><span class="header-section-number">32.1.0.2</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Regression</code></td>
+<td><code>lessR</code></td>
+</tr>
+<tr class="even">
+<td><code>order</code></td>
+<td>base <code>R</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_compensatory" class="section level4" number="32.1.0.3">
+<h4><span class="header-section-number">32.1.0.3</span> Initial Steps</h4>
+<p>If you haven’t already, save the file called <strong>“ConcurrentValidation.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb1051"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1051-1"><a href="compensatory.html#cb1051-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1051-2"><a href="compensatory.html#cb1051-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“ConcurrentValidation.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb1052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1052-1"><a href="compensatory.html#cb1052-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1052-2"><a href="compensatory.html#cb1052-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1052-3"><a href="compensatory.html#cb1052-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1052-4"><a href="compensatory.html#cb1052-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1053"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1053-1"><a href="compensatory.html#cb1053-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1053-2"><a href="compensatory.html#cb1053-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1053-3"><a href="compensatory.html#cb1053-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1053-4"><a href="compensatory.html#cb1053-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1053-5"><a href="compensatory.html#cb1053-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_character(),
+##   SJT = col_double(),
+##   EI = col_double(),
+##   Interview = col_double(),
+##   Performance = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb1055"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1055-1"><a href="compensatory.html#cb1055-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb1055-2"><a href="compensatory.html#cb1055-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;  &quot;SJT&quot;         &quot;EI&quot;          &quot;Interview&quot;   &quot;Performance&quot;</code></pre>
+<div class="sourceCode" id="cb1057"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1057-1"><a href="compensatory.html#cb1057-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb1057-2"><a href="compensatory.html#cb1057-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,5] [300 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ EmployeeID : chr [1:300] &quot;EE23&quot; &quot;EE24&quot; &quot;EE25&quot; &quot;EE26&quot; ...
+##  $ SJT        : num [1:300] 9 8 7 6 6 5 5 4 3 8 ...
+##  $ EI         : num [1:300] 8 6 6 5 5 5 4 2 2 7 ...
+##  $ Interview  : num [1:300] 2 3 4 5 6 7 7 8 9 2 ...
+##  $ Performance: num [1:300] 22 11 5 11 12 12 12 12 12 10 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   EmployeeID = col_character(),
+##   ..   SJT = col_double(),
+##   ..   EI = col_double(),
+##   ..   Interview = col_double(),
+##   ..   Performance = col_double()
+##   .. )</code></pre>
+<div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1059-1"><a href="compensatory.html#cb1059-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb1059-2"><a href="compensatory.html#cb1059-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   EmployeeID   SJT    EI Interview Performance
+##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1 EE23           9     8         2          22
+## 2 EE24           8     6         3          11
+## 3 EE25           7     6         4           5
+## 4 EE26           6     5         5          11
+## 5 EE27           6     5         6          12
+## 6 EE28           5     5         7          12</code></pre>
+<p>The data frame contains 5 variables and 300 cases (i.e., employees): <code>EmployeeID</code>, <code>SJT</code>, <code>EI</code>, <code>Interview</code>, and <code>Performance</code>. Let’s assume that these data were collected as part of a concurrent validation study aimed at estimating the criterion-related validity of selection tools (e.g., procedures, assessments, tests); this means that the selection tools (i.e., <code>SJT</code>, <code>EI</code>, <code>Interview</code>) were administered to job incumbents and the criterion measure (<code>Performance</code>) was administered at about the same time. To begin, <code>EmployeeID</code> is the unique identifier variable. The <code>SJT</code> variable contains the scores on a situational judgment test designed to “tap into” the psychological concepts of emotional intelligence and empathy; potential scores on this variable could range from 1 (<em>low emotional intelligence &amp; empathy</em>) to 10 (<em>emotional intelligence &amp; empathy</em>). The <code>EI</code> variable contains scores on an emotional intelligence assessment; potential scores on this variable could range from 1 (<em>low emotional intelligence</em>) to 10 (<em>emotional intelligence</em>). The <code>Interview</code> variable contains the scores for a structured interview designed to assess interviewees’ level of interpersonal skills; potential scores on this variable could range from 1 (<em>poor interpersonal skills</em>) to 15 (<em>interpersonal skills</em>). Finally, the <em>criterion</em> for this concurrent validation study is the <code>Performance</code> variable, which contains the job performance evaluation ratings for the job incumbents; potential scores on this variable could range from 1 (<em>does not meet performance standards</em>) to 30 (<em>exceeds performance standards</em>).</p>
+</div>
+</div>
+<div id="estimate_compensatory" class="section level2" number="32.2">
+<h2><span class="header-section-number">32.2</span> Estimate Multiple Linear Regression Model</h2>
+<p>We’ll begin by first assuming that that evidence of <em>criterion-related validity</em> was already found for the three selection tools (<code>SJT</code>, <code>EI</code>, <code>Interview</code>) using correlations. Second, we’ll assume that the <code>EI</code> selection tool was not found to have incremental validity when all three selection tools were included in a multiple linear regression model, thereby leaving us to estimate a second multiple linear regression model in which only <code>SJT</code> and <code>Interview</code> were included as predictors. For reviews of the aforementioned assumed prior steps, please refer to the previous chapters on <a href="criterionrelatedvalidity.html#criterionrelatedvalidity">estimating criterion-related validity using a correlation</a> and <a href="incrementalvalidity.html#incrementalvalidity">estimating the incremental validity of a selection tool using multiple linear regression</a>. In this chapter, we’ll begin by estimating the multiple linear regression model with <code>SJT</code> and <code>Interview</code> specified as predictor variables and <code>Performance</code> specified as the outcome variable.</p>
+<p>There are different functions we could use to estimate a multiple linear regression model, and in this tutorial we’ll focus on just one: the <code>Regression</code> function from <code>lessR</code>. Note that this is the same function that we can use to estimate a simple linear regression model. If you haven’t already install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
+<div class="sourceCode" id="cb1061"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1061-1"><a href="compensatory.html#cb1061-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1061-2"><a href="compensatory.html#cb1061-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1062"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1062-1"><a href="compensatory.html#cb1062-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1062-2"><a href="compensatory.html#cb1062-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<p>To use the <code>Regression</code> function from the <code>lessR</code> package, type the name of the <code>Regression</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome (i.e., criterion) variable (<code>Performance</code>) to the left of the tilde (<code>~</code>) operator and the names of the predictor (e.g., selection tool) variables (<code>SJT</code>, <code>Interview</code>) separated by the <code>+</code> operator to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>SJT</code> and <code>Interview</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>).</p>
+<div class="sourceCode" id="cb1063"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1063-1"><a href="compensatory.html#cb1063-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
+<span id="cb1063-2"><a href="compensatory.html#cb1063-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-627-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-627-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-627-3.png" width="672" /></p>
+<pre><code>## &gt;&gt;&gt; Suggestion
+## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
+## Regression(my_formula=Performance ~ SJT + Interview, data=df, Rmd=&quot;eg&quot;)  
+## 
+## 
+##   BACKGROUND
+## 
+## Data Frame:  df 
+##  
+## Response Variable: Performance 
+## Predictor Variable 1: SJT 
+## Predictor Variable 2: Interview 
+##  
+## Number of cases (rows) of data:  300 
+## Number of cases retained for analysis:  300 
+## 
+## 
+##   BASIC ANALYSIS
+## 
+##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
+## (Intercept)     5.527      0.539   10.249    0.000       4.465       6.588 
+##         SJT     0.567      0.085    6.714    0.000       0.401       0.734 
+##   Interview     0.385      0.064    6.031    0.000       0.260       0.511 
+## 
+## 
+## Standard deviation of residuals:  2.992 for 297 degrees of freedom 
+##  
+## R-squared:  0.264    Adjusted R-squared:  0.259    PRESS R-squared:  0.236 
+## 
+## Null hypothesis that all population slope coefficients are 0:
+##   F-statistic: 53.339     df: 2 and 297     p-value:  0.000 
+## 
+## 
+##               df    Sum Sq   Mean Sq   F-value   p-value 
+##         SJT    1   629.432   629.432    70.303     0.000 
+##   Interview    1   325.670   325.670    36.375     0.000 
+##  
+## Model          2   955.102   477.551    53.339     0.000 
+## Residuals    297  2659.095     8.953 
+## Performance  299  3614.197    12.088 
+## 
+## 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##               Performance  SJT Interview 
+##   Performance        1.00 0.42      0.39 
+##           SJT        0.42 1.00      0.24 
+##     Interview        0.39 0.24      1.00 
+## 
+## 
+##             Tolerance       VIF 
+##         SJT     0.944     1.060 
+##   Interview     0.944     1.060 
+## 
+## 
+##  SJT Interview    R2adj    X&#39;s 
+##    1         1    0.259      2 
+##    1         0    0.171      1 
+##    0         1    0.150      1 
+##  
+## [based on Thomas Lumley&#39;s leaps function from the leaps package] 
+##  
+## 
+## 
+##   RESIDUALS AND INFLUENCE
+## 
+## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
+##    [sorted by Cook&#39;s Distance] 
+##    [res_rows = 20, out of 300 rows of data, or do res_rows=&quot;all&quot;] 
+## --------------------------------------------------------------------- 
+##          SJT Interview Performance fitted   resid rstdnt dffits cooks 
+##   201  9.000     1.000      24.000 11.019  12.981  4.537  0.736 0.169 
+##    70 10.000    12.000       5.000 15.825 -10.825 -3.755 -0.670 0.143 
+##   170 10.000    12.000       5.000 15.825 -10.825 -3.755 -0.670 0.143 
+##   270 10.000    12.000       5.000 15.825 -10.825 -3.755 -0.670 0.143 
+##   233 10.000     6.000      27.000 13.513  13.487  4.709  0.645 0.129 
+##     1  9.000     2.000      22.000 11.404  10.596  3.653  0.537 0.092 
+##   101  9.000     2.000      22.000 11.404  10.596  3.653  0.537 0.092 
+##    69  2.000     1.000      18.000  7.047  10.953  3.775  0.505 0.081 
+##   169  2.000     1.000      18.000  7.047  10.953  3.775  0.505 0.081 
+##    92  8.000    15.000      10.000 15.846  -5.846 -2.008 -0.430 0.061 
+##   192  8.000    15.000      10.000 15.846  -5.846 -2.008 -0.430 0.061 
+##   292  8.000    15.000      10.000 15.846  -5.846 -2.008 -0.430 0.061 
+##    20  2.000     8.000      18.000  9.744   8.256  2.819  0.397 0.051 
+##   120  2.000     8.000      18.000  9.744   8.256  2.819  0.397 0.051 
+##   283  9.000     5.000      22.000 12.560   9.440  3.226  0.372 0.045 
+##   269  2.000     5.000      18.000  8.588   9.412  3.216  0.371 0.045 
+##    97  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
+##   197  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
+##   297  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
+##    82  2.000     4.000      14.000  8.203   5.797  1.959  0.224 0.017 
+## 
+## 
+##   PREDICTION ERROR 
+## 
+## Data, Predicted, Standard Error of Forecast, 
+## 95% Prediction Intervals 
+##    [sorted by lower bound of prediction interval] 
+##    [to see all intervals do pred_rows=&quot;all&quot;] 
+##  ----------------------------------------------
+## 
+##         SJT Interview Performance   pred    sf pi.lwr pi.upr  width 
+##    69 2.000     1.000      18.000  7.047 3.018  1.107 12.987 11.880 
+##   169 2.000     1.000      18.000  7.047 3.018  1.107 12.987 11.880 
+##    41 1.000     3.000       8.000  7.250 3.021  1.305 13.195 11.891 
+## ... 
+##   210 8.000     2.000      10.000 10.837 3.015  4.903 16.771 11.868 
+##     4 6.000     5.000      11.000 10.858 2.998  4.959 16.757 11.798 
+##    47 6.000     5.000      11.000 10.858 2.998  4.959 16.757 11.798 
+## ... 
+##   222 9.000     9.000      11.000 14.102 3.015  8.168 20.035 11.867 
+##    92 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
+##   192 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
+## 
+## 
+## ---------------------------------- 
+## Plot 1: Distribution of Residuals 
+## Plot 2: Residuals vs Fitted Values 
+## Plot 3: ScatterPlot Matrix 
+## ----------------------------------</code></pre>
+<p>Given that the output for this model has already been reviewed in detail in the chapter on <a href="incrementalvalidity.html#incrementalvalidity">estimating the incremental validity of a selection tool using multiple linear regression</a>, we’ll focus only on the information that is relevant for applying a compensatory model – namely the regression coefficients.</p>
+<p>For the estimated model, we find that both selection tools (i.e., predictor variables) show evidence of incremental validity; that is, both selection tools are significantly associated with the criterion of job performance when statistically controlling for the effects of each other. Specifically, the association between <code>SJT</code> and <code>Performance</code> (when controlling for <code>Interview</code>) is positive and statistically significant (<em>b</em> = .567, <em>p</em> &lt; .001), and the association between <code>Interview</code> and <code>Performance</code> (when controlling for <code>SJT</code>) is also positive and statistically significant (<em>b</em> = .385, <em>p</em> &lt; .001).</p>
+<p>If you recall from the chapter on <a href="predictingcriterionscores.html#predictingcriterionscores">predicting criterion scores on using simple linear regression</a>, the intercept and predictor variable regression coefficients can be used to construct an equation, and this equation serves as the basis for making criterion-score predictions. In fact, when an equation comes from estimated multiple linear regression coefficients, the equation can serve as the basis for applying a compensatory approach to selection decisions.</p>
+<p>Using the intercept and predictor variable coefficient estimates from our multiple linear regression model, we can write out the equation for the regression model as follows:</p>
+<p><span class="math inline">\(Performance_{predicted} = 5.527 + (.567 * SJT_{observed}) + (.385 * Interview_{observed})\)</span></p>
+<p>Let’s assume, for example, that a future applicant scores 5 points on the <code>SJT</code> and 7 points on the <code>Interview</code>. If we plug those values into our equation, we get a predictor criterion score (i.e., <code>Performance</code> score) of 11.057:</p>
+<p><span class="math inline">\(11.057 = 5.527 + (.567 * 5) + (.385 * 7)\)</span></p>
+<p>Thus, based on our estimate model (i.e., equation), we are able to predict scores on the criterion variable <code>Performance</code>. We’ll bring this process to life in the following section in order to apply a compensatory approach to selection decisions.</p>
+</div>
+<div id="predictcriterionscores_compensatory" class="section level2" number="32.3">
+<h2><span class="header-section-number">32.3</span> Predict Criterion Scores</h2>
+<p>Using the multiple linear regression model we estimated above, we can write code that generates predicted criterion scores based on new data we feed into the model. In fact, we can even add these predictions to the new data frame to which the new data belong.</p>
+<p>We’ll begin by specifying the same multiple linear regression model as above – except this time we will assign the estimated model to an object that we can subsequently reference. To do so, we’ll use the <code>&lt;-</code> operator. In this example, I’m naming the model <code>reg_mod</code>.</p>
+<div class="sourceCode" id="cb1065"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1065-1"><a href="compensatory.html#cb1065-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign multiple linear regression model to object</span></span>
+<span id="cb1065-2"><a href="compensatory.html#cb1065-2" aria-hidden="true" tabindex="-1"></a>reg_mod <span class="ot">&lt;-</span> <span class="fu">Regression</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
+<p>Now that because we have assigned the multiple linear regression model to the object <code>reg_mod</code>, we can reference specific elements from that model, such as the regression coefficients. We’re going to do so to build our regression model equation as an <code>R</code> formula.</p>
+<p>Let’s begin by referencing the model intercept value and assigning it to an object called <code>b0</code>. I’m calling this object <code>b0</code> because conventionally the “b” or “B” notation is used to signify regression coefficients and because the “0” (zero) is often used as a subscript to signify our intercept value in a regression model equation. To “pull” or reference the intercept value from our regression model, we can specify the name of our regression model object (<code>reg_mod</code>) followed by the <code>$</code> operator and <code>coefficients</code>. If we were to run this by itself, it would print all of the regression coefficient values estimated for the model; we, however, want just the intercept value. Given that, immediately following <code>coefficients</code>, include brackets (<code>[ ]</code>). Within the brackets, include the exact text: <code>"(Intercept)"</code>. This will call up the intercept coefficient for any model estimated using the <code>Regression</code> function from <code>lessR</code>.</p>
+<div class="sourceCode" id="cb1066"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1066-1"><a href="compensatory.html#cb1066-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model intercept and assign to object</span></span>
+<span id="cb1066-2"><a href="compensatory.html#cb1066-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;(Intercept)&quot;</span>]</span></code></pre></div>
+<p>Next, let’s “pull” the regression coefficients associated with the two predictor variables: <code>SJT</code> and <code>Interview</code>. Let’s assign these regression coefficients to objects called <code>b1</code> and <code>b2</code>, respectively, which adhere to conventional notation. To reference the coefficient associated with <code>SJT</code>, we will specify the name of our regression model object (<code>reg_mod</code>) followed by the <code>$</code> operator and <code>coefficients</code> – just as we did above with the model intercept. Immediately following <code>coefficients</code>, include brackets (<code>[ ]</code>). Within the brackets, include the exact name of the predictor variable associated with the coefficient you wish to reference (within quotation marks): <code>"SJT"</code>.</p>
+<div class="sourceCode" id="cb1067"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1067-1"><a href="compensatory.html#cb1067-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model regression coefficient for SJT and assign to object</span></span>
+<span id="cb1067-2"><a href="compensatory.html#cb1067-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;SJT&quot;</span>]</span></code></pre></div>
+<p>Let’s repeat the process for the <code>Interview</code> variable, except name this object <code>b2</code>.</p>
+<div class="sourceCode" id="cb1068"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1068-1"><a href="compensatory.html#cb1068-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model regression coefficient for Interview and assign to object</span></span>
+<span id="cb1068-2"><a href="compensatory.html#cb1068-2" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;Interview&quot;</span>]</span></code></pre></div>
+<p>Now that we’ve pulled the coefficients and assigned them to objects (<code>b0</code>, <code>b1</code>, <code>b2</code>) that we can reference in our regression model equation, let’s read in new data so that we can reference new applicants’ scores on the same conscientiousness selection tool. As we did above in the <a href="compensatory.html#initsteps_compensatory">Initial Steps section</a>, let’s read in the data file called <em>“NewApplicants.csv”</em> and assign it to a new object. Here I call this new object <code>new_df</code>.</p>
+<div class="sourceCode" id="cb1069"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1069-1"><a href="compensatory.html#cb1069-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
+<span id="cb1069-2"><a href="compensatory.html#cb1069-2" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;NewApplicants.csv&quot;</span>)</span></code></pre></div>
+<p>Let’s take a peek at first six rows of the <code>new_df</code> data frame object.</p>
+<div class="sourceCode" id="cb1070"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1070-1"><a href="compensatory.html#cb1070-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first six rows</span></span>
+<span id="cb1070-2"><a href="compensatory.html#cb1070-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_df)</span></code></pre></div>
+<pre><code>##   ApplicantID SJT Interview
+## 1         AA1   6         9
+## 2         AA2   2         7
+## 3         AA3   6         3
+## 4         AA4  10         5
+## 5         AA5   7        13
+## 6         AA6   4        10</code></pre>
+<p>Note that the data frame object includes an <code>ApplicantID</code> unique identifier variable as well as variables associated with two selection tools: <code>SJT</code> and <code>Interview</code>. Note that we don’t have any criterion (<code>Performance</code>) scores here because these folks are still applicants. Our goal then is to predict their future criterion scores using our regression model from above.</p>
+<p>To make criterion-score predictions based on the new applicant data for the <code>SJT</code> and <code>Interview</code> selection tools, we’ll need to create a regression equation based on estimates from the multiple linear regression model. Fortunately, we’ve already created objects corresponding to our model intercept (<code>b0</code>), <code>SJT</code> coefficient (<code>b1</code>), and <code>Interview</code> coefficient (<code>b2</code>). Using these values, we’ll specify a linear equation (e.g., Y = b0 + b1 * X + b2 * W).</p>
+<p>In our model equation, we’ll start by specifying a new variable containing what will be our vector of criterion-score predictions based on the <code>SJT</code> and <code>Interview</code> selection tool variables. I’m going to call this new variable <code>Perf_Predict</code>, as hopefully that name signals that the variable contains performance predictions. Using the <code>$</code> operator, we can attach this new variable to the new data frame object we read in called <code>new_df</code>. To the right of the <code>&lt;-</code> operator, we’ll specify the rest of the equation; in this context, you can think of the <code>&lt;-</code> operator as being the equal sign in our equation; in fact, you could replace the <code>&lt;-</code> operator with <code>=</code> if you wanted to. First, type in the object associated with model intercept (<code>b0</code>) followed by the <code>+</code> operator. Second, type in the object associated with the <code>SJT</code> coefficient (<code>b1</code>), and follow that with the multiplication operator (<code>*</code>) so that we can multiple the coefficient by the new values for the selection tool called <code>SJT</code>; after the <code>*</code> operator, type in the name of the corresponding selection tool variable from the <em>new</em> data frame object: <code>new_df$SJT</code>; follow this with the <code>+</code> operator. Third, type in the object associated with the <code>Interview</code> coefficient (<code>b2</code>), and follow that with the multiplication operator (<code>*</code>) so that we can multiple the coefficient by the new values for the selection tool called <code>Interview</code>; after the <code>*</code> operator, type in the name of the corresponding selection tool variable from the <em>new</em> data frame object: <code>new_df$Interview</code>.</p>
+<div class="sourceCode" id="cb1072"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1072-1"><a href="compensatory.html#cb1072-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assemble regression equation and assign to new variable in second data frame</span></span>
+<span id="cb1072-2"><a href="compensatory.html#cb1072-2" aria-hidden="true" tabindex="-1"></a>new_df<span class="sc">$</span>Perf_Predict <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> new_df<span class="sc">$</span>SJT <span class="sc">+</span> b2 <span class="sc">*</span> new_df<span class="sc">$</span>Interview</span></code></pre></div>
+<p>Let’s take a look at the <code>new_df</code> data frame object to verify that the new <code>Perf_Predict</code> variable (containing the predicted criterion scores) was added successfully.</p>
+<div class="sourceCode" id="cb1073"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1073-1"><a href="compensatory.html#cb1073-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame object</span></span>
+<span id="cb1073-2"><a href="compensatory.html#cb1073-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(new_df)</span></code></pre></div>
+<p>In the viewer tab, we can use the up and down arrows to sort by variable scores.</p>
+<p>Alternatively and optionally, we can use the <code>order</code> function from base <code>R</code> and bracket (<code>[ ]</code>) notation to sort in <em>ascending</em> order (by default). Simply type the name of the data frame object (<code>new_df</code>), followed by brackets (<code>[ ]</code>). Within the brackets type the name of the <code>order</code> function, and within the function parentheses by the name of the variable(s) we wish to sort by, which is <code>Perf_Predict_Consc</code> from the <code>new_df</code> data frame in this example. After the function parentheses (<code>( )</code>) and still within the brackets, type a comma (<code>,</code>), as anything within brackets that comes to the left of the comma indicates that columns (not rows) are being referenced.</p>
+<div class="sourceCode" id="cb1074"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1074-1"><a href="compensatory.html#cb1074-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default ascending order</span></span>
+<span id="cb1074-2"><a href="compensatory.html#cb1074-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
+<pre><code>##    ApplicantID SJT Interview Perf_Predict
+## 2          AA2   2         7     9.358599
+## 7          AA7   2         8     9.743899
+## 3          AA3   6         3    10.087326
+## 10        AA10   8         2    10.836989
+## 8          AA8   2        11    10.899798
+## 15        AA15   6         6    11.243225
+## 6          AA6   4        10    11.649461
+## 11        AA11   5        10    12.216943
+## 1          AA1   6         9    12.399124
+## 13        AA13   6         9    12.399124
+## 4          AA4  10         5    13.127851
+## 5          AA5   7        13    14.507805
+## 9          AA9   8        12    14.689987
+## 12        AA12   8        12    14.689987
+## 14        AA14   6        15    14.710923</code></pre>
+<p>Conversely, we can sort in <em>descending</em> order by typing a minus (<code>-</code>) before the variable(s) we wish to sort by. when making selection decisions using a compensatory approach (like we are doing in this tutorial), it often makes most sense to sort in descending order.</p>
+<div class="sourceCode" id="cb1076"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1076-1"><a href="compensatory.html#cb1076-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default descending order</span></span>
+<span id="cb1076-2"><a href="compensatory.html#cb1076-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(<span class="sc">-</span>new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
+<pre><code>##    ApplicantID SJT Interview Perf_Predict
+## 14        AA14   6        15    14.710923
+## 9          AA9   8        12    14.689987
+## 12        AA12   8        12    14.689987
+## 5          AA5   7        13    14.507805
+## 4          AA4  10         5    13.127851
+## 1          AA1   6         9    12.399124
+## 13        AA13   6         9    12.399124
+## 11        AA11   5        10    12.216943
+## 6          AA6   4        10    11.649461
+## 15        AA15   6         6    11.243225
+## 8          AA8   2        11    10.899798
+## 10        AA10   8         2    10.836989
+## 3          AA3   6         3    10.087326
+## 7          AA7   2         8     9.743899
+## 2          AA2   2         7     9.358599</code></pre>
+<p>As you can see, applicants AA14, AA9, and AA12 have the highest predicted criterion scores, where the criterion in this context is future job performance. If we had three open positions in need of filling, using a compensatory approach, we could extend offers first to these three applicants. If any one of them were to decline, we could start working our way down the list. In some instances, we might set a “floor” for the lowest acceptable predicted score and not consider any applicants with scores below that threshold. Alternatively, we could use a banding approach to identify groups of applicants for which we treat their predicted criterion scores as essentially equivalent <span class="citation">(<a href="references.html#ref-mueller2007implementation" role="doc-biblioref">Mueller et al. 2007</a>)</span>. One potential drawback to using a compensatory approach is that all applicants needs need to participate in all selection tools used in the multiple linear regression model, which can add expense and time.</p>
+</div>
+<div id="summary_compensatory" class="section level2" number="32.4">
+<h2><span class="header-section-number">32.4</span> Summary</h2>
+<p>In this tutorial, we learned how to estimate a multiple linear regression model using the <code>Regression</code> function from the <code>lessR</code> package in order to apply a compensatory approach to selection decisions.</p>
+</div>
+<div id="compensatory_supplement" class="section level2" number="32.5">
+<h2><span class="header-section-number">32.5</span> Chapter Supplement</h2>
+<p>In addition to the <code>Regression</code> function from the <code>lessR</code> package covered <a href="compensatory.html#estimate_compensatory">above</a>, we can use the <code>lm</code> and <code>predict</code> functions from base R to estimate a multiple linear regression model and predict future criterion scores. Because this function comes from base R, we do not need to install and access an additional package.</p>
+<div id="compensatory_supplement_functions" class="section level4" number="32.5.0.1">
+<h4><span class="header-section-number">32.5.0.1</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lm</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>summary</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>predict</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>order</code></td>
+<td><code>car</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="compensatory_initsteps_supplement" class="section level4" number="32.5.0.2">
+<h4><span class="header-section-number">32.5.0.2</span> Initial Steps</h4>
+<p>If required, please refer to the <a href="compensatory.html#initsteps_compensatory">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
+<div class="sourceCode" id="cb1078"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1078-1"><a href="compensatory.html#cb1078-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1078-2"><a href="compensatory.html#cb1078-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1079"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1079-1"><a href="compensatory.html#cb1079-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1079-2"><a href="compensatory.html#cb1079-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1079-3"><a href="compensatory.html#cb1079-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1079-4"><a href="compensatory.html#cb1079-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1080"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1080-1"><a href="compensatory.html#cb1080-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1080-2"><a href="compensatory.html#cb1080-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1080-3"><a href="compensatory.html#cb1080-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1080-4"><a href="compensatory.html#cb1080-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1080-5"><a href="compensatory.html#cb1080-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_character(),
+##   SJT = col_double(),
+##   EI = col_double(),
+##   Interview = col_double(),
+##   Performance = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb1082"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1082-1"><a href="compensatory.html#cb1082-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb1082-2"><a href="compensatory.html#cb1082-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;  &quot;SJT&quot;         &quot;EI&quot;          &quot;Interview&quot;   &quot;Performance&quot;</code></pre>
+<div class="sourceCode" id="cb1084"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1084-1"><a href="compensatory.html#cb1084-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb1084-2"><a href="compensatory.html#cb1084-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,5] [300 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ EmployeeID : chr [1:300] &quot;EE23&quot; &quot;EE24&quot; &quot;EE25&quot; &quot;EE26&quot; ...
+##  $ SJT        : num [1:300] 9 8 7 6 6 5 5 4 3 8 ...
+##  $ EI         : num [1:300] 8 6 6 5 5 5 4 2 2 7 ...
+##  $ Interview  : num [1:300] 2 3 4 5 6 7 7 8 9 2 ...
+##  $ Performance: num [1:300] 22 11 5 11 12 12 12 12 12 10 ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   EmployeeID = col_character(),
+##   ..   SJT = col_double(),
+##   ..   EI = col_double(),
+##   ..   Interview = col_double(),
+##   ..   Performance = col_double()
+##   .. )</code></pre>
+<div class="sourceCode" id="cb1086"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1086-1"><a href="compensatory.html#cb1086-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb1086-2"><a href="compensatory.html#cb1086-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   EmployeeID   SJT    EI Interview Performance
+##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
+## 1 EE23           9     8         2          22
+## 2 EE24           8     6         3          11
+## 3 EE25           7     6         4           5
+## 4 EE26           6     5         5          11
+## 5 EE27           6     5         6          12
+## 6 EE28           5     5         7          12</code></pre>
+</div>
+<div id="lm_predict_functions_compensatory" class="section level3" number="32.5.1">
+<h3><span class="header-section-number">32.5.1</span> <code>lm</code> &amp; <code>predict</code> Functions from Base R</h3>
+<p>In the following section, we will learn how to apply the <code>lm</code> and <code>predict</code> functions from base R to estimate a multiple linear regression model and predict future criterion scores.</p>
+<p>As a critical first step, we must specify the regression model using the <code>lm</code> function. To use the <code>lm</code> (linear model) function, create a name for your regression model (<code>reg.mod1</code>) using the <code>&lt;-</code> symbol. Next, type the name of the <code>lm</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome variable (<code>Performance</code>) to the left of the <code>~</code> operator and the name of the predictor variables (<code>SJT</code>, <code>Interview</code>) to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>SJT</code> and <code>Interview</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>). Now we are ready to determine whether we have satisfied key statistical assumptions and, if so, review the summary of our model estimation results.</p>
+<div class="sourceCode" id="cb1088"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1088-1"><a href="compensatory.html#cb1088-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify multiple linear regression model</span></span>
+<span id="cb1088-2"><a href="compensatory.html#cb1088-2" aria-hidden="true" tabindex="-1"></a>reg.mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
+<p>To view the model estimation results, we’ll use the <code>summary</code> function and specify the name of our regression model object as the sole parenthetical argument.</p>
+<div class="sourceCode" id="cb1089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1089-1"><a href="compensatory.html#cb1089-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of multiple linear regression model results</span></span>
+<span id="cb1089-2"><a href="compensatory.html#cb1089-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.mod)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Performance ~ SJT + Interview, data = df)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -10.8249  -1.5198  -0.0401   1.0396  13.4868 
+## 
+## Coefficients:
+##             Estimate Std. Error t value             Pr(&gt;|t|)    
+## (Intercept)  5.52654    0.53925  10.249 &lt; 0.0000000000000002 ***
+## SJT          0.56748    0.08453   6.714      0.0000000000964 ***
+## Interview    0.38530    0.06388   6.031      0.0000000048298 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.992 on 297 degrees of freedom
+## Multiple R-squared:  0.2643, Adjusted R-squared:  0.2593 
+## F-statistic: 53.34 on 2 and 297 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+<p>Given that the output for this model has already been reviewed in detail in the chapter on <a href="incrementalvalidity.html#incrementalvalidity">estimating the incremental validity of a selection tool using multiple linear regression</a>, we’ll focus only on the information that is relevant for applying a compensatory model – namely the regression coefficients.</p>
+<p>For the estimated model, we find that both selection tools (i.e., predictor variables) show evidence of incremental validity; that is, both selection tools are significantly associated with the criterion of job performance when statistically controlling for the effects of each other. Specifically, the association between <code>SJT</code> and <code>Performance</code> (when controlling for <code>Interview</code>) is positive and statistically significant (<em>b</em> = .567, <em>p</em> &lt; .001), and the association between <code>Interview</code> and <code>Performance</code> (when controlling for <code>SJT</code>) is also positive and statistically significant (<em>b</em> = .385, <em>p</em> &lt; .001).</p>
+<p>If you recall from the chapter on <a href="predictingcriterionscores.html#predictingcriterionscores">predicting criterion scores on using simple linear regression</a>, the intercept and predictor variable regression coefficients can be used to construct an equation, and this equation serves as the basis for making criterion-score predictions. In fact, when an equation comes from estimated multiple linear regression coefficients, the equation can serve as the basis for applying a compensatory approach to selection decisions.</p>
+<p>Using the intercept and predictor variable coefficient estimates from our multiple linear regression model, we can write out the equation for the regression model as follows:</p>
+<p><span class="math inline">\(Performance_{predicted} = 5.527 + (.567 * SJT_{observed}) + (.385 * Interview_{observed})\)</span></p>
+<p>Let’s assume, for example, that a future applicant scores 5 points on the <code>SJT</code> and 7 points on the <code>Interview</code>. If we plug those values into our equation, we get a predictor criterion score (i.e., <code>Performance</code> score) of 11.057:</p>
+<p><span class="math inline">\(11.057 = 5.527 + (.567 * 5) + (.385 * 7)\)</span></p>
+<p>Thus, based on our estimate model (i.e., equation), we are able to predict scores on the criterion variable <code>Performance</code>. Next, we’ll bring this process to life in order to apply a compensatory approach to selection decisions.</p>
+<p>The <code>predict</code> function from base R pairs nicely with the <code>lm</code> function, and it makes it easier to take an estimated regression model – and associated regression equation – and apply that model to new (“fresh”) predictor variable data.</p>
+<p>Before applying the <code>predict</code> function, let’s read in the data file called <em>“NewApplicants.csv”</em> and assign it to a new object. Here I call this new object <code>new_df</code>. Let’s pretend this new data frame object contains data from future applicants who have completed the <code>SJT</code> and <code>Interview</code> tools as part of the organization’s selection process. We will ultimately plug these applicants’ <code>SJT</code> and <code>Interview</code> scores into our multiple linear regression model equation to predict the applicants’ scores on the criterion variable called <code>Performance</code>.</p>
+<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1091-1"><a href="compensatory.html#cb1091-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
+<span id="cb1091-2"><a href="compensatory.html#cb1091-2" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;NewApplicants.csv&quot;</span>)</span></code></pre></div>
+<p>Next, as the first argument in the <code>predict</code> function, type <code>object=</code> followed by the estimated model object that we named <code>reg.mod</code> above. As the second argument, type <code>newdata=</code> followed by the name of the data frame object that contains new data on the predictor variable. It’s important to make sure that the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our new data are exactly the same as the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our original data that we used to estimate the model. If that were not the case, we would want to rename the predictor variable in the new data frame object to match the corresponding name in the original data frame object, which is covered in the <a href="addnames.html#addnames">chapter on adding/removing variable names and renaming specific variables</a>.</p>
+<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1092-1"><a href="compensatory.html#cb1092-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable</span></span>
+<span id="cb1092-2"><a href="compensatory.html#cb1092-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object=</span>reg.mod, <span class="at">newdata=</span>new_df)</span></code></pre></div>
+<pre><code>##         1         2         3         4         5         6         7         8         9        10        11        12        13        14 
+## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 10.836989 12.216943 14.689987 12.399124 14.710923 
+##        15 
+## 11.243225</code></pre>
+<p>In your console, you should see a vector of scores – these are the predicted criterion scores. In many cases, we might want to append this vector as a variable to our new data frame object. To do so, we just need to apply the <code>&lt;-</code> operator and, to the left of it, specify the name of the new data frame object (<code>new_df</code>) followed by the <code>$</code> operator and a name for the new variable that will contain the predicted criterion scores (<code>Perf_Predict</code>).</p>
+<div class="sourceCode" id="cb1094"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1094-1"><a href="compensatory.html#cb1094-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable </span></span>
+<span id="cb1094-2"><a href="compensatory.html#cb1094-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and append as new variable in data frame</span></span>
+<span id="cb1094-3"><a href="compensatory.html#cb1094-3" aria-hidden="true" tabindex="-1"></a>new_df<span class="sc">$</span>Perf_Predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object=</span>reg.mod, <span class="at">newdata=</span>new_df)</span></code></pre></div>
+<p>We can use the <code>order</code> function from base <code>R</code> and bracket (<code>[ ]</code>) notation to sort in <em>ascending</em> order (by default). Simply type the name of the data frame object (<code>new_df</code>), followed by brackets (<code>[ ]</code>). Within the brackets type the name of the <code>order</code> function, and within the function parentheses by the name of the variable(s) we wish to sort by, which is <code>Perf_Predict</code> from the <code>new_df</code> data frame in this example. After the function parentheses (<code>( )</code>) and still within the brackets, type a comma (<code>,</code>), as anything within brackets that comes to the left of the comma indicates that columns (not rows) are being referenced.</p>
+<div class="sourceCode" id="cb1095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1095-1"><a href="compensatory.html#cb1095-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default ascending order</span></span>
+<span id="cb1095-2"><a href="compensatory.html#cb1095-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
+<pre><code>##    ApplicantID SJT Interview Perf_Predict
+## 2          AA2   2         7     9.358599
+## 7          AA7   2         8     9.743899
+## 3          AA3   6         3    10.087326
+## 10        AA10   8         2    10.836989
+## 8          AA8   2        11    10.899798
+## 15        AA15   6         6    11.243225
+## 6          AA6   4        10    11.649461
+## 11        AA11   5        10    12.216943
+## 1          AA1   6         9    12.399124
+## 13        AA13   6         9    12.399124
+## 4          AA4  10         5    13.127851
+## 5          AA5   7        13    14.507805
+## 9          AA9   8        12    14.689987
+## 12        AA12   8        12    14.689987
+## 14        AA14   6        15    14.710923</code></pre>
+<p>Conversely, we can sort in <em>descending</em> order by typing a minus (<code>-</code>) before the variable(s) we wish to sort by. when making selection decisions using a compensatory approach (like we are doing in this tutorial), it often makes most sense to sort in descending order.</p>
+<div class="sourceCode" id="cb1097"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1097-1"><a href="compensatory.html#cb1097-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default descending order</span></span>
+<span id="cb1097-2"><a href="compensatory.html#cb1097-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(<span class="sc">-</span>new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
+<pre><code>##    ApplicantID SJT Interview Perf_Predict
+## 14        AA14   6        15    14.710923
+## 9          AA9   8        12    14.689987
+## 12        AA12   8        12    14.689987
+## 5          AA5   7        13    14.507805
+## 4          AA4  10         5    13.127851
+## 1          AA1   6         9    12.399124
+## 13        AA13   6         9    12.399124
+## 11        AA11   5        10    12.216943
+## 6          AA6   4        10    11.649461
+## 15        AA15   6         6    11.243225
+## 8          AA8   2        11    10.899798
+## 10        AA10   8         2    10.836989
+## 3          AA3   6         3    10.087326
+## 7          AA7   2         8     9.743899
+## 2          AA2   2         7     9.358599</code></pre>
+<p>As you can see, applicants AA14, AA9, and AA12 have the highest predicted criterion scores, where the criterion in this context is future job performance. If we had three open positions in need of filling, using a compensatory approach, we could extend offers first to these three applicants. If any one of them were to decline, we could start working our way down the list. In some instances, we might set a “floor” for the lowest acceptable predicted score and not consider any applicants with scores below that threshold. Alternatively, we could use a banding approach to identify groups of applicants for which we treat their predicted criterion scores as essentially equivalent <span class="citation">(<a href="references.html#ref-mueller2007implementation" role="doc-biblioref">Mueller et al. 2007</a>)</span>. One potential drawback to using a compensatory approach is that all applicants needs need to participate in all selection tools used in the multiple linear regression model, which can add expense and time.</p>
+
+</div>
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="incrementalvalidity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
