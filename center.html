@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 22 Centering &amp; Standardizing Variables | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 22 Centering &amp; Standardizing Variables | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rforhr.com" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="github-repo" content="davidcaughlin/R-for-HR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 22 Centering &amp; Standardizing Variables | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+
+<meta name="author" content="David E. Caughlin" />
+
+
+<meta name="date" content="2021-12-12" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="manipulate.html"/>
+<link rel="next" href="employeedemographics.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for HR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#skills-gap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#overview-of-hris-hr-analytics"><i class="fa fa-check"></i><b>0.4</b> Overview of HRIS &amp; HR Analytics</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.5</b> My Philosophy for This Book</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.5.1</b> Rationale for Using R</a></li>
+<li class="chapter" data-level="0.5.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.5.2</b> Audience</a></li>
+<li class="chapter" data-level="0.5.3" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.5.3</b> Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.6</b> About the Author</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.7</b> Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
+<li class="chapter" data-level="3.6" data-path="dataacquisition.html"><a href="dataacquisition.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_clean"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.2" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_manipulate"><i class="fa fa-check"></i><b>4.2</b> Data Manipulation &amp; Structuring</a></li>
+<li class="chapter" data-level="4.3" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_tools"><i class="fa fa-check"></i><b>4.3</b> Common Data-Management Tools</a></li>
+<li class="chapter" data-level="4.4" data-path="datamanagement.html"><a href="datamanagement.html#summary-2"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataanalysis.html"><a href="dataanalysis.html#dataanalysis_toolstechniques"><i class="fa fa-check"></i><b>5.1</b> Tools &amp; Techniques</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="dataanalysis.html"><a href="dataanalysis.html#mathematics"><i class="fa fa-check"></i><b>5.1.1</b> Mathematics</a></li>
+<li class="chapter" data-level="5.1.2" data-path="dataanalysis.html"><a href="dataanalysis.html#statistics"><i class="fa fa-check"></i><b>5.1.2</b> Statistics</a></li>
+<li class="chapter" data-level="5.1.3" data-path="dataanalysis.html"><a href="dataanalysis.html#machinelearning"><i class="fa fa-check"></i><b>5.1.3</b> Machine Learning</a></li>
+<li class="chapter" data-level="5.1.4" data-path="dataanalysis.html"><a href="dataanalysis.html#computationalmodelsimulation"><i class="fa fa-check"></i><b>5.1.4</b> Computational Modeling &amp; Simulations</a></li>
+<li class="chapter" data-level="5.1.5" data-path="dataanalysis.html"><a href="dataanalysis.html#textqualitativeanalyses"><i class="fa fa-check"></i><b>5.1.5</b> Text Analyses &amp; Qualitative Analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="dataanalysis.html"><a href="dataanalysis.html#continuum_dataanalytics"><i class="fa fa-check"></i><b>5.2</b> Continuum of Data Analytics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="dataanalysis.html"><a href="dataanalysis.html#descriptive_analytics"><i class="fa fa-check"></i><b>5.2.1</b> Descriptive Analytics</a></li>
+<li class="chapter" data-level="5.2.2" data-path="dataanalysis.html"><a href="dataanalysis.html#predictish_analytics"><i class="fa fa-check"></i><b>5.2.2</b> Predict-ish Analytics</a></li>
+<li class="chapter" data-level="5.2.3" data-path="dataanalysis.html"><a href="dataanalysis.html#predictive_analytics"><i class="fa fa-check"></i><b>5.2.3</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="5.2.4" data-path="dataanalysis.html"><a href="dataanalysis.html#prescriptive_analytics"><i class="fa fa-check"></i><b>5.2.4</b> Prescriptive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summary-3"><i class="fa fa-check"></i><b>5.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datainterpretation"><i class="fa fa-check"></i><b>6.1</b> Data Interpretation</a></li>
+<li class="chapter" data-level="6.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling"><i class="fa fa-check"></i><b>6.2</b> Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#structure"><i class="fa fa-check"></i><b>6.2.1</b> Structure</a></li>
+<li class="chapter" data-level="6.2.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#clarity-parsimony"><i class="fa fa-check"></i><b>6.2.2</b> Clarity &amp; Parsimony</a></li>
+<li class="chapter" data-level="6.2.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#influence-persuasion"><i class="fa fa-check"></i><b>6.2.3</b> Influence &amp; Persuasion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling_withdata"><i class="fa fa-check"></i><b>6.3</b> Storytelling with Data</a></li>
+<li class="chapter" data-level="6.4" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary-4"><i class="fa fa-check"></i><b>6.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Introduction to R</b></span></li>
+<li class="chapter" data-level="8" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>8</b> Overview of R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="overviewR.html"><a href="overviewR.html#R_overview"><i class="fa fa-check"></i><b>8.1</b> R Programming Language</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="overviewR.html"><a href="overviewR.html#R_what"><i class="fa fa-check"></i><b>8.1.1</b> What Is R?</a></li>
+<li class="chapter" data-level="8.1.2" data-path="overviewR.html"><a href="overviewR.html#R_why"><i class="fa fa-check"></i><b>8.1.2</b> Why Use R?</a></li>
+<li class="chapter" data-level="8.1.3" data-path="overviewR.html"><a href="overviewR.html#R_who"><i class="fa fa-check"></i><b>8.1.3</b> Who Uses R?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_overview"><i class="fa fa-check"></i><b>8.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="overviewR.html"><a href="overviewR.html#RStudio_what"><i class="fa fa-check"></i><b>8.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="8.2.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_why"><i class="fa fa-check"></i><b>8.2.2</b> Why RStudio?</a></li>
+<li class="chapter" data-level="8.2.3" data-path="overviewR.html"><a href="overviewR.html#RStudio_who"><i class="fa fa-check"></i><b>8.2.3</b> Who Uses RStudio?</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="overviewR.html"><a href="overviewR.html#packages_overview"><i class="fa fa-check"></i><b>8.3</b> Packages</a></li>
+<li class="chapter" data-level="8.4" data-path="overviewR.html"><a href="overviewR.html#summary-5"><i class="fa fa-check"></i><b>8.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>9</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="install.html"><a href="install.html#installR"><i class="fa fa-check"></i><b>9.1</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="install.html"><a href="install.html#for-windows-operation-systems"><i class="fa fa-check"></i><b>9.1.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="9.1.2" data-path="install.html"><a href="install.html#for-mac-operating-systems"><i class="fa fa-check"></i><b>9.1.2</b> For Mac Operating Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="install.html"><a href="install.html#installRStudio"><i class="fa fa-check"></i><b>9.2</b> Downloading &amp; Installing RStudio</a></li>
+<li class="chapter" data-level="9.3" data-path="install.html"><a href="install.html#summary-6"><i class="fa fa-check"></i><b>9.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>10</b> Getting Started with R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-rstudio"><i class="fa fa-check"></i><b>10.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="10.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>10.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-r-script"><i class="fa fa-check"></i><b>10.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="10.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#using-an-r-script"><i class="fa fa-check"></i><b>10.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="10.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saving-an-r-script"><i class="fa fa-check"></i><b>10.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="10.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-a-saved-r-script"><i class="fa fa-check"></i><b>10.2.4</b> Opening a Saved R Script</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-an-rstudio-project"><i class="fa fa-check"></i><b>10.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#creating-a-new-rstudio-project"><i class="fa fa-check"></i><b>10.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="10.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#opening-an-existing-rstudio-project"><i class="fa fa-check"></i><b>10.3.2</b> Opening an Existing RStudio Project</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation-to-written-tutorials"><i class="fa fa-check"></i><b>10.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="10.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary-7"><i class="fa fa-check"></i><b>10.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>11</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>11.1</b> R as a Calculator</a></li>
+<li class="chapter" data-level="11.2" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>11.2</b> Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>11.3</b> Packages</a></li>
+<li class="chapter" data-level="11.4" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>11.4</b> Variable Assignment</a></li>
+<li class="chapter" data-level="11.5" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>11.5</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>11.5.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="11.5.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>11.5.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="11.5.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>11.5.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="11.5.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>11.5.4</b> <code>logical</code> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>11.6</b> Vectors</a></li>
+<li class="chapter" data-level="11.7" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>11.7</b> Lists</a></li>
+<li class="chapter" data-level="11.8" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>11.8</b> Data Frames</a></li>
+<li class="chapter" data-level="11.9" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>11.9</b> Annotations</a></li>
+<li class="chapter" data-level="11.10" data-path="gentleintro.html"><a href="gentleintro.html#summary-8"><i class="fa fa-check"></i><b>11.10</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>12</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="12.0.1" data-path="setwd.html"><a href="setwd.html#identify-the-current-working-directory"><i class="fa fa-check"></i><b>12.0.1</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="12.0.2" data-path="setwd.html"><a href="setwd.html#set-a-new-working-directory"><i class="fa fa-check"></i><b>12.0.2</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="12.1" data-path="setwd.html"><a href="setwd.html#summary-9"><i class="fa fa-check"></i><b>12.1</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>III Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="13" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>13</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>13.1</b> Read a .csv File</a></li>
+<li class="chapter" data-level="13.2" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>13.2</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="13.3" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>13.3</b> Summary</a></li>
+<li class="chapter" data-level="13.4" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>13.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>13.4.1</b> Additional Functions to Read a .csv File</a></li>
+<li class="chapter" data-level="13.4.2" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>13.4.2</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="13.4.3" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>13.4.3</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>14</b> Removing, Adding, &amp; Changing Variable Names</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove_variablenames"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add_variablenames"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#change_variablenames"><i class="fa fa-check"></i><b>14.3</b> Change Specific Variable Names in a Data Frame Object</a></li>
+<li class="chapter" data-level="14.4" data-path="addnames.html"><a href="addnames.html#summary-10"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="write.html"><a href="write.html#write-data-frame-to-working-directory"><i class="fa fa-check"></i><b>15.1</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="15.2" data-path="write.html"><a href="write.html#write-table-to-working-directory"><i class="fa fa-check"></i><b>15.2</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="15.3" data-path="write.html"><a href="write.html#summary-11"><i class="fa fa-check"></i><b>15.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>16</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>16.1</b> Arrange (Sort) Data</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withpipe"><i class="fa fa-check"></i><b>16.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="16.1.2" data-path="arrange.html"><a href="arrange.html#opt1_arrange_withoutpipe"><i class="fa fa-check"></i><b>16.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="arrange.html"><a href="arrange.html#summary-12"><i class="fa fa-check"></i><b>16.2</b> Summary</a></li>
+<li class="chapter" data-level="16.3" data-path="arrange.html"><a href="arrange.html#arrange_supplement"><i class="fa fa-check"></i><b>16.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="16.3.1" data-path="arrange.html"><a href="arrange.html#arrange_orderfunction"><i class="fa fa-check"></i><b>16.3.1</b> <code>order</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>17</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>17.1</b> Horizontal Join (Merge)</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="join.html"><a href="join.html#opt2_join_withpipe"><i class="fa fa-check"></i><b>17.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="17.1.2" data-path="join.html"><a href="join.html#opt2_join_withoutpipe"><i class="fa fa-check"></i><b>17.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>17.2</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="17.3" data-path="join.html"><a href="join.html#summary-13"><i class="fa fa-check"></i><b>17.3</b> Summary</a></li>
+<li class="chapter" data-level="17.4" data-path="join.html"><a href="join.html#join_supplement"><i class="fa fa-check"></i><b>17.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="17.4.1" data-path="join.html"><a href="join.html#join_mergefunction"><i class="fa fa-check"></i><b>17.4.1</b> <code>merge</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>18</b> Filtering Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="filter.html"><a href="filter.html#filter_cases"><i class="fa fa-check"></i><b>18.1</b> Filter Cases from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.1.1" data-path="filter.html"><a href="filter.html#with-pipes"><i class="fa fa-check"></i><b>18.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="18.1.2" data-path="filter.html"><a href="filter.html#without-pipes"><i class="fa fa-check"></i><b>18.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>18.2</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="18.3" data-path="filter.html"><a href="filter.html#select_multiplevariables"><i class="fa fa-check"></i><b>18.3</b> Select Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="filter.html"><a href="filter.html#with-pipe"><i class="fa fa-check"></i><b>18.3.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.3.2" data-path="filter.html"><a href="filter.html#without-pipe"><i class="fa fa-check"></i><b>18.3.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.4" data-path="filter.html"><a href="filter.html#remove_multiplevariables"><i class="fa fa-check"></i><b>18.4</b> Remove Multiple Variables from Data Frame</a>
+<ul>
+<li class="chapter" data-level="18.4.1" data-path="filter.html"><a href="filter.html#with-pipe-1"><i class="fa fa-check"></i><b>18.4.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="18.4.2" data-path="filter.html"><a href="filter.html#without-pipe-1"><i class="fa fa-check"></i><b>18.4.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="18.5" data-path="filter.html"><a href="filter.html#summary-14"><i class="fa fa-check"></i><b>18.5</b> Summary</a></li>
+<li class="chapter" data-level="18.6" data-path="filter.html"><a href="filter.html#filter_supplement"><i class="fa fa-check"></i><b>18.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="18.6.1" data-path="filter.html"><a href="filter.html#filter_subset_supplement"><i class="fa fa-check"></i><b>18.6.1</b> <code>subset</code> Function from Base R</a></li>
+<li class="chapter" data-level="18.6.2" data-path="filter.html"><a href="filter.html#str_detect_supp"><i class="fa fa-check"></i><b>18.6.2</b> Filter by Pattern Contained within String</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>19</b> Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="clean.html"><a href="clean.html#review-data"><i class="fa fa-check"></i><b>19.1</b> Review Data</a></li>
+<li class="chapter" data-level="19.2" data-path="clean.html"><a href="clean.html#clean-data"><i class="fa fa-check"></i><b>19.2</b> Clean Data</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-a-specific-case"><i class="fa fa-check"></i><b>19.2.1</b> Replace a Specific Value for a Specific Case</a></li>
+<li class="chapter" data-level="19.2.2" data-path="clean.html"><a href="clean.html#replace-a-specific-value-for-all-cases-with-a-particular-value"><i class="fa fa-check"></i><b>19.2.2</b> Replace a Specific Value for All Cases with a Particular Value</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="clean.html"><a href="clean.html#rename-variables"><i class="fa fa-check"></i><b>19.3</b> Rename Variables</a></li>
+<li class="chapter" data-level="19.4" data-path="clean.html"><a href="clean.html#other-approaches-to-cleaning-data"><i class="fa fa-check"></i><b>19.4</b> Other Approaches to Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="19.4.1" data-path="clean.html"><a href="clean.html#changing-the-case-of-variable-names"><i class="fa fa-check"></i><b>19.4.1</b> Changing the Case of Variable Names</a></li>
+<li class="chapter" data-level="19.4.2" data-path="clean.html"><a href="clean.html#changing-the-case-of-character-variable-values"><i class="fa fa-check"></i><b>19.4.2</b> Changing the Case of Character Variable Values</a></li>
+</ul></li>
+<li class="chapter" data-level="19.5" data-path="clean.html"><a href="clean.html#summary-15"><i class="fa fa-check"></i><b>19.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="aggregatesegment.html"><a href="aggregatesegment.html"><i class="fa fa-check"></i><b>20</b> Aggregating &amp; Segmenting Data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup"><i class="fa fa-check"></i><b>20.1</b> Counts By Group</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_pipes"><i class="fa fa-check"></i><b>20.1.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.1.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup_nopipes"><i class="fa fa-check"></i><b>20.1.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup"><i class="fa fa-check"></i><b>20.2</b> Measures of Central Tendency and Dispersion By Group</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_pipes"><i class="fa fa-check"></i><b>20.2.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.2.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup_nopipes"><i class="fa fa-check"></i><b>20.2.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable"><i class="fa fa-check"></i><b>20.3</b> Add Variable to Data Frame Containing Aggregated Values</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_pipes"><i class="fa fa-check"></i><b>20.3.1</b> <em>With</em> Pipes</a></li>
+<li class="chapter" data-level="20.3.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable_nopipes"><i class="fa fa-check"></i><b>20.3.2</b> <em>Without</em> Pipes</a></li>
+</ul></li>
+<li class="chapter" data-level="20.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#visualize_bygroup"><i class="fa fa-check"></i><b>20.4</b> Visualize Data By Group</a></li>
+<li class="chapter" data-level="20.5" data-path="aggregatesegment.html"><a href="aggregatesegment.html#summary-16"><i class="fa fa-check"></i><b>20.5</b> Summary</a></li>
+<li class="chapter" data-level="20.6" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement"><i class="fa fa-check"></i><b>20.6</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="20.6.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_subset_supplement"><i class="fa fa-check"></i><b>20.6.1</b> <code>describeBy</code> Function from <code>psych</code> Package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="manipulate.html"><a href="manipulate.html"><i class="fa fa-check"></i><b>21</b> Manipulating &amp; Restructuring Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="manipulate.html"><a href="manipulate.html#widetolong"><i class="fa fa-check"></i><b>21.1</b> Wide-to-Long Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.1.1" data-path="manipulate.html"><a href="manipulate.html#widetolong_withpipe"><i class="fa fa-check"></i><b>21.1.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.1.2" data-path="manipulate.html"><a href="manipulate.html#widetolong_withoutpipe"><i class="fa fa-check"></i><b>21.1.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="manipulate.html"><a href="manipulate.html#longtowide"><i class="fa fa-check"></i><b>21.2</b> Long-to-Wide Format Data Manipulation</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="manipulate.html"><a href="manipulate.html#longtowide_withpipe"><i class="fa fa-check"></i><b>21.2.1</b> <em>With</em> Pipe</a></li>
+<li class="chapter" data-level="21.2.2" data-path="manipulate.html"><a href="manipulate.html#longtowide_withoutpipe"><i class="fa fa-check"></i><b>21.2.2</b> <em>Without</em> Pipe</a></li>
+</ul></li>
+<li class="chapter" data-level="21.3" data-path="manipulate.html"><a href="manipulate.html#summary-17"><i class="fa fa-check"></i><b>21.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="center.html"><a href="center.html"><i class="fa fa-check"></i><b>22</b> Centering &amp; Standardizing Variables</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="center.html"><a href="center.html#grandmean_center"><i class="fa fa-check"></i><b>22.1</b> Grand-Mean Centering Variables</a>
+<ul>
+<li class="chapter" data-level="22.1.1" data-path="center.html"><a href="center.html#mean_function_center"><i class="fa fa-check"></i><b>22.1.1</b> Option 1: Basic Arithmetic and <code>mean</code> Function from Base R</a></li>
+<li class="chapter" data-level="22.1.2" data-path="center.html"><a href="center.html#scale_function_center"><i class="fa fa-check"></i><b>22.1.2</b> Option 2: <code>scale</code> Function from Base R</a></li>
+<li class="chapter" data-level="22.1.3" data-path="center.html"><a href="center.html#mutate_function_center"><i class="fa fa-check"></i><b>22.1.3</b> Option 3: <code>mutate</code> Function from <code>dplyr</code> and <code>mean</code> Function from Base R</a></li>
+</ul></li>
+<li class="chapter" data-level="22.2" data-path="center.html"><a href="center.html#standardize_center"><i class="fa fa-check"></i><b>22.2</b> Standardizing Variables</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="center.html"><a href="center.html#scale_function_standardize"><i class="fa fa-check"></i><b>22.2.1</b> Option 1: <code>scale</code> Function from Base R</a></li>
+<li class="chapter" data-level="22.2.2" data-path="center.html"><a href="center.html#mutate_function_standardize"><i class="fa fa-check"></i><b>22.2.2</b> Option 2: <code>mutate</code> Function from <code>dplyr</code> and <code>scale</code> Function from Base R</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="center.html"><a href="center.html#summary_center"><i class="fa fa-check"></i><b>22.3</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>IV Employee Demographics</b></span></li>
+<li class="chapter" data-level="23" data-path="employeedemographics.html"><a href="employeedemographics.html"><i class="fa fa-check"></i><b>23</b> Introduction to Employee Demographics</a></li>
+<li class="chapter" data-level="24" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>24</b> Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="descriptives.html"><a href="descriptives.html#determine_measurementscale"><i class="fa fa-check"></i><b>24.1</b> Determine the Measurement Scale</a></li>
+<li class="chapter" data-level="24.2" data-path="descriptives.html"><a href="descriptives.html#describe_nominal_ordinal"><i class="fa fa-check"></i><b>24.2</b> Describe Nominal &amp; Ordinal (Categorical) Variables</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="descriptives.html"><a href="descriptives.html#compute_counts"><i class="fa fa-check"></i><b>24.2.1</b> Compute Counts &amp; Frequencies</a></li>
+<li class="chapter" data-level="24.2.2" data-path="descriptives.html"><a href="descriptives.html#datavisualizations_nominal_ordinal"><i class="fa fa-check"></i><b>24.2.2</b> Create Data Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="descriptives.html"><a href="descriptives.html#describe_interval_ratio"><i class="fa fa-check"></i><b>24.3</b> Describe Interval &amp; Ratio (Continuous) Variables</a>
+<ul>
+<li class="chapter" data-level="24.3.1" data-path="descriptives.html"><a href="descriptives.html#datavisualizations_interval_ratio"><i class="fa fa-check"></i><b>24.3.1</b> Create Data Visualizations</a></li>
+<li class="chapter" data-level="24.3.2" data-path="descriptives.html"><a href="descriptives.html#compute_measures_centraltendency_dispersion"><i class="fa fa-check"></i><b>24.3.2</b> Compute Measures of Central Tendency &amp; Dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="24.4" data-path="descriptives.html"><a href="descriptives.html#summary-18"><i class="fa fa-check"></i><b>24.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="crosstabs.html"><a href="crosstabs.html"><i class="fa fa-check"></i><b>25</b> Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs"><i class="fa fa-check"></i><b>25.1</b> Two-Way Cross-Tabulation</a>
+<ul>
+<li class="chapter" data-level="25.1.1" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_table"><i class="fa fa-check"></i><b>25.1.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="25.1.2" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_xtabs"><i class="fa fa-check"></i><b>25.1.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+<li class="chapter" data-level="25.1.3" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs_CrossTable"><i class="fa fa-check"></i><b>25.1.3</b> Option 3: Using the <code>CrossTable</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="25.2" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs"><i class="fa fa-check"></i><b>25.2</b> Three-Way Cross-Tabulation</a>
+<ul>
+<li class="chapter" data-level="25.2.1" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs_table"><i class="fa fa-check"></i><b>25.2.1</b> Option 1: Using the <code>table</code> Function</a></li>
+<li class="chapter" data-level="25.2.2" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs_xtabs"><i class="fa fa-check"></i><b>25.2.2</b> Option 2: Using the <code>xtabs</code> Function</a></li>
+</ul></li>
+<li class="chapter" data-level="25.3" data-path="crosstabs.html"><a href="crosstabs.html#summary-19"><i class="fa fa-check"></i><b>25.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="26" data-path="pivottables.html"><a href="pivottables.html"><i class="fa fa-check"></i><b>26</b> Pivot Tables</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="pivottables.html"><a href="pivottables.html#create_pivottables"><i class="fa fa-check"></i><b>26.1</b> Create a Pivot Table</a></li>
+<li class="chapter" data-level="26.2" data-path="pivottables.html"><a href="pivottables.html#summary-20"><i class="fa fa-check"></i><b>26.2</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>V Employee Surveys</b></span></li>
+<li class="chapter" data-level="27" data-path="employeesurveys.html"><a href="employeesurveys.html"><i class="fa fa-check"></i><b>27</b> Introduction to Employee Surveys</a></li>
+<li class="part"><span><b>VI Employee Selection</b></span></li>
+<li class="chapter" data-level="28" data-path="selection.html"><a href="selection.html"><i class="fa fa-check"></i><b>28</b> Introduction to Employee Selection</a></li>
+<li class="chapter" data-level="29" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>29</b> Investigating Disparate Impact</a>
+<ul>
+<li class="chapter" data-level="29.1" data-path="disparateimpact.html"><a href="disparateimpact.html#fourfifthsrule"><i class="fa fa-check"></i><b>29.1</b> 4/5ths Rule</a></li>
+<li class="chapter" data-level="29.2" data-path="disparateimpact.html"><a href="disparateimpact.html#chisquaretest_disparateimpact"><i class="fa fa-check"></i><b>29.2</b> Chi-Squared (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
+<li class="chapter" data-level="29.3" data-path="disparateimpact.html"><a href="disparateimpact.html#fisherexacttest"><i class="fa fa-check"></i><b>29.3</b> Fisher Exact Test</a></li>
+<li class="chapter" data-level="29.4" data-path="disparateimpact.html"><a href="disparateimpact.html#zdifference_test_disparateimpact"><i class="fa fa-check"></i><b>29.4</b> <span class="math inline">\(Z_{D}\)</span> test</a></li>
+<li class="chapter" data-level="29.5" data-path="disparateimpact.html"><a href="disparateimpact.html#z_impactratiotest"><i class="fa fa-check"></i><b>29.5</b> <span class="math inline">\(Z_{IR}\)</span> Test</a></li>
+<li class="chapter" data-level="29.6" data-path="disparateimpact.html"><a href="disparateimpact.html#summary_disparatetreatment"><i class="fa fa-check"></i><b>29.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="30" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html"><i class="fa fa-check"></i><b>30</b> Estimating Criterion-Related Validity Using Correlation</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#review_correlation"><i class="fa fa-check"></i><b>30.1</b> Review of Correlation</a></li>
+<li class="chapter" data-level="30.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#visualize-association-using-a-scatter-plot"><i class="fa fa-check"></i><b>30.2</b> Visualize Association Using a Scatter Plot</a></li>
+<li class="chapter" data-level="30.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#estimate_correlation"><i class="fa fa-check"></i><b>30.3</b> Estimate Correlation</a></li>
+<li class="chapter" data-level="30.4" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#summary_criterionrelatedvalidity"><i class="fa fa-check"></i><b>30.4</b> Summary</a></li>
+<li class="chapter" data-level="30.5" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_supplement"><i class="fa fa-check"></i><b>30.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="30.5.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cor_function"><i class="fa fa-check"></i><b>30.5.1</b> <code>cor</code> Function from Base R</a></li>
+<li class="chapter" data-level="30.5.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>30.5.2</b> <code>cor.test</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>31</b> Predicting Criterion Scores Using Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#review_slr"><i class="fa fa-check"></i><b>31.1</b> Review of Simple Linear Regression</a></li>
+<li class="chapter" data-level="31.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>31.2</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="31.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>31.3</b> Predict Criterion Scores</a></li>
+<li class="chapter" data-level="31.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>31.4</b> Summary</a></li>
+<li class="chapter" data-level="31.5" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>31.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="31.5.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function_slr"><i class="fa fa-check"></i><b>31.5.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="31.5.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predict_function_slr"><i class="fa fa-check"></i><b>31.5.2</b> <code>predict</code> Function from Base R</a></li>
+<li class="chapter" data-level="31.5.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>31.5.3</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html"><i class="fa fa-check"></i><b>32</b> Estimating Incremental Validity Using Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="32.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#review_mlr"><i class="fa fa-check"></i><b>32.1</b> Review of Multiple Linear Regression</a></li>
+<li class="chapter" data-level="32.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#estimate_mlr"><i class="fa fa-check"></i><b>32.2</b> Estimate Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="32.3" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#summary_incrementalvalidity"><i class="fa fa-check"></i><b>32.3</b> Summary</a></li>
+<li class="chapter" data-level="32.4" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#incrementalvalidity_supplement"><i class="fa fa-check"></i><b>32.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="32.4.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#lm_function_mlr"><i class="fa fa-check"></i><b>32.4.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="32.4.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#apatable_mlr"><i class="fa fa-check"></i><b>32.4.2</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="33" data-path="compensatory.html"><a href="compensatory.html"><i class="fa fa-check"></i><b>33</b> Compensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="compensatory.html"><a href="compensatory.html#review_compensatory"><i class="fa fa-check"></i><b>33.1</b> Review of Compensatory Approach</a></li>
+<li class="chapter" data-level="33.2" data-path="compensatory.html"><a href="compensatory.html#estimate_compensatory"><i class="fa fa-check"></i><b>33.2</b> Estimate Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="33.3" data-path="compensatory.html"><a href="compensatory.html#predictcriterionscores_compensatory"><i class="fa fa-check"></i><b>33.3</b> Predict Criterion Scores</a></li>
+<li class="chapter" data-level="33.4" data-path="compensatory.html"><a href="compensatory.html#summary_compensatory"><i class="fa fa-check"></i><b>33.4</b> Summary</a></li>
+<li class="chapter" data-level="33.5" data-path="compensatory.html"><a href="compensatory.html#compensatory_supplement"><i class="fa fa-check"></i><b>33.5</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="33.5.1" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>33.5.1</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="multiplecutoff.html"><a href="multiplecutoff.html"><i class="fa fa-check"></i><b>34</b> Noncompensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#review_multiplecutoff"><i class="fa fa-check"></i><b>34.1</b> Review of Noncompensatory Approach</a></li>
+<li class="chapter" data-level="34.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#createcutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>34.2</b> Create Cutoff Scores</a></li>
+<li class="chapter" data-level="34.3" data-path="multiplecutoff.html"><a href="multiplecutoff.html#applycutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>34.3</b> Apply Cutoff Scores to Make Selection Decisions</a></li>
+<li class="chapter" data-level="34.4" data-path="multiplecutoff.html"><a href="multiplecutoff.html#summary_multiplecutoff"><i class="fa fa-check"></i><b>34.4</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
+<li class="chapter" data-level="35" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>35</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="36" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>36</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for HR:<br />
+<em>An Introduction to Human Resource Analytics Using R</em><br />
+BOOK UNDER CONSTRUCTION</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="center" class="section level1" number="22">
+<h1><span class="header-section-number">Chapter 22</span> Centering &amp; Standardizing Variables</h1>
+<p>Centering or standardizing variables can be a useful data preparation step. For example, we often center predictor variables prior to specifying a product term (i.e., interaction term) when <a href="#differentialprediction">estimating moderation effects in a multiple linear regression model</a>.</p>
+<div id="review_center" class="section level4" number="22.0.0.1">
+<h4><span class="header-section-number">22.0.0.1</span> Review of Centering Variables</h4>
+<p><strong>centering</strong> is the process of subtracting the variable mean (average) from each of the values of that same variable; in other words, it’s a linear rescaling of a variable. Centering variables is sometimes completed prior to including those variables as predictors in a regression model, and it is generally done for one or both of the following purposes: (a) to make the intercept valuable more interpretable, and (b) to reduce collinearity between two or more predictor variables that are subsequently multiplied to create an interaction term (product term) when estimating a moderated multiple linear regression model or polynomial regression model, for example. Regarding the first purpose, centering to enhance the interpretability of the intercept (constant) value in a regression model is relevant to the extent that we wish to interpret the intercept value. In an ordinary least squares (OLS) regression model, the intercept value represents the mean of the outcome variable when all predictor variables are set to zero. If the scaling of any of the predictor variables in our model does not include zero (e.g., predictor variables are on a 1-10 scale), then considering the intercept value when the predictors are zero, doesn’t make much sense. Regarding the second purpose, it is important to center predictor variables prior to using them to create a multiplicative term (i.e., interaction variable), such as an interaction term (i.e., product term) or a polynomial term (e.g., quadratic term, cubic term). In the context of a moderated multiple linear regression model, centering does not affect the significance of the interaction term, but a <em>lack of centering</em> will affect the interpretation of the main effects.</p>
+<p>Thus far, I have been mostly referring to what is referred to as <strong>grand-mean centering</strong>. To grand-mean center a variable, we simply subtract the overall (grand) mean of the entire sample for that variable from each value of that variable, thereby creating a new variable in which the mean is zero and the standard deviation is the same as it was before centering. For example, let’s assume that we have a variable called <code>Age</code> for a sample of individuals, where <code>Age</code> is measured in years. In it’s raw format, the mean of <code>Age</code> is 36.2 years with a standard deviation of 8.1. If we grand-mean center <code>Age</code>, then for each individual in our sample, we create a new variable in which take their <code>Age</code> and subtract the mean <code>Age</code> of 36.2. If an individual has an <code>Age</code> of 40.0, then their centered <code>Age</code> would be 3.8 (40.0 - 36.2 = 3.8). By centering each individual’s <code>Age</code> relative to the grand-mean, we end up with a variable that has a mean of 0.0, but with a standard deviation that is equal to 8.1, which is equal to the standard deviation of the original <code>Age</code> variable. Why is this the case? Well, we have just performed a linear shift of <code>Age</code>, which affects only the mean and <em>not</em> the standard deviation.</p>
+<p>In the context of multilevel models, <strong>group-mean centering</strong> becomes relevant and important. In short, group-mean centering refers to the process of subtracting the respective group mean for a particular variable (based on another variable that acts as a grouping or clustering variable) for each case’s score on that same variable. For example, if Employee A belongs to Work Team A, and Work Team A consists of 10 other employees, we would first calculate the mean of Work Team A employees’ scores on a continuous variable of interest, and second, we would subtract that group mean from each Work Team A employee’s score on that continuous variable. We would then repeat this process for all employees relative to their respective work teams. In the context of multilevel modeling, both grand-mean centering and group-mean centering can have pronounced on the estimated coefficients and the interpretation of those coefficients. For instance, group-mean centering can be used in multilevel models to separate out the within-group effects and the between-groups effects, if that is of interest. A full discussion of grand-mean centering and group-mean centering in the context of multilevel modeling is beyond the scope of this tutorial; for a more complete overview, please check out Professor Jason Newsom’s handout: <a href="http://web.pdx.edu/~newsomj/mlrclass/ho_centering.pdf" class="uri">http://web.pdx.edu/~newsomj/mlrclass/ho_centering.pdf</a>.</p>
+</div>
+<div id="review_standardize" class="section level4" number="22.0.0.2">
+<h4><span class="header-section-number">22.0.0.2</span> Review of Standardizing Variables</h4>
+<p>Like centering variables, when <strong>standardizing</strong> (or scaling) variables, we center the variables around a mean of zero. However, when standardizing a variable, we are actually converting the variable to a <em>z</em>-score, which means we set the mean to 0 and the variance to 1; because the standard deviation is just the square root of the variance, then the standard deviation is also set to 1. So how do you interpret a variable that is standardized? Let’s assume that we standardized a variable called <code>Age</code> for a sample of individuals, where <code>Age</code> is measured in years. In it’s raw format, the mean of <code>Age</code> is 36.2 years with a standard deviation of 8.1, which would mean, for example, that a person who is 44.* years old has an <code>Age</code> that is exactly 1 standard deviation higher than the mean (44.3 - 8.1 = 36.2). If we standardize the <code>Age</code> variable, then the mean becomes 0.0 and the standard deviation becomes 1.0. Accordingly, the standardized score for the person who has an <code>Age</code> of 44.3 years (which was 1 standard deviation above the mean) would become 1.0. If a person has an <code>Age</code> of 20.0, then that means they have a standardized score of -2.0, which represents 2.0 standard deviations <em>below</em> the mean (20.0 - 36.2 = -16.2 and -16.2 / 8.1 = -2.0).</p>
+</div>
+<div id="video-tutorial-15" class="section level4" number="22.0.0.3">
+<h4><span class="header-section-number">22.0.0.3</span> Video Tutorial</h4>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/2_TxnvZGtV0?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to Video Tutorial: <a href="https://youtu.be/2_TxnvZGtV0" class="uri">https://youtu.be/2_TxnvZGtV0</a></p>
+</div>
+<div id="functions-packages-introduced-10" class="section level4" number="22.0.0.4">
+<h4><span class="header-section-number">22.0.0.4</span> Functions &amp; Packages Introduced</h4>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>mean</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="even">
+<td><code>scale</code></td>
+<td>base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td><code>mutate</code></td>
+<td><code>dplyr</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_center" class="section level4" number="22.0.0.5">
+<h4><span class="header-section-number">22.0.0.5</span> Initial Steps</h4>
+<p>If you haven’t already, save the file called <strong>“DiffPred.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="center.html#cb659-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb659-2"><a href="center.html#cb659-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“DiffPred.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="center.html#cb660-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb660-2"><a href="center.html#cb660-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb660-3"><a href="center.html#cb660-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb660-4"><a href="center.html#cb660-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="center.html#cb661-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb661-2"><a href="center.html#cb661-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb661-3"><a href="center.html#cb661-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb661-4"><a href="center.html#cb661-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb661-5"><a href="center.html#cb661-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification --------------------------------------------------------------------------------------------------------------------
+## cols(
+##   emp_id = col_character(),
+##   perf_eval = col_double(),
+##   interview = col_double(),
+##   age = col_double(),
+##   gender = col_character(),
+##   race = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="center.html#cb663-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb663-2"><a href="center.html#cb663-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;emp_id&quot;    &quot;perf_eval&quot; &quot;interview&quot; &quot;age&quot;       &quot;gender&quot;    &quot;race&quot;</code></pre>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="center.html#cb665-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb665-2"><a href="center.html#cb665-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,6] [377 x 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ emp_id   : chr [1:377] &quot;MA322&quot; &quot;MA323&quot; &quot;MA324&quot; &quot;MA325&quot; ...
+##  $ perf_eval: num [1:377] 4.2 4.9 4.2 5.3 4.2 6.9 3.4 5.8 4.4 5.6 ...
+##  $ interview: num [1:377] 7.5 9.3 7.5 8 9.3 6.8 6.7 7 8.2 6.4 ...
+##  $ age      : num [1:377] 29.7 31.7 29.4 37.9 30.9 46.2 43.9 47.8 31.7 44.6 ...
+##  $ gender   : chr [1:377] &quot;woman&quot; &quot;man&quot; &quot;woman&quot; &quot;woman&quot; ...
+##  $ race     : chr [1:377] &quot;asian&quot; &quot;asian&quot; &quot;asian&quot; &quot;asian&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   emp_id = col_character(),
+##   ..   perf_eval = col_double(),
+##   ..   interview = col_double(),
+##   ..   age = col_double(),
+##   ..   gender = col_character(),
+##   ..   race = col_character()
+##   .. )</code></pre>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="center.html#cb667-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb667-2"><a href="center.html#cb667-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##   emp_id perf_eval interview   age gender race 
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian
+## 2 MA323        4.9       9.3  31.7 man    asian
+## 3 MA324        4.2       7.5  29.4 woman  asian
+## 4 MA325        5.3       8    37.9 woman  asian
+## 5 MA326        4.2       9.3  30.9 man    black
+## 6 MA327        6.9       6.8  46.2 woman  asian</code></pre>
+<p>There are 6 variables and 377 cases (i.e., employees) in the <code>DiffPred</code> data frame: <code>emp_id</code>, <code>perf_eval</code>, <code>interview</code>, <code>age</code>, <code>gender</code>, and <code>race</code>. Per the output of the <code>str</code> (structure) function above, the variables <code>perf_eval</code>, <code>interview</code>, and <code>age</code> are of type <em>numeric</em> (continuous: interval/ratio), and the variables <code>emp_id</code>, <code>gender</code>, and <code>race</code> are of type <em>character</em> (nominal/categorical). The variable <code>emp_id</code> is the unique employee identifier. Imagine that these data were collected as part of a criterion-related validation study - specifically, a concurrent validation design in which job incumbents were administered a rated structured interview (<code>interview</code>) 90 days after entering the organization. The structured interview (<code>interview</code>) variable was designed to assess individuals’ interpersonal skills, and ratings can range from 1 (very weak interpersonal skills) to 10 (very strong interpersonal skills). The interviews were scored by untrained raters who were often the hiring managers but not always. The <code>perf_eval</code> variable is the criterion (outcome) of interest, and it is a 90-day-post-hire measure of supervisor-rated job performance, with possible ratings ranging from 1-7, with 7 indicating high performance. The <code>age</code> variable represents the job incumbents’ ages (in years). The <code>gender</code> variable represents the job incumbents’ tender identify and is defined by two levels/categories/values: <em>man</em> and <em>woman</em>. Finally, the <code>race</code> variable represents the job incumbents’ race/ethnicity and is defined by three levels/categories/values: <em>asian</em>, <em>black</em>, and <em>white</em>.</p>
+</div>
+<div id="grandmean_center" class="section level2" number="22.1">
+<h2><span class="header-section-number">22.1</span> Grand-Mean Centering Variables</h2>
+<p>We only center variables that are of type <em>numeric</em> and that we conceptualize as having a continuous (interval/ratio) measurement scale. Further, if we’re centering variables prior to inclusion in a regression model, we often only center those variables that we plan on using as <em>predictor</em> variables (and not <em>outcome</em> variables). Thus, in our current data frame, we will grand-mean center just the <code>interview</code> and <code>age</code> variables; for more information on which variables to center, check out the chapter on <a href="#differentialprediction">estimating moderation effects in a multiple linear regression model</a>. I will demonstrate three approaches, and you can try all three or just one, as any of the three will work.</p>
+<div id="mean_function_center" class="section level3" number="22.1.1">
+<h3><span class="header-section-number">22.1.1</span> Option 1: Basic Arithmetic and <code>mean</code> Function from Base R</h3>
+<p>We’ll start with what is arguably the most intuitive approach for grand-mean centering. We must begin by coming up with a new name for one of our soon-to-be grand-mean centered variable, and in this example, we will center the <code>interview</code> variable. I typically like to name the centered variable by simply adding the <code>c_</code> prefix to the existing variable’s names (e.g., <code>c_interview</code>). Type the name of the data frame object to which the new centered variable will be attached (<code>df</code>), followed by the <code>$</code> operator and the name of the new variable we are creating (<code>c_interview</code>). Next, add the <code>&lt;-</code> operator to indicate what values you will assign to this new variable. To create a vector of values to assign to this new <code>c_interview</code> variable, we will subtract the mean (average) score for the original variable (<code>interview</code>) from each case’s value on the variable. Specifically, enter the name of the data frame object, followed by the <code>$</code> operator and the name of the original variable (<code>interview</code>). After that, enter the subtraction symbol (<code>-</code>). And finally, type the name of the <code>mean</code> function from base R. As the first argument in the <code>mean</code> function, enter the name of the data frame object (<code>df</code>), followed by the <code>$</code> operator and the name of the original variable (<code>interview</code>). As the second argument, enter <code>na.rm=TRUE</code> to indicate that you wish to drop missing values when calculating the grand mean for the sample.</p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="center.html#cb669-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grand-mean centering: Using basic arithmetic and the mean function from base R</span></span>
+<span id="cb669-2"><a href="center.html#cb669-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>c_interview <span class="ot">&lt;-</span> df<span class="sc">$</span>interview <span class="sc">-</span> <span class="fu">mean</span>(df<span class="sc">$</span>interview, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p>To admire your work, take a look at the first six rows of your data frame object to inspect the new grand-mean centered variable called <code>c_interview</code>.</p>
+<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="center.html#cb670-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb670-2"><a href="center.html#cb670-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##   emp_id perf_eval interview   age gender race  c_interview
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian       0.245
+## 2 MA323        4.9       9.3  31.7 man    asian       2.04 
+## 3 MA324        4.2       7.5  29.4 woman  asian       0.245
+## 4 MA325        5.3       8    37.9 woman  asian       0.745
+## 5 MA326        4.2       9.3  30.9 man    black       2.04 
+## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455</code></pre>
+</div>
+<div id="scale_function_center" class="section level3" number="22.1.2">
+<h3><span class="header-section-number">22.1.2</span> Option 2: <code>scale</code> Function from Base R</h3>
+<p>An alternative approach to grand-mean centering is to use the <code>scale</code> function from base R. For some, this function might be preferable to the approach described above, but again, it’s really a matter of preference. As an initial step, start by coming up with a new name for one of our soon-to-be grand-mean centered variable, and in this example, we will center the <code>interview</code> variable. As I mentioned above, I typically like to name the centered variable by simply adding the <code>c_</code> prefix to the existing variable’s names - for example: <code>c_interview</code>. Now, enter the name of the data frame object to which the new centered variable will be attached (<code>df</code>), followed by the <code>$</code> operator and the name of the new variable we are creating (<code>c_interview</code>). Next, add the <code>&lt;-</code> operator to indicate what values you will assign to this new variable. To create a vector of values to assign to this new <code>c_interview</code> variable, begin by typing the name of the <code>scale</code> function. As the first argument, type the name of the data frame object (<code>df</code>), followed by the <code>$</code> operator and the name of the original variable (<code>interview</code>). As the second argument, type <code>center=TRUE</code> which instructs the function to grand-mean center the values. As the third argument, type <code>scale=FALSE</code> to inform the function that you do <em>not</em> which to scale or standardize the variable you are centering.</p>
+<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="center.html#cb672-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grand-mean centering: Using scale function from base R</span></span>
+<span id="cb672-2"><a href="center.html#cb672-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>c_interview <span class="ot">&lt;-</span> <span class="fu">scale</span>(df<span class="sc">$</span>interview, <span class="at">center=</span><span class="cn">TRUE</span>, <span class="at">scale=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Take a look at the first six rows of your data frame object to inspect the new grand-mean centered variable called <code>c_interview</code>.</p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="center.html#cb673-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb673-2"><a href="center.html#cb673-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##   emp_id perf_eval interview   age gender race  c_interview[,1]
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian           0.245
+## 2 MA323        4.9       9.3  31.7 man    asian           2.04 
+## 3 MA324        4.2       7.5  29.4 woman  asian           0.245
+## 4 MA325        5.3       8    37.9 woman  asian           0.745
+## 5 MA326        4.2       9.3  30.9 man    black           2.04 
+## 6 MA327        6.9       6.8  46.2 woman  asian          -0.455</code></pre>
+</div>
+<div id="mutate_function_center" class="section level3" number="22.1.3">
+<h3><span class="header-section-number">22.1.3</span> Option 3: <code>mutate</code> Function from <code>dplyr</code> and <code>mean</code> Function from Base R</h3>
+<p>This third approach to grand-mean centering variables can come in handy when we want to grand-mean center multiple variables in a single step. With that said, I will begin by showing how to grand-mean center a single variable using this approach, and then we will extend the code/script to involve two variables. We will be using the <code>mutate</code> function from the <code>dplyr</code> package, so if you haven’t already, be sure to install and access the <code>dplyr</code> package using the functions below.</p>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="center.html#cb675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if not already installed</span></span>
+<span id="cb675-2"><a href="center.html#cb675-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="center.html#cb676-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
+<span id="cb676-2"><a href="center.html#cb676-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p>In this example, I use the pipe (<code>%&gt;%</code>) operator from the <code>dplyr</code> package (and by extension, the <code>magrittr</code> package). For more information on using pipes with the <code>mutate</code> function, check out the <a href="clean.html#clean">chapter on cleaning data</a>, and for more information on using pipes in general, check out <a href="https://r4ds.had.co.nz/pipes.html">this free eBook</a> by one of the creator’s of the <code>dplyr</code> package and RStudio.</p>
+<p>As the first step, enter the name of the data frame object you wish to create (or overwrite), and in this example, we are going to overwrite our existing data frame (<code>df</code>) by naming our new data frame object the same thing. To create and name the object, we use the <code>&lt;-</code> operator. Second, type the name of the original data frame to which the variable we wish to grand-mean center belongs (<code>df</code>). Third, type the pipe (<code>%&gt;%</code>) operator. Fourth, type the name of the <code>mutate</code> function. As the first and only argument, begin by typing what you would like to call the new grand-mean centered variable, which in this case we will call the variable <code>c_interview</code>. After that, type the <code>=</code> operator to assign values to this new variable. Finally, we create a formula to inform the function how the new values will be calculated. Specifically, we type the name of the original variable (<code>interview</code>), type the subtraction symbol (<code>-</code>), and finally type the name of the <code>mean</code> function from base R. As the first argument in the <code>mean</code> function, type the name of the variable (<code>interview</code>) for which you would like to calculate the mean, and as the second argument, enter <code>na.rm=TRUE</code> to indicate that you wish to drop missing values when calculating this grand mean for the sample.</p>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb677-1"><a href="center.html#cb677-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grand-mean centering: Using mutate function from dplyr and mean function from base R</span></span>
+<span id="cb677-2"><a href="center.html#cb677-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb677-3"><a href="center.html#cb677-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">c_interview =</span> interview <span class="sc">-</span> <span class="fu">mean</span>(interview, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<p>Take a look at the first six rows of your data frame object to inspect the new grand-mean centered variable called <code>c_interview</code>.</p>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="center.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb678-2"><a href="center.html#cb678-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 7
+##   emp_id perf_eval interview   age gender race  c_interview
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian       0.245
+## 2 MA323        4.9       9.3  31.7 man    asian       2.04 
+## 3 MA324        4.2       7.5  29.4 woman  asian       0.245
+## 4 MA325        5.3       8    37.9 woman  asian       0.745
+## 5 MA326        4.2       9.3  30.9 man    black       2.04 
+## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455</code></pre>
+<p>One of the advantages of using this approach is that we can center multiple variables in a single step. To do so, we simply specify which additional variable we would like to grand-mean center by adding an additional argument to the <code>mutate</code> function.</p>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="center.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grand-mean centering: Multiple variables</span></span>
+<span id="cb680-2"><a href="center.html#cb680-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb680-3"><a href="center.html#cb680-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">c_interview =</span> interview <span class="sc">-</span> <span class="fu">mean</span>(interview, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb680-4"><a href="center.html#cb680-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">c_age =</span> age <span class="sc">-</span> <span class="fu">mean</span>(age, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="standardize_center" class="section level2" number="22.2">
+<h2><span class="header-section-number">22.2</span> Standardizing Variables</h2>
+<p>There are different approaches we can use to standardize a variable. I provide two options below. You can try both options or one. Both will get you to the same end. I suggest picking the one that is most intuitive for you.</p>
+<div id="scale_function_standardize" class="section level3" number="22.2.1">
+<h3><span class="header-section-number">22.2.1</span> Option 1: <code>scale</code> Function from Base R</h3>
+<p>As our first approach to standardizing (or scaling) a variable, we will use the <code>scale</code> function from base R. In fact, we can even apply this function within the <code>lm</code> (linear regression) function from base R to get standardized regression coefficients; for more information on standardized regression coefficients, check out the chapters on predicting <a href="predictingcriterionscores.html#predictingcriterionscores">criterion scores using simple linear regression</a> and <a href="incrementalvalidity.html#incrementalvalidity">estimating incremental validity using multiple linear regression</a>. Using the <code>scale</code> function on its own is fairly straightforward when the goal is to standardize. Start by coming up with a new name for one of our soon-to-be grand-mean centered variable, and in this example, we will center the <code>interview</code> variable. I typically like to name the standardized variable by simply adding the <code>st_</code> prefix to the existing variable’s names (e.g., <code>st_interview</code>). Now, enter the name of the data frame object to which the new centered variable will be attached (<code>df</code>), followed by the <code>$</code> operator and the name of the new variable we are creating (<code>st_interview</code>). Next, add the <code>&lt;-</code> operator to indicate what values you will assign to this new variable. To assign values to this new <code>st_interview</code> variable, begin by typing the name of the <code>scale</code> function. As the first and only argument, type the name of the data frame object (<code>df</code>), followed by the <code>$</code> operator and the name of the original variable (<code>interview</code>).</p>
+<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="center.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardizing: Using scale function from base R</span></span>
+<span id="cb681-2"><a href="center.html#cb681-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>st_interview <span class="ot">&lt;-</span> <span class="fu">scale</span>(df<span class="sc">$</span>interview)</span></code></pre></div>
+<p>Take a look at your data frame object to inspect the new standardized variable called <code>st_interview</code>.</p>
+</div>
+<div id="mutate_function_standardize" class="section level3" number="22.2.2">
+<h3><span class="header-section-number">22.2.2</span> Option 2: <code>mutate</code> Function from <code>dplyr</code> and <code>scale</code> Function from Base R</h3>
+<p>This alternative approach to standardizing variables can come in handy when we want to standardize multiple variables in a single step. With that said, I will begin by showing how to standardize a single variable using this approach, and then we will try two variables. We will use the <code>mutate</code> function from the <code>dplyr</code> package, so if you haven’t already, be sure to install and access the <code>dplyr</code> package using the functions below.</p>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="center.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if not already installed</span></span>
+<span id="cb682-2"><a href="center.html#cb682-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="center.html#cb683-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
+<span id="cb683-2"><a href="center.html#cb683-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p>As the first step, enter the name of the data frame object you wish to create (or overwrite), and in this example, we are going to overwrite our existing data frame (<code>df</code>) by naming our new data frame object the same thing. To create and name the object, we use the <code>&lt;-</code> operator. Second, type the name of the original data frame to which the variable we wish to standardize belongs (<code>df</code>). Third, type the pipe (<code>%&gt;%</code>) operator. Fourth, type the name of the <code>mutate</code> function. As the first and only argument, begin by typing what you would like to call the new standardized variable, which in this case we will call the variable <code>st_interview</code>. After that, type the name of the <code>scale</code> function from base R. As the first and only argument in the <code>scale</code> function, type the name of the variable (<code>interview</code>) that you would like to standardize.</p>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="center.html#cb684-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardizing: Using mutate function from dplyr and scale function from base R</span></span>
+<span id="cb684-2"><a href="center.html#cb684-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb684-3"><a href="center.html#cb684-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">st_interview =</span> <span class="fu">scale</span>(interview))</span></code></pre></div>
+<p>Take a look at your data frame object to inspect the new standardized variable called <code>st_interview</code>.</p>
+<p>One of the advantages of using this approach is that we can standardize multiple variables in a single step. To do so, we simply specify which additional variable we would like to standardize by adding an additional argument to the <code>mutate</code> function.</p>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="center.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardizing: Multiple variables</span></span>
+<span id="cb685-2"><a href="center.html#cb685-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb685-3"><a href="center.html#cb685-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">st_interview =</span> <span class="fu">scale</span>(interview),</span>
+<span id="cb685-4"><a href="center.html#cb685-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">st_age =</span> <span class="fu">scale</span>(age))</span></code></pre></div>
+</div>
+</div>
+<div id="summary_center" class="section level2" number="22.3">
+<h2><span class="header-section-number">22.3</span> Summary</h2>
+<p>In this chapter, we learned how to grand-mean center and standardize variables. For grand-mean centering variables, we used basic arithmetic and the <code>mean</code> function from base R, the <code>scale</code> function from base R, and a combination of the <code>mutate</code> function from <code>dplyr</code> and the <code>mean</code> function from base R. For standardizing variables, we used the <code>scale</code> function from base R and a combination of the <code>mutate</code> function from <code>dplyr</code> and the <code>scale</code> function from base R.</p>
+
+</div>
+</div>
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="manipulate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="employeedemographics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
