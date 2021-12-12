@@ -304,7 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="14.1" data-path="addnames.html"><a href="addnames.html#remove_variablenames"><i class="fa fa-check"></i><b>14.1</b> Remove Variable Names from a Data Frame Object</a></li>
 <li class="chapter" data-level="14.2" data-path="addnames.html"><a href="addnames.html#add_variablenames"><i class="fa fa-check"></i><b>14.2</b> Add Variable Names to a Data Frame Object</a></li>
-<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#change_variablenames"><i class="fa fa-check"></i><b>14.3</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="14.3" data-path="addnames.html"><a href="addnames.html#change_variablenames"><i class="fa fa-check"></i><b>14.3</b> Change Specific Variable Names in a Data Frame Object</a></li>
 <li class="chapter" data-level="14.4" data-path="addnames.html"><a href="addnames.html#summary-10"><i class="fa fa-check"></i><b>14.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>15</b> Writing Data from R</a>
@@ -494,9 +494,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="30.5.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>30.5.3</b> APA-Style Results Table</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="31" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html"><i class="fa fa-check"></i><b>31</b> Estimating Incremental Validity Using Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#review_mlr"><i class="fa fa-check"></i><b>31.1</b> Review of Multiple Linear Regression</a></li>
+<li class="chapter" data-level="31.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#estimate_mlr"><i class="fa fa-check"></i><b>31.2</b> Estimate Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="31.3" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#summary_incrementalvalidity"><i class="fa fa-check"></i><b>31.3</b> Summary</a></li>
+<li class="chapter" data-level="31.4" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#incrementalvalidity_supplement"><i class="fa fa-check"></i><b>31.4</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="31.4.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#lm_function_mlr"><i class="fa fa-check"></i><b>31.4.1</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="31.4.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#apatable_mlr"><i class="fa fa-check"></i><b>31.4.2</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="31" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>31</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="32" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>32</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="32" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>32</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="33" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>33</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -554,16 +565,16 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="identify-the-current-working-directory" class="section level3" number="12.0.1">
 <h3><span class="header-section-number">12.0.1</span> Identify the Current Working Directory</h3>
 <p>To determine if a working directory has already been set, and if so, what that working directory is, use the <code>getwd</code> (get working directory) function from base R. Because this function comes standard with our R download, we don’t need to install an additional package to access it. For this function, you don’t need any arguments within the parentheses; in other words, leave the function parentheses empty. Alternatively, if you are using RStudio, you will see your current working directory next to the word “Console” in your Console window.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="setwd.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find your current working directory</span></span>
-<span id="cb142-2"><a href="setwd.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="setwd.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find your current working directory</span></span>
+<span id="cb145-2"><a href="setwd.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
 <p><img src="ConsoleWD.png" /></p>
 </div>
 <div id="set-a-new-working-directory" class="section level3" number="12.0.2">
 <h3><span class="header-section-number">12.0.2</span> Set a New Working Directory</h3>
 <p>Let’s assume that the current working directory is <em>not</em> what we want; meaning, we need to set a new or different working directory. If you need to set a new working directory, you can use the <code>setwd</code> function from base R. Within the parentheses, your only argument will be the working directory in quotation marks. I recommend typing your <code>setwd</code> function into an R Script (.R) file so that it can be saved for future sessions. I also recommend using the <code>#</code> to annotate your script so that you can remind yourself (and others) what you are doing.</p>
 <p>When it comes to working directories, R likes the forward slash (<code>/</code>) (as opposed to backslash). Remember, the working directory is the location of the data files you wish to access and bring into the R environment. You can access any folder you would like and set it as your working directory. For example, in the code below, I set my working directory to <code>H:/RWorkshop</code>, as that folder at the end of that path contains the data files I would like to work with. The folder (and associated path) you set as your working directory will almost certainly be different than the one I set below.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="setwd.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb143-2"><a href="setwd.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="setwd.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb146-2"><a href="setwd.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Alternatively, you may use the drop-down menus to select a working directory folder. To do so, go to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>, and select the folder where your files live. Upon doing so, your working directory will appear in the Console. You can copy and paste the working directory into your <code>setwd</code> function.</p>
 <p><img src="Set%20Working%20Directory.png" /></p>
 <p>Once you have set your working directory, you can verify that it was set to the correct folder by (a) typing <code>getwd()</code> into your console or (b) looking at the working directory listed next to the word “Console” in your Console window.</p>
