@@ -516,9 +516,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="32.5.1" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>32.5.1</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="33" data-path="multiplecutoff.html"><a href="multiplecutoff.html"><i class="fa fa-check"></i><b>33</b> Compensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#review_multiplecutoff"><i class="fa fa-check"></i><b>33.1</b> Review of Noncompensatory (Multiple-Cutoff) Approach</a></li>
+<li class="chapter" data-level="33.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#createcutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.2</b> Create Cutoff Scores</a></li>
+<li class="chapter" data-level="33.3" data-path="multiplecutoff.html"><a href="multiplecutoff.html#applycutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.3</b> Apply Cutoff Scores to Make Selection Decisions</a></li>
+<li class="chapter" data-level="33.4" data-path="multiplecutoff.html"><a href="multiplecutoff.html#summary_multiplecutoff"><i class="fa fa-check"></i><b>33.4</b> Summary</a></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="33" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>33</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="34" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>34</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="34" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>34</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="35" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>35</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -700,7 +707,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To begin, type the name of the <code>ScatterPlot</code> function. As the first two arguments of the function, type the names of the two variables you wish to visualize; let’s start by visualizing the association between the <code>Conscientiousness</code> selection tool and the criterion (<code>Performance</code>). The variable name that we type after the <code>x=</code> argument will set the x-axis, and the variable name that we type after the <code>y=</code> argument will set the y-axis. Conventionally, we place the criterion variable on the y-axis, as it is the outcome. As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="criterionrelatedvalidity.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using ScatterPlot function from lessR</span></span>
 <span id="cb883-2"><a href="criterionrelatedvalidity.html#cb883-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-519-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-509-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -725,7 +732,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb885-2"><a href="criterionrelatedvalidity.html#cb885-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
 <span id="cb885-3"><a href="criterionrelatedvalidity.html#cb885-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
 <span id="cb885-4"><a href="criterionrelatedvalidity.html#cb885-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-520-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-510-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -749,7 +756,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb887-4"><a href="criterionrelatedvalidity.html#cb887-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>,</span>
 <span id="cb887-5"><a href="criterionrelatedvalidity.html#cb887-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-521-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-511-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers

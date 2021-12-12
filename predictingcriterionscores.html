@@ -516,9 +516,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="32.5.1" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>32.5.1</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="33" data-path="multiplecutoff.html"><a href="multiplecutoff.html"><i class="fa fa-check"></i><b>33</b> Compensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#review_multiplecutoff"><i class="fa fa-check"></i><b>33.1</b> Review of Noncompensatory (Multiple-Cutoff) Approach</a></li>
+<li class="chapter" data-level="33.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#createcutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.2</b> Create Cutoff Scores</a></li>
+<li class="chapter" data-level="33.3" data-path="multiplecutoff.html"><a href="multiplecutoff.html#applycutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.3</b> Apply Cutoff Scores to Make Selection Decisions</a></li>
+<li class="chapter" data-level="33.4" data-path="multiplecutoff.html"><a href="multiplecutoff.html#summary_multiplecutoff"><i class="fa fa-check"></i><b>33.4</b> Summary</a></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="33" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>33</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="34" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>34</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="34" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>34</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="35" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>35</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -736,7 +743,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb920-3"><a href="predictingcriterionscores.html#cb920-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>df, </span>
 <span id="cb920-4"><a href="predictingcriterionscores.html#cb920-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-540-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-530-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
 ## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
@@ -758,7 +765,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To use the <code>Regression</code> function from the <code>lessR</code> package, type the name of the <code>Regression</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome (i.e., criterion) variable (<code>Performance</code>) to the left of the tilde (<code>~</code>) operator and the name of the predictor (e.g., selection tool) variable (<code>Conscientiousness</code>) to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>Conscientiousness</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="predictingcriterionscores.html#cb923-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate simple linear regression model</span></span>
 <span id="cb923-2"><a href="predictingcriterionscores.html#cb923-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-541-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-541-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-541-3.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-531-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-531-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-531-3.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ Conscientiousness, data=df, Rmd=&quot;eg&quot;)  
@@ -945,7 +952,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## 39       -2.044            -2.058
 ## 49       -0.822            -1.826
 ## 106      -2.044            -1.826</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-542-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-542-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-542-3.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-532-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-532-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-532-3.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ Conscientiousness, data=df, new_scale=&quot;z&quot;, Rmd=&quot;eg&quot;)  
@@ -1256,17 +1263,17 @@ BOOK UNDER CONSTRUCTION</a>
 <p>We will begin by generating a scatterplot displaying the association between the <em>fitted (predicted) values and residuals</em>. To do so, we will use the <code>plot</code> function from base <code>R</code>. As the first argument, enter the name of the regression model object you created above (<code>reg.mod1</code>). As the second argument, type the numeral <em>1</em>, which will request the first of four possible diagnostic plots, of which we will review three.</p>
 <div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="predictingcriterionscores.html#cb953-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
 <span id="cb953-2"><a href="predictingcriterionscores.html#cb953-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-559-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-549-1.png" width="672" /></p>
 <p>We previously saw using the <code>ScatterPlot</code> function from <code>lessR</code> that the association between the two variables appeared to be linear and evidenced a bivariate normal distribution. We did, however, note that there might be some <em>bivariate outliers</em> that could influence the estimated regression model. The current plot shows the association between the fitted values (x-axis) and the residuals (y-axis). If you recall, the residuals are the error in our estimations - or in other words, how much our fitted values for the outcome variable deviate from the observed (actual) values for the outcome variable. The term “fitted values” is another way of saying predicted values for the outcome variable, but the language “fitted” is more precise here. The horizontal dotted line is drawn at the residual value of zero; remember, our goal is to minimize the size of residuals (i.e., error). The solid line shows the deviations from zero of the residuals for each fitted value, and the greater the solid line deviates from the dotted line, the more likely that (a) variances of the residuals may <em>not</em> be equal for each level of the predictor variable (violation of the assumption of homoscedasticity), (b) the average residual error value may <em>not</em> be zero for each level of the predictor variable, and (c) there may be potential bivariate outliers influencing the fitted (predicted) values. In this plot, we can see that the variances of the residuals seem to be about equal across observations (evidence of homoscedasticity), the average residual error value appears to be about zero (which is good), and there appears to be three cases that are flagged as a potential bivariate outlier (i.e., row numbers <em>34</em>, <em>110</em>, and <em>161</em>).</p>
 <p>As an additional diagnostic tool, we can plot a Q-Q plot, which provides an indication as to whether the residuals are normality distributed (one of our statistical assumptions). Simply adapt the <code>plot</code> script from above, but this time, enter the numeral <em>2</em> (instead of <em>1</em>) to request the second diagnostic plot.</p>
 <div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb954-1"><a href="predictingcriterionscores.html#cb954-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
 <span id="cb954-2"><a href="predictingcriterionscores.html#cb954-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-560-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-550-1.png" width="672" /></p>
 <p>Normally distributed residuals will fall along the dotted diagonal line. As you can see, the residuals fall, for the most part, on or near the line with the exception of those three potential outlier cases that we identified in the previous plot: row numbers <em>34</em>, <em>110</em>, and <em>161</em>.</p>
 <p>As the last diagnostic plot, let’s look at Cook’s distance (D) across cases. Once again, adapt the <code>plot</code> script from above, but this time, enter the numeral <em>4</em> to request the fourth diagnostic plot. We’re skipping the third plot.</p>
 <div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="predictingcriterionscores.html#cb955-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb955-2"><a href="predictingcriterionscores.html#cb955-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-561-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-551-1.png" width="672" /></p>
 <p>Here we see flagged cases associated with row numbers <em>130</em>, <em>134</em>, and <em>161</em> based on Cook’s distance.</p>
 <p>We can also grab the cases with the highest Cook’s distances. Let’s create an object called <code>cooksD</code> that we will assign a vector of Cook’s distance values to using the <code>cooks.distance</code> function from base <code>R</code>. Just enter the name of the regression model object (<code>reg.mod1</code>) as the sole parenthetical argument. Next, update the object we called <code>cooksD</code> by applying the <code>sort</code> function from base <code>R</code> and entering the <code>cooksD</code> object as the first object and <code>decreasing=TRUE</code> as the second argument; this will sort the Cook’s distance values in descending order. Finally, apply the <code>head</code> function from base <code>R</code>, and as the first argument enter the name of the <code>cooksD</code> object that we just sorted; as the second argument, type <code>n=20</code> to show the top 20 rows, as opposed to the default top 6 rows.</p>
 <div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb956-1"><a href="predictingcriterionscores.html#cb956-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>

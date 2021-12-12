@@ -516,9 +516,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="32.5.1" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>32.5.1</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="33" data-path="multiplecutoff.html"><a href="multiplecutoff.html"><i class="fa fa-check"></i><b>33</b> Compensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#review_multiplecutoff"><i class="fa fa-check"></i><b>33.1</b> Review of Noncompensatory (Multiple-Cutoff) Approach</a></li>
+<li class="chapter" data-level="33.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#createcutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.2</b> Create Cutoff Scores</a></li>
+<li class="chapter" data-level="33.3" data-path="multiplecutoff.html"><a href="multiplecutoff.html#applycutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.3</b> Apply Cutoff Scores to Make Selection Decisions</a></li>
+<li class="chapter" data-level="33.4" data-path="multiplecutoff.html"><a href="multiplecutoff.html#summary_multiplecutoff"><i class="fa fa-check"></i><b>33.4</b> Summary</a></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="33" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>33</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="34" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>34</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="34" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>34</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="35" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>35</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1050,7 +1057,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="aggregatesegment.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trellis of histograms corresponding to different values of grouping variable</span></span>
 <span id="cb616-2"><a href="aggregatesegment.html#cb616-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Histogram</span>(JobSat1, <span class="at">by1=</span>Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
 <pre><code>## [Trellis graphics from Deepayan Sarkar&#39;s lattice package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-354-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-344-1.png" width="672" /></p>
 <pre><code>## JobSat1 
 ##   - by levels of - 
 ## Unit 
@@ -1064,7 +1071,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If we want to look at the counts (i.e., frequencies) of cases for each unique value of a grouping variable, we can apply the <code>BarChart</code> from the <code>lessR</code> package. Simply type <code>BarChart</code> as the function. As the first argument, enter the name of the grouping variable (<code>Unit</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object (<code>EmpSurvData</code>).</p>
 <div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="aggregatesegment.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart that shows counts for each level of grouping variable</span></span>
 <span id="cb619-2"><a href="aggregatesegment.html#cb619-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-355-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-345-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## BarChart(Unit, horiz=TRUE)  # horizontal bar chart
 ## BarChart(Unit, fill=&quot;reds&quot;)  # red bars of varying lightness

@@ -516,9 +516,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="32.5.1" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>32.5.1</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="33" data-path="multiplecutoff.html"><a href="multiplecutoff.html"><i class="fa fa-check"></i><b>33</b> Compensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#review_multiplecutoff"><i class="fa fa-check"></i><b>33.1</b> Review of Noncompensatory (Multiple-Cutoff) Approach</a></li>
+<li class="chapter" data-level="33.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#createcutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.2</b> Create Cutoff Scores</a></li>
+<li class="chapter" data-level="33.3" data-path="multiplecutoff.html"><a href="multiplecutoff.html#applycutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.3</b> Apply Cutoff Scores to Make Selection Decisions</a></li>
+<li class="chapter" data-level="33.4" data-path="multiplecutoff.html"><a href="multiplecutoff.html#summary_multiplecutoff"><i class="fa fa-check"></i><b>33.4</b> Summary</a></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="33" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>33</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="34" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>34</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="34" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>34</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="35" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>35</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -789,21 +796,21 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Using the <code>barplot</code> function from base R, we can create a very simple and straightforward bar chart without too many frills and embellishments. Let’s start with the <code>Facility</code> variable. As the sole parenthetical argument in the <code>barplot</code> function, simply, enter the <code>table(demo$Facility)</code> code that we wrote in the previous section.</p>
 <div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="descriptives.html#cb678-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart based on Facility counts</span></span>
 <span id="cb678-2"><a href="descriptives.html#cb678-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(demo<span class="sc">$</span>Facility))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-388-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-378-1.png" width="672" /></p>
 <p>As you can see, a very simple (and not super aesthetically pleasing) bar chart appears in our Plots window. <strong>When exploring data on our own, it is often fine to just complete a simple bar chart like this one, as opposed to fine-tuning the aesthetics (e.g., size, color, font) of the plot.</strong> If you want, you can export this plot as a PDF or PNG image file, or you can copy it and paste it in another document. To do so, just click on the <em>Export</em> button in the Plots window, which should appear in the lower right of your RStudio interface.</p>
 <p>If you’re feeling adventurous and would like to learn how to fine-tune the bar chart, feel free to continue on with this tutorial. Additional attention paid to aesthetics might be worthwhile if you plan to present the plot to others in a formal presentation or report.</p>
 <p>Using the <code>barplot</code> code we wrote above, we can add a second argument in which we apply <code>ylim=</code> followed by a vector (using the <code>c</code> function) of the lower and upper limits for the y-axis. In this example, I set the lower and upper y-axis limits to 0 and 20.</p>
 <div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="descriptives.html#cb679-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart based on Facility counts</span></span>
 <span id="cb679-2"><a href="descriptives.html#cb679-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(demo<span class="sc">$</span>Facility),</span>
 <span id="cb679-3"><a href="descriptives.html#cb679-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-389-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-379-1.png" width="672" /></p>
 <p>Building on the previous code, we add additional arguments in which we provide more meaningful labels for the x- and y-axes. To do so, we use the <code>xlab</code> argument for the x-axis label and the <code>ylab</code> argument for the y-axis label. Just make sure to put quotation marks (<code>" "</code>) around whatever text you come up with for your axis labels.</p>
 <div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb680-1"><a href="descriptives.html#cb680-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart based on Facility counts</span></span>
 <span id="cb680-2"><a href="descriptives.html#cb680-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(demo<span class="sc">$</span>Facility),</span>
 <span id="cb680-3"><a href="descriptives.html#cb680-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>),</span>
 <span id="cb680-4"><a href="descriptives.html#cb680-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Facility&quot;</span>,</span>
 <span id="cb680-5"><a href="descriptives.html#cb680-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Counts&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-390-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-380-1.png" width="672" /></p>
 <p>We can change the colors of the bars by adding the <code>col</code> (color) argument. There are many, many different colors that can be used in R, and one of my favorites is “dodgerblue”.</p>
 <div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb681-1"><a href="descriptives.html#cb681-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart based on Facility counts</span></span>
 <span id="cb681-2"><a href="descriptives.html#cb681-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(demo<span class="sc">$</span>Facility),</span>
@@ -811,7 +818,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb681-4"><a href="descriptives.html#cb681-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">&quot;Facility&quot;</span>,</span>
 <span id="cb681-5"><a href="descriptives.html#cb681-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Counts&quot;</span>,</span>
 <span id="cb681-6"><a href="descriptives.html#cb681-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;dodgerblue&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-381-1.png" width="672" /></p>
 <p>If you’d like to explore additional colors, check out this website: <a href="https://www.r-graph-gallery.com/colors.html" class="uri">https://www.r-graph-gallery.com/colors.html</a>. Or, you can run the <code>colors()</code> function (without any arguments), and you’ll get a (huge) list of the color options.</p>
 <div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb682-1"><a href="descriptives.html#cb682-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List names of base R color choices</span></span>
 <span id="cb682-2"><a href="descriptives.html#cb682-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colors</span>()</span></code></pre></div>
@@ -955,7 +962,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb684-5"><a href="descriptives.html#cb684-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Counts&quot;</span>,</span>
 <span id="cb684-6"><a href="descriptives.html#cb684-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;dodgerblue&quot;</span>)</span>
 <span id="cb684-7"><a href="descriptives.html#cb684-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-393-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-383-1.png" width="672" /></p>
 <p>And finally, here’s a quick example of how you might visualize the <code>Education</code> variable using the <code>barplot</code> function.</p>
 <div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="descriptives.html#cb685-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart for Education variable</span></span>
 <span id="cb685-2"><a href="descriptives.html#cb685-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(demo<span class="sc">$</span>Education),</span>
@@ -964,21 +971,21 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb685-5"><a href="descriptives.html#cb685-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab=</span><span class="st">&quot;Counts&quot;</span>,</span>
 <span id="cb685-6"><a href="descriptives.html#cb685-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="st">&quot;orange&quot;</span>)</span>
 <span id="cb685-7"><a href="descriptives.html#cb685-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-394-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-384-1.png" width="672" /></p>
 </div>
 <div id="datavisualizations_piechart_nominal_ordinal" class="section level4" number="23.2.2.2">
 <h4><span class="header-section-number">23.2.2.2</span> Create Pie Charts</h4>
 <p>Using the <code>pie</code> function from base R, we can create a very simple and straightforward bar chart without too many frills and embellishments. Let’s start with the <code>Education</code> variable. As the sole parenthetical argument in the <code>barplot</code> function, simply, enter the <code>table(demo$Education)</code> code that we wrote in the section called <a href="descriptives.html#compute_counts">Compute Counts &amp; Frequencies</a>.</p>
 <div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="descriptives.html#cb686-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart based on Education counts</span></span>
 <span id="cb686-2"><a href="descriptives.html#cb686-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">table</span>(demo<span class="sc">$</span>Education))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-395-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-385-1.png" width="672" /></p>
 <p>A very simple and generic pie chart appears in our Plots window. <strong>When exploring data on our own, it is often fine to just complete a simple pie chart like this one, as opposed to fine-tuning the aesthetics (e.g., size, color, font) of the plot.</strong> If you want, you can export this plot as a PDF or PNG image file, or you can copy it and paste it in another document. To do so, just click on the <em>Export</em> button in the Plots window, which should appear in the lower right of your RStudio interface.</p>
 <p>If you’re feeling adventurous and would like to learn how to adjust the colors pie chart, feel free to continue on with this tutorial.</p>
 <p>Using the <code>pie</code> code we wrote above, let’s add the <code>col=</code> argument followed by the <code>c</code> (combine) function containing a vector of colors – one color for each slice of the pie. Here, I chose the primar colors of red, yellow, and blue.</p>
 <div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="descriptives.html#cb687-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a bar chart based on Education counts</span></span>
 <span id="cb687-2"><a href="descriptives.html#cb687-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">table</span>(demo<span class="sc">$</span>Education),</span>
 <span id="cb687-3"><a href="descriptives.html#cb687-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;blue&quot;</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-396-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-386-1.png" width="672" /></p>
 <p>If you’d like to explore additional colors, check out this website: <a href="https://www.r-graph-gallery.com/colors.html" class="uri">https://www.r-graph-gallery.com/colors.html</a>. Or, you can run the <code>colors()</code> function (without any arguments), and you’ll get a (huge) list of the color options.</p>
 <div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="descriptives.html#cb688-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List names of base R color choices</span></span>
 <span id="cb688-2"><a href="descriptives.html#cb688-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colors</span>()</span></code></pre></div>
@@ -1129,7 +1136,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Let’s begin with the <code>Age</code> variable. To create a histogram, we can use the <code>hist</code> function from base R. To get things started, let’s enter a single argument: the name of the data frame object (<code>demo</code>), followed by the <code>$</code> operator and the name of the variable we wish to visualize (<code>Age</code>).</p>
 <div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="descriptives.html#cb690-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram</span></span>
 <span id="cb690-2"><a href="descriptives.html#cb690-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(demo<span class="sc">$</span>Age)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-398-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-388-1.png" width="672" /></p>
 <p>This histogram will do just fine for our purposes. Note that the histogram indicates that the scores from the <code>Age</code> variable appear to be roughly normally distributed. With smaller sample sizes (e.g., fewer than 30 observations or cases), we’re less likely to see a clean, normal distribution of scores, and this relates to the <em>central limit theorem</em>; though, an explanation of this theorem is beyond the scope of this tutorial. Nevertheless, the take-home message is that histograms provide rough approximations of the shapes of distributions, and a normal distribution is less likely when their are fewer observations (i.e., a smaller sample) and thus fewer scores on a variable.</p>
 <p><strong>For your own internal data-exploration purposes, it is often fine to create a simple histogram like the one we created above, meaning that you would not need to worry about the aesthetics (e.g., size, color) of the histogram.</strong> If you want, you can export this plot as a PDF or PNG image file, or you can copy it and paste it in another document. To do so, just click on the <em>Export</em> button in the Plots window, which should appear in the lower right of your RStudio interface.</p>
 <p>As <em>optional</em> next steps, you can play around with arguments to adjust the y-axis limits (<code>ylim</code>), x-axis label (<code>xlab</code>), y-axis label (<code>ylab</code>), main title (<code>main</code>), and the bar color (<code>col</code>). [If you’d like to explore additional colors, check out this website: <a href="https://www.r-graph-gallery.com/colors.html" class="uri">https://www.r-graph-gallery.com/colors.html</a>. Or, you can run the <code>colors()</code> function (without any arguments), and you’ll get a (huge) list of the color options.] A more in-depth description of these plot arguments is provided in the section above called <a href="descriptives.html#datavisualizations_barchart_nominal_ordinal">Create Bar Charts</a>.</p>
@@ -1140,7 +1147,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb691-5"><a href="descriptives.html#cb691-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Count&quot;</span>, <span class="co"># y-axis label</span></span>
 <span id="cb691-6"><a href="descriptives.html#cb691-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="cn">NULL</span>, <span class="co"># main title</span></span>
 <span id="cb691-7"><a href="descriptives.html#cb691-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;dodgerblue&quot;</span>) <span class="co"># bar color</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-399-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-389-1.png" width="672" /></p>
 <p>We can also specify a vector of the break points between the bars using the <code>c</code> function from base R. Just be sure that the lowest value in your vector is equal to or less than the minimum value for the variable and the the highest value is equal to or greater than the maximum value for the variable. To do so, we can add the <code>breaks</code> argument.</p>
 <div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="descriptives.html#cb692-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram and add style</span></span>
 <span id="cb692-2"><a href="descriptives.html#cb692-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(demo<span class="sc">$</span>Age,</span>
@@ -1150,7 +1157,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb692-6"><a href="descriptives.html#cb692-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="cn">NULL</span>, <span class="co"># remove main title</span></span>
 <span id="cb692-7"><a href="descriptives.html#cb692-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;dodgerblue&quot;</span>, <span class="co"># bar color</span></span>
 <span id="cb692-8"><a href="descriptives.html#cb692-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks=</span><span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">35</span>)) <span class="co"># set break points between bars</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-400-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-390-1.png" width="672" /></p>
 </div>
 <div id="datavisualizations_boxplot_interval_ratio" class="section level4" number="23.3.1.2">
 <h4><span class="header-section-number">23.3.1.2</span> Create Box Plots</h4>
@@ -1158,7 +1165,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>We’ll use the <code>boxplot</code> function from base R. To kick things off, let’s enter a single argument: the name of the data frame object (<code>demo</code>), followed by the <code>$</code> operator and the name of the variable we wish to visualize (<code>Performance</code>).</p>
 <div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="descriptives.html#cb693-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a box plot</span></span>
 <span id="cb693-2"><a href="descriptives.html#cb693-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(demo<span class="sc">$</span>Performance)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-401-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
 <p>The thick horizontal line in the middle of the box is the median score, the lower edge of the box represents the lower quartile (i.e., 25th percentile, median of lower half of the distribution), and the upper edge of the box represents the upper quartile (i.e., 75th percentile, median of the upper half of the distribution). The height of the box is the interquartile range. By default, the <code>boxplot</code> function sets the upper “whisker” (i.e., the horizontal line at the top of the upper dashed line) as the smaller of two values: the maximum value or 1.5 times the interquartile range. Further, the function sets the lower “whisker” (i.e., the horizontal line at the bottom of the lower dashed line) as the larger of two values: the minimum value or 1.5 times the interquartile range.</p>
 <p>In the box plot for <code>Performance</code>, we can see that the distribution of scores appears to be slightly negatively skewed, as the upper quartile is smaller than the lower quartile (i.e., the median is closer to the top of the box) and the upper whisker is shorter than the lower whisker. If there had been any outlier scores, these would appear beyond the upper and lower limits of the whiskers.</p>
 <p><strong>If you plan to create a box plot for your own data-exploration purposes only, it is often fine to create a simple box plot like the one we created above, which means you would not need to proceed forward with subsequent steps in which I show how to refine the aesthetics of the box plot.</strong> If you want, you can export this plot as a PDF or PNG image file, or you can copy it and paste it in another document. To do so, just click on the <em>Export</em> button in the Plots window, which should appear in the lower right of your RStudio interface.</p>
@@ -1167,7 +1174,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb694-2"><a href="descriptives.html#cb694-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(demo<span class="sc">$</span>Performance,</span>
 <span id="cb694-3"><a href="descriptives.html#cb694-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Employee Job Performance&quot;</span>, <span class="co"># y-axis label</span></span>
 <span id="cb694-4"><a href="descriptives.html#cb694-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">&quot;orange&quot;</span>) <span class="co"># bar color</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-402-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-392-1.png" width="672" /></p>
 </div>
 </div>
 <div id="compute_measures_centraltendency_dispersion" class="section level3" number="23.3.2">

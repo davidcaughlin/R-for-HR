@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="incrementalvalidity.html"/>
-<link rel="next" href="create-portfolio.html"/>
+<link rel="next" href="multiplecutoff.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -516,9 +516,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="32.5.1" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>32.5.1</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="33" data-path="multiplecutoff.html"><a href="multiplecutoff.html"><i class="fa fa-check"></i><b>33</b> Compensatory Approach to Selection Decisions</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#review_multiplecutoff"><i class="fa fa-check"></i><b>33.1</b> Review of Noncompensatory (Multiple-Cutoff) Approach</a></li>
+<li class="chapter" data-level="33.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#createcutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.2</b> Create Cutoff Scores</a></li>
+<li class="chapter" data-level="33.3" data-path="multiplecutoff.html"><a href="multiplecutoff.html#applycutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>33.3</b> Apply Cutoff Scores to Make Selection Decisions</a></li>
+<li class="chapter" data-level="33.4" data-path="multiplecutoff.html"><a href="multiplecutoff.html#summary_multiplecutoff"><i class="fa fa-check"></i><b>33.4</b> Summary</a></li>
+</ul></li>
 <li class="part"><span><b>VII Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="33" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>33</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="34" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>34</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="34" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>34</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="35" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>35</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -544,7 +551,7 @@ BOOK UNDER CONSTRUCTION</a>
             <section class="normal" id="section-">
 <div id="compensatory" class="section level1" number="32">
 <h1><span class="header-section-number">Chapter 32</span> Compensatory Approach to Selection Decisions</h1>
-<p>Just as we can use multiple linear regression to evaluate whether evidence of incremental validity exists for a selection tool, we can also use multiple linear regression to apply a compensatory approach to making selection decisions.</p>
+<p>Just as we can use multiple linear regression to evaluate whether evidence of incremental validity exists for a selection tool, we can also use multiple linear regression to apply a compensatory approach to making selection decisions. In general, there are three overarching (and mutually non-exclusive) approaches to making selection decisions: (a) compensatory (e.g., multiple linear regression), (b) noncompensatory (e.g., multiple-cutoff), and (c) multiple-hurdle. These three approaches can be mixed and matched to fit the selection-decision needs of an organization; however, in this chapter, we’ll focus specifically on the compensatory approach, whereas in the <a href="multiplecutoff.html#multiplecutoff">next chapter</a>, we will focus on the multiple-cutoff noncompensatory approach.</p>
 <div id="review_compensatory" class="section level2" number="32.1">
 <h2><span class="header-section-number">32.1</span> Review of Compensatory Approach</h2>
 <p>In the context of employee selection, a <strong>compensatory approach</strong> refers to the process of using applicants’ scores on multiple selection tools to predict who will have the highest scores on the criterion. In doing so, applicants can compensate for lower scores on one selection tool with higher scores on one or more other selection tools – hence the name “compensatory approach.” One of the simpler ways to apply a compensatory approach is to apply equal weights to scores from the various selection tools when predicting future criterion scores; however, such an approach does not acknowledge that some selection tools may explain more variance in the criterion (e.g., job performance) than others. Using regression coefficients from a multiple linear regression model, we can weight scores on selection tools differentially when predicting criterion scores. Notably, these weights are empirically driven (e.g., data informed) as opposed to judgment informed (e.g., subject matter expert ratings). In essence, applying a compensatory approach using multiple linear regression allows us to apply our estimated regression model equation to predict criterion scores for applicants. Subsequently, we can sort the predicted criterion scores to determine which applicants are most promising and to inform selection decisions.</p>
@@ -656,7 +663,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To use the <code>Regression</code> function from the <code>lessR</code> package, type the name of the <code>Regression</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome (i.e., criterion) variable (<code>Performance</code>) to the left of the tilde (<code>~</code>) operator and the names of the predictor (e.g., selection tool) variables (<code>SJT</code>, <code>Interview</code>) separated by the <code>+</code> operator to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>SJT</code> and <code>Interview</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb1063"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1063-1"><a href="compensatory.html#cb1063-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
 <span id="cb1063-2"><a href="compensatory.html#cb1063-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-627-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-627-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-627-3.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-617-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-617-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-617-3.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ SJT + Interview, data=df, Rmd=&quot;eg&quot;)  
@@ -1050,16 +1057,13 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="incrementalvalidity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multiplecutoff.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
