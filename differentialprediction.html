@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2021-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -542,7 +542,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="35.1" data-path="differentialprediction.html"><a href="differentialprediction.html#review_mmlr"><i class="fa fa-check"></i><b>35.1</b> Review of Moderated Multiple Linear Regression</a></li>
 <li class="chapter" data-level="35.2" data-path="differentialprediction.html"><a href="differentialprediction.html#review_differentialprediction"><i class="fa fa-check"></i><b>35.2</b> Review of Differential Prediction</a></li>
-<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continous Predictor Variables</a></li>
+<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continuous Predictor Variables</a></li>
 <li class="chapter" data-level="35.4" data-path="differentialprediction.html"><a href="differentialprediction.html#estimate_mmlr"><i class="fa fa-check"></i><b>35.4</b> Estimate Moderated Multiple Linear Regression Model</a></li>
 <li class="chapter" data-level="35.5" data-path="differentialprediction.html"><a href="differentialprediction.html#summary_differentialprediction"><i class="fa fa-check"></i><b>35.5</b> Summary</a></li>
 <li class="chapter" data-level="35.6" data-path="differentialprediction.html"><a href="differentialprediction.html#differentialprediction_supplement"><i class="fa fa-check"></i><b>35.6</b> Chapter Supplement</a>
@@ -679,7 +679,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1151-4"><a href="differentialprediction.html#cb1151-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1151-5"><a href="differentialprediction.html#cb1151-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   emp_id = col_character(),
 ##   perf_eval = col_double(),
@@ -724,7 +724,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 <div id="center_mmlr" class="section level2" number="35.3">
-<h2><span class="header-section-number">35.3</span> Grand-Mean Center Continous Predictor Variables</h2>
+<h2><span class="header-section-number">35.3</span> Grand-Mean Center Continuous Predictor Variables</h2>
 <p>To improve the interpretability of our model and to reduce the collinearity between the predictor and moderator variables with their interaction term, we will grand-mean center continuous predictor and moderator variables. <em>[Note: A moderator variable is just a predictor variable that we are framing as a moderator.]</em> With regard to interpretability, grand-mean centering aids in our interpretation of the regression coefficients associated with our predictor and moderator variables in our MMLR by reducing collinearity between these variables and their interaction term and by estimating the y-intercept when all predictors are at their respective means (averages), as opposed to when they are at zero (which is not always a plausible or meaningful value for some variables). Further, when interpreting the association between one predictor variable and the outcome variable while statistically controlling for other variables in the model, grand-mean centering allows us to interpret the effect of the focal predictor variable when the other predictor variables are at their respective means (as opposed to zero). For more detailed information on centering, check out the <a href="center.html#center">chapter on centering and standardizing variables</a>.</p>
 <p>We only center predictor and moderator variables that are of type <em>numeric</em> and that we conceptualize as having a continuous (interval or ratio) measurement scale. In our current data frame, we will grand-mean center just the <code>interview</code> and <code>age</code> variables. We will use what is perhaps the most intuitive approach for grand-mean centering variables. We must begin by coming up with a new name for one of our soon-to-be grand-mean centered variable, and in this example, we will center the <code>interview</code> variable. I typically like to name the centered variable by simply adding the <code>c_</code> prefix to the existing variable’s names (e.g., <code>c_interview</code>). Type the name of the data frame object to which the new centered variable will be attached (<code>DiffPred</code>), followed by the <code>$</code> operator and the name of the new variable we are creating (<code>c_interview</code>). Next, add the <code>&lt;-</code> operator to indicate what values you will assign to this new variable. To create a vector of values to assign to this new <code>c_interview</code> variable, we will subtract the mean (average) score for the original variable (<code>interview</code>) from each case’s value on the variable. Specifically, enter the name of the data frame object, followed by the <code>$</code> operator and the name of the original variable (<code>interview</code>). After that, enter the subtraction symbol (<code>-</code>). And finally, type the name of the <code>mean</code> function from base R. As the first argument in the <code>mean</code> function, enter the name of the data frame object (<code>DiffPred</code>), followed by the <code>$</code> operator and the name of the original variable (<code>interview</code>). As the second argument, enter <code>na.rm=TRUE</code> to indicate that you wish to drop missing values when calculating the grand mean for the sample. Now repeat those same steps for the <code>age</code> variable.</p>
 <div class="sourceCode" id="cb1159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1159-1"><a href="differentialprediction.html#cb1159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grand-mean centering: Using basic arithmetic and the mean function from base R</span></span>
@@ -1465,7 +1465,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1199-4"><a href="differentialprediction.html#cb1199-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1199-5"><a href="differentialprediction.html#cb1199-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   emp_id = col_character(),
 ##   perf_eval = col_double(),
@@ -2009,14 +2009,22 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 ## Regression results using perf_eval as the criterion
 ##  
 ## 
-##                Predictor       b       b_95%_CI sr2  sr2_95%_CI             Fit
-##              (Intercept)  5.26**   [5.04, 5.48]                                
-##              c_interview   -0.02  [-0.19, 0.14] .00 [-.00, .00]                
-##              genderwoman -0.72** [-0.98, -0.47] .07  [.02, .11]                
-##  c_interview:genderwoman  0.28**   [0.08, 0.49] .02 [-.01, .04]                
-##                                                                     R2 = .198**
-##                                                                 95% CI[.13,.26]
-##                                                                                
+##                Predictor       b       b_95%_CI sr2  sr2_95%_CI
+##              (Intercept)  5.26**   [5.04, 5.48]                
+##              c_interview   -0.02  [-0.19, 0.14] .00 [-.00, .00]
+##              genderwoman -0.72** [-0.98, -0.47] .07  [.02, .11]
+##  c_interview:genderwoman  0.28**   [0.08, 0.49] .02 [-.01, .04]
+##                                                                
+##                                                                
+##                                                                
+##              Fit
+##                 
+##                 
+##                 
+##                 
+##      R2 = .198**
+##  95% CI[.13,.26]
+##                 
 ## 
 ## Note. A significant b-weight indicates the semi-partial correlation is also significant.
 ## b represents unstandardized regression weights. 
@@ -2032,14 +2040,22 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 ## Regression results using perf_eval as the criterion
 ##  
 ## 
-##                Predictor       b       b_95%_CI sr2  sr2_95%_CI             Fit
-##              (Intercept)  5.26**   [5.04, 5.48]                                
-##              c_interview   -0.02  [-0.19, 0.14] .00 [-.00, .00]                
-##              genderwoman -0.72** [-0.98, -0.47] .07  [.02, .11]                
-##  c_interview:genderwoman  0.28**   [0.08, 0.49] .02 [-.01, .04]                
-##                                                                     R2 = .198**
-##                                                                 95% CI[.13,.26]
-##                                                                                
+##                Predictor       b       b_95%_CI sr2  sr2_95%_CI
+##              (Intercept)  5.26**   [5.04, 5.48]                
+##              c_interview   -0.02  [-0.19, 0.14] .00 [-.00, .00]
+##              genderwoman -0.72** [-0.98, -0.47] .07  [.02, .11]
+##  c_interview:genderwoman  0.28**   [0.08, 0.49] .02 [-.01, .04]
+##                                                                
+##                                                                
+##                                                                
+##              Fit
+##                 
+##                 
+##                 
+##                 
+##      R2 = .198**
+##  95% CI[.13,.26]
+##                 
 ## 
 ## Note. A significant b-weight indicates the semi-partial correlation is also significant.
 ## b represents unstandardized regression weights. 

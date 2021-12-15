@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2021-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -542,7 +542,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="35.1" data-path="differentialprediction.html"><a href="differentialprediction.html#review_mmlr"><i class="fa fa-check"></i><b>35.1</b> Review of Moderated Multiple Linear Regression</a></li>
 <li class="chapter" data-level="35.2" data-path="differentialprediction.html"><a href="differentialprediction.html#review_differentialprediction"><i class="fa fa-check"></i><b>35.2</b> Review of Differential Prediction</a></li>
-<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continous Predictor Variables</a></li>
+<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continuous Predictor Variables</a></li>
 <li class="chapter" data-level="35.4" data-path="differentialprediction.html"><a href="differentialprediction.html#estimate_mmlr"><i class="fa fa-check"></i><b>35.4</b> Estimate Moderated Multiple Linear Regression Model</a></li>
 <li class="chapter" data-level="35.5" data-path="differentialprediction.html"><a href="differentialprediction.html#summary_differentialprediction"><i class="fa fa-check"></i><b>35.5</b> Summary</a></li>
 <li class="chapter" data-level="35.6" data-path="differentialprediction.html"><a href="differentialprediction.html#differentialprediction_supplement"><i class="fa fa-check"></i><b>35.6</b> Chapter Supplement</a>
@@ -702,7 +702,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb493-4"><a href="clean.html#cb493-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb493-5"><a href="clean.html#cb493-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   EmpID = col_character(),
 ##   Facility = col_character(),
@@ -713,8 +713,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb495-1"><a href="clean.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb495-2"><a href="clean.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;            &quot;StartDate&quot;           &quot;Org_Tenure_Yrs&quot;     
-## [6] &quot;OnboardingCompleted&quot;</code></pre>
+<pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;           
+## [4] &quot;StartDate&quot;           &quot;Org_Tenure_Yrs&quot;      &quot;OnboardingCompleted&quot;</code></pre>
 <div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb497-1"><a href="clean.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) objects</span></span>
 <span id="cb497-2"><a href="clean.html#cb497-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
@@ -814,7 +814,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##  $ EmpID              : chr [1:10] &quot;EP1201&quot; &quot;EP1202&quot; &quot;EP1203&quot; &quot;EP1204&quot; ...
 ##  $ Facility           : chr [1:10] &quot;Beaverton&quot; &quot;beaverton&quot; &quot;Beaverton&quot; &quot;Portland&quot; ...
 ##  $ JobLevel           : num [1:10] 1 1 -9999 5 2 ...
-##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; &quot;2017-02-05&quot; &quot;2018-09-19&quot; ...
+##  $ StartDate          : Date[1:10], format: &quot;2010-05-05&quot; &quot;2008-01-31&quot; ...
 ##  $ Org_Tenure_Yrs     : num [1:10] 8.6 10.9 1.9 0.3 0.3 8.8 7.6 8.6 7.7 6.5
 ##  $ OnboardingCompleted: chr [1:10] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
@@ -1128,18 +1128,18 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb538-4"><a href="clean.html#cb538-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
 <span id="cb538-5"><a href="clean.html#cb538-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(newdf1)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 7
-##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted Tenure
-##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;
-##  1 EP1201 Beaverton        1 2010-05-05            8.6 No                     8.6
-##  2 EP1202 Beaverton        1 2008-01-31           10.9 No                    10.9
-##  3 EP1203 Beaverton       NA 2017-02-05            1.9 No                     1.9
-##  4 EP1204 Portland         5 2018-09-19            0.3 2                      0.3
-##  5 EP1205 Portland         2 2018-09-19            0.3 2                      0.3
-##  6 EP1206 Beaverton        1 2010-03-23            8.8 No                     8.8
-##  7 EP1207 Beaverton        1 2011-06-01            7.6 No                     7.6
-##  8 EP1208 Portland         4 2010-05-15            8.6 No                     8.6
-##  9 EP1209 Portland         3 2011-04-29            7.7 No                     7.7
-## 10 EP1210 Beaverton        1 2012-07-11            6.5 No                     6.5</code></pre>
+##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingComple~ Tenure
+##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
+##  1 EP1201 Beaverton        1 2010-05-05            8.6 No                   8.6
+##  2 EP1202 Beaverton        1 2008-01-31           10.9 No                  10.9
+##  3 EP1203 Beaverton       NA 2017-02-05            1.9 No                   1.9
+##  4 EP1204 Portland         5 2018-09-19            0.3 2                    0.3
+##  5 EP1205 Portland         2 2018-09-19            0.3 2                    0.3
+##  6 EP1206 Beaverton        1 2010-03-23            8.8 No                   8.8
+##  7 EP1207 Beaverton        1 2011-06-01            7.6 No                   7.6
+##  8 EP1208 Portland         4 2010-05-15            8.6 No                   8.6
+##  9 EP1209 Portland         3 2011-04-29            7.7 No                   7.7
+## 10 EP1210 Beaverton        1 2012-07-11            6.5 No                   6.5</code></pre>
 <p>Note that there is now a new variable called <code>Tenure</code> and that the old variable called <code>Org_Tenure_Yrs</code> remains. To remove the old variable called <code>Org_Tenure_Yrs</code>, first, specify the name of the data frame object (<code>newdf1</code>), followed by the <code>$</code> operator and the name of the old variable (<code>Org_Tenure_Yrs</code>). Second, type the <code>&lt;-</code> operator. Third, enter <code>NULL</code>.</p>
 <div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb540-1"><a href="clean.html#cb540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove Org_Tenure_Yrs variable from data frame</span></span>
 <span id="cb540-2"><a href="clean.html#cb540-2" aria-hidden="true" tabindex="-1"></a>newdf1<span class="sc">$</span>Org_Tenure_Yrs <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>

@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2021-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -542,7 +542,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="35.1" data-path="differentialprediction.html"><a href="differentialprediction.html#review_mmlr"><i class="fa fa-check"></i><b>35.1</b> Review of Moderated Multiple Linear Regression</a></li>
 <li class="chapter" data-level="35.2" data-path="differentialprediction.html"><a href="differentialprediction.html#review_differentialprediction"><i class="fa fa-check"></i><b>35.2</b> Review of Differential Prediction</a></li>
-<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continous Predictor Variables</a></li>
+<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continuous Predictor Variables</a></li>
 <li class="chapter" data-level="35.4" data-path="differentialprediction.html"><a href="differentialprediction.html#estimate_mmlr"><i class="fa fa-check"></i><b>35.4</b> Estimate Moderated Multiple Linear Regression Model</a></li>
 <li class="chapter" data-level="35.5" data-path="differentialprediction.html"><a href="differentialprediction.html#summary_differentialprediction"><i class="fa fa-check"></i><b>35.5</b> Summary</a></li>
 <li class="chapter" data-level="35.6" data-path="differentialprediction.html"><a href="differentialprediction.html#differentialprediction_supplement"><i class="fa fa-check"></i><b>35.6</b> Chapter Supplement</a>
@@ -686,7 +686,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb900-4"><a href="criterionrelatedvalidity.html#cb900-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb900-5"><a href="criterionrelatedvalidity.html#cb900-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -695,7 +695,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb902"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb902-1"><a href="criterionrelatedvalidity.html#cb902-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb902-2"><a href="criterionrelatedvalidity.html#cb902-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;         &quot;Performance&quot;</code></pre>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;        
+## [4] &quot;Performance&quot;</code></pre>
 <div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb904-1"><a href="criterionrelatedvalidity.html#cb904-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
 <span id="cb904-2"><a href="criterionrelatedvalidity.html#cb904-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,4] [163 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
@@ -872,7 +873,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb921-4"><a href="criterionrelatedvalidity.html#cb921-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb921-5"><a href="criterionrelatedvalidity.html#cb921-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -881,7 +882,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="criterionrelatedvalidity.html#cb923-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb923-2"><a href="criterionrelatedvalidity.html#cb923-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;         &quot;Performance&quot;</code></pre>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;        
+## [4] &quot;Performance&quot;</code></pre>
 <div class="sourceCode" id="cb925"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb925-1"><a href="criterionrelatedvalidity.html#cb925-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
 <span id="cb925-2"><a href="criterionrelatedvalidity.html#cb925-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,4] [163 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)

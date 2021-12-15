@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-13" />
+<meta name="date" content="2021-12-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -542,7 +542,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="35.1" data-path="differentialprediction.html"><a href="differentialprediction.html#review_mmlr"><i class="fa fa-check"></i><b>35.1</b> Review of Moderated Multiple Linear Regression</a></li>
 <li class="chapter" data-level="35.2" data-path="differentialprediction.html"><a href="differentialprediction.html#review_differentialprediction"><i class="fa fa-check"></i><b>35.2</b> Review of Differential Prediction</a></li>
-<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continous Predictor Variables</a></li>
+<li class="chapter" data-level="35.3" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>35.3</b> Grand-Mean Center Continuous Predictor Variables</a></li>
 <li class="chapter" data-level="35.4" data-path="differentialprediction.html"><a href="differentialprediction.html#estimate_mmlr"><i class="fa fa-check"></i><b>35.4</b> Estimate Moderated Multiple Linear Regression Model</a></li>
 <li class="chapter" data-level="35.5" data-path="differentialprediction.html"><a href="differentialprediction.html#summary_differentialprediction"><i class="fa fa-check"></i><b>35.5</b> Summary</a></li>
 <li class="chapter" data-level="35.6" data-path="differentialprediction.html"><a href="differentialprediction.html#differentialprediction_supplement"><i class="fa fa-check"></i><b>35.6</b> Chapter Supplement</a>
@@ -665,7 +665,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb369-4"><a href="filter.html#cb369-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
 <span id="cb369-5"><a href="filter.html#cb369-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -675,7 +675,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="filter.html#cb371-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
@@ -968,7 +968,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##  $ perf_q2   : num [1:9] 4.8 NA NA NA 1.9 3.3 4.5 1.1 2.3
 ##  $ perf_q3   : num [1:9] 4.9 NA NA NA 2.1 3.4 4.4 1 2.4
 ##  $ perf_q4   : num [1:9] 5 NA NA NA 2.3 3.3 4.8 1 2.5
-##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; &quot;2016-01-09&quot; &quot;2016-01-04&quot; ...
+##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
 ##   ..   id = col_double(),
@@ -984,13 +984,14 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb412-4"><a href="filter.html#cb412-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print filtered data frame</span></span>
 <span id="cb412-5"><a href="filter.html#cb412-5" aria-hidden="true" tabindex="-1"></a>filterdf</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
-## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA   2016-01-09
-## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA   2016-01-09
-## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3 2016-01-09
-## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1   2016-01-09
-## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5 2016-01-09</code></pre>
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
 </div>
 <div id="without-pipes" class="section level3" number="18.1.2">
 <h3><span class="header-section-number">18.1.2</span> <em>Without</em> Pipes</h3>
@@ -1224,7 +1225,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb438-4"><a href="filter.html#cb438-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
 <span id="cb438-5"><a href="filter.html#cb438-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -1234,7 +1235,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb440-1"><a href="filter.html#cb440-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
@@ -1504,7 +1505,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##  $ perf_q2   : num [1:9] 4.8 NA NA NA 1.9 3.3 4.5 1.1 2.3
 ##  $ perf_q3   : num [1:9] 4.9 NA NA NA 2.1 3.4 4.4 1 2.4
 ##  $ perf_q4   : num [1:9] 5 NA NA NA 2.3 3.3 4.8 1 2.5
-##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; &quot;2016-01-09&quot; &quot;2016-01-04&quot; ...
+##  $ startdate2: Date[1:9], format: &quot;2016-01-01&quot; &quot;2016-01-09&quot; ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
 ##   ..   id = col_double(),
@@ -1520,13 +1521,14 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb476-4"><a href="filter.html#cb476-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print filtered data frame</span></span>
 <span id="cb476-5"><a href="filter.html#cb476-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(filterdf)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 10
-##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4 startdate2
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;    
-## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA   2016-01-09
-## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA   2016-01-09
-## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3 2016-01-09
-## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1   2016-01-09
-## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5 2016-01-09</code></pre>
+##      id lastname   firstname startdate gender perf_q1 perf_q2 perf_q3 perf_q4
+##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1   154 McDonald   Ronald    1/9/2016  male      NA      NA      NA      NA  
+## 2   155 Smith      John      1/9/2016  male      NA      NA      NA      NA  
+## 3   111 Newton     Isaac     1/9/2016  male       3.3     3.3     3.4     3.3
+## 4   201 Providence Cindy     1/9/2016  female     1.2     1.1     1       1  
+## 5   282 Legend     John      1/9/2016  male       2.2     2.3     2.4     2.5
+## # ... with 1 more variable: startdate2 &lt;date&gt;</code></pre>
 </div>
 <div id="supp_select_singlevariable" class="section level4" number="18.6.1.3">
 <h4><span class="header-section-number">18.6.1.3</span> Select Single Variable from Data Frame</h4>
