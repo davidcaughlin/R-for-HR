@@ -816,7 +816,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="44.2.6" data-path="turnoverrate.html"><a href="turnoverrate.html#summary_turnoverrate"><i class="fa fa-check"></i><b>44.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="45" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html"><i class="fa fa-check"></i><b>45</b> Estimating Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence for Two Categorical Variables</a>
+<li class="chapter" data-level="45" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html"><i class="fa fa-check"></i><b>45</b> Estimating the Association Between Two Categorical Variables Using Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a>
 <ul>
 <li class="chapter" data-level="45.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#conceptualoverview_turnoverchisquare"><i class="fa fa-check"></i><b>45.1</b> Conceptual Overview</a></li>
 <li class="chapter" data-level="45.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#tutorial_turnoverchisquare"><i class="fa fa-check"></i><b>45.2</b> Tutorial</a>
@@ -965,18 +965,18 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">37.2.3</span> Initial Steps</h3>
 <p>If you haven’t already, save the file called <strong>“SelectionData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb1147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1147-1"><a href="criterionrelatedvalidity.html#cb1147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1147-2"><a href="criterionrelatedvalidity.html#cb1147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1146-1"><a href="criterionrelatedvalidity.html#cb1146-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1146-2"><a href="criterionrelatedvalidity.html#cb1146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data file called <strong>“SelectionData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb1148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1148-1"><a href="criterionrelatedvalidity.html#cb1148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1148-2"><a href="criterionrelatedvalidity.html#cb1148-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1148-3"><a href="criterionrelatedvalidity.html#cb1148-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1148-4"><a href="criterionrelatedvalidity.html#cb1148-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1149-1"><a href="criterionrelatedvalidity.html#cb1149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1149-2"><a href="criterionrelatedvalidity.html#cb1149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1149-3"><a href="criterionrelatedvalidity.html#cb1149-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1149-4"><a href="criterionrelatedvalidity.html#cb1149-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb1149-5"><a href="criterionrelatedvalidity.html#cb1149-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1147-1"><a href="criterionrelatedvalidity.html#cb1147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1147-2"><a href="criterionrelatedvalidity.html#cb1147-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1147-3"><a href="criterionrelatedvalidity.html#cb1147-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1147-4"><a href="criterionrelatedvalidity.html#cb1147-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1148-1"><a href="criterionrelatedvalidity.html#cb1148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1148-2"><a href="criterionrelatedvalidity.html#cb1148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1148-3"><a href="criterionrelatedvalidity.html#cb1148-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1148-4"><a href="criterionrelatedvalidity.html#cb1148-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1148-5"><a href="criterionrelatedvalidity.html#cb1148-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification ---------------------------------------------------------------------------------------------------
 ## cols(
@@ -985,11 +985,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Interview = col_double(),
 ##   Performance = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb1151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1151-1"><a href="criterionrelatedvalidity.html#cb1151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb1151-2"><a href="criterionrelatedvalidity.html#cb1151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1150-1"><a href="criterionrelatedvalidity.html#cb1150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb1150-2"><a href="criterionrelatedvalidity.html#cb1150-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;         &quot;Performance&quot;</code></pre>
-<div class="sourceCode" id="cb1153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1153-1"><a href="criterionrelatedvalidity.html#cb1153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
-<span id="cb1153-2"><a href="criterionrelatedvalidity.html#cb1153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1152-1"><a href="criterionrelatedvalidity.html#cb1152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb1152-2"><a href="criterionrelatedvalidity.html#cb1152-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,4] [163 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmployeeID       : num [1:163] 1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Conscientiousness: num [1:163] 3.33 3.83 3.33 4 3.67 ...
@@ -1002,8 +1002,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   ..   Interview = col_double(),
 ##   ..   Performance = col_double()
 ##   .. )</code></pre>
-<div class="sourceCode" id="cb1155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1155-1"><a href="criterionrelatedvalidity.html#cb1155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
-<span id="cb1155-2"><a href="criterionrelatedvalidity.html#cb1155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1154-1"><a href="criterionrelatedvalidity.html#cb1154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb1154-2"><a href="criterionrelatedvalidity.html#cb1154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   EmployeeID Conscientiousness Interview Performance
 ##        &lt;dbl&gt;             &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
@@ -1019,13 +1019,13 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">37.2.4</span> Visualize Association Using a Scatter Plot</h3>
 <p>Two of the key statistical assumptions that should be satisfied prior to estimating a Pearson product-moment correlation are that (a) the association between the two variables is approximately linear and that (b) a bivariate normal distribution exists between the two variables. A data visualization called a <strong>scatter plot</strong> can be used to test both of these assumptions.</p>
 <p>The <code>ScatterPlot</code> function from the <code>lessR</code> package does a nice job generate generating scatter plots – and it even provides an estimate of the correlation by default. If you haven’t already, install and access the <code>lessR</code> package.</p>
-<div class="sourceCode" id="cb1157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1157-1"><a href="criterionrelatedvalidity.html#cb1157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1157-2"><a href="criterionrelatedvalidity.html#cb1157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1158-1"><a href="criterionrelatedvalidity.html#cb1158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1158-2"><a href="criterionrelatedvalidity.html#cb1158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<div class="sourceCode" id="cb1156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1156-1"><a href="criterionrelatedvalidity.html#cb1156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1156-2"><a href="criterionrelatedvalidity.html#cb1156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1157-1"><a href="criterionrelatedvalidity.html#cb1157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1157-2"><a href="criterionrelatedvalidity.html#cb1157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
 <p>To begin, type the name of the <code>ScatterPlot</code> function. As the first two arguments of the function, type the names of the two variables you wish to visualize; let’s start by visualizing the association between the <code>Conscientiousness</code> selection tool and the criterion (<code>Performance</code>). The variable name that we type after the <code>x=</code> argument will set the x-axis, and the variable name that we type after the <code>y=</code> argument will set the y-axis. Conventionally, we place the criterion variable on the y-axis, as it is the outcome. As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>df</code>).</p>
-<div class="sourceCode" id="cb1159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1159-1"><a href="criterionrelatedvalidity.html#cb1159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using ScatterPlot function from lessR</span></span>
-<span id="cb1159-2"><a href="criterionrelatedvalidity.html#cb1159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
+<div class="sourceCode" id="cb1158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1158-1"><a href="criterionrelatedvalidity.html#cb1158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using ScatterPlot function from lessR</span></span>
+<span id="cb1158-2"><a href="criterionrelatedvalidity.html#cb1158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-689-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
@@ -1047,10 +1047,10 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="optional-stylizing-the-scatterplot-function-from-lessr" class="section level4" number="37.2.4.1">
 <h4><span class="header-section-number">37.2.4.1</span> Optional: Stylizing the <code>ScatterPlot</code> Function from <code>lessR</code></h4>
 <p>If you would like to optionally stylize your scatter plot, we can use the <code>xlab=</code> and <code>ylab=</code> arguments to change the default names of the x-axis and y-axis, respectively.</p>
-<div class="sourceCode" id="cb1161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1161-1"><a href="criterionrelatedvalidity.html#cb1161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Styling the scatter plot</span></span>
-<span id="cb1161-2"><a href="criterionrelatedvalidity.html#cb1161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
-<span id="cb1161-3"><a href="criterionrelatedvalidity.html#cb1161-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
-<span id="cb1161-4"><a href="criterionrelatedvalidity.html#cb1161-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1160-1"><a href="criterionrelatedvalidity.html#cb1160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Styling the scatter plot</span></span>
+<span id="cb1160-2"><a href="criterionrelatedvalidity.html#cb1160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
+<span id="cb1160-3"><a href="criterionrelatedvalidity.html#cb1160-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
+<span id="cb1160-4"><a href="criterionrelatedvalidity.html#cb1160-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-690-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
@@ -1069,11 +1069,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
 <p>We can also superimpose an ellipse by adding the argument <code>ellipse=TRUE</code>, which can visually aid our judgument on whether the distribution is bivariate normal.</p>
-<div class="sourceCode" id="cb1163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1163-1"><a href="criterionrelatedvalidity.html#cb1163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot using ScatterPlot function from lessR</span></span>
-<span id="cb1163-2"><a href="criterionrelatedvalidity.html#cb1163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
-<span id="cb1163-3"><a href="criterionrelatedvalidity.html#cb1163-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
-<span id="cb1163-4"><a href="criterionrelatedvalidity.html#cb1163-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>,</span>
-<span id="cb1163-5"><a href="criterionrelatedvalidity.html#cb1163-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1162-1"><a href="criterionrelatedvalidity.html#cb1162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot using ScatterPlot function from lessR</span></span>
+<span id="cb1162-2"><a href="criterionrelatedvalidity.html#cb1162-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
+<span id="cb1162-3"><a href="criterionrelatedvalidity.html#cb1162-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
+<span id="cb1162-4"><a href="criterionrelatedvalidity.html#cb1162-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>,</span>
+<span id="cb1162-5"><a href="criterionrelatedvalidity.html#cb1162-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-691-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
@@ -1100,8 +1100,8 @@ BOOK UNDER CONSTRUCTION</a>
 <p>There are different functions we could use to estimate a Pearson product-moment correlation between two variables (or a biserial correlation). In this chapter, I will demonstrate how to use the <code>Correlation</code> function from the <code>lessR</code> package.</p>
 <p>If you haven’t already, install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively (see above).</p>
 <p>To begin, type the name of the <code>Correlation</code> function from the <code>lessR</code> package. As the first two arguments of the function, type the names of the two variables you wish to visualize; let’s start by visualizing the association between the <code>Conscientiousness</code> selection tool and the criterion (<code>Performance</code>). Conventionally, the variable name that appears after the <code>x=</code> argument is our predictor (e.g., selection tool), and the variable name that appears after the <code>y=</code> argument is our criterion (e.g., job performance). As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>df</code>).</p>
-<div class="sourceCode" id="cb1166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1166-1"><a href="criterionrelatedvalidity.html#cb1166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using Correlation function from lessR</span></span>
-<span id="cb1166-2"><a href="criterionrelatedvalidity.html#cb1166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Correlation</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
+<div class="sourceCode" id="cb1165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1165-1"><a href="criterionrelatedvalidity.html#cb1165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using Correlation function from lessR</span></span>
+<span id="cb1165-2"><a href="criterionrelatedvalidity.html#cb1165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Correlation</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
 <pre><code>## Correlation Analysis for Variables  and Performance 
 ## --------------------------------------------------- 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
@@ -1152,17 +1152,17 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="criterionrelatedvalidity_initsteps_supplement" class="section level3" number="37.3.2">
 <h3><span class="header-section-number">37.3.2</span> Initial Steps</h3>
 <p>If required, please refer to the <a href="criterionrelatedvalidity.html#initsteps_criterionrelatedvalidity">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb1168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1168-1"><a href="criterionrelatedvalidity.html#cb1168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1168-2"><a href="criterionrelatedvalidity.html#cb1168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1169-1"><a href="criterionrelatedvalidity.html#cb1169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1169-2"><a href="criterionrelatedvalidity.html#cb1169-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1169-3"><a href="criterionrelatedvalidity.html#cb1169-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1169-4"><a href="criterionrelatedvalidity.html#cb1169-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1170-1"><a href="criterionrelatedvalidity.html#cb1170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1170-2"><a href="criterionrelatedvalidity.html#cb1170-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1170-3"><a href="criterionrelatedvalidity.html#cb1170-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1170-4"><a href="criterionrelatedvalidity.html#cb1170-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb1170-5"><a href="criterionrelatedvalidity.html#cb1170-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1167-1"><a href="criterionrelatedvalidity.html#cb1167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1167-2"><a href="criterionrelatedvalidity.html#cb1167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1168-1"><a href="criterionrelatedvalidity.html#cb1168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1168-2"><a href="criterionrelatedvalidity.html#cb1168-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1168-3"><a href="criterionrelatedvalidity.html#cb1168-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1168-4"><a href="criterionrelatedvalidity.html#cb1168-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1169-1"><a href="criterionrelatedvalidity.html#cb1169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1169-2"><a href="criterionrelatedvalidity.html#cb1169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1169-3"><a href="criterionrelatedvalidity.html#cb1169-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1169-4"><a href="criterionrelatedvalidity.html#cb1169-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1169-5"><a href="criterionrelatedvalidity.html#cb1169-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification ---------------------------------------------------------------------------------------------------
 ## cols(
@@ -1171,11 +1171,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Interview = col_double(),
 ##   Performance = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb1172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1172-1"><a href="criterionrelatedvalidity.html#cb1172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb1172-2"><a href="criterionrelatedvalidity.html#cb1172-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1171-1"><a href="criterionrelatedvalidity.html#cb1171-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb1171-2"><a href="criterionrelatedvalidity.html#cb1171-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;EmployeeID&quot;        &quot;Conscientiousness&quot; &quot;Interview&quot;         &quot;Performance&quot;</code></pre>
-<div class="sourceCode" id="cb1174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1174-1"><a href="criterionrelatedvalidity.html#cb1174-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
-<span id="cb1174-2"><a href="criterionrelatedvalidity.html#cb1174-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1173-1"><a href="criterionrelatedvalidity.html#cb1173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb1173-2"><a href="criterionrelatedvalidity.html#cb1173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,4] [163 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmployeeID       : num [1:163] 1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Conscientiousness: num [1:163] 3.33 3.83 3.33 4 3.67 ...
@@ -1188,8 +1188,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   ..   Interview = col_double(),
 ##   ..   Performance = col_double()
 ##   .. )</code></pre>
-<div class="sourceCode" id="cb1176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1176-1"><a href="criterionrelatedvalidity.html#cb1176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
-<span id="cb1176-2"><a href="criterionrelatedvalidity.html#cb1176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1175-1"><a href="criterionrelatedvalidity.html#cb1175-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb1175-2"><a href="criterionrelatedvalidity.html#cb1175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   EmployeeID Conscientiousness Interview Performance
 ##        &lt;dbl&gt;             &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
@@ -1204,15 +1204,15 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">37.3.3</span> <code>cor</code> Function from Base R</h3>
 <p>The <code>cor</code> function from base R is a quick-and-easy approach to estimating a correlation coefficient if you’re only interested in the sign and magnitude (and not the significance level).</p>
 <p>To begin, type the name of the <code>cor</code> function. As the first argument, type the name of your data frame (<code>df</code>) followed by the <code>$</code> symbol and the name of one of your continuous (interval/ratio) variables (<code>Conscientiousness</code>). As the second argument, type the name of your data frame (<code>df</code>) followed by the <code>$</code> symbol and the name of one of your continuous (interval/ratio) variables (<code>Performance</code>). Finally, as the third argument, specify <code>method="pearson"</code> to estimate a Pearson product-moment correlation. If you were estimating the association between two rank-order variables, you could replace “pearson” with “spearman” to estimate a Spearman correlation.</p>
-<div class="sourceCode" id="cb1178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1178-1"><a href="criterionrelatedvalidity.html#cb1178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using cor function</span></span>
-<span id="cb1178-2"><a href="criterionrelatedvalidity.html#cb1178-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>Conscientiousness, df<span class="sc">$</span>Performance, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1177-1"><a href="criterionrelatedvalidity.html#cb1177-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using cor function</span></span>
+<span id="cb1177-2"><a href="criterionrelatedvalidity.html#cb1177-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(df<span class="sc">$</span>Conscientiousness, df<span class="sc">$</span>Performance, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 0.4686663</code></pre>
 </div>
 <div id="cortest_function" class="section level3" number="37.3.4">
 <h3><span class="header-section-number">37.3.4</span> <code>cor.test</code> Function from Base R</h3>
 <p>To estimate the correlation coefficient and associated <em>p</em>-value (along with the confidence interval), we can use the <code>cor.test</code> function from base R. By default, the alpha level is set to .05 (two-tailed), and thus a 95% confidence interval is used. As another default, the alternative/research hypothesis is that the true (population) correlation is not equal to zero. If wish to use these defaults, which would be most consistent with common practice. We can use the exact same three arguments as we used for the <code>cor</code> function above.</p>
-<div class="sourceCode" id="cb1180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1180-1"><a href="criterionrelatedvalidity.html#cb1180-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using cor.test function</span></span>
-<span id="cb1180-2"><a href="criterionrelatedvalidity.html#cb1180-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>Conscientiousness, df<span class="sc">$</span>Performance, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1179-1"><a href="criterionrelatedvalidity.html#cb1179-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using cor.test function</span></span>
+<span id="cb1179-2"><a href="criterionrelatedvalidity.html#cb1179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>Conscientiousness, df<span class="sc">$</span>Performance, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -1225,8 +1225,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##       cor 
 ## 0.4686663</code></pre>
 <p>If we know that we have missing values (i.e., <em>missing data</em>) on at least one of the variables used to estimate the correlation, we can add the <code>na.action=na.omit</code> argument, which excludes cases with missing values on one or both of the variables. We don’t have any missing values in this data frame, so the estimate remains the same.</p>
-<div class="sourceCode" id="cb1182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1182-1"><a href="criterionrelatedvalidity.html#cb1182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using cor.test function</span></span>
-<span id="cb1182-2"><a href="criterionrelatedvalidity.html#cb1182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>Conscientiousness, df<span class="sc">$</span>Performance, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>, <span class="at">na.action=</span>na.omit)</span></code></pre></div>
+<div class="sourceCode" id="cb1181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1181-1"><a href="criterionrelatedvalidity.html#cb1181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using cor.test function</span></span>
+<span id="cb1181-2"><a href="criterionrelatedvalidity.html#cb1181-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(df<span class="sc">$</span>Conscientiousness, df<span class="sc">$</span>Performance, <span class="at">method=</span><span class="st">&quot;pearson&quot;</span>, <span class="at">na.action=</span>na.omit)</span></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
