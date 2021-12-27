@@ -558,7 +558,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="29.2.2" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#functions_cronbachsalpha"><i class="fa fa-check"></i><b>29.2.2</b> Functions &amp; Packages Introduced</a></li>
 <li class="chapter" data-level="29.2.3" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#initsteps_cronbachsalpha"><i class="fa fa-check"></i><b>29.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="29.2.4" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#cronbachsalpha_alpha"><i class="fa fa-check"></i><b>29.2.4</b> Compute Cronbach’s alpha</a></li>
-<li class="chapter" data-level="29.2.5" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#summary-summary_cronbachsalpha"><i class="fa fa-check"></i><b>29.2.5</b> Summary (#summary_cronbachsalpha)</a></li>
+<li class="chapter" data-level="29.2.5" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#summary_cronbachsalpha"><i class="fa fa-check"></i><b>29.2.5</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="30" data-path="compositevariable.html"><a href="compositevariable.html"><i class="fa fa-check"></i><b>30</b> Creating a Composite Variable Based on a Multi-Item Measure</a>
@@ -571,7 +571,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="30.2.3" data-path="compositevariable.html"><a href="compositevariable.html#initsteps_compositevariable"><i class="fa fa-check"></i><b>30.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="30.2.4" data-path="compositevariable.html"><a href="compositevariable.html#compositevariable_cronbachsalpha"><i class="fa fa-check"></i><b>30.2.4</b> Compute Cronbach’s alpha</a></li>
 <li class="chapter" data-level="30.2.5" data-path="compositevariable.html"><a href="compositevariable.html#compositevariable_composite"><i class="fa fa-check"></i><b>30.2.5</b> Create a Composite Variable</a></li>
-<li class="chapter" data-level="30.2.6" data-path="compositevariable.html"><a href="compositevariable.html#summary-summary_compositevariable"><i class="fa fa-check"></i><b>30.2.6</b> Summary (#summary_compositevariable)</a></li>
+<li class="chapter" data-level="30.2.6" data-path="compositevariable.html"><a href="compositevariable.html#summary_compositevariable"><i class="fa fa-check"></i><b>30.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VI Employee Training</b></span></li>
@@ -907,18 +907,18 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">29.2.3</span> Initial Steps</h3>
 <p>If you haven’t already, save the file called <strong>“survey.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="cronbachsalpha.html#cb874-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb874-2"><a href="cronbachsalpha.html#cb874-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb873-1"><a href="cronbachsalpha.html#cb873-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb873-2"><a href="cronbachsalpha.html#cb873-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data file called <strong>“survey.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="cronbachsalpha.html#cb875-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb875-2"><a href="cronbachsalpha.html#cb875-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb875-3"><a href="cronbachsalpha.html#cb875-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb875-4"><a href="cronbachsalpha.html#cb875-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="cronbachsalpha.html#cb876-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb876-2"><a href="cronbachsalpha.html#cb876-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb876-3"><a href="cronbachsalpha.html#cb876-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb876-4"><a href="cronbachsalpha.html#cb876-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb876-5"><a href="cronbachsalpha.html#cb876-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb874-1"><a href="cronbachsalpha.html#cb874-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb874-2"><a href="cronbachsalpha.html#cb874-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb874-3"><a href="cronbachsalpha.html#cb874-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb874-4"><a href="cronbachsalpha.html#cb874-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="cronbachsalpha.html#cb875-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb875-2"><a href="cronbachsalpha.html#cb875-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb875-3"><a href="cronbachsalpha.html#cb875-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb875-4"><a href="cronbachsalpha.html#cb875-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb875-5"><a href="cronbachsalpha.html#cb875-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification ---------------------------------------------------------------------------------------------------
 ## cols(
@@ -934,15 +934,15 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Engage3 = col_double(),
 ##   Engage4 = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="cronbachsalpha.html#cb878-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb878-2"><a href="cronbachsalpha.html#cb878-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="cronbachsalpha.html#cb877-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb877-2"><a href="cronbachsalpha.html#cb877-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>##  [1] &quot;SurveyID&quot; &quot;JobSat1&quot;  &quot;JobSat2&quot;  &quot;JobSat3&quot;  &quot;TurnInt1&quot; &quot;TurnInt2&quot; &quot;TurnInt3&quot; &quot;Engage1&quot;  &quot;Engage2&quot;  &quot;Engage3&quot; 
 ## [11] &quot;Engage4&quot;</code></pre>
-<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="cronbachsalpha.html#cb880-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb880-2"><a href="cronbachsalpha.html#cb880-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="cronbachsalpha.html#cb879-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb879-2"><a href="cronbachsalpha.html#cb879-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 156</code></pre>
-<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="cronbachsalpha.html#cb882-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
-<span id="cb882-2"><a href="cronbachsalpha.html#cb882-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="cronbachsalpha.html#cb881-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
+<span id="cb881-2"><a href="cronbachsalpha.html#cb881-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   SurveyID JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4
 ##      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -992,13 +992,13 @@ BOOK UNDER CONSTRUCTION</a>
 </tbody>
 </table>
 <p>To compute internal consistency reliability, we will use the <code>alpha</code> function from the <code>psych</code> package. To get started, install and access the <code>psych</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively (if you haven’t already done so).</p>
-<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="cronbachsalpha.html#cb884-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb884-2"><a href="cronbachsalpha.html#cb884-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="cronbachsalpha.html#cb885-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb885-2"><a href="cronbachsalpha.html#cb885-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="cronbachsalpha.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb883-2"><a href="cronbachsalpha.html#cb883-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb884-1"><a href="cronbachsalpha.html#cb884-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb884-2"><a href="cronbachsalpha.html#cb884-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
 <p>Presumably, each set of similarly named items are intended to “tap into” the same underlying concept (e.g., Turnover Intentions: <code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>), which we are attempting to assess using the items. Let’s practice estimating Cronbach’s alpha for some of the measures in our data frame, beginning with the three Turnover Intention items (i.e., variables) (<code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>). Note that you must list the name of the data frame (<code>df</code>) containing these items prior to the first bracket (<code>[</code>. After that and within the <code>c</code> (combine) function, provide the item (variable) names of the scale for which you would like to estimate the internal consistency reliability; because we have included a comma (<code>,</code>) before the <code>c</code> function, we are using matrix/bracket notation to reference columns, which correspond to variables in this data frame; if we had placed the <code>c</code> function <em>before</em> the comma, then we would (<code>,</code>) be referencing rows using matrix/bracket notation (which will almost never be the case when we’re using a data frame with the <code>alpha</code> function. Finally, the item (variable) names listed as arguments within the <code>c</code> function should be in quotation marks.</p>
-<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="cronbachsalpha.html#cb886-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Turnover Intentions items</span></span>
-<span id="cb886-2"><a href="cronbachsalpha.html#cb886-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;TurnInt1&quot;</span>,<span class="st">&quot;TurnInt2&quot;</span>,<span class="st">&quot;TurnInt3&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="cronbachsalpha.html#cb885-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Turnover Intentions items</span></span>
+<span id="cb885-2"><a href="cronbachsalpha.html#cb885-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;TurnInt1&quot;</span>,<span class="st">&quot;TurnInt2&quot;</span>,<span class="st">&quot;TurnInt3&quot;</span>)])</span></code></pre></div>
 <pre><code>## 
 ## Reliability analysis   
 ## Call: alpha(x = df[, c(&quot;TurnInt1&quot;, &quot;TurnInt2&quot;, &quot;TurnInt3&quot;)])
@@ -1037,8 +1037,8 @@ BOOK UNDER CONSTRUCTION</a>
 </ol>
 <p>In this example, all three of these items appear to “tap into” our conceptual definition of turnover intentions . Thus, when combined with the acceptable internal consistency reliability for these three items, we can reasonably justify creating a composite variable (i.e., overall scale score variable) based on the mean or sum of these three items; you will learn how to do this in the following chapter.</p>
 <p>Now, let’s apply the <code>alpha</code> function to the three Job Satisfaction items (<code>JobSat1</code>, <code>JobSat2</code>, <code>JobSat3</code>). Given that we’re working the same data frame object (<code>df</code>), all we need to do is swap out the three turnover intentions item names (i.e., variable names) with the three job satisfaction items names. Please note that if we had fewer or more than three variables, we would simply list fewer variable-name arguments in the <code>c</code> function nested within the <code>alpha</code> function.</p>
-<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb888-1"><a href="cronbachsalpha.html#cb888-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Job Satisfaction items</span></span>
-<span id="cb888-2"><a href="cronbachsalpha.html#cb888-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;JobSat1&quot;</span>,<span class="st">&quot;JobSat2&quot;</span>,<span class="st">&quot;JobSat3&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="cronbachsalpha.html#cb887-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Job Satisfaction items</span></span>
+<span id="cb887-2"><a href="cronbachsalpha.html#cb887-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;JobSat1&quot;</span>,<span class="st">&quot;JobSat2&quot;</span>,<span class="st">&quot;JobSat3&quot;</span>)])</span></code></pre></div>
 <pre><code>## 
 ## Reliability analysis   
 ## Call: alpha(x = df[, c(&quot;JobSat1&quot;, &quot;JobSat2&quot;, &quot;JobSat3&quot;)])
@@ -1082,8 +1082,8 @@ BOOK UNDER CONSTRUCTION</a>
 </ol>
 <p>In the following chapter, we will begin by estimating Cronbach’s alpha for these four engagement items and then determine which of the items should be included in a composite variable for engagement.</p>
 </div>
-<div id="summary-summary_cronbachsalpha" class="section level3" number="29.2.5">
-<h3><span class="header-section-number">29.2.5</span> Summary (#summary_cronbachsalpha)</h3>
+<div id="summary_cronbachsalpha" class="section level3" number="29.2.5">
+<h3><span class="header-section-number">29.2.5</span> Summary</h3>
 <p>In this chapter, we learned how to estimate the internal consistency reliability of a multi-item measures by computing Cronbach’s alpha (<span class="math inline">\(\alpha\)</span>). Cronbach’s alpha represents one way to estimate the internal consistency reliability of a set of variables (e.g., items). Cronbach’s alpha can help us understand whether a set of variables (e.g., items) are homogeneous. The <code>alpha</code> function from the <code>psych</code> package offers an efficient approach to estimating Cronbach’s alpha.</p>
 
 </div>
