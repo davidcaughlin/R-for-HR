@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 44 Computing Monthly &amp; Annual Turnover Rates | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 9 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 44 Computing Monthly &amp; Annual Turnover Rates | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Installing R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 44 Computing Monthly &amp; Annual Turnover Rates | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="overviewR.html"/>
-<link rel="next" href="gettingstarted.html"/>
+<link rel="prev" href="turnover.html"/>
+<link rel="next" href="create-portfolio.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -842,55 +842,201 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="install" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Installing R &amp; RStudio</h1>
-<p>If you have a Windows, Mac, or Linux operating system, you have several ways in which you can begin working in R. Commonly, users install R on their computer along with an integrated development environment (IDE) software application like RStudio. Recently, RStudio Cloud (<a href="https://rstudio.cloud" class="uri">https://rstudio.cloud</a>) has emerged as an alternative to installing R and RStudio by allowing users to use R and RStudio via the cloud, which notably allows those using the Google Chrome operating system to access R and RStudio.</p>
-<div id="videotutorial_install" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Video Tutorial</h2>
-<p>When it comes to learning how to use and apply R I’ve found that some people prefer written tutorials, others prefer video tutorials, and some like to learn using a combination of written and video tutorials. When first starting out, you might find it easier to follow along with a video tutorial, and as you get more comfortable with R, you may begin to prefer the written tutorials that are integrated into each chapter. Generally, the written tutorials contain more information and often more functions and operations, whereas the video tutorial provides the “need to know” information, functions, and operations. Because this first chapter is just focused on downloading and installing the R and RStudio programs, the written tutorial provided below may suffice; however, if you get stuck, you might find it useful to check out the video tutorial. As a final note, I created the video tutorial embedded in this book using a Windows computer, and thus there might be some minor aesthetic differences in the RStudio interface – as well as differences in hot keys (e.g., Ctrl+C vs. Command+C).</p>
-<iframe src="https://youtube.com/embed/b18IHQERT4A?rel=0" width="672" height="400px">
+<div id="turnoverrate" class="section level1" number="44">
+<h1><span class="header-section-number">Chapter 44</span> Computing Monthly &amp; Annual Turnover Rates</h1>
+<p>In this chapter, we will learn how to compute monthly and annual turnover rates.</p>
+<div id="conceptualoverview_turnoverrate" class="section level2" number="44.1">
+<h2><span class="header-section-number">44.1</span> Conceptual Overview</h2>
+<p>The <strong>turnover rate</strong> is a specific type of human resource (HR) metric, and allows us to describe past turnover in the organization relative to the total number of employees. In other words, the turnover rate is a specific type of descriptive analytics.</p>
+<p>A <strong>monthly turnover rate</strong> refers to the turnover rate for a given month. There are various considerations one can entertain when computing monthly turnover rates, such as how broadly to define separations. That is, do we consider all forms of separations or, perhaps, just voluntary turnover. In this chapter, we will focus on a very broad and simple conceptualization and approach to computing monthly turnover rates, but please note that there are other variations. We will focus on <em>all</em> separations that took place in the organization (i.e., both involuntary and voluntary turnover) and coarsely account for the average number of employees in a given month. Specifically, we will use the following formula to compute a monthly turnover rate:</p>
+<p><span class="math inline">\(TurnoverRate_{Monthly} = \frac{Separations_{Total}}{Employees_{Average}} \times 100\)</span></p>
+<p>where <span class="math inline">\(Separations_{Total}\)</span> refers to the total number of employee separations in a given month, and <span class="math inline">\(Employees_{Average}\)</span> refers to the average number of employees who were working in a given month. Note that we multiply the initial fraction by 100 to convert the monthly turnover rate from a proportion to a percentage.</p>
+<p>An <strong>annual turnover rate</strong> refers to the turnover rate for a given year. Like monthly turnover rates, there are various considerations one can entertain when computing annual turnover rates, and in this tutorial we will keep things very simple by assuming that we are working with just one year’s worth of data and that we have access to separations data for all 12 months within that year. There are other ways in which we could compute annual turnover rates, but for the sake of learning, we will choose what is perhaps the most straight forward approach. Specifically, we will use the following formula to compute an annual turnover rate:</p>
+<p><span class="math inline">\(TurnoverRate_{Annual} = \frac{Separations_{YearSumTotal}}{Employees_{AverageAcrossMonths}} \times 100\)</span></p>
+<p>where <span class="math inline">\(Separations_{YearSumTotal}\)</span> refers to the sum total of employee separations for the year, and <span class="math inline">\(Employees_{AverageAcrossMonths}\)</span> refers to the average number of employees who were working across the 12 months in the year. Note that we multiply the initial fraction by 100 to convert the annual turnover rate from a proportion to a percentage.</p>
+</div>
+<div id="tutorial_turnoverrate" class="section level2" number="44.2">
+<h2><span class="header-section-number">44.2</span> Tutorial</h2>
+<p>This chapter’s tutorial demonstrates how to compute both monthly and annual turnover rates in R.</p>
+<div id="videotutorial_turnoverrate" class="section level3" number="44.2.1">
+<h3><span class="header-section-number">44.2.1</span> Video Tutorial</h3>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/vdmYv0YnWEE?rel=0" width="672" height="400px">
 </iframe>
-<p>Link to video tutorial: <a href="https://youtu.be/b18IHQERT4A" class="uri">https://youtu.be/b18IHQERT4A</a></p>
+<p>Link to video tutorial: <a href="https://youtu.be/vdmYv0YnWEE" class="uri">https://youtu.be/vdmYv0YnWEE</a></p>
 </div>
-<div id="installR" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> Downloading &amp; Installing R</h2>
-<p>In the following sections, you will learn how to download and install the R program for Windows and Mac operating systems. The base R program must be installed prior to installing the RStudio program. R is open-source software and free to download.</p>
-<div id="installR_windows" class="section level3" number="9.2.1">
-<h3><span class="header-section-number">9.2.1</span> For Windows Operation Systems</h3>
-<p>R can currently run under operating systems as old as Windows Vista (circa 2007). To download R for your Windows operating system for the first time, click on this link: <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a>. Once you are on the R download page, click on the hyperlink to download the current version of R for Windows. Once the file has downloaded, follow the installation prompts.</p>
+<div id="functions_turnoverrate" class="section level3" number="44.2.2">
+<h3><span class="header-section-number">44.2.2</span> Functions &amp; Packages Introduced</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sum</code></td>
+<td>base R</td>
+</tr>
+<tr class="even">
+<td><code>mean</code></td>
+<td>base R</td>
+</tr>
+<tr class="odd">
+<td><code>plot</code></td>
+<td>base R</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="installR_macos" class="section level3" number="9.2.2">
-<h3><span class="header-section-number">9.2.2</span> For Mac Operating Systems</h3>
-<p>The current version of R works with Mac OS X (release 10.6 and higher). To download R for Mac OS X operating system for the first time, click on this link: <a href="https://cran.r-project.org/bin/macosx/" class="uri">https://cran.r-project.org/bin/macosx/</a>. If you have Mac OS X 10.11 or higher, click on the hyperlink (with .pkg extension) under the “Latest release” section to begin your download. If you have Mac OS X 10.10 or lower, click on the appropriate hyperlink (with .pkg extension) under the “Binaries for legacy OS X systems” section. Once the file has downloaded, follow the installation prompts.</p>
-<p>I don’t advise using a Mac operating system that is older than Mac OS X 10.6 (which came out in 2009), as you may run into issues when using certain R packages for data analysis and visualization.</p>
+<div id="initsteps_turnoverrate" class="section level3" number="44.2.3">
+<h3><span class="header-section-number">44.2.3</span> Initial Steps</h3>
+<p>If you haven’t already, save the file called <strong>“turnover_rate.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb1517"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1517-1"><a href="turnoverrate.html#cb1517-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1517-2"><a href="turnoverrate.html#cb1517-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“turnover_rate.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb1518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1518-1"><a href="turnoverrate.html#cb1518-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1518-2"><a href="turnoverrate.html#cb1518-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1518-3"><a href="turnoverrate.html#cb1518-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1518-4"><a href="turnoverrate.html#cb1518-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="turnoverrate.html#cb1519-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1519-2"><a href="turnoverrate.html#cb1519-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1519-3"><a href="turnoverrate.html#cb1519-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1519-4"><a href="turnoverrate.html#cb1519-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1519-5"><a href="turnoverrate.html#cb1519-5" aria-hidden="true" tabindex="-1"></a>tr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;turnover_rate.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ---------------------------------------------------------------------------------------------------
+## cols(
+##   Month = col_double(),
+##   Separations = col_double(),
+##   Ave_Employees = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb1521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1521-1"><a href="turnoverrate.html#cb1521-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb1521-2"><a href="turnoverrate.html#cb1521-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tr)</span></code></pre></div>
+<pre><code>## [1] &quot;Month&quot;         &quot;Separations&quot;   &quot;Ave_Employees&quot;</code></pre>
+<div class="sourceCode" id="cb1523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1523-1"><a href="turnoverrate.html#cb1523-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb1523-2"><a href="turnoverrate.html#cb1523-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(tr)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb1525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1525-1"><a href="turnoverrate.html#cb1525-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
+<span id="cb1525-2"><a href="turnoverrate.html#cb1525-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tr)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 3
+##    Month Separations Ave_Employees
+##    &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;
+##  1     1          12           127
+##  2     2           9           107
+##  3     3           6           119
+##  4     4           4           127
+##  5     5           2           113
+##  6     6           3           107
+##  7     7           5           110
+##  8     8           1           125
+##  9     9           6           116
+## 10    10           7           124
+## 11    11           4           117
+## 12    12           3           127</code></pre>
+<p>The data frame object we named <code>tr</code> contains three variables: <code>Month</code>, <code>Separations</code>, and <code>Ave_Employees</code>. The <code>Month</code> variable includes 12 unique values, which correspond to the 12 months of the year, where <code>1</code> refers to January, <code>2</code> refers to February, <code>3</code> refers to March, and so on. The <code>Separations</code> variable includes the total number of separations (i.e., number of individuals who turned over) from the organization in a given month. The <code>Ave_Employees</code> variable includes the average number of employees who worked in the organization in a given month; for this example, let’s assume that the average number of employees was calculated by adding together the number of employees at the beginning of the month and the number of employees at the end of the month, and then dividing that sum by 2.</p>
 </div>
+<div id="turnoverrate_monthlyturnoverrate" class="section level3" number="44.2.4">
+<h3><span class="header-section-number">44.2.4</span> Compute Monthly Turnover Rates</h3>
+<p>When computing monthly turnover rates, we will create a new variable containing monthly turnover rates. To calculate the turnover rate for each month, we will use simple arithmetic by dividing the number of separations for the month divided by the average number of employees who worked in the organization that month; we can then multiply the resulting quotient by 100 to convert the proportion to a percentage. Because we are applying these arithmetic operations row by row (because in these data each row represents a unique month), our task will be relatively simple.</p>
+<p>To illustrate how the underlying math and the logic of the operations, let’s break this process of computing monthly turnover rates into three steps. If you’re feeling confident and already understand the logic, you can skip directly to the third step, as that is what we’re building up to.</p>
+<p>As the first step, let’s compute the monthly turnover rates as <em>proportions</em> and print them directly to our console. In other words, we won’t create a new variable just yet; rather, we will just peak at the monthly turnover rates (as proportions) as we get comfortable. Type in the name of the data frame object (<code>tr</code>) followed by the <code>$</code> operator and the name of the separations variable (<code>Separations</code>); note that the <code>$</code> operator is used to indicate which data frame object a variable belongs to. Next, type in the division symbol (<code>/</code>). After that, type in the name of the data frame object (<code>tr</code>) followed by the <code>$</code> operator and the name of the average number of employees variable (<code>Ave_Employees</code>). Run that line of code.</p>
+<div class="sourceCode" id="cb1527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1527-1"><a href="turnoverrate.html#cb1527-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute monthly turnover rates (as proportions) and print to the Console</span></span>
+<span id="cb1527-2"><a href="turnoverrate.html#cb1527-2" aria-hidden="true" tabindex="-1"></a>tr<span class="sc">$</span>Separations <span class="sc">/</span> tr<span class="sc">$</span>Ave_Employees</span></code></pre></div>
+<pre><code>##  [1] 0.09448819 0.08411215 0.05042017 0.03149606 0.01769912 0.02803738 0.04545455 0.00800000 0.05172414 0.05645161
+## [11] 0.03418803 0.02362205</code></pre>
+<p>In our console, we should see a vector of the monthly turnover rates as proportions.</p>
+<p>As the second step, if we wish to view the monthly turnover rates as <em>percentages</em>, we just need to multiply the quotient from above by 100. In the code below, I include parentheses around the chunk of code used to compute the proportions, as I think it’s easier to conceptualize what we’re doing. That being said, because we are working with division and multiplication here, mathematical orders of operation do not require the parentheses. It’s up to you whether you decide to include them.</p>
+<div class="sourceCode" id="cb1529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1529-1"><a href="turnoverrate.html#cb1529-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute monthly turnover rates (as percentages) and print to the Console</span></span>
+<span id="cb1529-2"><a href="turnoverrate.html#cb1529-2" aria-hidden="true" tabindex="-1"></a>(tr<span class="sc">$</span>Separations <span class="sc">/</span> tr<span class="sc">$</span>Ave_Employees) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<pre><code>##  [1] 9.448819 8.411215 5.042017 3.149606 1.769912 2.803738 4.545455 0.800000 5.172414 5.645161 3.418803 2.362205</code></pre>
+<p>In our console, we should see a vector of monthly turnover rates as percentages.</p>
+<p>As the third and final step, we will assign the vector of monthly turnover rate percentages we created above to a new variable in our data frame object. After you get the hang of computing monthly turnover rates, you can skip directly to this third step instead of building up to it using the first two steps I demonstrated above. We are simply taking the equation we used to compute monthly turnover rates as percentages and using the <code>&lt;-</code> operator to assign the resulting vector of values to a new variable in our data frame object. You can call the new variable whatever you’d like, and here I call it <code>TR_Monthly</code> and use the <code>$</code> operator to signal that I wish to attach the vector/variable to the <code>tr</code> data frame object we have been working with thus far.</p>
+<div class="sourceCode" id="cb1531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1531-1"><a href="turnoverrate.html#cb1531-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute monthly turnover rates (as percentages) and assign to variable</span></span>
+<span id="cb1531-2"><a href="turnoverrate.html#cb1531-2" aria-hidden="true" tabindex="-1"></a>tr<span class="sc">$</span>TR_Monthly <span class="ot">&lt;-</span> (tr<span class="sc">$</span>Separations <span class="sc">/</span> tr<span class="sc">$</span>Ave_Employees) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<p>To verify that we accomplished what we set out to do, let’s print the <code>tr</code> data frame object using the <code>print</code> function from base R.</p>
+<div class="sourceCode" id="cb1532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1532-1"><a href="turnoverrate.html#cb1532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object to Console</span></span>
+<span id="cb1532-2"><a href="turnoverrate.html#cb1532-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tr)</span></code></pre></div>
+<pre><code>## # A tibble: 12 x 4
+##    Month Separations Ave_Employees TR_Monthly
+##    &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+##  1     1          12           127       9.45
+##  2     2           9           107       8.41
+##  3     3           6           119       5.04
+##  4     4           4           127       3.15
+##  5     5           2           113       1.77
+##  6     6           3           107       2.80
+##  7     7           5           110       4.55
+##  8     8           1           125       0.8 
+##  9     9           6           116       5.17
+## 10    10           7           124       5.65
+## 11    11           4           117       3.42
+## 12    12           3           127       2.36</code></pre>
+<p>We now have a new variable called <code>TR_Monthly</code> added to our <code>tr</code> data frame, and this new variable contains the monthly turnover rates as percentages. For example, we can see that for month <code>1</code> (January) the monthly turnover rate in this organization was approximately 9.45%. Often interpreting an HR metric like a turnover rate requires comparing it to other other turnover rates within the same organization (e.g., between units), to other time points (e.g., January compared to February), or to other organizations within the same industry (e.g., benchmarking).</p>
+<p>So what can we observe or describe about these monthly turnover rates? Well, we could state the following: <em>Monthly turnover rates were highest in the first month (January) but then declined through the fifth month (May), increasing through the seventh month (July), dropping quickly to the eighth month (August), and then increasing, plateauing, and declining in the remaining months of the year.</em></p>
+<p><strong>Optional:</strong> Given that we have access to an organization’s monthly turnover rates for an entire year, we can plot the turnover rates as a line graph to facilitate interpretation of trends. If you choose to create this optional data visualization, feel free to follow along; otherwise, you can skip down to the section called <em>Compute Annual Turnover Rates</em>. We will create a very simple plot using the aptly named <code>plot</code> function from base R. We will start with the most basic version of the line graph plot, and then add more arguments to refine it a bit.</p>
+<p>For the first argument in our <code>plot</code> function, let’s specify the <code>Month</code> variable from the <code>tr</code> data frame object as our x-axis variable using the <code>x=</code> argument: <code>x=tr$Month</code>. As the second argument, let’s specify the <code>TR_Monthly</code> variable (we just created) from the <code>tr</code> data frame object as our y-axis variable using the <code>y=</code> argument: <code>y=tr$TR_Monthly</code>.</p>
+<div class="sourceCode" id="cb1534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1534-1"><a href="turnoverrate.html#cb1534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-916-1.png" width="672" /></p>
+<p>By default, the function as specified above provides us with scatter plot in our Plots window. If we wish to convert this plot to a line graph, we can add the following argument: <code>type="l"</code>.</p>
+<div class="sourceCode" id="cb1535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1535-1"><a href="turnoverrate.html#cb1535-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
+<span id="cb1535-2"><a href="turnoverrate.html#cb1535-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-917-1.png" width="672" /></p>
+<p>Next, we can create more meaningful x- and y-axis labels by using the <code>xlab</code> and <code>ylab</code> arguments. Note that anything we can write whatever we’d like in the quotation marks (<code>" "</code>).</p>
+<div class="sourceCode" id="cb1536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1536-1"><a href="turnoverrate.html#cb1536-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
+<span id="cb1536-2"><a href="turnoverrate.html#cb1536-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
+<span id="cb1536-3"><a href="turnoverrate.html#cb1536-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb1536-4"><a href="turnoverrate.html#cb1536-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Monthly Turnover Rate (%)&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-918-1.png" width="672" /></p>
+<p>Finally, if we wish to adjust the y-axis limits, we can use the <code>ylim</code> argument followed by <code>=</code> and a vector of two values, where the first value is the lower limit of the y-axis and the second value is the upper limit. Here, we create a vector containing the lower- and upper-limits of <code>0</code> and <code>25</code> using the <code>c</code> (combine) function from base R.</p>
+<div class="sourceCode" id="cb1537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1537-1"><a href="turnoverrate.html#cb1537-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
+<span id="cb1537-2"><a href="turnoverrate.html#cb1537-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
+<span id="cb1537-3"><a href="turnoverrate.html#cb1537-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Month&quot;</span>,</span>
+<span id="cb1537-4"><a href="turnoverrate.html#cb1537-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Monthly Turnover Rate (%)&quot;</span>,</span>
+<span id="cb1537-5"><a href="turnoverrate.html#cb1537-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">25</span>))</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-919-1.png" width="672" /></p>
+<p>The resulting plot allows us to potentially identify and describe any trends or patterns in monthly turnover rates over the course of an entire year. Here, we can see that monthly turnover rates were highest in the first month (January) but then declined through the fifth month (May), increasing through the seventh month (July), dropping quickly to the eighth month (August), and then increasing, plateauing, and declining in the remaining months of the year. If we were to have access to data over multiple years, it’s possible we might begin to see some seasonality to the turnover rates. With access to more years worth of data, we could also build forecasting models (e.g., perform time-series analyses).</p>
 </div>
-<div id="installRStudio" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> Downloading &amp; Installing RStudio</h2>
-<p>RStudio is not required to use R; however, RStudio offers a number of helpful features and a user-friendly interface. More specifically, RStudio is an integrated development environment (IDE) for R. The desktop version of RStudio is free to download. To do so, click on this link: <a href="https://rstudio.com/products/rstudio/download/#download" class="uri">https://rstudio.com/products/rstudio/download/#download</a>.</p>
-<ol style="list-style-type: decimal">
-<li>Make sure that you have already installed the R program to your computer (see above).<br />
-</li>
-<li>Click on the download button below the “RStudio Desktop” followed by the version number. Again, this version is free.<br />
-</li>
-<li>Under the heading “Installers for Supported Platforms”, click on the link that corresponds to your operating system.<br />
-</li>
-<li>Once the file has downloaded, follow the installation prompts.</li>
-</ol>
+<div id="turnoverrate_annualturnoverrate" class="section level3" number="44.2.5">
+<h3><span class="header-section-number">44.2.5</span> Compute Annual Turnover Rate</h3>
+<p>It’s time to shift gears and learn how to compute the annual turnover rate. Because we have 12 months of data from an organization for a single year, our task is relatively straight forward. When we have 12 months of turnover data for a single year, we can compute the annual turnover rate by simply summing the number of separations across the 12 months and then dividing that sum by the average number of employees across the 12 months. If we then multiply that quotient by 100, we can convert the annual turnover rate to a percentage.</p>
+<p>Because we will need to calculate the sum and average based on values within columns, we will use the <code>sum</code> and <code>mean</code> functions, respectively, from base R. As our numerator, we type the name of the <code>sum</code> function; as the first argument, we enter the name of our data frame object (<code>tr</code>) followed by the <code>$</code> operator and the name of our separations variable (<code>Separations</code>), and as the second argument, we enter <code>na.rm=TRUE</code>, which would allow us to compute the sum even if there were missing data. <em>[You don’t technically need the <code>na.rm=TRUE</code> argument here given that we have complete data, but it can be good to get in the habit of including it for other applications and contexts.]</em> As the denominator, we enter the name of the <code>mean</code> function; as the first argument, we enter the name of our data frame object (<code>tr</code>) followed by the <code>$</code> operator and the name of our separations variable (<code>Ave_Employees</code>), and as the second argument, we enter <code>na.rm=TRUE</code>.</p>
+<div class="sourceCode" id="cb1538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1538-1"><a href="turnoverrate.html#cb1538-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute annual turnover rate (as proportion) and print to the Console</span></span>
+<span id="cb1538-2"><a href="turnoverrate.html#cb1538-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(tr<span class="sc">$</span>Separations, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(tr<span class="sc">$</span>Ave_Employees, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5243129</code></pre>
+<p>As a proportion, our annual turnover rate is approximately .5243. If we wish to convert this to a percentage, we can simply multiply our equation from above by 100.</p>
+<div class="sourceCode" id="cb1540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1540-1"><a href="turnoverrate.html#cb1540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute annual turnover rate (as percentage) and print to the Console</span></span>
+<span id="cb1540-2"><a href="turnoverrate.html#cb1540-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">sum</span>(tr<span class="sc">$</span>Separations, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(tr<span class="sc">$</span>Ave_Employees, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<pre><code>## [1] 52.43129</code></pre>
+<p>After converting our annual turnover rate to a percentage, we see the value is approximately 52.43%.</p>
+<p>Finally, if we wish to assign the annual turnover rate to an object that we can subsequently reference in other functions and operations, we simply apply the <code>&lt;-</code> operator. Here, I’ve arbitrarily named this object <code>TR_Annual</code>.</p>
+<div class="sourceCode" id="cb1542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1542-1"><a href="turnoverrate.html#cb1542-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute annual turnover rate and assign to object</span></span>
+<span id="cb1542-2"><a href="turnoverrate.html#cb1542-2" aria-hidden="true" tabindex="-1"></a>TR_Annual <span class="ot">&lt;-</span> (<span class="fu">sum</span>(tr<span class="sc">$</span>Separations, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">mean</span>(tr<span class="sc">$</span>Ave_Employees, <span class="at">na.rm=</span><span class="cn">TRUE</span>)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<p>We can print this object to our Console using the <code>print</code> function.</p>
+<div class="sourceCode" id="cb1543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1543-1"><a href="turnoverrate.html#cb1543-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print annual turnover rate object to the Console</span></span>
+<span id="cb1543-2"><a href="turnoverrate.html#cb1543-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(TR_Annual)</span></code></pre></div>
+<pre><code>## [1] 52.43129</code></pre>
+<p>Like the monthly turnover rates, an annual turnover rate is typically evaluated by comparing it to prior years, comparing between units, or comparing to industry benchmarks.</p>
 </div>
-<div id="summary_install" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Summary</h2>
-<p>In this chapter, we learned how to install R and RStudio for our Windows or Mac operating systems.</p>
+<div id="summary_turnoverrate" class="section level3" number="44.2.6">
+<h3><span class="header-section-number">44.2.6</span> Summary</h3>
+<p>In this chapter, we learned how to compute monthly and annual turnover rates. For the annual turnover rates, we learned how to apply the <code>sum</code> and <code>mean</code> functions from base R.</p>
 
 </div>
 </div>
+</div>
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="overviewR.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="gettingstarted.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="turnover.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
