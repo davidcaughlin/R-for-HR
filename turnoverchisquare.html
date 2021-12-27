@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 42 Estimating Association Between Two Categorical Variables Using Chi-Square (\(\chi^2\)) Test of Independence | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 42 Estimating Association Between Two Categorical Variables Using Chi-Square (\(\chi^2\)) Test of Independence | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 42 Estimating Association Between Two Categorical Variables Using Chi-Square (\(\chi^2\)) Test of Independence | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="overviewhraplc.html"/>
+<link rel="prev" href="turnoverrate.html"/>
+<link rel="next" href="literature-search-review.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -53,6 +53,70 @@
 
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -749,7 +813,7 @@
 <li class="chapter" data-level="41.2.6" data-path="turnoverrate.html"><a href="turnoverrate.html#summary_turnoverrate"><i class="fa fa-check"></i><b>41.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="42" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html"><i class="fa fa-check"></i><b>42</b> Estimating Assocation Between Two Categorical Variables Using Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a>
+<li class="chapter" data-level="42" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html"><i class="fa fa-check"></i><b>42</b> Estimating Association Between Two Categorical Variables Using Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a>
 <ul>
 <li class="chapter" data-level="42.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#conceptualoverview_turnoverchisquare"><i class="fa fa-check"></i><b>42.1</b> Conceptual Overview</a></li>
 <li class="chapter" data-level="42.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#tutorial_turnoverchisquare"><i class="fa fa-check"></i><b>42.2</b> Tutorial</a>
@@ -787,191 +851,325 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">R for HR:<br />
-<em>An Introduction to Human Resource Analytics Using R</em><br />
-BOOK UNDER CONSTRUCTION</h1>
-<p class="author"><em>David E. Caughlin</em></p>
-<p class="date"><em>2021-12-27</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="cover.png" /></p>
-<p>This book is free to read and is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. The contents of this book may not be used for commercial purposes. <span style="color: red;"><strong>[NOTE: This book is currently under construction, and I anticipate that I will complete a full beta version by January 2022.]</strong></span></p>
-<div id="hragrowth" class="section level2" number="0.1">
-<h2><span class="header-section-number">0.1</span> Growth of HR Analytics</h2>
-<p>The term <em>human resource analytics</em> can mean different things to different people and to different organizations. Further, human resource analytics sometimes goes by other names like people analytics, talent analytics, workforce analytics, and human capital analytics. While some may argue for distinctions between these different names, for this book, I will treat them as interchangeable labels. Moreover, for the purposes of this book, <strong>human resource (HR) analytics</strong> is defined as the “process of collecting, analyzing, interpreting, and reporting people-related data for the purpose of improving decision making, achieving strategic objectives, and sustaining a competitive advantage” <span class="citation">(<a href="references.html#ref-baueretal2020" role="doc-biblioref">Bauer et al. 2020, 34</a>)</span>.</p>
-<p>The foundation of HR analytics formed over a century ago with the emergence of disciplines like industrial and organizational (I/O) psychology. In recent decades, advances in information technology and systems have reduced the time HR professionals spend on transactional and administrative activities, thereby creating more time and opportunity for transformational activities supporting the realization of strategic organizational objectives. HR analytics has the potential to play an integral role in such transformational activities, as it can inform HR system design (e.g., selection tool selection, validation, and process) and high-stakes decision making involving people-related data from the organization.</p>
+<div id="turnoverchisquare" class="section level1" number="42">
+<h1><span class="header-section-number">Chapter 42</span> Estimating Association Between Two Categorical Variables Using Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</h1>
+<p>In this chapter, we will learn how to estimate whether theoretically or practically relevant categorical (nominal, ordinal) variables are associated with employees’ decisions to voluntarily turn over. In doing so, we will learn how to estimate the chi-square (<span class="math inline">\(\chi^2\)</span>) test of independence. In a <a href="disparateimpact.html#disparateimpact">previous chapter</a>, we learned how to apply the <span class="math inline">\(\chi^2\)</span> test of independence to determine whether there was evidence of disparate impact.</p>
+<div id="conceptualoverview_turnoverchisquare" class="section level2" number="42.1">
+<h2><span class="header-section-number">42.1</span> Conceptual Overview</h2>
+<p>A <strong>chi-square (<span class="math inline">\(\chi^2\)</span>) test of independence</strong> is a type of categorical nonparametric statistical analysis that can be used to estimate the association between two categorical (nominal, ordinal) variables. As a reminder, categorical variables do not have inherent numeric values, and thus we often just describe how many cases belong to each category (i.e., counts, frequencies). It is very common to represent the association between two categorical variables as a contingency table, which is often referred to as a cross-tabulation. A <span class="math inline">\(\chi^2\)</span> test of independence is calculated by comparing the <strong>observed data</strong> in the contingency table (i.e., what we actually found in the sample) to a model in which the variables and data in another table are distributed to be independent of one another (i.e., <strong>expected data</strong>); there are other types of expected models, but we will focus on just an independent model in this review.</p>
 <div class="figure">
-<img src="deloittetrends.png" alt="" />
-<p class="caption">A 2018 survey of companies highlighted the perceived importance of HR analytics but a relative lack of readiness to adopt and integrate HR analytics <span class="citation">(<a href="references.html#ref-deloitte2018" role="doc-biblioref">Deloitte 2018</a>)</span>.</p>
+<img src="chisquare_observed.png" alt="" />
+<p class="caption">The <strong>observed data</strong> includes the raw counts (i.e., frequencies) from the sample. The row and column marginals represent the sums of each row and column, respectively.</p>
 </div>
-</div>
-<div id="hranalytics_skillsgap" class="section level2" number="0.2">
-<h2><span class="header-section-number">0.2</span> Skills Gap</h2>
-<p>Although many organizations regard HR analytics as strategically important for organizational success, today many of those same organizations face an HR analytics talent shortage. To some extent, the talent shortage can be attributed to data literacy – or the lack thereof. Historically, academic and professional HR training and development opportunities did not emphasize data-literacy skills, and this omission has left organizations today scrambling to hire external talent or to close the skills gap of existing HR professionals.</p>
-<p>To address the HR analytics talent shortage and skills gap, organizations have, broadly speaking, two options. First, for some organizations, closing the skills gap may be as straightforward as hiring a “quant” (e.g., data scientist, statistician), provided the individual works closely with HR professionals when working with data associated with HR systems, polices, and procedures, and identifying HR-specific legal and ethical issues. Second, I would argue that for most organizations perhaps a better alternative is to close the skills gap with among current HR professionals, as their HR-specific knowledge, skills, abilities, and other characteristics (KSAOs) offer tremendous value when deriving insights from HR data as well as a solid domain-specific foundation for subsequently layering on data-literacy KSAOs. Importantly, those with existing HR domain expertise presumably have working knowledge of prevailing employment and labor laws and experience with anticipating and uncovering ethical issues, both of which are necessary when acquiring, managing, analyzing, visualizing, and reporting HR data.</p>
 <div class="figure">
-<img src="HRexpertise_dataliteracy.png" alt="" />
-<p class="caption">At the most basic level, proficiency in HR analytics involves the integration of knowledge, skills, abilities, and other characteristics (KSAOs) associated with HR expertise and data literacy.</p>
+<img src="chisquare_expected.png" alt="" />
+<p class="caption">The <strong>expected data</strong> includes the counts (i.e., frequencies) that would be expected if the two categorical variables were independent of one another (i.e., not associated). The expected values for each cell are calculated by multiplying the corresponding row and column marginals and dividing that product by the total sample size.</p>
+</div>
+<p>In essence, a <span class="math inline">\(\chi^2\)</span> test of independence is used to test the null hypothesis that the two categorical variables are independent of one another (i.e., no association between them). If we reject the null hypothesis because the <span class="math inline">\(\chi^2\)</span> value relative to the degrees of freedom of the model is large enough, we conclude that the categorical variables are not in fact independent of one another but instead are contingent upon one another. In this chapter, we will focus specifically on a 2x2 <span class="math inline">\(\chi^2\)</span> test, which refers to the fact there are two categorical variables with two levels each (e.g., age: old vs. young; height: tall vs. short). As an added bonus, a 2x2 <span class="math inline">\(\chi^2\)</span> value can be converted to a phi (<span class="math inline">\(\phi\)</span>) coefficient, which can be interpreted as a Pearson product-moment correlation and thus as an effect size or indicator of practical significance.</p>
+<p>The formula for calculating <span class="math inline">\(\chi^2\)</span> is as follows:</p>
+<p><span class="math inline">\(\chi^2 = \sum_{i = 1}^{n} \frac{(O_i - E_i)^2}{E_i}\)</span></p>
+<p>where <span class="math inline">\(O_i\)</span> refers to the observed values and <span class="math inline">\(E_i\)</span> refers to expected values.</p>
+<p>The degrees of freedom (<span class="math inline">\(df\)</span>) of a <span class="math inline">\(\chi^2\)</span> test is equal to the product of the number of levels of the first variable minus one and the number of levels of the second variable minus one. For example, a 2x2 <span class="math inline">\(\chi^2\)</span> test has 1 <span class="math inline">\(df\)</span>: <span class="math inline">\((2-1)(2-1) = 1\)</span></p>
+<div id="statisticalassumptions_turnoverchisquare" class="section level4" number="42.1.0.1">
+<h4><span class="header-section-number">42.1.0.1</span> Statistical Assumptions</h4>
+<p>The statistical assumptions that should be met prior to running and/or interpreting a Pearson product-moment correlation include:</p>
+<ul>
+<li>Cases are randomly sampled from the population, such that the variable scores for one individual are independent of the variable scores of another individual;</li>
+<li>The nonoccurrences are included, where nonoccurrences refer to the instances in which an event or category does not occur. For example, when we investigate employee voluntary turnover, we often like to focus on the turnover event occurrences (i.e., quitting), but we also need to include nonoccurrences, which would be examples of the turnover event <em>not</em> occurring (i.e., staying). Failure to do so, could lead to misleading results.</li>
+</ul>
+</div>
+<div id="statisticalsignficance_turnoverchisquare" class="section level4" number="42.1.0.2">
+<h4><span class="header-section-number">42.1.0.2</span> Statistical Significance</h4>
+<p>Using null hypothesis significance testing (NHST), we interpret a <em>p</em>-value that is less than .05 (or whatever two- or one-tailed alpha level we set) to meet the standard for statistical significance, meaning we reject the null hypothesis that the variables are independent. If the <em>p</em>-value associated with <span class="math inline">\(\chi^2\)</span> value is equal to or greater than .05 (or whatever two- or one-tailed alpha level we set), then we fail to reject the null hypothesis that the categorical variables are independent. Put differently, if the <em>p</em>-value associated with a <span class="math inline">\(\chi^2\)</span> value is equal to or greater than .05, we conclude that there is no association between the predictor variable and the outcome variable in the population.</p>
+<p>If we were to calculate the test by hand, then we might compare our calculated <span class="math inline">\(\chi^2\)</span> value to a table of critical values for a <span class="math inline">\(\chi^2\)</span> distribution. If our calculated value were larger than the critical value given the number of degrees of freedom (<em>df</em>) and the desired alpha level (i.e., significance level cutoff for p-value), we would conclude that there is evidence of an association between the categorical variables. <a href="https://davidmlane.com/hyperstat/chi_square_table.html">Here is a website</a> that lists critical values. Alternatively, we can calculate the exact <em>p</em>-value using statistical software if we know the exact <span class="math inline">\(\chi^2\)</span> value and the <em>df</em>, and most software programs compute the exact <em>p</em>-value automatically when estimating the <span class="math inline">\(\chi^2\)</span> test of independence.</p>
+</div>
+<div id="practicalsignficance_turnoverchisquare" class="section level4" number="42.1.0.3">
+<h4><span class="header-section-number">42.1.0.3</span> Practical Significance</h4>
+<p>By itself, the <span class="math inline">\(\chi^2\)</span> value is not an effect size; however, in the special case of a 2x2 <span class="math inline">\(\chi^2\)</span> test of independence, we can compute a phi (<span class="math inline">\(\phi\)</span>) coefficient, which can be interpreted as a Pearson product-moment correlation and thus as an effect size or indicator of practical significance. The size of a <span class="math inline">\(\phi\)</span> coefficient can be described using qualitative labels, such as small, medium, and large. The quantitative values tied to such qualitative labels of magnitude should really be treated as context specific; with that said, there are some very general rules we can apply when interpreting the magnitude of correlation coefficients, which are presented in the table below <span class="citation">(<a href="references.html#ref-cohen1992power" role="doc-biblioref">Cohen 1992</a>)</span>. Please note that the <span class="math inline">\(\phi\)</span> values in the table are absolute values, which means, for example, that correlation coefficients of .50 and -.50 would both have the same absolute value and thus would both be considered large.</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\phi\)</span></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.10</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.30</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.50</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: Typically, we only interpret the practical significance of an effect if the effect was found to be statistically significant. The logic is that if an effect (e.g., association, difference) is not statistically significant, then we should treat it as no different than zero, and thus it wouldn’t make sense to the interpret the size of something that statistically has no effect.</em></p>
+</div>
+<div id="samplewriteup_turnoverchisquare" class="section level4" number="42.1.0.4">
+<h4><span class="header-section-number">42.1.0.4</span> Sample Write-Up</h4>
+<p>Our organization created a new onboarding program a year ago. Today (a year later), we wish to investigate whether participating in the new vs. old onboarding program is associated with employees decisions to quit the organization for the subsequent six months. Based on a sample of 100 newcomers (<em>N</em> = 100) – half of whom went through the new onboarding program and half of whom went through the old onboarding program – we estimated a 2x2 chi-square (<span class="math inline">\(\chi^2\)</span>) test of independence. The <span class="math inline">\(\chi^2\)</span> test of independence was statistically significant (<span class="math inline">\(\chi^2\)</span> = 7.84, <em>df</em> = 1, <em>p</em> = .04), such that those who participated in the new onboarding program were less likely to quit in their first year.</p>
+<p><em>Note: If the p-value were equal to or greater than our alpha level (e.g., .05, two-tailed), then we would typically state that the association between the two variables is not statistically significant, and we would not proceed forward with interpreting the effect size (i.e., level of practical significance) because the test of statistical significance indicates that it is very unlikely based on our sample that a true association between these two variables exists in the population.</em></p>
 </div>
 </div>
-<div id="hraplc" class="section level2" number="0.3">
-<h2><span class="header-section-number">0.3</span> Project Life Cycle Perspective</h2>
-<p>When building efficacy in HR analytics, I have found that it’s helpful to envision where and how contributions can be made at the project level and which specific KSAOs are required at each phase. To that end, I developed the <strong>HR Analytics Project Life Cycle (HRAPLC)</strong> as a way to conceptualize the prototypical phases of a generic project life cycle. These phases include: Question Formulation, Data Acquisition, Data Management, Data Analysis, Data Interpretation and Storytelling, and Deployment and Implementation. I dedicate Part 1 of this book to providing a <a href="overviewhraplc.html#overviewhraplc">conceptual overview of the HRPLC</a> in Chapters 1-7.</p>
-<div class="figure">
-<img src="hraplc.png" alt="" />
-<p class="caption">The Human Resource Analytics Project Life Cycle (HRAPLC) offers a way to conceptualize the prototypical phases of a generic HR analytics project life cycle.</p>
-</div>
-</div>
-<div id="hranalytics_hris_overview" class="section level2" number="0.4">
-<h2><span class="header-section-number">0.4</span> Overview of HRIS &amp; HR Analytics</h2>
-<p>If you are just looking for a basic overview of HR information systems (HRIS) and HR analytics, consider checking out the following introductory video.</p>
-<iframe src="https://youtube.com/embed/3X7qmb1M39A?rel=0" width="672" height="400px">
+<div id="tutorial_turnoverchisquare" class="section level2" number="42.2">
+<h2><span class="header-section-number">42.2</span> Tutorial</h2>
+<p>This chapter’s tutorial demonstrates how a chi-square test of independence can be used to identify whether an association exists between a categorical (nominal, ordinal) variable and dichotomous turnover decisions (i.e., stay vs. quit).</p>
+<div id="videotutorial_turnoverchisquare" class="section level3" number="42.2.1">
+<h3><span class="header-section-number">42.2.1</span> Video Tutorial</h3>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/l8v3kx6zNuQ?rel=0" width="672" height="400px">
 </iframe>
-<p>Link to video: <a href="https://youtu.be/3X7qmb1M39A" class="uri">https://youtu.be/3X7qmb1M39A</a></p>
-<p>If you are looking for an introduction to human resource management with supplementary Excel-based tutorials and data exercises, I recommend checking out one of the textbooks I have co-authored:</p>
-<ul>
-<li>Bauer, T. N., Erdogan, B., Caughlin, D. E., &amp; Truxillo, D. M. (2019). <em>Human resource management: People, data, and analytics.</em> Thousand Oaks, CA: Sage</li>
-<li>Bauer, T. N., Erdogan, B., Caughlin, D. E., &amp; Truxillo, D. M. (2020). <em>Fundamentals of human resource management: People, data, and analytics.</em> Thousand Oaks, CA: Sage.</li>
-</ul>
+<p>Link to video tutorial: <a href="https://youtu.be/l8v3kx6zNuQ" class="uri">https://youtu.be/l8v3kx6zNuQ</a></p>
 </div>
-<div id="philosophy" class="section level2" number="0.5">
-<h2><span class="header-section-number">0.5</span> My Philosophy for This Book</h2>
-<p>Working with data does not need to be scary or intimidating; yet, over the years, I have interacted with students and professionals who carry with them what I refer to as a <em>numerical phobia</em> or <em>quantitative trauma</em>. Unfortunately, at some point in their lives, some people begin to believe that they are not suited for mathematics, statistics, and/or generally working with data. Given these psychological barriers, a primary objective of this book is to make data analytics – and HR analytics specifically – relevant, accessible, and maybe even a little fun. In early chapters, my intention is to ease the reader into foundational concepts, applications, and tools in order to incrementally build self-efficacy in HR analytics. The tutorials in each chapter are grounded in common and meaningful HR contexts (e.g., validating employee selection tools). As the book progresses, more challenging statistical concepts and data-analytic techniques are introduced. Reading this book and following along with the in-chapter tutorials will not lead to expert-level knowledge and skill; however, my hope is that completing all or portions of this book will do the following:</p>
-<ol style="list-style-type: decimal">
-<li>Build excitement for working with data to inform decision making.</li>
-<li>Instill a sense of intellectual curiosity about data and a hunger to expand boundaries of expertise.</li>
-<li>Inspire further in-depth training, education, and learning in areas and topics introduced in this book.</li>
-<li>Enhance data literacy, including knowledge and skills related to (a) critical thinking and logic, (b) mathematics, statistics, and data analysis, and (c) data visualization and storytelling with data.</li>
-</ol>
-<div id="rationalerpref" class="section level3" number="0.5.1">
-<h3><span class="header-section-number">0.5.1</span> Rationale for Using R</h3>
-<p>Today, we have the potential to access and use a remarkable number of statistical and data-analytic tools. Examples of such tools include (in no particular order) R, Python, SPSS, SAS, Stata, MatLab, Mplus, Alteryx, Tableau, PowerBI, and Microsoft Excel. Notably, some of these programs can be quite expensive when it comes to lifetime or annual user licensing costs, which can be a barrier to access for many.</p>
-<p>Programming languages like R and Python have several desirable qualities when it comes to managing, analyzing, and visualizing data. Namely, both are free to use, and both have an ever-growing number of free (add-on) packages with domain- or area-specific functions (e.g., data visualizations). It is beyond the scope of this <em>Preface</em> to provide an exhaustive comparison of the relative merits of R versus Python; however, when it comes to the statistical analysis of data, specifically, I argue that R provides a more user-friendly entry point for beginners as well as more advanced capabilities desired by expert users, especially for ad-hoc analyses. Moreover, the integrated development environment program called RStudio (which “sits on top of” base R) offers useful workflow tools and generally makes for an inviting environment within which the R engine to run.</p>
-<p>With all that said, Python has been catching up in these regards, and I wouldn’t be surprised if Python closes these gaps relative to R in the next few years. I would be remiss if I didn’t mention that the Python language is powerful and has capabilities that extend far beyond the management, analysis, and visualization of data. Fortunately, learning R makes learning Python easier (and vice versa), which means that this book can serve as springboard for learning Python or other programming languages. Finally, I believe it to be unlikely that one tool (e.g., program, language) will emerge that is ideal for every task, and thus, I encourage you to build familiarity with multiple tools so that you develop a “toolbox” of sorts, thereby allowing you to choose the best (or at least better) tool for each task.</p>
+<div id="functions_turnoverchisquare" class="section level3" number="42.2.2">
+<h3><span class="header-section-number">42.2.2</span> Functions &amp; Packages Introduced</h3>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>xtabs</code></td>
+<td>base R</td>
+</tr>
+<tr class="even">
+<td><code>print</code></td>
+<td>base R</td>
+</tr>
+<tr class="odd">
+<td><code>xtabs</code></td>
+<td>base R</td>
+</tr>
+<tr class="even">
+<td><code>chisq.test</code></td>
+<td>base R</td>
+</tr>
+<tr class="odd">
+<td><code>prop.table</code></td>
+<td>base R</td>
+</tr>
+<tr class="even">
+<td><code>phi</code></td>
+<td><code>psych</code></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="audiencepref" class="section level3" number="0.5.2">
-<h3><span class="header-section-number">0.5.2</span> Audience</h3>
-<p>I have written this book with current or soon-to-be HR professionals in mind, particularly those who have an interest in upskilling their data-analytic knowledge and skills. With that said, I believe this book can provide a meaningful context for learning key data-analytic concepts, applications, and tools that are applicable beyond the HR context. Relatedly, this book may serve as a user-friendly gateway and introduction to the programming language called R.</p>
+<div id="initsteps_turnoverchisquare" class="section level3" number="42.2.3">
+<h3><span class="header-section-number">42.2.3</span> Initial Steps</h3>
+<p>If you haven’t already, save the file called <strong>“ChiSquareTurnover.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="turnoverchisquare.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1-2"><a href="turnoverchisquare.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“ChiSquareTurnover.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="turnoverchisquare.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2-2"><a href="turnoverchisquare.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2-3"><a href="turnoverchisquare.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2-4"><a href="turnoverchisquare.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="turnoverchisquare.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb3-2"><a href="turnoverchisquare.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-3"><a href="turnoverchisquare.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="turnoverchisquare.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb3-5"><a href="turnoverchisquare.html#cb3-5" aria-hidden="true" tabindex="-1"></a>cst <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ChiSquareTurnover.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## -- Column specification ---------------------------------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_character(),
+##   Onboarding = col_character(),
+##   Turnover = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="turnoverchisquare.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb5-2"><a href="turnoverchisquare.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(cst)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot; &quot;Onboarding&quot; &quot;Turnover&quot;</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="turnoverchisquare.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb7-2"><a href="turnoverchisquare.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(cst)</span></code></pre></div>
+<pre><code>## [1] 75</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="turnoverchisquare.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print structure of data frame (tibble) object</span></span>
+<span id="cb9-2"><a href="turnoverchisquare.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(cst)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,3] [75 x 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ EmployeeID: chr [1:75] &quot;E1&quot; &quot;E2&quot; &quot;E3&quot; &quot;E8&quot; ...
+##  $ Onboarding: chr [1:75] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
+##  $ Turnover  : chr [1:75] &quot;Quit&quot; &quot;Quit&quot; &quot;Quit&quot; &quot;Quit&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   EmployeeID = col_character(),
+##   ..   Onboarding = col_character(),
+##   ..   Turnover = col_character()
+##   .. )</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="turnoverchisquare.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb11-2"><a href="turnoverchisquare.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cst)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   EmployeeID Onboarding Turnover
+##   &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;   
+## 1 E1         No         Quit    
+## 2 E2         No         Quit    
+## 3 E3         No         Quit    
+## 4 E8         No         Quit    
+## 5 E14        No         Quit    
+## 6 E22        No         Quit</code></pre>
+<p>There are 3 variables and 75 cases (i.e., employees) in the <code>cst</code> data frame: <code>EmployeeID</code>, <code>Onboarding</code>, and <code>Turnover</code>. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>character</em>. <code>EmployeeID</code> is the unique employee identifier variable. <code>Onboarding</code> is a variable that indicates whether new employees participated in the onboarding program, and it has two levels: did not participate (No) and did participate (Yes) <code>Turnover</code> is a variable that indicates whether these individuals left the organization during their first year; it also has two levels: Quit and Stayed.</p>
+</div>
+<div id="turnoverchisquare_contingencytable" class="section level3" number="42.2.4">
+<h3><span class="header-section-number">42.2.4</span> Create a Contingency Table for Observed Data</h3>
+<p>Before running the chi-square test, we need to create a contingency (cross-tabulation) table for the <code>Onboarding</code> and <code>Turnover</code> variables. To do so, we will use the <code>xtabs</code> function from base R. In the function parentheses, as the first argument type the <code>~</code> operator followed by the two variables names, separated by the <code>+</code> operator (i.e., <code>~ Onboarding + Turnover</code>). As the second argument, type <code>data=</code> followed by the name of the data frame to which both variables belong (<code>cst</code>). We will use the <code>&lt;-</code> assignment operator to name the table object (<code>tbl</code>). For more information on creating tables, check out the chapter on <a href="crosstabs.html#crosstabs">summarizing two or more categorical variables using cross-tabulations</a>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="turnoverchisquare.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two-way contingency table</span></span>
+<span id="cb13-2"><a href="turnoverchisquare.html#cb13-2" aria-hidden="true" tabindex="-1"></a>tbl <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> Onboarding <span class="sc">+</span> Turnover, <span class="at">data=</span>cst)</span></code></pre></div>
+<p>Let’s print the new <code>tbl</code> object to your Console.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="turnoverchisquare.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table</span></span>
+<span id="cb14-2"><a href="turnoverchisquare.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(tbl)</span></code></pre></div>
+<pre><code>##           Turnover
+## Onboarding Quit Stayed
+##        No    16      7
+##        Yes    6     46</code></pre>
+<p>As you can see, we have created a 2x2 contingency table, as it has two variables (<code>Onboarding</code>, <code>Turnover</code>) with each variable consisting of two levels (i.e., categories). This table includes our <strong>observed data</strong>.</p>
+</div>
+<div id="turnoverchisquare_chisquare" class="section level3" number="42.2.5">
+<h3><span class="header-section-number">42.2.5</span> Estimate Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</h3>
+<p>Using the contingency table we created called <code>tbl</code>, we will insert it as the sole parenthetical argument in the <code>chisq.test</code> function from base R.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="turnoverchisquare.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate chi-square test of independence</span></span>
+<span id="cb16-2"><a href="turnoverchisquare.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tbl)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  tbl
+## X-squared = 23.179, df = 1, p-value = 0.000001476</code></pre>
+<p>In the output, note that the <span class="math inline">\(\chi^2\)</span> value is 23.179 with 1 degree of freedom (<em>df</em>), and the associated <em>p</em>-value is less than .05, leading us to reject the null hypothesis that these two variables are independent of one another (<span class="math inline">\(\chi^2\)</span> = 23.176, <em>df</em> = 1, <em>p</em> &lt; .001). In other words, we have concluded that there is a statistically significant association between onboarding participation and whether someone quits in the first year.</p>
+<p>To understand the nature of this association, we need to look back to the contingency table values. In fact, sometimes it is helpful to look at the column (or row) proportions by applying the <code>prop.table</code> function from base R to the <code>tbl</code> object we created. As the second argument, type the numeral 2 to request the column marginal proportions.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="turnoverchisquare.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print column marginal proportions</span></span>
+<span id="cb18-2"><a href="turnoverchisquare.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(tbl, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>##           Turnover
+## Onboarding      Quit    Stayed
+##        No  0.7272727 0.1320755
+##        Yes 0.2727273 0.8679245</code></pre>
+<p>As you can see from the contingency table, of those employees who stayed, proportionally more employees had participated in the onboarding program (86.8%). Alternatively, for those who quit, proportionally more employees did <em>not</em> participate in the onboarding program (72.7%). Given our interpretation of the table along with the significant <span class="math inline">\(\chi^2\)</span> test, we can conclude that employees were significantly more likely to stay through the end of their first year if they participated in the onboarding program.</p>
+<p>In the special case of a 2x2 contingency table (or a 1x4 vector), we can compute a phi (<span class="math inline">\(\phi\)</span>) coefficient, which can be interpreted like a Pearson product-moment correlation coefficient and thus as an effect size. To calculate the phi coefficient, we will use the <code>phi</code> function from the <code>psych</code> package. If you haven’t already, install and access the <code>psych</code> package.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="turnoverchisquare.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb20-2"><a href="turnoverchisquare.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="turnoverchisquare.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb21-2"><a href="turnoverchisquare.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<p>Within the <code>phi</code> function parentheses, insert the name of the 2x2 contingency table object (<code>tbl</code>) as the sole argument.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="turnoverchisquare.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate phi coefficient</span></span>
+<span id="cb22-2"><a href="turnoverchisquare.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">phi</span>(tbl)</span></code></pre></div>
+<pre><code>## [1] 0.587685</code></pre>
+<p>The <span class="math inline">\(\phi\)</span> coefficient for the association between <code>Onboarding</code> and <code>Turnover</code> is .59, which by conventional correlation standards is a large effect (<span class="math inline">\(\phi\)</span> = .59). Here is a table containing conventional rules of thumb for interpreting a Pearson correlation coefficient (<em>r</em>) or a phi coefficient (<span class="math inline">\(\phi\)</span>) as an effect size:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(\phi\)</span></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.10</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.30</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.50</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Technical Write-Up:</strong> Based on a sample of 75 employees, we investigated whether participating in an onboarding program was associated with new employees’ decisions to quit in the first 12 months. Using a chi-square (<span class="math inline">\(\chi^2\)</span>) test of independence, we found that new employees who participated in the onboarding program were less likely to quit during their first 12 months on the job (<span class="math inline">\(\chi^2\)</span> = 23.176, <em>df</em> = 1, <em>p</em> &lt; .001). Specifically, of those employees who stayed at the organization, proportionally more employees had participated in the onboarding program (86.8%), and of those employees who quit the organization, proportionally more employees did <em>not</em> participate in the onboarding program (72.7%). The magnitude of this effect can be described as large (<span class="math inline">\(\phi\)</span> = .59).</p>
+<div id="turnoverchisquare_observedexpected" class="section level4" number="42.2.5.1">
+<h4><span class="header-section-number">42.2.5.1</span> Optional: Print Observed and Expected Counts</h4>
+<p>In some instances, it might be helpful to view the observed and expected, as these are the basis for estimating the <span class="math inline">\(\chi^2\)</span> test of independence. First, we need to create an object that contains the information from the <code>chisq.test</code> function. Using the <code>&lt;-</code> assignment operator, let’s name this object <code>chisq</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="turnoverchisquare.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create chi-square object</span></span>
+<span id="cb24-2"><a href="turnoverchisquare.html#cb24-2" aria-hidden="true" tabindex="-1"></a>chisq <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(tbl)</span></code></pre></div>
+<p>We can request the <em>observed</em> counts/frequencies by typing the name of the <code>chisq</code> object, followed by the <code>$</code> operator and <code>observed</code>. These will look familiar because they are the counts from our original contingency table.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="turnoverchisquare.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Request observed counts/frequencies</span></span>
+<span id="cb25-2"><a href="turnoverchisquare.html#cb25-2" aria-hidden="true" tabindex="-1"></a>chisq<span class="sc">$</span>observed</span></code></pre></div>
+<pre><code>##           Turnover
+## Onboarding Quit Stayed
+##        No    16      7
+##        Yes    6     46</code></pre>
+<p>To request the <em>expected</em> counts/frequencies, type the name of the <code>chisq</code> object, followed by the <code>$</code> operator and <code>expected</code>.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="turnoverchisquare.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Request expected counts/frequencies</span></span>
+<span id="cb27-2"><a href="turnoverchisquare.html#cb27-2" aria-hidden="true" tabindex="-1"></a>chisq<span class="sc">$</span>expected</span></code></pre></div>
+<pre><code>##           Turnover
+## Onboarding      Quit   Stayed
+##        No   6.746667 16.25333
+##        Yes 15.253333 36.74667</code></pre>
+<p>We can descriptively see departures from the observed and expected values in a systematic manner.</p>
+<p>To understand which cells were most influential in the calculation of the <span class="math inline">\(\chi^2\)</span> value, it is straightforward to request the Pearson residuals. Pearson residuals with larger absolute values have bigger contributions to the <span class="math inline">\(\chi^2\)</span> value.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="turnoverchisquare.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Request Pearson residuals</span></span>
+<span id="cb29-2"><a href="turnoverchisquare.html#cb29-2" aria-hidden="true" tabindex="-1"></a>chisq<span class="sc">$</span>residuals</span></code></pre></div>
+<pre><code>##           Turnover
+## Onboarding      Quit    Stayed
+##        No   3.562489 -2.295234
+##        Yes -2.369277  1.526473</code></pre>
 </div>
 </div>
-<div id="structurepref" class="section level2" number="0.6">
-<h2><span class="header-section-number">0.6</span> Structure</h2>
-<p>This <em>under-construction</em> version of the book consists of the following parts and associated chapters:</p>
-<ol style="list-style-type: decimal">
-<li><strong>HR Analytics Project Life Cycle:</strong></li>
-</ol>
-<ul>
-<li><a href="overviewhraplc.html#overviewhraplc">Overview of HR Analytics Project Life Cycle</a></li>
-<li><a href="questionformulation.html#questionformulation">Question Formulation</a></li>
-<li><a href="dataacquisition.html#dataacquisition">Data Acquisition</a></li>
-<li><a href="datamanagement.html#datamanagement">Data Management</a></li>
-<li><a href="dataanalysis.html#dataanalysis">Data Analysis</a></li>
-<li><a href="datainterpretationstorytelling.html#datainterpretationstorytelling">Data Intrepretation &amp; Storytelling</a></li>
-<li><a href="deploymentimplementation.html#deploymentimplementation">Deployment &amp; Implementation</a></li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li><strong>Introduction to R:</strong></li>
-</ol>
-<ul>
-<li><a href="#overviewR">Overview of R &amp; RStudio</a></li>
-<li><a href="#intall">Installing R &amp; RStudio</a></li>
-<li><a href="gettingstarted.html#gettingstarted">Getting Started with R &amp; RStudio</a></li>
-<li><a href="gentleintro.html#gentleintro">Basic Features &amp; Operations of the R Language</a></li>
-<li><a href="setwd.html#setwd">Setting a Working Directory</a></li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li><strong>Data Acquisition &amp; Management:</strong></li>
-</ol>
-<ul>
-<li><a href="#read">Reading Data into R</a></li>
-<li><a href="addnames.html#addnames">Removing, Adding, &amp; Changing Variable Names</a></li>
-<li><a href="write.html#write">Writing Data from R</a></li>
-<li><a href="arrange.html#arrange">Arranging (Sorting) Data</a></li>
-<li><a href="join.html#join">Joining (Merging) Data</a></li>
-<li><a href="filter.html#filter">Filtering (Subsetting) Data</a></li>
-<li><a href="clean.html#clean">Cleaning Data</a></li>
-<li><a href="manipulate.html#manipulate">Manipulating &amp; Restructuring Data</a></li>
-<li><a href="center.html#center">Centering &amp; Standardizing Variables</a></li>
-<li><a href="removeobjects.html#removeobjects">Removing Objects from the R Environment</a></li>
-</ul>
-<ol start="4" style="list-style-type: decimal">
-<li><strong>Employee Demographics:</strong></li>
-</ol>
-<ul>
-<li><a href="employeedemographics.html#employeedemographics">Introduction to Employee Demographics</a></li>
-<li><a href="descriptives.html#descriptives">Describing Employee Demographics Using Descriptive Statistics</a></li>
-<li><a href="crosstabs.html#crosstabs">Summarizing Two or More Categorical Variables Using Cross-Tabulations</a></li>
-<li><a href="pivottables.html#pivottables">Applying Pivot Tables to Explore Employee Demographic Data</a></li>
-</ul>
-<ol start="5" style="list-style-type: decimal">
-<li><strong>Employee Surveys:</strong></li>
-</ol>
-<ul>
-<li><a href="employeesurveys.html#employeesurveys">Introduction to Employee Surveys</a></li>
-<li><a href="aggregatesegment.html#aggregatesegment">Aggregating &amp; Segmenting Employee Survey Data</a></li>
-<li><a href="cronbachsalpha.html#cronbachsalpha">Estimating Internal Consistency Reliability Using Cronbach’s alpha</a></li>
-<li><a href="compositevariable.html#compositevariable">Creating a Composite Variable Based on a Multi-Item Measure</a></li>
-</ul>
-<ol start="6" style="list-style-type: decimal">
-<li><strong>Employee Training:</strong></li>
-</ol>
-<ul>
-<li><a href="#employeetraining">Introduction to Employee Training</a></li>
-<li><a href="pretestposttest.html#pretestposttest">Evaluating a Post-Test/Post-Test without Control Group Design Using Paired-Samples <em>t</em>-test</a></li>
-<li><a href="posttestonly.html#posttestonly">Evaluating a Post-Test-Only with Control Group Design Using Independent-Samples <em>t</em>-test</a></li>
-<li><a href="posttestonly-threegroups.html#posttestonly_threegroups">Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a></li>
-</ul>
-<ol start="7" style="list-style-type: decimal">
-<li><strong>Employee Selection:</strong></li>
-</ol>
-<ul>
-<li><a href="selection.html#selection">Introduction to Employee Selection</a></li>
-<li><a href="disparateimpact.html#disparateimpact">Investigating Disparate Impact</a></li>
-<li><a href="criterionrelatedvalidity.html#criterionrelatedvalidity">Estimating Criterion-Related Validity of a Selection Tool Using Correlation</a></li>
-<li><a href="predictingcriterionscores.html#predictingcriterionscores">Predicting Criterion Scores Based on Selection Tool Scores Using Simple Linear Regression</a></li>
-<li><a href="incrementalvalidity.html#incrementalvalidity">Estimating Incremental Validity of a Selection Tool Using Multiple Linear Regression</a></li>
-<li><a href="compensatory.html#compensatory">Applying a Compensatory Approach to Selection Decisions Using Multiple Linear Regression</a></li>
-<li><a href="multiplecutoff.html#multiplecutoff">Applying a Noncompensatory Approach to Selection Decisions Using Angoff Method</a></li>
-<li><a href="differentialprediction.html#differentialprediction">Testing for Differential Prediction Using Moderated Multiple Linear Regression</a></li>
-</ul>
-<ol start="8" style="list-style-type: decimal">
-<li><strong>Employee Separation &amp; Retention:</strong></li>
-</ol>
-<ul>
-<li><a href="turnover.html#turnover">Introduction to Employee Separation &amp; Retention</a></li>
-<li><a href="turnoverrate.html#turnoverrate">Computing Monthly &amp; Annual Turnover Rates</a></li>
-<li><a href="turnoverchisquare.html#turnoverchisquare">Estimating Association Between Two Categorical Variables Using Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
-</ul>
-<ol start="9" style="list-style-type: decimal">
-<li><strong>Odds &amp; Ends:</strong></li>
-</ol>
-<ul>
-<li><a href="#create-portfolio">Creating a Data Analytics Portfolio</a></li>
-<li><a href="#literature-search-review">Conducting a Literature Search &amp; Review</a></li>
-</ul>
-</div>
-<div id="aboutauthor" class="section level2" number="0.7">
-<h2><span class="header-section-number">0.7</span> About the Author</h2>
-<p>David Caughlin works for Portland State University’s School of Business where he teaches and researches topics related to organizational behavior, human resource management, and data analytics. David received his B.S. in psychology and B.A. in Spanish from Indiana University, M.S. in industrial and organizational psychology from Indiana University - Purdue University at Indianapolis, and Ph.D. in industrial and organizational psychology from Portland State University with concentrations in quantitative methodology and occupational health psychology. His research interests are generally focused on supervisor support, work motivation, and occupational safety and health. David has co-authored research published in peer-reviewed outlets such as <em>Journal of Applied Psychology</em>, <em>Journal of Management</em>, <em>Human Resource Management</em>, <em>Journal of Vocational Behavior</em>, <em>Journal of Occupational Health Psychology</em>, and <em>Psychology, Public Policy, and the Law</em>. In addition, he has co-authored the textbooks <em>Human Resource Management: People, Data, and Analytics</em> and <em>Fundamentals of Human Resource Management</em>. David teaches undergraduate and graduate courses on topics related to organizational behavior, human resource management, information systems, and data analytics. In his HR analytics courses, David teaches students how to apply the statistical programming language R to manage, analyze, and visualize HR data to improve strategic decision making; in the process, students build data-literacy, critical-thinking, and logical-reasoning skills. He has received the following teaching awards from the School of Business: Teaching Innovation Award (2018), “Extra Mile” Teaching Excellence Award (2019), and Teaching Innovation Award (2020). In his free time, David enjoys outdoor activities like trail running, cycling, skiing, and paddle boarding.</p>
-</div>
-<div id="acknowpref" class="section level2" number="0.8">
-<h2><span class="header-section-number">0.8</span> Acknowledgements</h2>
-<p>My inspiration for writing and compiling the contents of this book stems from interactions with countless colleagues, professional acquaintances, and undergraduate and graduate students, and a broad “thank you” is in order for anyone with whom I have taught or had a conversation about HR analytics specifically or data analytics in general. Finally, I created this book using the following programs and packages: R <span class="citation">(<a href="references.html#ref-R-base" role="doc-biblioref">R Core Team 2021</a>)</span>, RStudio <span class="citation">(<a href="references.html#ref-rstudio2020" role="doc-biblioref">RStudio Team 2020</a>)</span>, <code>rmarkdown</code> <span class="citation">(<a href="references.html#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>; <a href="references.html#ref-R-rmarkdown" role="doc-biblioref">Allaire et al. 2021</a>)</span>, <code>knitr</code> <span class="citation">(<a href="references.html#ref-knitr2015" role="doc-biblioref">Xie 2015</a>, <a href="references.html#ref-knitr2014" role="doc-biblioref">2014</a>, <a href="references.html#ref-R-knitr" role="doc-biblioref">2021</a>)</span>, and <code>bookdown</code> <span class="citation">(<a href="references.html#ref-bookdown2016" role="doc-biblioref">Xie 2016</a>, <a href="references.html#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>.</p>
+<div id="summary_turnoverchisquare" class="section level3" number="42.2.6">
+<h3><span class="header-section-number">42.2.6</span> Summary</h3>
+<p>In this chapter, we learned how to estimate a chi-square (<span class="math inline">\(\chi^2\)</span>) test of independence using the <code>chisq.test</code> function from base R.</p>
 
 </div>
 </div>
+</div>
 
 
 
+<div id="identify-a-content-area-or-context-that-excites-you." class="section level4 unnumbered">
+<h4>Identify a content area or context that excites you.</h4>
+</div>
+<div id="identify-an-area-of-data-analytics-that-excites-you." class="section level4 unnumbered">
+<h4>Identify an area of data analytics that excites you.</h4>
+</div>
+<div id="figure-out-what-knowledge-skills-abilities-your-ideal-employer-wants-or-what-it-needs-but-doesnt-yet-realize-it-needs." class="section level4 unnumbered">
+<h4>Figure out what knowledge, skills, abilities your ideal employer wants – or what it needs but doesn’t yet realize it needs.</h4>
+</div>
+<div id="decide-whether-you-want-your-portfolio-to-teach-showcase-or-do-both." class="section level4 unnumbered">
+<h4>Decide whether you want your portfolio to teach, showcase, or do both.</h4>
+</div>
+<div id="find-an-appropriate-dataset." class="section level4 unnumbered">
+<h4>Find an appropriate dataset.</h4>
+</div>
+<div id="create-an-immersive-environment-for-the-intended-audience." class="section level4 unnumbered">
+<h4>Create an immersive environment for the intended audience.</h4>
+</div>
+<div id="articulate-a-clear-problem-question-that-can-be-solved-answered-with-the-available-data." class="section level4 unnumbered">
+<h4>Articulate a clear problem (question) that can be solved (answered) with the available data.</h4>
+</div>
+<div id="write-and-annotate-your-code-with-an-emphasis-on-clarity." class="section level4 unnumbered">
+<h4>Write (and annotate) your code with an emphasis on clarity.</h4>
+</div>
+<div id="if-your-portfolio-project-includes-data-analysis-or-visualization-make-sure-that-youve-chosen-an-appropriate-analysis-or-visualization-given-the-problemquestion-and-available-data." class="section level4 unnumbered">
+<h4>If your portfolio project includes data analysis or visualization, make sure that you’ve chosen an appropriate analysis or visualization given the problem/question and available data.</h4>
+</div>
+<div id="focus-on-good-storytelling." class="section level4 unnumbered">
+<h4>Focus on good storytelling.</h4>
+</div>
+<div id="solicit-friendly-feedback-prior-to-sharing-your-portfolio-with-an-employer." class="section level4 unnumbered">
+<h4>Solicit friendly feedback prior to sharing your portfolio with an employer.</h4>
+</div>
+<div id="select-a-platform-that-will-allow-you-to-share-your-portfolio." class="section level4 unnumbered">
+<h4>Select a platform that will allow you to share your portfolio.</h4>
+</div>
+<div id="update-your-portfolio-regularly." class="section level4 unnumbered">
+<h4>Update your portfolio regularly.</h4>
+
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="overviewhraplc.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="turnoverrate.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature-search-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
