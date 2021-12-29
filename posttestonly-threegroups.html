@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1055,7 +1078,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb999-4"><a href="posttestonly-threegroups.html#cb999-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb999-5"><a href="posttestonly-threegroups.html#cb999-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   Condition = col_character(),
@@ -1103,8 +1126,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## &gt;&gt;&gt; Suggestions
 ## Plot(PostTest, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(PostTest, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry
-## ANOVA(PostTest ~ Condition)  # add the data parameter if not d</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-603-1.png" width="672" /></p>
+## ANOVA(PostTest ~ Condition)  # Add the data parameter if not the d data frame</code></pre>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-594-1.png" width="672" /></p>
 <pre><code>## PostTest 
 ##   - by levels of - 
 ## Condition 
@@ -1114,14 +1137,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## No    25      0    62.36     8.09    47.00    61.00    79.00 
 ## Old   25      0    69.60     9.11    51.00    70.00    89.00 
 ## 
-## 
 ##        Max Dupli- 
 ## Level   cations   Values 
 ## ------------------------------ 
 ## New         4     73 
 ## No          3     60 
 ## Old         3     70 
-## 
 ## 
 ## Parameter values (can be manually set) 
 ## ------------------------------------------------------- 
@@ -1187,8 +1208,8 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Now we’re ready to estimate a one-way ANOVA. To begin, type the name of the <code>ANOVA</code> function. As the first argument in the parentheses, specify the statistical model. To do so, type the name of the continuous outcome variable (<code>PostTest</code>) to the left of the <code>~</code> symbol and the name of the categorical predictor variable (<code>Condition</code>) to the right of the <code>~</code> symbol. For the second argument, use <code>data=</code> to specify the name of the data frame where the outcome and predictor variables are located (<code>td</code>).</p>
 <div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="posttestonly-threegroups.html#cb1020-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using ANOVA function from lessR</span></span>
 <span id="cb1020-2"><a href="posttestonly-threegroups.html#cb1020-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ANOVA</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-610-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-610-2.png" width="672" /></p>
-<pre><code>##   BACKGROUND
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-601-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-601-2.png" width="672" /></p>
+<pre><code>##   BACKGROUND 
 ## 
 ## Response Variable: PostTest 
 ##  
@@ -1198,8 +1219,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  75 
 ## Number of cases retained for analysis:  75 
 ## 
-## 
-##   DESCRIPTIVE STATISTICS 
+##   DESCRIPTIVE STATISTICS  
 ## 
 ##       n    mean     sd     min     max 
 ## New  25   72.36   6.98   60.00   84.00 
@@ -1208,13 +1228,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##  
 ## Grand Mean: 68.107 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              df    Sum Sq   Mean Sq   F-value   p-value 
 ## Condition     2   1333.63    666.81     10.16    0.0001 
 ## Residuals    72   4727.52     65.66 
-## 
 ## 
 ## R Squared: 0.22 
 ## R Sq Adjusted: 0.20 
@@ -1222,8 +1240,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##  
 ## Cohen&#39;s f: 0.49 
 ## 
-## 
-##   TUKEY MULTIPLE COMPARISONS OF MEANS
+##   TUKEY MULTIPLE COMPARISONS OF MEANS 
 ## 
 ## Family-wise Confidence Level:  
 ## ----------------------------------- 
@@ -1232,8 +1249,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Old-New  -2.76  -8.24  2.72  0.45 
 ##    Old-No   7.24   1.76 12.72  0.01 
 ## 
-## 
-##   RESIDUALS
+##   RESIDUALS 
 ## 
 ## Fitted Values, Residuals, Standardized Residuals 
 ##    [sorted by Standardized Residuals, ignoring + or - sign] 
@@ -1260,7 +1276,6 @@ BOOK UNDER CONSTRUCTION</a>
 ##   28       New    62.00  72.36   -10.36   -1.30 
 ##   41       New    82.00  72.36     9.64    1.21 
 ##   51       Old    79.00  69.60     9.40    1.18 
-## 
 ## 
 ## ---------------------------------------- 
 ## Plot 1: Scatterplot with Cell Means 
@@ -1381,10 +1396,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## New   25      0    72.36     6.98    60.00    73.00    84.00 
 ## No    25      0    62.36     8.09    47.00    61.00    79.00 
 ## Old   25      0    69.60     9.11    51.00    70.00    89.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-617-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-608-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(PostTest, Condition) # lollipop plot 
-## 
 ## 
 ##  Data for:  PostTest 
 ##  ------------------- 
@@ -1467,7 +1481,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1035-4"><a href="posttestonly-threegroups.html#cb1035-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1035-5"><a href="posttestonly-threegroups.html#cb1035-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   Condition = col_character(),
@@ -1580,7 +1594,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>We can also plot the pairwise mean comparisons by entering the name of the <code>TukeyTest</code> object we created as the sole argument in the <code>plot</code> function from base R.</p>
 <div class="sourceCode" id="cb1051"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1051-1"><a href="posttestonly-threegroups.html#cb1051-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot pairwise mean comparisons from Tukey&#39;s test</span></span>
 <span id="cb1051-2"><a href="posttestonly-threegroups.html#cb1051-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TukeyTest)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-628-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-619-1.png" width="672" /></p>
 <p>The <code>TukeyHSD</code> function from base R does not provide effect size estimates for the post-hoc pairwise mean comparisons, so if you would like those, you can do the following.</p>
 <p><strong>Effect Sizes of Significant Post-Hoc Pairwise Comparisons:</strong> There are various ways that we could go about computing an effect size such as Cohen’s <em>d</em> for those post-hoc pairwise mean comparisons that were statistically significant. In the post-hoc pairwise mean comparisons, we identified that the <em>New</em> and <em>Old</em> training conditions resulted in significantly higher post-training assessment (<code>PostTest</code>) scores compared to the <em>No</em> training condition. The question then becomes: How much better than the <em>No</em> training condition are the <em>New</em> and <em>Old</em> training conditions?</p>
 <p>To compute Cohen’s <em>d</em> as an estimate of practical significance we will use the <code>cohen.d</code> function from the <code>effsize</code> package. If you haven’t already, install the <code>effsize</code> package. Make sure to access the package using the <code>library</code> function.</p>

@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -880,7 +903,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="review_statistical_crossvalidation" class="section level3" number="43.1.1">
 <h3><span class="header-section-number">43.1.1</span> Review of Statistical Cross-Validation</h3>
 <p><strong>Statistical cross-validation</strong> is performed <em>without</em> collecting additional data from the underlying population from which the original regression model was estimated. There are a couple of different statistical indicators of a model’s cross-validity, which can be used in tandem to inform judgments of regarding cross-validity: adjusted <em>R</em><sup>2</sup> and squared cross-validity <span class="citation">(<a href="references.html#ref-raju1997methodology" role="doc-biblioref">Raju et al. 1997</a>)</span>.</p>
-<p>The <strong>adjusted <em>R</em><sup>2</sup></strong> [i.e., <span class="math inline">\(R^2_{adj}\)</span>, squared multiple correlation; <span class="citation">Ezekiel (<a href="references.html#ref-ezekiel1930methods" role="doc-biblioref">1930</a>)</span>; <span class="citation">Wherry (<a href="references.html#ref-wherry1931new" role="doc-biblioref">1931</a>)</span>] appears in most statistical platforms’ regression output (including many R functions), and it provides a more accurate estimate of the amount of variance explained by the predictor variable(s) in the outcome variable than the unadjusted <em>R</em><sup>2</sup> (<span class="math inline">\(R^2_{unadj}\)</span>). Specifically, the <span class="math inline">\(R^2_{adj}\)</span> corrects for the sample size relative to the number of predictor variables in the model, which results in a lower estimate than its unadjusted counterpart. The <span class="math inline">\(R^2_{adj}\)</span> is a better indicator of the magnitude of the association in the underlying population than the <span class="math inline">\(R^2_{unadj}\)</span>. The formula for <span class="math inline">\(R^2_{adj}\)</span> is:</p>
+<p>The <strong>adjusted <em>R</em><sup>2</sup></strong> (i.e., <span class="math inline">\(R^2_{adj}\)</span>, squared multiple correlation) <span class="citation">(<a href="references.html#ref-ezekiel1930methods" role="doc-biblioref">Ezekiel 1930</a>; <a href="references.html#ref-wherry1931new" role="doc-biblioref">Wherry 1931</a>)</span> appears in most statistical platforms’ regression output (including many R functions), and it provides a more accurate estimate of the amount of variance explained by the predictor variable(s) in the outcome variable than the unadjusted <em>R</em><sup>2</sup> (<span class="math inline">\(R^2_{unadj}\)</span>). Specifically, the <span class="math inline">\(R^2_{adj}\)</span> corrects for the sample size relative to the number of predictor variables in the model, which results in a lower estimate than its unadjusted counterpart. The <span class="math inline">\(R^2_{adj}\)</span> is a better indicator of the magnitude of the association in the underlying population than the <span class="math inline">\(R^2_{unadj}\)</span>. The formula for <span class="math inline">\(R^2_{adj}\)</span> is:</p>
 <p><span class="math inline">\(R^2_{adj} = \frac{N-1}{N-k-1}(1-R^2_{unadj})\)</span></p>
 <p>where <span class="math inline">\(N\)</span> refers to the sample size, <span class="math inline">\(k\)</span> refers to the number of predictor variables in the model, and <span class="math inline">\(R^2_{unadj}\)</span> is the <em>un</em>adjusted <em>R</em><sup>2</sup>, which reflects the sample-specific variance explained by the predictor variables in relation to the outcome variable. Again, this <span class="math inline">\(R^2_{adj}\)</span> is readily produced by most regression functions, so additional steps are not required to compute it.</p>
 <p>In contrast, the <strong>squared cross-validity</strong> (<span class="math inline">\(\rho^2_{c}\)</span>) <span class="citation">(<a href="references.html#ref-browne1975predictive" role="doc-biblioref">Browne 1975</a>)</span> often requires additional computation beyond what our regression function computes. As you can see in the formula below, the <span class="math inline">\(\rho^2_{c}\)</span> formula uses the <span class="math inline">\(R^2_{adj}\)</span> as input.</p>
@@ -892,7 +915,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Empirical cross-validation</strong> requires that we sample additional data from the same population, or that we split our original sample (if it’s large enough) into subsamples, where the subsamples are sometimes referred to as holdout samples. Regardless of which approach we use, the logic is similar: One (sub)sample serves as our training (i.e., initial, original, derivation) data, and the other (sub)sample serves as our test (i.e., cross-validation) data. Using either approach, we estimate the regression model from the first (sub)sample and then estimate the extent to which the model fits the second (sub)sample as well as its and predictive accuracy.</p>
 <div id="samplewriteup_crossvalidation" class="section level4" number="43.1.2.1">
 <h4><span class="header-section-number">43.1.2.1</span> Sample Write-Up</h4>
-<p>We performed a concurrent validation study based on a sample 182 job incumbents. Given that all three selection tools (i.e., conscientiousness inventory, work sample, situational judgment test) showed evidence of incremental validity, we included all three in a multiple linear regression model, with performance evaluation scores as the criterion. All three selection tools showed evidence of incremental validity with respect to one another. To understand how well this estimated model might generalize to the broader population, we first performed statistical cross-validation. Specifically, we found that the adjusted <em>R</em><sup>2</sup> was .348 and the squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341. The latter indicates that in the population, the three selection tools collectively explain 34.1% of the variability in the criterion. Next, we performed empirical cross-validation by assessing the model’s performance in a new same of data drawn from the sample population. The squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341, which indicates that the model explained 34.1% of the variance in the criterion when applied to the second sample, which was only a slight decrease in performance compared to the original sample (<span class="math inline">\(R^2_{unadj}\)</span> = .359, <span class="math inline">\(R^2_{adj}\)</span> = .348). Further, estimates of root mean square error (RMSE) indicated that the RMSE for the second sample is 13.6% larger than the RMSE for the first sample, which indicates that were prediction errors didn’t increase substantially when applying the model to the second sample. Overall, the model performed relatively well applied to a second sample of data, and it doesn’t appear as though we overfit the model when estimating it using the first sample.</p>
+<p>We performed a concurrent validation study based on a sample 182 job incumbents. Given that all three selection tools (i.e., conscientiousness inventory, work sample, situational judgment test) showed evidence of incremental validity, we included all three in a multiple linear regression model, with performance evaluation scores as the criterion. All three selection tools showed evidence of incremental validity with respect to one another. To understand how well this estimated model might generalize to the broader population, we first performed statistical cross-validation. Specifically, we found that the adjusted <em>R</em><sup>2</sup> was .348 and the squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341. The latter indicates that in the population, the three selection tools collectively explain 34.1% of the variability in the criterion. Next, we performed empirical cross-validation by assessing the model’s performance in a new same of data drawn from the sample population. The squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341, which indicates that the model explained 34.1% of the variance in the criterion when applied to the second sample, which was only a slight decrease in performance compared to the original sample (<span class="math inline">\(R^2_{unadj}\)</span> = .359, <span class="math inline">\(R^2_{adj}\)</span> = .348). Further, estimates of root mean square error (RMSE) indicated that the RMSE for the second sample is 13.6% larger than the RMSE for the first sample, which indicates that prediction errors didn’t increase substantially when applying the model to the second sample. Overall, the model performed relatively well applied to a second sample of data, and it doesn’t appear as though we over fit the model when estimating it using the first sample.</p>
 </div>
 </div>
 </div>
@@ -969,7 +992,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1520-4"><a href="crossvalidation.html#cb1520-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
 <span id="cb1520-5"><a href="crossvalidation.html#cb1520-5" aria-hidden="true" tabindex="-1"></a>Sample1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample1.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   PerfEval = col_double(),
 ##   WorkSample = col_double(),
@@ -978,7 +1001,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb1522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1522-1"><a href="crossvalidation.html#cb1522-1" aria-hidden="true" tabindex="-1"></a>Sample2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample2.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   PerfEval = col_double(),
 ##   WorkSample = col_double(),

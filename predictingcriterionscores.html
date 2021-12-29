@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1018,7 +1041,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1186-4"><a href="predictingcriterionscores.html#cb1186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1186-5"><a href="predictingcriterionscores.html#cb1186-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1072,21 +1095,18 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1196-3"><a href="predictingcriterionscores.html#cb1196-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data=</span>df, </span>
 <span id="cb1196-4"><a href="predictingcriterionscores.html#cb1196-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-719-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-710-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
-## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options 
-## 
+## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
+## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
+## Plot(Conscientiousness, Performance, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 163 
-## 
-## 
 ## Sample Correlation of Conscientiousness and Performance: r = 0.469 
-## 
-## 
+##   
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
 <p>Based on the output from the <code>ScatterPlot</code> function, first, note that the association between the two variables appears to be linear, which means that a simple linear regression model might be appropriate. Second, note that the association between the two variables seems to have a bivariate normal distribution, as we can see a general ellipse (or American football) shape of the data points. Third, it does look like we might have one or more bivariate outliers, which are those points that seem to notably deviate from the rest. As you can see, we can “eyeball” the data to give us an initial (yet rough) idea of whether three of the statistical assumptions may have been met: (a) data are free of bivariate outliers, (b) association between variables is linear, and (c) variables display a bivariate normal distribution. Fortunately, we have some other diagnostic tools that we will use to further test some of these assumptions (as well as the others) when we estimate our simple linear regression model.</p>
@@ -1094,13 +1114,12 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To use the <code>Regression</code> function from the <code>lessR</code> package, type the name of the <code>Regression</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome (i.e., criterion) variable (<code>Performance</code>) to the left of the tilde (<code>~</code>) operator and the name of the predictor (e.g., selection tool) variable (<code>Conscientiousness</code>) to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>Conscientiousness</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb1199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1199-1"><a href="predictingcriterionscores.html#cb1199-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate simple linear regression model</span></span>
 <span id="cb1199-2"><a href="predictingcriterionscores.html#cb1199-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-720-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-720-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-720-3.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-711-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-711-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-711-3.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ Conscientiousness, data=df, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  df 
 ##  
@@ -1110,38 +1129,36 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  163 
 ## Number of cases retained for analysis:  163 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##                    Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ##       (Intercept)     0.780      0.333    2.343    0.020       0.123       1.437 
 ## Conscientiousness     0.631      0.094    6.732    0.000       0.446       0.817 
 ## 
-## 
+## Standard deviation of Performance: 0.966 
+##  
 ## Standard deviation of residuals:  0.856 for 161 degrees of freedom 
+## 95% range of residual variation:  3.379 = 2 * (1.975 * 0.856) 
 ##  
 ## R-squared:  0.220    Adjusted R-squared:  0.215    PRESS R-squared:  0.199 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 45.317     df: 1 and 161     p-value:  0.000 
-## 
 ## 
 ##                     df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model                1    33.176    33.176    45.317     0.000 
 ## Residuals          161   117.866     0.732 
 ## Performance        162   151.043     0.932 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
-## 
-##   RELATIONS AMONG THE VARIABLES
+##   RELATIONS AMONG THE VARIABLES 
 ## 
 ##                     Performance Conscientiousness 
 ##         Performance        1.00              0.47 
 ##   Conscientiousness        0.47              1.00 
 ## 
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1169,14 +1186,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##    28             3.000       1.000  2.674 -1.674 -1.983 -0.187 0.017 
 ##   142             3.000       1.000  2.674 -1.674 -1.983 -0.187 0.017 
 ## 
-## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ----------------------------------------------
+##  ---------------------------------------------- 
 ## 
 ##       Conscientiousness Performance  pred    sf pi.lwr pi.upr width 
 ##   134             1.667       3.350 1.832 0.875  0.104  3.560 3.455 
@@ -1190,12 +1206,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##    64             5.000       5.000 3.936 0.870  2.218  5.655 3.436 
 ##   107             5.000       3.220 3.936 0.870  2.218  5.655 3.436 
 ## 
-## 
-## ----------------------------------------------------- 
+## --------------------------------------------------- 
 ## Plot 1: Distribution of Residuals 
 ## Plot 2: Residuals vs Fitted Values 
-## Plot 3: Reg Line, Confidence and Prediction Intervals 
-## -----------------------------------------------------</code></pre>
+## Plot 3: Reg Line, Confidence &amp; Prediction Intervals 
+## ---------------------------------------------------</code></pre>
 <p>By default, the output for the <code>Regression</code> function produces three plots that are useful for assessing statistical assumptions and for interpreting the results, as well as text output.</p>
 <p>Let’s begin by reviewing the first two plots depicting the residuals and the section of the text called <em>Residuals and Influence</em>. We previously saw using the <code>ScatterPlot</code> function from <code>lessR</code> that the association between the two variables appeared to be linear and showed evidence of a bivariate normal distribution. We did note, however, that there might be some <em>bivariate outliers</em> that could influence the estimated regression model. Let’s take a look at the second plot in your Plot window; you may need to hit the back arrow button to review the three plots.</p>
 <p><strong>Fitted Values &amp; Residuals Plot:</strong> The second plot is scatterplot that shows the association between the fitted values (x-axis) and the residuals (y-axis). If you recall, the residuals are the error in our estimates – or in other words, how much our predicted values for the outcome variable deviate from the observed (actual) values for the outcome variable. The term “fitted values” is another way of saying predicted values for the outcome variable. The horizontal dotted line is drawn at the residual value of zero; remember, our goal is to minimize the size of residuals (i.e., error). The solid line shows the deviations from zero of the residuals for each fitted value, and the greater the solid line deviates from the dotted line, the more likely that (a) variances of the residuals may <em>not</em> be equal for each level of the predictor variable (violation of the assumption of homoscedasticity), (b) the average residual error value may <em>not</em> be zero for each level of the predictor variable, and (c) there may be potential bivariate outliers influencing the fitted (predicted) values. In this plot, we can see that the variances of the residuals seem to be about equal across observations (evidence of homoscedasticity), the average residual error value appears to be about zero (which is good), and there appears to be only one case that is flagged as a potential bivariate outlier (case associated with row number <em>134</em>). This case was flagged based on an outlier/influence statistic called <em>Cook’s distance (D)</em>.</p>
@@ -1281,13 +1296,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 39       -2.044            -2.058
 ## 49       -0.822            -1.826
 ## 106      -2.044            -1.826</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-721-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-721-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-721-3.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-712-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-712-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-712-3.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ Conscientiousness, data=df, new_scale=&quot;z&quot;, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  df 
 ##  
@@ -1299,38 +1313,36 @@ BOOK UNDER CONSTRUCTION</a>
 ##  
 ## Data are Standardized 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##                    Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ##       (Intercept)     0.000      0.069    0.000    1.000      -0.137       0.137 
 ## Conscientiousness     0.469      0.070    6.732    0.000       0.331       0.606 
 ## 
-## 
+## Standard deviation of Performance: 1.000 
+##  
 ## Standard deviation of residuals:  0.886 for 161 degrees of freedom 
+## 95% range of residual variation:  3.500 = 2 * (1.975 * 0.886) 
 ##  
 ## R-squared:  0.220    Adjusted R-squared:  0.215    PRESS R-squared:  0.199 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 45.326     df: 1 and 161     p-value:  0.000 
-## 
 ## 
 ##                     df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model                1    35.584    35.584    45.326     0.000 
 ## Residuals          161   126.396     0.785 
 ## Performance        162   161.981     1.000 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
-## 
-##   RELATIONS AMONG THE VARIABLES
+##   RELATIONS AMONG THE VARIABLES 
 ## 
 ##                     Performance Conscientiousness 
 ##         Performance        1.00              0.47 
 ##   Conscientiousness        0.47              1.00 
 ## 
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1358,14 +1370,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##    28            -0.663      -2.044 -0.311 -1.733 -1.983 -0.187 0.017 
 ##   142            -0.663      -2.044 -0.311 -1.733 -1.983 -0.187 0.017 
 ## 
-## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ----------------------------------------------
+##  ---------------------------------------------- 
 ## 
 ##       Conscientiousness Performance   pred    sf pi.lwr pi.upr width 
 ##   134            -2.523       0.389 -1.183 0.906 -2.972  0.607 3.578 
@@ -1379,12 +1390,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##    64             2.127       2.098  0.997 0.901 -0.782  2.776 3.559 
 ##   107             2.127       0.255  0.997 0.901 -0.782  2.776 3.559 
 ## 
-## 
-## ----------------------------------------------------- 
+## --------------------------------------------------- 
 ## Plot 1: Distribution of Residuals 
 ## Plot 2: Residuals vs Fitted Values 
-## Plot 3: Reg Line, Confidence and Prediction Intervals 
-## -----------------------------------------------------</code></pre>
+## Plot 3: Reg Line, Confidence &amp; Prediction Intervals 
+## ---------------------------------------------------</code></pre>
 <p>In the <em>Estimated Model</em> section of the output, note that the intercept value is zeroed out due to the standardization, and the regression coefficient associated with <code>Conscientiousness</code> is now in standardized units (<span class="math inline">\(\beta\)</span> = .469, <em>p</em> &lt; .001). Note that the <em>p</em>-value is the same as the unstandardized regression coefficient we saw above. The interpretation of this statistically significant standardized regression coefficient is as follows: For every one standardized unit increase in <code>Conscientiousness</code>, <code>Performance</code> increases by .469 standardized units. In the special case of a simple linear regression model, the standardized coefficient associated with the single predictor variable will be equal to the correlation coefficient between the predictor and outcome variables.</p>
 </div>
 </div>
@@ -1538,7 +1548,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1218-4"><a href="predictingcriterionscores.html#cb1218-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1218-5"><a href="predictingcriterionscores.html#cb1218-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1593,17 +1603,17 @@ BOOK UNDER CONSTRUCTION</a>
 <p>We will begin by generating a scatterplot displaying the association between the <em>fitted (predicted) values and residuals</em>. To do so, we will use the <code>plot</code> function from base R. As the first argument, enter the name of the regression model object you created above (<code>reg.mod1</code>). As the second argument, type the numeral <em>1</em>, which will request the first of four possible diagnostic plots, of which we will review three.</p>
 <div class="sourceCode" id="cb1229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1229-1"><a href="predictingcriterionscores.html#cb1229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
 <span id="cb1229-2"><a href="predictingcriterionscores.html#cb1229-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-738-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-729-1.png" width="672" /></p>
 <p>We previously saw using the <code>ScatterPlot</code> function from <code>lessR</code> that the association between the two variables appeared to be linear and evidenced a bivariate normal distribution. We did, however, note that there might be some <em>bivariate outliers</em> that could influence the estimated regression model. The current plot shows the association between the fitted values (x-axis) and the residuals (y-axis). If you recall, the residuals are the error in our estimations - or in other words, how much our fitted values for the outcome variable deviate from the observed (actual) values for the outcome variable. The term “fitted values” is another way of saying predicted values for the outcome variable, but the language “fitted” is more precise here. The horizontal dotted line is drawn at the residual value of zero; remember, our goal is to minimize the size of residuals (i.e., error). The solid line shows the deviations from zero of the residuals for each fitted value, and the greater the solid line deviates from the dotted line, the more likely that (a) variances of the residuals may <em>not</em> be equal for each level of the predictor variable (violation of the assumption of homoscedasticity), (b) the average residual error value may <em>not</em> be zero for each level of the predictor variable, and (c) there may be potential bivariate outliers influencing the fitted (predicted) values. In this plot, we can see that the variances of the residuals seem to be about equal across observations (evidence of homoscedasticity), the average residual error value appears to be about zero (which is good), and there appears to be three cases that are flagged as a potential bivariate outlier (i.e., row numbers <em>34</em>, <em>110</em>, and <em>161</em>).</p>
 <p>As an additional diagnostic tool, we can plot a Q-Q plot, which provides an indication as to whether the residuals are normality distributed (one of our statistical assumptions). Simply adapt the <code>plot</code> script from above, but this time, enter the numeral <em>2</em> (instead of <em>1</em>) to request the second diagnostic plot.</p>
 <div class="sourceCode" id="cb1230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1230-1"><a href="predictingcriterionscores.html#cb1230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
 <span id="cb1230-2"><a href="predictingcriterionscores.html#cb1230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-739-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-730-1.png" width="672" /></p>
 <p>Normally distributed residuals will fall along the dotted diagonal line. As you can see, the residuals fall, for the most part, on or near the line with the exception of those three potential outlier cases that we identified in the previous plot: row numbers <em>34</em>, <em>110</em>, and <em>161</em>.</p>
 <p>As the last diagnostic plot, let’s look at Cook’s distance (D) across cases. Once again, adapt the <code>plot</code> script from above, but this time, enter the numeral <em>4</em> to request the fourth diagnostic plot. We’re skipping the third plot.</p>
 <div class="sourceCode" id="cb1231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1231-1"><a href="predictingcriterionscores.html#cb1231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb1231-2"><a href="predictingcriterionscores.html#cb1231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.mod1, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-740-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-731-1.png" width="672" /></p>
 <p>Here we see flagged cases associated with row numbers <em>130</em>, <em>134</em>, and <em>161</em> based on Cook’s distance.</p>
 <p>We can also grab the cases with the highest Cook’s distances. Let’s create an object called <code>cooksD</code> that we will assign a vector of Cook’s distance values to using the <code>cooks.distance</code> function from base R. Just enter the name of the regression model object (<code>reg.mod1</code>) as the sole parenthetical argument. Next, update the object we called <code>cooksD</code> by applying the <code>sort</code> function from base R and entering the <code>cooksD</code> object as the first object and <code>decreasing=TRUE</code> as the second argument; this will sort the Cook’s distance values in descending order. Finally, apply the <code>head</code> function from base R, and as the first argument enter the name of the <code>cooksD</code> object that we just sorted; as the second argument, type <code>n=20</code> to show the top 20 rows, as opposed to the default top 6 rows.</p>
 <div class="sourceCode" id="cb1232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1232-1"><a href="predictingcriterionscores.html#cb1232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
@@ -1614,10 +1624,12 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1232-6"><a href="predictingcriterionscores.html#cb1232-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1232-7"><a href="predictingcriterionscores.html#cb1232-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1232-8"><a href="predictingcriterionscores.html#cb1232-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        134        161        130        116         64        110         39        106         43         99        127 
-## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 0.02443426 0.02292889 0.02292889 
-##         34        143        126         55        132         92         95         28        142 
-## 0.02189203 0.02098965 0.02012473 0.01941305 0.01905427 0.01887586 0.01739145 0.01723973 0.01723973</code></pre>
+<pre><code>##        134        161        130        116         64        110         39        106 
+## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 
+##         43         99        127         34        143        126         55        132 
+## 0.02443426 0.02292889 0.02292889 0.02189203 0.02098965 0.02012473 0.01941305 0.01905427 
+##         92         95         28        142 
+## 0.01887586 0.01739145 0.01723973 0.01723973</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>134</em> is by far the largest, and the next largest values are clustered closer together. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed 1.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>134</em> appears to be consistently the most extreme outlier, but it still may not be extreme enough to consider removing. One could perform a sensitivity analysis by estimating the model with and without case <em>134</em> to see if the pattern of results remains the same.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod1</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>
@@ -1718,9 +1730,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## -2.27833 -0.51458 -0.00982  0.68429  1.95341 
 ## 
 ## Coefficients:
-##                                         Estimate              Std. Error t value      Pr(&gt;|t|)    
-## (Intercept)              -0.00000000000000000661  0.06940583793586863059   0.000             1    
-## scale(Conscientiousness)  0.46866634251609151640  0.06961972392189001713   6.732 0.00000000028 ***
+##                                         Estimate              Std. Error t value      Pr(&gt;|t|)
+## (Intercept)              -0.00000000000000000661  0.06940583793586863059   0.000             1
+## scale(Conscientiousness)  0.46866634251609151640  0.06961972392189001713   6.732 0.00000000028
+##                             
+## (Intercept)                 
+## scale(Conscientiousness) ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 

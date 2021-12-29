@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -944,7 +967,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1329-4"><a href="compensatory.html#cb1329-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1329-5"><a href="compensatory.html#cb1329-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -995,13 +1018,12 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To use the <code>Regression</code> function from the <code>lessR</code> package, type the name of the <code>Regression</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome (i.e., criterion) variable (<code>Performance</code>) to the left of the tilde (<code>~</code>) operator and the names of the predictor (e.g., selection tool) variables (<code>SJT</code>, <code>Interview</code>) separated by the <code>+</code> operator to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>SJT</code> and <code>Interview</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb1339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1339-1"><a href="compensatory.html#cb1339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
 <span id="cb1339-2"><a href="compensatory.html#cb1339-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-806-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-806-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-806-3.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-797-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-797-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-797-3.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ SJT + Interview, data=df, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  df 
 ##  
@@ -1012,22 +1034,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  300 
 ## Number of cases retained for analysis:  300 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.527      0.539   10.249    0.000       4.465       6.588 
 ##         SJT     0.567      0.085    6.714    0.000       0.401       0.734 
 ##   Interview     0.385      0.064    6.031    0.000       0.260       0.511 
 ## 
-## 
+## Standard deviation of Performance: 3.477 
+##  
 ## Standard deviation of residuals:  2.992 for 297 degrees of freedom 
+## 95% range of residual variation:  11.777 = 2 * (1.968 * 2.992) 
 ##  
 ## R-squared:  0.264    Adjusted R-squared:  0.259    PRESS R-squared:  0.236 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 53.339     df: 2 and 297     p-value:  0.000 
-## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ##         SJT    1   629.432   629.432    70.303     0.000 
@@ -1037,21 +1059,18 @@ BOOK UNDER CONSTRUCTION</a>
 ## Residuals    297  2659.095     8.953 
 ## Performance  299  3614.197    12.088 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
-## 
-##   RELATIONS AMONG THE VARIABLES
+##   RELATIONS AMONG THE VARIABLES 
 ## 
 ##               Performance  SJT Interview 
 ##   Performance        1.00 0.42      0.39 
 ##           SJT        0.42 1.00      0.24 
 ##     Interview        0.39 0.24      1.00 
 ## 
-## 
 ##             Tolerance       VIF 
 ##         SJT     0.944     1.060 
 ##   Interview     0.944     1.060 
-## 
 ## 
 ##  SJT Interview    R2adj    X&#39;s 
 ##    1         1    0.259      2 
@@ -1061,8 +1080,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## [based on Thomas Lumley&#39;s leaps function from the leaps package] 
 ##  
 ## 
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1090,14 +1108,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##   297  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
 ##    82  2.000     4.000      14.000  8.203   5.797  1.959  0.224 0.017 
 ## 
-## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ----------------------------------------------
+##  ---------------------------------------------- 
 ## 
 ##         SJT Interview Performance   pred    sf pi.lwr pi.upr  width 
 ##    69 2.000     1.000      18.000  7.047 3.018  1.107 12.987 11.880 
@@ -1111,7 +1128,6 @@ BOOK UNDER CONSTRUCTION</a>
 ##   222 9.000     9.000      11.000 14.102 3.015  8.168 20.035 11.867 
 ##    92 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
 ##   192 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
-## 
 ## 
 ## ---------------------------------- 
 ## Plot 1: Distribution of Residuals 
@@ -1257,7 +1273,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1356-4"><a href="compensatory.html#cb1356-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1356-5"><a href="compensatory.html#cb1356-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1339,10 +1355,10 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Next, as the first argument in the <code>predict</code> function, type <code>object=</code> followed by the estimated model object that we named <code>reg.mod</code> above. As the second argument, type <code>newdata=</code> followed by the name of the data frame object that contains new data on the predictor variable. It’s important to make sure that the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our new data are exactly the same as the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our original data that we used to estimate the model. If that were not the case, we would want to rename the predictor variable in the new data frame object to match the corresponding name in the original data frame object, which is covered in the <a href="addnames.html#addnames">chapter on adding/removing variable names and renaming specific variables</a>.</p>
 <div class="sourceCode" id="cb1368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1368-1"><a href="compensatory.html#cb1368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable</span></span>
 <span id="cb1368-2"><a href="compensatory.html#cb1368-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object=</span>reg.mod, <span class="at">newdata=</span>new_df)</span></code></pre></div>
-<pre><code>##         1         2         3         4         5         6         7         8         9        10        11        12 
-## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 10.836989 12.216943 14.689987 
-##        13        14        15 
-## 12.399124 14.710923 11.243225</code></pre>
+<pre><code>##         1         2         3         4         5         6         7         8         9 
+## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 
+##        10        11        12        13        14        15 
+## 10.836989 12.216943 14.689987 12.399124 14.710923 11.243225</code></pre>
 <p>In your console, you should see a vector of scores – these are the predicted criterion scores. In many cases, we might want to append this vector as a variable to our new data frame object. To do so, we just need to apply the <code>&lt;-</code> operator and, to the left of it, specify the name of the new data frame object (<code>new_df</code>) followed by the <code>$</code> operator and a name for the new variable that will contain the predicted criterion scores (<code>Perf_Predict</code>).</p>
 <div class="sourceCode" id="cb1370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1370-1"><a href="compensatory.html#cb1370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable </span></span>
 <span id="cb1370-2"><a href="compensatory.html#cb1370-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and append as new variable in data frame</span></span>

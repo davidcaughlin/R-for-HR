@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1000,7 +1023,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb286-4"><a href="join.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
 <span id="cb286-5"><a href="join.html#cb286-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -1010,7 +1033,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="join.html#cb288-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),
@@ -1387,7 +1410,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb339-6"><a href="join.html#cb339-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ones we used in the main part of the chapter</span></span>
 <span id="cb339-7"><a href="join.html#cb339-7" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersonalData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -1397,7 +1420,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="join.html#cb341-1" aria-hidden="true" tabindex="-1"></a>performancedata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerformanceData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   perf_q1 = col_double(),

@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1011,7 +1034,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb910-4"><a href="pretestposttest.html#cb910-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb910-5"><a href="pretestposttest.html#cb910-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   PreTest = col_double(),
@@ -1094,7 +1117,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## 
 ## Density bandwidth for 6.941
 ## --------------------------------------------------</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-549-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-549-2.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-540-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-540-2.png" width="672" /></p>
 <p>As you can see in the output, the <code>ttest</code> function provides descriptive statistics, assumption tests regarding the distribution of the difference scores, a statistical significance test of the mean comparison, and an indicator of practical significance in the form of the standardized mean difference (Cohen’s <em>d</em>). In addition, the default lollipop data visualization depicts the distance from the <code>PreTest</code> score to the <code>PostTest</code> score for each case, and the default density distribution depicts the shape of the difference-score distribution, and the extent to which the mean of this distribution appears (visually) to differ from zero.</p>
 <p><strong>Description</strong>: The <em>Description</em> section includes basic descriptive statistics about the sample. In the output, we can see that that there are 25 employees (<em>n</em> = 25), and descriptively, the mean of the differences (<code>PostTest</code> minus <code>PreTest</code>) is 19.64 (<em>SD</em> = 11.60), which indicates that, on average, scores increased from before to after training (although we will not know if this difference is statistically significant until we get to the <em>Inference</em> section of the output).</p>
 <p><strong>Normality Assumption:</strong> If the sample size is small enough, the <strong>Shapiro-Wilk normality test</strong> is used to test the null hypothesis that the distribution of the difference scores is normal; as such, if the <code>p</code>-values associated with the test statistic (<em>W</em>) is less than the conventional alpha level of .05, then we would <em>reject</em> the null hypothesis and assume that the distribution is <em>not</em> normal. If, however, we <em>fail to reject</em> the null hypothesis, then we don’t have statistical evidence that the distribution is anything other than normal; in other words, if the <em>p</em>-value is equal to or greater than our alpha level (.05), then we can assume the variable is likely normally distributed. In the output, we can see that the difference is normally distributed (<em>W</em> = .969, <em>p</em> = .613).</p>
@@ -1202,10 +1225,9 @@ BOOK UNDER CONSTRUCTION</a>
 ##             n   miss     mean       sd      min      mdn      max 
 ## PreTest    25      0    52.72     7.05    43.00    51.00    66.00 
 ## PostTest   25      0    72.36     6.98    60.00    73.00    84.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-555-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-546-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Score, Test) # lollipop plot 
-## 
 ## 
 ##  Data for:  Score 
 ##  ---------------- 
@@ -1223,10 +1245,9 @@ BOOK UNDER CONSTRUCTION</a>
 ##             n   miss     mean       sd      min      mdn      max 
 ## PreTest    25      0    52.72     7.05    43.00    51.00    66.00 
 ## PostTest   25      0    72.36     6.98    60.00    73.00    84.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-556-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-547-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Score, Test) # lollipop plot 
-## 
 ## 
 ##  Data for:  Score 
 ##  ---------------- 
@@ -1262,10 +1283,9 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb938-2"><a href="pretestposttest.html#cb938-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(meannames, prepost_means, <span class="at">data=</span>meansdf, </span>
 <span id="cb938-3"><a href="pretestposttest.html#cb938-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>, </span>
 <span id="cb938-4"><a href="pretestposttest.html#cb938-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Average Score&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-561-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-552-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(prepost_means, meannames) # lollipop plot 
-## 
 ## 
 ##  Data for:  prepost_means 
 ##  ------------------------ 
@@ -1329,7 +1349,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb942-4"><a href="pretestposttest.html#cb942-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb942-5"><a href="pretestposttest.html#cb942-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   PreTest = col_double(),

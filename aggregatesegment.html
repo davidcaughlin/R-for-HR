@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -983,7 +1006,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb794-4"><a href="aggregatesegment.html#cb794-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb794-5"><a href="aggregatesegment.html#cb794-5" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Unit = col_character(),
@@ -1007,24 +1030,27 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb796-1"><a href="aggregatesegment.html#cb796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
 <span id="cb796-2"><a href="aggregatesegment.html#cb796-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;    &quot;TurnInt2&quot;   
-##  [9] &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot;
-## [17] &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;    
+##  [7] &quot;TurnInt1&quot;    &quot;TurnInt2&quot;    &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;    
+## [13] &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot; &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot;
+## [19] &quot;ExpIncivil5&quot;</code></pre>
 <div class="sourceCode" id="cb798"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb798-1"><a href="aggregatesegment.html#cb798-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
 <span id="cb798-2"><a href="aggregatesegment.html#cb798-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(EmpSurvData)</span></code></pre></div>
 <pre><code>## [1] 156</code></pre>
 <div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb800-1"><a href="aggregatesegment.html#cb800-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
 <span id="cb800-2"><a href="aggregatesegment.html#cb800-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(EmpSurvData)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 19
-##   EmployeeID Unit      Supervisor JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4 Engage5
-##   &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 EID294     Marketing EID373           3       3       3        3        3        3       2       1       2       2       3
-## 2 EID295     Marketing EID373           2       3       2        3        4        2       2       1       3       3       3
-## 3 EID296     Marketing EID373           2       2       3        3        3        3       1       1       2       1       2
-## 4 EID301     Marketing EID367           2       2       3        4        4        4       3       2       3       2       2
-## 5 EID306     Marketing EID367           2       2       2        4        4        4       3       2       3       4       3
-## 6 EID213     HumanRes~ EID370           4       3       4        3        3        3       3       2       4       3       3
-## # ... with 5 more variables: ExpIncivil1 &lt;dbl&gt;, ExpIncivil2 &lt;dbl&gt;, ExpIncivil3 &lt;dbl&gt;, ExpIncivil4 &lt;dbl&gt;, ExpIncivil5 &lt;dbl&gt;</code></pre>
+##   EmployeeID Unit         Supervisor JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1
+##   &lt;chr&gt;      &lt;chr&gt;        &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+## 1 EID294     Marketing    EID373           3       3       3        3        3        3       2
+## 2 EID295     Marketing    EID373           2       3       2        3        4        2       2
+## 3 EID296     Marketing    EID373           2       2       3        3        3        3       1
+## 4 EID301     Marketing    EID367           2       2       3        4        4        4       3
+## 5 EID306     Marketing    EID367           2       2       2        4        4        4       3
+## 6 EID213     HumanResour~ EID370           4       3       4        3        3        3       3
+## # ... with 9 more variables: Engage2 &lt;dbl&gt;, Engage3 &lt;dbl&gt;, Engage4 &lt;dbl&gt;, Engage5 &lt;dbl&gt;,
+## #   ExpIncivil1 &lt;dbl&gt;, ExpIncivil2 &lt;dbl&gt;, ExpIncivil3 &lt;dbl&gt;, ExpIncivil4 &lt;dbl&gt;,
+## #   ExpIncivil5 &lt;dbl&gt;</code></pre>
 <p>The data for this exercise include employees’ unique identifiers (<code>EmployeeID</code>), the unit they work in (<code>unit</code>), their direct supervisor (<code>Supervisor</code>), and annual employee survey responses to three job satisfaction items (<code>JobSat1</code>, <code>JobSat2_rev</code>, <code>JobSat3</code>), three turnover intentions items (<code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>), five engagement items (<code>Engage1</code>, <code>Engage2</code>, <code>Engage3</code>, <code>Engage4</code>, <code>Engage5</code>), and five exposure to incivility items (<code>ExpIncivil1</code>, <code>ExpIncivil2</code>, <code>ExpIncivil3</code>, <code>ExpIncivil4</code>, <code>ExpIncivil5_rev</code>). All response scales are 5 points, ranging from strongly disagree (1) to strongly agree (5).</p>
 </div>
 <div id="counts_bygroup" class="section level3" number="28.2.4">
@@ -1209,13 +1235,13 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb822-11"><a href="aggregatesegment.html#cb822-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">IQR_JobSat1 =</span> <span class="fu">IQR</span>(JobSat1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
 <span id="cb822-12"><a href="aggregatesegment.html#cb822-12" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 8
-##   Unit                Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
-##   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-## 1 HumanResources              3.18      0.751           3       0.564           2           4           1
-## 2 Manufacturing               3.08      0.818           3       0.669           1           5           1
-## 3 Marketing                   2.79      0.787           3       0.620           1           4           1
-## 4 ResearchDevelopment         3.28      1.02            3       1.04            1           5           1
-## 5 Sales                       3.22      0.722           3       0.521           2           5           1</code></pre>
+##   Unit      Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
+##   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 HumanRes~         3.18      0.751           3       0.564           2           4           1
+## 2 Manufact~         3.08      0.818           3       0.669           1           5           1
+## 3 Marketing         2.79      0.787           3       0.620           1           4           1
+## 4 Research~         3.28      1.02            3       1.04            1           5           1
+## 5 Sales             3.22      0.722           3       0.521           2           5           1</code></pre>
 <p>If we wish to save our work, we can assign the data frame (tibble) we generated to an object. Let’s call this new object <code>agg_EmpSurvData</code> and assign the results of our operations above to that object using the <code>&lt;-</code> assignment operator.</p>
 <div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb824-1"><a href="aggregatesegment.html#cb824-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple descriptive statistics by group (with pipes)</span></span>
 <span id="cb824-2"><a href="aggregatesegment.html#cb824-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign to object</span></span>
@@ -1234,13 +1260,13 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb825-1"><a href="aggregatesegment.html#cb825-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
 <span id="cb825-2"><a href="aggregatesegment.html#cb825-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(agg_EmpSurvData)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 8
-##   Unit                Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
-##   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-## 1 HumanResources              3.18      0.751           3       0.564           2           4           1
-## 2 Manufacturing               3.08      0.818           3       0.669           1           5           1
-## 3 Marketing                   2.79      0.787           3       0.620           1           4           1
-## 4 ResearchDevelopment         3.28      1.02            3       1.04            1           5           1
-## 5 Sales                       3.22      0.722           3       0.521           2           5           1</code></pre>
+##   Unit      Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
+##   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 HumanRes~         3.18      0.751           3       0.564           2           4           1
+## 2 Manufact~         3.08      0.818           3       0.669           1           5           1
+## 3 Marketing         2.79      0.787           3       0.620           1           4           1
+## 4 Research~         3.28      1.02            3       1.04            1           5           1
+## 5 Sales             3.22      0.722           3       0.521           2           5           1</code></pre>
 </div>
 <div id="centraldispersion_bygroup_nopipes" class="section level4" number="28.2.5.2">
 <h4><span class="header-section-number">28.2.5.2</span> <em>Without</em> Pipes</h4>
@@ -1291,13 +1317,13 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb831-9"><a href="aggregatesegment.html#cb831-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">IQR_JobSat1 =</span> <span class="fu">IQR</span>(JobSat1, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
 <span id="cb831-10"><a href="aggregatesegment.html#cb831-10" aria-hidden="true" tabindex="-1"></a>          )</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 8
-##   Unit                Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
-##   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-## 1 HumanResources              3.18      0.751           3       0.564           2           4           1
-## 2 Manufacturing               3.08      0.818           3       0.669           1           5           1
-## 3 Marketing                   2.79      0.787           3       0.620           1           4           1
-## 4 ResearchDevelopment         3.28      1.02            3       1.04            1           5           1
-## 5 Sales                       3.22      0.722           3       0.521           2           5           1</code></pre>
+##   Unit      Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
+##   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 HumanRes~         3.18      0.751           3       0.564           2           4           1
+## 2 Manufact~         3.08      0.818           3       0.669           1           5           1
+## 3 Marketing         2.79      0.787           3       0.620           1           4           1
+## 4 Research~         3.28      1.02            3       1.04            1           5           1
+## 5 Sales             3.22      0.722           3       0.521           2           5           1</code></pre>
 <p>If we wish to save our work, we can assign the data frame (tibble) we generated to an object. Let’s call this new object <code>agg_EmpSurvData</code> and assign the results of our operations above to that object using the <code>&lt;-</code> assignment operator.</p>
 <div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb833-1"><a href="aggregatesegment.html#cb833-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple descriptive statistics by group (with pipes)</span></span>
 <span id="cb833-2"><a href="aggregatesegment.html#cb833-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign to object</span></span>
@@ -1314,13 +1340,13 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb834-1"><a href="aggregatesegment.html#cb834-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
 <span id="cb834-2"><a href="aggregatesegment.html#cb834-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(agg_EmpSurvData)</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 8
-##   Unit                Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
-##   &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
-## 1 HumanResources              3.18      0.751           3       0.564           2           4           1
-## 2 Manufacturing               3.08      0.818           3       0.669           1           5           1
-## 3 Marketing                   2.79      0.787           3       0.620           1           4           1
-## 4 ResearchDevelopment         3.28      1.02            3       1.04            1           5           1
-## 5 Sales                       3.22      0.722           3       0.521           2           5           1</code></pre>
+##   Unit      Mean_JobSat1 SD_JobSat1 Mdn_JobSat1 Var_JobSat1 Min_JobSat1 Max_JobSat1 IQR_JobSat1
+##   &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 HumanRes~         3.18      0.751           3       0.564           2           4           1
+## 2 Manufact~         3.08      0.818           3       0.669           1           5           1
+## 3 Marketing         2.79      0.787           3       0.620           1           4           1
+## 4 Research~         3.28      1.02            3       1.04            1           5           1
+## 5 Sales             3.22      0.722           3       0.521           2           5           1</code></pre>
 </div>
 </div>
 <div id="addaggregatedvariable" class="section level3" number="28.2.6">
@@ -1344,9 +1370,10 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To verify that we added the new <code>UnitCount</code> variable to our <code>EmpSurvData</code> data frame object, let’s print the variable names using the <code>names</code> function from base R and then note the addition of the new <code>UnitCount</code> variable.</p>
 <div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb837-1"><a href="aggregatesegment.html#cb837-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame object</span></span>
 <span id="cb837-2"><a href="aggregatesegment.html#cb837-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;    &quot;TurnInt2&quot;   
-##  [9] &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot;
-## [17] &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot; &quot;UnitCount&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;    
+##  [7] &quot;TurnInt1&quot;    &quot;TurnInt2&quot;    &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;    
+## [13] &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot; &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot;
+## [19] &quot;ExpIncivil5&quot; &quot;UnitCount&quot;</code></pre>
 <p>Let’s work through another example in which we will add a new variable that contains values for the mean level of <code>JobSat1</code> for each level of the <code>Unit</code> variable. Again, we will use the <code>mutate</code> function; however, we will apply the <code>mean</code> function from base R. Let’s call the new aggregated variable <code>Mean_JobSat1</code>.</p>
 <div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb839-1"><a href="aggregatesegment.html#cb839-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new variable based on means by group (with pipes)</span></span>
 <span id="cb839-2"><a href="aggregatesegment.html#cb839-2" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> EmpSurvData <span class="sc">%&gt;%</span></span>
@@ -1356,9 +1383,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb839-6"><a href="aggregatesegment.html#cb839-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb839-7"><a href="aggregatesegment.html#cb839-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame</span></span>
 <span id="cb839-8"><a href="aggregatesegment.html#cb839-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;     &quot;TurnInt2&quot;    
-##  [9] &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot; 
-## [17] &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;     
+##  [7] &quot;TurnInt1&quot;     &quot;TurnInt2&quot;     &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;     
+## [13] &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot;  &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot; 
+## [19] &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
 </div>
 <div id="addaggregatedvariable_nopipes" class="section level4" number="28.2.6.2">
 <h4><span class="header-section-number">28.2.6.2</span> <em>Without</em> Pipes</h4>
@@ -1387,9 +1415,10 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To verify that we added the new <code>UnitCount</code> variable to our <code>EmpSurvData</code> data frame object, let’s print the variable names using the <code>names</code> function from base R.</p>
 <div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb842-1"><a href="aggregatesegment.html#cb842-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame object</span></span>
 <span id="cb842-2"><a href="aggregatesegment.html#cb842-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;     &quot;TurnInt2&quot;    
-##  [9] &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot; 
-## [17] &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;     
+##  [7] &quot;TurnInt1&quot;     &quot;TurnInt2&quot;     &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;     
+## [13] &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot;  &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot; 
+## [19] &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
 <p>You should see that a new variable called <code>UnitCount</code> is now a part of the <code>EmpSurvData</code> data frame. You can also view your data using the following function and argument: <code>View(EmpSurvData)</code>.</p>
 <p>Let’s work through another example. This time we will add a new variable that contains values for the mean level of <code>JobSat1</code> for each level of the <code>Unit</code> variable. Again, we will use the <code>mutate</code> function; however, we will apply the <code>mean</code> function from base R. Let’s call the new aggregated variable <code>Mean_JobSat1</code>.</p>
 <div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb844-1"><a href="aggregatesegment.html#cb844-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new variable based on means by group (without pipes)</span></span>
@@ -1403,9 +1432,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb844-9"><a href="aggregatesegment.html#cb844-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb844-10"><a href="aggregatesegment.html#cb844-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names from data frame object</span></span>
 <span id="cb844-11"><a href="aggregatesegment.html#cb844-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;      &quot;TurnInt1&quot;     &quot;TurnInt2&quot;    
-##  [9] &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;      &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot; 
-## [17] &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot;  &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;   &quot;Unit&quot;         &quot;Supervisor&quot;   &quot;JobSat1&quot;      &quot;JobSat2&quot;      &quot;JobSat3&quot;     
+##  [7] &quot;TurnInt1&quot;     &quot;TurnInt2&quot;     &quot;TurnInt3&quot;     &quot;Engage1&quot;      &quot;Engage2&quot;      &quot;Engage3&quot;     
+## [13] &quot;Engage4&quot;      &quot;Engage5&quot;      &quot;ExpIncivil1&quot;  &quot;ExpIncivil2&quot;  &quot;ExpIncivil3&quot;  &quot;ExpIncivil4&quot; 
+## [19] &quot;ExpIncivil5&quot;  &quot;UnitCount&quot;    &quot;Mean_JobSat1&quot;</code></pre>
 <p>You should see that a new variable called <code>Mean_JobSat1</code> is now a part of the <code>EmpSurvData</code> data frame. You can view your data using the following function and argument: <code>View(EmpSurvData)</code>.</p>
 </div>
 </div>
@@ -1476,7 +1506,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb853-1"><a href="aggregatesegment.html#cb853-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create trellis of histograms corresponding to different values of grouping variable</span></span>
 <span id="cb853-2"><a href="aggregatesegment.html#cb853-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Histogram</span>(JobSat1, <span class="at">by1=</span>Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
 <pre><code>## [Trellis graphics from Deepayan Sarkar&#39;s lattice package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-503-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-494-1.png" width="672" /></p>
 <pre><code>## JobSat1 
 ##   - by levels of - 
 ## Unit 
@@ -1490,7 +1520,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If we want to look at the counts (i.e., frequencies) of cases for each unique value of a grouping variable, we can apply the <code>BarChart</code> from the <code>lessR</code> package. Simply type <code>BarChart</code> as the function. As the first argument, enter the name of the grouping variable (<code>Unit</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object (<code>EmpSurvData</code>).</p>
 <div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb856-1"><a href="aggregatesegment.html#cb856-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart that shows counts for each level of grouping variable</span></span>
 <span id="cb856-2"><a href="aggregatesegment.html#cb856-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(Unit, <span class="at">data=</span>EmpSurvData)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-504-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-495-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## BarChart(Unit, horiz=TRUE)  # horizontal bar chart
 ## BarChart(Unit, fill=&quot;reds&quot;)  # red bars of varying lightness
@@ -1498,12 +1528,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## Plot(Unit)  # bubble plot
 ## Plot(Unit, stat=&quot;count&quot;)  # lollipop plot 
 ## 
-## 
-## --- Unit ---
-## 
+## --- Unit --- 
 ## 
 ## Missing Values of Unit: 0 
-## 
 ## 
 ##                Unit Count   Prop 
 ## --------------------------------- 
@@ -1514,7 +1541,6 @@ BOOK UNDER CONSTRUCTION</a>
 ##               Sales    36   0.231 
 ## --------------------------------- 
 ##               Total   156   1.000 
-## 
 ## 
 ## Chi-squared test of null hypothesis of equal probabilities 
 ##   Chisq = 77.526, df = 4, p-value = 0.000</code></pre>
@@ -1534,10 +1560,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## Marketing             19      0     2.79     0.79     1.00     3.00     4.00 
 ## ResearchDevelopment   18      0     3.28     1.02     1.00     3.00     5.00 
 ## Sales                 36      0     3.22     0.72     2.00     3.00     5.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-505-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-496-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(JobSat1, Unit) # lollipop plot 
-## 
 ## 
 ##  Data for:  JobSat1 
 ##  ------------------ 
@@ -1588,7 +1613,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb862-4"><a href="aggregatesegment.html#cb862-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb862-5"><a href="aggregatesegment.html#cb862-5" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Unit = col_character(),
@@ -1612,9 +1637,10 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb864-1"><a href="aggregatesegment.html#cb864-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb864-2"><a href="aggregatesegment.html#cb864-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(EmpSurvData)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;     &quot;TurnInt1&quot;    &quot;TurnInt2&quot;   
-##  [9] &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;     &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot;
-## [17] &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot; &quot;ExpIncivil5&quot;</code></pre>
+<pre><code>##  [1] &quot;EmployeeID&quot;  &quot;Unit&quot;        &quot;Supervisor&quot;  &quot;JobSat1&quot;     &quot;JobSat2&quot;     &quot;JobSat3&quot;    
+##  [7] &quot;TurnInt1&quot;    &quot;TurnInt2&quot;    &quot;TurnInt3&quot;    &quot;Engage1&quot;     &quot;Engage2&quot;     &quot;Engage3&quot;    
+## [13] &quot;Engage4&quot;     &quot;Engage5&quot;     &quot;ExpIncivil1&quot; &quot;ExpIncivil2&quot; &quot;ExpIncivil3&quot; &quot;ExpIncivil4&quot;
+## [19] &quot;ExpIncivil5&quot;</code></pre>
 </div>
 <div id="aggregatesegment_describeby_supplement" class="section level3" number="28.3.3">
 <h3><span class="header-section-number">28.3.3</span> <code>describeBy</code> Function from <code>psych</code> Package</h3>
@@ -1649,7 +1675,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 11 2.45 0.52      2    2.44 0.00   2   3     1  0.16    -2.15 0.16
 ## ExpIncivil4   18 11 2.55 0.52      3    2.56 0.00   2   3     1 -0.16    -2.15 0.16
 ## ExpIncivil5   19 11 2.55 0.52      3    2.56 0.00   2   3     1 -0.16    -2.15 0.16
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------- 
 ## group: Manufacturing
 ##             vars  n  mean    sd median trimmed   mad min max range  skew kurtosis   se
 ## EmployeeID*    1 72 36.50 20.93   36.5   36.50 26.69   1  72    71  0.00    -1.25 2.47
@@ -1671,7 +1697,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 72  2.50  0.75    2.0    2.48  1.48   1   4     3  0.10    -0.40 0.09
 ## ExpIncivil4   18 72  2.56  0.65    3.0    2.57  0.00   1   4     3 -0.20    -0.25 0.08
 ## ExpIncivil5   19 72  2.57  0.67    3.0    2.57  0.74   1   4     3 -0.11    -0.26 0.08
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------- 
 ## group: Marketing
 ##             vars  n  mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## EmployeeID*    1 19 10.00 5.63     10   10.00 7.41   1  19    18  0.00    -1.39 1.29
@@ -1693,7 +1719,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 19  2.58 0.69      2    2.53 0.00   2   4     2  0.68    -0.83 0.16
 ## ExpIncivil4   18 19  2.53 0.70      2    2.47 0.00   2   4     2  0.85    -0.64 0.16
 ## ExpIncivil5   19 19  2.58 0.69      3    2.59 0.00   1   4     3 -0.27    -0.39 0.16
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------- 
 ## group: ResearchDevelopment
 ##             vars  n mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## EmployeeID*    1 18 9.50 5.34    9.5    9.50 6.67   1  18    17  0.00    -1.40 1.26
@@ -1715,7 +1741,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## ExpIncivil3   17 18 2.39 0.70    2.0    2.38 0.00   1   4     3  0.37    -0.30 0.16
 ## ExpIncivil4   18 18 2.44 0.62    2.5    2.50 0.74   1   3     2 -0.52    -0.86 0.15
 ## ExpIncivil5   19 18 2.22 0.65    2.0    2.25 0.00   1   3     2 -0.19    -0.88 0.15
-## --------------------------------------------------------------------------------------------- 
+## ----------------------------------------------------------------------- 
 ## group: Sales
 ##             vars  n  mean    sd median trimmed   mad min max range  skew kurtosis   se
 ## EmployeeID*    1 36 18.50 10.54   18.5   18.50 13.34   1  36    35  0.00    -1.30 1.76
@@ -1752,57 +1778,80 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb870-2"><a href="aggregatesegment.html#cb870-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(EmpSurvData,</span>
 <span id="cb870-3"><a href="aggregatesegment.html#cb870-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">by=</span><span class="fu">list</span>(<span class="at">Unit=</span>EmpSurvData<span class="sc">$</span>Unit),</span>
 <span id="cb870-4"><a href="aggregatesegment.html#cb870-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">FUN=</span>mean)</span></code></pre></div>
-<pre><code>##                  Unit EmployeeID Unit Supervisor  JobSat1  JobSat2  JobSat3 TurnInt1 TurnInt2 TurnInt3  Engage1  Engage2
-## 1      HumanResources         NA   NA         NA 3.181818 3.000000 3.090909 2.909091 2.727273 2.818182 3.545455 3.181818
-## 2       Manufacturing         NA   NA         NA 3.083333 3.319444 3.361111 3.083333 2.916667 2.916667 3.583333 3.388889
-## 3           Marketing         NA   NA         NA 2.789474 2.894737 3.421053 3.052632 2.842105 2.894737 3.526316 3.263158
-## 4 ResearchDevelopment         NA   NA         NA 3.277778 3.166667 3.500000 2.833333 2.666667 2.611111 3.666667 3.444444
-## 5               Sales         NA   NA         NA 3.222222 3.361111 3.583333 2.833333 2.722222 2.666667 3.750000 3.444444
-##    Engage3  Engage4  Engage5 ExpIncivil1 ExpIncivil2 ExpIncivil3 ExpIncivil4 ExpIncivil5
-## 1 3.636364 3.727273 3.636364    2.090909    2.363636    2.454545    2.545455    2.545455
-## 2 3.277778 3.513889 3.402778    2.138889    2.361111    2.500000    2.555556    2.569444
-## 3 3.368421 3.473684 3.210526    2.105263    2.315789    2.578947    2.526316    2.578947
-## 4 3.611111 3.833333 3.500000    2.000000    2.111111    2.388889    2.444444    2.222222
-## 5 3.638889 3.861111 3.500000    2.111111    2.277778    2.583333    2.694444    2.388889</code></pre>
+<pre><code>##                  Unit EmployeeID Unit Supervisor  JobSat1  JobSat2  JobSat3 TurnInt1 TurnInt2
+## 1      HumanResources         NA   NA         NA 3.181818 3.000000 3.090909 2.909091 2.727273
+## 2       Manufacturing         NA   NA         NA 3.083333 3.319444 3.361111 3.083333 2.916667
+## 3           Marketing         NA   NA         NA 2.789474 2.894737 3.421053 3.052632 2.842105
+## 4 ResearchDevelopment         NA   NA         NA 3.277778 3.166667 3.500000 2.833333 2.666667
+## 5               Sales         NA   NA         NA 3.222222 3.361111 3.583333 2.833333 2.722222
+##   TurnInt3  Engage1  Engage2  Engage3  Engage4  Engage5 ExpIncivil1 ExpIncivil2 ExpIncivil3
+## 1 2.818182 3.545455 3.181818 3.636364 3.727273 3.636364    2.090909    2.363636    2.454545
+## 2 2.916667 3.583333 3.388889 3.277778 3.513889 3.402778    2.138889    2.361111    2.500000
+## 3 2.894737 3.526316 3.263158 3.368421 3.473684 3.210526    2.105263    2.315789    2.578947
+## 4 2.611111 3.666667 3.444444 3.611111 3.833333 3.500000    2.000000    2.111111    2.388889
+## 5 2.666667 3.750000 3.444444 3.638889 3.861111 3.500000    2.111111    2.277778    2.583333
+##   ExpIncivil4 ExpIncivil5
+## 1    2.545455    2.545455
+## 2    2.555556    2.569444
+## 3    2.526316    2.578947
+## 4    2.444444    2.222222
+## 5    2.694444    2.388889</code></pre>
 <p>Using the <code>aggregate</code> function, we can also summarize data using two or more grouping variables. To do so, we just need to add a second grouping variable within the <code>list</code> function, as shown below.</p>
 <div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb872-1"><a href="aggregatesegment.html#cb872-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize all numeric/integer variables by two grouping variables</span></span>
 <span id="cb872-2"><a href="aggregatesegment.html#cb872-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(EmpSurvData,</span>
 <span id="cb872-3"><a href="aggregatesegment.html#cb872-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">by=</span><span class="fu">list</span>(<span class="at">Unit=</span>EmpSurvData<span class="sc">$</span>Unit, <span class="at">Supervisor=</span>EmpSurvData<span class="sc">$</span>Supervisor),</span>
 <span id="cb872-4"><a href="aggregatesegment.html#cb872-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">FUN=</span>mean)</span></code></pre></div>
-<pre><code>##                   Unit Supervisor EmployeeID Unit Supervisor  JobSat1  JobSat2  JobSat3 TurnInt1 TurnInt2 TurnInt3  Engage1
-## 1            Marketing     EID367         NA   NA         NA 2.800000 2.900000 3.700000 3.200000 2.900000 3.000000 3.800000
-## 2        Manufacturing     EID368         NA   NA         NA 3.294118 3.529412 3.352941 3.058824 2.705882 2.705882 3.529412
-## 3        Manufacturing     EID369         NA   NA         NA 3.000000 4.000000 4.000000 3.000000 3.000000 3.000000 5.000000
-## 4       HumanResources     EID370         NA   NA         NA 3.300000 3.100000 3.200000 2.900000 2.700000 2.800000 3.500000
-## 5        Manufacturing     EID371         NA   NA         NA 3.571429 4.000000 3.428571 2.142857 2.142857 2.285714 3.714286
-## 6  ResearchDevelopment     EID372         NA   NA         NA 3.277778 3.166667 3.500000 2.833333 2.666667 2.611111 3.666667
-## 7                Sales     EID372         NA   NA         NA 3.052632 3.263158 3.368421 2.947368 2.789474 2.684211 3.526316
-## 8            Marketing     EID373         NA   NA         NA 2.777778 2.888889 3.111111 2.888889 2.777778 2.777778 3.222222
-## 9                Sales     EID374         NA   NA         NA 3.666667 3.333333 4.000000 2.333333 2.333333 2.333333 4.000000
-## 10       Manufacturing     EID375         NA   NA         NA 3.166667 3.500000 3.666667 3.000000 3.000000 3.166667 3.666667
-## 11               Sales     EID376         NA   NA         NA 3.454545 3.636364 3.818182 2.818182 2.727273 2.818182 4.000000
-## 12               Sales     EID377         NA   NA         NA 3.000000 3.000000 3.666667 2.666667 2.666667 2.333333 4.000000
-## 13      HumanResources     EID379         NA   NA         NA 2.000000 2.000000 2.000000 3.000000 3.000000 3.000000 4.000000
-## 14       Manufacturing     EID380         NA   NA         NA 2.842105 3.210526 3.263158 3.157895 2.947368 2.894737 3.473684
-## 15       Manufacturing     EID381         NA   NA         NA 4.000000 4.000000 3.000000 3.000000 4.000000 3.000000 4.000000
-## 16       Manufacturing     EID382         NA   NA         NA 2.904762 2.904762 3.333333 3.380952 3.238095 3.238095 3.571429
-##     Engage2  Engage3  Engage4  Engage5 ExpIncivil1 ExpIncivil2 ExpIncivil3 ExpIncivil4 ExpIncivil5
-## 1  3.500000 3.400000 3.700000 3.300000    2.300000    2.500000    2.700000    2.600000    2.800000
-## 2  3.588235 3.352941 3.705882 3.764706    2.411765    2.529412    2.529412    2.705882    2.411765
-## 3  5.000000 4.000000 5.000000 4.000000    2.000000    3.000000    3.000000    3.000000    3.000000
-## 4  3.100000 3.500000 3.700000 3.500000    2.100000    2.300000    2.500000    2.500000    2.600000
-## 5  3.142857 3.285714 3.285714 3.142857    2.142857    2.285714    2.285714    2.428571    2.142857
-## 6  3.444444 3.611111 3.833333 3.500000    2.000000    2.111111    2.388889    2.444444    2.222222
-## 7  3.368421 3.631579 3.631579 3.368421    2.157895    2.315789    2.578947    2.736842    2.421053
-## 8  3.000000 3.333333 3.222222 3.111111    1.888889    2.111111    2.444444    2.444444    2.333333
-## 9  3.333333 4.000000 4.000000 3.666667    2.000000    2.000000    2.666667    2.666667    2.333333
-## 10 3.666667 3.333333 3.666667 3.666667    1.666667    2.333333    2.166667    2.666667    3.000000
-## 11 3.727273 3.636364 4.181818 3.727273    2.000000    2.272727    2.636364    2.636364    2.363636
-## 12 3.000000 3.333333 4.000000 3.333333    2.333333    2.333333    2.333333    2.666667    2.333333
-## 13 4.000000 5.000000 4.000000 5.000000    2.000000    3.000000    2.000000    3.000000    2.000000
-## 14 3.263158 3.210526 3.421053 3.210526    2.263158    2.315789    2.736842    2.473684    2.526316
-## 15 3.000000 4.000000 5.000000 4.000000    2.000000    2.000000    1.000000    3.000000    3.000000
-## 16 3.285714 3.190476 3.333333 3.238095    1.952381    2.285714    2.476190    2.476190    2.714286</code></pre>
+<pre><code>##                   Unit Supervisor EmployeeID Unit Supervisor  JobSat1  JobSat2  JobSat3
+## 1            Marketing     EID367         NA   NA         NA 2.800000 2.900000 3.700000
+## 2        Manufacturing     EID368         NA   NA         NA 3.294118 3.529412 3.352941
+## 3        Manufacturing     EID369         NA   NA         NA 3.000000 4.000000 4.000000
+## 4       HumanResources     EID370         NA   NA         NA 3.300000 3.100000 3.200000
+## 5        Manufacturing     EID371         NA   NA         NA 3.571429 4.000000 3.428571
+## 6  ResearchDevelopment     EID372         NA   NA         NA 3.277778 3.166667 3.500000
+## 7                Sales     EID372         NA   NA         NA 3.052632 3.263158 3.368421
+## 8            Marketing     EID373         NA   NA         NA 2.777778 2.888889 3.111111
+## 9                Sales     EID374         NA   NA         NA 3.666667 3.333333 4.000000
+## 10       Manufacturing     EID375         NA   NA         NA 3.166667 3.500000 3.666667
+## 11               Sales     EID376         NA   NA         NA 3.454545 3.636364 3.818182
+## 12               Sales     EID377         NA   NA         NA 3.000000 3.000000 3.666667
+## 13      HumanResources     EID379         NA   NA         NA 2.000000 2.000000 2.000000
+## 14       Manufacturing     EID380         NA   NA         NA 2.842105 3.210526 3.263158
+## 15       Manufacturing     EID381         NA   NA         NA 4.000000 4.000000 3.000000
+## 16       Manufacturing     EID382         NA   NA         NA 2.904762 2.904762 3.333333
+##    TurnInt1 TurnInt2 TurnInt3  Engage1  Engage2  Engage3  Engage4  Engage5 ExpIncivil1
+## 1  3.200000 2.900000 3.000000 3.800000 3.500000 3.400000 3.700000 3.300000    2.300000
+## 2  3.058824 2.705882 2.705882 3.529412 3.588235 3.352941 3.705882 3.764706    2.411765
+## 3  3.000000 3.000000 3.000000 5.000000 5.000000 4.000000 5.000000 4.000000    2.000000
+## 4  2.900000 2.700000 2.800000 3.500000 3.100000 3.500000 3.700000 3.500000    2.100000
+## 5  2.142857 2.142857 2.285714 3.714286 3.142857 3.285714 3.285714 3.142857    2.142857
+## 6  2.833333 2.666667 2.611111 3.666667 3.444444 3.611111 3.833333 3.500000    2.000000
+## 7  2.947368 2.789474 2.684211 3.526316 3.368421 3.631579 3.631579 3.368421    2.157895
+## 8  2.888889 2.777778 2.777778 3.222222 3.000000 3.333333 3.222222 3.111111    1.888889
+## 9  2.333333 2.333333 2.333333 4.000000 3.333333 4.000000 4.000000 3.666667    2.000000
+## 10 3.000000 3.000000 3.166667 3.666667 3.666667 3.333333 3.666667 3.666667    1.666667
+## 11 2.818182 2.727273 2.818182 4.000000 3.727273 3.636364 4.181818 3.727273    2.000000
+## 12 2.666667 2.666667 2.333333 4.000000 3.000000 3.333333 4.000000 3.333333    2.333333
+## 13 3.000000 3.000000 3.000000 4.000000 4.000000 5.000000 4.000000 5.000000    2.000000
+## 14 3.157895 2.947368 2.894737 3.473684 3.263158 3.210526 3.421053 3.210526    2.263158
+## 15 3.000000 4.000000 3.000000 4.000000 3.000000 4.000000 5.000000 4.000000    2.000000
+## 16 3.380952 3.238095 3.238095 3.571429 3.285714 3.190476 3.333333 3.238095    1.952381
+##    ExpIncivil2 ExpIncivil3 ExpIncivil4 ExpIncivil5
+## 1     2.500000    2.700000    2.600000    2.800000
+## 2     2.529412    2.529412    2.705882    2.411765
+## 3     3.000000    3.000000    3.000000    3.000000
+## 4     2.300000    2.500000    2.500000    2.600000
+## 5     2.285714    2.285714    2.428571    2.142857
+## 6     2.111111    2.388889    2.444444    2.222222
+## 7     2.315789    2.578947    2.736842    2.421053
+## 8     2.111111    2.444444    2.444444    2.333333
+## 9     2.000000    2.666667    2.666667    2.333333
+## 10    2.333333    2.166667    2.666667    3.000000
+## 11    2.272727    2.636364    2.636364    2.363636
+## 12    2.333333    2.333333    2.666667    2.333333
+## 13    3.000000    2.000000    3.000000    2.000000
+## 14    2.315789    2.736842    2.473684    2.526316
+## 15    2.000000    1.000000    3.000000    3.000000
+## 16    2.285714    2.476190    2.476190    2.714286</code></pre>
 
 </div>
 </div>

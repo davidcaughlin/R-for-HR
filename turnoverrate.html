@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -936,7 +959,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1582-4"><a href="turnoverrate.html#cb1582-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1582-5"><a href="turnoverrate.html#cb1582-5" aria-hidden="true" tabindex="-1"></a>tr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;turnover_rate.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   Month = col_double(),
 ##   Separations = col_double(),
@@ -974,13 +997,14 @@ BOOK UNDER CONSTRUCTION</a>
 <p>As the first step, let’s compute the monthly turnover rates as <em>proportions</em> and print them directly to our console. In other words, we won’t create a new variable just yet; rather, we will just peak at the monthly turnover rates (as proportions) as we get comfortable. Type in the name of the data frame object (<code>tr</code>) followed by the <code>$</code> operator and the name of the separations variable (<code>Separations</code>); note that the <code>$</code> operator is used to indicate which data frame object a variable belongs to. Next, type in the division symbol (<code>/</code>). After that, type in the name of the data frame object (<code>tr</code>) followed by the <code>$</code> operator and the name of the average number of employees variable (<code>Ave_Employees</code>). Run that line of code.</p>
 <div class="sourceCode" id="cb1590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1590-1"><a href="turnoverrate.html#cb1590-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute monthly turnover rates (as proportions) and print to the Console</span></span>
 <span id="cb1590-2"><a href="turnoverrate.html#cb1590-2" aria-hidden="true" tabindex="-1"></a>tr<span class="sc">$</span>Separations <span class="sc">/</span> tr<span class="sc">$</span>Ave_Employees</span></code></pre></div>
-<pre><code>##  [1] 0.09448819 0.08411215 0.05042017 0.03149606 0.01769912 0.02803738 0.04545455 0.00800000 0.05172414 0.05645161
-## [11] 0.03418803 0.02362205</code></pre>
+<pre><code>##  [1] 0.09448819 0.08411215 0.05042017 0.03149606 0.01769912 0.02803738 0.04545455 0.00800000
+##  [9] 0.05172414 0.05645161 0.03418803 0.02362205</code></pre>
 <p>In our console, we should see a vector of the monthly turnover rates as proportions.</p>
 <p>As the second step, if we wish to view the monthly turnover rates as <em>percentages</em>, we just need to multiply the quotient from above by 100. In the code below, I include parentheses around the chunk of code used to compute the proportions, as I think it’s easier to conceptualize what we’re doing. That being said, because we are working with division and multiplication here, mathematical orders of operation do not require the parentheses. It’s up to you whether you decide to include them.</p>
 <div class="sourceCode" id="cb1592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1592-1"><a href="turnoverrate.html#cb1592-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute monthly turnover rates (as percentages) and print to the Console</span></span>
 <span id="cb1592-2"><a href="turnoverrate.html#cb1592-2" aria-hidden="true" tabindex="-1"></a>(tr<span class="sc">$</span>Separations <span class="sc">/</span> tr<span class="sc">$</span>Ave_Employees) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<pre><code>##  [1] 9.448819 8.411215 5.042017 3.149606 1.769912 2.803738 4.545455 0.800000 5.172414 5.645161 3.418803 2.362205</code></pre>
+<pre><code>##  [1] 9.448819 8.411215 5.042017 3.149606 1.769912 2.803738 4.545455 0.800000 5.172414 5.645161
+## [11] 3.418803 2.362205</code></pre>
 <p>In our console, we should see a vector of monthly turnover rates as percentages.</p>
 <p>As the third and final step, we will assign the vector of monthly turnover rate percentages we created above to a new variable in our data frame object. After you get the hang of computing monthly turnover rates, you can skip directly to this third step instead of building up to it using the first two steps I demonstrated above. We are simply taking the equation we used to compute monthly turnover rates as percentages and using the <code>&lt;-</code> operator to assign the resulting vector of values to a new variable in our data frame object. You can call the new variable whatever you’d like, and here I call it <code>TR_Monthly</code> and use the <code>$</code> operator to signal that I wish to attach the vector/variable to the <code>tr</code> data frame object we have been working with thus far.</p>
 <div class="sourceCode" id="cb1594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1594-1"><a href="turnoverrate.html#cb1594-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute monthly turnover rates (as percentages) and assign to variable</span></span>
@@ -1008,24 +1032,24 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Optional:</strong> Given that we have access to an organization’s monthly turnover rates for an entire year, we can plot the turnover rates as a line graph to facilitate interpretation of trends. If you choose to create this optional data visualization, feel free to follow along; otherwise, you can skip down to the section called <em>Compute Annual Turnover Rates</em>. We will create a very simple plot using the aptly named <code>plot</code> function from base R. We will start with the most basic version of the line graph plot, and then add more arguments to refine it a bit.</p>
 <p>For the first argument in our <code>plot</code> function, let’s specify the <code>Month</code> variable from the <code>tr</code> data frame object as our x-axis variable using the <code>x=</code> argument: <code>x=tr$Month</code>. As the second argument, let’s specify the <code>TR_Monthly</code> variable (we just created) from the <code>tr</code> data frame object as our y-axis variable using the <code>y=</code> argument: <code>y=tr$TR_Monthly</code>.</p>
 <div class="sourceCode" id="cb1597"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1597-1"><a href="turnoverrate.html#cb1597-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-948-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-939-1.png" width="672" /></p>
 <p>By default, the function as specified above provides us with scatter plot in our Plots window. If we wish to convert this plot to a line graph, we can add the following argument: <code>type="l"</code>.</p>
 <div class="sourceCode" id="cb1598"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1598-1"><a href="turnoverrate.html#cb1598-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
 <span id="cb1598-2"><a href="turnoverrate.html#cb1598-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-949-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-940-1.png" width="672" /></p>
 <p>Next, we can create more meaningful x- and y-axis labels by using the <code>xlab</code> and <code>ylab</code> arguments. Note that anything we can write whatever we’d like in the quotation marks (<code>" "</code>).</p>
 <div class="sourceCode" id="cb1599"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1599-1"><a href="turnoverrate.html#cb1599-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
 <span id="cb1599-2"><a href="turnoverrate.html#cb1599-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
 <span id="cb1599-3"><a href="turnoverrate.html#cb1599-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Month&quot;</span>,</span>
 <span id="cb1599-4"><a href="turnoverrate.html#cb1599-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Monthly Turnover Rate (%)&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-950-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-941-1.png" width="672" /></p>
 <p>Finally, if we wish to adjust the y-axis limits, we can use the <code>ylim</code> argument followed by <code>=</code> and a vector of two values, where the first value is the lower limit of the y-axis and the second value is the upper limit. Here, we create a vector containing the lower- and upper-limits of <code>0</code> and <code>25</code> using the <code>c</code> (combine) function from base R.</p>
 <div class="sourceCode" id="cb1600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1600-1"><a href="turnoverrate.html#cb1600-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
 <span id="cb1600-2"><a href="turnoverrate.html#cb1600-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
 <span id="cb1600-3"><a href="turnoverrate.html#cb1600-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Month&quot;</span>,</span>
 <span id="cb1600-4"><a href="turnoverrate.html#cb1600-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Monthly Turnover Rate (%)&quot;</span>,</span>
 <span id="cb1600-5"><a href="turnoverrate.html#cb1600-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">25</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-951-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-942-1.png" width="672" /></p>
 <p>The resulting plot allows us to potentially identify and describe any trends or patterns in monthly turnover rates over the course of an entire year. Here, we can see that monthly turnover rates were highest in the first month (January) but then declined through the fifth month (May), increasing through the seventh month (July), dropping quickly to the eighth month (August), and then increasing, plateauing, and declining in the remaining months of the year. If we were to have access to data over multiple years, it’s possible we might begin to see some seasonality to the turnover rates. With access to more years worth of data, we could also build forecasting models (e.g., perform time-series analyses).</p>
 </div>
 <div id="turnoverrate_annualturnoverrate" class="section level3" number="45.2.5">

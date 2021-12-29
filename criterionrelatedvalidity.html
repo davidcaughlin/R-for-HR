@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -994,7 +1017,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1149-4"><a href="criterionrelatedvalidity.html#cb1149-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1149-5"><a href="criterionrelatedvalidity.html#cb1149-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1042,21 +1065,18 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To begin, type the name of the <code>ScatterPlot</code> function. As the first two arguments of the function, type the names of the two variables you wish to visualize; let’s start by visualizing the association between the <code>Conscientiousness</code> selection tool and the criterion (<code>Performance</code>). The variable name that we type after the <code>x=</code> argument will set the x-axis, and the variable name that we type after the <code>y=</code> argument will set the y-axis. Conventionally, we place the criterion variable on the y-axis, as it is the outcome. As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb1159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1159-1"><a href="criterionrelatedvalidity.html#cb1159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using ScatterPlot function from lessR</span></span>
 <span id="cb1159-2"><a href="criterionrelatedvalidity.html#cb1159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-698-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-689-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
-## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options 
-## 
+## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
+## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
+## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% from center as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 163 
-## 
-## 
 ## Sample Correlation of Conscientiousness and Performance: r = 0.469 
-## 
-## 
+##   
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
 <p>In our plot window, we can see a fairly clear positive linear trend between <code>Conscientiousness</code> and <code>Performance</code>, which provides us with some evidence that the assumption of a linear association has been satisfied. Furthermore, the distribution is ellipse-shaped, which gives us some evidence that the underlying distribution between the two variables is likely bivariate normal – thereby satisfying the second assumption mentioned above. Note that the <code>ScatterPlot</code> function automatically provides an estimate of a (Pearson product-moment) correlation in the output (<em>r</em> = .509), along with the associated p-value (<em>p</em> &lt; .001).</p>
@@ -1067,21 +1087,18 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1161-2"><a href="criterionrelatedvalidity.html#cb1161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df, </span>
 <span id="cb1161-3"><a href="criterionrelatedvalidity.html#cb1161-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Conscientiousness Test Score&quot;</span>,</span>
 <span id="cb1161-4"><a href="criterionrelatedvalidity.html#cb1161-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-699-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-690-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
-## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options 
-## 
+## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
+## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
+## Plot(Conscientiousness, Performance, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 163 
-## 
-## 
 ## Sample Correlation of Conscientiousness and Performance: r = 0.469 
-## 
-## 
+##   
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
 <p>We can also superimpose an ellipse by adding the argument <code>ellipse=TRUE</code>, which can visually aid our judgument on whether the distribution is bivariate normal.</p>
@@ -1091,21 +1108,18 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1163-4"><a href="criterionrelatedvalidity.html#cb1163-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Job Performance Score&quot;</span>,</span>
 <span id="cb1163-5"><a href="criterionrelatedvalidity.html#cb1163-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-700-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-691-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
-## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options 
-## 
+## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
+## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
+## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% from center as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 163 
-## 
-## 
 ## Sample Correlation of Conscientiousness and Performance: r = 0.469 
-## 
-## 
+##   
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
 </div>
@@ -1118,18 +1132,16 @@ BOOK UNDER CONSTRUCTION</a>
 <p>To begin, type the name of the <code>Correlation</code> function from the <code>lessR</code> package. As the first two arguments of the function, type the names of the two variables you wish to visualize; let’s start by visualizing the association between the <code>Conscientiousness</code> selection tool and the criterion (<code>Performance</code>). Conventionally, the variable name that appears after the <code>x=</code> argument is our predictor (e.g., selection tool), and the variable name that appears after the <code>y=</code> argument is our criterion (e.g., job performance). As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>df</code>).</p>
 <div class="sourceCode" id="cb1166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1166-1"><a href="criterionrelatedvalidity.html#cb1166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate correlation using Correlation function from lessR</span></span>
 <span id="cb1166-2"><a href="criterionrelatedvalidity.html#cb1166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Correlation</span>(<span class="at">x=</span>Conscientiousness, <span class="at">y=</span>Performance, <span class="at">data=</span>df)</span></code></pre></div>
-<pre><code>## Correlation Analysis for Variables  and Performance 
-## --------------------------------------------------- 
+<pre><code>## Correlation Analysis for Variables Conscientiousness and Performance 
+##   
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 163 
 ## Number of cases (rows of data) deleted: 0 
 ## 
-## 
 ## Sample Covariance: s = 0.324 
 ##  
 ## Sample Correlation: r = 0.469 
-## 
 ## 
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
@@ -1180,7 +1192,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1170-4"><a href="criterionrelatedvalidity.html#cb1170-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1170-5"><a href="criterionrelatedvalidity.html#cb1170-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),

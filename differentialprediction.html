@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1018,7 +1041,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1400-4"><a href="differentialprediction.html#cb1400-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1400-5"><a href="differentialprediction.html#cb1400-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   emp_id = col_character(),
 ##   perf_eval = col_double(),
@@ -1084,13 +1107,12 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Step One:</strong> Let’s being by regressing the criterion variable <code>perf_eval</code> on the selection tool variable <code>c_interview</code>. Here we are just establishing whether the selection tool shows evidence of criterion-related validity. See the chapters on <a href="predictingcriterionscores.html#predictingcriterionscores">predicting criterion scores using simple linear regression</a> if you would like more information on regression-based approaches to assessing criterion-related validity, including determining whether statistical assumptions have been met. You can use either the <code>Regression</code> or <code>reg_brief</code> function from <code>lessR</code>, where the latter provides less output. To keep the amount of output in this tutorial to a minimum, I will use the <code>reg_brief</code> function, but when you evaluate whether statistical assumptions have been met, be sure to use the full <code>Regression</code> function.</p>
 <div class="sourceCode" id="cb1411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1411-1"><a href="differentialprediction.html#cb1411-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool)</span></span>
 <span id="cb1411-2"><a href="differentialprediction.html#cb1411-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-854-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-845-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1100,33 +1122,32 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.705      0.049   95.145    0.000       4.608       4.802 
 ## c_interview     0.307      0.041    7.465    0.000       0.226       0.387 
 ## 
-## 
+## Standard deviation of perf_eval: 1.028 
+##  
 ## Standard deviation of residuals:  0.960 for 375 degrees of freedom 
+## 95% range of residual variation:  3.776 = 2 * (1.966 * 0.960) 
 ##  
 ## R-squared:  0.129    Adjusted R-squared:  0.127    PRESS R-squared:  0.120 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 55.732     df: 1 and 375     p-value:  0.000 
-## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model          1    51.380    51.380    55.732     0.000 
 ## Residuals    375   345.720     0.922 
 ## perf_eval    376   397.100     1.056 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient for <code>c_interview</code> is statistically significant and positive (<em>b</em> = .307, <em>p</em> &lt; .001), which provides evidence of criterion-related validity. The amount of variance explained by <code>c_interview</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .129, adjusted <em>R</em><sup>2</sup> = .127, <em>p</em> &lt; .001). See table below for common rules of thumbs for qualitatively describing <em>R</em><sup>2</sup> values.</p>
@@ -1159,8 +1180,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + gender, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1171,22 +1191,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.083      0.091   55.833    0.000       4.904       5.262 
 ## c_interview     0.164      0.049    3.325    0.001       0.067       0.261 
 ## genderwoman    -0.602      0.123   -4.889    0.000      -0.844      -0.360 
 ## 
-## 
+## Standard deviation of perf_eval: 1.028 
+##  
 ## Standard deviation of residuals:  0.932 for 374 degrees of freedom 
+## 95% range of residual variation:  3.666 = 2 * (1.966 * 0.932) 
 ##  
 ## R-squared:  0.182    Adjusted R-squared:  0.177    PRESS R-squared:  0.169 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 41.521     df: 2 and 374     p-value:  0.000 
-## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## c_interview    1    51.380    51.380    59.136     0.000 
@@ -1196,12 +1216,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## Residuals    374   324.950     0.869 
 ## perf_eval    376   397.100     1.056 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with <code>gender</code> (or more specifically <code>genderwoman</code>) is negative and statistically significant (<em>b</em> = -.602, <em>p</em> &lt; .001) when controlling for <code>c_interview</code>, which indicates that there is evidence of intercept differences. Note that the name of the regression coefficient for <code>gender</code> has <code>woman</code> appended to it. This means that the intercept represents the <code>perf_eval</code> scores of women minus those for men; because the coefficient is negative, it implies that the intercept value is significantly lower for women relative to men. The amount of variance explained by <code>c_interview</code> <em>and</em> <code>gender</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .182, adjusted <em>R</em><sup>2</sup> = .177, <em>p</em> &lt; .001), which is larger than when just <code>c_interview</code> was included in the model.</p>
@@ -1234,7 +1253,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.16   0.05     3.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-859-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-850-1.png" width="672" /></p>
 <p><em>[If you got an error message when running the <code>probe_interaction</code> function, you may need to install the <code>sandwich</code> package and then try again.]</em></p>
 <p>Because we were only testing an additive model, the figure shows the slopes for each subgroup (men, women) as equal with just the intercepts differing. In the following step, we will formally test whether a multiplicative interaction effect exists, which would suggest slope differences.</p>
 <p><strong>Step Three:</strong> As the final step, it’s time to add the interaction term between <code>c_interview</code> and <code>gender</code> to the model. Fortunately, this is very easy to do in R. All we need to do is change the <code>+</code> symbol from our previous regression model script to the <code>*</code>, where the <code>*</code> implies an interaction in the context of a model. Conceptually, the <code>*</code> is appropriate because we are estimating a multiplicative model when we have an interaction term, which is commonly known as a product term.</p>
@@ -1245,8 +1264,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * gender, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1257,8 +1275,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.258      0.111   47.559    0.000       5.040       5.475 
@@ -1266,14 +1283,15 @@ BOOK UNDER CONSTRUCTION</a>
 ## genderwoman    -0.724      0.130   -5.572    0.000      -0.980      -0.469 
 ## c_interview:genderwoman     0.284      0.104    2.734    0.007       0.080       0.488 
 ## 
-## 
+## Standard deviation of perf_eval: 1.028 
+##  
 ## Standard deviation of residuals:  0.924 for 373 degrees of freedom 
+## 95% range of residual variation:  3.634 = 2 * (1.966 * 0.924) 
 ##  
 ## R-squared:  0.198    Adjusted R-squared:  0.191    PRESS R-squared:  0.181 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 30.652     df: 3 and 373     p-value:  0.000 
-## 
 ## 
 ##                      df    Sum Sq   Mean Sq   F-value   p-value 
 ##        c_interview    1    51.380    51.380    60.160     0.000 
@@ -1284,12 +1302,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## Residuals           373   318.565     0.854 
 ## perf_eval           376   397.100     1.056 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>In our output, we now have a third regression term (<code>c_interview:gender</code>) that is our interaction term. You may find that the because the label for the interaction term is long-ish, the columns associated with regression coefficients, standard errors, etc. are shifted over a bit, so make sure that you are referencing the values that you think you are. The regression coefficient associated with the interaction term (<code>c_interview:gender</code>) is positive and statistically signficant (<em>b</em> = .284, <em>p</em> = .007), but don’t pay too much attention to the sign of the interaction term as it is difficult to interpret it without graphing the entire regression equation. What we do care about is that the interaction term is statistically significant, which indicates that there is evidence of <em>slope differences</em>; in other words, there seems to be multiplicative between <code>c_interview</code> and <code>gender</code>. We already know that there is evidence of intercept differences, where men have a higher intercept, but now we have evidence that the criterion-related validities for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) are significantly different from one another. The amount of variance explained by <code>c_interview</code>, <code>gender</code>, <em>and</em> their interaction in relation to <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .198, adjusted <em>R</em><sup>2</sup> = .191, <em>p</em> &lt; .001), which is larger than when just <code>c_interview</code> and <code>gender</code> were included in the model.</p>
@@ -1318,7 +1335,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.26   0.06     4.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-862-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-853-1.png" width="672" /></p>
 <p>The plot output shows that the two slopes are indeed different, such that there doesn’t seem to be much of an association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) for men, but there seems to be a positive association for women. Now take a look at the text output in your console. The simple slopes analysis automatically estimates the regression coefficient (slope) for both levels of the moderator variable (<code>gender</code>: man, woman). Corroborating what we see in the plot, we find that the simple slope for women is indeed statistically significant and positive (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in interview scores, job performance scores tend to go up by .26 units. In contrast, we find that the simple slope for men is nonsignificant (<em>b</em> = -.02, <em>p</em> = .77).</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the levels/subgroups of the protected class variable (<code>gender</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 <p><strong>Sample Write-Up:</strong> Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="references.html#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="references.html#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we recommend that the structured interview <em>not</em> be used for employee selection purposes.</p>
@@ -1329,13 +1346,12 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Step One:</strong> Regress the criterion variable <code>perf_eval</code> on the selection tool variable <code>c_interview</code>.</p>
 <div class="sourceCode" id="cb1425"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1425-1"><a href="differentialprediction.html#cb1425-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool)</span></span>
 <span id="cb1425-2"><a href="differentialprediction.html#cb1425-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-863-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-854-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1345,46 +1361,44 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.705      0.049   95.145    0.000       4.608       4.802 
 ## c_interview     0.307      0.041    7.465    0.000       0.226       0.387 
 ## 
-## 
+## Standard deviation of perf_eval: 1.028 
+##  
 ## Standard deviation of residuals:  0.960 for 375 degrees of freedom 
+## 95% range of residual variation:  3.776 = 2 * (1.966 * 0.960) 
 ##  
 ## R-squared:  0.129    Adjusted R-squared:  0.127    PRESS R-squared:  0.120 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 55.732     df: 1 and 375     p-value:  0.000 
-## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model          1    51.380    51.380    55.732     0.000 
 ## Residuals    375   345.720     0.922 
 ## perf_eval    376   397.100     1.056 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient for <code>c_interview</code> is statistically significant and positive (<em>b</em> = .307, <em>p</em> &lt; .001), which provides evidence of criterion-related validity. The amount of variance explained by <code>c_interview</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .129, adjusted <em>R</em><sup>2</sup> = .127, <em>p</em> &lt; .001).</p>
 <p><strong>Step Two:</strong> Regress the criterion variable <code>perf_eval</code> on the selection tool variable <code>c_interview</code> and the protected class variable <code>c_age</code>.</p>
 <div class="sourceCode" id="cb1427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1427-1"><a href="differentialprediction.html#cb1427-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (c_age)</span></span>
 <span id="cb1427-2"><a href="differentialprediction.html#cb1427-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">+</span> c_age, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-864-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-855-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + c_age, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1395,22 +1409,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.705      0.046  102.806    0.000       4.615       4.795 
 ## c_interview     0.558      0.049   11.307    0.000       0.461       0.655 
 ##       c_age     0.059      0.007    7.988    0.000       0.045       0.074 
 ## 
-## 
+## Standard deviation of perf_eval: 1.028 
+##  
 ## Standard deviation of residuals:  0.889 for 374 degrees of freedom 
+## 95% range of residual variation:  3.495 = 2 * (1.966 * 0.889) 
 ##  
 ## R-squared:  0.256    Adjusted R-squared:  0.252    PRESS R-squared:  0.244 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 64.442     df: 2 and 374     p-value:  0.000 
-## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## c_interview    1    51.380    51.380    65.067     0.000 
@@ -1420,12 +1434,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## Residuals    374   295.328     0.790 
 ## perf_eval    376   397.100     1.056 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with <code>c_age</code> is positive and statistically significant (<em>b</em> = .059, <em>p</em> &lt; .001) when controlling for <code>c_interview</code>, which indicates that there is evidence of intercept differences. Because the coefficient is positive, it implies that the intercept value is significantly higher for older workers relative to younger workers. The amount of variance explained by <code>c_interview</code> <em>and</em> <code>c_age</code> in <code>perf_eval</code> is large in magnitude (<em>R</em><sup>2</sup> = .256, adjusted <em>R</em><sup>2</sup> = .252, <em>p</em> &lt; .001), which is notably larger than when just <code>c_interview</code> was included in the model.</p>
@@ -1459,18 +1472,17 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.56   0.05    11.31   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-866-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-857-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>c_age</code> to the model using the <code>*</code> symbol.</p>
 <div class="sourceCode" id="cb1432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1432-1"><a href="differentialprediction.html#cb1432-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (c_age), </span></span>
 <span id="cb1432-2"><a href="differentialprediction.html#cb1432-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and interaction between selection tool and protected class</span></span>
 <span id="cb1432-3"><a href="differentialprediction.html#cb1432-3" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">*</span> c_age, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-867-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-858-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * c_age, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1481,8 +1493,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.795      0.051   93.404    0.000       4.694       4.896 
@@ -1490,14 +1501,15 @@ BOOK UNDER CONSTRUCTION</a>
 ##       c_age     0.069      0.008    8.893    0.000       0.054       0.085 
 ## c_interview:c_age     0.015      0.004    3.658    0.000       0.007       0.023 
 ## 
-## 
+## Standard deviation of perf_eval: 1.028 
+##  
 ## Standard deviation of residuals:  0.874 for 373 degrees of freedom 
+## 95% range of residual variation:  3.438 = 2 * (1.966 * 0.874) 
 ##  
 ## R-squared:  0.282    Adjusted R-squared:  0.276    PRESS R-squared:  0.267 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 48.845     df: 3 and 373     p-value:  0.000 
-## 
 ## 
 ##                     df    Sum Sq   Mean Sq   F-value   p-value 
 ##       c_interview    1    51.380    51.380    67.222     0.000 
@@ -1508,12 +1520,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## Residuals          373   285.098     0.764 
 ## perf_eval          376   397.100     1.056 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with the interaction term (<code>c_interview:c_age</code>) is positive and statistically signficant (<em>b</em> = .015, <em>p</em> &lt; .001), which indicates that there is evidence of <em>slope differences</em>. The amount of variance explained by <code>c_interview</code>, <code>c_age</code>, <em>and</em> their interaction in relation to <code>perf_eval</code> is large in magnitude (<em>R</em><sup>2</sup> = .282, adjusted <em>R</em><sup>2</sup> = .276, <em>p</em> &lt; .001), which is larger than when just <code>c_interview</code> and <code>c_age</code> were included in the model. Given the statistically significant interaction term, we will use the <code>probe_interaction</code> function from the <code>interactions</code> package to probe the interaction. As input to the <code>probe_interaction</code> function from the <code>interactions</code> package, we will need to use the <code>lm</code> function base R to specify our regression model from above. We need to name this model something so that we can reference it in the next function, so let’s name it <code>Slope_Model</code> (for slope differences model) using the <code>&lt;-</code> operator.</p>
@@ -1547,7 +1558,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.69   0.06    11.40   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-869-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-860-1.png" width="672" /></p>
 <p>The plot and the simple slopes analyses output show that the two slopes are indeed different, such that the association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) is stronger for older workers (<em>b</em> = .69, <em>p</em> &lt; .01), than for average-aged workers (<em>b</em> = .57, <em>p</em> &lt; .01) and younger workers (<em>b</em> = .45, <em>p</em> &lt; .01). Notably, all three simple slopes are statistically significant and positive, but the slope is stronger for older workers.</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the protected class variable (<code>c_age</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 </div>
@@ -1558,13 +1569,12 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb1437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1437-1"><a href="differentialprediction.html#cb1437-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool)</span></span>
 <span id="cb1437-2"><a href="differentialprediction.html#cb1437-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview, <span class="at">data=</span>DiffPred, </span>
 <span id="cb1437-3"><a href="differentialprediction.html#cb1437-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">rows=</span>(race<span class="sc">==</span><span class="st">&quot;asian&quot;</span> <span class="sc">|</span> race<span class="sc">==</span><span class="st">&quot;white&quot;</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-870-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-861-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1574,33 +1584,32 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  346 
 ## Number of cases retained for analysis:  346 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.751      0.051   93.696    0.000       4.651       4.851 
 ## c_interview     0.348      0.043    8.128    0.000       0.264       0.433 
 ## 
-## 
+## Standard deviation of perf_eval: 1.024 
+##  
 ## Standard deviation of residuals:  0.940 for 344 degrees of freedom 
+## 95% range of residual variation:  3.696 = 2 * (1.967 * 0.940) 
 ##  
 ## R-squared:  0.161    Adjusted R-squared:  0.159    PRESS R-squared:  0.152 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 66.064     df: 1 and 344     p-value:  0.000 
-## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model          1    58.317    58.317    66.064     0.000 
 ## Residuals    344   303.658     0.883 
 ## perf_eval    345   361.975     1.049 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient for <code>c_interview</code> is statistically significant and positive (<em>b</em> = .348, <em>p</em> &lt; .001) based on this reduced sample of 346 individuals, which provides evidence of criterion-related validity. The amount of variance explained by <code>c_interview</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .161, adjusted <em>R</em><sup>2</sup> = .159, <em>p</em> &lt; .001).</p>
@@ -1612,8 +1621,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + race, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1624,22 +1632,22 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  346 
 ## Number of cases retained for analysis:  346 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.918      0.070   70.754    0.000       4.781       5.054 
 ## c_interview     0.407      0.045    8.945    0.000       0.317       0.496 
 ##   racewhite    -0.373      0.108   -3.445    0.001      -0.586      -0.160 
 ## 
-## 
+## Standard deviation of perf_eval: 1.024 
+##  
 ## Standard deviation of residuals:  0.925 for 343 degrees of freedom 
+## 95% range of residual variation:  3.639 = 2 * (1.967 * 0.925) 
 ##  
 ## R-squared:  0.189    Adjusted R-squared:  0.184    PRESS R-squared:  0.175 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 40.010     df: 2 and 343     p-value:  0.000 
-## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## c_interview    1    58.317    58.317    68.152     0.000 
@@ -1649,12 +1657,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## Residuals    343   293.502     0.856 
 ## perf_eval    345   361.975     1.049 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with <code>race</code> (or more specifically <code>racewhite</code>) is negative and statistically signficant (<em>b</em> = -.373, <em>p</em> = .001) when controlling for <code>c_interview</code>, which indicates that there is evidence of intercept differences. Because the coefficient is negative and because <code>white</code> is appended to the <code>race</code> variable name, it implies that the intercept value is significantly lower for White individuals compared to Asian individuals. The amount of variance explained by <code>c_interview</code> <em>and</em> <code>race</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .189, adjusted <em>R</em><sup>2</sup> = .184, <em>p</em> &lt; .001).</p>
@@ -1683,7 +1690,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.41   0.05     8.94   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-873-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-864-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>race</code> to the model using the <code>*</code> symbol.</p>
 <div class="sourceCode" id="cb1444"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1444-1"><a href="differentialprediction.html#cb1444-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (race), </span></span>
 <span id="cb1444-2"><a href="differentialprediction.html#cb1444-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and interaction between selection tool and protected class</span></span>
@@ -1693,8 +1700,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * race, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
 ## 
-## 
-##   BACKGROUND
+##   BACKGROUND 
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1705,8 +1711,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Number of cases (rows) of data:  346 
 ## Number of cases retained for analysis:  346 
 ## 
-## 
-##   BASIC ANALYSIS
+##   BASIC ANALYSIS 
 ## 
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.896      0.072   67.863    0.000       4.754       5.038 
@@ -1714,14 +1719,15 @@ BOOK UNDER CONSTRUCTION</a>
 ##   racewhite    -0.374      0.108   -3.459    0.001      -0.587      -0.161 
 ## c_interview:racewhite     0.103      0.092    1.124    0.262      -0.077       0.283 
 ## 
-## 
+## Standard deviation of perf_eval: 1.024 
+##  
 ## Standard deviation of residuals:  0.925 for 342 degrees of freedom 
+## 95% range of residual variation:  3.638 = 2 * (1.967 * 0.925) 
 ##  
 ## R-squared:  0.192    Adjusted R-squared:  0.185    PRESS R-squared:  0.174 
 ## 
-## Null hypothesis that all population slope coefficients are 0:
+## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 27.115     df: 3 and 342     p-value:  0.000 
-## 
 ## 
 ##                    df    Sum Sq   Mean Sq   F-value   p-value 
 ##      c_interview    1    58.317    58.317    68.204     0.000 
@@ -1732,12 +1738,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## Residuals         342   292.421     0.855 
 ## perf_eval         345   361.975     1.049 
 ## 
+##   K-FOLD CROSS-VALIDATION 
 ## 
-##   K-FOLD CROSS-VALIDATION
+##   RELATIONS AMONG THE VARIABLES 
 ## 
-##   RELATIONS AMONG THE VARIABLES
-## 
-##   RESIDUALS AND INFLUENCE
+##   RESIDUALS AND INFLUENCE 
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with the interaction term (<code>c_interview:racewhite</code>) is <em>not</em> statistically significant (<em>b</em> = .103, <em>p</em> = .262), which indicates that there is no evidence of <em>slope differences</em>. Given this, we won’t probe the interaction because, well, there is not an interaction to probe.</p>
@@ -1804,7 +1809,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1448-4"><a href="differentialprediction.html#cb1448-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1448-5"><a href="differentialprediction.html#cb1448-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   emp_id = col_character(),
 ##   perf_eval = col_double(),
@@ -1965,7 +1970,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.16   0.05     3.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-887-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-878-1.png" width="672" /></p>
 <p>Because we were only testing an additive model, the figure shows the slopes for each subgroup (men, women) as equal with just the intercepts differing. In the following step, we will formally test whether a multiplicative interaction effect exists, which would suggest slope differences.</p>
 <p><strong>Step Three:</strong> As the final step, it’s time to add the interaction term between <code>c_interview</code> and <code>gender</code> to the model. Fortunately, this is very easy to do in R. All we need to do is change the <code>+</code> symbol from our previous regression model script to the <code>*</code>, where the <code>*</code> implies an interaction in the context of a model. Conceptually, the <code>*</code> is appropriate because we are estimating a multiplicative model when we have an interaction term, which is commonly known as a product term. Let’s name this model <code>model.3</code>. As before, we’ll do a nested model comparison with the previous model and this one to determine whether there is a significant improvement in fit. In addition, we’ll estimate change in <em>R</em><sup>2</sup>.</p>
 <div class="sourceCode" id="cb1469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1469-1"><a href="differentialprediction.html#cb1469-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (gender), </span></span>
@@ -2028,7 +2033,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.26   0.06     4.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-891-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-882-1.png" width="672" /></p>
 <p>The plot output shows that the two slopes are indeed different, such that there doesn’t seem to be much of an association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) for men, but there seems to be a postive association for women. Now take a look at the text output in your console. The simple slopes analysis automatically estimates the regression coefficient (slope) for both levels of the moderator variable (<code>gender</code>: man, woman). Corroborating what we see in the plot, we find that the simple slope for women is indeed statistically significant and positive (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in interview scores, job performance scores tend to go up by .26 units. In contrast, we find that the simple slope for men is nonsignificant (<em>b</em> = -.02, <em>p</em> = .77).</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the levels/subgroups of the protected class variable (<code>gender</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 <p><strong>Sample Write-Up:</strong> Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="references.html#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="references.html#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we recommend that the structured interview <em>not</em> be used for employee selection purposes.</p>
@@ -2124,7 +2129,7 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.56   0.05    11.31   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-896-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-887-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>c_age</code> to the model using the <code>*</code> symbol. In addition, do a nested model comparison, and estimate the change in <em>R</em><sup>2</sup>.</p>
 <div class="sourceCode" id="cb1487"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1487-1"><a href="differentialprediction.html#cb1487-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (c_age)</span></span>
 <span id="cb1487-2"><a href="differentialprediction.html#cb1487-2" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">*</span> c_age, <span class="at">data=</span>DiffPred)</span>
@@ -2192,7 +2197,7 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.69   0.06    11.40   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-900-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-891-1.png" width="672" /></p>
 <p>The plot and the simple slopes analyses output show that the two slopes are indeed different, such that the association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) is stronger for older workers (<em>b</em> = .69, <em>p</em> &lt; .01), than for average-aged workers (<em>b</em> = .57, <em>p</em> &lt; .01) and younger workers (<em>b</em> = .45, <em>p</em> &lt; .01). Notably, all three simple slopes are statistically significant and postive, but the slope is stronger for older workers.</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the protected class variable (<code>c_age</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 </div>
@@ -2285,7 +2290,7 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.41   0.05     8.94   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-905-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-896-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>race</code> to the model using the <code>*</code> symbol. In addition, do a nested model comparison, and estimate the change in <em>R</em><sup>2</sup>.</p>
 <div class="sourceCode" id="cb1505"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1505-1"><a href="differentialprediction.html#cb1505-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (race),</span></span>
 <span id="cb1505-2"><a href="differentialprediction.html#cb1505-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and interaction between selection tool and protected class</span></span>

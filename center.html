@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-27" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -845,9 +845,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="47.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>47.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="47.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="47.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>47.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>47.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="47.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="47.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>47.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="47" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>47</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="48" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>48</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -940,7 +963,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb587-4"><a href="center.html#cb587-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb587-5"><a href="center.html#cb587-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ----------------------------------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   emp_id = col_character(),
 ##   perf_eval = col_double(),
@@ -1099,14 +1122,15 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="center.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame</span></span>
 <span id="cb611-2"><a href="center.html#cb611-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview st_interview[,1]
-##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
-## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730             0.203
-## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53              1.70 
-## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730             0.203
-## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23              0.618
-## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877             1.70 
-## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305           -0.378</code></pre>
+##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730 
+## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53  
+## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730 
+## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23  
+## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877 
+## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305
+## # ... with 1 more variable: st_interview &lt;dbl[,1]&gt;</code></pre>
 </div>
 <div id="mutate_function_standardize" class="section level4" number="21.2.6.2">
 <h4><span class="header-section-number">21.2.6.2</span> Option 2: <code>mutate</code> Function from <code>dplyr</code> and <code>scale</code> Function from Base R</h4>
@@ -1123,14 +1147,15 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="center.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame</span></span>
 <span id="cb616-2"><a href="center.html#cb616-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview st_interview[,1]
-##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
-## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730             0.203
-## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53              1.70 
-## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730             0.203
-## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23              0.618
-## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877             1.70 
-## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305           -0.378</code></pre>
+##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730 
+## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53  
+## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730 
+## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23  
+## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877 
+## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305
+## # ... with 1 more variable: st_interview &lt;dbl[,1]&gt;</code></pre>
 <p>One of the advantages of using this approach is that we can standardize multiple variables in a single step. To do so, we simply specify which additional variable we would like to standardize by adding an additional argument to the <code>mutate</code> function.</p>
 <div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="center.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardizing: Multiple variables</span></span>
 <span id="cb618-2"><a href="center.html#cb618-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
