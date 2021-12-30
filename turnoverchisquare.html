@@ -1029,7 +1029,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1610-4"><a href="turnoverchisquare.html#cb1610-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1610-5"><a href="turnoverchisquare.html#cb1610-5" aria-hidden="true" tabindex="-1"></a>cst <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ChiSquareTurnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Onboarding = col_character(),
@@ -1209,7 +1209,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1640-4"><a href="turnoverchisquare.html#cb1640-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1640-5"><a href="turnoverchisquare.html#cb1640-5" aria-hidden="true" tabindex="-1"></a>cst <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ChiSquareTurnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ------------------------------------------------------------------------
+## -- Column specification -----------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Onboarding = col_character(),
@@ -1257,10 +1257,27 @@ BOOK UNDER CONSTRUCTION</a>
 ##        Yes    6     46</code></pre>
 <p>I’m going to demonstrate how to manually compute the odds ratio for a 2x2 contingency table, but note that you can estimate a logistic regression model to arrive at the same end, which is covered in the <a href="logistic.html#logistic">chapter on identifying predictors of turnover</a>. I should also note that there are some great functions out there like the <code>oddsratio.wald</code> function from the <code>epitools</code> package that will do these calculations for us; nonetheless, I think it’s worthwhile to unpack how relatively simple these calculations are, as this can serve as a nice warm up for the following chapter.</p>
 <p>When we have a 2x2 contingency table of counts, the odds ratio is relatively straightforward to calculate if we conceptualize our contingency table as follows. Because we are expecting that those who participate in the treatment (i.e., onboarding program) will be more likely to stay in the organization, let’s frame the act of staying as the focal event, which means that those who quit did <em>not</em> experience the event of staying.</p>
-<pre><code>                        | No Event (Quit)   | Event (Stayed)</code></pre>
-<p>————————— |:—————–:|:—————-:
-<strong>Control (No Onboarding)</strong> | D | C
-<strong>Treatment (Onboarding)</strong> | B | A</p>
+<table>
+<thead>
+<tr class="header">
+<th>Condition</th>
+<th align="center">No Event (Quit)</th>
+<th align="center">Event (Stayed)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Control (No Onboarding)</td>
+<td align="center">D</td>
+<td align="center">C</td>
+</tr>
+<tr class="even">
+<td>Treatment (Onboarding)</td>
+<td align="center">B</td>
+<td align="center">A</td>
+</tr>
+</tbody>
+</table>
 <p>The formula for computing an odds ratio is:</p>
 <p><span class="math inline">\(OR = \frac{\frac{A}{C}}{\frac{B}{D}}\)</span></p>
 <p>where:</p>
@@ -1272,45 +1289,45 @@ BOOK UNDER CONSTRUCTION</a>
 </ul>
 <p>The formula can also be written in the following manner after cross-multiplication, which is what we’ll use when computing the odds ratio, as I think it is easier to read in R:</p>
 <p><span class="math inline">\(OR = \frac{A \times D}{B \times C}\)</span></p>
-<p>To make our calculations clearer, let’s reference specific cells from our contingency table object (<code>tbl</code>) using brackets (<code>[ ]</code>), where the first value within brackets references the row number and the second references the column number..</p>
-<div class="sourceCode" id="cb1651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1651-1"><a href="turnoverchisquare.html#cb1651-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign counts to objects</span></span>
-<span id="cb1651-2"><a href="turnoverchisquare.html#cb1651-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> tbl[<span class="dv">2</span>,<span class="dv">2</span>]</span>
-<span id="cb1651-3"><a href="turnoverchisquare.html#cb1651-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> tbl[<span class="dv">2</span>,<span class="dv">1</span>]</span>
-<span id="cb1651-4"><a href="turnoverchisquare.html#cb1651-4" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> tbl[<span class="dv">1</span>,<span class="dv">2</span>]</span>
-<span id="cb1651-5"><a href="turnoverchisquare.html#cb1651-5" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> tbl[<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div>
+<p>To make our calculations clearer, let’s reference specific cells from our contingency table object (<code>tbl</code>) using brackets (<code>[ ]</code>), where the first value within brackets references the row number and the second references the column number.</p>
+<div class="sourceCode" id="cb1650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1650-1"><a href="turnoverchisquare.html#cb1650-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign counts to objects</span></span>
+<span id="cb1650-2"><a href="turnoverchisquare.html#cb1650-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> tbl[<span class="dv">2</span>,<span class="dv">2</span>]</span>
+<span id="cb1650-3"><a href="turnoverchisquare.html#cb1650-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> tbl[<span class="dv">2</span>,<span class="dv">1</span>]</span>
+<span id="cb1650-4"><a href="turnoverchisquare.html#cb1650-4" aria-hidden="true" tabindex="-1"></a>C <span class="ot">&lt;-</span> tbl[<span class="dv">1</span>,<span class="dv">2</span>]</span>
+<span id="cb1650-5"><a href="turnoverchisquare.html#cb1650-5" aria-hidden="true" tabindex="-1"></a>D <span class="ot">&lt;-</span> tbl[<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div>
 <p>Next, we will plug objects <code>A</code>, <code>B</code>, <code>C</code>, and <code>D</code> into the formula (see above) using the multiplication (<code>*</code>) and division (<code>/</code>) operators, and assign the result to an object called <code>OR</code> using the <code>&lt;-</code> assignment operator.</p>
-<div class="sourceCode" id="cb1652"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1652-1"><a href="turnoverchisquare.html#cb1652-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate odds ratio of someone *staying* </span></span>
-<span id="cb1652-2"><a href="turnoverchisquare.html#cb1652-2" aria-hidden="true" tabindex="-1"></a><span class="co"># who participated in the treatment (onboarding program)</span></span>
-<span id="cb1652-3"><a href="turnoverchisquare.html#cb1652-3" aria-hidden="true" tabindex="-1"></a>OR <span class="ot">&lt;-</span> (A <span class="sc">*</span> D) <span class="sc">/</span> (B <span class="sc">*</span> C)</span>
-<span id="cb1652-4"><a href="turnoverchisquare.html#cb1652-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1652-5"><a href="turnoverchisquare.html#cb1652-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print odds ratio</span></span>
-<span id="cb1652-6"><a href="turnoverchisquare.html#cb1652-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(OR)</span></code></pre></div>
+<div class="sourceCode" id="cb1651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1651-1"><a href="turnoverchisquare.html#cb1651-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate odds ratio of someone *staying* </span></span>
+<span id="cb1651-2"><a href="turnoverchisquare.html#cb1651-2" aria-hidden="true" tabindex="-1"></a><span class="co"># who participated in the treatment (onboarding program)</span></span>
+<span id="cb1651-3"><a href="turnoverchisquare.html#cb1651-3" aria-hidden="true" tabindex="-1"></a>OR <span class="ot">&lt;-</span> (A <span class="sc">*</span> D) <span class="sc">/</span> (B <span class="sc">*</span> C)</span>
+<span id="cb1651-4"><a href="turnoverchisquare.html#cb1651-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1651-5"><a href="turnoverchisquare.html#cb1651-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print odds ratio</span></span>
+<span id="cb1651-6"><a href="turnoverchisquare.html#cb1651-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(OR)</span></code></pre></div>
 <pre><code>## [1] 17.52381</code></pre>
 <p>The odds ratio is 17.52, which indicates that for those who participated in the onboarding program the odds of <em>staying</em> was 17.52 greater. If an odds ratio is equal to 1.00, then it signifies no association – or equal odds of experiencing the focal event. If an odds ratio is <em>greater</em> than 1.00, then it signifies a positive association between the two variables, such that the higher level on the first variable (e.g., receiving treatment) is associated with the higher level on the second variable (e.g., experiencing event).</p>
 <p>Alternatively, if we would like to, instead, understand the odds of someone <em>quitting</em> after participating in the onboarding program, we would flip the numerator and denominator from our above code. Effectively, in this example, this simple operation switches our focal event from staying to quitting, thereby giving us a different perspective on the association between the two variables.</p>
-<div class="sourceCode" id="cb1654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1654-1"><a href="turnoverchisquare.html#cb1654-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate odds ratio of someone *quitting* </span></span>
-<span id="cb1654-2"><a href="turnoverchisquare.html#cb1654-2" aria-hidden="true" tabindex="-1"></a><span class="co"># who participated in the treatment (onboarding program)</span></span>
-<span id="cb1654-3"><a href="turnoverchisquare.html#cb1654-3" aria-hidden="true" tabindex="-1"></a>OR_alt <span class="ot">&lt;-</span> (B <span class="sc">*</span> C) <span class="sc">/</span> (A <span class="sc">*</span> D) <span class="co"># flip numerator and denominator </span></span>
-<span id="cb1654-4"><a href="turnoverchisquare.html#cb1654-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1654-5"><a href="turnoverchisquare.html#cb1654-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print odds ratio</span></span>
-<span id="cb1654-6"><a href="turnoverchisquare.html#cb1654-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(OR_alt)</span></code></pre></div>
+<div class="sourceCode" id="cb1653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1653-1"><a href="turnoverchisquare.html#cb1653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate odds ratio of someone *quitting* </span></span>
+<span id="cb1653-2"><a href="turnoverchisquare.html#cb1653-2" aria-hidden="true" tabindex="-1"></a><span class="co"># who participated in the treatment (onboarding program)</span></span>
+<span id="cb1653-3"><a href="turnoverchisquare.html#cb1653-3" aria-hidden="true" tabindex="-1"></a>OR_alt <span class="ot">&lt;-</span> (B <span class="sc">*</span> C) <span class="sc">/</span> (A <span class="sc">*</span> D) <span class="co"># flip numerator and denominator </span></span>
+<span id="cb1653-4"><a href="turnoverchisquare.html#cb1653-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1653-5"><a href="turnoverchisquare.html#cb1653-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print odds ratio</span></span>
+<span id="cb1653-6"><a href="turnoverchisquare.html#cb1653-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(OR_alt)</span></code></pre></div>
 <pre><code>## [1] 0.05706522</code></pre>
 <p>The new odds ratio (<code>OR_alt</code>) is approximately .06 (with rounding). Because an odds ratio that is less than 1.00 signifies a negative association, this odds ratio indicates that those who participated in the treatment (onboarding program) are <em>less</em> likely to have experienced the event of quitting. If we compute the reciprocal of the odds ratio, we arrive back at our original odds ratio.</p>
-<div class="sourceCode" id="cb1656"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1656-1"><a href="turnoverchisquare.html#cb1656-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate reciprocal of odds ratio</span></span>
-<span id="cb1656-2"><a href="turnoverchisquare.html#cb1656-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> OR_alt</span></code></pre></div>
+<div class="sourceCode" id="cb1655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1655-1"><a href="turnoverchisquare.html#cb1655-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate reciprocal of odds ratio</span></span>
+<span id="cb1655-2"><a href="turnoverchisquare.html#cb1655-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> OR_alt</span></code></pre></div>
 <pre><code>## [1] 17.52381</code></pre>
 <p>This takes us back to our original interpretation, which is that for those who participated in the onboarding program the odds of <em>staying</em> was 17.52 greater. I should note that an odds ratio of 17.52 is a <em>HUGE</em> effect.</p>
 <p>When working with a 2x2 contingency table, I recommend computing the reciprocal of any odds ratio less than 1.00, as it often leads to a more straightforward interpretation – just remember that the we have to conceptually flip the event and non-event when interpreting the now positive association between the two categorical variables.</p>
 <p>As a significance test for the odds ratio, we can compute the 95% confidence intervals. Because an odds ratio of 1.00 signifies no association between the two variables, any confidence interval that does <em>not</em> include 1.00 will be considered statistically significant.</p>
 <p>To compute the confidence interval, we first need to compute the standard error of the odds ratio using the following formula.</p>
 <p><span class="math inline">\(SE = \sqrt{\frac{1}{A} + \frac{1}{B} + \frac{1}{C} + \frac{1}{D}}\)</span></p>
-<div class="sourceCode" id="cb1658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1658-1"><a href="turnoverchisquare.html#cb1658-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard error (SE) of odds ratio</span></span>
-<span id="cb1658-2"><a href="turnoverchisquare.html#cb1658-2" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span>A) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>B) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>C) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>D))</span></code></pre></div>
+<div class="sourceCode" id="cb1657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1657-1"><a href="turnoverchisquare.html#cb1657-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard error (SE) of odds ratio</span></span>
+<span id="cb1657-2"><a href="turnoverchisquare.html#cb1657-2" aria-hidden="true" tabindex="-1"></a>SE <span class="ot">&lt;-</span> <span class="fu">sqrt</span>((<span class="dv">1</span><span class="sc">/</span>A) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>B) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>C) <span class="sc">+</span> (<span class="dv">1</span><span class="sc">/</span>D))</span></code></pre></div>
 <p>To construct the lower and upper limits of a 95% confidence interval, we need to first multiply the standard error (<code>SE</code>) by 1.96. To compute the lower limit, we <em>subtract</em> that product from the natural log of odds ratio (<code>log(OR)</code>) and then exponentiate the resulting value using the <code>exp</code> function from base R, where the <code>exp</code> function takes Euler’s constant (<span class="math inline">\(e\)</span>) and adds a specified exponent to it. To compute the upper limit, we <em>add</em> that product to the natural log of odds ratio and then exponentiate the resulting value.</p>
-<div class="sourceCode" id="cb1659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1659-1"><a href="turnoverchisquare.html#cb1659-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate 95% confidence interval for odds ratio</span></span>
-<span id="cb1659-2"><a href="turnoverchisquare.html#cb1659-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">log</span>(OR) <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE) <span class="co"># lower limit</span></span></code></pre></div>
+<div class="sourceCode" id="cb1658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1658-1"><a href="turnoverchisquare.html#cb1658-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate 95% confidence interval for odds ratio</span></span>
+<span id="cb1658-2"><a href="turnoverchisquare.html#cb1658-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">log</span>(OR) <span class="sc">-</span> <span class="fl">1.96</span><span class="sc">*</span>SE) <span class="co"># lower limit</span></span></code></pre></div>
 <pre><code>## [1] 5.122538</code></pre>
-<div class="sourceCode" id="cb1661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1661-1"><a href="turnoverchisquare.html#cb1661-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">log</span>(OR) <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE) <span class="co"># upper limit</span></span></code></pre></div>
+<div class="sourceCode" id="cb1660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1660-1"><a href="turnoverchisquare.html#cb1660-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">log</span>(OR) <span class="sc">+</span> <span class="fl">1.96</span><span class="sc">*</span>SE) <span class="co"># upper limit</span></span></code></pre></div>
 <pre><code>## [1] 59.94761</code></pre>
 <p>The 95% confidence interval ranges from 5.12 to 59.95 (95% CI[5.12, 59.95]). Because this interval does not include 1.00, we can conclude that the odds ratio of 17.52 is statistically significantly different from 1.00.</p>
 
