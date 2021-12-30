@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-29" />
+<meta name="date" content="2021-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -844,8 +844,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.5" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_chisquare"><i class="fa fa-check"></i><b>46.2.5</b> Estimate Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="46.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement"><i class="fa fa-check"></i><b>46.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="46.3.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement_functions"><i class="fa fa-check"></i><b>46.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="46.3.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_initsteps_supplement"><i class="fa fa-check"></i><b>46.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="46.3.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#supplement_turnoverchisquare_oddsratio"><i class="fa fa-check"></i><b>46.3.3</b> Compute Odds Ratio for 2x2 Contingency Table</a></li>
 </ul></li>
-<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+</ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Identifying Predictors of Turnover Using Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
 <ul>
@@ -865,7 +871,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
 <li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
 <li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
-<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
@@ -948,26 +954,48 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th><em>r</em></th>
-<th>Description</th>
+<th align="center"><em>r</em></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.10</td>
-<td>Small</td>
+<td align="center">.10</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.30</td>
-<td>Medium</td>
+<td align="center">.30</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.50</td>
-<td>Large</td>
+<td align="center">.50</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
 <p>In a simple linear regression model, we can also describe the magnitude of the effect in terms of the proportion of variance explained in the outcome variable by the predictor variable (i.e., <em>R</em><sup>2</sup>). In fact, in the case of a simple linear regression, the <em>R</em><sup>2</sup> estimate will be equal to the <strong>coefficient of determination</strong> (<em>r</em><sup>2</sup>), as described in the <a href="criterionrelatedvalidity.html#practicalsignficance_correlation">chapter on estimating criterion-related validity using correlations</a>. Conceptually, we can think of the overlap between the variability in the predictor and outcome variables as the variance explained (<em>R</em><sup>2</sup>). I’ve found that the <em>R</em><sup>2</sup> is often more readily interpretable by non-analytics audiences. For example, an <em>R</em><sup>2</sup> of .10 in a simple linear regression model can be interpreted as: 10% of the variability in scores on the outcome variable can be explained by scores on the predictor variable. That is, to convert an <em>R</em><sup>2</sup> from a proportion to a percent, we just multiply by 100.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><em>R</em><sup>2</sup></th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.01</td>
+<td align="center">Small</td>
+</tr>
+<tr class="even">
+<td align="center">.09</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="odd">
+<td align="center">.25</td>
+<td align="center">Large</td>
+</tr>
+</tbody>
+</table>
 <div class="figure">
 <img src="Rsquared.png" alt="" />
 <p class="caption">As an effect size, <em>R</em><sup>2</sup> indicates the proportion of variance explained by the predictor variable in the outcome variable – or in other words, the shared variance between the two variables.</p>
@@ -1041,7 +1069,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1186-4"><a href="predictingcriterionscores.html#cb1186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1186-5"><a href="predictingcriterionscores.html#cb1186-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1098,9 +1126,9 @@ BOOK UNDER CONSTRUCTION</a>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-710-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
-## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(Conscientiousness, Performance, fill=&quot;skyblue&quot;)  # interior fill color of points
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
-## Plot(Conscientiousness, Performance, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
+## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% from center as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
@@ -1229,22 +1257,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th><em>R</em><sup>2</sup></th>
-<th>Description</th>
+<th align="center"><em>R</em><sup>2</sup></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.01</td>
-<td>Small</td>
+<td align="center">.01</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.09</td>
-<td>Medium</td>
+<td align="center">.09</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.25</td>
-<td>Large</td>
+<td align="center">.25</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
@@ -1548,7 +1576,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1218-4"><a href="predictingcriterionscores.html#cb1218-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1218-5"><a href="predictingcriterionscores.html#cb1218-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1663,22 +1691,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th><em>R</em><sup>2</sup></th>
-<th>Description</th>
+<th align="center"><em>R</em><sup>2</sup></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.01</td>
-<td>Small</td>
+<td align="center">.01</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.09</td>
-<td>Medium</td>
+<td align="center">.09</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.25</td>
-<td>Large</td>
+<td align="center">.25</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
@@ -1697,22 +1725,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th><em>r</em></th>
-<th>Description</th>
+<th align="center"><em>r</em></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.10</td>
-<td>Small</td>
+<td align="center">.10</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.30</td>
-<td>Medium</td>
+<td align="center">.30</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.50</td>
-<td>Large</td>
+<td align="center">.50</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>

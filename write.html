@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-29" />
+<meta name="date" content="2021-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -844,8 +844,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.5" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_chisquare"><i class="fa fa-check"></i><b>46.2.5</b> Estimate Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="46.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement"><i class="fa fa-check"></i><b>46.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="46.3.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement_functions"><i class="fa fa-check"></i><b>46.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="46.3.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_initsteps_supplement"><i class="fa fa-check"></i><b>46.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="46.3.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#supplement_turnoverchisquare_oddsratio"><i class="fa fa-check"></i><b>46.3.3</b> Compute Odds Ratio for 2x2 Contingency Table</a></li>
 </ul></li>
-<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+</ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Identifying Predictors of Turnover Using Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
 <ul>
@@ -865,7 +871,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
 <li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
 <li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
-<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
@@ -953,7 +959,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb219-4"><a href="write.html#cb219-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb219-5"><a href="write.html#cb219-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),

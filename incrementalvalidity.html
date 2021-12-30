@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-29" />
+<meta name="date" content="2021-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -844,8 +844,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.5" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_chisquare"><i class="fa fa-check"></i><b>46.2.5</b> Estimate Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="46.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement"><i class="fa fa-check"></i><b>46.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="46.3.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement_functions"><i class="fa fa-check"></i><b>46.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="46.3.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_initsteps_supplement"><i class="fa fa-check"></i><b>46.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="46.3.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#supplement_turnoverchisquare_oddsratio"><i class="fa fa-check"></i><b>46.3.3</b> Compute Odds Ratio for 2x2 Contingency Table</a></li>
 </ul></li>
-<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+</ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Identifying Predictors of Turnover Using Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
 <ul>
@@ -865,7 +871,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
 <li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
 <li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
-<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
@@ -941,6 +947,28 @@ BOOK UNDER CONSTRUCTION</a>
 <p>As a reminder, an effect size is a standardized metric that can be compared across samples. In a multiple linear regression model, an <em>unstandardized</em> regression coefficient (<span class="math inline">\(b\)</span>) is <em>not</em> an effect size. The reason being, an unstandardized regression coefficient estimate is based on the original scaling of the predictor and outcome variables, and thus the same effect will take on different regression coefficients to the extent that the predictor and outcome variables have different scalings across samples.</p>
 <p>A <em>standardized</em> regression coefficient (<span class="math inline">\(\beta\)</span>) can be interpreted as an effect size (and thus an indicator of practical significance) given that it is standardized. With that being said, I suggest doing so with caution as collinearity (i.e., correlation) between predictor variables in the model can bias our interpretation of <span class="math inline">\(\beta\)</span> as an effect size. Thus, if your goal is just to understand the bivariate association between a predictor variable and an outcome variable (without introducing statistical control), then I recommend to just estimate a correlation coefficient as an indicator of practical significance, which I discuss in the chapter on <a href="criterionrelatedvalidity.html#practicalsignficance_correlation">estimating criterion-related validity using correlations</a>.</p>
 <p>In a multiple linear regression model, we can also describe the magnitude of the effect in terms of the proportion of variance explained in the outcome variable by the predictor variables (i.e., <em>R</em><sup>2</sup>). That is, in a multiple linear regression model, <em>R</em><sup>2</sup> represents the proportion of <em>collective</em> variance explained in the outcome variable by all of the predictor variables. Conceptually, we can think of the overlap between the variability in the predictor variables and and outcome variable as the variance explained (<em>R</em><sup>2</sup>), and <em>R</em><sup>2</sup> is a way to evaluate how well a model fits the data (i.e., model fit). I’ve found that the <em>R</em><sup>2</sup> is often readily interpretable by non-analytics audiences. For example, an <em>R</em><sup>2</sup> of .25 in a multiple linear regression model can be interpreted as: the predictor variable scores explain 25% of the variability in scores on the outcome variable. That is, to convert an <em>R</em><sup>2</sup> from a proportion to a percent, we just multiply by 100.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><em>R</em><sup>2</sup></th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.01</td>
+<td align="center">Small</td>
+</tr>
+<tr class="even">
+<td align="center">.09</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="odd">
+<td align="center">.25</td>
+<td align="center">Large</td>
+</tr>
+</tbody>
+</table>
 <div class="figure">
 <img src="Rsquared_mlr.png" alt="" />
 <p class="caption">As an effect size, <em>R</em><sup>2</sup> indicates the proportion of variance explained by the predictor variables in relation to the outcome variable – or in other words, the shared variance between the variables.</p>
@@ -1001,7 +1029,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1258-4"><a href="incrementalvalidity.html#cb1258-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1258-5"><a href="incrementalvalidity.html#cb1258-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1323,22 +1351,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th><em>R</em><sup>2</sup></th>
-<th>Description</th>
+<th align="center"><em>R</em><sup>2</sup></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.01</td>
-<td>Small</td>
+<td align="center">.01</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.09</td>
-<td>Medium</td>
+<td align="center">.09</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.25</td>
-<td>Large</td>
+<td align="center">.25</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
@@ -1569,7 +1597,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1277-4"><a href="incrementalvalidity.html#cb1277-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1277-5"><a href="incrementalvalidity.html#cb1277-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1736,22 +1764,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th><em>R</em><sup>2</sup></th>
-<th>Description</th>
+<th align="center"><em>R</em><sup>2</sup></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.01</td>
-<td>Small</td>
+<td align="center">.01</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.09</td>
-<td>Medium</td>
+<td align="center">.09</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.25</td>
-<td>Large</td>
+<td align="center">.25</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>

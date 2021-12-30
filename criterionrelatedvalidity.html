@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-29" />
+<meta name="date" content="2021-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -844,8 +844,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.5" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_chisquare"><i class="fa fa-check"></i><b>46.2.5</b> Estimate Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="46.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement"><i class="fa fa-check"></i><b>46.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="46.3.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement_functions"><i class="fa fa-check"></i><b>46.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="46.3.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_initsteps_supplement"><i class="fa fa-check"></i><b>46.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="46.3.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#supplement_turnoverchisquare_oddsratio"><i class="fa fa-check"></i><b>46.3.3</b> Compute Odds Ratio for 2x2 Contingency Table</a></li>
 </ul></li>
-<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+</ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Identifying Predictors of Turnover Using Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
 <ul>
@@ -865,7 +871,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
 <li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
 <li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
-<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
@@ -939,22 +945,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th><em>r</em></th>
-<th>Description</th>
+<th align="center"><em>r</em></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.10</td>
-<td>Small</td>
+<td align="center">.10</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.30</td>
-<td>Medium</td>
+<td align="center">.30</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.50</td>
-<td>Large</td>
+<td align="center">.50</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
@@ -1017,7 +1023,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1149-4"><a href="criterionrelatedvalidity.html#cb1149-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1149-5"><a href="criterionrelatedvalidity.html#cb1149-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1068,9 +1074,9 @@ BOOK UNDER CONSTRUCTION</a>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-689-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
-## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(Conscientiousness, Performance, fill=&quot;skyblue&quot;)  # interior fill color of points
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% from center as outliers 
+## Plot(Conscientiousness, Performance, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
@@ -1111,9 +1117,9 @@ BOOK UNDER CONSTRUCTION</a>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-691-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
-## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(Conscientiousness, Performance, fill=&quot;skyblue&quot;)  # interior fill color of points
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% from center as outliers 
+## Plot(Conscientiousness, Performance, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
@@ -1145,7 +1151,29 @@ BOOK UNDER CONSTRUCTION</a>
 ## 
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
-<p>As you can see, we find the following: <em>r</em> = .469, <em>p</em> &lt; .001, 95% CI[.339, .581]. We can interpret the finding as follows: Scores on the conscientiousness test are positively associated with job performance scores to a statistically significant extent (<em>r</em> = .469, <em>p</em> &lt; .001, 95% CI[.339, .581]), such that individuals with higher conscientiousness tend to have higher job performance. How do we know the correlation coefficient is statistically significant? Well, the <em>p</em>-value is less than the conventional alpha cutoff of .05. Given the conventional rules of thumb for interpreting a correlation coefficient as an effect size (see <a href="criterionrelatedvalidity.html#practicalsignficance_correlation">Practical Significance</a> section), we can describe this correlation coefficient of .469 as approximately medium or medium-to-large in magnitude. The <em>point estimate</em> of the correlation coefficient (<em>r</em> = .469) does not directly reflect the sampling error that inevitably affects the estimated correlation coefficient derived from our sample; this is where the confidence interval can augment our interpretation by expressing a range, within which we can be reasonably confident that the true (population) correlation coefficient likely falls. With regard to the 95% confidence interval, it is likely that the range from .339 to .581 contains the true (population) correlation; that is, the true (population) correlation coefficient is likely somewhere between medium and large in magnitude.</p>
+<p>As you can see, we find the following: <em>r</em> = .469, <em>p</em> &lt; .001, 95% CI[.339, .581]. We can interpret the finding as follows: Scores on the conscientiousness test are positively associated with job performance scores to a statistically significant extent (<em>r</em> = .469, <em>p</em> &lt; .001, 95% CI[.339, .581]), such that individuals with higher conscientiousness tend to have higher job performance. How do we know the correlation coefficient is statistically significant? Well, the <em>p</em>-value is less than the conventional alpha cutoff of .05. Given the conventional rules of thumb for interpreting a correlation coefficient as an effect size (see <a href="criterionrelatedvalidity.html#practicalsignficance_correlation">Practical Significance</a> section and table below), we can describe this correlation coefficient of .469 as approximately medium or medium-to-large in magnitude. The <em>point estimate</em> of the correlation coefficient (<em>r</em> = .469) does not directly reflect the sampling error that inevitably affects the estimated correlation coefficient derived from our sample; this is where the confidence interval can augment our interpretation by expressing a range, within which we can be reasonably confident that the true (population) correlation coefficient likely falls. With regard to the 95% confidence interval, it is likely that the range from .339 to .581 contains the true (population) correlation; that is, the true (population) correlation coefficient is likely somewhere between medium and large in magnitude.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center"><em>r</em></th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.10</td>
+<td align="center">Small</td>
+</tr>
+<tr class="even">
+<td align="center">.30</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="odd">
+<td align="center">.50</td>
+<td align="center">Large</td>
+</tr>
+</tbody>
+</table>
 <p>In the context of selection tool validation, the correlation coefficient between a selection tool and a criterion can be used as an indicator of criterion-related validity. Because the correlation above is statistically significant, this provides initial evidence that the conscientiousness test has sufficiently high criterion-related validity, as it appears to be significantly associated with the criterion of job performance. In this context, we can refer to the correlation coefficient as a <strong>validity coefficient</strong>. Moreover, the practical significance (as indicated by the effect size) is approximately medium or medium-to-large, given the thresholds mentioned above. Thus, as a selection tool, the conscientiousness test appears to have relatively good criterion-related validity for this population.</p>
 </div>
 <div id="summary_criterionrelatedvalidity" class="section level3" number="37.2.6">
@@ -1192,7 +1220,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1170-4"><a href="criterionrelatedvalidity.html#cb1170-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1170-5"><a href="criterionrelatedvalidity.html#cb1170-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),

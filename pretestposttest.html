@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-29" />
+<meta name="date" content="2021-12-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -844,8 +844,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="46.2.5" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_chisquare"><i class="fa fa-check"></i><b>46.2.5</b> Estimate Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
 <li class="chapter" data-level="46.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>46.2.6</b> Summary</a></li>
 </ul></li>
+<li class="chapter" data-level="46.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement"><i class="fa fa-check"></i><b>46.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="46.3.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement_functions"><i class="fa fa-check"></i><b>46.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="46.3.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_initsteps_supplement"><i class="fa fa-check"></i><b>46.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="46.3.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#supplement_turnoverchisquare_oddsratio"><i class="fa fa-check"></i><b>46.3.3</b> Compute Odds Ratio for 2x2 Contingency Table</a></li>
 </ul></li>
-<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Determining Predictors of Turnover Using Logistic Regression</a>
+</ul></li>
+<li class="chapter" data-level="47" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>47</b> Identifying Predictors of Turnover Using Logistic Regression</a>
 <ul>
 <li class="chapter" data-level="47.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a>
 <ul>
@@ -865,7 +871,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>47.3.1</b> Functions &amp; Packages Introduced</a></li>
 <li class="chapter" data-level="47.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>47.3.2</b> Initial Steps</a></li>
 <li class="chapter" data-level="47.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
-<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
@@ -932,22 +938,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th>Cohen’s <em>d</em></th>
-<th>Description</th>
+<th align="center">Cohen’s <em>d</em></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.20</td>
-<td>Small</td>
+<td align="center">.20</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.50</td>
-<td>Medium</td>
+<td align="center">.50</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.80</td>
-<td>Large</td>
+<td align="center">.80</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
@@ -1034,7 +1040,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb910-4"><a href="pretestposttest.html#cb910-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb910-5"><a href="pretestposttest.html#cb910-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   PreTest = col_double(),
@@ -1126,22 +1132,22 @@ BOOK UNDER CONSTRUCTION</a>
 <table>
 <thead>
 <tr class="header">
-<th>Cohen’s <em>d</em></th>
-<th>Description</th>
+<th align="center">Cohen’s <em>d</em></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>.20</td>
-<td>Small</td>
+<td align="center">.20</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td>.50</td>
-<td>Medium</td>
+<td align="center">.50</td>
+<td align="center">Medium</td>
 </tr>
 <tr class="odd">
-<td>.80</td>
-<td>Large</td>
+<td align="center">.80</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
@@ -1349,7 +1355,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb942-4"><a href="pretestposttest.html#cb942-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb942-5"><a href="pretestposttest.html#cb942-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification ------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   PreTest = col_double(),
@@ -1425,7 +1431,29 @@ BOOK UNDER CONSTRUCTION</a>
 ## 95 percent confidence interval:
 ##    lower    upper 
 ## 1.325315 4.275689</code></pre>
-<p>The output indicates that Cohen’s <em>d</em> is 1.694, which would be considered large by conventional cutoff standards (see table earlier in this tutorial).</p>
+<p>The output indicates that Cohen’s <em>d</em> is 1.694, which would be considered large by conventional cutoff standards.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Cohen’s <em>d</em></th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.20</td>
+<td align="center">Small</td>
+</tr>
+<tr class="even">
+<td align="center">.50</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="odd">
+<td align="center">.80</td>
+<td align="center">Large</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Sample Write-Up:</strong> In total, 25 employees participated in the new training program, which was evaluated using a pre-test/post-test without control group training evaluation design. Employees completed an assessment of their knowledge before training and after training, where assessment scores could range from 1-100. On average, employees’ performance on the assessment increased to a statistically significant extent from before to after completing the training (<em>M</em> = 19.64, <em>SD</em> = 11.60, <em>t</em> = 8.468, <em>p</em> &lt; .001, 95% CI[14.85, 24.43]). This improvement can be considered very large (<em>d</em> = 1.69).</p>
 
 </div>
