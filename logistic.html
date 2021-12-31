@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2021-12-30" />
+<meta name="date" content="2021-12-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -880,6 +880,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="48.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>48.1.1</b> Review of Predictive Analytics</a></li>
 <li class="chapter" data-level="48.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>48.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+<li class="chapter" data-level="48.1.3" data-path="kfold.html"><a href="kfold.html#conceptualvideo_kfold"><i class="fa fa-check"></i><b>48.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="48.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
 <ul>
@@ -890,9 +891,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="48.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>48.2.5</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="49" data-path="survival.html"><a href="survival.html"><i class="fa fa-check"></i><b>49</b> Understanding Length of Service Using Survival Analysis</a>
+<ul>
+<li class="chapter" data-level="49.1" data-path="survival.html"><a href="survival.html#conceptualoverview_survival"><i class="fa fa-check"></i><b>49.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="49.1.1" data-path="survival.html"><a href="survival.html#review_censoring_survival"><i class="fa fa-check"></i><b>49.1.1</b> Censoring</a></li>
+<li class="chapter" data-level="49.1.2" data-path="survival.html"><a href="survival.html#review_types_survival"><i class="fa fa-check"></i><b>49.1.2</b> Types of Survival Analysis</a></li>
+<li class="chapter" data-level="49.1.3" data-path="survival.html"><a href="survival.html#conceptualvideo_survival"><i class="fa fa-check"></i><b>49.1.3</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="49.2" data-path="survival.html"><a href="survival.html#tutorial_survival"><i class="fa fa-check"></i><b>49.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="49.2.1" data-path="survival.html"><a href="survival.html#videotutorial_survival"><i class="fa fa-check"></i><b>49.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="49.2.2" data-path="survival.html"><a href="survival.html#functions_survival"><i class="fa fa-check"></i><b>49.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="49.2.3" data-path="survival.html"><a href="survival.html#initsteps_survival"><i class="fa fa-check"></i><b>49.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="49.2.4" data-path="survival.html"><a href="survival.html#createcensoring_survival"><i class="fa fa-check"></i><b>49.2.4</b> Create a Censoring Variable</a></li>
+<li class="chapter" data-level="49.2.5" data-path="survival.html"><a href="survival.html#inspectlosdistribution_survival"><i class="fa fa-check"></i><b>49.2.5</b> Inspect Distribution of Length of Service</a></li>
+<li class="chapter" data-level="49.2.6" data-path="survival.html"><a href="survival.html#conductkmanalysis_lifetable_survival"><i class="fa fa-check"></i><b>49.2.6</b> Conduct Kaplan-Meier Analysis &amp; Create Life Table</a></li>
+<li class="chapter" data-level="49.2.7" data-path="survival.html"><a href="survival.html#estimatecox_survival"><i class="fa fa-check"></i><b>49.2.7</b> Estimate Cox Proportional Hazards Model</a></li>
+<li class="chapter" data-level="49.2.8" data-path="survival.html"><a href="survival.html#summary_survival"><i class="fa fa-check"></i><b>49.2.8</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="49" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>49</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="50" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>50</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="50" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>50</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="51" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>51</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1108,7 +1129,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1664-4"><a href="logistic.html#cb1664-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1664-5"><a href="logistic.html#cb1664-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -------------------------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------------------------------
 ## cols(
 ##   ID = col_character(),
 ##   Turnover = col_double(),
@@ -1278,7 +1299,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 58.16 
 ## Recall: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-987-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1000-1.png" width="672" /></p>
 <p><strong>Note: In some instances, you might receive the error message shown below. You can ignore this message, as it just indicates that you have a poor predictor variable in the model that results in fitted/predicted values that are all the same. If you get this message, proceed forward with your interpretation of the output.</strong></p>
 <p><span class="math inline">\(\color{red}{\text{Error:}}\)</span>
 <span class="math inline">\(\color{red}{\text{All predicted values are 0.}}\)</span>
@@ -1413,7 +1434,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 65.31 
 ## Recall: 84.75 
 ## Precision: 66.67</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-988-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1001-1.png" width="672" /></p>
 <p>Because the interaction term (<code>JS:log(JS)</code>) regression coefficient of 1.1696 in the <em>Model Coefficients</em> table is nonsignificant (<em>p</em> = .232), we have no reason to believe that the association between the continuous predictor variable and the logit transformation of the outcome variable is <em>non</em>linear. If the interaction term had been statistically significant, then we might have evidence that the assumption was violated, and one potential solution would be to estimate a polynomial model of some kind to better fit the data; for more information on estimating nonlinear associations, check out Chapter 7 (“Curvilinear Effects in Logistic Regression”) from Osborne <span class="citation">(<a href="references.html#ref-osborne2015" role="doc-biblioref">2015</a>)</span>. Finally, we only apply this test when the predictor variable in question is continuous (interval, ratio). In practice, however, note that for reasons of parsimony, we sometimes we might choose to estimate a linear model over a nonlinear/polynomial model when the former fits the data reasonably well.</p>
 <p><strong>Important Note: If the variable for which you are applying the Box-Tidwell approach described above has one or more cases with a score of zero, then you will receive an error message when you run the model with the <code>log</code> function. The reason for the error is that the log of zero or any negative value is (mathematically) undefined. There are many reasons why your variable might have cases with scores equal to zero, some of which include: (a) zero is a naturally occurring value for the scale on which the variable is based, or (b) the variable was grand-mean centered or standardized, such that the mean is now equal to zero. There are some approaches to dealing with this issue and neither approach I will show you is going to be perfect, but each approach will give you an approximate understanding of whether violation of the linearity assumption might be an issue. First, we can add a positive numeric constant to every score on the continuous predictor variable in question that will result in the new lowest score being 1. Why 1 you might ask? Well, the rationale is somewhat arbitrary; the log of 1 is zero, and there is something nice about grounding the lowest logarithmic value at 0. Due note, however, that the magnitude of the linear transformation will have some effect on the <em>p</em>-value associated with the Box-Tidwell interaction term. Second, if there are proportionally very few cases with scores of zero on the predictor variable in question, we can simply subset those cases out for the analysis.</strong></p>
 <p>Just for the sake of demonstration, let’s transform the <code>JS</code> variable so that its lowest score is equal to zero. This will give us an opportunity to test the two approaches I described above. Simply, create a new variable (<code>JS_0</code>) that is equal to <code>JS</code> minus the minimum value of <code>JS</code>.</p>
@@ -1696,7 +1717,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 59.38 
 ## Recall: 84.48 
 ## Precision: 62.03</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1000-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1013-1.png" width="672" /></p>
 </div>
 <div id="predictingprobabilities_simple_logistic" class="section level4" number="47.2.4.3">
 <h4><span class="header-section-number">47.2.4.3</span> Optional: Compute Predicted Probabilities Based on Sample Data</h4>
@@ -1896,7 +1917,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 58.16 
 ## Recall: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1001-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1014-1.png" width="672" /></p>
 <p>In the output under the <em>Forecasts</em> section, you should see a section called <em>Data, Fitted Values, Standard Errors</em>. This section now contains the predicted probabilities and associated classifications for <em>all</em> cases in the sample. The column labeled <em>fitted</em> contains the predicted probabilities, and the column labeled <em>predict</em> contains the probabilities when applied to a default probability threshold of .50, such that 1 indicates that the probability was .50 or greater (i.e., event predicted to occur) 0 indicates the probability was less than .50 (i.e., event not predicted to occur).</p>
 <p>If desired, we can also append the predicted probabilities (i.e., fitted values) to our existing data frame by referencing the row names (i.e., row numbers) of each object when we merge.</p>
 <ol style="list-style-type: decimal">
@@ -2110,7 +2131,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 58.16 
 ## Recall: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1002-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1015-1.png" width="672" /></p>
 <p>If we print the first six rows from the <code>td</code> data frame object, we will see the new column containing the predicted probabilities based on our simple logistic regression model.</p>
 <div class="sourceCode" id="cb1700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1700-1"><a href="logistic.html#cb1700-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1700-2"><a href="logistic.html#cb1700-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
@@ -2253,7 +2274,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 58.16 
 ## Recall: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1007-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1020-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1707-1"><a href="logistic.html#cb1707-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract intercept and predictor coefficient</span></span>
 <span id="cb1707-2"><a href="logistic.html#cb1707-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="fu">unname</span>(mod<span class="sc">$</span>coefficients[<span class="st">&quot;(Intercept)&quot;</span>]) <span class="co"># extract intercept</span></span>
 <span id="cb1707-3"><a href="logistic.html#cb1707-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">=</span> <span class="fu">unname</span>(mod<span class="sc">$</span>coefficients[<span class="st">&quot;JS&quot;</span>]) <span class="co"># extract predictor coefficient</span></span>
@@ -2411,7 +2432,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 78.95 
 ## Recall: 89.66 
 ## Precision: 78.79</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1011-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1024-1.png" width="672" /></p>
 <p><strong>Note: In some instances, you might receive the error message shown below. You can ignore this message, as it just indicates that you have a poor predictor variable in the model that results in fitted/predicted values that are all the same. If you get this message, proceed forward with your interpretation of the output.</strong></p>
 <p><span class="math inline">\(\color{red}{\text{Error:}}\)</span>
 <span class="math inline">\(\color{red}{\text{All predicted values are 0.}}\)</span>
@@ -2564,7 +2585,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Accuracy: 74.74 
 ## Recall: 86.21 
 ## Precision: 75.76</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1012-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1025-1.png" width="672" /></p>
 <p>Because the <em>p</em>-values associated with each of the interaction terms and their regression coefficients (<code>JS:log(JS)</code>, <code>NAff:log(NAff)</code>, <code>TI:log(TI)</code>) are equal to or greater than the conventional two-tailed alpha level of .05, we have no reason to believe that any of the associations between the continuous predictor variables and the logit transformation of the outcome variable are nonlinear. If one of the interaction terms had been statistically significant, then we might have evidence that the assumption was violated, meaning we would assume a nonlinear association instead, and one potential solution would be to apply a transformation to the predictor variable in question (e.g., logarithmic transformation). Finally, we only apply this test when the predictor variables in question are continuous (interval, ratio).</p>
 <p><strong>Important Note: If the variable for which you are applying the Box-Tidwell approach described above has one or more cases with a score of zero, then you will receive an error message when you run the model with the <code>log</code> function. The reason for the error is that the log of zero or any negative value is (mathematically) undefined. There are many reasons why your variable might have cases with scores equal to zero, some of which include: (a) zero is a naturally occurring value for the scale on which the variable is based, or (b) the variable was grand-mean centered or standardized, such that the mean is now equal to zero. There are some approaches to dealing with this issue and neither approach I will show you is going to be perfect, but each approach will give you an approximate understanding of whether violation of the linearity assumption might be an issue. First, we can add a positive numeric constant to every score on the continuous predictor variable in question that will result in the new lowest score being 1. Why 1 you might ask? Well, the rationale is somewhat arbitrary; the log of 1 is zero, and there is something nice about grounding the lowest logarithmic value at 0. Due note, however, that the magnitude of the linear transformation will have some effect on the <em>p</em>-value associated with the Box-Tidwell interaction term. Second, if there are proportionally very few cases with scores of zero on the predictor variable in question, we can simply subset those cases out for the analysis. These approaches to addressing zero values (including the error message you might encounter) are demonstrated in a <a href="logistic.html#teststatisticalassumptions_simple_logistic">previous section on simple logistic regression</a>.</strong></p>
 </div>
@@ -2760,7 +2781,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1726-4"><a href="logistic.html#cb1726-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1726-5"><a href="logistic.html#cb1726-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -------------------------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------------------------------
 ## cols(
 ##   ID = col_character(),
 ##   Turnover = col_double(),
@@ -2825,7 +2846,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Data Are Free of Bivariate Outliers:</strong> To determine whether the data are free of bivariate outliers, let’s look at Cook’s distance (D) values across cases. Using the <code>plot</code> function from base R, type the name of our model object (<code>model1</code>) as the first argument, and as the second argument, enter the numeral <em>4</em> to request the fourth diagnostic plot, which is the Cook’s distance plot.</p>
 <div class="sourceCode" id="cb1735"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1735-1"><a href="logistic.html#cb1735-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb1735-2"><a href="logistic.html#cb1735-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model1, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1025-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1038-1.png" width="672" /></p>
 <p>The case associated with row number <em>66</em> has the highest Cook’s distance value, followed by the cases associated with row numbers <em>67</em> and <em>71</em> – although <em>66</em> and <em>67</em> seem to be clearest potential outliers of the three.</p>
 <p>We can also print the cases with the highest Cook’s distances. To do so, let’s create an object called <code>cooksD</code> to which we will assign a vector of Cook’s distance values using the <code>cooks.distance</code> function from base R. Just type the name of the logistic regression model object (<code>model1</code>) as the sole parenthetical argument. Next, update the object we called <code>cooksD</code> by applying the <code>sort</code> function from base R and typing the <code>cooksD</code> object name as the first object and <code>decreasing=TRUE</code> as the second argument; this will sort the Cook’s distance values in descending order. Finally, apply the <code>head</code> function from base R, and as the first argument enter the name of the <code>cooksD</code> object that we just sorted; as the second argument, type <code>n=20</code> to show the top 20 rows, as opposed to the default top 6 rows.</p>
 <div class="sourceCode" id="cb1736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1736-1"><a href="logistic.html#cb1736-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
@@ -2836,10 +2857,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1736-6"><a href="logistic.html#cb1736-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1736-7"><a href="logistic.html#cb1736-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1736-8"><a href="logistic.html#cb1736-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##         69          7         73         58         12         31         13          1         33         84 
-## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 0.02352896 0.01756755 
-##         63         61         97         70         74         75         67         80         77         39 
-## 0.01733141 0.01693066 0.01692984 0.01648318 0.01614505 0.01595550 0.01453516 0.01431210 0.01336026 0.01281733</code></pre>
+<pre><code>##         69          7         73         58         12         31         13          1         33         84         63 
+## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 0.02352896 0.01756755 0.01733141 
+##         61         97         70         74         75         67         80         77         39 
+## 0.01693066 0.01692984 0.01648318 0.01614505 0.01595550 0.01453516 0.01431210 0.01336026 0.01281733</code></pre>
 <p>Again, we see cases associated with row numbers <em>66</em> (.085), <em>67</em> (.062), and <em>71</em> (.049) having the highest Cook’s distance values, with <em>66</em> and <em>67</em> still looking like the most influential cases of the lot. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>66</em> and <em>67</em> from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>Association Between Any Continuous Predictor Variable and Logit Transformation of Outcome Variable Is Linear:</strong> To test the assumption of linearity between a <em>continuous</em> predictor variable and the logit transformation of the outcome variable, we can add the interaction between the predictor variable and its logarithmic (i.e., natural log) transformation. <strong>[Note: We do not perform the following test/approach for <em>categorical</em> predictor variables.]</strong> We will use an approach that is commonly referred to as the Box-Tidwell approach <span class="citation">(<a href="references.html#ref-hosmerlemeshow2000" role="doc-biblioref">Hosmer and Lemeshow 2000</a>)</span>. To apply this approach, we need to add the interaction term between our predictor variable <code>JS</code> and its logarithmic transformation to our logistic regression model – but not the main effect for the logarithmic transformation of <code>JS</code>. In our regression model formula, specify the dichotomous outcome variable <code>Turnover</code> to the left of the <code>~</code> operator. To the right of the <code>~</code> operator, type the name of the predictor variable <code>JS</code> followed by the <code>+</code> operator. After the <code>+</code> operator, type the name of the predictor variable <code>JS</code>, followed by the <code>:</code> operator and the <code>log</code> function from base R with the predictor variable <code>JS</code> as its sole parenthetical argument. Finally, we will use the <code>summary</code> function from base R to generate the model output, and within the parentheses, enter the name of the model you created in the prior step (<code>boxtidwell</code>).</p>
 <div class="sourceCode" id="cb1738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1738-1"><a href="logistic.html#cb1738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box-Tidwell diagnostic test of linearity between continuous predictor variable and</span></span>
@@ -3281,7 +3302,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Data Are Free of Multivariate Outliers:</strong> To determine whether the data are free of multivariate outliers, let’s look at Cook’s distance (D) values across cases. Using the <code>plot</code> function from base R, type the name of our model object (<code>model1</code>) as the first argument, and as the second argument, enter the numeral <em>4</em> to request the fourth diagnostic plot, which is the Cook’s distance plot.</p>
 <div class="sourceCode" id="cb1793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1793-1"><a href="logistic.html#cb1793-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb1793-2"><a href="logistic.html#cb1793-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1061-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1074-1.png" width="672" /></p>
 <p>The case associated with row number <em>6</em> has the highest Cook’s distance value, followed by the cases associated with row numbers <em>1</em> and <em>66</em>. The cases associated with row numbers <em>6</em> and <em>1</em> seem to be clearest potential outliers of the three.</p>
 <p>We can also print the cases with the highest Cook’s distances. Let’s create an object called <code>cooksD</code> that we will assign a vector of Cook’s distance values to using the <code>cooks.distance</code> function from base R. Just enter the name of the logistic regression model object (<code>model1</code>) as the sole parenthetical argument. Next, update the object we called <code>cooksD</code> by applying the <code>sort</code> function from base R and entering the <code>cooksD</code> object as the first object and <code>decreasing=TRUE</code> as the second argument; this will sort the Cook’s distance values in descending order. Finally, apply the <code>head</code> function from base R, and as the first argument enter the name of the <code>cooksD</code> object that we just sorted; as the second argument, type <code>n=20</code> to show the top 20 rows, as opposed to the default top 6 rows.</p>
 <div class="sourceCode" id="cb1794"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1794-1"><a href="logistic.html#cb1794-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
@@ -3292,10 +3313,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1794-6"><a href="logistic.html#cb1794-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1794-7"><a href="logistic.html#cb1794-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1794-8"><a href="logistic.html#cb1794-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          6          1         66         42         96         74         27         26         67         61 
-## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 0.03973226 0.02634920 
-##         68          4         25         52         54         69          8         75         77         64 
-## 0.02182251 0.01882168 0.01802907 0.01720366 0.01718997 0.01718628 0.01661234 0.01611474 0.01593173 0.01552323</code></pre>
+<pre><code>##          6          1         66         42         96         74         27         26         67         61         68 
+## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 0.03973226 0.02634920 0.02182251 
+##          4         25         52         54         69          8         75         77         64 
+## 0.01882168 0.01802907 0.01720366 0.01718997 0.01718628 0.01661234 0.01611474 0.01593173 0.01552323</code></pre>
 <p>Again, we see cases associated with row numbers <em>6</em> (.152), <em>1</em> (.134), and <em>66</em> (.101) having the highest Cook’s distance values. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>6</em> and <em>1</em> (and maybe even <em>66</em>) from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>No (Multi)Collinearity Between Predictor Variables:</strong> To assess whether (multi)collinearity might be an issue, let’s estimate two indices of collinearity: tolerance and valence inflation factor (VIF). If you haven’t already, install the <code>car</code> package which contains the <code>vif</code> function we will use to compute tolerance.</p>
 <div class="sourceCode" id="cb1796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1796-1"><a href="logistic.html#cb1796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install car package if you haven&#39;t already</span></span>
@@ -3576,20 +3597,13 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If we print the first six rows from the <code>td</code> data frame object, we will see the new column containing the predicted probabilities based on our simple logistic regression model.</p>
 <div class="sourceCode" id="cb1837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1837-1"><a href="logistic.html#cb1837-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1837-2"><a href="logistic.html#cb1837-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
-<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS
-## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0
-## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1
-## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1
-## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1
-## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1
-## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0
-##   pred.prod.allpred
-## 1        0.08371016
-## 2        0.73187048
-## 3        0.79306191
-## 4        0.90827169
-## 5        0.57694329
-## 6        0.31447250</code></pre>
+<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS pred.prod.allpred
+## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0        0.08371016
+## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1        0.73187048
+## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1        0.79306191
+## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1        0.90827169
+## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1        0.57694329
+## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0        0.31447250</code></pre>
 <p>We can now dichotomize the predicted probabilities (<code>pred.prod.allpred</code>), such that any case with a predicted probability of .50 or higher is assigned a 1 (quit), and any case with a predicted probability that is less than .50 is assigned a 0 (stay). That is, we’re setting our threshold for experiencing the event in question as .50. As the first step, let’s create a new variable called <code>dich.pred.prod.allpred</code> (or whatever we would like to call it) based on the values from the <code>pred.prod.allpred</code> variable we just created. Next, for the <code>dich.pred.prod.allpred</code>, dichotomize the values as either a 1 or a 0 in accordance with the approach described above. For more information on the data-management operations below, check out <a href="clean.html#clean">chapter on cleaning data</a>.</p>
 <div class="sourceCode" id="cb1839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1839-1"><a href="logistic.html#cb1839-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dichotomize probabilities, where .50 or greater is 1 (quit) and less than .50 is 0 (stay)</span></span>
 <span id="cb1839-2"><a href="logistic.html#cb1839-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>dich.pred.prod.allpred <span class="ot">&lt;-</span> td<span class="sc">$</span>pred.prod.allpred</span>
@@ -3597,20 +3611,20 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1839-4"><a href="logistic.html#cb1839-4" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>dich.pred.prod.allpred[td<span class="sc">$</span>dich.pred.prod.allpred <span class="sc">&lt;</span> .<span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
 <div class="sourceCode" id="cb1840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1840-1"><a href="logistic.html#cb1840-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1840-2"><a href="logistic.html#cb1840-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
-<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS
-## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0
-## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1
-## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1
-## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1
-## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1
-## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0
-##   pred.prod.allpred dich.pred.prod.allpred
-## 1        0.08371016                      0
-## 2        0.73187048                      1
-## 3        0.79306191                      1
-## 4        0.90827169                      1
-## 5        0.57694329                      1
-## 6        0.31447250                      0</code></pre>
+<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS pred.prod.allpred
+## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0        0.08371016
+## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1        0.73187048
+## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1        0.79306191
+## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1        0.90827169
+## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1        0.57694329
+## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0        0.31447250
+##   dich.pred.prod.allpred
+## 1                      0
+## 2                      1
+## 3                      1
+## 4                      1
+## 5                      1
+## 6                      0</code></pre>
 <p>It’s important to keep in mind that these predicted probabilities are estimated based on the same data we used to estimate the model in the first place. Given this, I would describe this process as predict-ish analytics as opposed to true predictive analytics. To reach predictive analytics, we would need to obtain “fresh” data on the predictor variables, which we could then use to plug into our model; to do this with a model estimated using the <code>glm</code> model, will create a toy data frame with “fresh” predictor variable values sampled from the same population. In a real life situation, we would more than likely read in a new data file and assign that to an object – just like we did in the <a href="compensatory.html#compensatory">chapter on applying a compensatory approach to selection decisions using multiple linear regression</a>.</p>
 <p>In this toy data frame that we’re naming <code>fresh_td</code>, we use the <code>data.frame</code> function from base R. As the first argument, we’ll create an <code>ID</code> variable with some fictional employee ID numbers. As the second argument, we’ll create a <code>JS</code> variable with some fictional job satisfaction scores. As the third argument, we’ll create a <code>NAff</code> variable with some fictional negative affectivity scores. As the fourth argument, we’ll create a <code>TI</code> variable with some fictional turnover intentions scores.</p>
 <div class="sourceCode" id="cb1842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1842-1"><a href="logistic.html#cb1842-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create toy data frame object for illustration purposes</span></span>
