@@ -874,9 +874,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="48" data-path="kfold.html"><a href="kfold.html"><i class="fa fa-check"></i><b>48</b> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="kfold.html"><a href="kfold.html#conceptualoverview_kfold"><i class="fa fa-check"></i><b>48.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="48.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>48.1.1</b> Review of Predictive Analytics</a></li>
+<li class="chapter" data-level="48.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>48.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="48.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="kfold.html"><a href="kfold.html#videotutorial_kfold"><i class="fa fa-check"></i><b>48.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="48.2.2" data-path="kfold.html"><a href="kfold.html#functions_kfold"><i class="fa fa-check"></i><b>48.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.2.3" data-path="kfold.html"><a href="kfold.html#initsteps_kfold"><i class="fa fa-check"></i><b>48.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.2.4" data-path="kfold.html"><a href="kfold.html#estimate_kfold_logistic"><i class="fa fa-check"></i><b>48.2.4</b> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</a></li>
+<li class="chapter" data-level="48.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>48.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="49" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>49</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="50" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>50</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -963,7 +979,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb778-4"><a href="pivottables.html#cb778-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb778-5"><a href="pivottables.html#cb778-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   OrgTenureYrs_2019 = col_double(),
@@ -975,8 +991,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb780"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb780-1"><a href="pivottables.html#cb780-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
 <span id="cb780-2"><a href="pivottables.html#cb780-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
-<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;              
-## [5] &quot;RaceEthnicity&quot;     &quot;AgeYrs_2019&quot;       &quot;Veteran&quot;</code></pre>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;               &quot;RaceEthnicity&quot;    
+## [6] &quot;AgeYrs_2019&quot;       &quot;Veteran&quot;</code></pre>
 <p>Note in the data frame that the <code>EmployeeID</code> variable (i.e., column, field) is a unique identifier variable, and each row contains an individual employee’s demographic data on the following variables: organizational tenure (<code>OrgTenureYrs_2019</code>), job level (<code>JobLevel</code>), sex (<code>Sex</code>), race/ethnicity (<code>RaceEthnicity</code>), age (<code>AgeYrs_2019</code>), and veteran status (<code>Veteran</code>).</p>
 </div>
 <div id="create_pivottables" class="section level3" number="26.2.4">

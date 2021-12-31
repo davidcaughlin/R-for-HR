@@ -874,9 +874,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="48" data-path="kfold.html"><a href="kfold.html"><i class="fa fa-check"></i><b>48</b> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="kfold.html"><a href="kfold.html#conceptualoverview_kfold"><i class="fa fa-check"></i><b>48.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="48.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>48.1.1</b> Review of Predictive Analytics</a></li>
+<li class="chapter" data-level="48.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>48.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="48.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="kfold.html"><a href="kfold.html#videotutorial_kfold"><i class="fa fa-check"></i><b>48.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="48.2.2" data-path="kfold.html"><a href="kfold.html#functions_kfold"><i class="fa fa-check"></i><b>48.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.2.3" data-path="kfold.html"><a href="kfold.html#initsteps_kfold"><i class="fa fa-check"></i><b>48.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.2.4" data-path="kfold.html"><a href="kfold.html#estimate_kfold_logistic"><i class="fa fa-check"></i><b>48.2.4</b> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</a></li>
+<li class="chapter" data-level="48.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>48.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="49" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>49</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="50" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>50</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1029,7 +1045,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1258-4"><a href="incrementalvalidity.html#cb1258-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1258-5"><a href="incrementalvalidity.html#cb1258-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1597,7 +1613,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1277-4"><a href="incrementalvalidity.html#cb1277-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1277-5"><a href="incrementalvalidity.html#cb1277-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1723,12 +1739,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1304-6"><a href="incrementalvalidity.html#cb1304-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1304-7"><a href="incrementalvalidity.html#cb1304-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1304-8"><a href="incrementalvalidity.html#cb1304-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        201         70        170        270        233        101          1         69 
-## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 0.08140835 
-##        169         92        192        292         20        120        283        269 
-## 0.08140835 0.06114519 0.06114519 0.06114519 0.05121764 0.05121764 0.04481510 0.04456115 
-##         97        197        297         82 
-## 0.01981777 0.01981777 0.01981777 0.01656404</code></pre>
+<pre><code>##        201         70        170        270        233        101          1         69        169         92 
+## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 0.08140835 0.08140835 0.06114519 
+##        192        292         20        120        283        269         97        197        297         82 
+## 0.06114519 0.06114519 0.05121764 0.05121764 0.04481510 0.04456115 0.01981777 0.01981777 0.01981777 0.01656404</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>201</em> is by far the largest, and the next largest values are clustered closer together, which include the cases associated with row numbers <em>70</em>, <em>170</em>, and <em>270</em>. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>201</em> appears to be consistently the most concerning case, and cases associated with row numbers <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> may also be problematic. For the most part, the distribution of the residuals look mostly normal. As such, as a sensitivity analysis and for the sake of demonstration, we will estimate our model once more after removing the cases associated with row numbers <em>201</em>, <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> from our data frame. If you’ve completed the entire tutorial thus far, you may have noted that some of the plots we are using with the <code>lm</code> function are different than those that come with the <code>Regression</code> function from <code>lessR</code> (see above), and further, you may have noticed that we have flagged more potential problematic cases in using these plots than the ones for the <code>Regression</code> function. This goes to show, again, how thoughtful we must be with the tools that we use, and again, I recommend erring on the side of caution when it comes to removing cases for subsequent analyses. And, remember, no model will ever be perfect. For now, let’s go ahead and interpret the results of the multiple linear regression model.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod2</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>

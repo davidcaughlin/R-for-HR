@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 43 Statistically &amp; Empirically Cross-Validating a Selection Tool | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 48 Applying k-Fold Cross-Validation to Logistic Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 43 Statistically &amp; Empirically Cross-Validating a Selection Tool | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 48 Applying k-Fold Cross-Validation to Logistic Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 43 Statistically &amp; Empirically Cross-Validating a Selection Tool | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 48 Applying k-Fold Cross-Validation to Logistic Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="differentialprediction.html"/>
-<link rel="next" href="turnover.html"/>
+<link rel="prev" href="logistic.html"/>
+<link rel="next" href="create-portfolio.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -916,343 +916,439 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="crossvalidation" class="section level1" number="43">
-<h1><span class="header-section-number">Chapter 43</span> Statistically &amp; Empirically Cross-Validating a Selection Tool</h1>
-<p>In this chapter, we will learn how to perform both statistical and empirical cross-validation, and we will do so in the context of validating an employee selection tool by estimating a multiple linear regression model. For a review of multiple linear regression, please refer to the <a href="incrementalvalidity.html#incrementalvalidity">chapter on estimating incremental validity</a>.</p>
-<div id="conceptualoverview_crossvalidation" class="section level2" number="43.1">
-<h2><span class="header-section-number">43.1</span> Conceptual Overview</h2>
-<p><strong>Cross-validation</strong> is a process through which we determine how well a regression model estimated using a sample from drawn from a particular population generalizes to another sample from that same population. More specifically, the term <strong>cross-validity</strong> “refers to whether the [regression coefficients] derived from one sample can predict outcomes to the same degree in the population as a whole or in other samples drawn from the same population” <span class="citation">(<a href="references.html#ref-cascio2005applied" role="doc-biblioref">Cascio and Aguinis 2005, 173</a>)</span>. At its core, cross-validation represents a step toward true <em>predictive analytics</em>, as it involves training our data on one sample and then testing our data on one or more other samples from that population. In general, we can distinguish between two approaches to cross-validation: statistical and empirical.</p>
-<div id="review_statistical_crossvalidation" class="section level3" number="43.1.1">
-<h3><span class="header-section-number">43.1.1</span> Review of Statistical Cross-Validation</h3>
-<p><strong>Statistical cross-validation</strong> is performed <em>without</em> collecting additional data from the underlying population from which the original regression model was estimated. There are a couple of different statistical indicators of a model’s cross-validity, which can be used in tandem to inform judgments of regarding cross-validity: adjusted <em>R</em><sup>2</sup> and squared cross-validity <span class="citation">(<a href="references.html#ref-raju1997methodology" role="doc-biblioref">Raju et al. 1997</a>)</span>.</p>
-<p>The <strong>adjusted <em>R</em><sup>2</sup></strong> (i.e., <span class="math inline">\(R^2_{adj}\)</span>, squared multiple correlation) <span class="citation">(<a href="references.html#ref-ezekiel1930methods" role="doc-biblioref">Ezekiel 1930</a>; <a href="references.html#ref-wherry1931new" role="doc-biblioref">Wherry 1931</a>)</span> appears in most statistical platforms’ regression output (including many R functions), and it provides a more accurate estimate of the amount of variance explained by the predictor variable(s) in the outcome variable than the unadjusted <em>R</em><sup>2</sup> (<span class="math inline">\(R^2_{unadj}\)</span>). Specifically, the <span class="math inline">\(R^2_{adj}\)</span> corrects for the sample size relative to the number of predictor variables in the model, which results in a lower estimate than its unadjusted counterpart. The <span class="math inline">\(R^2_{adj}\)</span> is a better indicator of the magnitude of the association in the underlying population than the <span class="math inline">\(R^2_{unadj}\)</span>. The formula for <span class="math inline">\(R^2_{adj}\)</span> is:</p>
-<p><span class="math inline">\(R^2_{adj} = \frac{N-1}{N-k-1}(1-R^2_{unadj})\)</span></p>
-<p>where <span class="math inline">\(N\)</span> refers to the sample size, <span class="math inline">\(k\)</span> refers to the number of predictor variables in the model, and <span class="math inline">\(R^2_{unadj}\)</span> is the <em>un</em>adjusted <em>R</em><sup>2</sup>, which reflects the sample-specific variance explained by the predictor variables in relation to the outcome variable. Again, this <span class="math inline">\(R^2_{adj}\)</span> is readily produced by most regression functions, so additional steps are not required to compute it.</p>
-<p>In contrast, the <strong>squared cross-validity</strong> (<span class="math inline">\(\rho^2_{c}\)</span>) <span class="citation">(<a href="references.html#ref-browne1975predictive" role="doc-biblioref">Browne 1975</a>)</span> often requires additional computation beyond what our regression function computes. As you can see in the formula below, the <span class="math inline">\(\rho^2_{c}\)</span> formula uses the <span class="math inline">\(R^2_{adj}\)</span> as input.</p>
-<p><span class="math inline">\(\rho^2_{c} = \frac{(N-k-3)(R^2_{adj})^2+R^2_{adj}}{(N-2k-2)(R^2_{adj})+k}\)</span></p>
-<p>Both <span class="math inline">\(R^2_{adj}\)</span> and <span class="math inline">\(\rho^2_{c}\)</span> can be used inform our understanding of a model’s squared cross-validity; however, preference should be given to the <span class="math inline">\(\rho^2_{c}\)</span>, as <span class="math inline">\(R^2_{adj}\)</span> by itself tends to overestimate the squared cross-validity. If we take the square root of <span class="math inline">\(\rho^2_{c}\)</span>, we get an estimate of <strong>cross-validity</strong> (<span class="math inline">\(\rho_{c}\)</span>).</p>
-</div>
-<div id="review_empirical_crossvalidation" class="section level3" number="43.1.2">
-<h3><span class="header-section-number">43.1.2</span> Review of Empirical Cross-Validation</h3>
-<p><strong>Empirical cross-validation</strong> requires that we sample additional data from the same population, or that we split our original sample (if it’s large enough) into subsamples, where the subsamples are sometimes referred to as holdout samples. Regardless of which approach we use, the logic is similar: One (sub)sample serves as our training (i.e., initial, original, derivation) data, and the other (sub)sample serves as our test (i.e., cross-validation) data. Using either approach, we estimate the regression model from the first (sub)sample and then estimate the extent to which the model fits the second (sub)sample as well as its and predictive accuracy.</p>
-<div id="samplewriteup_crossvalidation" class="section level4" number="43.1.2.1">
-<h4><span class="header-section-number">43.1.2.1</span> Sample Write-Up</h4>
-<p>We performed a concurrent validation study based on a sample 182 job incumbents. Given that all three selection tools (i.e., conscientiousness inventory, work sample, situational judgment test) showed evidence of incremental validity, we included all three in a multiple linear regression model, with performance evaluation scores as the criterion. All three selection tools showed evidence of incremental validity with respect to one another. To understand how well this estimated model might generalize to the broader population, we first performed statistical cross-validation. Specifically, we found that the adjusted <em>R</em><sup>2</sup> was .348 and the squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341. The latter indicates that in the population, the three selection tools collectively explain 34.1% of the variability in the criterion. Next, we performed empirical cross-validation by assessing the model’s performance in a new same of data drawn from the sample population. The squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341, which indicates that the model explained 34.1% of the variance in the criterion when applied to the second sample, which was only a slight decrease in performance compared to the original sample (<span class="math inline">\(R^2_{unadj}\)</span> = .359, <span class="math inline">\(R^2_{adj}\)</span> = .348). Further, estimates of root mean square error (RMSE) indicated that the RMSE for the second sample is 13.6% larger than the RMSE for the first sample, which indicates that prediction errors didn’t increase substantially when applying the model to the second sample. Overall, the model performed relatively well applied to a second sample of data, and it doesn’t appear as though we over fit the model when estimating it using the first sample.</p>
+<div id="kfold" class="section level1" number="48">
+<h1><span class="header-section-number">Chapter 48</span> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</h1>
+<p>In this chapter, we will learn how to apply <em>k</em>-fold cross-validation to logistic regression. As a specific type of cross-validation, <em>k</em>-fold cross-validation can be a useful framework for training and testing models.</p>
+<div id="conceptualoverview_kfold" class="section level2" number="48.1">
+<h2><span class="header-section-number">48.1</span> Conceptual Overview</h2>
+<p>In general, cross-validation is an integral part of <a href="dataanalysis.html#predictive_analytics">predictive analytics</a>, as it allows us to understand how a model estimated on one data set will perform when applied to one or more new data sets. Cross-validation was initially introduced in the <a href="crossvalidation.html#crossvalidation">chapter on statistically and empirically cross-validating a selection tool using multiple linear regression</a>. <em>k</em>-fold cross-validation is a specific type of cross-validation that is commonly applied when carrying out predictive analytics.</p>
+<div id="review_predictiveanalytics" class="section level3" number="48.1.1">
+<h3><span class="header-section-number">48.1.1</span> Review of Predictive Analytics</h3>
+<p>True <strong>predictive analytics</strong> involves training (i.e., estimating, building) a model using one or more samples of data and then evaluating (i.e., testing, validating) how well the model performs when applied to a separate sample of data drawn from the same population. Assuming we have a large enough data set to begin with, we often assign 80% of the cases to a training data set and 20% to a test data set. The term predictive analytics is a big umbrella term, and predictive analytics can be applied using many different types of models, including common regression model types like ordinary least squares (OLS) multiple linear regression or maximum likelihood logistic regression. When building a model using a predictive analytics framework, one of our goals is to minimize prediction errors (i.e., improve prediction accuracy) when the model is applied to “fresh” or “new” data (e.g., test data). Fewer prediction errors when applying the model to new data indicate that the model makes more accurate predictions. At the same time, we want to avoid <strong>overfitting</strong> our model to the data on which it is trained, as this can lead to a model that fits our training data well but that doesn’t generalize to our test data; applying a trained model to new data can help us evaluate the extent to which we might have overfit a model to the original data. Fortunately, there are multiple cross-validation frameworks that we can apply when training a model, and these frameworks can help us improve a model’s predictive performance/accuracy while also reducing the occurrence of overfitting. One such cross-validation framework is <em>k</em>-fold cross-validation.</p>
+<div class="figure">
+<img src="predictiveanalytics.png" alt="" />
+<p class="caption">Predictive analytics involves estimating a model based on past data, and then applying that model to new data in order to evaluate the accuracy of the model’s predictions.</p>
 </div>
 </div>
+<div id="review_kfold" class="section level3" number="48.1.2">
+<h3><span class="header-section-number">48.1.2</span> Review of <em>k</em>-Fold Cross-Validation</h3>
+<p>Often, when applying a predictive analytics process, we do some sort of variation of the two-phase process described above: (a) train the model on one set of data, and (b) test the model on a separate set of data. We typically put a lot of thought and consideration into how to train a model using the training data. Not only do we need to identify an appropriate type of statistical model, but we also need to consider whether we will incorporate validation into the model-training process. A common validation approach is <em>k</em>-fold cross-validation. To perform <strong><em>k</em>-fold cross-validation</strong>, we often do the following:</p>
+<ol style="list-style-type: decimal">
+<li>We split the data into a training data set and a test data set. Commonly, 80% of the data are randomly selected for the training data set, while the remaining 20% end up in the test data set.</li>
+<li>We randomly split the training data into two or more (sub)samples, which will allow us to train the model in an iterative process. The total number of samples we split the data into will be equal to <em>k</em>, where <strong>k</strong> refers to the number of folds (i.e., resamples). For example, if we randomly split the training data into five samples, then our <em>k</em> will be 5, and thus we will be performing 5-fold cross-validation. We then use the <em>k</em> samples to train (i.e., estimate, build) our model, which is accomplished through iterating the model-estimation process across <em>k</em> folds of data. For each <strong>fold</strong>, we estimate the model based on pooled data from <em>k</em>-1 samples. That is, if we split our training data into 5 samples, then for the first fold we might estimate the model based on data pooled together from the first four samples (out of five); we then use the fifth “holdout” (i.e., <em>k</em>th) sample as the validation sample, which means we assess the estimated model’s predictive performance/accuracy on data that weren’t used for that specific model estimation process. This process repeats until every sample has served as the validation sample, for a total of <em>k</em> folds. The models’ estimated performance across the <em>k</em> folds is then synthesized. Specifically, the <em>k</em> cross-validated models are then tossed out, but the estimated error from those models can be synthesized (e.g., averaged) to arrive at a performance estimate for the final model. With some types of models, the estimated error (e.g., root mean-squared error, <em>R</em><sup>2</sup>) from those models is used to inform the final model estimation. Note that the final model’s parameter estimates are typically estimated using <em>all</em> of the available training data.</li>
+<li>The <em>k</em>-fold cross-validation framework can be extended by taking the final trained model and evaluating its performance based on the test data set that – to this point – has yet to be used; this is how <em>k</em>-fold cross-validation can be used in a broader predictive analytics (i.e., predictive modeling) context. It is important to note, however, that there are other cross-validation approaches we might choose, such as <a href="crossvalidation.html#crossvalidation_empirical">empirical cross-validation</a> and <em>leave-one-out cross-validation (LOOCV)</em> – but those are beyond the scope of this chapter. James, Witten, Hastie, and Tibshirani <span class="citation">(<a href="references.html#ref-jamesetal2013" role="doc-biblioref">2013</a>)</span> provide a nice introduction to LOOCV; though, in short, LOOCV is a specific instance of <em>k</em>-fold cross-validation in which <em>k</em> is equal to the number of observations in the training data. The figure below provides a visual overview of the <em>k</em>-fold cross-validation process, which we will bring to life in the tutorial portion of this chapter.</li>
+</ol>
+<p>In this chapter, we will focus on applying <em>k</em>-fold cross-validation to the estimation and evaluation of a multiple logistic regression model. The use of logistic regression implies that our outcome variable will be dichotomous. For background information on logistic regression, including the statistical assumptions that should be satisfied, check out the prior <a href="logistic.html#logistic">chapter on logistic regression</a>. I must note, however, that other types of statistical models can be applied within a <em>k</em>-fold cross-validation framework – or any cross-validation framework for that matter. For example, assuming the appropriate statistical assumptions have been met, we might also apply more traditional regression-based approaches like ordinary least squares (OLS) multiple linear regression, or we could apply supervised statistical learning models like Lasso regression, which will be covered in a later chapter.</p>
+<p><img src="kfold.png" alt="Overview of a k-fold cross-validation process" />
+### Conceptual Video {#conceptualvideo_kfold}</p>
+<p>For a more in-depth review of <em>k</em>-fold cross-validation, please check out the following conceptual video.</p>
+<iframe src="https://youtube.com/embed/kituDjzXwfE?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to conceptual video: <a href="https://youtu.be/kituDjzXwfE" class="uri">https://youtu.be/kituDjzXwfE</a></p>
 </div>
-<div id="tutorial_crossvalidation" class="section level2" number="43.2">
-<h2><span class="header-section-number">43.2</span> Tutorial</h2>
-<p>This chapter’s tutorial demonstrates how to perform statistical and empirical cross-validation using R.</p>
-<div id="function_crossvalidation" class="section level3" number="43.2.1">
-<h3><span class="header-section-number">43.2.1</span> Functions &amp; Packages Introduced</h3>
+</div>
+<div id="tutorial_kfold" class="section level2" number="48.2">
+<h2><span class="header-section-number">48.2</span> Tutorial</h2>
+<p>This chapter’s tutorial demonstrates how to estimate and evaluate a multiple logistic regression model using <em>k</em>-fold cross-validation.</p>
+<div id="videotutorial_kfold" class="section level3" number="48.2.1">
+<h3><span class="header-section-number">48.2.1</span> Video Tutorials</h3>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/BQ1VAZ7jNYQ?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/BQ1VAZ7jNYQ" class="uri">https://youtu.be/BQ1VAZ7jNYQ</a></p>
+</div>
+<div id="functions_kfold" class="section level3" number="48.2.2">
+<h3><span class="header-section-number">48.2.2</span> Functions &amp; Packages Introduced</h3>
 <table>
 <thead>
 <tr class="header">
-<th>Function</th>
-<th>Package</th>
+<th align="center">Function</th>
+<th align="center">Package</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>lm</code></td>
-<td>base R</td>
+<td align="center"><code>as.factor</code></td>
+<td align="center">base R</td>
 </tr>
 <tr class="even">
-<td><code>summary</code></td>
-<td>base R</td>
+<td align="center"><code>set.seed</code></td>
+<td align="center">base R</td>
 </tr>
 <tr class="odd">
-<td><code>sqrt</code></td>
-<td>base R</td>
+<td align="center"><code>nrow</code></td>
+<td align="center">base R</td>
 </tr>
 <tr class="even">
-<td><code>predict</code></td>
-<td>base R</td>
+<td align="center"><code>createDataPartition</code></td>
+<td align="center"><code>caret</code></td>
 </tr>
 <tr class="odd">
-<td><code>R2</code></td>
-<td><code>caret</code></td>
+<td align="center"><code>as.data.frame</code></td>
+<td align="center">base R</td>
 </tr>
 <tr class="even">
-<td><code>mean</code></td>
-<td>base R</td>
+<td align="center"><code>trainControl</code></td>
+<td align="center"><code>caret</code></td>
 </tr>
 <tr class="odd">
-<td><code>RMSE</code></td>
-<td><code>caret</code></td>
+<td align="center"><code>train</code></td>
+<td align="center"><code>caret</code></td>
 </tr>
 <tr class="even">
-<td><code>abs</code></td>
-<td>base R</td>
+<td align="center"><code>print</code></td>
+<td align="center">base R</td>
 </tr>
 <tr class="odd">
-<td><code>MAE</code></td>
-<td><code>caret</code></td>
+<td align="center"><code>summary</code></td>
+<td align="center">base R</td>
 </tr>
 <tr class="even">
-<td><code>cbind</code></td>
-<td>base R</td>
+<td align="center"><code>varImp</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>predict</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>confusionMatrix</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>RMSE</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>abs</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>MAE</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>cbind</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>drop_na</code></td>
+<td align="center"><code>dplyr</code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="initsteps_crossvalidation" class="section level3" number="43.2.2">
-<h3><span class="header-section-number">43.2.2</span> Initial Steps</h3>
-<p>If you haven’t already, save the files called <strong>“Sample1.csv”</strong> and <strong>“Sample2.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
-<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data files for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb1518"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1518-1"><a href="crossvalidation.html#cb1518-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1518-2"><a href="crossvalidation.html#cb1518-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data files called <strong>“Sample1.csv”</strong> and <strong>“Sample2.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="crossvalidation.html#cb1519-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1519-2"><a href="crossvalidation.html#cb1519-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1519-3"><a href="crossvalidation.html#cb1519-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1519-4"><a href="crossvalidation.html#cb1519-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1520-1"><a href="crossvalidation.html#cb1520-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1520-2"><a href="crossvalidation.html#cb1520-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1520-3"><a href="crossvalidation.html#cb1520-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1520-4"><a href="crossvalidation.html#cb1520-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb1520-5"><a href="crossvalidation.html#cb1520-5" aria-hidden="true" tabindex="-1"></a>Sample1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample1.csv&quot;</span>)</span></code></pre></div>
+<div id="initsteps_kfold" class="section level3" number="48.2.3">
+<h3><span class="header-section-number">48.2.3</span> Initial Steps</h3>
+<p>If you haven’t already, save the file called <strong>“PredictiveAnalytics.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb1846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1846-1"><a href="kfold.html#cb1846-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1846-2"><a href="kfold.html#cb1846-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PredictiveAnalytics.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb1847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1847-1"><a href="kfold.html#cb1847-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1847-2"><a href="kfold.html#cb1847-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1847-3"><a href="kfold.html#cb1847-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1847-4"><a href="kfold.html#cb1847-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1848-1"><a href="kfold.html#cb1848-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1848-2"><a href="kfold.html#cb1848-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1848-3"><a href="kfold.html#cb1848-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1848-4"><a href="kfold.html#cb1848-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1848-5"><a href="kfold.html#cb1848-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PredictiveAnalytics.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
-##   PerfEval = col_double(),
-##   WorkSample = col_double(),
-##   SJT = col_double(),
-##   Consc = col_double()
+##   ID = col_double(),
+##   Turnover = col_double(),
+##   JS = col_double(),
+##   OC = col_double(),
+##   TI = col_double(),
+##   Naff = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb1522"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1522-1"><a href="crossvalidation.html#cb1522-1" aria-hidden="true" tabindex="-1"></a>Sample2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample2.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -------------------------------------------------------------------------------------------
-## cols(
-##   PerfEval = col_double(),
-##   WorkSample = col_double(),
-##   SJT = col_double(),
-##   Consc = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb1524"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1524-1"><a href="crossvalidation.html#cb1524-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb1524-2"><a href="crossvalidation.html#cb1524-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Sample1)</span></code></pre></div>
-<pre><code>## [1] &quot;PerfEval&quot;   &quot;WorkSample&quot; &quot;SJT&quot;        &quot;Consc&quot;</code></pre>
-<div class="sourceCode" id="cb1526"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1526-1"><a href="crossvalidation.html#cb1526-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Sample2)</span></code></pre></div>
-<pre><code>## [1] &quot;PerfEval&quot;   &quot;WorkSample&quot; &quot;SJT&quot;        &quot;Consc&quot;</code></pre>
-<div class="sourceCode" id="cb1528"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1528-1"><a href="crossvalidation.html#cb1528-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View number of rows/cases in data frame (tibble) objects</span></span>
-<span id="cb1528-2"><a href="crossvalidation.html#cb1528-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Sample1)</span></code></pre></div>
-<pre><code>## [1] 182</code></pre>
-<div class="sourceCode" id="cb1530"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1530-1"><a href="crossvalidation.html#cb1530-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Sample2)</span></code></pre></div>
-<pre><code>## [1] 166</code></pre>
-<div class="sourceCode" id="cb1532"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1532-1"><a href="crossvalidation.html#cb1532-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame (tibble) objects</span></span>
-<span id="cb1532-2"><a href="crossvalidation.html#cb1532-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Sample1)</span></code></pre></div>
-<pre><code>## spec_tbl_df[,4] [182 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ PerfEval  : num [1:182] 5.1 5 3.5 5 4 4.4 5.2 5.1 3.8 3.1 ...
-##  $ WorkSample: num [1:182] 7.5 8.1 7.6 6.6 6 6 8 8.8 6.1 6.5 ...
-##  $ SJT       : num [1:182] 7.9 5.6 4.4 5.7 8.5 5.8 6.1 4.7 4.5 5.1 ...
-##  $ Consc     : num [1:182] 4.9 2.4 3.1 4.5 3.6 4.8 4.7 4.9 3.2 4.6 ...
+<div class="sourceCode" id="cb1850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1850-1"><a href="kfold.html#cb1850-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb1850-2"><a href="kfold.html#cb1850-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;ID&quot;       &quot;Turnover&quot; &quot;JS&quot;       &quot;OC&quot;       &quot;TI&quot;       &quot;Naff&quot;</code></pre>
+<div class="sourceCode" id="cb1852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1852-1"><a href="kfold.html#cb1852-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb1852-2"><a href="kfold.html#cb1852-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,6] [1,000 x 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ ID      : num [1:1000] 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Turnover: num [1:1000] 1 0 1 1 0 1 1 1 0 1 ...
+##  $ JS      : num [1:1000] 3.78 4.52 2.26 2.48 4.12 2.99 2.44 2.31 3.87 4.62 ...
+##  $ OC      : num [1:1000] 4.41 2.38 3.17 2.06 6 0.4 4.07 3.04 3.02 1.19 ...
+##  $ TI      : num [1:1000] 4.16 2.74 2.76 4.32 1.37 3.24 2.63 1.94 3.69 1.96 ...
+##  $ Naff    : num [1:1000] 1.82 2.28 2.25 2.11 2.01 2.73 2.91 2.62 2.89 2.45 ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
-##   ..   PerfEval = col_double(),
-##   ..   WorkSample = col_double(),
-##   ..   SJT = col_double(),
-##   ..   Consc = col_double()
+##   ..   ID = col_double(),
+##   ..   Turnover = col_double(),
+##   ..   JS = col_double(),
+##   ..   OC = col_double(),
+##   ..   TI = col_double(),
+##   ..   Naff = col_double()
 ##   .. )</code></pre>
-<div class="sourceCode" id="cb1534"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1534-1"><a href="crossvalidation.html#cb1534-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Sample2)</span></code></pre></div>
-<pre><code>## spec_tbl_df[,4] [166 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ PerfEval  : num [1:166] 4 4.3 3.9 5.6 4.5 4.9 4.2 4.7 4.5 5.6 ...
-##  $ WorkSample: num [1:166] 6.7 9 6.8 7.6 4.5 8.1 6.5 7.1 6.1 5.3 ...
-##  $ SJT       : num [1:166] 4.4 3.7 5.6 6.8 6.9 7.4 6.4 7 7.2 10 ...
-##  $ Consc     : num [1:166] 4.3 1.7 4.5 5.2 3.8 4.3 3.7 5.1 4.1 4.3 ...
-##  - attr(*, &quot;spec&quot;)=
-##   .. cols(
-##   ..   PerfEval = col_double(),
-##   ..   WorkSample = col_double(),
-##   ..   SJT = col_double(),
-##   ..   Consc = col_double()
-##   .. )</code></pre>
-<div class="sourceCode" id="cb1536"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1536-1"><a href="crossvalidation.html#cb1536-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame (tibble) objects</span></span>
-<span id="cb1536-2"><a href="crossvalidation.html#cb1536-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample1)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   PerfEval WorkSample   SJT Consc
-##      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1      5.1        7.5   7.9   4.9
-## 2      5          8.1   5.6   2.4
-## 3      3.5        7.6   4.4   3.1
-## 4      5          6.6   5.7   4.5
-## 5      4          6     8.5   3.6
-## 6      4.4        6     5.8   4.8</code></pre>
-<div class="sourceCode" id="cb1538"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1538-1"><a href="crossvalidation.html#cb1538-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample2)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 4
-##   PerfEval WorkSample   SJT Consc
-##      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1      4          6.7   4.4   4.3
-## 2      4.3        9     3.7   1.7
-## 3      3.9        6.8   5.6   4.5
-## 4      5.6        7.6   6.8   5.2
-## 5      4.5        4.5   6.9   3.8
-## 6      4.9        8.1   7.4   4.3</code></pre>
-<p>The first data frame (<code>Sample1</code>) has 182 cases and the following 4 variables: <code>PerfEval</code>, <code>WorkSample</code>, <code>SJT</code>, and <code>Consc</code>. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>numeric</em> (continuous: interval/ratio). Imagine that the <code>Sample1</code> data were collected as part of a criterion-related validation study - specifically, a concurrent validation design in which job incumbents were administered the three selection tools 90 days after entering the organization. <code>PerfEval</code> is the criterion (outcome) of interest, and it is a 90-day-post-hire measure of supervisor-rated job performance, where scores could range from 1 (low performance) to 7 (high performance). The <code>WorkSample</code> variable contains scores from a work sample assessment, and scores could range from 1-10, with 10 indicating a strong performance on the assessment. <code>SJT</code> refers to a situational judgment test in which scores can range from 1-10, with 10 indicating higher proficiency. <code>Consc</code> refers to an a conscientiousness personality inventory in which scores can range from 1-7, with 7 indicating higher conscientiousness. <code>Proactivity</code> refers to a proactive personality inventory in which scores can range from 1-15, with 15 indicating higher proactive personality.</p>
+<div class="sourceCode" id="cb1854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1854-1"><a href="kfold.html#cb1854-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb1854-2"><a href="kfold.html#cb1854-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 6
+##      ID Turnover    JS    OC    TI  Naff
+##   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1        1  3.78  4.41  4.16  1.82
+## 2     2        0  4.52  2.38  2.74  2.28
+## 3     3        1  2.26  3.17  2.76  2.25
+## 4     4        1  2.48  2.06  4.32  2.11
+## 5     5        0  4.12  6     1.37  2.01
+## 6     6        1  2.99  0.4   3.24  2.73</code></pre>
+<div class="sourceCode" id="cb1856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1856-1"><a href="kfold.html#cb1856-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb1856-2"><a href="kfold.html#cb1856-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<p>The data frame (<code>df</code>) has 1000 cases and the following 5 variables: <code>ID</code>, <code>Turnover</code>, <code>JS</code>, <code>OC</code>, <code>TI</code>, and <code>NAff</code>. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>numeric</em> (continuous: interval/ratio). <code>ID</code> is the unique employee identifier variable. Imagine that these data were collected as part of a turnover study within an organization to determine the drivers/predictors of turnover based on a sample of employees who stayed and leaved during the past year. The variables <code>JS</code>, <code>OC</code>, <code>TI</code>, and <code>Naff</code> were collected as part of an annual survey and were later joined with the <code>Turnover</code> variable. Survey respondents rated each survey item using a 7-point response scale, ranging from strongly disagree (0) to strongly agree (6). <code>JS</code> contains the average of each employee’s responses to 10 job satisfaction items. <code>OC</code> contains the average of each employee’s responses to 7 organizational commitment items. <code>TI</code> contains the average of each employee’s responses to 3 turnover intentions items, where higher scores indicate higher levels of turnover intentions. <code>Naff</code> contains the average of each employee’s responses to 10 negative affectivity items. <code>Turnover</code> is a variable that indicates whether these individuals left the organization during the prior year, with 1 = quit and 0 = stayed.</p>
 </div>
-<div id="crossvalidation_statistical" class="section level3" number="43.2.3">
-<h3><span class="header-section-number">43.2.3</span> Perform Statistical Cross-Validation</h3>
-<p>In order to perform statistical cross-validation, we first need to estimate our model. In this chapter, we’ll estimate a multiple linear regression in which we treat the three selection tool variables (<code>WorkSample</code>, <code>SJT</code>, <code>Consc</code>) as predictors and the variable <code>PerfEval</code> as our criterion (outcome). In other words, we are estimating the criterion-related and incremental validity of these three selection tools in relation to the outcome. In doing so, we will determine whether each selection to explains unique variance in the outcome, and how much variance, collectively, all three selection tools explain in the outcome. For more information on multiple linear regression, check out the <a href="incrementalvalidity.html#incrementalvalidity">chapter on estimating incremental validity</a>. Note that in this chapter we will use the <code>lm</code> function from base R to estimate our multiple linear regression model, which is discussed in the <a href="incrementalvalidity.html#lm_function_mlr">chapter supplement</a> to the aforementioned chapter.</p>
-<div class="sourceCode" id="cb1540"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1540-1"><a href="crossvalidation.html#cb1540-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
-<span id="cb1540-2"><a href="crossvalidation.html#cb1540-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(PerfEval <span class="sc">~</span> WorkSample <span class="sc">+</span> SJT <span class="sc">+</span> Consc, <span class="at">data=</span>Sample1)</span>
-<span id="cb1540-3"><a href="crossvalidation.html#cb1540-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1540-4"><a href="crossvalidation.html#cb1540-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb1540-5"><a href="crossvalidation.html#cb1540-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
+<div id="estimate_kfold_logistic" class="section level3" number="48.2.4">
+<h3><span class="header-section-number">48.2.4</span> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</h3>
+<p>In this tutorial, we will apply <em>k</em>-fold cross-validation to estimate and evaluate a multiple logistic regression model. You can think of <em>k</em>-fold cross-validation as an enhanced version of the conventional empirical cross-validation process described and demonstrated in <a href="crossvalidation.html#crossvalidation_empirical">previous chapter</a>. We can perform <em>k</em>-fold cross-validation with different types of regression models, and in this tutorial, we will focus on applying it using multiple logistic regression. Because we have access to 1,000 cases, we will randomly split our data into training and test data frames, and then within the training data frame, we will perform <em>k</em>-fold cross-validation to come up with a more accurate model. We will then we will apply the final model to the test data frame data frame to see how well it predicts with a completely new set of data.</p>
+<p><strong>Note:</strong> The type of model we will apply in our <em>k</em>-fold cross-validation approach will delete any cases with missing data on any variables in the model (i.e., listwise deletion). We don’t have any missing data in <code>df</code> data frame object, but if we did, I would recommend deleting cases with missing data on the focal variables prior to randomly splitting the data. The <code>drop_na</code> function from the <code>tidyr</code> package works well for this purpose.</p>
+<div class="sourceCode" id="cb1858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1858-1"><a href="kfold.html#cb1858-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the event of missing data on focal variables, </span></span>
+<span id="cb1858-2"><a href="kfold.html#cb1858-2" aria-hidden="true" tabindex="-1"></a><span class="co"># perform listwise deletion prior to randomly splitting/partitioning</span></span>
+<span id="cb1858-3"><a href="kfold.html#cb1858-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the data</span></span>
+<span id="cb1858-4"><a href="kfold.html#cb1858-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1858-5"><a href="kfold.html#cb1858-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb1858-6"><a href="kfold.html#cb1858-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1858-7"><a href="kfold.html#cb1858-7" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1858-8"><a href="kfold.html#cb1858-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1859-1"><a href="kfold.html#cb1859-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1859-2"><a href="kfold.html#cb1859-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1859-3"><a href="kfold.html#cb1859-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1859-4"><a href="kfold.html#cb1859-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with missing data on focal variables</span></span>
+<span id="cb1859-5"><a href="kfold.html#cb1859-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(Turnover, JS, Naff, TI, OC)</span>
+<span id="cb1859-6"><a href="kfold.html#cb1859-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1859-7"><a href="kfold.html#cb1859-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in updated data frame (tibble) object</span></span>
+<span id="cb1859-8"><a href="kfold.html#cb1859-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<p>Because we didn’t have missing data for any of the focal variables, the number of rows (i.e., cases) remains at 1000.</p>
+<p>Now we’re ready to install and access the <code>caret</code> package, if we haven’t already. The <code>caret</code> package has a number of different functions that are useful for running predictive analytics and various machine learning models/algorithms.</p>
+<div class="sourceCode" id="cb1861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1861-1"><a href="kfold.html#cb1861-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
+<span id="cb1861-2"><a href="kfold.html#cb1861-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1862-1"><a href="kfold.html#cb1862-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
+<span id="cb1862-2"><a href="kfold.html#cb1862-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<p>Using the <code>createDataPartition</code> function from the <code>caret</code> package, we will split the data such that 80% of the cases will be randomly assigned to one split, and the remaining 20% of cases will be assigned to the other split. Before doing so, let’s use the <code>set.seed</code> function from base R and include a number of your choosing to create “random” operations that are reproducible.</p>
+<div class="sourceCode" id="cb1863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1863-1"><a href="kfold.html#cb1863-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for subsequent random selection and assignment operations</span></span>
+<span id="cb1863-2"><a href="kfold.html#cb1863-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span></code></pre></div>
+<p>Next, let’s perform the data split/partition. We’ll start by creating a name for the index of unique cases that will identify who will be included in the 80% split of the original data frame; here, I call this object <code>index</code> and assign values to it using the <code>&lt;-</code> assignment operator. To the right of the <code>&lt;-</code> operator, type the name of the <code>createDataPartition</code> function. As the first argument, type the name of the data frame (<code>df</code>), followed by the <code>$</code> operator and the name of the outcome variable (<code>Turnover</code>). As a the second argument, set <code>p=.8</code> to note that you wish to randomly select 80% (.8) of the cases from the data frame. As the third argument, type <code>list=FALSE</code> to indicate that we want the values in matrix form to facilitate, which will facilitate our ability to reference them in a subsequent step. As the fourth argument, type <code>times=1</code> to indicate that we only want to request a single partition of the data.</p>
+<div class="sourceCode" id="cb1864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1864-1"><a href="kfold.html#cb1864-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Partition data and create index matrix of selected values</span></span>
+<span id="cb1864-2"><a href="kfold.html#cb1864-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(df<span class="sc">$</span>Turnover, <span class="at">p=</span>.<span class="dv">8</span>, <span class="at">list=</span><span class="cn">FALSE</span>, <span class="at">times=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><strong>Note: I have noticed that the <code>createDataPartition</code> sometimes adds an extra case to the partitioned data when the outcome variable is of type factor as opposed to numeric, integer, or character. An extra case added to the training data frame is not likely to be of much consequence, but if if you would like to avoid this, try converting the outcome variable from type factor to type numeric, integer, or character, whichever makes the most sense given the variable. You can always convert the outcome back to type factor after this process, which I demonstrate in this tutorial. Sometimes this works, and sometimes it doesn’t.</strong></p>
+<p>We’ll use the <code>index</code> matrix object we created above to assign cases to the training data frame (which we will name <code>train_df</code>) and to the test data frame (which we will name <code>test_df</code>). Beginning with the training data frame, we can assign the random sample of 80% of the original cases to the <code>train_df</code> object by using the <code>&lt;-</code> assignment operator. Specifically, using matrix notation, we will specify the name of the original data frame (<code>df</code>), followed by brackets (<code>[ ]</code>). In the brackets, include the name of the <code>index</code> object we created above, followed by a comma (<code>,</code>). The placement of the <code>index</code> object before the comma indicates that we are selecting rows with the selected unique row numbers (i.e., index) from the matrix. Next, we do essentially the same thing with the <code>test_df</code>, except that we insert a minus (<code>-</code>) symbol before <code>index</code> to indicate that we <em>don’t</em> want cases associated with the unique row numbers contained in the <code>index</code> object.</p>
+<div class="sourceCode" id="cb1865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1865-1"><a href="kfold.html#cb1865-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
+<span id="cb1865-2"><a href="kfold.html#cb1865-2" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
+<span id="cb1865-3"><a href="kfold.html#cb1865-3" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
+<p>If you received the error message shown below, then you will want to convert the original data frame <code>df</code> from a tibble to a conventional data frame; after that, repeat the steps above. If you did not receive this message, then you can skip this step and proceed on to the step in which you verify the number of rows in each data frame.</p>
+<p><span class="math inline">\(\color{red}{\text{Error: `i` must have one dimension, not 2.}}\)</span></p>
+<div class="sourceCode" id="cb1866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1866-1"><a href="kfold.html#cb1866-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert data frame object (df) to a conventional data frame object</span></span>
+<span id="cb1866-2"><a href="kfold.html#cb1866-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df)</span>
+<span id="cb1866-3"><a href="kfold.html#cb1866-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1866-4"><a href="kfold.html#cb1866-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
+<span id="cb1866-5"><a href="kfold.html#cb1866-5" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
+<span id="cb1866-6"><a href="kfold.html#cb1866-6" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
+<p>To check our work and to be sure that 80% of the cases ended up in the <code>train_df</code> data frame and the remaining 20% ended up in the <code>test_df</code> data frame, let’s apply the <code>nrow</code> function from base R to each data frame object.</p>
+<div class="sourceCode" id="cb1867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1867-1"><a href="kfold.html#cb1867-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify number of rows (cases) in each data frame</span></span>
+<span id="cb1867-2"><a href="kfold.html#cb1867-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train_df)</span></code></pre></div>
+<pre><code>## [1] 800</code></pre>
+<div class="sourceCode" id="cb1869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1869-1"><a href="kfold.html#cb1869-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(test_df)</span></code></pre></div>
+<pre><code>## [1] 200</code></pre>
+<p>Indeed, 800 (80%) of the original 1,000 cases ended up in the <code>train_df</code> data frame, and 200 (20%) of the original 1,000 cases ended up in the <code>test_df</code> data frame.</p>
+<p>For the <code>train_df</code> and <code>test_df</code> data frames we’ve created, let’s re-label our dichotomous outcome variable’s (<code>Turnover</code>) levels from 1 to “quit” and from 0 to “stay”. This will make our interpretations of the results a little bit easier later on.</p>
+<div class="sourceCode" id="cb1871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1871-1"><a href="kfold.html#cb1871-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-label values of outcome variable for train_df</span></span>
+<span id="cb1871-2"><a href="kfold.html#cb1871-2" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover[train_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;quit&quot;</span></span>
+<span id="cb1871-3"><a href="kfold.html#cb1871-3" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover[train_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">&quot;stay&quot;</span></span>
+<span id="cb1871-4"><a href="kfold.html#cb1871-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1871-5"><a href="kfold.html#cb1871-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-label values of outcome variable for test_df</span></span>
+<span id="cb1871-6"><a href="kfold.html#cb1871-6" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover[test_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;quit&quot;</span></span>
+<span id="cb1871-7"><a href="kfold.html#cb1871-7" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover[test_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">&quot;stay&quot;</span></span></code></pre></div>
+<p>In addition, let’s convert the outcome variable to a variable of type <em>factor</em>. To do so, we apply the <code>as.factor</code> function from base R.</p>
+<div class="sourceCode" id="cb1872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1872-1"><a href="kfold.html#cb1872-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert outcome variable to factor for each data frame</span></span>
+<span id="cb1872-2"><a href="kfold.html#cb1872-2" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(train_df<span class="sc">$</span>Turnover)</span>
+<span id="cb1872-3"><a href="kfold.html#cb1872-3" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(test_df<span class="sc">$</span>Turnover)</span></code></pre></div>
+<p>Now we’re ready to specify the type of training method we wish to apply, the number of folds, and that we wish to save all of our predictions.</p>
+<ol style="list-style-type: decimal">
+<li>Let’s name this object containing these specifications as <code>ctrlspecs</code> using the <code>&lt;-</code> assignment operator.</li>
+<li>To the right of the <code>&lt;-</code> operator, type the name of the <code>trainControl</code> function from the <code>caret</code> package.</li>
+</ol>
+<ul>
+<li>As the first argument in the <code>trainControl</code> function, specify the method by typing <code>method="cv"</code>, where <code>"cv"</code> represents cross-validation.</li>
+<li>As the second argument, type <code>number=10</code> to indicate that we want 10 folds (i.e., 10 resamples), which means we will specifically use 10-fold cross-validation.</li>
+<li>As the third argument, type <code>savePredictions="all"</code> to save all of the hold-out predictions for each of our resamples from the <code>train_df</code> data frame, where hold-out predictions refer to those cases that weren’t used in training each iteration of the model based on each fold of data but were used for validating the model trained at each fold.</li>
+<li>As the fourth argument, type <code>classProbs=TRUE</code>, as this tells the function to compute class probabilities (along with predicted values) for classification models in each resample.</li>
+</ul>
+<div class="sourceCode" id="cb1873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1873-1"><a href="kfold.html#cb1873-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify type of training method used and the number of folds</span></span>
+<span id="cb1873-2"><a href="kfold.html#cb1873-2" aria-hidden="true" tabindex="-1"></a>ctrlspecs <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb1873-3"><a href="kfold.html#cb1873-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number=</span><span class="dv">10</span>, </span>
+<span id="cb1873-4"><a href="kfold.html#cb1873-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">savePredictions=</span><span class="st">&quot;all&quot;</span>,</span>
+<span id="cb1873-5"><a href="kfold.html#cb1873-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">classProbs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p>To train (i.e., estimate, build) our multiple logistic regression model, we will use the <code>train</code> function from the <code>caret</code> package.</p>
+<ol style="list-style-type: decimal">
+<li>To begin, come up with a name for your model object; here, I name the model object <code>model</code> and use the <code>&lt;-</code> assignment operator to assign the model information to it.</li>
+<li>Type the name of the <code>train</code> function to the right of the <code>&lt;-</code> operator.</li>
+</ol>
+<ul>
+<li>As the first argument in the <code>train</code> function, we will specify our multiple logistic regression model. To the left of the tilde (<code>~</code>) operator, type the name of the dichotomous outcome variable called <code>Turnover</code>. To the right of the tilde (<code>~</code>) operator, type the names of the predictor variables we wish to include in the model, each separated by a <code>+</code> operator.</li>
+<li>As the second argument, type <code>data=</code> followed by the name of the training data frame object (<code>train_df</code>).</li>
+<li>As the third and fourth arguments, specify that we want to estimate a estimate a logistic regression model which is part of the generalized linear model (<code>glm</code>) and binomial family of analyses. To do so, type the argument <code>method="glm"</code> and the argument <code>family=binomial</code>.</li>
+<li>As the fifth argument, type <code>trControl=</code> followed by the name of the object that includes your model specifications, which we created above (<code>ctrlspecs</code>).</li>
+<li>Finally, if you so desire, you can use the <code>print</code> function from base R to request some basic information about the training process.</li>
+</ul>
+<div class="sourceCode" id="cb1874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1874-1"><a href="kfold.html#cb1874-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for subsequent random selection and assignment operations</span></span>
+<span id="cb1874-2"><a href="kfold.html#cb1874-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span>
+<span id="cb1874-3"><a href="kfold.html#cb1874-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1874-4"><a href="kfold.html#cb1874-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify logistic regression model to be estimated using training data</span></span>
+<span id="cb1874-5"><a href="kfold.html#cb1874-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and k-fold cross-validation process</span></span>
+<span id="cb1874-6"><a href="kfold.html#cb1874-6" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">train</span>(Turnover <span class="sc">~</span> JS <span class="sc">+</span> Naff <span class="sc">+</span> TI <span class="sc">+</span> OC, <span class="at">data=</span>train_df, </span>
+<span id="cb1874-7"><a href="kfold.html#cb1874-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, </span>
+<span id="cb1874-8"><a href="kfold.html#cb1874-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">family=</span>binomial, </span>
+<span id="cb1874-9"><a href="kfold.html#cb1874-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl=</span>ctrlspecs)</span>
+<span id="cb1874-10"><a href="kfold.html#cb1874-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1874-11"><a href="kfold.html#cb1874-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print information about model</span></span>
+<span id="cb1874-12"><a href="kfold.html#cb1874-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model1)</span></code></pre></div>
+<pre><code>## Generalized Linear Model 
+## 
+## 800 samples
+##   4 predictor
+##   2 classes: &#39;quit&#39;, &#39;stay&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 721, 720, 721, 719, 720, 721, ... 
+## Resampling results:
+## 
+##   Accuracy   Kappa    
+##   0.6987682  0.3890541</code></pre>
+<p>In the general information provided in our output about our model/algorithm (i.e., generalized linear model), we find out which method was applied (i.e., cross-validated), the number of folds (i.e., 10), and the size of the same sizes in training each iteration of the model (e.g., 721, 720, 721, etc.).</p>
+<p>The function created 10 roughly equal-sized and randomly-assigned folds (per our request) from the <code>train_df</code> data frame by resampling from the original 800 cases. In total, the model was cross-validated 10 times across 10 folds, such that in each instance 9 samples (e.g., samples 1-9; i.e., <em>k</em>-1) were used to estimate the model and, more importantly, its classification/prediction error when applied to the validation <em>k</em>th sample (e.g., holdout data, out-of-sample data). This was repeated until every sample served as the validation sample once, resulting in <em>k</em> folds (i.e., 10 folds in this tutorial). These cross-validated models were then tossed out, but the estimated error, which by default is classification accuracy for this type of model, was averaged across the folds to provide an estimate of the overall predictive performance of the final model. The final model and its parameters (e.g., regression coefficients) were estimated based on the <em>entire</em> training data frame (<code>train_df</code>). In this way, the final model was built and trained to improve accuracy and, in the case of logistic regression, the percentage of correct classifications for the dichotomous outcome variable (<code>Turnover</code>).</p>
+<p>In the output, we also received estimates of the model’s performance in terms of the average accuracy and Cohen’s kappa values across the folds (i.e., resamples). Behind the scenes, the <code>train</code> function has done a lot for us.</p>
+<ul>
+<li>The <strong>accuracy</strong> statistic represents the proportion of total correctly classified cases out of all classification instances; in the case of a logistic regression model with a dichotomous outcome variable, a correctly classified case would be one in which the actual observed outcome for the case (e.g., observed quit) matches what was predicted based on the estimated model (e.g., predicted quit).</li>
+<li>Cohen’s <strong>kappa (<span class="math inline">\(\kappa\)</span>)</strong> is another classification accuracy statistic, but it differs from the accuracy statistic in that it accounts for the baseline probabilities from your null model that contains no predictor variables. In other words, it accounts for the proportion of cases in your data that were observed to have experienced one level of the dichotomous outcome (e.g., quit) versus the other level (e.g., stay). This is useful when there isn’t a 50%/50% split in the observed levels/classes of your dichotomous outcome variable. Like so many effect size metrics, Cohen’s (<span class="math inline">\(\kappa\)</span>) has some recommended thresholds for interpreting the classification strength different <span class="math inline">\(\kappa\)</span> values, as shown below <span class="citation">(<a href="references.html#ref-landiskoch1977" role="doc-biblioref">Landis and Koch 1977</a>)</span>.</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Cohen’s <span class="math inline">\(\kappa\)</span></th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">.81-1.00</td>
+<td align="center">Almost perfect</td>
+</tr>
+<tr class="even">
+<td align="center">.61-.80</td>
+<td align="center">Substantial</td>
+</tr>
+<tr class="odd">
+<td align="center">.41-60</td>
+<td align="center">Moderate</td>
+</tr>
+<tr class="even">
+<td align="center">.21-.40</td>
+<td align="center">Fair</td>
+</tr>
+<tr class="odd">
+<td align="center">.00-.20</td>
+<td align="center">Slight</td>
+</tr>
+<tr class="even">
+<td align="center">&lt; .00</td>
+<td align="center">Poor</td>
+</tr>
+</tbody>
+</table>
+<p>Based on our <em>k</em>-fold cross-validation framework, model accuracy was .70 (70%) and Cohen’s kappa was .39, which would be considered “fair” given the thresholds provided above. Thus, our model did an okay job of classifying cases correctly estimated using <em>k</em>-fold cross-validation and when tested using the training data frame (<code>train_df</code>).</p>
+<p>We can also use the <code>summary</code> function from base R to view the results of our final model, just as we would if we were estimating a multiple logistic regression model <em>without</em> cross-validation when using the <code>glm</code> function from base R. If you so desire, you could also specify the equation necessary to predict the likelihood that an individual quits; if you need a refresher, refer to the <a href="logistic.html#logistic">chapter on logistic regression</a> and specifically the <a href="logistic.html#glm_function_multiple_logistic">chapter supplement</a>, which demonstrates how to estimate a multiple logistic regression using the <code>glm</code> function from base R.</p>
+<div class="sourceCode" id="cb1876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1876-1"><a href="kfold.html#cb1876-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results of final model estimated using training data</span></span>
+<span id="cb1876-2"><a href="kfold.html#cb1876-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = PerfEval ~ WorkSample + SJT + Consc, data = Sample1)
+## NULL
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.62345 -0.39876  0.01343  0.32258  1.51027 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.3463  -0.9258  -0.4827   0.9650   2.4701  
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value         Pr(&gt;|t|)    
-## (Intercept)  1.30283    0.34833   3.740         0.000248 ***
-## WorkSample   0.28430    0.03854   7.376 0.00000000000596 ***
-## SJT          0.08118    0.03082   2.634         0.009190 ** 
-## Consc        0.23241    0.04652   4.996 0.00000139215819 ***
+##             Estimate Std. Error z value             Pr(&gt;|z|)    
+## (Intercept)  2.17201    0.61856   3.511             0.000446 ***
+## JS           0.14929    0.07355   2.030             0.042386 *  
+## Naff        -0.42540    0.15747  -2.702             0.006902 ** 
+## TI          -0.99246    0.11133  -8.915 &lt; 0.0000000000000002 ***
+## OC           0.25999    0.06994   3.717             0.000201 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.589 on 178 degrees of freedom
-## Multiple R-squared:  0.3592, Adjusted R-squared:  0.3484 
-## F-statistic: 33.25 on 3 and 178 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p>In the output, you can see that each of the regression coefficients associated with the predictor variables (i.e., selection tools) are statistically significant, which indicates that they each explain unique variance in the outcome (<code>PerfEval</code>) when controlling for the predictors in the model. Further, the <span class="math inline">\(R^2_{unadj}\)</span> (unadjusted <em>R</em><sup>2</sup>) is .359, and the <span class="math inline">\(R^2_{adj}\)</span> (adjusted <em>R</em><sup>2</sup>) is .348, both of which provide us with estimates of model fit and the amount of variance explained in the outcome variable collectively by the three predictor variables.</p>
-<p>Next, let’s define a function that will compute the <strong>squared cross-validity</strong> (<span class="math inline">\(\rho^2_{c}\)</span>) based on the Browne <span class="citation">(<a href="references.html#ref-browne1975predictive" role="doc-biblioref">1975</a>)</span> formula when we type the name of a regression model object as the sole argument. Let’s name this function <code>rho2</code> for <span class="math inline">\(\rho^2_{c}\)</span>. As a reminder, the Browne formula is:</p>
-<p><span class="math inline">\(\rho^2_{c} = \frac{(N-k-3)(R^2_{adj})^2+R^2_{adj}}{(N-2k-2)(R^2_{adj})+k}\)</span></p>
-<p>You don’t need to change anything in the function script below. Simply run it as is.</p>
-<div class="sourceCode" id="cb1542"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1542-1"><a href="crossvalidation.html#cb1542-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write function for squared cross-validity formula (Browne, 1975)</span></span>
-<span id="cb1542-2"><a href="crossvalidation.html#cb1542-2" aria-hidden="true" tabindex="-1"></a>rho2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1542-3"><a href="crossvalidation.html#cb1542-3" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">nobs</span>(model1) <span class="co"># model sample size</span></span>
-<span id="cb1542-4"><a href="crossvalidation.html#cb1542-4" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(model1)) <span class="sc">-</span> <span class="dv">1</span> <span class="co"># number of predictor variables</span></span>
-<span id="cb1542-5"><a href="crossvalidation.html#cb1542-5" aria-hidden="true" tabindex="-1"></a>  R2_adj <span class="ot">&lt;-</span> <span class="fu">summary</span>(model1)<span class="sc">$</span>adj.r.squared <span class="co"># adjusted R-squared</span></span>
-<span id="cb1542-6"><a href="crossvalidation.html#cb1542-6" aria-hidden="true" tabindex="-1"></a>  ((N <span class="sc">-</span> k <span class="sc">-</span> <span class="dv">3</span>) <span class="sc">*</span> (R2_adj<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> R2_adj) <span class="sc">/</span> ((N <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span> k) <span class="sc">-</span> <span class="dv">2</span>) <span class="sc">*</span> R2_adj <span class="sc">+</span> k) <span class="co"># Browne formula</span></span>
-<span id="cb1542-7"><a href="crossvalidation.html#cb1542-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Using the new function called <code>rho2</code>, type the name of our regression model object as the sole parenthetical argument.</p>
-<div class="sourceCode" id="cb1543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1543-1"><a href="crossvalidation.html#cb1543-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate squared cross-validity</span></span>
-<span id="cb1543-2"><a href="crossvalidation.html#cb1543-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rho2</span>(model1)</span></code></pre></div>
-<pre><code>## [1] 0.3412245</code></pre>
-<p>The output indicates that the squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) is .341, which indicates that, in the population, the predictor variables included in the model explain 34.1% of the variability in the outcome variable. If you recall, the <span class="math inline">\(R^2_{unadj}\)</span> was .359, and the <span class="math inline">\(R^2_{adj}\)</span> was .348. Thus, compared to <span class="math inline">\(R^2_{unadj}\)</span>, the model fit didn’t shrink too much.</p>
-<p>To estimate the <strong>cross-validity</strong> (<span class="math inline">\(\rho_{c}\)</span>), just take the square root of (<span class="math inline">\(\rho^2_{c}\)</span>).</p>
-<div class="sourceCode" id="cb1545"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1545-1"><a href="crossvalidation.html#cb1545-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate cross-validity</span></span>
-<span id="cb1545-2"><a href="crossvalidation.html#cb1545-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">rho2</span>(model1))</span></code></pre></div>
-<pre><code>## [1] 0.5841442</code></pre>
-<p>Thus, our cross-validity (multiple correlation) is .584.</p>
-<p><strong>Technical Write-Up:</strong> We performed a concurrent validation study based on a sample 182 job incumbents. Given that all three selection tools (i.e., conscientiousness inventory, work sample, situational judgment test) showed evidence of incremental validity, we included all three in a multiple linear regression model, with performance evaluation scores as the criterion. All three selection tools showed evidence of incremental validity with respect to one another. To understand how well this estimated model might generalize to the broader population, we performed statistical cross-validation. Specifically, we found that the adjusted <em>R</em><sup>2</sup> was .348 and the squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341. The latter indicates that in the population, the three selection tools collectively explain 34.1% of the variability in the criterion.</p>
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1102.55  on 799  degrees of freedom
+## Residual deviance:  907.54  on 795  degrees of freedom
+## AIC: 917.54
+## 
+## Number of Fisher Scoring iterations: 4</code></pre>
+<p>As a next step, we will evaluate the importance of different predictor variables in our model. Variables with higher importance values contribute more to model estimation – and in this case, model classification.</p>
+<div class="sourceCode" id="cb1878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1878-1"><a href="kfold.html#cb1878-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate the importance of different predictors</span></span>
+<span id="cb1878-2"><a href="kfold.html#cb1878-2" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(model1)</span></code></pre></div>
+<pre><code>## glm variable importance
+## 
+##      Overall
+## TI   100.000
+## OC    24.509
+## Naff   9.758
+## JS     0.000</code></pre>
+<p>As you can see, <code>TI</code> was the most important variable when it came to predicting <code>Turnover</code> (1.00), and it was followed by <code>OC</code> (24.51) and then <code>Naff</code> (9.86). <code>JS</code> was deemed an unimportant predictor, as shown in the model summary above, and it had 0.00 importance based on this estimation process.</p>
+<p>Remember way back when in this tutorial when we partitioned our data into the <code>train_df</code> and <code>test_df</code>? Well, now we’re going to apply the final multiple logistic regression model we estimated using <em>k</em>-fold cross-validation and the <code>train_df</code> data frame to our <code>test_df</code> data frame. First, using our final model, we need to estimate predicted classes/values for individuals’ outcomes (<code>Turnover</code>) based on their predictor variables’ scores in the <code>test_df</code> data frame. Let’s call the object to which we will assign these predictions <code>predictions</code> by using the <code>&lt;-</code> assignment operator. To the right of the <code>&lt;-</code> operator, type the name of the <code>predict</code> function from base R. As the first argument in the <code>predict</code> function, type the name of the model object we built using the <code>train</code> function (<code>model1</code>), and as the second argument, type <code>newdata=</code> followed by the name of the testing data frame (<code>test_df</code>).</p>
+<div class="sourceCode" id="cb1880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1880-1"><a href="kfold.html#cb1880-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome using model from training data based on testing data</span></span>
+<span id="cb1880-2"><a href="kfold.html#cb1880-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>test_df)</span></code></pre></div>
+<p>Using the <code>confusionMatrix</code> function from the <code>caret</code> package, we will assess how well our model fit the test data. Type the name of the <code>confusionMatrix</code> function. As the first argument, type <code>data=</code> followed by the name of the object to which you assigned the predicted values/classes on the outcome in the previous step (<code>predictions</code>). As the second argument, type the name of the test data frame (<code>test_df</code>), followed by the <code>$</code> operator and the name of the dichotomous outcome variable (<code>Turnover</code>).</p>
+<div class="sourceCode" id="cb1881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1881-1"><a href="kfold.html#cb1881-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create confusion matrix to assess model fit/performance on test data</span></span>
+<span id="cb1881-2"><a href="kfold.html#cb1881-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>predictions, test_df<span class="sc">$</span>Turnover)</span></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction quit stay
+##       quit   85   37
+##       stay   17   61
+##                                           
+##                Accuracy : 0.73            
+##                  95% CI : (0.6628, 0.7902)
+##     No Information Rate : 0.51            
+##     P-Value [Acc &gt; NIR] : 0.0000000001757 
+##                                           
+##                   Kappa : 0.4576          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.009722        
+##                                           
+##             Sensitivity : 0.8333          
+##             Specificity : 0.6224          
+##          Pos Pred Value : 0.6967          
+##          Neg Pred Value : 0.7821          
+##              Prevalence : 0.5100          
+##          Detection Rate : 0.4250          
+##    Detection Prevalence : 0.6100          
+##       Balanced Accuracy : 0.7279          
+##                                           
+##        &#39;Positive&#39; Class : quit            
+## </code></pre>
+<p>The output provides us with a lot of useful information that can help us assess how well the model fit and performed with the test data, which I review below.</p>
+<p><strong>Contingency Table:</strong> The output first provides a contingency table displaying the 2x2 table of observed quit vs. stay in relation to predicted quit vs. stay.</p>
+<p><strong>Model Accuracy:</strong> We can see that the accuracy is .73 (73%) (95% CI[.66, .79]). The <em>p</em>-value is a one-sided test that helps us understand if the model is more accurate than a model with no information (e.g., predictors); here, we see that that <em>p</em>-value is less than .05, which would lead us to conclude the model is more accurate to a statistically significant extent.</p>
+<p><strong>Cohen’s <span class="math inline">\(\kappa\)</span>:</strong> Cohen’s <span class="math inline">\(\kappa\)</span> is .46, which would be considered “moderate” classification strength by the thresholds shown above.</p>
+<p><strong>Sensitivity:</strong> Sensitivity represents the number of cases in which the “positive” class (e.g., quit) was accurately predicted divided by the total number of cases whose observed data fall into the “positive” class (e.g., quit). In other words, sensitivity represents the proportion of people who were correctly classified as having quit relative to the total number of people who actually quit. In this case, sensitivity is .83.</p>
+<p><strong>Specificity:</strong> Specificity can be conceptualized as the opposite of sensitivity in that it represents the number of cases in which the “negative” class (e.g., stay) was accurately predicted divided by the total number of cases whose observed data fall into the “negative” class (e.g., stay). In other words, specificity represents the proportion of people who were correctly classified as having stayed relative to the total number of people who actually stayed. In this case, sensitivity is .62.</p>
+<p><strong>Prevalence:</strong> Prevalence represents the number of cases whose observed data indicate that they were in the “positive” class (e.g., quit) divided by the total number of cases in the sample. In other words, prevalence represents the proportion of people who actually quit relative to the entire sample. In this example, prevalence is .51. When interpreting sensitivity, it is useful to compare it to prevalence.</p>
+<p><strong>Balanced Accuracy:</strong> Balanced accuracy is calculated by adding sensitivity to specificity and then dividing that sum by 2. In this example, the balanced accuracy is .73, and thus provides another estimate of the model’s overall classification accuracy.</p>
+<p>To learn about some of the other information in the output, check out the documentation for the <code>confusionMatrix</code> function.</p>
+<div class="sourceCode" id="cb1883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1883-1"><a href="kfold.html#cb1883-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View documentation for confusionMatrix function from caret package</span></span>
+<span id="cb1883-2"><a href="kfold.html#cb1883-2" aria-hidden="true" tabindex="-1"></a>?caret<span class="sc">::</span>confusionMatrix</span></code></pre></div>
+<p><strong>Summary of Results:</strong> Overall, the multiple logistic regression model we trained using <em>k</em>-fold cross-validation performed reasonably well when applied to the test data. Adding additional predictors to the model or measuring the predictors with great reliability could improve the predictive and classification performance of the model.</p>
 </div>
-<div id="crossvalidation_empirical" class="section level3" number="43.2.4">
-<h3><span class="header-section-number">43.2.4</span> Perform Empirical Cross-Validation</h3>
-<p>There are different ways that we can go about performing empirical cross-validation, but regardless of the approach, we are entering the realm of predictive analytics. Why? Well, we are testing the model fit and predictive accuracy of our model estimated using one sample in a different sample from the same population. To get things started, let’s estimate our multiple linear regression model that contains the three selection tool variables (<code>WorkSample</code>, <code>SJT</code>, <code>Consc</code>) as predictors and <code>PerfEval</code> as the outcome (criterion) variable. We will estimate our model using the first sample data frame, which we named <code>Sample1</code> above.</p>
-<div class="sourceCode" id="cb1547"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1547-1"><a href="crossvalidation.html#cb1547-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
-<span id="cb1547-2"><a href="crossvalidation.html#cb1547-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(PerfEval <span class="sc">~</span> WorkSample <span class="sc">+</span> SJT <span class="sc">+</span> Consc, <span class="at">data=</span>Sample1)</span>
-<span id="cb1547-3"><a href="crossvalidation.html#cb1547-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1547-4"><a href="crossvalidation.html#cb1547-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb1547-5"><a href="crossvalidation.html#cb1547-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = PerfEval ~ WorkSample + SJT + Consc, data = Sample1)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -1.62345 -0.39876  0.01343  0.32258  1.51027 
-## 
-## Coefficients:
-##             Estimate Std. Error t value         Pr(&gt;|t|)    
-## (Intercept)  1.30283    0.34833   3.740         0.000248 ***
-## WorkSample   0.28430    0.03854   7.376 0.00000000000596 ***
-## SJT          0.08118    0.03082   2.634         0.009190 ** 
-## Consc        0.23241    0.04652   4.996 0.00000139215819 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 0.589 on 178 degrees of freedom
-## Multiple R-squared:  0.3592, Adjusted R-squared:  0.3484 
-## F-statistic: 33.25 on 3 and 178 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p>In the output, you can see that each of the regression coefficients associated with the predictor variables (i.e., selection tools) are statistically significant, which indicates that they each explain unique variance in the outcome (<code>PerfEval</code>) when controlling for the predictors in the model. Further, the <span class="math inline">\(R^2_{unadj}\)</span> (unadjusted <em>R</em><sup>2</sup>) is .359, and the <span class="math inline">\(R^2_{adj}\)</span> (adjusted <em>R</em><sup>2</sup>) is .348, both of which provide us with estimates of model fit and the amount of variance explained in the outcome variable collectively by the three predictor variables.</p>
-<p>Let’s kick things up a notch by applying our model that we named <code>model1</code> to a new data frame called (<code>Sample2</code>). Using the <code>predict</code> function from base R, enter the name of the model object as the first argument and the name of the second data frame object as the second argument. Let’s assign these predicted values using the <code>&lt;-</code> assignment operator to an object called <code>predictions</code>. The <code>predict</code> function is using our regression model equation from the first sample to estimate the fitted (predicted) values of the outcome variable in the second sample based on the values for the different predictor variables.</p>
-<div class="sourceCode" id="cb1549"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1549-1"><a href="crossvalidation.html#cb1549-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict values on outcome using second sample</span></span>
-<span id="cb1549-2"><a href="crossvalidation.html#cb1549-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, Sample2)</span></code></pre></div>
-<p>Next, we will evaluate the quality of our model’s fit to the new dataset (<code>Sample2</code>). We’ll use several functions from the <code>caret</code> package, so be sure to install and access that package if you haven’t already. The <code>caret</code> package is renowned for its predictive modeling and machine learning functions.</p>
-<div class="sourceCode" id="cb1550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1550-1"><a href="crossvalidation.html#cb1550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
-<span id="cb1550-2"><a href="crossvalidation.html#cb1550-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1551-1"><a href="crossvalidation.html#cb1551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
-<span id="cb1551-2"><a href="crossvalidation.html#cb1551-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
-<p>For comparison, first, let’s extract the unadjusted <code>r.squared</code> value from the our regression model summary by appending <code>r.squared</code> to the end of <code>summary(model1)</code> using the <code>$</code> operator. Second, using the <code>R2</code> function from the <code>caret</code> package, enter the name of the <code>predictions</code> object we created above as the first argument, and as the second argument, enter the name of the second data frame (<code>Sample2</code>), followed by the the <code>$</code> operator and the name of the outcome variable (<code>PerfEval</code>). The first operation will extract our <span class="math inline">\(R^2_{unadj}\)</span> from the original sample, and the second operation will estimate our <span class="math inline">\(\rho^2_{c}\)</span> based on our new model and its performance in the second sample.</p>
-<div class="sourceCode" id="cb1552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1552-1"><a href="crossvalidation.html#cb1552-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unadjusted R-squared based on the first sample</span></span>
-<span id="cb1552-2"><a href="crossvalidation.html#cb1552-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared</span></code></pre></div>
-<pre><code>## [1] 0.359162</code></pre>
-<div class="sourceCode" id="cb1554"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1554-1"><a href="crossvalidation.html#cb1554-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R-squared based on the first sample</span></span>
-<span id="cb1554-2"><a href="crossvalidation.html#cb1554-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>adj.r.squared</span></code></pre></div>
-<pre><code>## [1] 0.3483614</code></pre>
-<div class="sourceCode" id="cb1556"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1556-1"><a href="crossvalidation.html#cb1556-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squared cross-validity based on the second sample</span></span>
-<span id="cb1556-2"><a href="crossvalidation.html#cb1556-2" aria-hidden="true" tabindex="-1"></a><span class="fu">R2</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
-<pre><code>## [1] 0.3412069</code></pre>
-<p>As one would expect, the <span class="math inline">\(\rho^2_{c}\)</span> is slightly lower the <span class="math inline">\(R^2_{unadj}\)</span> when the model is applied to new data, but fortunately, it doesn’t decrease that much. Further, the <span class="math inline">\(\rho^2_{c}\)</span> is only slightly lower than the <span class="math inline">\(R^2_{adj}\)</span>. This is our first indication that the model performed fairly well with the new data from the population.</p>
-<p>To calculate the multiple <em>R</em> and cross-validity (<span class="math inline">\(\rho_c\)</span>) values, we simply take the square root (<code>sqrt</code>) of the two values we calculated above.</p>
-<div class="sourceCode" id="cb1558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1558-1"><a href="crossvalidation.html#cb1558-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple R for first sample</span></span>
-<span id="cb1558-2"><a href="crossvalidation.html#cb1558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared)</span></code></pre></div>
-<pre><code>## [1] 0.5993013</code></pre>
-<div class="sourceCode" id="cb1560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1560-1"><a href="crossvalidation.html#cb1560-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validity for second sample</span></span>
-<span id="cb1560-2"><a href="crossvalidation.html#cb1560-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">R2</span>(predictions, Sample2<span class="sc">$</span>PerfEval))</span></code></pre></div>
-<pre><code>## [1] 0.5841292</code></pre>
-<p>Similarly, the multiple <em>R</em> and cross-validity (<span class="math inline">\(\rho_c\)</span>) values are comparable, with the cross-validity value only slightly lower than the multiple <em>R</em> value.</p>
-<p>The <strong>mean squared error (MSE)</strong> is another way that we can test how well our model performed. As the label implies, the MSE is the mean of the error (residual) values squared. First, let’s estimate the MSE for the initial sample, which reflects the extent to which the fitted (predicted) values based on the model deviate from the actual outcome variables in the initial sample (<code>Sample1</code>) on which the model was estimated. To estimate the MSE for the model based on the initial sample, we extract the <code>residuals</code> from the model (<code>model1</code>), square them, and then take the mean using the <code>mean</code> function from base R. Second, let’s estimate the MSE for the second sample based on the extent to which the fitted (predicted) values from our model (<code>model1</code>) deviate from the actual outcome variables in the second sample (<code>Sample2</code>). To estimate the MSE for the model (<code>model1</code>) in relation to the second sample, we subtract the predicted values (<code>predictions</code>) from the outcome variable (<code>PerfEval</code>) values for the second sample (<code>Sample2</code>), square the difference, and then compute the mean using the <code>mean</code> function from base R.</p>
-<div class="sourceCode" id="cb1562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1562-1"><a href="crossvalidation.html#cb1562-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE (Mean Squared Error) for first sample</span></span>
-<span id="cb1562-2"><a href="crossvalidation.html#cb1562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.3393501</code></pre>
-<div class="sourceCode" id="cb1564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1564-1"><a href="crossvalidation.html#cb1564-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE (Mean Squared Error) for second sample</span></span>
-<span id="cb1564-2"><a href="crossvalidation.html#cb1564-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((Sample2<span class="sc">$</span>PerfEval <span class="sc">-</span> predictions)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.4381229</code></pre>
-<p>In isolation, each MSE value does not mean much; however, each MSE value takes on mean when we compare it to another MSE value. As expected, the MSE is higher when we apply the model (<code>model1</code>) estimated from the first sample (<code>Sample1</code>) to the second sample (<code>Sample2</code>). With that said, we don’t want our MSE in the second, validation sample to be too much higher than the original, test sample. Often, however, we opt for the root mean squared error for evaluating the quality of our model’s fit because it is in the same units as the outcome variable.</p>
-<p>To calculate the root mean squared error (RMSE), we simply take the square root of the MSE. For our predicted (fitted) values based on our second, validation sample, we can simply apply the <code>RMSE</code> function from the <code>caret</code> package; as the first argument, type the name of the <code>predictions</code> object we created above, and as the second argument, type the name of the second sample (<code>Sample2</code>), followed by the <code>$</code> operator and the name of the outcome variable (<code>PerfEval</code>).</p>
-<div class="sourceCode" id="cb1566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1566-1"><a href="crossvalidation.html#cb1566-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE (Root Mean Squared Error) for first sample </span></span>
-<span id="cb1566-2"><a href="crossvalidation.html#cb1566-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] 0.5825376</code></pre>
-<div class="sourceCode" id="cb1568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1568-1"><a href="crossvalidation.html#cb1568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE (Root Mean Squared Error) for second sample</span></span>
-<span id="cb1568-2"><a href="crossvalidation.html#cb1568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RMSE</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
-<pre><code>## [1] 0.6619085</code></pre>
-<p>Again, we expect to see that the RMSE for our model (<code>model1</code>) when applied to the second sample to be larger, as we expect larger errors in prediction when we apply our model to new data. That said, we don’t want the differences in RMSE to be too large. But how much is too much you might ask? Good question, and there isn’t a great answer. What is considered a large difference depends in part on the context and what you’re predicting. That said, it’s sometimes helpful to calculate how much larger one RMSE is than the other. Below, I simply calculate how much larger (as a percentage) is the RMSE from the second sample than the first sample.</p>
-<div class="sourceCode" id="cb1570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1570-1"><a href="crossvalidation.html#cb1570-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage difference in RMSE (Root Mean Squared Error) values</span></span>
-<span id="cb1570-2"><a href="crossvalidation.html#cb1570-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">RMSE</span>(predictions, Sample2<span class="sc">$</span>PerfEval) <span class="sc">-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))) <span class="sc">/</span> </span>
-<span id="cb1570-3"><a href="crossvalidation.html#cb1570-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 13.62503</code></pre>
-<p>We see that the RMSE for the second, validation sample is 13.6% larger than the RMSE for the first, test sample, which is actually pretty good. If it were me, I would allow my concern to grow when that percentage difference hits 30% or higher, but that’s not a strict rule.</p>
-<p>The mean absolute error (MAE) is another common indicator of a model’s fit to data. The MAE is just the average of the errors’ (residuals’) absolute values. We want the difference between MAE values to be as small as possible.</p>
-<div class="sourceCode" id="cb1572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1572-1"><a href="crossvalidation.html#cb1572-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE (Mean Absolute Error) for first sample</span></span>
-<span id="cb1572-2"><a href="crossvalidation.html#cb1572-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals))</span></code></pre></div>
-<pre><code>## [1] 0.4535265</code></pre>
-<div class="sourceCode" id="cb1574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1574-1"><a href="crossvalidation.html#cb1574-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE (Mean Absolute Error) for second sample</span></span>
-<span id="cb1574-2"><a href="crossvalidation.html#cb1574-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MAE</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
-<pre><code>## [1] 0.5213717</code></pre>
-<p>As we did with the RMSE values, let’s calculate how much larger the MAE is when the model is applied to the second sample than the first sample.</p>
-<div class="sourceCode" id="cb1576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1576-1"><a href="crossvalidation.html#cb1576-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage difference in MAE (Mean Absolute Error) values</span></span>
-<span id="cb1576-2"><a href="crossvalidation.html#cb1576-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">MAE</span>(predictions, Sample2<span class="sc">$</span>PerfEval) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals))) <span class="sc">/</span> </span>
-<span id="cb1576-3"><a href="crossvalidation.html#cb1576-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
-<pre><code>## [1] 14.95948</code></pre>
-<p>We see that the MAE for the second, validation sample is 15.0% larger than the MAE for the first, test sample, which again is actually pretty good.</p>
-<p>Finally, let’s estimate the 95% prediction intervals around each fitted (predicted) value based on our model (<code>model1</code>) when applied to the second, validation sample (<code>Sample2</code>). We will use the <code>predict</code> function from base R. As the first argument, enter the name of your model object (<code>model1</code>). As the second argument, type <code>newdata=</code> followed by the name of the data frame associated with the second sample (<code>Sample2</code>). As the third argument, type <code>interval="prediction"</code> to indicate that you want to estimate prediction intervals; the default is the 95% prediction interval. Let’s assign the prediction interval and fitted values to an object called <code>pred.int</code> so that we can append those vectors to the second sample data frame, which we do in the following step using the <code>cbind</code> function from base R. Use the <code>head</code> function from base R to view the first 6 rows of your updated <code>Sample2</code> data frame and to marvel at your work.</p>
-<div class="sourceCode" id="cb1578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1578-1"><a href="crossvalidation.html#cb1578-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate 95% prediction intervals</span></span>
-<span id="cb1578-2"><a href="crossvalidation.html#cb1578-2" aria-hidden="true" tabindex="-1"></a>pred.int <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>Sample2, <span class="at">interval=</span><span class="st">&quot;prediction&quot;</span>)</span>
-<span id="cb1578-3"><a href="crossvalidation.html#cb1578-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1578-4"><a href="crossvalidation.html#cb1578-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Join fitted (predicted) values and upper and lower prediction interval values to data frame</span></span>
-<span id="cb1578-5"><a href="crossvalidation.html#cb1578-5" aria-hidden="true" tabindex="-1"></a>Sample2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Sample2, pred.int)</span>
-<span id="cb1578-6"><a href="crossvalidation.html#cb1578-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1578-7"><a href="crossvalidation.html#cb1578-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows</span></span>
-<span id="cb1578-8"><a href="crossvalidation.html#cb1578-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample2)</span></code></pre></div>
-<pre><code>##   PerfEval WorkSample SJT Consc      fit      lwr      upr
-## 1      4.0        6.7 4.4   4.3 4.564170 3.396242 5.732099
-## 2      4.3        9.0 3.7   1.7 4.556964 3.349621 5.764306
-## 3      3.9        6.8 5.6   4.5 4.736498 3.570208 5.902788
-## 4      5.6        7.6 6.8   5.2 5.224037 4.051437 6.396638
-## 5      4.5        4.5 6.9   3.8 4.025462 2.840158 5.210766
-## 6      4.9        8.1 7.4   4.3 5.205726 4.032809 6.378642</code></pre>
-<p>Unlike the confidence interval, the prediction interval is specific to each value and represents uncertainty around specific values of the outcome. In contrast, the confidence interval represents uncertainty around the point estimate of a regression coefficient associated with the relation between a predictor variable and the outcome variable. Thus, there is a single confidence interval for a regression coefficient, but there is a different prediction interval for each fitted (predicted) value of the outcome variable.</p>
-<p><strong>Technical Write-Up:</strong> We performed a concurrent validation study based on a sample 182 job incumbents. Given that all three selection tools (i.e., conscientiousness inventory, work sample, situational judgment test) showed evidence of incremental validity, we included all three in a multiple linear regression model, with performance evaluation scores as the criterion. All three selection tools showed evidence of incremental validity with respect to one another. To understand how well this estimated model might generalize to the broader population, we performed empirical cross-validation by assessing the fit and predictive accuracy of the model in a second sample drawn from the sample population. The squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341, which indicates that the model explained 34.1% of the variance in the criterion when applied to the second sample, which was only a slight decrease in performance compared to the original sample (<span class="math inline">\(R^2_{unadj}\)</span> = .359, <span class="math inline">\(R^2_{adj}\)</span> = .348). Further, estimates of root mean square error (RMSE) indicated that the RMSE for the second sample is 13.6% larger than the RMSE for the first sample, which indicates that were prediction errors didn’t increase substantially when applying the model to the second sample. Overall, the model performed relatively well applied to a second sample of data, and it doesn’t appear as though we overfit the model when estimating it using the first sample.</p>
-</div>
-<div id="summary_crossvalidation" class="section level3" number="43.2.5">
-<h3><span class="header-section-number">43.2.5</span> Summary</h3>
-<p>In this chapter, we learned how to statistically and empirically cross-validate a regression model. To perform statistical cross-validation, we estimated the cross-validity based on the <em>R</em>-squared value, sample size, and number of predictor variables in the model. To perform empirical cross-validation, we fit our regression model using one sample, and then estimated how well that model fit data from a second sample.</p>
+<div id="summary_kfold" class="section level3" number="48.2.5">
+<h3><span class="header-section-number">48.2.5</span> Summary</h3>
+<p>In this chapter, we dipped our toes into predictive analytics by using the <em>k</em>-fold cross-validation approach in which we trained our model using one set of data and then applied to a separate set of data to evaluate the extent to which it correctly classified cases.</p>
 
 </div>
 </div>
@@ -1265,8 +1361,8 @@ BOOK UNDER CONSTRUCTION</a>
           </div>
         </div>
       </div>
-<a href="differentialprediction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="turnover.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="logistic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

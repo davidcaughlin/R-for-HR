@@ -874,9 +874,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="48" data-path="kfold.html"><a href="kfold.html"><i class="fa fa-check"></i><b>48</b> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="kfold.html"><a href="kfold.html#conceptualoverview_kfold"><i class="fa fa-check"></i><b>48.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="48.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>48.1.1</b> Review of Predictive Analytics</a></li>
+<li class="chapter" data-level="48.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>48.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="48.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="kfold.html"><a href="kfold.html#videotutorial_kfold"><i class="fa fa-check"></i><b>48.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="48.2.2" data-path="kfold.html"><a href="kfold.html#functions_kfold"><i class="fa fa-check"></i><b>48.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.2.3" data-path="kfold.html"><a href="kfold.html#initsteps_kfold"><i class="fa fa-check"></i><b>48.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.2.4" data-path="kfold.html"><a href="kfold.html#estimate_kfold_logistic"><i class="fa fa-check"></i><b>48.2.4</b> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</a></li>
+<li class="chapter" data-level="48.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>48.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="49" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>49</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="50" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>50</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1029,7 +1045,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1610-4"><a href="turnoverchisquare.html#cb1610-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1610-5"><a href="turnoverchisquare.html#cb1610-5" aria-hidden="true" tabindex="-1"></a>cst <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ChiSquareTurnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Onboarding = col_character(),
@@ -1188,6 +1204,10 @@ BOOK UNDER CONSTRUCTION</a>
 <td>base R</td>
 </tr>
 <tr class="odd">
+<td><code>log</code></td>
+<td>base R</td>
+</tr>
+<tr class="even">
 <td><code>print</code></td>
 <td>base R</td>
 </tr>
@@ -1209,7 +1229,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1640-4"><a href="turnoverchisquare.html#cb1640-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1640-5"><a href="turnoverchisquare.html#cb1640-5" aria-hidden="true" tabindex="-1"></a>cst <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ChiSquareTurnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   Onboarding = col_character(),
@@ -1289,7 +1309,7 @@ BOOK UNDER CONSTRUCTION</a>
 </ul>
 <p>The formula can also be written in the following manner after cross-multiplication, which is what we’ll use when computing the odds ratio, as I think it is easier to read in R:</p>
 <p><span class="math inline">\(OR = \frac{A \times D}{B \times C}\)</span></p>
-<p>To make our calculations clearer, let’s reference specific cells from our contingency table object (<code>tbl</code>) using brackets (<code>[ ]</code>), where the first value within brackets references the row number and the second references the column number.</p>
+<p>To make our calculations clearer, let’s reference specific cells from our contingency table object (<code>tbl</code>) using brackets (<code>[ ]</code>), where the first value within brackets references the row number and the second references the column number. We’ll assign the count value from each score to objects <code>A</code>, <code>B</code>, <code>C</code>, and <code>D</code>, to be consistent with the above formula.</p>
 <div class="sourceCode" id="cb1650"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1650-1"><a href="turnoverchisquare.html#cb1650-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign counts to objects</span></span>
 <span id="cb1650-2"><a href="turnoverchisquare.html#cb1650-2" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> tbl[<span class="dv">2</span>,<span class="dv">2</span>]</span>
 <span id="cb1650-3"><a href="turnoverchisquare.html#cb1650-3" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> tbl[<span class="dv">2</span>,<span class="dv">1</span>]</span>

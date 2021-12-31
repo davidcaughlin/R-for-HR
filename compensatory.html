@@ -874,9 +874,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="48" data-path="kfold.html"><a href="kfold.html"><i class="fa fa-check"></i><b>48</b> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="kfold.html"><a href="kfold.html#conceptualoverview_kfold"><i class="fa fa-check"></i><b>48.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="48.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>48.1.1</b> Review of Predictive Analytics</a></li>
+<li class="chapter" data-level="48.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>48.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="48.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="kfold.html"><a href="kfold.html#videotutorial_kfold"><i class="fa fa-check"></i><b>48.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="48.2.2" data-path="kfold.html"><a href="kfold.html#functions_kfold"><i class="fa fa-check"></i><b>48.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.2.3" data-path="kfold.html"><a href="kfold.html#initsteps_kfold"><i class="fa fa-check"></i><b>48.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.2.4" data-path="kfold.html"><a href="kfold.html#estimate_kfold_logistic"><i class="fa fa-check"></i><b>48.2.4</b> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</a></li>
+<li class="chapter" data-level="48.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>48.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="49" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>49</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="50" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>50</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -973,7 +989,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1329-4"><a href="compensatory.html#cb1329-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1329-5"><a href="compensatory.html#cb1329-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1279,7 +1295,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1356-4"><a href="compensatory.html#cb1356-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1356-5"><a href="compensatory.html#cb1356-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1361,10 +1377,10 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Next, as the first argument in the <code>predict</code> function, type <code>object=</code> followed by the estimated model object that we named <code>reg.mod</code> above. As the second argument, type <code>newdata=</code> followed by the name of the data frame object that contains new data on the predictor variable. It’s important to make sure that the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our new data are exactly the same as the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our original data that we used to estimate the model. If that were not the case, we would want to rename the predictor variable in the new data frame object to match the corresponding name in the original data frame object, which is covered in the <a href="addnames.html#addnames">chapter on adding/removing variable names and renaming specific variables</a>.</p>
 <div class="sourceCode" id="cb1368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1368-1"><a href="compensatory.html#cb1368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable</span></span>
 <span id="cb1368-2"><a href="compensatory.html#cb1368-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object=</span>reg.mod, <span class="at">newdata=</span>new_df)</span></code></pre></div>
-<pre><code>##         1         2         3         4         5         6         7         8         9 
-## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 
-##        10        11        12        13        14        15 
-## 10.836989 12.216943 14.689987 12.399124 14.710923 11.243225</code></pre>
+<pre><code>##         1         2         3         4         5         6         7         8         9        10        11 
+## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 10.836989 12.216943 
+##        12        13        14        15 
+## 14.689987 12.399124 14.710923 11.243225</code></pre>
 <p>In your console, you should see a vector of scores – these are the predicted criterion scores. In many cases, we might want to append this vector as a variable to our new data frame object. To do so, we just need to apply the <code>&lt;-</code> operator and, to the left of it, specify the name of the new data frame object (<code>new_df</code>) followed by the <code>$</code> operator and a name for the new variable that will contain the predicted criterion scores (<code>Perf_Predict</code>).</p>
 <div class="sourceCode" id="cb1370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1370-1"><a href="compensatory.html#cb1370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable </span></span>
 <span id="cb1370-2"><a href="compensatory.html#cb1370-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and append as new variable in data frame</span></span>

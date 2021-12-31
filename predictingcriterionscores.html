@@ -874,9 +874,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="48" data-path="kfold.html"><a href="kfold.html"><i class="fa fa-check"></i><b>48</b> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="kfold.html"><a href="kfold.html#conceptualoverview_kfold"><i class="fa fa-check"></i><b>48.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="48.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>48.1.1</b> Review of Predictive Analytics</a></li>
+<li class="chapter" data-level="48.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>48.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="48.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="kfold.html"><a href="kfold.html#videotutorial_kfold"><i class="fa fa-check"></i><b>48.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="48.2.2" data-path="kfold.html"><a href="kfold.html#functions_kfold"><i class="fa fa-check"></i><b>48.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.2.3" data-path="kfold.html"><a href="kfold.html#initsteps_kfold"><i class="fa fa-check"></i><b>48.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.2.4" data-path="kfold.html"><a href="kfold.html#estimate_kfold_logistic"><i class="fa fa-check"></i><b>48.2.4</b> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</a></li>
+<li class="chapter" data-level="48.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>48.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="49" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>49</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="50" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>50</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1069,7 +1085,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1186-4"><a href="predictingcriterionscores.html#cb1186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1186-5"><a href="predictingcriterionscores.html#cb1186-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1126,9 +1142,9 @@ BOOK UNDER CONSTRUCTION</a>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-710-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
-## Plot(Conscientiousness, Performance, fill=&quot;skyblue&quot;)  # interior fill color of points
+## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% from center as outliers 
+## Plot(Conscientiousness, Performance, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
@@ -1576,7 +1592,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1218-4"><a href="predictingcriterionscores.html#cb1218-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1218-5"><a href="predictingcriterionscores.html#cb1218-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1652,12 +1668,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1232-6"><a href="predictingcriterionscores.html#cb1232-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1232-7"><a href="predictingcriterionscores.html#cb1232-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1232-8"><a href="predictingcriterionscores.html#cb1232-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        134        161        130        116         64        110         39        106 
-## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 
-##         43         99        127         34        143        126         55        132 
-## 0.02443426 0.02292889 0.02292889 0.02189203 0.02098965 0.02012473 0.01941305 0.01905427 
-##         92         95         28        142 
-## 0.01887586 0.01739145 0.01723973 0.01723973</code></pre>
+<pre><code>##        134        161        130        116         64        110         39        106         43         99 
+## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 0.02443426 0.02292889 
+##        127         34        143        126         55        132         92         95         28        142 
+## 0.02292889 0.02189203 0.02098965 0.02012473 0.01941305 0.01905427 0.01887586 0.01739145 0.01723973 0.01723973</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>134</em> is by far the largest, and the next largest values are clustered closer together. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed 1.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>134</em> appears to be consistently the most extreme outlier, but it still may not be extreme enough to consider removing. One could perform a sensitivity analysis by estimating the model with and without case <em>134</em> to see if the pattern of results remains the same.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod1</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>
@@ -1758,12 +1772,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## -2.27833 -0.51458 -0.00982  0.68429  1.95341 
 ## 
 ## Coefficients:
-##                                         Estimate              Std. Error t value      Pr(&gt;|t|)
-## (Intercept)              -0.00000000000000000661  0.06940583793586863059   0.000             1
-## scale(Conscientiousness)  0.46866634251609151640  0.06961972392189001713   6.732 0.00000000028
-##                             
-## (Intercept)                 
-## scale(Conscientiousness) ***
+##                                         Estimate              Std. Error t value      Pr(&gt;|t|)    
+## (Intercept)              -0.00000000000000000661  0.06940583793586863059   0.000             1    
+## scale(Conscientiousness)  0.46866634251609151640  0.06961972392189001713   6.732 0.00000000028 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 

@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="turnoverchisquare.html"/>
-<link rel="next" href="create-portfolio.html"/>
+<link rel="next" href="kfold.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -874,9 +874,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="47.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>47.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="48" data-path="kfold.html"><a href="kfold.html"><i class="fa fa-check"></i><b>48</b> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="kfold.html"><a href="kfold.html#conceptualoverview_kfold"><i class="fa fa-check"></i><b>48.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="48.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>48.1.1</b> Review of Predictive Analytics</a></li>
+<li class="chapter" data-level="48.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>48.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="48.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="kfold.html"><a href="kfold.html#videotutorial_kfold"><i class="fa fa-check"></i><b>48.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="48.2.2" data-path="kfold.html"><a href="kfold.html#functions_kfold"><i class="fa fa-check"></i><b>48.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.2.3" data-path="kfold.html"><a href="kfold.html#initsteps_kfold"><i class="fa fa-check"></i><b>48.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.2.4" data-path="kfold.html"><a href="kfold.html#estimate_kfold_logistic"><i class="fa fa-check"></i><b>48.2.4</b> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</a></li>
+<li class="chapter" data-level="48.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>48.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>IX Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="48" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>48</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="49" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>49</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="49" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>49</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="50" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>50</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1092,7 +1108,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1664-4"><a href="logistic.html#cb1664-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1664-5"><a href="logistic.html#cb1664-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   ID = col_character(),
 ##   Turnover = col_double(),
@@ -2744,7 +2760,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1726-4"><a href="logistic.html#cb1726-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1726-5"><a href="logistic.html#cb1726-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification -----------------------------------------------------------------------
+## -- Column specification -------------------------------------------------------------------------------------------
 ## cols(
 ##   ID = col_character(),
 ##   Turnover = col_double(),
@@ -2820,12 +2836,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1736-6"><a href="logistic.html#cb1736-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1736-7"><a href="logistic.html#cb1736-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1736-8"><a href="logistic.html#cb1736-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##         69          7         73         58         12         31         13          1 
-## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 
-##         33         84         63         61         97         70         74         75 
-## 0.02352896 0.01756755 0.01733141 0.01693066 0.01692984 0.01648318 0.01614505 0.01595550 
-##         67         80         77         39 
-## 0.01453516 0.01431210 0.01336026 0.01281733</code></pre>
+<pre><code>##         69          7         73         58         12         31         13          1         33         84 
+## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 0.02352896 0.01756755 
+##         63         61         97         70         74         75         67         80         77         39 
+## 0.01733141 0.01693066 0.01692984 0.01648318 0.01614505 0.01595550 0.01453516 0.01431210 0.01336026 0.01281733</code></pre>
 <p>Again, we see cases associated with row numbers <em>66</em> (.085), <em>67</em> (.062), and <em>71</em> (.049) having the highest Cook’s distance values, with <em>66</em> and <em>67</em> still looking like the most influential cases of the lot. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>66</em> and <em>67</em> from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>Association Between Any Continuous Predictor Variable and Logit Transformation of Outcome Variable Is Linear:</strong> To test the assumption of linearity between a <em>continuous</em> predictor variable and the logit transformation of the outcome variable, we can add the interaction between the predictor variable and its logarithmic (i.e., natural log) transformation. <strong>[Note: We do not perform the following test/approach for <em>categorical</em> predictor variables.]</strong> We will use an approach that is commonly referred to as the Box-Tidwell approach <span class="citation">(<a href="references.html#ref-hosmerlemeshow2000" role="doc-biblioref">Hosmer and Lemeshow 2000</a>)</span>. To apply this approach, we need to add the interaction term between our predictor variable <code>JS</code> and its logarithmic transformation to our logistic regression model – but not the main effect for the logarithmic transformation of <code>JS</code>. In our regression model formula, specify the dichotomous outcome variable <code>Turnover</code> to the left of the <code>~</code> operator. To the right of the <code>~</code> operator, type the name of the predictor variable <code>JS</code> followed by the <code>+</code> operator. After the <code>+</code> operator, type the name of the predictor variable <code>JS</code>, followed by the <code>:</code> operator and the <code>log</code> function from base R with the predictor variable <code>JS</code> as its sole parenthetical argument. Finally, we will use the <code>summary</code> function from base R to generate the model output, and within the parentheses, enter the name of the model you created in the prior step (<code>boxtidwell</code>).</p>
 <div class="sourceCode" id="cb1738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1738-1"><a href="logistic.html#cb1738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box-Tidwell diagnostic test of linearity between continuous predictor variable and</span></span>
@@ -3278,12 +3292,10 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1794-6"><a href="logistic.html#cb1794-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1794-7"><a href="logistic.html#cb1794-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1794-8"><a href="logistic.html#cb1794-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          6          1         66         42         96         74         27         26 
-## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 
-##         67         61         68          4         25         52         54         69 
-## 0.03973226 0.02634920 0.02182251 0.01882168 0.01802907 0.01720366 0.01718997 0.01718628 
-##          8         75         77         64 
-## 0.01661234 0.01611474 0.01593173 0.01552323</code></pre>
+<pre><code>##          6          1         66         42         96         74         27         26         67         61 
+## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 0.03973226 0.02634920 
+##         68          4         25         52         54         69          8         75         77         64 
+## 0.02182251 0.01882168 0.01802907 0.01720366 0.01718997 0.01718628 0.01661234 0.01611474 0.01593173 0.01552323</code></pre>
 <p>Again, we see cases associated with row numbers <em>6</em> (.152), <em>1</em> (.134), and <em>66</em> (.101) having the highest Cook’s distance values. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>6</em> and <em>1</em> (and maybe even <em>66</em>) from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>No (Multi)Collinearity Between Predictor Variables:</strong> To assess whether (multi)collinearity might be an issue, let’s estimate two indices of collinearity: tolerance and valence inflation factor (VIF). If you haven’t already, install the <code>car</code> package which contains the <code>vif</code> function we will use to compute tolerance.</p>
 <div class="sourceCode" id="cb1796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1796-1"><a href="logistic.html#cb1796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install car package if you haven&#39;t already</span></span>
@@ -3302,7 +3314,7 @@ BOOK UNDER CONSTRUCTION</a>
 <pre><code>##        JS      NAff        TI 
 ## 0.9359549 0.9794966 0.9367719</code></pre>
 <p>This table indicates that there are low levels of collinearity. Specifically, we can see that the tolerance statistics are all closer to 1.00 and definitely above .20, thereby indicating that collinearity is not likely an issue.</p>
-<p><strong>Association Between Any Continuous Predictor Variable and Logit Transformation of Outcome Variable Is Linear:</strong> To test the assumption of linearity between a <em>continuous</em> predictor variable and the logit transformation of the outcome variable, we can add to the model the interaction term between any continuous predictor variable and its logarithmic (i.e., natural log) transformation. <strong>[Note: We do not perform the following test/approach for <em>categorical</em> predictor variables.]</strong> We will use an approach that is commonly referred to as the Box-Tidwell approach <span class="citation">(<a href="references.html#ref-hosmerlemeshow2000" role="doc-biblioref">Hosmer and Lemeshow 2000</a>)</span>. To apply this approach, we need to add the interaction term between each predictor variable and its logarithmic transformation to our logistic regression model – but not the main effect for the logarithmic transformation of the predictor variable. In our regression model formula, specify the dichotomous outcome variable <code>Turnover</code> to the left of the <code>~</code> symbol. To the right of the <code>~</code> symbol, type the name of each predictor variable <code>JS</code> followed by the <code>+</code> symbol. After the <code>+</code> symbol, type the name of the same predictor variable <code>JS</code>, followed by the <code>:</code> symbol and the <code>log</code> function from base R with the predictor variable as its sole parenthetical argument. Repeat that process for all continuous predictor variables in the model. Be sure to name the model object, and here I name it arbitrarily <code>boxtidwell</code>. Finally, use the <code>summary</code> function from base <code>R</code> to generate the model output, and within the parentheses, enter the name of the model you created in the prior step (<code>boxtidwell</code>).</p>
+<p><strong>Association Between Any Continuous Predictor Variable and Logit Transformation of Outcome Variable Is Linear:</strong> To test the assumption of linearity between a <em>continuous</em> predictor variable and the logit transformation of the outcome variable, we can add to the model the interaction term between any continuous predictor variable and its logarithmic (i.e., natural log) transformation. <strong>[Note: We do not perform the following test/approach for <em>categorical</em> predictor variables.]</strong> We will use an approach that is commonly referred to as the Box-Tidwell approach <span class="citation">(<a href="references.html#ref-hosmerlemeshow2000" role="doc-biblioref">Hosmer and Lemeshow 2000</a>)</span>. To apply this approach, we need to add the interaction term between each predictor variable and its logarithmic transformation to our logistic regression model – but not the main effect for the logarithmic transformation of the predictor variable. In our regression model formula, specify the dichotomous outcome variable <code>Turnover</code> to the left of the <code>~</code> symbol. To the right of the <code>~</code> symbol, type the name of each predictor variable <code>JS</code> followed by the <code>+</code> symbol. After the <code>+</code> symbol, type the name of the same predictor variable <code>JS</code>, followed by the <code>:</code> symbol and the <code>log</code> function from base R with the predictor variable as its sole parenthetical argument. Repeat that process for all continuous predictor variables in the model. Be sure to name the model object, and here I name it arbitrarily <code>boxtidwell</code>. Finally, use the <code>summary</code> function from base R to generate the model output, and within the parentheses, enter the name of the model you created in the prior step (<code>boxtidwell</code>).</p>
 <div class="sourceCode" id="cb1802"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1802-1"><a href="logistic.html#cb1802-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box-Tidwell diagnostic test of linearity between continuous predictor variables and</span></span>
 <span id="cb1802-2"><a href="logistic.html#cb1802-2" aria-hidden="true" tabindex="-1"></a><span class="co"># logit transformation of outcome variable</span></span>
 <span id="cb1802-3"><a href="logistic.html#cb1802-3" aria-hidden="true" tabindex="-1"></a>boxtidwell <span class="ot">&lt;-</span> <span class="fu">glm</span>(Turnover <span class="sc">~</span> JS <span class="sc">+</span> JS<span class="sc">:</span><span class="fu">log</span>(JS) <span class="sc">+</span> NAff <span class="sc">+</span> NAff<span class="sc">:</span><span class="fu">log</span>(NAff) <span class="sc">+</span> TI <span class="sc">+</span> TI<span class="sc">:</span><span class="fu">log</span>(TI), </span>
@@ -3393,7 +3405,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p><span class="math inline">\(\log(odds) = \ln(\frac{p}{1-p}) = -3.929 - .233 \times JS_{observed} + 1.195 \times NAff_{observed} + .897 \times TI_{observed}\)</span></p>
 <p>To that end, to aid our interpretation of the significant finding, we can convert our logistic regression coefficient to an odds ratio by simply exponentiating it – for example:</p>
 <p><span class="math inline">\(e^{1.195} = 3.304\)</span></p>
-<p>We can also do this using <code>R</code> by applying the <code>exp</code> function from base <code>R</code>. Specifically, within the <code>exp</code> function parentheses, type the name of the <code>coef</code> function from base <code>R</code>, which extracts the regression coefficients from the model object. As the sole argument within the <code>coef</code> function parentheses, enter the name of the model we previously specified (<code>model2</code>).</p>
+<p>We can also do this using R by applying the <code>exp</code> function from base R. Specifically, within the <code>exp</code> function parentheses, type the name of the <code>coef</code> function from base R, which extracts the regression coefficients from the model object. As the sole argument within the <code>coef</code> function parentheses, enter the name of the model we previously specified (<code>model2</code>).</p>
 <div class="sourceCode" id="cb1809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1809-1"><a href="logistic.html#cb1809-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exponentiate logistic regression coefficient to convert to odds ratio</span></span>
 <span id="cb1809-2"><a href="logistic.html#cb1809-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(model2))</span></code></pre></div>
 <pre><code>## (Intercept)          JS        NAff          TI 
@@ -3450,7 +3462,7 @@ BOOK UNDER CONSTRUCTION</a>
 <pre><code>## td_short$Turnover
 ##  0  1 
 ## 37 58</code></pre>
-<p>As you can see, 37 people actually stayed and 58 people actually quit. To convert these to proportions, apply the <code>prop.table</code> function from base <code>R</code> to the table object we created in the previous step (<code>table1</code>).</p>
+<p>As you can see, 37 people actually stayed and 58 people actually quit. To convert these to proportions, apply the <code>prop.table</code> function from base R to the table object we created in the previous step (<code>table1</code>).</p>
 <div class="sourceCode" id="cb1818"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1818-1"><a href="logistic.html#cb1818-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Proportion of cases at each level of outcome variable</span></span>
 <span id="cb1818-2"><a href="logistic.html#cb1818-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table1)</span></code></pre></div>
 <pre><code>## td_short$Turnover
@@ -3564,20 +3576,20 @@ BOOK UNDER CONSTRUCTION</a>
 <p>If we print the first six rows from the <code>td</code> data frame object, we will see the new column containing the predicted probabilities based on our simple logistic regression model.</p>
 <div class="sourceCode" id="cb1837"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1837-1"><a href="logistic.html#cb1837-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1837-2"><a href="logistic.html#cb1837-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
-<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS
-## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566
-## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009
-## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856
-## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079
-## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220
-## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403
-##   dich.pred.prob.JS pred.prod.allpred
-## 1                 0        0.08371016
-## 2                 1        0.73187048
-## 3                 1        0.79306191
-## 4                 1        0.90827169
-## 5                 1        0.57694329
-## 6                 0        0.31447250</code></pre>
+<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS
+## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0
+## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1
+## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1
+## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1
+## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1
+## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0
+##   pred.prod.allpred
+## 1        0.08371016
+## 2        0.73187048
+## 3        0.79306191
+## 4        0.90827169
+## 5        0.57694329
+## 6        0.31447250</code></pre>
 <p>We can now dichotomize the predicted probabilities (<code>pred.prod.allpred</code>), such that any case with a predicted probability of .50 or higher is assigned a 1 (quit), and any case with a predicted probability that is less than .50 is assigned a 0 (stay). That is, we’re setting our threshold for experiencing the event in question as .50. As the first step, let’s create a new variable called <code>dich.pred.prod.allpred</code> (or whatever we would like to call it) based on the values from the <code>pred.prod.allpred</code> variable we just created. Next, for the <code>dich.pred.prod.allpred</code>, dichotomize the values as either a 1 or a 0 in accordance with the approach described above. For more information on the data-management operations below, check out <a href="clean.html#clean">chapter on cleaning data</a>.</p>
 <div class="sourceCode" id="cb1839"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1839-1"><a href="logistic.html#cb1839-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dichotomize probabilities, where .50 or greater is 1 (quit) and less than .50 is 0 (stay)</span></span>
 <span id="cb1839-2"><a href="logistic.html#cb1839-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>dich.pred.prod.allpred <span class="ot">&lt;-</span> td<span class="sc">$</span>pred.prod.allpred</span>
@@ -3585,20 +3597,20 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1839-4"><a href="logistic.html#cb1839-4" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>dich.pred.prod.allpred[td<span class="sc">$</span>dich.pred.prod.allpred <span class="sc">&lt;</span> .<span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
 <div class="sourceCode" id="cb1840"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1840-1"><a href="logistic.html#cb1840-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1840-2"><a href="logistic.html#cb1840-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
-<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS
-## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566
-## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009
-## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856
-## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079
-## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220
-## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403
-##   dich.pred.prob.JS pred.prod.allpred dich.pred.prod.allpred
-## 1                 0        0.08371016                      0
-## 2                 1        0.73187048                      1
-## 3                 1        0.79306191                      1
-## 4                 1        0.90827169                      1
-## 5                 1        0.57694329                      1
-## 6                 0        0.31447250                      0</code></pre>
+<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS
+## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0
+## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1
+## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1
+## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1
+## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1
+## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0
+##   pred.prod.allpred dich.pred.prod.allpred
+## 1        0.08371016                      0
+## 2        0.73187048                      1
+## 3        0.79306191                      1
+## 4        0.90827169                      1
+## 5        0.57694329                      1
+## 6        0.31447250                      0</code></pre>
 <p>It’s important to keep in mind that these predicted probabilities are estimated based on the same data we used to estimate the model in the first place. Given this, I would describe this process as predict-ish analytics as opposed to true predictive analytics. To reach predictive analytics, we would need to obtain “fresh” data on the predictor variables, which we could then use to plug into our model; to do this with a model estimated using the <code>glm</code> model, will create a toy data frame with “fresh” predictor variable values sampled from the same population. In a real life situation, we would more than likely read in a new data file and assign that to an object – just like we did in the <a href="compensatory.html#compensatory">chapter on applying a compensatory approach to selection decisions using multiple linear regression</a>.</p>
 <p>In this toy data frame that we’re naming <code>fresh_td</code>, we use the <code>data.frame</code> function from base R. As the first argument, we’ll create an <code>ID</code> variable with some fictional employee ID numbers. As the second argument, we’ll create a <code>JS</code> variable with some fictional job satisfaction scores. As the third argument, we’ll create a <code>NAff</code> variable with some fictional negative affectivity scores. As the fourth argument, we’ll create a <code>TI</code> variable with some fictional turnover intentions scores.</p>
 <div class="sourceCode" id="cb1842"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1842-1"><a href="logistic.html#cb1842-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create toy data frame object for illustration purposes</span></span>
@@ -3639,16 +3651,13 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
 <a href="turnoverchisquare.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="kfold.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
