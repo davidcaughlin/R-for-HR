@@ -941,9 +941,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="51.3.6" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#corrgram_corrgram_function"><i class="fa fa-check"></i><b>51.3.6</b> <code>corrgram</code> Function from <code>corrgram</code> package</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="52" data-path="polynomialregression.html"><a href="polynomialregression.html"><i class="fa fa-check"></i><b>52</b> Investigating Nonlinear Associations Using Polynomial Regression</a>
+<ul>
+<li class="chapter" data-level="52.1" data-path="polynomialregression.html"><a href="polynomialregression.html#conceptualoverview_polynomialregression"><i class="fa fa-check"></i><b>52.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="52.1.1" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalassumptions_polynomialregression"><i class="fa fa-check"></i><b>52.1.1</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="52.1.2" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalsignficance_polynomialregression"><i class="fa fa-check"></i><b>52.1.2</b> Statistical Significance</a></li>
+</ul></li>
+<li class="chapter" data-level="52.2" data-path="polynomialregression.html"><a href="polynomialregression.html#tutorial_polynomialregression"><i class="fa fa-check"></i><b>52.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="52.2.1" data-path="polynomialregression.html"><a href="polynomialregression.html#functions_polynomialregression"><i class="fa fa-check"></i><b>52.2.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="52.2.2" data-path="polynomialregression.html"><a href="polynomialregression.html#initsteps_polynomialregression"><i class="fa fa-check"></i><b>52.2.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="52.2.3" data-path="polynomialregression.html"><a href="polynomialregression.html#bivariatescatterplot_polynomialregression"><i class="fa fa-check"></i><b>52.2.3</b> Visualize Association Using a Bivariate Scatter Plot</a></li>
+<li class="chapter" data-level="52.2.4" data-path="polynomialregression.html"><a href="polynomialregression.html#estimate_polynomialregression"><i class="fa fa-check"></i><b>52.2.4</b> Estimate Polynomial Regression Model</a></li>
+<li class="chapter" data-level="52.2.5" data-path="polynomialregression.html"><a href="polynomialregression.html#summary_polynomialregression"><i class="fa fa-check"></i><b>52.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>X Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="52" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>52</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="53" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>53</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="53" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>53</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="54" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>54</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1151,7 +1167,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb999-4"><a href="posttestonly-threegroups.html#cb999-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb999-5"><a href="posttestonly-threegroups.html#cb999-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   Condition = col_character(),
@@ -1200,7 +1216,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Plot(PostTest, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(PostTest, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry
 ## ANOVA(PostTest ~ Condition)  # Add the data parameter if not the d data frame</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-594-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-608-1.png" width="672" /></p>
 <pre><code>## PostTest 
 ##   - by levels of - 
 ## Condition 
@@ -1262,6 +1278,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Type the name of the <code>leveneTest</code> function. As the first argument, specify the statistical model. To do so, type the name of the outcome (dependent) variable (<code>PostTest</code>) to the left of the <code>~</code> symbol and the name of the predictor (independent) variable (<code>Condition</code>) to the right of the <code>~</code> symbol. For the second argument, use <code>data=</code> to specify the name of the data frame (<code>td</code>).</p>
 <div class="sourceCode" id="cb1016"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1016-1"><a href="posttestonly-threegroups.html#cb1016-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Levene&#39;s test for equal variances</span></span>
 <span id="cb1016-2"><a href="posttestonly-threegroups.html#cb1016-2" aria-hidden="true" tabindex="-1"></a><span class="fu">leveneTest</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
+<pre><code>## Warning in leveneTest.default(y = y, group = group, ...): group coerced to factor.</code></pre>
 <pre><code>## Levene&#39;s Test for Homogeneity of Variance (center = median)
 ##       Df F value Pr(&gt;F)
 ## group  2  0.6499 0.5251
@@ -1274,14 +1291,14 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Using <code>ANOVA</code> function from the <code>lessR</code> package, we will evaluate whether the means on the post-test (<code>PostTest</code>) continuous outcome variable differ between levels of the <code>Condition</code> categorical predictor variable (<em>New</em>, <em>Old</em>, <em>No</em>); in other words, let’s find out if we should treat the means as being different from one another.</p>
 <p>A big advantage of using the <code>ANOVA</code> function from the <code>lessR</code> package to estimate a one-way ANOVA is that the function automatically generates descriptive statistics, the omnibus <em>F</em>-test and associated indicators of effect size (i.e., practical significance), and post-hoc pairwise comparisons.</p>
 <p>If you haven’t already, install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb1018"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1018-1"><a href="posttestonly-threegroups.html#cb1018-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1018-2"><a href="posttestonly-threegroups.html#cb1018-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1019-1"><a href="posttestonly-threegroups.html#cb1019-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1019-2"><a href="posttestonly-threegroups.html#cb1019-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<div class="sourceCode" id="cb1019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1019-1"><a href="posttestonly-threegroups.html#cb1019-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1019-2"><a href="posttestonly-threegroups.html#cb1019-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="posttestonly-threegroups.html#cb1020-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1020-2"><a href="posttestonly-threegroups.html#cb1020-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
 <p>Now we’re ready to estimate a one-way ANOVA. To begin, type the name of the <code>ANOVA</code> function. As the first argument in the parentheses, specify the statistical model. To do so, type the name of the continuous outcome variable (<code>PostTest</code>) to the left of the <code>~</code> symbol and the name of the categorical predictor variable (<code>Condition</code>) to the right of the <code>~</code> symbol. For the second argument, use <code>data=</code> to specify the name of the data frame where the outcome and predictor variables are located (<code>td</code>).</p>
-<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1020-1"><a href="posttestonly-threegroups.html#cb1020-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using ANOVA function from lessR</span></span>
-<span id="cb1020-2"><a href="posttestonly-threegroups.html#cb1020-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ANOVA</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-601-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-601-2.png" width="672" /></p>
+<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1021-1"><a href="posttestonly-threegroups.html#cb1021-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using ANOVA function from lessR</span></span>
+<span id="cb1021-2"><a href="posttestonly-threegroups.html#cb1021-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ANOVA</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-615-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-615-2.png" width="672" /></p>
 <pre><code>##   BACKGROUND 
 ## 
 ## Response Variable: PostTest 
@@ -1396,13 +1413,13 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Note that the <code>ANOVA</code> function from <code>lessR</code> does <em>not</em> provide effect size estimates for the post-hoc pairwise mean comparisons, so if you would like those, you can do the following.</p>
 <p><strong>Effect Sizes of Significant Post-Hoc Pairwise Mean Comparisons:</strong> There are various ways that we could go about computing an effect size such as Cohen’s <em>d</em> for those statistically significant post-hoc pairwise mean comparisons. In the post-hoc pairwise mean comparisons section of the output, we identified that the <em>New</em> and <em>Old</em> training conditions resulted in significantly higher post-training assessment (<code>PostTest</code>) scores compared to the <em>No</em> training condition. The question then becomes: How much better than the <em>No</em> training condition are the <em>New</em> and <em>Old</em> training conditions?</p>
 <p>To compute Cohen’s <em>d</em> as an estimate of practical significance we will use the <code>cohen.d</code> function from the <code>effsize</code> package. If you haven’t already, install the <code>effsize</code> package. Make sure to access the package using the <code>library</code> function.</p>
-<div class="sourceCode" id="cb1022"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1022-1"><a href="posttestonly-threegroups.html#cb1022-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1022-2"><a href="posttestonly-threegroups.html#cb1022-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;effsize&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="posttestonly-threegroups.html#cb1023-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1023-2"><a href="posttestonly-threegroups.html#cb1023-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effsize)</span></code></pre></div>
+<div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="posttestonly-threegroups.html#cb1023-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1023-2"><a href="posttestonly-threegroups.html#cb1023-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;effsize&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1024-1"><a href="posttestonly-threegroups.html#cb1024-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1024-2"><a href="posttestonly-threegroups.html#cb1024-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effsize)</span></code></pre></div>
 <p>As the first argument in the <code>cohen.d</code> function parentheses, type the name of the continuous outcome variable (<code>PostTest</code>) to the left of the <code>~</code> symbol and the name of the categorical predictor variable (<code>Condition</code>) to the right of the <code>~</code> symbol. For the second argument, we are going to apply the <code>subset</code> function from base R after <code>data=</code> to indicate that we only want to run a subset of our data frame. The <code>subset</code> function is a simpler version of the <code>filter</code> function from <code>dplyr</code>. Why are we doing this? The <code>cohen.d</code> function will only allow predictor variables with two levels, and our <code>Condition</code> variable has three levels: <em>New</em>, <em>Old</em>, and <em>No</em>. After <code>data=</code>, type <code>subset</code>, and within the <code>subset</code> function parentheses, enter the name of the data frame (<code>td</code>) as the first argument and a conditional statement that removes one of the three predictor variable levels (<code>Condition!="Old"</code>); in this first example, we remove the <em>Old</em> level so that we can compare just the <em>New</em> and <em>Old</em> conditions. Back to the <code>cohen.d</code> function, as the third argument, type <code>paired=FALSE</code> to indicate that the data are <em>not</em> paired (i.e., the data are not dependent).</p>
-<div class="sourceCode" id="cb1024"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1024-1"><a href="posttestonly-threegroups.html#cb1024-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for New and No condition means</span></span>
-<span id="cb1024-2"><a href="posttestonly-threegroups.html#cb1024-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;Old&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1025"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1025-1"><a href="posttestonly-threegroups.html#cb1025-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for New and No condition means</span></span>
+<span id="cb1025-2"><a href="posttestonly-threegroups.html#cb1025-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;Old&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
@@ -1434,8 +1451,8 @@ BOOK UNDER CONSTRUCTION</a>
 </tbody>
 </table>
 <p>Let’s repeat the same process as above, except this time we will focus on the <em>Old</em> and <em>No</em> levels of the <code>Condition</code> predictor variable by removing the level called <em>New</em>.</p>
-<div class="sourceCode" id="cb1026"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1026-1"><a href="posttestonly-threegroups.html#cb1026-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for Old and No condition means</span></span>
-<span id="cb1026-2"><a href="posttestonly-threegroups.html#cb1026-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;New&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1027"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1027-1"><a href="posttestonly-threegroups.html#cb1027-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for Old and No condition means</span></span>
+<span id="cb1027-2"><a href="posttestonly-threegroups.html#cb1027-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;New&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
@@ -1450,17 +1467,17 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="barchart_onewayanova" class="section level3" number="34.2.6">
 <h3><span class="header-section-number">34.2.6</span> Visualize Results Using Bar Chart</h3>
 <p>When we find a statistically significant difference between two or more pairs of means based on an one-way ANOVA, we may want to present the means in a bar chart to facilitate storytelling. To do so, we will use the <code>BarChart</code> function from <code>lessR</code>. If you haven’t already, install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb1028"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1028-1"><a href="posttestonly-threegroups.html#cb1028-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1028-2"><a href="posttestonly-threegroups.html#cb1028-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1029"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1029-1"><a href="posttestonly-threegroups.html#cb1029-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1029-2"><a href="posttestonly-threegroups.html#cb1029-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<div class="sourceCode" id="cb1029"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1029-1"><a href="posttestonly-threegroups.html#cb1029-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1029-2"><a href="posttestonly-threegroups.html#cb1029-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1030"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1030-1"><a href="posttestonly-threegroups.html#cb1030-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1030-2"><a href="posttestonly-threegroups.html#cb1030-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
 <p>Type the name of the <code>BarChart</code> function. As the first argument, type <code>x=</code> followed by the name of the categorical predictor variable (<code>Condition</code>). As the second argument, type <code>y=</code> followed by the name of the continuous outcome variable (<code>PostTest</code>). As the third argument, specify <code>stat="mean"</code> to request the application of the mean function to the <code>PostTest</code> variable based on the levels of the <code>Condition</code> variable. As the fourth argument, type <code>data=</code> followed by the name of the data frame object to which our predictor and outcome variables belong (<code>td</code>). As the fifth argument, use <code>xlab=</code> to provide the x-axis label (<code>"Training Condition"</code>). As the sixth argument, use <code>ylab=</code> to provide the y-axis label (<code>"Post-Test Score"</code>).</p>
-<div class="sourceCode" id="cb1030"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1030-1"><a href="posttestonly-threegroups.html#cb1030-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
-<span id="cb1030-2"><a href="posttestonly-threegroups.html#cb1030-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(<span class="at">x=</span>Condition, <span class="at">y=</span>PostTest,</span>
-<span id="cb1030-3"><a href="posttestonly-threegroups.html#cb1030-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">stat=</span><span class="st">&quot;mean&quot;</span>,</span>
-<span id="cb1030-4"><a href="posttestonly-threegroups.html#cb1030-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">data=</span>td,</span>
-<span id="cb1030-5"><a href="posttestonly-threegroups.html#cb1030-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Training Condition&quot;</span>, </span>
-<span id="cb1030-6"><a href="posttestonly-threegroups.html#cb1030-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Post-Test Score&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1031"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1031-1"><a href="posttestonly-threegroups.html#cb1031-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
+<span id="cb1031-2"><a href="posttestonly-threegroups.html#cb1031-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(<span class="at">x=</span>Condition, <span class="at">y=</span>PostTest,</span>
+<span id="cb1031-3"><a href="posttestonly-threegroups.html#cb1031-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">stat=</span><span class="st">&quot;mean&quot;</span>,</span>
+<span id="cb1031-4"><a href="posttestonly-threegroups.html#cb1031-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">data=</span>td,</span>
+<span id="cb1031-5"><a href="posttestonly-threegroups.html#cb1031-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Training Condition&quot;</span>, </span>
+<span id="cb1031-6"><a href="posttestonly-threegroups.html#cb1031-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Post-Test Score&quot;</span>)</span></code></pre></div>
 <pre><code>## PostTest 
 ##   - by levels of - 
 ## Condition 
@@ -1469,7 +1486,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## New   25      0    72.36     6.98    60.00    73.00    84.00 
 ## No    25      0    62.36     8.09    47.00    61.00    79.00 
 ## Old   25      0    69.60     9.11    51.00    70.00    89.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-608-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-622-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(PostTest, Condition) # lollipop plot 
 ## 
@@ -1542,29 +1559,29 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="onewayanova_initsteps_supplement" class="section level3" number="34.3.2">
 <h3><span class="header-section-number">34.3.2</span> Initial Steps</h3>
 <p>If required, please refer to the <a href="posttestonly-threegroups.html#initsteps_onewayanova">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb1033"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1033-1"><a href="posttestonly-threegroups.html#cb1033-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1033-2"><a href="posttestonly-threegroups.html#cb1033-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1034"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1034-1"><a href="posttestonly-threegroups.html#cb1034-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1034-2"><a href="posttestonly-threegroups.html#cb1034-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1034-3"><a href="posttestonly-threegroups.html#cb1034-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1034-4"><a href="posttestonly-threegroups.html#cb1034-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1035"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1035-1"><a href="posttestonly-threegroups.html#cb1035-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1035-2"><a href="posttestonly-threegroups.html#cb1035-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1035-3"><a href="posttestonly-threegroups.html#cb1035-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1035-4"><a href="posttestonly-threegroups.html#cb1035-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb1035-5"><a href="posttestonly-threegroups.html#cb1035-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1034"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1034-1"><a href="posttestonly-threegroups.html#cb1034-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1034-2"><a href="posttestonly-threegroups.html#cb1034-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1035"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1035-1"><a href="posttestonly-threegroups.html#cb1035-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1035-2"><a href="posttestonly-threegroups.html#cb1035-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1035-3"><a href="posttestonly-threegroups.html#cb1035-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1035-4"><a href="posttestonly-threegroups.html#cb1035-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1036"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1036-1"><a href="posttestonly-threegroups.html#cb1036-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1036-2"><a href="posttestonly-threegroups.html#cb1036-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1036-3"><a href="posttestonly-threegroups.html#cb1036-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1036-4"><a href="posttestonly-threegroups.html#cb1036-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1036-5"><a href="posttestonly-threegroups.html#cb1036-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_double(),
 ##   Condition = col_character(),
 ##   PostTest = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb1037"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1037-1"><a href="posttestonly-threegroups.html#cb1037-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb1037-2"><a href="posttestonly-threegroups.html#cb1037-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(td)</span></code></pre></div>
+<div class="sourceCode" id="cb1038"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1038-1"><a href="posttestonly-threegroups.html#cb1038-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb1038-2"><a href="posttestonly-threegroups.html#cb1038-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(td)</span></code></pre></div>
 <pre><code>## [1] &quot;EmpID&quot;     &quot;Condition&quot; &quot;PostTest&quot;</code></pre>
-<div class="sourceCode" id="cb1039"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1039-1"><a href="posttestonly-threegroups.html#cb1039-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
-<span id="cb1039-2"><a href="posttestonly-threegroups.html#cb1039-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(td)</span></code></pre></div>
+<div class="sourceCode" id="cb1040"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1040-1"><a href="posttestonly-threegroups.html#cb1040-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb1040-2"><a href="posttestonly-threegroups.html#cb1040-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(td)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,3] [75 x 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmpID    : num [1:75] 1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Condition: chr [1:75] &quot;No&quot; &quot;No&quot; &quot;No&quot; &quot;No&quot; ...
@@ -1575,8 +1592,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   ..   Condition = col_character(),
 ##   ..   PostTest = col_double()
 ##   .. )</code></pre>
-<div class="sourceCode" id="cb1041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1041-1"><a href="posttestonly-threegroups.html#cb1041-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
-<span id="cb1041-2"><a href="posttestonly-threegroups.html#cb1041-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
+<div class="sourceCode" id="cb1042"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1042-1"><a href="posttestonly-threegroups.html#cb1042-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb1042-2"><a href="posttestonly-threegroups.html#cb1042-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   EmpID Condition PostTest
 ##   &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;
@@ -1591,9 +1608,9 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">34.3.3</span> <code>aov</code> Function from Base R</h3>
 <p>The <code>aov</code> function from base R offers another route for running a one-way ANOVA. Prior to using the <code>aov</code> function, it is advisable to perform statistical tests to give us a better understanding if we have satisfied the two statistical assumptions necessary to estimate and interpret a one-way ANOVA; rather than repeat those same diagnostics tests here, please refer to the <a href="posttestonly-threegroups.html#statisticalassumptions_onewayanova">Test Statistical Assumptions section</a> to learn how to perform those tests.</p>
 <p>Assuming we have satisfied the statistical assumptions, we are now ready to estimate the one-way ANOVA. To begin, come up with a name for the one-way ANOVA model that you are specifying; you can call this model object whatever you’d like, and here I refer to it as <code>model1</code>. To the right of the model name, type the <code>&lt;-</code> operator to indicate that you are assigning the one-way ANOVA model to the object. Next, to the right of the <code>&lt;-</code> operator, type the name of the <code>aov</code> function from base R. As the first argument, type the name of the continuous outcome variable (<code>PostTest</code>) to the left of the <code>~</code> operator and the name of the categorical predictor variable (<code>Condition</code>) to the right of the <code>~</code> operator. For the second argument, use <code>data=</code> to specify the name of the data frame (<code>td</code>). On the next line, type the name of the <code>summary</code> function from base R, and as the sole argument, enter the name of the model object you created and named on the previous line.</p>
-<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1043-1"><a href="posttestonly-threegroups.html#cb1043-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using aov function from base R</span></span>
-<span id="cb1043-2"><a href="posttestonly-threegroups.html#cb1043-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span>
-<span id="cb1043-3"><a href="posttestonly-threegroups.html#cb1043-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1044"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1044-1"><a href="posttestonly-threegroups.html#cb1044-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using aov function from base R</span></span>
+<span id="cb1044-2"><a href="posttestonly-threegroups.html#cb1044-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span>
+<span id="cb1044-3"><a href="posttestonly-threegroups.html#cb1044-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value  Pr(&gt;F)    
 ## Condition    2   1334   666.8   10.16 0.00013 ***
 ## Residuals   72   4728    65.7                    
@@ -1601,13 +1618,13 @@ BOOK UNDER CONSTRUCTION</a>
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Note that the <code>aov</code> output provides you with the results of the one-way ANOVA. In the output table, take a look at the line prefaced with <em>Condition</em>; in this line, you will find the degrees of freedom (<em>df</em>), the sum of squares (<code>Sum Sq</code>), and the mean square (<code>Mean Sq</code>) between groups/conditions; in addition, you will find the omnibus <em>F</em>-value and its associated <em>p</em>-value. The <em>F</em>-value and its associated <em>p</em>-value reflect the null hypothesis significance test of the means being equal, and because the <em>p</em>-value is less than the conventional two-tailed alpha of .05, we reject the null hypothesis that means are equal (<em>F</em> = 10.16, <em>p</em> = .00013); meaning, we have evidence that at least two of the means differ from one another to a statistically significant extent.</p>
 <p>But how big is this effect? To assess the practical significance of a statistically significant effect, we will apply the <code>anova_stats</code> function from the <code>sjstats</code> package. If you haven’t already, install and access the <code>sjstats</code> package.</p>
-<div class="sourceCode" id="cb1045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1045-1"><a href="posttestonly-threegroups.html#cb1045-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1045-2"><a href="posttestonly-threegroups.html#cb1045-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjstats&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1046"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1046-1"><a href="posttestonly-threegroups.html#cb1046-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1046-2"><a href="posttestonly-threegroups.html#cb1046-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjstats)</span></code></pre></div>
+<div class="sourceCode" id="cb1046"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1046-1"><a href="posttestonly-threegroups.html#cb1046-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1046-2"><a href="posttestonly-threegroups.html#cb1046-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;sjstats&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="posttestonly-threegroups.html#cb1047-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1047-2"><a href="posttestonly-threegroups.html#cb1047-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjstats)</span></code></pre></div>
 <p>Within the <code>anova_stats</code> function parentheses, enter the name of the object for the one-way ANOVA model you created (<code>model1</code>).</p>
-<div class="sourceCode" id="cb1047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1047-1"><a href="posttestonly-threegroups.html#cb1047-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute effect sizes for omnibus test</span></span>
-<span id="cb1047-2"><a href="posttestonly-threegroups.html#cb1047-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova_stats</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1048"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1048-1"><a href="posttestonly-threegroups.html#cb1048-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute effect sizes for omnibus test</span></span>
+<span id="cb1048-2"><a href="posttestonly-threegroups.html#cb1048-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova_stats</span>(model1)</span></code></pre></div>
 <pre><code>## term      | df |    sumsq |  meansq | statistic | p.value | etasq | partial.etasq | omegasq | partial.omegasq | epsilonsq | cohens.f | power
 ## --------------------------------------------------------------------------------------------------------------------------------------------
 ## Condition |  2 | 1333.627 | 666.813 |    10.156 |  &lt; .001 | 0.220 |         0.220 |   0.196 |           0.196 |     0.198 |    0.531 | 0.986
@@ -1650,9 +1667,9 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Based on the omnibus <em>F</em>-test we know that these means are not equivalent to one another, and we know that the effect is medium-large or large in magnitude. What we don’t yet know is which pairs of means are significantly from one another and by how much. To answer this question, we will need to run some post-hoc pairwise comparison tests.</p>
 <p><strong>Tukey Multiple Comparisons of Means</strong>: Recall that based on the omnibus <em>F</em>-test above, we found evidence that the group means were not equal; in other words, the <em>p</em>-value associated with your <em>F</em>-value indicated a statistically significant finding. Because the omnibus test was statistically significant, we should proceed forward with post-hoc pairwise mean comparison tests, such as <em>Tukey’s test</em>. If the omnibus test had not been statistically significant, then we would <em>not</em> proceed forward to interpret the post-hoc pairwise mean comparison tests.</p>
 <p>To compute Tukey’s test, we will use the <code>TukeyHSD</code> function from base R. First, come up with a name for the object that will contain the results of our Tukey’s test. In this example, I call this model <code>TukeyTest</code>. Second, use the <code>&lt;-</code> operator to indicate that you’re creating a new object based on the results of the <code>TukeyHSD</code> function that you will write next. Third, type the name of the <code>TukeyHSD</code> function, and within the parentheses, enter the name of the one-way ANOVA model object that you specified above (<code>model1</code>). Finally, on the next line, type the name of the <code>print</code> function from base R, and enter the name of the <code>TukeyTest</code> object you created as the sole argument.</p>
-<div class="sourceCode" id="cb1049"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1049-1"><a href="posttestonly-threegroups.html#cb1049-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Tukey&#39;s test for pairwise mean comparisons</span></span>
-<span id="cb1049-2"><a href="posttestonly-threegroups.html#cb1049-2" aria-hidden="true" tabindex="-1"></a>TukeyTest <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(model1)</span>
-<span id="cb1049-3"><a href="posttestonly-threegroups.html#cb1049-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(TukeyTest)</span></code></pre></div>
+<div class="sourceCode" id="cb1050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1050-1"><a href="posttestonly-threegroups.html#cb1050-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Tukey&#39;s test for pairwise mean comparisons</span></span>
+<span id="cb1050-2"><a href="posttestonly-threegroups.html#cb1050-2" aria-hidden="true" tabindex="-1"></a>TukeyTest <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(model1)</span>
+<span id="cb1050-3"><a href="posttestonly-threegroups.html#cb1050-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(TukeyTest)</span></code></pre></div>
 <pre><code>##   Tukey multiple comparisons of means
 ##     95% family-wise confidence level
 ## 
@@ -1665,19 +1682,19 @@ BOOK UNDER CONSTRUCTION</a>
 ## Old-No    7.24   1.755202 12.724798 0.0064718</code></pre>
 <p>In the output, we find the pairwise mean comparisons corrected for family-wise error based on Tukey’s approach. Family-wise error refers to instances in which we run multiple statistical tests, which means that we may be more likely to capitalize on chance when searching for statistically significant finds. When tests are adjusted for family-wise error, the <em>p</em>-values (or confidence intervals) are corrected (i.e., penalized) for the fact that multiple statistical tests were run, thereby increasing the threshold for finding a statistically significant result. Each row in the pairwise-comparison table in the output shows the raw difference (i.e., <code>diff</code>) in means between the two specified groups, such that the first group mean is subtracted from the second group mean listed. Next, the lower (i.e., <code>lwr</code>) and upper (i.e., <code>upr</code>) 95% confidence interval limits are presented. Finally, the adjusted <em>p</em>-value is presented (i.e., <code>p adj</code>). In our output, we find that employees who participated in the <em>No</em> training condition scored, on average, 10.00 points lower (-10.00) on their post-test (<code>PostTest</code>) assessment than employees who participated in the <em>New</em> training condition, which is a statistically significant difference (<em>p</em>-adjusted &lt; .01, 95% CI[-15.48, -4.52]). Similarly, employees who participated in the <em>Old</em> training condition scored, on average, 7.24 points higher on their post-test (<code>PostTest</code>) assessment than employees who participated in the <em>No</em> training condition (<em>p</em>-adjusted = .01, 95% CI[1.76, 12.72]). Note that, as evidenced by the 95% confidence intervals, the uncertainty around the mean difference between the <em>Old</em> and <em>No</em> training conditions appears to be notably greater than the uncertainty around the mean difference between the <em>New</em> and <em>No</em> training conditions. Finally, we find that the mean difference of -2.76 between the <em>New</em> and the <em>Old</em> training conditions is <em>not</em> statistically significant (<em>p</em>-adjusted = .45, 95% CI[-8.24, 2.72]).</p>
 <p>We can also plot the pairwise mean comparisons by entering the name of the <code>TukeyTest</code> object we created as the sole argument in the <code>plot</code> function from base R.</p>
-<div class="sourceCode" id="cb1051"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1051-1"><a href="posttestonly-threegroups.html#cb1051-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot pairwise mean comparisons from Tukey&#39;s test</span></span>
-<span id="cb1051-2"><a href="posttestonly-threegroups.html#cb1051-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TukeyTest)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-619-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1052-1"><a href="posttestonly-threegroups.html#cb1052-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot pairwise mean comparisons from Tukey&#39;s test</span></span>
+<span id="cb1052-2"><a href="posttestonly-threegroups.html#cb1052-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TukeyTest)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-633-1.png" width="672" /></p>
 <p>The <code>TukeyHSD</code> function from base R does not provide effect size estimates for the post-hoc pairwise mean comparisons, so if you would like those, you can do the following.</p>
 <p><strong>Effect Sizes of Significant Post-Hoc Pairwise Comparisons:</strong> There are various ways that we could go about computing an effect size such as Cohen’s <em>d</em> for those post-hoc pairwise mean comparisons that were statistically significant. In the post-hoc pairwise mean comparisons, we identified that the <em>New</em> and <em>Old</em> training conditions resulted in significantly higher post-training assessment (<code>PostTest</code>) scores compared to the <em>No</em> training condition. The question then becomes: How much better than the <em>No</em> training condition are the <em>New</em> and <em>Old</em> training conditions?</p>
 <p>To compute Cohen’s <em>d</em> as an estimate of practical significance we will use the <code>cohen.d</code> function from the <code>effsize</code> package. If you haven’t already, install the <code>effsize</code> package. Make sure to access the package using the <code>library</code> function.</p>
-<div class="sourceCode" id="cb1052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1052-1"><a href="posttestonly-threegroups.html#cb1052-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1052-2"><a href="posttestonly-threegroups.html#cb1052-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;effsize&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1053"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1053-1"><a href="posttestonly-threegroups.html#cb1053-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1053-2"><a href="posttestonly-threegroups.html#cb1053-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effsize)</span></code></pre></div>
+<div class="sourceCode" id="cb1053"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1053-1"><a href="posttestonly-threegroups.html#cb1053-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1053-2"><a href="posttestonly-threegroups.html#cb1053-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;effsize&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1054-1"><a href="posttestonly-threegroups.html#cb1054-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1054-2"><a href="posttestonly-threegroups.html#cb1054-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effsize)</span></code></pre></div>
 <p>As the first argument in the <code>cohen.d</code> function parentheses, type the name of the continuous outcome variable (<code>PostTest</code>) to the left of the <code>~</code> operator and the name of the categorical predictor variable (<code>Condition</code>) to the right of the <code>~</code> operator. For the second argument, we are going to apply the <code>subset</code> function from base R after <code>data=</code> to indicate that we only want to run a subset of our data frame. The <code>subset</code> function is a simpler version of the <code>filter</code> function from <code>dplyr</code>. Why are we doing this? The <code>cohen.d</code> function will only allow predictor variables with two levels/categories, and our <code>Condition</code> variable has three levels: <em>New</em>, <em>Old</em>, and <em>No</em>. After <code>data=</code>, type <code>subset</code>, and within the <code>subset</code> function parentheses, enter the name of the data frame (<code>td</code>) as the first argument and a conditional statement that removes one of the three predictor variable levels (<code>Condition!="Old"</code>); in this first example, we remove the <em>Old</em> level so that we can compare just the <em>New</em> and <em>Old</em> conditions. Back to the <code>cohen.d</code> function, as the third argument, type <code>paired=FALSE</code> to indicate that the data are <em>not</em> paired (i.e., the data are not dependent).</p>
-<div class="sourceCode" id="cb1054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1054-1"><a href="posttestonly-threegroups.html#cb1054-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for New and No condition means</span></span>
-<span id="cb1054-2"><a href="posttestonly-threegroups.html#cb1054-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;Old&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1055"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1055-1"><a href="posttestonly-threegroups.html#cb1055-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for New and No condition means</span></span>
+<span id="cb1055-2"><a href="posttestonly-threegroups.html#cb1055-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;Old&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
@@ -1709,8 +1726,8 @@ BOOK UNDER CONSTRUCTION</a>
 </tbody>
 </table>
 <p>Let’s repeat the same process as above, except this time we will focus on the <em>Old</em> and <em>No</em> levels of the <code>Condition</code> predictor variable by removing the level called <em>New</em>.</p>
-<div class="sourceCode" id="cb1056"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1056-1"><a href="posttestonly-threegroups.html#cb1056-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for Old and No condition means</span></span>
-<span id="cb1056-2"><a href="posttestonly-threegroups.html#cb1056-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;New&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1057"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1057-1"><a href="posttestonly-threegroups.html#cb1057-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d for Old and No condition means</span></span>
+<span id="cb1057-2"><a href="posttestonly-threegroups.html#cb1057-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span><span class="fu">subset</span>(td, Condition<span class="sc">!=</span><span class="st">&quot;New&quot;</span>), <span class="at">paired=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
@@ -1726,19 +1743,19 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">34.3.4</span> APA-Style Table of Results</h3>
 <p>If you want to present the results of your one-way ANOVA to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package.</p>
 <p>Using the <code>aov</code> function from base R, as we did above, let’s begin by specifying a one-way ANOVA model and naming the model object (<code>model1</code>).</p>
-<div class="sourceCode" id="cb1058"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1058-1"><a href="posttestonly-threegroups.html#cb1058-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using aov function from base R</span></span>
-<span id="cb1058-2"><a href="posttestonly-threegroups.html#cb1058-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
+<div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1059-1"><a href="posttestonly-threegroups.html#cb1059-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using aov function from base R</span></span>
+<span id="cb1059-2"><a href="posttestonly-threegroups.html#cb1059-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">aov</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
 <p>If you haven’t already, install and access the <code>apaTables</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb1059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1059-1"><a href="posttestonly-threegroups.html#cb1059-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1059-2"><a href="posttestonly-threegroups.html#cb1059-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;apaTables&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1060"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1060-1"><a href="posttestonly-threegroups.html#cb1060-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1060-2"><a href="posttestonly-threegroups.html#cb1060-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(apaTables)</span></code></pre></div>
+<div class="sourceCode" id="cb1060"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1060-1"><a href="posttestonly-threegroups.html#cb1060-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1060-2"><a href="posttestonly-threegroups.html#cb1060-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;apaTables&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1061"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1061-1"><a href="posttestonly-threegroups.html#cb1061-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb1061-2"><a href="posttestonly-threegroups.html#cb1061-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(apaTables)</span></code></pre></div>
 <p>As a precaution, consider installing the <code>MBESS</code> package, as the function we are about to use is dependent on that package. If you don’t have the <code>MBESS</code> package installed, you’ll get an error message when you run the <code>apa.aov.table</code> from <code>apaTables</code>. You may need to re-access the <code>apaTables</code> package using the <code>library</code> function after installing the <code>MBESS</code> package.</p>
-<div class="sourceCode" id="cb1061"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1061-1"><a href="posttestonly-threegroups.html#cb1061-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1061-2"><a href="posttestonly-threegroups.html#cb1061-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;MBESS&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1062"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1062-1"><a href="posttestonly-threegroups.html#cb1062-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb1062-2"><a href="posttestonly-threegroups.html#cb1062-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;MBESS&quot;</span>)</span></code></pre></div>
 <p>To create an APA-style table that contains model summary information like the sum of squares, degrees of freedom, <em>F</em>-value, and <em>p</em>-value, we will use the <code>apa.aov.table</code> function. As the sole argument in the function, type the name of the one-way ANOVA model object you specified above (<code>model1</code>).</p>
-<div class="sourceCode" id="cb1062"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1062-1"><a href="posttestonly-threegroups.html#cb1062-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style one-way ANOVA model summary table</span></span>
-<span id="cb1062-2"><a href="posttestonly-threegroups.html#cb1062-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.aov.table</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1063"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1063-1"><a href="posttestonly-threegroups.html#cb1063-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style one-way ANOVA model summary table</span></span>
+<span id="cb1063-2"><a href="posttestonly-threegroups.html#cb1063-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.aov.table</span>(model1)</span></code></pre></div>
 <pre><code>## 
 ## 
 ## ANOVA results using PostTest as the dependent variable
@@ -1751,8 +1768,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 
 ## Note: Values in square brackets indicate the bounds of the 90% confidence interval for partial eta-squared</code></pre>
 <p>If you would like to write (export) the table to a Word document (.doc), as a second argument, add <code>filename=</code> followed by whatever you would like to name the file in quotation marks (<code>" "</code>). Make sure you include the .doc file type at the end.</p>
-<div class="sourceCode" id="cb1064"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1064-1"><a href="posttestonly-threegroups.html#cb1064-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style one-way ANOVA model summary table (write to working directory)</span></span>
-<span id="cb1064-2"><a href="posttestonly-threegroups.html#cb1064-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.aov.table</span>(model1, <span class="at">filename=</span><span class="st">&quot;One-Way ANOVA Summary Table.doc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1065"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1065-1"><a href="posttestonly-threegroups.html#cb1065-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style one-way ANOVA model summary table (write to working directory)</span></span>
+<span id="cb1065-2"><a href="posttestonly-threegroups.html#cb1065-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.aov.table</span>(model1, <span class="at">filename=</span><span class="st">&quot;One-Way ANOVA Summary Table.doc&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 
 ## ANOVA results using PostTest as the dependent variable
@@ -1769,8 +1786,8 @@ BOOK UNDER CONSTRUCTION</a>
 <p class="caption">The <code>apa.reg.table</code> function from the <code>apaTables</code> package can table the model-level results of a one-way ANOVA in a manner that is consistent with the American Psychological Association (APA) style guide. APA-style tables are useful when presenting to academic audiences or audiences with high levels of technical/statistical expertise.</p>
 </div>
 <p>To create a summary table that contains the mean and standard deviation (SD) of the outcome variable for each level of the categorical predictor variable, use the <code>apa.1way.table</code> function. As the first argument, type <code>iv=</code> followed by the name of the categorical predictor (independent) variable. As the second argument, type <code>dv=</code> followed by the name of the categorical outcome (dependent) variable. As the third argument, <code>data=</code> followed by the name of the data frame object to which the predictor and outcome variables belong.</p>
-<div class="sourceCode" id="cb1066"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1066-1"><a href="posttestonly-threegroups.html#cb1066-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs table</span></span>
-<span id="cb1066-2"><a href="posttestonly-threegroups.html#cb1066-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.1way.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td)</span></code></pre></div>
+<div class="sourceCode" id="cb1067"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1067-1"><a href="posttestonly-threegroups.html#cb1067-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs table</span></span>
+<span id="cb1067-2"><a href="posttestonly-threegroups.html#cb1067-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.1way.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td)</span></code></pre></div>
 <pre><code>## 
 ## 
 ## Descriptive statistics for PostTest as a function of Condition.  
@@ -1783,9 +1800,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## Note. M and SD represent mean and standard deviation, respectively.
 ## </code></pre>
 <p>If you would like to write (export) the table to a Word document (.doc), as a fourth argument, add <code>filename=</code> followed by whatever you would like to name the file in quotation marks (<code>" "</code>). Make sure you include the .doc file type at the end.</p>
-<div class="sourceCode" id="cb1068"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1068-1"><a href="posttestonly-threegroups.html#cb1068-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs table (write to working directory)</span></span>
-<span id="cb1068-2"><a href="posttestonly-threegroups.html#cb1068-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.1way.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td, </span>
-<span id="cb1068-3"><a href="posttestonly-threegroups.html#cb1068-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename=</span><span class="st">&quot;Means-SDs Table.doc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1069"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1069-1"><a href="posttestonly-threegroups.html#cb1069-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs table (write to working directory)</span></span>
+<span id="cb1069-2"><a href="posttestonly-threegroups.html#cb1069-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.1way.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td, </span>
+<span id="cb1069-3"><a href="posttestonly-threegroups.html#cb1069-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename=</span><span class="st">&quot;Means-SDs Table.doc&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 
 ## Descriptive statistics for PostTest as a function of Condition.  
@@ -1802,8 +1819,8 @@ BOOK UNDER CONSTRUCTION</a>
 <p class="caption">The <code>apa.reg.table</code> function from the <code>apaTables</code> package can table the group means and standard deviations in a manner that is consistent with the American Psychological Association (APA) style guide. APA-style tables are useful when presenting to academic audiences or audiences with high levels of technical/statistical expertise.</p>
 </div>
 <p>To create a summary table that contains the mean and standard deviation (SD) of the outcome variable for each level of the categorical predictor variable <em>and</em> Cohen’s <em>d</em> values for pair-wise comparisons, use the <code>apa.d.table</code> function. As the first argument, type <code>iv=</code> followed by the name of the categorical predictor (independent) variable. As the second argument, type <code>dv=</code> followed by the name of the categorical outcome (dependent) variable. As the third argument, <code>data=</code> followed by the name of the data frame object to which the predictor and outcome variables belong.</p>
-<div class="sourceCode" id="cb1070"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1070-1"><a href="posttestonly-threegroups.html#cb1070-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs &amp; Cohen&#39;s ds table</span></span>
-<span id="cb1070-2"><a href="posttestonly-threegroups.html#cb1070-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.d.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td)</span></code></pre></div>
+<div class="sourceCode" id="cb1071"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1071-1"><a href="posttestonly-threegroups.html#cb1071-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs &amp; Cohen&#39;s ds table</span></span>
+<span id="cb1071-2"><a href="posttestonly-threegroups.html#cb1071-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.d.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td)</span></code></pre></div>
 <pre><code>## 
 ## 
 ## Means, standard deviations, and d-values with confidence intervals
@@ -1826,9 +1843,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## that could have caused the sample d-value (Cumming, 2014). 
 ## </code></pre>
 <p>If you would like to write (export) the table to a Word document (.doc), as a fourth argument, add <code>filename=</code> followed by whatever you would like to name the file in quotation marks (<code>" "</code>). Make sure you include the .doc file type at the end.</p>
-<div class="sourceCode" id="cb1072"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1072-1"><a href="posttestonly-threegroups.html#cb1072-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs &amp; Cohen&#39;s ds table (write to working directory)</span></span>
-<span id="cb1072-2"><a href="posttestonly-threegroups.html#cb1072-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.d.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td, </span>
-<span id="cb1072-3"><a href="posttestonly-threegroups.html#cb1072-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename=</span><span class="st">&quot;Means-SDs &amp; Cohen&#39;s ds Table.doc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1073"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1073-1"><a href="posttestonly-threegroups.html#cb1073-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create APA-style means/SDs &amp; Cohen&#39;s ds table (write to working directory)</span></span>
+<span id="cb1073-2"><a href="posttestonly-threegroups.html#cb1073-2" aria-hidden="true" tabindex="-1"></a><span class="fu">apa.d.table</span>(<span class="at">iv=</span>Condition, <span class="at">dv=</span>PostTest, <span class="at">data=</span>td, </span>
+<span id="cb1073-3"><a href="posttestonly-threegroups.html#cb1073-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">filename=</span><span class="st">&quot;Means-SDs &amp; Cohen&#39;s ds Table.doc&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## 
 ## Means, standard deviations, and d-values with confidence intervals

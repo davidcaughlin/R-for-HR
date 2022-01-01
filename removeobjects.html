@@ -941,9 +941,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="51.3.6" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#corrgram_corrgram_function"><i class="fa fa-check"></i><b>51.3.6</b> <code>corrgram</code> Function from <code>corrgram</code> package</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="52" data-path="polynomialregression.html"><a href="polynomialregression.html"><i class="fa fa-check"></i><b>52</b> Investigating Nonlinear Associations Using Polynomial Regression</a>
+<ul>
+<li class="chapter" data-level="52.1" data-path="polynomialregression.html"><a href="polynomialregression.html#conceptualoverview_polynomialregression"><i class="fa fa-check"></i><b>52.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="52.1.1" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalassumptions_polynomialregression"><i class="fa fa-check"></i><b>52.1.1</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="52.1.2" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalsignficance_polynomialregression"><i class="fa fa-check"></i><b>52.1.2</b> Statistical Significance</a></li>
+</ul></li>
+<li class="chapter" data-level="52.2" data-path="polynomialregression.html"><a href="polynomialregression.html#tutorial_polynomialregression"><i class="fa fa-check"></i><b>52.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="52.2.1" data-path="polynomialregression.html"><a href="polynomialregression.html#functions_polynomialregression"><i class="fa fa-check"></i><b>52.2.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="52.2.2" data-path="polynomialregression.html"><a href="polynomialregression.html#initsteps_polynomialregression"><i class="fa fa-check"></i><b>52.2.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="52.2.3" data-path="polynomialregression.html"><a href="polynomialregression.html#bivariatescatterplot_polynomialregression"><i class="fa fa-check"></i><b>52.2.3</b> Visualize Association Using a Bivariate Scatter Plot</a></li>
+<li class="chapter" data-level="52.2.4" data-path="polynomialregression.html"><a href="polynomialregression.html#estimate_polynomialregression"><i class="fa fa-check"></i><b>52.2.4</b> Estimate Polynomial Regression Model</a></li>
+<li class="chapter" data-level="52.2.5" data-path="polynomialregression.html"><a href="polynomialregression.html#summary_polynomialregression"><i class="fa fa-check"></i><b>52.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>X Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="52" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>52</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="53" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>53</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="53" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>53</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="54" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>54</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1017,20 +1033,20 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">22.2.3</span> Initial Steps</h3>
 <p>If you haven’t already, save the file called <strong>“DataCleaningExample.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="removeobjects.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb619-2"><a href="removeobjects.html#cb619-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="removeobjects.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb618-2"><a href="removeobjects.html#cb618-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data file called <strong>“DataCleaningExample.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="removeobjects.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb620-2"><a href="removeobjects.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb620-3"><a href="removeobjects.html#cb620-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb620-4"><a href="removeobjects.html#cb620-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb621-1"><a href="removeobjects.html#cb621-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb621-2"><a href="removeobjects.html#cb621-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb621-3"><a href="removeobjects.html#cb621-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb621-4"><a href="removeobjects.html#cb621-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb621-5"><a href="removeobjects.html#cb621-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="removeobjects.html#cb619-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb619-2"><a href="removeobjects.html#cb619-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb619-3"><a href="removeobjects.html#cb619-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb619-4"><a href="removeobjects.html#cb619-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb620-1"><a href="removeobjects.html#cb620-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb620-2"><a href="removeobjects.html#cb620-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb620-3"><a href="removeobjects.html#cb620-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb620-4"><a href="removeobjects.html#cb620-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb620-5"><a href="removeobjects.html#cb620-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DataCleaningExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------
 ## cols(
 ##   EmpID = col_character(),
 ##   Facility = col_character(),
@@ -1039,12 +1055,12 @@ BOOK UNDER CONSTRUCTION</a>
 ##   Org_Tenure_Yrs = col_double(),
 ##   OnboardingCompleted = col_character()
 ## )</code></pre>
-<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="removeobjects.html#cb623-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb623-2"><a href="removeobjects.html#cb623-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb622"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb622-1"><a href="removeobjects.html#cb622-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb622-2"><a href="removeobjects.html#cb622-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;EmpID&quot;               &quot;Facility&quot;            &quot;JobLevel&quot;            &quot;StartDate&quot;          
 ## [5] &quot;Org_Tenure_Yrs&quot;      &quot;OnboardingCompleted&quot;</code></pre>
-<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="removeobjects.html#cb625-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
-<span id="cb625-2"><a href="removeobjects.html#cb625-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="removeobjects.html#cb624-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
+<span id="cb624-2"><a href="removeobjects.html#cb624-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 6
 ##    EmpID  Facility  JobLevel StartDate  Org_Tenure_Yrs OnboardingCompleted
 ##    &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt; &lt;date&gt;              &lt;dbl&gt; &lt;chr&gt;              
@@ -1059,11 +1075,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##  9 EP1209 Portland         3 2011-04-29            7.7 No                 
 ## 10 EP1210 Beaverton       11 2012-07-11            6.5 No</code></pre>
 <p>To demonstrate how to remove objects from the R Environment, we first need to add some more objects to our R Environment. Using the <code>xtabs</code> (cross-tabulation) function from base R, let’s create a two-way table called <code>table1</code> from the <code>JobLevel</code> and <code>Org_Tenure_Yrs</code> variables from the <code>df1</code> data frame object we just created and named.</p>
-<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="removeobjects.html#cb627-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from JobLevel and Org_Tenure_Yrs variables from df data frame</span></span>
-<span id="cb627-2"><a href="removeobjects.html#cb627-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Org_Tenure_Yrs, <span class="at">data=</span>df)</span>
-<span id="cb627-3"><a href="removeobjects.html#cb627-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb627-4"><a href="removeobjects.html#cb627-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object</span></span>
-<span id="cb627-5"><a href="removeobjects.html#cb627-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table1)</span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="removeobjects.html#cb626-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from JobLevel and Org_Tenure_Yrs variables from df data frame</span></span>
+<span id="cb626-2"><a href="removeobjects.html#cb626-2" aria-hidden="true" tabindex="-1"></a>table1 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Org_Tenure_Yrs, <span class="at">data=</span>df)</span>
+<span id="cb626-3"><a href="removeobjects.html#cb626-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb626-4"><a href="removeobjects.html#cb626-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object</span></span>
+<span id="cb626-5"><a href="removeobjects.html#cb626-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table1)</span></code></pre></div>
 <pre><code>##         Org_Tenure_Yrs
 ## JobLevel 0.3 1.9 6.5 7.6 7.7 8.6 8.8 10.9
 ##    -9999   0   1   0   0   0   0   0    0
@@ -1075,51 +1091,51 @@ BOOK UNDER CONSTRUCTION</a>
 ##    11      0   0   1   0   0   0   0    0</code></pre>
 <p>You should now see an object called <code>table1</code> in your R Environment.</p>
 <p>Next, let’s assign an arbitrary value to an object. Specifically, let’s assign the value 3 to an object called <code>a</code>.</p>
-<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="removeobjects.html#cb629-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the value 3 to the object a</span></span>
-<span id="cb629-2"><a href="removeobjects.html#cb629-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
-<span id="cb629-3"><a href="removeobjects.html#cb629-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb629-4"><a href="removeobjects.html#cb629-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object</span></span>
-<span id="cb629-5"><a href="removeobjects.html#cb629-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="removeobjects.html#cb628-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the value 3 to the object a</span></span>
+<span id="cb628-2"><a href="removeobjects.html#cb628-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb628-3"><a href="removeobjects.html#cb628-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb628-4"><a href="removeobjects.html#cb628-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object</span></span>
+<span id="cb628-5"><a href="removeobjects.html#cb628-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Finally, for good measure, let’s add one more object called <code>B</code> to our R Environment.</p>
-<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="removeobjects.html#cb631-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the character value &quot;example&#39; to the object B</span></span>
-<span id="cb631-2"><a href="removeobjects.html#cb631-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="st">&quot;example&quot;</span></span>
-<span id="cb631-3"><a href="removeobjects.html#cb631-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb631-4"><a href="removeobjects.html#cb631-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object</span></span>
-<span id="cb631-5"><a href="removeobjects.html#cb631-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(B)</span></code></pre></div>
+<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="removeobjects.html#cb630-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign the character value &quot;example&#39; to the object B</span></span>
+<span id="cb630-2"><a href="removeobjects.html#cb630-2" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="st">&quot;example&quot;</span></span>
+<span id="cb630-3"><a href="removeobjects.html#cb630-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb630-4"><a href="removeobjects.html#cb630-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object</span></span>
+<span id="cb630-5"><a href="removeobjects.html#cb630-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(B)</span></code></pre></div>
 <pre><code>## [1] &quot;example&quot;</code></pre>
 <p>At the very least, we should now have the following objects in our R Environment: <code>df</code>, <code>table1</code>, <code>a</code>, and <code>B</code>.</p>
 </div>
 <div id="listobjects_removeobjects" class="section level3" number="22.2.4">
 <h3><span class="header-section-number">22.2.4</span> List Objects in R Environment</h3>
 <p>In addition to viewing objects in our R (Global) Environment in the Environment window in RStudio, we can also use the <code>ls</code> function from base R to retrieve the names of objects that are currently in our Environment. The function is simple to use. Simply, type the name of the function (<code>ls</code>) without any parenthetical arguments.</p>
-<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb633-1"><a href="removeobjects.html#cb633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
-<span id="cb633-2"><a href="removeobjects.html#cb633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb632-1"><a href="removeobjects.html#cb632-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
+<span id="cb632-2"><a href="removeobjects.html#cb632-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;      &quot;B&quot;      &quot;df&quot;     &quot;table1&quot;</code></pre>
 <p>In your <code>R</code> console, a list of the objects in your global environment should have printed to your Console. Next, we will learn how to remove some of these objects.</p>
 </div>
 <div id="removeobjects_removeobjects" class="section level3" number="22.2.5">
 <h3><span class="header-section-number">22.2.5</span> Remove Objects from R Environment</h3>
 <p>To remove specific objects from our R Environment, we can use the <code>remove</code> function from base <code>R</code>, which can be abbreviated as <code>rm</code>. To remove a specific object, just type the name of the function (<code>remove</code>), and as the sole parenthetical argument, type the name of the object you wish to remove. In this example, let’s remove the data frame object called <code>df</code>. By default, this function first searches the R Environment that is currently active.</p>
-<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="removeobjects.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove df object from R Environment</span></span>
-<span id="cb635-2"><a href="removeobjects.html#cb635-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb634-1"><a href="removeobjects.html#cb634-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove df object from R Environment</span></span>
+<span id="cb634-2"><a href="removeobjects.html#cb634-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(df)</span></code></pre></div>
 <p>Using the <code>ls</code> function, print the names of the objects that are currently in your R Environment. The <code>df</code> object should no longer be there.</p>
-<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb636-1"><a href="removeobjects.html#cb636-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
-<span id="cb636-2"><a href="removeobjects.html#cb636-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb635-1"><a href="removeobjects.html#cb635-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
+<span id="cb635-2"><a href="removeobjects.html#cb635-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot;      &quot;B&quot;      &quot;table1&quot;</code></pre>
 <p>If our goal is to remove multiple objects from the R Environment, we could apply the <code>remove</code> function multiple times – one for each object we wish to remove. Alternatively, we could also use the <code>list=</code> argument from the <code>remove</code> function to specify a vector of objects we wish to remove. Using the <code>c</code> function from base R, which combines objects into a vector, we can specify a list of the objects we wish to remove. Let’s remove the objects called <code>table1</code> and <code>a</code> from the R Environment. Make sure to put the variable names in quotation marks (<code>" "</code>) when you list them as arguments within the <code>c</code> function.</p>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="removeobjects.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple objects from R Environment</span></span>
-<span id="cb638-2"><a href="removeobjects.html#cb638-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(<span class="at">list=</span><span class="fu">c</span>(<span class="st">&quot;table1&quot;</span>,<span class="st">&quot;a&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb637-1"><a href="removeobjects.html#cb637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove multiple objects from R Environment</span></span>
+<span id="cb637-2"><a href="removeobjects.html#cb637-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(<span class="at">list=</span><span class="fu">c</span>(<span class="st">&quot;table1&quot;</span>,<span class="st">&quot;a&quot;</span>))</span></code></pre></div>
 <p>Using the <code>ls</code> function, print the names of the objects that are currently in your R Environment. The <code>table1</code> and <code>a</code> objects should no longer appear in the R Environment.</p>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="removeobjects.html#cb639-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
-<span id="cb639-2"><a href="removeobjects.html#cb639-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="removeobjects.html#cb638-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
+<span id="cb638-2"><a href="removeobjects.html#cb638-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;B&quot;</code></pre>
 <p>Finally, if you wish to remove <em>all</em> objects from the environment, use the <code>remove</code> function, and within the function parentheses, set the <code>list</code> argument equal to <code>ls()</code>.</p>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="removeobjects.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all objects from R Environment</span></span>
-<span id="cb641-2"><a href="removeobjects.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb640-1"><a href="removeobjects.html#cb640-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove all objects from R Environment</span></span>
+<span id="cb640-2"><a href="removeobjects.html#cb640-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(<span class="at">list=</span><span class="fu">ls</span>())</span></code></pre></div>
 <p>If you use the <code>ls</code> function once more without arguments, you will receive the following output, which indicates that there are no objects in the environment: character(0).</p>
-<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb642-1"><a href="removeobjects.html#cb642-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
-<span id="cb642-2"><a href="removeobjects.html#cb642-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb641-1"><a href="removeobjects.html#cb641-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print names of objects in R Environment</span></span>
+<span id="cb641-2"><a href="removeobjects.html#cb641-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## character(0)</code></pre>
 </div>
 <div id="summary_removeobjects" class="section level3" number="22.2.6">

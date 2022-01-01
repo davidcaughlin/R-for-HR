@@ -941,9 +941,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="51.3.6" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#corrgram_corrgram_function"><i class="fa fa-check"></i><b>51.3.6</b> <code>corrgram</code> Function from <code>corrgram</code> package</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="52" data-path="polynomialregression.html"><a href="polynomialregression.html"><i class="fa fa-check"></i><b>52</b> Investigating Nonlinear Associations Using Polynomial Regression</a>
+<ul>
+<li class="chapter" data-level="52.1" data-path="polynomialregression.html"><a href="polynomialregression.html#conceptualoverview_polynomialregression"><i class="fa fa-check"></i><b>52.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="52.1.1" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalassumptions_polynomialregression"><i class="fa fa-check"></i><b>52.1.1</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="52.1.2" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalsignficance_polynomialregression"><i class="fa fa-check"></i><b>52.1.2</b> Statistical Significance</a></li>
+</ul></li>
+<li class="chapter" data-level="52.2" data-path="polynomialregression.html"><a href="polynomialregression.html#tutorial_polynomialregression"><i class="fa fa-check"></i><b>52.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="52.2.1" data-path="polynomialregression.html"><a href="polynomialregression.html#functions_polynomialregression"><i class="fa fa-check"></i><b>52.2.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="52.2.2" data-path="polynomialregression.html"><a href="polynomialregression.html#initsteps_polynomialregression"><i class="fa fa-check"></i><b>52.2.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="52.2.3" data-path="polynomialregression.html"><a href="polynomialregression.html#bivariatescatterplot_polynomialregression"><i class="fa fa-check"></i><b>52.2.3</b> Visualize Association Using a Bivariate Scatter Plot</a></li>
+<li class="chapter" data-level="52.2.4" data-path="polynomialregression.html"><a href="polynomialregression.html#estimate_polynomialregression"><i class="fa fa-check"></i><b>52.2.4</b> Estimate Polynomial Regression Model</a></li>
+<li class="chapter" data-level="52.2.5" data-path="polynomialregression.html"><a href="polynomialregression.html#summary_polynomialregression"><i class="fa fa-check"></i><b>52.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>X Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="52" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>52</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="53" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>53</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="53" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>53</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="54" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>54</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1098,20 +1114,20 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">48.2.3</span> Initial Steps</h3>
 <p>If you haven’t already, save the file called <strong>“PredictiveAnalytics.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb1846"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1846-1"><a href="kfold.html#cb1846-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1846-2"><a href="kfold.html#cb1846-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1847-1"><a href="kfold.html#cb1847-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1847-2"><a href="kfold.html#cb1847-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data file called <strong>“PredictiveAnalytics.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb1847"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1847-1"><a href="kfold.html#cb1847-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1847-2"><a href="kfold.html#cb1847-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1847-3"><a href="kfold.html#cb1847-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1847-4"><a href="kfold.html#cb1847-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1848-1"><a href="kfold.html#cb1848-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1848-2"><a href="kfold.html#cb1848-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1848-3"><a href="kfold.html#cb1848-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1848-4"><a href="kfold.html#cb1848-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb1848-5"><a href="kfold.html#cb1848-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PredictiveAnalytics.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1848"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1848-1"><a href="kfold.html#cb1848-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1848-2"><a href="kfold.html#cb1848-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1848-3"><a href="kfold.html#cb1848-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1848-4"><a href="kfold.html#cb1848-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1849"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1849-1"><a href="kfold.html#cb1849-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1849-2"><a href="kfold.html#cb1849-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1849-3"><a href="kfold.html#cb1849-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1849-4"><a href="kfold.html#cb1849-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb1849-5"><a href="kfold.html#cb1849-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PredictiveAnalytics.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification --------------------------------------------------------------------------------
+## -- Column specification ----------------------------------------------------------------------------
 ## cols(
 ##   ID = col_double(),
 ##   Turnover = col_double(),
@@ -1120,11 +1136,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##   TI = col_double(),
 ##   Naff = col_double()
 ## )</code></pre>
-<div class="sourceCode" id="cb1850"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1850-1"><a href="kfold.html#cb1850-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb1850-2"><a href="kfold.html#cb1850-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1851"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1851-1"><a href="kfold.html#cb1851-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb1851-2"><a href="kfold.html#cb1851-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;ID&quot;       &quot;Turnover&quot; &quot;JS&quot;       &quot;OC&quot;       &quot;TI&quot;       &quot;Naff&quot;</code></pre>
-<div class="sourceCode" id="cb1852"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1852-1"><a href="kfold.html#cb1852-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb1852-2"><a href="kfold.html#cb1852-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1853"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1853-1"><a href="kfold.html#cb1853-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb1853-2"><a href="kfold.html#cb1853-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spec_tbl_df[,6] [1,000 x 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ ID      : num [1:1000] 1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Turnover: num [1:1000] 1 0 1 1 0 1 1 1 0 1 ...
@@ -1141,8 +1157,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   ..   TI = col_double(),
 ##   ..   Naff = col_double()
 ##   .. )</code></pre>
-<div class="sourceCode" id="cb1854"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1854-1"><a href="kfold.html#cb1854-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb1854-2"><a href="kfold.html#cb1854-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1855"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1855-1"><a href="kfold.html#cb1855-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb1855-2"><a href="kfold.html#cb1855-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 6
 ##      ID Turnover    JS    OC    TI  Naff
 ##   &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1152,8 +1168,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 4     4        1  2.48  2.06  4.32  2.11
 ## 5     5        0  4.12  6     1.37  2.01
 ## 6     6        1  2.99  0.4   3.24  2.73</code></pre>
-<div class="sourceCode" id="cb1856"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1856-1"><a href="kfold.html#cb1856-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb1856-2"><a href="kfold.html#cb1856-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1857"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1857-1"><a href="kfold.html#cb1857-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb1857-2"><a href="kfold.html#cb1857-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
 <p>The data frame (<code>df</code>) has 1000 cases and the following 5 variables: <code>ID</code>, <code>Turnover</code>, <code>JS</code>, <code>OC</code>, <code>TI</code>, and <code>NAff</code>. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>numeric</em> (continuous: interval/ratio). <code>ID</code> is the unique employee identifier variable. Imagine that these data were collected as part of a turnover study within an organization to determine the drivers/predictors of turnover based on a sample of employees who stayed and leaved during the past year. The variables <code>JS</code>, <code>OC</code>, <code>TI</code>, and <code>Naff</code> were collected as part of an annual survey and were later joined with the <code>Turnover</code> variable. Survey respondents rated each survey item using a 7-point response scale, ranging from strongly disagree (0) to strongly agree (6). <code>JS</code> contains the average of each employee’s responses to 10 job satisfaction items. <code>OC</code> contains the average of each employee’s responses to 7 organizational commitment items. <code>TI</code> contains the average of each employee’s responses to 3 turnover intentions items, where higher scores indicate higher levels of turnover intentions. <code>Naff</code> contains the average of each employee’s responses to 10 negative affectivity items. <code>Turnover</code> is a variable that indicates whether these individuals left the organization during the prior year, with 1 = quit and 0 = stayed.</p>
 </div>
@@ -1161,67 +1177,67 @@ BOOK UNDER CONSTRUCTION</a>
 <h3><span class="header-section-number">48.2.4</span> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</h3>
 <p>In this tutorial, we will apply <em>k</em>-fold cross-validation to estimate and evaluate a multiple logistic regression model. You can think of <em>k</em>-fold cross-validation as an enhanced version of the conventional empirical cross-validation process described and demonstrated in <a href="crossvalidation.html#crossvalidation_empirical">previous chapter</a>. We can perform <em>k</em>-fold cross-validation with different types of regression models, and in this tutorial, we will focus on applying it using multiple logistic regression. Because we have access to 1,000 cases, we will randomly split our data into training and test data frames, and then within the training data frame, we will perform <em>k</em>-fold cross-validation to come up with a more accurate model. We will then we will apply the final model to the test data frame data frame to see how well it predicts with a completely new set of data.</p>
 <p><strong>Note:</strong> The type of model we will apply in our <em>k</em>-fold cross-validation approach will delete any cases with missing data on any variables in the model (i.e., listwise deletion). We don’t have any missing data in <code>df</code> data frame object, but if we did, I would recommend deleting cases with missing data on the focal variables prior to randomly splitting the data. The <code>drop_na</code> function from the <code>tidyr</code> package works well for this purpose.</p>
-<div class="sourceCode" id="cb1858"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1858-1"><a href="kfold.html#cb1858-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the event of missing data on focal variables, </span></span>
-<span id="cb1858-2"><a href="kfold.html#cb1858-2" aria-hidden="true" tabindex="-1"></a><span class="co"># perform listwise deletion prior to randomly splitting/partitioning</span></span>
-<span id="cb1858-3"><a href="kfold.html#cb1858-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the data</span></span>
-<span id="cb1858-4"><a href="kfold.html#cb1858-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1858-5"><a href="kfold.html#cb1858-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
-<span id="cb1858-6"><a href="kfold.html#cb1858-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1858-7"><a href="kfold.html#cb1858-7" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1858-8"><a href="kfold.html#cb1858-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1859-1"><a href="kfold.html#cb1859-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1859-2"><a href="kfold.html#cb1859-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1859-3"><a href="kfold.html#cb1859-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1859-4"><a href="kfold.html#cb1859-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with missing data on focal variables</span></span>
-<span id="cb1859-5"><a href="kfold.html#cb1859-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(Turnover, JS, Naff, TI, OC)</span>
-<span id="cb1859-6"><a href="kfold.html#cb1859-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1859-7"><a href="kfold.html#cb1859-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in updated data frame (tibble) object</span></span>
-<span id="cb1859-8"><a href="kfold.html#cb1859-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb1859"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1859-1"><a href="kfold.html#cb1859-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the event of missing data on focal variables, </span></span>
+<span id="cb1859-2"><a href="kfold.html#cb1859-2" aria-hidden="true" tabindex="-1"></a><span class="co"># perform listwise deletion prior to randomly splitting/partitioning</span></span>
+<span id="cb1859-3"><a href="kfold.html#cb1859-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the data</span></span>
+<span id="cb1859-4"><a href="kfold.html#cb1859-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1859-5"><a href="kfold.html#cb1859-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb1859-6"><a href="kfold.html#cb1859-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1859-7"><a href="kfold.html#cb1859-7" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1859-8"><a href="kfold.html#cb1859-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1860"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1860-1"><a href="kfold.html#cb1860-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1860-2"><a href="kfold.html#cb1860-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1860-3"><a href="kfold.html#cb1860-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1860-4"><a href="kfold.html#cb1860-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows with missing data on focal variables</span></span>
+<span id="cb1860-5"><a href="kfold.html#cb1860-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">drop_na</span>(Turnover, JS, Naff, TI, OC)</span>
+<span id="cb1860-6"><a href="kfold.html#cb1860-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1860-7"><a href="kfold.html#cb1860-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in updated data frame (tibble) object</span></span>
+<span id="cb1860-8"><a href="kfold.html#cb1860-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
 <p>Because we didn’t have missing data for any of the focal variables, the number of rows (i.e., cases) remains at 1000.</p>
 <p>Now we’re ready to install and access the <code>caret</code> package, if we haven’t already. The <code>caret</code> package has a number of different functions that are useful for running predictive analytics and various machine learning models/algorithms.</p>
-<div class="sourceCode" id="cb1861"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1861-1"><a href="kfold.html#cb1861-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
-<span id="cb1861-2"><a href="kfold.html#cb1861-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1862-1"><a href="kfold.html#cb1862-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
-<span id="cb1862-2"><a href="kfold.html#cb1862-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<div class="sourceCode" id="cb1862"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1862-1"><a href="kfold.html#cb1862-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
+<span id="cb1862-2"><a href="kfold.html#cb1862-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1863-1"><a href="kfold.html#cb1863-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
+<span id="cb1863-2"><a href="kfold.html#cb1863-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
 <p>Using the <code>createDataPartition</code> function from the <code>caret</code> package, we will split the data such that 80% of the cases will be randomly assigned to one split, and the remaining 20% of cases will be assigned to the other split. Before doing so, let’s use the <code>set.seed</code> function from base R and include a number of your choosing to create “random” operations that are reproducible.</p>
-<div class="sourceCode" id="cb1863"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1863-1"><a href="kfold.html#cb1863-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for subsequent random selection and assignment operations</span></span>
-<span id="cb1863-2"><a href="kfold.html#cb1863-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1864-1"><a href="kfold.html#cb1864-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for subsequent random selection and assignment operations</span></span>
+<span id="cb1864-2"><a href="kfold.html#cb1864-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span></code></pre></div>
 <p>Next, let’s perform the data split/partition. We’ll start by creating a name for the index of unique cases that will identify who will be included in the 80% split of the original data frame; here, I call this object <code>index</code> and assign values to it using the <code>&lt;-</code> assignment operator. To the right of the <code>&lt;-</code> operator, type the name of the <code>createDataPartition</code> function. As the first argument, type the name of the data frame (<code>df</code>), followed by the <code>$</code> operator and the name of the outcome variable (<code>Turnover</code>). As a the second argument, set <code>p=.8</code> to note that you wish to randomly select 80% (.8) of the cases from the data frame. As the third argument, type <code>list=FALSE</code> to indicate that we want the values in matrix form to facilitate, which will facilitate our ability to reference them in a subsequent step. As the fourth argument, type <code>times=1</code> to indicate that we only want to request a single partition of the data.</p>
-<div class="sourceCode" id="cb1864"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1864-1"><a href="kfold.html#cb1864-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Partition data and create index matrix of selected values</span></span>
-<span id="cb1864-2"><a href="kfold.html#cb1864-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(df<span class="sc">$</span>Turnover, <span class="at">p=</span>.<span class="dv">8</span>, <span class="at">list=</span><span class="cn">FALSE</span>, <span class="at">times=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1865-1"><a href="kfold.html#cb1865-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Partition data and create index matrix of selected values</span></span>
+<span id="cb1865-2"><a href="kfold.html#cb1865-2" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(df<span class="sc">$</span>Turnover, <span class="at">p=</span>.<span class="dv">8</span>, <span class="at">list=</span><span class="cn">FALSE</span>, <span class="at">times=</span><span class="dv">1</span>)</span></code></pre></div>
 <p><strong>Note: I have noticed that the <code>createDataPartition</code> sometimes adds an extra case to the partitioned data when the outcome variable is of type factor as opposed to numeric, integer, or character. An extra case added to the training data frame is not likely to be of much consequence, but if if you would like to avoid this, try converting the outcome variable from type factor to type numeric, integer, or character, whichever makes the most sense given the variable. You can always convert the outcome back to type factor after this process, which I demonstrate in this tutorial. Sometimes this works, and sometimes it doesn’t.</strong></p>
 <p>We’ll use the <code>index</code> matrix object we created above to assign cases to the training data frame (which we will name <code>train_df</code>) and to the test data frame (which we will name <code>test_df</code>). Beginning with the training data frame, we can assign the random sample of 80% of the original cases to the <code>train_df</code> object by using the <code>&lt;-</code> assignment operator. Specifically, using matrix notation, we will specify the name of the original data frame (<code>df</code>), followed by brackets (<code>[ ]</code>). In the brackets, include the name of the <code>index</code> object we created above, followed by a comma (<code>,</code>). The placement of the <code>index</code> object before the comma indicates that we are selecting rows with the selected unique row numbers (i.e., index) from the matrix. Next, we do essentially the same thing with the <code>test_df</code>, except that we insert a minus (<code>-</code>) symbol before <code>index</code> to indicate that we <em>don’t</em> want cases associated with the unique row numbers contained in the <code>index</code> object.</p>
-<div class="sourceCode" id="cb1865"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1865-1"><a href="kfold.html#cb1865-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
-<span id="cb1865-2"><a href="kfold.html#cb1865-2" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
-<span id="cb1865-3"><a href="kfold.html#cb1865-3" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
+<div class="sourceCode" id="cb1866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1866-1"><a href="kfold.html#cb1866-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
+<span id="cb1866-2"><a href="kfold.html#cb1866-2" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
+<span id="cb1866-3"><a href="kfold.html#cb1866-3" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
 <p>If you received the error message shown below, then you will want to convert the original data frame <code>df</code> from a tibble to a conventional data frame; after that, repeat the steps above. If you did not receive this message, then you can skip this step and proceed on to the step in which you verify the number of rows in each data frame.</p>
 <p><span class="math inline">\(\color{red}{\text{Error: `i` must have one dimension, not 2.}}\)</span></p>
-<div class="sourceCode" id="cb1866"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1866-1"><a href="kfold.html#cb1866-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert data frame object (df) to a conventional data frame object</span></span>
-<span id="cb1866-2"><a href="kfold.html#cb1866-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df)</span>
-<span id="cb1866-3"><a href="kfold.html#cb1866-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1866-4"><a href="kfold.html#cb1866-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
-<span id="cb1866-5"><a href="kfold.html#cb1866-5" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
-<span id="cb1866-6"><a href="kfold.html#cb1866-6" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
+<div class="sourceCode" id="cb1867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1867-1"><a href="kfold.html#cb1867-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert data frame object (df) to a conventional data frame object</span></span>
+<span id="cb1867-2"><a href="kfold.html#cb1867-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df)</span>
+<span id="cb1867-3"><a href="kfold.html#cb1867-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1867-4"><a href="kfold.html#cb1867-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
+<span id="cb1867-5"><a href="kfold.html#cb1867-5" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
+<span id="cb1867-6"><a href="kfold.html#cb1867-6" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
 <p>To check our work and to be sure that 80% of the cases ended up in the <code>train_df</code> data frame and the remaining 20% ended up in the <code>test_df</code> data frame, let’s apply the <code>nrow</code> function from base R to each data frame object.</p>
-<div class="sourceCode" id="cb1867"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1867-1"><a href="kfold.html#cb1867-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify number of rows (cases) in each data frame</span></span>
-<span id="cb1867-2"><a href="kfold.html#cb1867-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train_df)</span></code></pre></div>
+<div class="sourceCode" id="cb1868"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1868-1"><a href="kfold.html#cb1868-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify number of rows (cases) in each data frame</span></span>
+<span id="cb1868-2"><a href="kfold.html#cb1868-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train_df)</span></code></pre></div>
 <pre><code>## [1] 800</code></pre>
-<div class="sourceCode" id="cb1869"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1869-1"><a href="kfold.html#cb1869-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(test_df)</span></code></pre></div>
+<div class="sourceCode" id="cb1870"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1870-1"><a href="kfold.html#cb1870-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(test_df)</span></code></pre></div>
 <pre><code>## [1] 200</code></pre>
 <p>Indeed, 800 (80%) of the original 1,000 cases ended up in the <code>train_df</code> data frame, and 200 (20%) of the original 1,000 cases ended up in the <code>test_df</code> data frame.</p>
 <p>For the <code>train_df</code> and <code>test_df</code> data frames we’ve created, let’s re-label our dichotomous outcome variable’s (<code>Turnover</code>) levels from 1 to “quit” and from 0 to “stay”. This will make our interpretations of the results a little bit easier later on.</p>
-<div class="sourceCode" id="cb1871"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1871-1"><a href="kfold.html#cb1871-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-label values of outcome variable for train_df</span></span>
-<span id="cb1871-2"><a href="kfold.html#cb1871-2" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover[train_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;quit&quot;</span></span>
-<span id="cb1871-3"><a href="kfold.html#cb1871-3" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover[train_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">&quot;stay&quot;</span></span>
-<span id="cb1871-4"><a href="kfold.html#cb1871-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1871-5"><a href="kfold.html#cb1871-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-label values of outcome variable for test_df</span></span>
-<span id="cb1871-6"><a href="kfold.html#cb1871-6" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover[test_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;quit&quot;</span></span>
-<span id="cb1871-7"><a href="kfold.html#cb1871-7" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover[test_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">&quot;stay&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb1872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1872-1"><a href="kfold.html#cb1872-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-label values of outcome variable for train_df</span></span>
+<span id="cb1872-2"><a href="kfold.html#cb1872-2" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover[train_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;quit&quot;</span></span>
+<span id="cb1872-3"><a href="kfold.html#cb1872-3" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover[train_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">&quot;stay&quot;</span></span>
+<span id="cb1872-4"><a href="kfold.html#cb1872-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1872-5"><a href="kfold.html#cb1872-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-label values of outcome variable for test_df</span></span>
+<span id="cb1872-6"><a href="kfold.html#cb1872-6" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover[test_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">&quot;quit&quot;</span></span>
+<span id="cb1872-7"><a href="kfold.html#cb1872-7" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover[test_df<span class="sc">$</span>Turnover<span class="sc">==</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="st">&quot;stay&quot;</span></span></code></pre></div>
 <p>In addition, let’s convert the outcome variable to a variable of type <em>factor</em>. To do so, we apply the <code>as.factor</code> function from base R.</p>
-<div class="sourceCode" id="cb1872"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1872-1"><a href="kfold.html#cb1872-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert outcome variable to factor for each data frame</span></span>
-<span id="cb1872-2"><a href="kfold.html#cb1872-2" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(train_df<span class="sc">$</span>Turnover)</span>
-<span id="cb1872-3"><a href="kfold.html#cb1872-3" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(test_df<span class="sc">$</span>Turnover)</span></code></pre></div>
+<div class="sourceCode" id="cb1873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1873-1"><a href="kfold.html#cb1873-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert outcome variable to factor for each data frame</span></span>
+<span id="cb1873-2"><a href="kfold.html#cb1873-2" aria-hidden="true" tabindex="-1"></a>train_df<span class="sc">$</span>Turnover <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(train_df<span class="sc">$</span>Turnover)</span>
+<span id="cb1873-3"><a href="kfold.html#cb1873-3" aria-hidden="true" tabindex="-1"></a>test_df<span class="sc">$</span>Turnover <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(test_df<span class="sc">$</span>Turnover)</span></code></pre></div>
 <p>Now we’re ready to specify the type of training method we wish to apply, the number of folds, and that we wish to save all of our predictions.</p>
 <ol style="list-style-type: decimal">
 <li>Let’s name this object containing these specifications as <code>ctrlspecs</code> using the <code>&lt;-</code> assignment operator.</li>
@@ -1233,11 +1249,11 @@ BOOK UNDER CONSTRUCTION</a>
 <li>As the third argument, type <code>savePredictions="all"</code> to save all of the hold-out predictions for each of our resamples from the <code>train_df</code> data frame, where hold-out predictions refer to those cases that weren’t used in training each iteration of the model based on each fold of data but were used for validating the model trained at each fold.</li>
 <li>As the fourth argument, type <code>classProbs=TRUE</code>, as this tells the function to compute class probabilities (along with predicted values) for classification models in each resample.</li>
 </ul>
-<div class="sourceCode" id="cb1873"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1873-1"><a href="kfold.html#cb1873-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify type of training method used and the number of folds</span></span>
-<span id="cb1873-2"><a href="kfold.html#cb1873-2" aria-hidden="true" tabindex="-1"></a>ctrlspecs <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;cv&quot;</span>, </span>
-<span id="cb1873-3"><a href="kfold.html#cb1873-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number=</span><span class="dv">10</span>, </span>
-<span id="cb1873-4"><a href="kfold.html#cb1873-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">savePredictions=</span><span class="st">&quot;all&quot;</span>,</span>
-<span id="cb1873-5"><a href="kfold.html#cb1873-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">classProbs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1874-1"><a href="kfold.html#cb1874-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify type of training method used and the number of folds</span></span>
+<span id="cb1874-2"><a href="kfold.html#cb1874-2" aria-hidden="true" tabindex="-1"></a>ctrlspecs <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb1874-3"><a href="kfold.html#cb1874-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number=</span><span class="dv">10</span>, </span>
+<span id="cb1874-4"><a href="kfold.html#cb1874-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">savePredictions=</span><span class="st">&quot;all&quot;</span>,</span>
+<span id="cb1874-5"><a href="kfold.html#cb1874-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">classProbs=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p>To train (i.e., estimate, build) our multiple logistic regression model, we will use the <code>train</code> function from the <code>caret</code> package.</p>
 <ol style="list-style-type: decimal">
 <li>To begin, come up with a name for your model object; here, I name the model object <code>model</code> and use the <code>&lt;-</code> assignment operator to assign the model information to it.</li>
@@ -1250,18 +1266,18 @@ BOOK UNDER CONSTRUCTION</a>
 <li>As the fifth argument, type <code>trControl=</code> followed by the name of the object that includes your model specifications, which we created above (<code>ctrlspecs</code>).</li>
 <li>Finally, if you so desire, you can use the <code>print</code> function from base R to request some basic information about the training process.</li>
 </ul>
-<div class="sourceCode" id="cb1874"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1874-1"><a href="kfold.html#cb1874-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for subsequent random selection and assignment operations</span></span>
-<span id="cb1874-2"><a href="kfold.html#cb1874-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span>
-<span id="cb1874-3"><a href="kfold.html#cb1874-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1874-4"><a href="kfold.html#cb1874-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify logistic regression model to be estimated using training data</span></span>
-<span id="cb1874-5"><a href="kfold.html#cb1874-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and k-fold cross-validation process</span></span>
-<span id="cb1874-6"><a href="kfold.html#cb1874-6" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">train</span>(Turnover <span class="sc">~</span> JS <span class="sc">+</span> Naff <span class="sc">+</span> TI <span class="sc">+</span> OC, <span class="at">data=</span>train_df, </span>
-<span id="cb1874-7"><a href="kfold.html#cb1874-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, </span>
-<span id="cb1874-8"><a href="kfold.html#cb1874-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">family=</span>binomial, </span>
-<span id="cb1874-9"><a href="kfold.html#cb1874-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl=</span>ctrlspecs)</span>
-<span id="cb1874-10"><a href="kfold.html#cb1874-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1874-11"><a href="kfold.html#cb1874-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print information about model</span></span>
-<span id="cb1874-12"><a href="kfold.html#cb1874-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1875-1"><a href="kfold.html#cb1875-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for subsequent random selection and assignment operations</span></span>
+<span id="cb1875-2"><a href="kfold.html#cb1875-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span>
+<span id="cb1875-3"><a href="kfold.html#cb1875-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1875-4"><a href="kfold.html#cb1875-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify logistic regression model to be estimated using training data</span></span>
+<span id="cb1875-5"><a href="kfold.html#cb1875-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and k-fold cross-validation process</span></span>
+<span id="cb1875-6"><a href="kfold.html#cb1875-6" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">train</span>(Turnover <span class="sc">~</span> JS <span class="sc">+</span> Naff <span class="sc">+</span> TI <span class="sc">+</span> OC, <span class="at">data=</span>train_df, </span>
+<span id="cb1875-7"><a href="kfold.html#cb1875-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;glm&quot;</span>, </span>
+<span id="cb1875-8"><a href="kfold.html#cb1875-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">family=</span>binomial, </span>
+<span id="cb1875-9"><a href="kfold.html#cb1875-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl=</span>ctrlspecs)</span>
+<span id="cb1875-10"><a href="kfold.html#cb1875-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1875-11"><a href="kfold.html#cb1875-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print information about model</span></span>
+<span id="cb1875-12"><a href="kfold.html#cb1875-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model1)</span></code></pre></div>
 <pre><code>## Generalized Linear Model 
 ## 
 ## 800 samples
@@ -1318,8 +1334,8 @@ BOOK UNDER CONSTRUCTION</a>
 </table>
 <p>Based on our <em>k</em>-fold cross-validation framework, model accuracy was .70 (70%) and Cohen’s kappa was .39, which would be considered “fair” given the thresholds provided above. Thus, our model did an okay job of classifying cases correctly estimated using <em>k</em>-fold cross-validation and when tested using the training data frame (<code>train_df</code>).</p>
 <p>We can also use the <code>summary</code> function from base R to view the results of our final model, just as we would if we were estimating a multiple logistic regression model <em>without</em> cross-validation when using the <code>glm</code> function from base R. If you so desire, you could also specify the equation necessary to predict the likelihood that an individual quits; if you need a refresher, refer to the <a href="logistic.html#logistic">chapter on logistic regression</a> and specifically the <a href="logistic.html#glm_function_multiple_logistic">chapter supplement</a>, which demonstrates how to estimate a multiple logistic regression using the <code>glm</code> function from base R.</p>
-<div class="sourceCode" id="cb1876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1876-1"><a href="kfold.html#cb1876-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results of final model estimated using training data</span></span>
-<span id="cb1876-2"><a href="kfold.html#cb1876-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1877-1"><a href="kfold.html#cb1877-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results of final model estimated using training data</span></span>
+<span id="cb1877-2"><a href="kfold.html#cb1877-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## NULL
@@ -1346,8 +1362,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>As a next step, we will evaluate the importance of different predictor variables in our model. Variables with higher importance values contribute more to model estimation – and in this case, model classification.</p>
-<div class="sourceCode" id="cb1878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1878-1"><a href="kfold.html#cb1878-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate the importance of different predictors</span></span>
-<span id="cb1878-2"><a href="kfold.html#cb1878-2" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1879-1"><a href="kfold.html#cb1879-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate the importance of different predictors</span></span>
+<span id="cb1879-2"><a href="kfold.html#cb1879-2" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(model1)</span></code></pre></div>
 <pre><code>## glm variable importance
 ## 
 ##      Overall
@@ -1357,11 +1373,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## JS     0.000</code></pre>
 <p>As you can see, <code>TI</code> was the most important variable when it came to predicting <code>Turnover</code> (1.00), and it was followed by <code>OC</code> (24.51) and then <code>Naff</code> (9.86). <code>JS</code> was deemed an unimportant predictor, as shown in the model summary above, and it had 0.00 importance based on this estimation process.</p>
 <p>Remember way back when in this tutorial when we partitioned our data into the <code>train_df</code> and <code>test_df</code>? Well, now we’re going to apply the final multiple logistic regression model we estimated using <em>k</em>-fold cross-validation and the <code>train_df</code> data frame to our <code>test_df</code> data frame. First, using our final model, we need to estimate predicted classes/values for individuals’ outcomes (<code>Turnover</code>) based on their predictor variables’ scores in the <code>test_df</code> data frame. Let’s call the object to which we will assign these predictions <code>predictions</code> by using the <code>&lt;-</code> assignment operator. To the right of the <code>&lt;-</code> operator, type the name of the <code>predict</code> function from base R. As the first argument in the <code>predict</code> function, type the name of the model object we built using the <code>train</code> function (<code>model1</code>), and as the second argument, type <code>newdata=</code> followed by the name of the testing data frame (<code>test_df</code>).</p>
-<div class="sourceCode" id="cb1880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1880-1"><a href="kfold.html#cb1880-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome using model from training data based on testing data</span></span>
-<span id="cb1880-2"><a href="kfold.html#cb1880-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>test_df)</span></code></pre></div>
+<div class="sourceCode" id="cb1881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1881-1"><a href="kfold.html#cb1881-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome using model from training data based on testing data</span></span>
+<span id="cb1881-2"><a href="kfold.html#cb1881-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>test_df)</span></code></pre></div>
 <p>Using the <code>confusionMatrix</code> function from the <code>caret</code> package, we will assess how well our model fit the test data. Type the name of the <code>confusionMatrix</code> function. As the first argument, type <code>data=</code> followed by the name of the object to which you assigned the predicted values/classes on the outcome in the previous step (<code>predictions</code>). As the second argument, type the name of the test data frame (<code>test_df</code>), followed by the <code>$</code> operator and the name of the dichotomous outcome variable (<code>Turnover</code>).</p>
-<div class="sourceCode" id="cb1881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1881-1"><a href="kfold.html#cb1881-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create confusion matrix to assess model fit/performance on test data</span></span>
-<span id="cb1881-2"><a href="kfold.html#cb1881-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>predictions, test_df<span class="sc">$</span>Turnover)</span></code></pre></div>
+<div class="sourceCode" id="cb1882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1882-1"><a href="kfold.html#cb1882-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create confusion matrix to assess model fit/performance on test data</span></span>
+<span id="cb1882-2"><a href="kfold.html#cb1882-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>predictions, test_df<span class="sc">$</span>Turnover)</span></code></pre></div>
 <pre><code>## Confusion Matrix and Statistics
 ## 
 ##           Reference
@@ -1398,8 +1414,8 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Prevalence:</strong> Prevalence represents the number of cases whose observed data indicate that they were in the “positive” class (e.g., quit) divided by the total number of cases in the sample. In other words, prevalence represents the proportion of people who actually quit relative to the entire sample. In this example, prevalence is .51. When interpreting sensitivity, it is useful to compare it to prevalence.</p>
 <p><strong>Balanced Accuracy:</strong> Balanced accuracy is calculated by adding sensitivity to specificity and then dividing that sum by 2. In this example, the balanced accuracy is .73, and thus provides another estimate of the model’s overall classification accuracy.</p>
 <p>To learn about some of the other information in the output, check out the documentation for the <code>confusionMatrix</code> function.</p>
-<div class="sourceCode" id="cb1883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1883-1"><a href="kfold.html#cb1883-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View documentation for confusionMatrix function from caret package</span></span>
-<span id="cb1883-2"><a href="kfold.html#cb1883-2" aria-hidden="true" tabindex="-1"></a>?caret<span class="sc">::</span>confusionMatrix</span></code></pre></div>
+<div class="sourceCode" id="cb1884"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1884-1"><a href="kfold.html#cb1884-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View documentation for confusionMatrix function from caret package</span></span>
+<span id="cb1884-2"><a href="kfold.html#cb1884-2" aria-hidden="true" tabindex="-1"></a>?caret<span class="sc">::</span>confusionMatrix</span></code></pre></div>
 <p><strong>Summary of Results:</strong> Overall, the multiple logistic regression model we trained using <em>k</em>-fold cross-validation performed reasonably well when applied to the test data. Adding additional predictors to the model or measuring the predictors with great reliability could improve the predictive and classification performance of the model.</p>
 </div>
 <div id="summary_kfold" class="section level3" number="48.2.5">
