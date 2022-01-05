@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 53 Investigating Nonlinear Associations Using Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 52 Supervised Statistical Learning Using Lasso Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 53 Investigating Nonlinear Associations Using Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 52 Supervised Statistical Learning Using Lasso Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.comcover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 53 Investigating Nonlinear Associations Using Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 52 Supervised Statistical Learning Using Lasso Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.comcover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lassoregression.html"/>
-<link rel="next" href="create-portfolio.html"/>
+<link rel="prev" href="convergentdiscriminantvalidity.html"/>
+<link rel="next" href="polynomialregression.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -1009,78 +1009,65 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="polynomialregression" class="section level1" number="53">
-<h1><span class="header-section-number">Chapter 53</span> Investigating Nonlinear Associations Using Polynomial Regression</h1>
-<p>In this chapter, we will learn how to investigate nonlinear associations between two continuous (interval, ratio) variables using polynomial regression. There are other ways in which we can estimate nonlinear associations, but in this chapter, we’ll focus just on polynomial regression.</p>
-<div id="conceptualoverview_polynomialregression" class="section level2" number="53.1">
-<h2><span class="header-section-number">53.1</span> Conceptual Overview</h2>
-<p>A common way to explore a nonlinear association between two variables is to estimate a <strong>polynomial regression</strong> model. If you think way back to algebra class, a <em>polynomial</em> is a mathematical expression with multiple terms, which might include constants, variables, or exponents. With polynomial regression, we are able to estimate curvature in the relation between two variables, such as quadratic or cubic functional forms. For example, let’s imagine that we have variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, and we suspect that the association between the two variables is nonlinear. Specifically, let’s assume that the true association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> can be expressed as the following quadratic equation:</p>
-<p><span class="math inline">\(\hat{Y} = 8 - 9X + X^2\)</span></p>
-<p>where <span class="math inline">\(\hat{Y}\)</span> is the predicted (fitted) value of the outcome variable <span class="math inline">\(Y\)</span>.</p>
-<p>If we plot this equation, we get the following parabolic shape.</p>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1260-1.png" width="672" /></p>
-<p>If we only estimated a linear association between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, we might miss the fact that these two variables are indeed associated with one another – or we might miss the true functional form of their association.</p>
-<p>In addition to quadratic terms, we can also include cubic terms, which can manifest as an association with two bends or curves:</p>
-<p><span class="math inline">\(\hat{Y} = 1 - .25x + .75X^2 + .35X^3\)</span></p>
-<p>If we plot this equation, we get the following functional form.</p>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1261-1.png" width="672" /></p>
-<p>As the name implies, polynomial regression is a type of regression. If you haven’t already, prior to following along with this tutorial, I recommend checking out the chapters that introduce <a href="predictingcriterionscores.html#predictingcriterionscores">simple linear regression</a>, <a href="incrementalvalidity.html#incrementalvalidity">multiple linear regression</a>, and <a href="differentialprediction.html#differentialprediction">moderated multiple linear regression</a>.</p>
-<div id="statisticalassumptions_polynomialregression" class="section level3" number="53.1.1">
-<h3><span class="header-section-number">53.1.1</span> Statistical Assumptions</h3>
-<p>The statistical assumptions that should be met prior to running and/or interpreting estimates from a simple linear regression model include:</p>
-<ul>
-<li>Cases are randomly sampled from the population, such that the variable scores for one individual are independent of the variable scores of another individual;</li>
-<li>The association between the predictor and outcome variables is nonlinear;</li>
-<li>Average residual error value is zero;</li>
-<li>Residual errors are normally distributed.</li>
-</ul>
-<p><em>Note:</em> Regarding the first statistical assumption (i.e., cases randomly sampled from population), we will assume in this chapter’s data that this is not an issue. If we were to suspect, however, that there were some clustering or nesting of cases in units/groups (e.g., by supervisors, units, or facilities) with respect to our outcome variable, then we would need to run some type of multilevel model (e.g., hierarchical linear model, multilevel structural equation model), which is beyond the scope of this tutorial. An <em>intraclass correlation (ICC)</em> can be used to diagnose such nesting or cluster. Failing to account for clustering or nesting in the data can bias estimates of standard errors, which ultimately influences the <em>p</em>-values and inferences of statistical significance.</p>
+<div id="lassoregression" class="section level1" number="52">
+<h1><span class="header-section-number">Chapter 52</span> Supervised Statistical Learning Using Lasso Regression</h1>
+<p>In this chapter, we will learn how to apply <em>k</em>-fold cross-validation to train a lasso (LASSO) regression model.</p>
+<div id="conceptualoverview_lassoregression" class="section level2" number="52.1">
+<h2><span class="header-section-number">52.1</span> Conceptual Overview</h2>
+<p><strong>Least absolute shrinkage and selection operator (lasso, Lasso, LASSO) regression</strong> is a regularization method and a form of supervised statistical learning (i.e., machine learning) that is often applied when there are many potential predictor variables. Typically, when applying lasso regression the analyst’s primary goal is to improve model prediction, and other scientific research goals goals, such as understanding, explaining, or determining the cause of the outcome/phenomenon of interest, are of little or no interest. In other words, lasso regression can be a great exploratory tool for building a model that accurately predicts a particular outcome, especially when the model includes a large number of predictor variables. Of note, given its emphasis on prediction, there is often little if any attention paid to whether a non-zero lasso regression coefficient is statistically significant; with that said, there has been some preliminary work toward developing significance tests for lasso regression coefficients <span class="citation">(<a href="references.html#ref-lockhart2014" role="doc-biblioref">Lockhart, Taylor, and Tibshirani 2014</a>)</span>.</p>
+<div id="shrinkage_lassoregression" class="section level3" number="52.1.1">
+<h3><span class="header-section-number">52.1.1</span> Shrinkage</h3>
+<p>Lasso regression selects only the most important predictor variables for predicting an outcome by shrinking the regression coefficients associated with the least important predictor variables to zero. In doing so, lasso regression can reduce the amount of <strong>shrinkage</strong> that occurs when a trained (i.e., estimated) model is applied to new data, where shrinkage refers to a reduction in model performance (e.g., variance explained in the outcome) when applied to a new data sample. In general, lasso regression is most often applied for the following reasons: (a) to avoid overfitting a model to the data on which it was trained (i.e., estimated), which can be problematic with conventional regression techniques (e.g., ordinary least squares linear regression models, generalized linear models), especially when there is a large number of predictor variables, and (b) to select only the most important predictor variables (i.e., features) from a much larger number of predictor variables.</p>
 </div>
-<div id="statisticalsignficance_polynomialregression" class="section level3" number="53.1.2">
-<h3><span class="header-section-number">53.1.2</span> Statistical Significance</h3>
-<p>In polynomial regression, we are often interested in the significance of the highest order term in the model (e.g., <span class="math inline">\(X^3\)</span>) when controlling for the lower order terms (e.g., <span class="math inline">\(X\)</span>, <span class="math inline">\(X^2\)</span>). Using null hypothesis significance testing (NHST), we interpret a <em>p</em>-value that is <em>less than .05</em> (or whatever two- or one-tailed alpha level we set) to meet the standard for statistical significance, meaning that we reject the null hypothesis that the regression coefficient is equal to zero. In other words, if a regression coefficient’s <em>p</em>-value is less than .05, we conclude that the regression coefficient differs from zero to a statistically significant extent. In contrast, if the regression coefficient’s <em>p</em>-value is <em>equal to or greater than .05</em>, then we fail to reject the null hypothesis that the regression coefficient is equal to zero. Put differently, if a regression coefficient’s <em>p</em>-value is equal to or greater than .05, we conclude that the regression coefficient does <em>not</em> differ from zero to a statistically significant extent, leading us to conclude that there is no association between the predictor variable and the outcome variable in the population.</p>
-<p>When setting an alpha threshold, such as the conventional two-tailed .05 level, sometimes the question comes up regarding whether borderline <em>p</em>-values signify significance or nonsignificance. For our purposes, let’s be very strict in our application of the chosen alpha level. For example, if we set our alpha level at .05, <em>p</em> = .049 would be considered statistically significant, and <em>p</em> = .050 would be considered statistically nonsignificant.</p>
-<p>Because our regression model estimates are based on data from a sample that is drawn from an underlying population, sampling error will affect the extent to which our sample is representative of the population from which its drawn. That is, a regression coefficient estimate (<em>b</em>) is a <em>point estimate</em> of the population parameter that is subject to sampling error. Fortunately, confidence intervals can give us a better idea of what the true population parameter value might be. If we apply an alpha level of .05 (two-tailed), then the equivalent confidence interval (CI) is a 95% CI. In terms of whether a regression coefficient is statistically significant, if the lower and upper limits of 95% CI do <em>not</em> include zero, then this tells us the same thing as a <em>p</em>-value that is less than .05. Strictly speaking, a 95% CI indicates that if we were to hypothetically draw many more samples from the underlying population and construct CIs for each of those samples, then the true parameter (i.e., true value of the regression coefficient in the population) would likely fall within the lower and upper bounds of 95% of the estimated CIs. In other words, the 95% CI gives us an indication of plausible values for the population parameter while taking into consideration sampling error. A wide CI (i.e., large difference between the lower and upper limits) signifies more sampling error, and a narrow CI signifies less sampling error.</p>
-<div id="practicalsignficance_polynomialregression" class="section level4" number="53.1.2.1">
-<h4><span class="header-section-number">53.1.2.1</span> Practical Significance</h4>
-<p>As a reminder, an effect size is a standardized metric that can be compared across samples. In a polynomial regression model, an <em>unstandardized</em> regression coefficient (<span class="math inline">\(b\)</span>) is <em>not</em> an effect size. The reason being, an unstandardized regression coefficient estimate is based on the original scaling of the predictor and outcome variables, and thus the same effect will take on different regression coefficients to the extent that the predictor and outcome variables have different scalings across samples.</p>
-<p>In contrast, a <em>standardized</em> regression coefficient (<span class="math inline">\(\beta\)</span>) is estimated by standardizing the scores of the both the predictor and outcome variables. Given this, a standardized regression coefficient can be compared to other standardized regression coefficients; however, we should take caution when making such comparisons in a polynomial regression model, as we are effectively controlling for lower-order terms in the model.</p>
-<p>In a polynomial regression model, we can also describe the magnitude of the effect in terms of the proportion of variance explained in the outcome variable by the predictor variable (i.e., <em>R</em><sup>2</sup>). Conceptually, we can think of the overlap between the variability in the predictor and outcome variables as the variance explained (<em>R</em><sup>2</sup>). I’ve found that the <em>R</em><sup>2</sup> is often more readily interpretable by non-analytics audiences. For example, an <em>R</em><sup>2</sup> of .10 in a polynomial regression model can be interpreted as: 10% of the variability in scores on the outcome variable can be explained by scores on the predictor variable. That is, to convert an <em>R</em><sup>2</sup> from a proportion to a percent, we just multiply by 100.</p>
-<table>
-<thead>
-<tr class="header">
-<th align="center"><em>R</em><sup>2</sup></th>
-<th align="center">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="center">.01</td>
-<td align="center">Small</td>
-</tr>
-<tr class="even">
-<td align="center">.09</td>
-<td align="center">Medium</td>
-</tr>
-<tr class="odd">
-<td align="center">.25</td>
-<td align="center">Large</td>
-</tr>
-</tbody>
-</table>
-<p><em>Note: Typically, we only interpret the practical significance of an effect if the effect was found to be statistically significant. The logic is that if an effect (e.g., association, difference) is not statistically significant, then we should treat it as no different than zero, and thus it wouldn’t make sense to the interpret the size of something that statistically has no effect.</em></p>
+<div id="regularization_lassoregression" class="section level3" number="52.1.2">
+<h3><span class="header-section-number">52.1.2</span> Regularization</h3>
+<p>Lasso regression is a specific <strong>regularization method</strong> refereed to as a <em>L1 regularization method</em>, and it is related to other regularization methods like <em>ridge regression</em> and <em>elastic net</em>. The purpose of regularization is to reduce the variance of parameter estimates (i.e., regression coefficients), even if such a reduction comes with the cost of introducing or allowing for additional bias; ultimately, this means finding the optimal level of model complexity.</p>
 </div>
-<div id="samplewriteup_polynomialregression" class="section level4" number="53.1.2.2">
-<h4><span class="header-section-number">53.1.2.2</span> Sample Write-Up</h4>
-<p>Based on a sample of 107 employees (<em>N</em> = 107), We found that the association between emotional stability scores and supervisor ratings of job performance was nonlinear. Using polynomial regression, we found that the quadratic term for emotional stability was statistically significant (<em>b</em> = -.475, <em>p</em> &lt; .001), which implies that there is a statistically significant nonlinear association with a quadratic functional form. Moreover, with the quadratic term included, the model explained 22.7% of the variability in supervisor ratings of job performance, which was an 18.9% improvement over a simple linear regression model that lacked the quadratic term. The functional form of the association can be described as an inverted “U”, such that supervisor ratings of performance are highest for those employees with more moderate levels of emotional stability.</p>
+<div id="tuning_lassoregression" class="section level3" number="52.1.3">
+<h3><span class="header-section-number">52.1.3</span> Tuning</h3>
+<p>Lasso regression involves two <strong>tuning parameters</strong> called alpha and lambda. For lasso regression, the <strong>alpha</strong> tuning parameter responsible for what is called the <em>mixing percentage</em> and is set to one. When alpha is set to one (<span class="math inline">\(\alpha\)</span> = 1), we are estimating a lasso regression model, and when alpha is set to zero (<span class="math inline">\(\alpha\)</span> = 0), we are estimating a ridge regression model. Thus, given that alpha remains constant for lasso regression, all we need to remember is to set alpha to one when specifying the model.</p>
+<p>The more important turning parameter for lasso regression is <strong>lambda</strong> (<span class="math inline">\(\lambda\)</span>), which is our regularization parameter. Different values of lambda are evaluated to arrive at a final model that strikes a balance between model parsimony and accuracy. To achieve this end, the lambda tuning parameter places a constraint on the maximum absolute value of the regression coefficients in the model and adds a penalty to non-zero regression coefficients. So what are the effects of different lambda values? First, <em>when lambda is zero</em>, the model regression coefficients (i.e., parameter estimates) will approximate a conventional (e.g., ordinary least squares regression) model, and no regression coefficients will shrink to zero (i.e., be eliminated). Second, <em>when lambda is large</em>, regression coefficients with smaller absolute values will shrink toward zero. Third, <em>when lambda becomes too large</em>, all regression coefficients shrink to zero, resulting in a very parsimonious but (likely) inaccurate model.</p>
+<p>Moreover, the value of the lambda tuning parameter influences variance and bias. Specifically, <em>as lambda gets smaller</em>, <strong>variance</strong> grows larger, where variance refers to the uncertainty (or dispersion) of the regression coefficient estimates. Conversely, <em>as lambda gets larger</em>, <strong>bias</strong> grows larger, where bias refers to the differences between the regression coefficient estimates and the true population parameters. In lasso regression, variance is minimized at the expense of greater bias. In this way, lasso regression differs from more traditional forms of regression. For example, in ordinary least squares (OLS) regression, bias is minimized at the expense of greater variance.</p>
+<p>When training a lasso regression model, an array of possible lambda values are used to tune the model. To arrive at an <strong>optimal lambda</strong> value, model <em>accuracy</em> (e.g., amount of error) is noted at each level of lambda, with examples of model accuracy indices including (pseudo) <em>R</em><sup>2</sup>, mean-squared error (MSE), root mean-squared error (RMSE), classification accuracy, and Cohen’s kappa (<span class="math inline">\(\kappa\)</span>) (see Figure 1 for an example); the model accuracy index used will depend, in part, on the type of LASSO regression model specified (e.g., linear, logistic). Given that larger lambda result in a larger penalty to non-zero regression coefficients, model <em>parsimony</em> is also affected as model lambda is adjusted; specifically, models become more parsimonious (i.e., fewer predictor variables with non-zero regression coefficients) as lambda increases in magnitude, but at some point, model predictive accuracy starts to suffer when a model becomes too parsimonious and most (or all) of regression coefficients fall to zero (see Figure 2 for an example). Consequently, the optimal lambda value will strike a balance between model accuracy and model parsimony. <em>[Note: To facilitate interpretation, we often apply a logarithmic (log) transformation to lambda.]</em></p>
+<div class="figure">
+<img src="MSEplot.png" alt="" />
+<p class="caption">This plot is an example of a logarithmic tranformation of lambda in relation to mean-squared error (MSE).</p>
+</div>
+<div class="figure">
+<img src="CoefficientSizeplot.png" alt="" />
+<p class="caption">This plot is an example of a logarithmic tranformation of lambda in relation to regression coefficient magnitude, where x1-x10 refer to 10 predictor variables</p>
 </div>
 </div>
+<div id="modeltype_selection_lassoregression" class="section level3" number="52.1.4">
+<h3><span class="header-section-number">52.1.4</span> Model Type Selection</h3>
+<p>An important part of the lasso regression model building process is selecting the appropriate model type. Often, the characteristics of the outcome variable will inform which type of model should be used within lasso regression. For example, if the outcome variable is continuous in terms of its measurement scale (i.e., interval or ratio scale), then a linear model is likely appropriate. As another example, if the outcome variable is dichotomous (i.e., binary), then a generalized linear model like a logistic regression model (i.e., logit model) is likely appropriate. Traditionally, lasso regression has been applied to linear regression models; however, it can, however, also be applied to other families of models, such as generalized linear models. The model type selected will also influence what statistical assumptions should be met; with that said, lasso regression can help address multicollinearity that can pose problems for traditional forms of regression (e.g., OLS linear, logistic).</p>
 </div>
-<div id="tutorial_polynomialregression" class="section level2" number="53.2">
-<h2><span class="header-section-number">53.2</span> Tutorial</h2>
-<p>This chapter’s tutorial demonstrates how to estimate a polynomial regression model in R.</p>
-<div id="functions_polynomialregression" class="section level3" number="53.2.1">
-<h3><span class="header-section-number">53.2.1</span> Functions &amp; Packages Introduced</h3>
+<div id="crossvalidation_lassoregression" class="section level3" number="52.1.5">
+<h3><span class="header-section-number">52.1.5</span> Cross-Validation</h3>
+<p>It is advisable to use <strong>cross-validation</strong> when training a model, as cross-validation can improve model prediction performance and how well the model generalizes to other data from the same population. There are different approaches to carrying out cross-validation, with one of the simplest being simple empirical cross-validation, which you can learn more about in the <a href="crossvalidation.html#crossvalidation">chapter on statistical and empirical cross-validation</a>. Another approach is called <strong><em>k</em>-fold cross-validation</strong>, which is quite popular among practitioners and is introduced in the <a href="kfold.html#kfold">chapter on <em>k</em>-fold cross-validation applied to logistic regression</a>. In this chapter, we will apply lasso regression using a <em>k</em>-fold cross-validation framework, as this approach is useful when tuning the lambda parameter.</p>
+<p>Regardless of the type of cross-validation used, it is advisable to apply cross-validation in a predictive analytics framework, which is described next.</p>
+</div>
+<div id="predictiveanalytics_lassoregression" class="section level3" number="52.1.6">
+<h3><span class="header-section-number">52.1.6</span> Predictive Analytics</h3>
+<p>As a reminder, true <strong>predictive analytics</strong> (predictive modeling) involves training (estimating, building) a model in one or more samples (e.g., training data) and then evaluating (testing) how well the model performs in a separate sample (i.e., test data) from the same population. The term predictive analytics is a big umbrella term, and predictive analytics can be applied to many different types of models, including lasso regression. When building a model using a predictive analytics framework, one of our goals is to minimize prediction errors (i.e., improve prediction accuracy) when the model is applied to “fresh” or “new” data (e.g., test data). Fewer prediction errors when applying the model to new data indicate that the model is more accurate. At the same time, we want to avoid overfitting our model such that it predicts with a high level of accuracy in our training data but doesn’t generalize well to our test data; applying a trained model to new data can help us evaluate with the extent to which we might have overfit a model to the original data. Fortunately, as described above, a major selling point of lasso regression is that it can help reduce model overfitting.</p>
+</div>
+</div>
+<div id="tutorial_lassoregression" class="section level2" number="52.2">
+<h2><span class="header-section-number">52.2</span> Tutorial</h2>
+<p>This chapter’s tutorial demonstrates training a lasso regression model using <em>k</em>-fold cross-validation.</p>
+<div id="videotutorial_lassoregression" class="section level3" number="52.2.1">
+<h3><span class="header-section-number">52.2.1</span> Video Tutorials</h3>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/5GZ5BHOugBQ?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/5GZ5BHOugBQ" class="uri">https://youtu.be/5GZ5BHOugBQ</a></p>
+<p>Additionally, in the following video tutorial, I show how to compare the results of an OLS multiple linear regression model to a lasso regression model, where both are trained using <em>k</em>-fold cross-validation.</p>
+<iframe src="https://youtube.com/embed/NUfbl7ijZ0Q?rel=0" width="672" height="400px">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/NUfbl7ijZ0Q" class="uri">https://youtu.be/NUfbl7ijZ0Q</a></p>
+</div>
+<div id="functions_lassoregression" class="section level3" number="52.2.2">
+<h3><span class="header-section-number">52.2.2</span> Functions &amp; Packages Introduced</h3>
 <table>
 <thead>
 <tr class="header">
@@ -1090,342 +1077,759 @@ BOOK UNDER CONSTRUCTION</a>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="center"><code>set.seed</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>nrow</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>as.data.frame</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>createDataPartition</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>trainControl</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>seq</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>train</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>log</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
 <td align="center"><code>plot</code></td>
 <td align="center">base R</td>
 </tr>
 <tr class="even">
-<td align="center"><code>lm</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="odd">
 <td align="center"><code>summary</code></td>
 <td align="center">base R</td>
 </tr>
+<tr class="odd">
+<td align="center"><code>varImp</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
 <tr class="even">
-<td align="center"><code>mean</code></td>
-<td align="center">base R</td>
+<td align="center"><code>ggplot</code></td>
+<td align="center"><code>ggplot2</code></td>
 </tr>
 <tr class="odd">
-<td align="center"><code>I</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="even">
-<td align="center"><code>hist</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>seq</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="even">
-<td align="center"><code>min</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>max</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="even">
-<td align="center"><code>lines</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="odd">
-<td align="center"><code>poly</code></td>
-<td align="center">base R</td>
-</tr>
-<tr class="even">
 <td align="center"><code>predict</code></td>
 <td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>print</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>RMSE</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>R2</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>coef</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>function</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>data.frame</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>matrix</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>colnames</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>rownames</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>round</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>c</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>list</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>as.table</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>resamples</code></td>
+<td align="center"><code>caret</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>compare_models</code></td>
+<td align="center"><code>caret</code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="initsteps_polynomialregression" class="section level3" number="53.2.2">
-<h3><span class="header-section-number">53.2.2</span> Initial Steps</h3>
-<p>If you haven’t already, save the file called <strong>“Nonlinear.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<div id="initsteps_lassoregression" class="section level3" number="52.2.3">
+<h3><span class="header-section-number">52.2.3</span> Initial Steps</h3>
+<p>If you haven’t already, save the file called <strong>“lasso.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb2095"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2095-1"><a href="polynomialregression.html#cb2095-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb2095-2"><a href="polynomialregression.html#cb2095-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“Nonlinear.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb2096"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2096-1"><a href="polynomialregression.html#cb2096-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb2096-2"><a href="polynomialregression.html#cb2096-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb2096-3"><a href="polynomialregression.html#cb2096-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb2096-4"><a href="polynomialregression.html#cb2096-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2097"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2097-1"><a href="polynomialregression.html#cb2097-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb2097-2"><a href="polynomialregression.html#cb2097-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb2097-3"><a href="polynomialregression.html#cb2097-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2097-4"><a href="polynomialregression.html#cb2097-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb2097-5"><a href="polynomialregression.html#cb2097-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Nonlinear.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2028"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2028-1"><a href="lassoregression.html#cb2028-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2028-2"><a href="lassoregression.html#cb2028-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“lasso.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2029"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2029-1"><a href="lassoregression.html#cb2029-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2029-2"><a href="lassoregression.html#cb2029-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2029-3"><a href="lassoregression.html#cb2029-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2029-4"><a href="lassoregression.html#cb2029-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2030"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2030-1"><a href="lassoregression.html#cb2030-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2030-2"><a href="lassoregression.html#cb2030-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2030-3"><a href="lassoregression.html#cb2030-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2030-4"><a href="lassoregression.html#cb2030-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb2030-5"><a href="lassoregression.html#cb2030-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;lasso.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## -- Column specification ----------------------------------------------------------------------------------
 ## cols(
-##   ES = col_double(),
-##   Perf = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb2099"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2099-1"><a href="polynomialregression.html#cb2099-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb2099-2"><a href="polynomialregression.html#cb2099-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;ES&quot;   &quot;Perf&quot;</code></pre>
-<div class="sourceCode" id="cb2101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2101-1"><a href="polynomialregression.html#cb2101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb2101-2"><a href="polynomialregression.html#cb2101-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre><code>## spec_tbl_df[,2] [107 x 2] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ ES  : num [1:107] 0.2 0.9 2.1 1.9 1.6 1.8 1.4 2.3 1.7 0.2 ...
-##  $ Perf: num [1:107] 1.6 10.1 6.7 4.9 3.4 15.1 11.7 6.8 26.5 8.3 ...
+##   .default = col_double()
+## )
+## i Use `spec()` for the full column specifications.</code></pre>
+<div class="sourceCode" id="cb2032"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2032-1"><a href="lassoregression.html#cb2032-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb2032-2"><a href="lassoregression.html#cb2032-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>##  [1] &quot;y&quot;   &quot;x1&quot;  &quot;x2&quot;  &quot;x3&quot;  &quot;x4&quot;  &quot;x5&quot;  &quot;x6&quot;  &quot;x7&quot;  &quot;x8&quot;  &quot;x9&quot;  &quot;x10&quot; &quot;x11&quot; &quot;x12&quot; &quot;x13&quot; &quot;x14&quot; &quot;x15&quot; &quot;x16&quot;
+## [18] &quot;x17&quot; &quot;x18&quot; &quot;x19&quot; &quot;x20&quot; &quot;x21&quot; &quot;x22&quot; &quot;x23&quot; &quot;x24&quot; &quot;x25&quot; &quot;x26&quot; &quot;x27&quot; &quot;x28&quot; &quot;x29&quot; &quot;x30&quot; &quot;x31&quot; &quot;x32&quot; &quot;x33&quot;
+## [35] &quot;x34&quot; &quot;x35&quot; &quot;x36&quot;</code></pre>
+<div class="sourceCode" id="cb2034"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2034-1"><a href="lassoregression.html#cb2034-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2034-2"><a href="lassoregression.html#cb2034-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,37] [1,000 x 37] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ y  : num [1:1000] -0.886 0.763 0.209 1.746 0.22 ...
+##  $ x1 : num [1:1000] -0.57 1.763 -0.016 1.476 -1.288 ...
+##  $ x2 : num [1:1000] -0.669 1.077 0.264 0.153 -1.091 ...
+##  $ x3 : num [1:1000] -0.978 1.094 -1.302 1.804 0.226 ...
+##  $ x4 : num [1:1000] -0.948 2.427 -0.493 -1 0.713 ...
+##  $ x5 : num [1:1000] -1.703 1.011 -0.049 -0.768 1.731 ...
+##  $ x6 : num [1:1000] -0.623 2.574 -0.61 0.008 -1.21 ...
+##  $ x7 : num [1:1000] 0.176 1.32 -0.565 -0.083 1.125 ...
+##  $ x8 : num [1:1000] -1.624 2.917 -1.626 0.478 -1.053 ...
+##  $ x9 : num [1:1000] -1.189 1.997 -0.95 0.204 0.622 ...
+##  $ x10: num [1:1000] -0.519 0.882 0.676 1.182 0.234 ...
+##  $ x11: num [1:1000] -0.495 1.155 0.531 0.687 0.596 ...
+##  $ x12: num [1:1000] 0.008 2.895 0.434 1.195 -0.004 ...
+##  $ x13: num [1:1000] 0.269 1.996 0.499 -0.523 -1.714 ...
+##  $ x14: num [1:1000] 0.017 3.665 1.998 -2.024 0.754 ...
+##  $ x15: num [1:1000] -0.32 0.885 -0.776 4.072 -0.335 ...
+##  $ x16: num [1:1000] -0.849 1.132 -0.404 0.658 -0.154 ...
+##  $ x17: num [1:1000] -4.33 6.26 1.66 1.11 -2.2 ...
+##  $ x18: num [1:1000] -2.405 6.338 1.684 6.423 0.379 ...
+##  $ x19: num [1:1000] -0.195 0.236 0.011 0.036 0.082 -0.419 -0.327 0.034 -0.422 -0.164 ...
+##  $ x20: num [1:1000] 0.634 0.356 0.422 1.693 0.593 ...
+##  $ x21: num [1:1000] -0.853 1.685 0.557 -0.498 1.248 ...
+##  $ x22: num [1:1000] -1.537 1.771 -0.882 -0.316 -0.028 ...
+##  $ x23: num [1:1000] -0.675 0.715 0.623 -0.885 0.246 ...
+##  $ x24: num [1:1000] -1.077 0.007 -0.223 0.315 1.728 ...
+##  $ x25: num [1:1000] -0.851 1.382 -0.1 0.384 -0.212 ...
+##  $ x26: num [1:1000] -1.578 0.172 1.537 1.268 0.616 ...
+##  $ x27: num [1:1000] -2 2.62 -2.11 1.64 2.14 ...
+##  $ x28: num [1:1000] -0.641 3.905 -0.914 0.357 0.266 ...
+##  $ x29: num [1:1000] -1.223 1.874 0.792 0.509 1.008 ...
+##  $ x30: num [1:1000] -0.615 1.862 0.64 0.483 1.469 ...
+##  $ x31: num [1:1000] -0.751 1.291 0.147 -1.321 0.268 ...
+##  $ x32: num [1:1000] -0.464 3.085 0.558 0.917 0.762 ...
+##  $ x33: num [1:1000] -1.749 0.424 0.584 1.264 1.445 ...
+##  $ x34: num [1:1000] -0.841 -0.189 0.58 2.599 2.538 ...
+##  $ x35: num [1:1000] -0.933 0.448 -1.856 -0.091 2.658 ...
+##  $ x36: num [1:1000] -1.296 1.706 0.707 0.454 1.118 ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
-##   ..   ES = col_double(),
-##   ..   Perf = col_double()
+##   ..   y = col_double(),
+##   ..   x1 = col_double(),
+##   ..   x2 = col_double(),
+##   ..   x3 = col_double(),
+##   ..   x4 = col_double(),
+##   ..   x5 = col_double(),
+##   ..   x6 = col_double(),
+##   ..   x7 = col_double(),
+##   ..   x8 = col_double(),
+##   ..   x9 = col_double(),
+##   ..   x10 = col_double(),
+##   ..   x11 = col_double(),
+##   ..   x12 = col_double(),
+##   ..   x13 = col_double(),
+##   ..   x14 = col_double(),
+##   ..   x15 = col_double(),
+##   ..   x16 = col_double(),
+##   ..   x17 = col_double(),
+##   ..   x18 = col_double(),
+##   ..   x19 = col_double(),
+##   ..   x20 = col_double(),
+##   ..   x21 = col_double(),
+##   ..   x22 = col_double(),
+##   ..   x23 = col_double(),
+##   ..   x24 = col_double(),
+##   ..   x25 = col_double(),
+##   ..   x26 = col_double(),
+##   ..   x27 = col_double(),
+##   ..   x28 = col_double(),
+##   ..   x29 = col_double(),
+##   ..   x30 = col_double(),
+##   ..   x31 = col_double(),
+##   ..   x32 = col_double(),
+##   ..   x33 = col_double(),
+##   ..   x34 = col_double(),
+##   ..   x35 = col_double(),
+##   ..   x36 = col_double()
 ##   .. )</code></pre>
-<div class="sourceCode" id="cb2103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2103-1"><a href="polynomialregression.html#cb2103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb2103-2"><a href="polynomialregression.html#cb2103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 2
-##      ES  Perf
-##   &lt;dbl&gt; &lt;dbl&gt;
-## 1   0.2   1.6
-## 2   0.9  10.1
-## 3   2.1   6.7
-## 4   1.9   4.9
-## 5   1.6   3.4
-## 6   1.8  15.1</code></pre>
-<div class="sourceCode" id="cb2105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2105-1"><a href="polynomialregression.html#cb2105-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb2105-2"><a href="polynomialregression.html#cb2105-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
-<pre><code>## [1] 107</code></pre>
-<p>There are 2 variables and 107 cases (i.e., employees) in the <code>df</code> data frame: <code>ES</code> and <code>Perf</code>. Per the output of the <code>str</code> (structure) function above, both variables are of type <em>numeric</em> (continuous: interval, ratio). The <code>ES</code> variable is a measure of emotional stability, with scores ranging from 1 (low emotional stability) to 10 (high emotional stability). The <code>Perf</code> variable includes performance evaluation data that can range from 0 (low performance) to 30 (high performance).</p>
+<div class="sourceCode" id="cb2036"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2036-1"><a href="lassoregression.html#cb2036-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2036-2"><a href="lassoregression.html#cb2036-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 37
+##        y     x1     x2     x3     x4     x5     x6     x7     x8     x9    x10    x11    x12    x13    x14
+##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 -0.886 -0.57  -0.669 -0.978 -0.948 -1.70  -0.623  0.176 -1.62  -1.19  -0.519 -0.495  0.008  0.269  0.017
+## 2  0.763  1.76   1.08   1.09   2.43   1.01   2.57   1.32   2.92   2.00   0.882  1.16   2.90   2.00   3.66 
+## 3  0.209 -0.016  0.264 -1.30  -0.493 -0.049 -0.61  -0.565 -1.63  -0.95   0.676  0.531  0.434  0.499  2.00 
+## 4  1.75   1.48   0.153  1.80  -1     -0.768  0.008 -0.083  0.478  0.204  1.18   0.687  1.20  -0.523 -2.02 
+## 5  0.22  -1.29  -1.09   0.226  0.713  1.73  -1.21   1.12  -1.05   0.622  0.234  0.596 -0.004 -1.71   0.754
+## 6 -0.458 -0.619 -1.82  -1.35  -0.036 -3.79  -2.02  -0.072 -1.26  -0.999 -1.12  -2.61  -1.85  -2.16   0.311
+## # ... with 22 more variables: x15 &lt;dbl&gt;, x16 &lt;dbl&gt;, x17 &lt;dbl&gt;, x18 &lt;dbl&gt;, x19 &lt;dbl&gt;, x20 &lt;dbl&gt;,
+## #   x21 &lt;dbl&gt;, x22 &lt;dbl&gt;, x23 &lt;dbl&gt;, x24 &lt;dbl&gt;, x25 &lt;dbl&gt;, x26 &lt;dbl&gt;, x27 &lt;dbl&gt;, x28 &lt;dbl&gt;, x29 &lt;dbl&gt;,
+## #   x30 &lt;dbl&gt;, x31 &lt;dbl&gt;, x32 &lt;dbl&gt;, x33 &lt;dbl&gt;, x34 &lt;dbl&gt;, x35 &lt;dbl&gt;, x36 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb2038"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2038-1"><a href="lassoregression.html#cb2038-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2038-2"><a href="lassoregression.html#cb2038-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<pre><code>## [1] 1000</code></pre>
+<p>The data frame (<code>df</code>) has 1000 cases and the following 37 variables: <code>y</code> and <code>x1</code> through <code>x36</code>. We’ll use <code>y</code> as our outcome variable and <code>x1</code> - <code>x36</code> as our predictor variables. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>numeric</em>. Sticking with the theme of performance management for this part of the book, we’ll imagine that the <code>y</code> variable is some kind of measure of job performance.</p>
 </div>
-<div id="bivariatescatterplot_polynomialregression" class="section level3" number="53.2.3">
-<h3><span class="header-section-number">53.2.3</span> Visualize Association Using a Bivariate Scatter Plot</h3>
-<p>A <strong>bivariate scatter plot</strong> can be used to visualize the association between two continuous (interval, ratio) variables. This type of plot can help us identify whether an association between variables might be nonlinear.</p>
-<p>Let’s create a bivariate scatter plot to visualize the association between the <code>ES</code> (emotional stability) and the <code>Perf</code> (supervisor-ratings of job performance) variables, both of which are continuous.</p>
-<p>The <code>plot</code> function from base R will help us generate a very simple scatter plot, which will be fine for our purposes. To begin, type the name of the <code>plot</code> function. As the first argument, we’ll type the name of the data frame object (<code>df</code>), followed by the <code>$</code> operator and the name of the predictor variable (<code>ES</code>). As the second argument, we’ll type the name of the data frame object (<code>df</code>), followed by the <code>$</code> operator and the name of the outcome variable (<code>Perf</code>).</p>
-<div class="sourceCode" id="cb2107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2107-1"><a href="polynomialregression.html#cb2107-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using plot function from base R</span></span>
-<span id="cb2107-2"><a href="polynomialregression.html#cb2107-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>ES, df<span class="sc">$</span>Perf)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1268-1.png" width="672" /></p>
-<p>In our plot window, we can see evidence of a nonlinear association between scores on <code>ES</code> and scores on <code>Perf</code>. In fact, the association seems to take the functional form of a quadratic inverted “U” shape. This suggests that a simple linear regression model would not be appropriate for exploration the nature of the association between these two variables. Instead, we should try estimating a polynomial regression model.</p>
+<div id="processoverview_lasso" class="section level3" number="52.2.4">
+<h3><span class="header-section-number">52.2.4</span> Process Overview</h3>
+<p>In this tutorial, we will implement lasso regression using <em>k</em>-fold cross-validation. If you wish to learn more about <em>k</em>-fold cross-validation, please refer to the <a href="crossvalidation.html#crossvalidation">chapter on statistical and empirical cross-validation</a>. As a reminder, you can perform <em>k</em>-fold cross-validation with different types of statistical models. We will also engage in true predictive analytics (i.e., predictive modeling), such that we will partition the data into training and test data, train the model on the training data using <em>k</em>-fold cross-validation, and evaluate the final model’s predictive accuracy based on the test data.</p>
 </div>
-<div id="estimate_polynomialregression" class="section level3" number="53.2.4">
-<h3><span class="header-section-number">53.2.4</span> Estimate Polynomial Regression Model</h3>
-<p>It’s customary to build a polynomial regression model in an iterative manner. That is, we’ll start with a simple linear regression model, with <code>ES</code> as the predictor variable and <code>Perf</code> as the outcome variable, and then work our way up to a polynomial regression model by adding additional terms.</p>
-<div id="estimate_stepone_slr" class="section level4" number="53.2.4.1">
-<h4><span class="header-section-number">53.2.4.1</span> Step One: Simple Linear Regression Model</h4>
-<p>Let’s name our simple linear regression model object <code>mod1</code>. For a review, check out the <a href="predictingcriterionscores.html#predictingcriterionscores">chapter that covers simple linear regression</a>.</p>
-<div class="sourceCode" id="cb2108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2108-1"><a href="polynomialregression.html#cb2108-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate simple linear regression model</span></span>
-<span id="cb2108-2"><a href="polynomialregression.html#cb2108-2" aria-hidden="true" tabindex="-1"></a>mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Perf <span class="sc">~</span> ES, <span class="at">data=</span>df)</span>
-<span id="cb2108-3"><a href="polynomialregression.html#cb2108-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2108-4"><a href="polynomialregression.html#cb2108-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb2108-5"><a href="polynomialregression.html#cb2108-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod1)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = Perf ~ ES, data = df)
-## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -16.2413  -4.0120   0.3052   5.4448  10.6708 
-## 
-## Coefficients:
-##             Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept)  16.6540     1.3533  12.306 &lt;0.0000000000000002 ***
-## ES            0.4931     0.2419   2.038               0.044 *  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 6.95 on 105 degrees of freedom
-## Multiple R-squared:  0.03807,    Adjusted R-squared:  0.02891 
-## F-statistic: 4.155 on 1 and 105 DF,  p-value: 0.04402</code></pre>
-<p>The regression coefficient associated with <code>ES</code> is .493 (<em>p</em> = .044), which is statistically significant, so that seems promising; however, let’s plot the predicted/fitted values based on our model with the residuals (errors). To do so, we will use the <code>plot</code> function from base R, and enter the name of our regression model object (<code>mod1</code>) as the first argument. As the second argument, enter the numeral <em>1</em> to request the residuals vs. fitted values plot.</p>
-<div class="sourceCode" id="cb2110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2110-1"><a href="polynomialregression.html#cb2110-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plot: Residuals vs. Fitted Values</span></span>
-<span id="cb2110-2"><a href="polynomialregression.html#cb2110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod1, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1270-1.png" width="672" /></p>
-<p>The plot shows evidence of what looks like a nonlinear association. Given that, we have found additional evidence that the association between the <code>ES</code> and <code>Perf</code> variables violates key statistical assumptions that should be satisfied to interpret a simple linear regression. Thus, we should proceed forward by constructing a polynomial regression model.</p>
 </div>
-<div id="estimate_steptwo_polynomialregression" class="section level4" number="53.2.4.2">
-<h4><span class="header-section-number">53.2.4.2</span> Step Two: Polynomial Regression Model</h4>
-<p>We’ll build upon our previous model by adding a quadratic term to our model. Prior to doing so, however, let’s grand-mean center our predictor variable (<code>ES</code>) to reduce the collinearity between <code>ES</code> and its quadratic (product) term. We’ll call the grand-mean centered variable <code>c_ES</code>. For more information on centering variables, check out the <a href="center.html#center">chapter on centering and standardizing variables</a>.</p>
-<p><em>Note:</em> While grand-mean centering may improve estimates of standard errors, it does not generally affect the overall model fit to the data; thus, when plotting model, you may choose to use the uncentered predictor variables.</p>
-<div class="sourceCode" id="cb2111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2111-1"><a href="polynomialregression.html#cb2111-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Grand-mean center predictor variable and create new variable</span></span>
-<span id="cb2111-2"><a href="polynomialregression.html#cb2111-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>c_ES <span class="ot">&lt;-</span> df<span class="sc">$</span>ES <span class="sc">-</span> <span class="fu">mean</span>(df<span class="sc">$</span>ES, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p>There are different ways we can add the quadratic term to the model. Let’s start with what I believe is the most intuitive approach.</p>
+<div id="partitiondata_lasso" class="section level2" number="52.3">
+<h2><span class="header-section-number">52.3</span> Partition the Data</h2>
+<p>Let’s begin by randomly partitioning (i.e., splitting) our data into training and test data frames. To get this process started, we will install and access the <code>caret</code> package (if you haven’t already). The <code>caret</code> package has a number of different functions that are useful for implementing predictive analytics and a variety of machine learning models.</p>
+<div class="sourceCode" id="cb2040"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2040-1"><a href="lassoregression.html#cb2040-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
+<span id="cb2040-2"><a href="lassoregression.html#cb2040-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2041"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2041-1"><a href="lassoregression.html#cb2041-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
+<span id="cb2041-2"><a href="lassoregression.html#cb2041-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<p>Using the <code>createDataPartition</code> function from the <code>caret</code> package, we will partition the data such that 80% of the cases will be randomly assigned to one split, and the remaining 20% of cases will be assigned to the other split. However, immediately before doing so, I recommend using the <code>set.seed</code> function from base R and include a number of your choosing as the sole parenthetical argument; this will create “random” operations that are reproducible. With your seed set, create a name for the index of unique cases that will identify which cases should be included in the first split involving 80% of the original data frame cases; here, I call this matrix object <code>index</code> and assign values to it using the <code>&lt;-</code> operator. To the right of the <code>&lt;-</code>, enter the name of the <code>createDataPartition</code> function. As the first argument, type the name of the data frame (<code>df</code>), followed by the <code>$</code> and the name of the outcome variable (<code>y</code>). <strong>[Note: I have noticed that the <code>createDataPartition</code> sometimes adds an extra case to the partitioned data <code>index</code> object, which seems to occur more frequently when the outcome variable is of type factor as opposed to numeric, integer, or character. An extra case added to the training data frame is not a big deal when we have this many cases, so if it happens, we won’t worry about it. If you would like to avoid this, you can try converting the outcome variable from type factor to type numeric, integer, or character, whichever makes the most sense given the variable. You can always convert the outcome back to type factor after this process, which I demonstrate in this tutorial. This “fix” works some of the time but not all of the time.]</strong> As a the second argument, set <code>p=.8</code> to note that you wish to randomly select 80% (.8) of the cases from the data frame. As the third argument, type <code>list=FALSE</code> to indicate that we want to the values in matrix form to facilitate reference to them in a subsequent step. As the fourth argument, type <code>times=1</code> to indicate that we only want to request a single partition of the data frame.</p>
+<div class="sourceCode" id="cb2042"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2042-1"><a href="lassoregression.html#cb2042-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducible random partitioning of data</span></span>
+<span id="cb2042-2"><a href="lassoregression.html#cb2042-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span>
+<span id="cb2042-3"><a href="lassoregression.html#cb2042-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2042-4"><a href="lassoregression.html#cb2042-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Partition data and create index matrix of selected values</span></span>
+<span id="cb2042-5"><a href="lassoregression.html#cb2042-5" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(df<span class="sc">$</span>y, <span class="at">p=</span>.<span class="dv">8</span>, <span class="at">list=</span><span class="cn">FALSE</span>, <span class="at">times=</span><span class="dv">1</span>)</span></code></pre></div>
+<p>Now it’s time to use the <code>index</code> matrix object we created above to assign cases to the training data frame (which we will name <code>train_df</code>) and to the testing data frame (which we will name <code>test_df</code>). Beginning with the training data frame, we assign the random sample of 80% of the original data frame (<code>df</code>) to the <code>train_df</code> object by using the <code>&lt;-</code> operator. Specifically, we specify the name of the original data frame (<code>df</code>), followed by brackets (<code>[ ]</code>). In the brackets, include the name of the <code>index</code> object we created above, followed by a comma (<code>,</code>). The placement of the <code>index</code> object before the comma indicates that we are selecting rows with the selected unique row numbers (i.e., index) from the <code>index</code> matrix. Next, we do essentially the same thing with the <code>test_df</code>, except that we insert a minus (<code>-</code>) symbol before <code>index</code> to indicate that we <em>don’t</em> want cases associated with the unique row numbers contained in the <code>index</code> matrix.</p>
+<div class="sourceCode" id="cb2043"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2043-1"><a href="lassoregression.html#cb2043-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
+<span id="cb2043-2"><a href="lassoregression.html#cb2043-2" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
+<span id="cb2043-3"><a href="lassoregression.html#cb2043-3" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
+<p>If you received the error message shown below, then please proceed to convert the original data frame <code>df</code> from a tibble to a conventional data frame; after that, repeat the steps above from which you received the error message originally, which I will do below. If you did not receive this message, then you can skip this step and proceed on to the step in which you verify the number of rows in each data frame.</p>
+<p><span class="math inline">\(\color{red}{\text{Error: `i` must have one dimension, not 2.}}\)</span></p>
+<div class="sourceCode" id="cb2044"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2044-1"><a href="lassoregression.html#cb2044-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert data frame object (df) to a conventional data frame object</span></span>
+<span id="cb2044-2"><a href="lassoregression.html#cb2044-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(df)</span>
+<span id="cb2044-3"><a href="lassoregression.html#cb2044-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2044-4"><a href="lassoregression.html#cb2044-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create test and train data frames</span></span>
+<span id="cb2044-5"><a href="lassoregression.html#cb2044-5" aria-hidden="true" tabindex="-1"></a>train_df <span class="ot">&lt;-</span> df[index,]</span>
+<span id="cb2044-6"><a href="lassoregression.html#cb2044-6" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> df[<span class="sc">-</span>index,]</span></code></pre></div>
+<p>To check our work and to be sure that 80% of the cases ended up in the <code>train_df</code> data frame and the remaining 20% ended up in the <code>test_df</code> data frame, let’s apply the <code>nrow</code> function from base R.</p>
+<div class="sourceCode" id="cb2045"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2045-1"><a href="lassoregression.html#cb2045-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify number of rows (cases) in each data frame</span></span>
+<span id="cb2045-2"><a href="lassoregression.html#cb2045-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(train_df)</span></code></pre></div>
+<pre><code>## [1] 801</code></pre>
+<div class="sourceCode" id="cb2047"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2047-1"><a href="lassoregression.html#cb2047-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(test_df)</span></code></pre></div>
+<pre><code>## [1] 199</code></pre>
+<p>Indeed, 801 (~ 80%) of the original 1,000 cases ended up in the <code>train_df</code> data frame, and 199 (~ 20%) of the original 1,000 cases ended up in the <code>test_df</code> data frame, which is close enough to a perfect 80/20 partition.</p>
+</div>
+<div id="specify-k-fold-cross-validation" class="section level2" number="52.4">
+<h2><span class="header-section-number">52.4</span> Specify <em>k</em>-Fold Cross-Validation</h2>
+<p>Now it’s time to specify the type of training method we want to apply, which in this tutorial is <em>k</em>-fold cross-validation. Let’s create and name our specifications object <code>ctrlspecs</code> using the <code>&lt;-</code> operator. To the right of the <code>&lt;-</code> operator, type the name of the <code>trainControl</code> function from the <code>caret</code> package. As the first argument, specify the method by setting <code>method="cv"</code>, where <code>"cv"</code> represents cross-validation. As the second argument, set <code>number=10</code> to indicate that we want 10 folds (i.e., 10 resamples), which means we will specifically use 10-fold cross-validation. As the third argument, type <code>savePredictions="all"</code> to save all of the hold-out predictions for each of our resamples from the <code>train_df</code> data frame, where hold-out predictions refer to those cases that weren’t used in training each iteration of the model based on each fold of data but were used for validating the model trained at each fold.</p>
+<div class="sourceCode" id="cb2049"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2049-1"><a href="lassoregression.html#cb2049-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify 10-fold cross-validation as training method</span></span>
+<span id="cb2049-2"><a href="lassoregression.html#cb2049-2" aria-hidden="true" tabindex="-1"></a>ctrlspecs <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method=</span><span class="st">&quot;cv&quot;</span>, </span>
+<span id="cb2049-3"><a href="lassoregression.html#cb2049-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">number=</span><span class="dv">10</span>,</span>
+<span id="cb2049-4"><a href="lassoregression.html#cb2049-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">savePredictions=</span><span class="st">&quot;all&quot;</span>)</span></code></pre></div>
+</div>
+<div id="trainlasso_lasso" class="section level2" number="52.5">
+<h2><span class="header-section-number">52.5</span> Specify and Train Lasso Regression Model</h2>
+<p>Before we specify our lasso regression model, we need to create a vector of potential lambda tuning parameter values. We’ll begin by creating an object to which we can assign the potential values; let’s make things clear and simple by naming this object <code>lambda_vector</code> using the <code>&lt;-</code> operator. Next, we will create a vector of possible lambda by setting the base to 10 and then exponentiating it by a sequence of 500 values ranging from 5 to -5. Remember, that the <code>^</code> operator is how we assign exponents. The <code>seq</code> (sequence) function from base R is specified with the first argument being one end of the sequence (e.g., 5) and the second argument being the other end of the sequence (e.g., -5); the upper and lower limits of the sequence probably do not need to be this wide, but to be on the safe side, I recommend using these same limits for other sequences of lambdas. The third argument of the <code>seq</code> function is the length of the sequence in terms of the number of values generated within the sequence; let’s set the length to 500 (<code>length=500</code>); I also recommend using this same length of 500 for other vectors of potential lambdas you might generate. We will reference this <code>lambda_vector</code> object we created when we specify our model training parameters.</p>
+<div class="sourceCode" id="cb2050"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2050-1"><a href="lassoregression.html#cb2050-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector of potential lambda values</span></span>
+<span id="cb2050-2"><a href="lassoregression.html#cb2050-2" aria-hidden="true" tabindex="-1"></a>lambda_vector <span class="ot">&lt;-</span> <span class="dv">10</span><span class="sc">^</span><span class="fu">seq</span>(<span class="dv">5</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="at">length=</span><span class="dv">500</span>)</span></code></pre></div>
+<p>To specify (and ultimately train) our lasso regression model, we will use the <code>train</code> function from the <code>caret</code> package.</p>
 <ol style="list-style-type: decimal">
-<li>Let’s name this polynomial regression model object (<code>mod2</code>) using the <code>&lt;-</code> assignment operator.</li>
-<li>To the right of the <code>&lt;-</code> assignment operator, start with the simple linear regression model we specified in the previous step.</li>
-<li>In the regression model formula, type the name of your grand-mean centered predictor variable (<code>c_ES</code>), followed by the <code>+</code> operator.</li>
-<li>After the <code>+</code> operator, insert the <code>I</code> function from base R, and within its parentheses, type the name of the grand-mean centered predictor variable (<code>c_ES</code>) followed by <code>^2</code> to signal that you want to include a quadratic term.</li>
+<li>I recommend using the <code>set.seed</code> function from base R and include a number of your choosing as the sole parenthetical argument; this will create “random” operations that are reproducible.</li>
+<li>Moving on to the <code>train</code> function, come up with a name for your model object; here, I name the model object <code>model1</code> and use the <code>&lt;-</code> operator to assign the model specifications to it.</li>
+<li>Next, type the name of the <code>train</code> function.</li>
 </ol>
-<div class="sourceCode" id="cb2112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2112-1"><a href="polynomialregression.html#cb2112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate polynomial regression model: Option 1</span></span>
-<span id="cb2112-2"><a href="polynomialregression.html#cb2112-2" aria-hidden="true" tabindex="-1"></a>mod2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Perf <span class="sc">~</span> c_ES <span class="sc">+</span> <span class="fu">I</span>(c_ES<span class="sc">^</span><span class="dv">2</span>), <span class="at">data=</span>df)</span>
-<span id="cb2112-3"><a href="polynomialregression.html#cb2112-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2112-4"><a href="polynomialregression.html#cb2112-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb2112-5"><a href="polynomialregression.html#cb2112-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod2)</span></code></pre></div>
+<ul>
+<li>As the first argument, let’s specify our linear model. To the left of the tilde (<code>~</code>) symbol, type the name of the continuous outcome variable called <code>y</code>. To the right of the tilde (<code>~</code>) symbol, type <code>.</code>, which will automatically specify all remaining variables in the data frame as predictor variables; if you don’t want to specify all remaining variables as predictor variables, then you can do it the old-fashioned way by entering each variable name separated by a <code>+</code> symbol.</li>
+<li>As the second argument in the <code>train</code> function, type <code>data=</code> followed by the name of the training data frame object (<code>train_df</code>).</li>
+<li>As the third argument, use the <code>preProcess</code> argument to mean center (i.e., subtract the mean of the variable from each value) and standardize (i.e., divide each value of the variable by the variable’s standard deviation) the predictor variables prior to training the model, which is advisable when using lasso regression; to do so, use the <code>c</code> (combine) function from base R with <code>"center"</code> and <code>"scale"</code> as the two arguments.</li>
+<li>As the fourth argument, specify <code>method="glmnet"</code>, which will allow us to access regularization method models such as lasso regression or ridge regression.</li>
+<li>As the fifth argument, use <code>tuneGrid</code> to specify the alpha and lambda tuning parameters. Specifically, type the name of the <code>expand.grid</code> function from base R with <code>alpha</code> set to 1 (<code>alpha=1</code>) as the first argument (to specify that we want a lasso regression model) and <code>lambda</code> set to <code>lambda_vector</code> (which is the vector of potential lambda values we generated) as the second argument. Behind the scenes, this specification of the <code>expand.grid</code> function creates a data frame with all of our potential lambda values as unique rows and alpha set as a constant of 1 for each corresponding row.</li>
+<li>As the sixth argument, type <code>trControl=</code> followed by the name of the object that includes your <em>k</em>-fold cross-validation specifications, which we created above (<code>ctrlspecs</code>). As the final argument, specify <code>na.action=na.omit</code>, which will listwise delete any cases with missing data on any of the variables specified in the model; we don’t have any missing data in our data, but if we did, we would need to specify this argument.</li>
+<li>[When lasso regression models are estimated, the <code>train</code> function by default selects the optimal model based on <em>root mean-squared error (RMSE)</em>, but this can be changed to <em>R</em><sup>2</sup> by including the argument <code>weights="Rsquared"</code>.]</li>
+</ul>
+<p><em>Note:</em> Currently, available <code>caret</code> package models do not support maximum likelihood (ML) estimation, where ML has advantages when data are missing (completely) at random. It is beyond the scope of this tutorial to show how ML might be incorporated, but the <code>caret</code> package <a href="http://topepo.github.io/caret/using-your-own-model-in-train.html#introduction-1">handbook</a> has information on how you can specify your own model and presumably an outside estimator like ML.</p>
+<div class="sourceCode" id="cb2051"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2051-1"><a href="lassoregression.html#cb2051-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducible random selection and assignment operations</span></span>
+<span id="cb2051-2"><a href="lassoregression.html#cb2051-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span>
+<span id="cb2051-3"><a href="lassoregression.html#cb2051-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2051-4"><a href="lassoregression.html#cb2051-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify lasso regression model to be estimated using training data</span></span>
+<span id="cb2051-5"><a href="lassoregression.html#cb2051-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and k-fold cross-validation process</span></span>
+<span id="cb2051-6"><a href="lassoregression.html#cb2051-6" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">train</span>(y <span class="sc">~</span> ., </span>
+<span id="cb2051-7"><a href="lassoregression.html#cb2051-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">data=</span>train_df,</span>
+<span id="cb2051-8"><a href="lassoregression.html#cb2051-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">preProcess=</span><span class="fu">c</span>(<span class="st">&quot;center&quot;</span>,<span class="st">&quot;scale&quot;</span>),</span>
+<span id="cb2051-9"><a href="lassoregression.html#cb2051-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;glmnet&quot;</span>, </span>
+<span id="cb2051-10"><a href="lassoregression.html#cb2051-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">tuneGrid=</span><span class="fu">expand.grid</span>(<span class="at">alpha=</span><span class="dv">1</span>, <span class="at">lambda=</span>lambda_vector),</span>
+<span id="cb2051-11"><a href="lassoregression.html#cb2051-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl=</span>ctrlspecs,</span>
+<span id="cb2051-12"><a href="lassoregression.html#cb2051-12" aria-hidden="true" tabindex="-1"></a>                <span class="at">na.action=</span>na.omit)</span></code></pre></div>
+<p>Our 10-fold cross-validation and model training process that we implemented above did the following. <em>First</em>, at each fold (i.e., resample), all possible lambda values from our <code>lambda_vector</code> object were evaluated based on the estimated model’s predictive accuracy/performance in the <em>k</em>th holdout validation sample for that fold, with model accuracy/performance signified by root mean-squared error (RMSE), <em>R</em><sup>2</sup> (Rsquared), and mean absolute error (MAE); however, by default, the training algorithm selected the lambda value in which RMSE, specifically, was lowest (i.e., minimized). As noted above, this evaluation criterion can be changed to <em>R</em><sup>2</sup> (Rsquared) by including the argument <code>weights="Rsquared"</code> in the <code>train</code> function. <em>Second</em>, after the first step was repeated for all 10 folds in the 10-fold cross-validation process, the average of the best lambda at each fold was computed to arrive at the optimal lambda. <em>Third</em>, a final lasso regression model was estimated based on the <em>complete</em> <code>train_df</code> data frame, and the optimal lambda value was applied to determine the final best model, including the regression coefficients; the final model accuracy/performance metrics (e.g., RMSE, Rsquared) represent an average of the metrics across the 10 folds based on the optimal lambda value applied to each fold.</p>
+<p>Now it’s time to sift through the results. Let’s begin by finding out what the optimal lambda value is based on the model training process we just carried out. To find out, we can specify the name of the model object we trained (<code>model1</code>) followed by the <code>$</code> operator and <code>bestTune</code>, which will retrieve the best alpha and lambda tuning parameter values. We already know alpha is equal to 1 because we set it as a constant to specify we wanted a lasso regression model, we but will anxiously await what the optimal lambda value is by running the following command.</p>
+<div class="sourceCode" id="cb2052"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2052-1"><a href="lassoregression.html#cb2052-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best tuning parameters (alpha, lambda)</span></span>
+<span id="cb2052-2"><a href="lassoregression.html#cb2052-2" aria-hidden="true" tabindex="-1"></a>model1<span class="sc">$</span>bestTune</span></code></pre></div>
+<pre><code>##     alpha    lambda
+## 162     1 0.0168443</code></pre>
+<p>As you can see in the output above, alpha is indeed 1, and the optimal lambda is .017 (after some rounding). Given that we really only wanted to know the optimal lambda value, we can request that directly by adding <code>$lambda</code> to the previous command.</p>
+<div class="sourceCode" id="cb2054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2054-1"><a href="lassoregression.html#cb2054-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best lambda tuning parameter</span></span>
+<span id="cb2054-2"><a href="lassoregression.html#cb2054-2" aria-hidden="true" tabindex="-1"></a>model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda</span></code></pre></div>
+<pre><code>## [1] 0.0168443</code></pre>
+<p>Next, let’s look at the regression coefficients for the final model in which the optimal lambda value was applied. To do so, type the name of the <code>coef</code> function from base R, and as the first argument, specify the name of the model object we trained (<code>model1</code>) followed by the <code>$</code> operator and <code>finalModel</code>, where the latter calls up the final model estimated based on the complete <code>train_df</code> data frame as the final phase of the 10-fold cross-validation process. As the second argument, specify the name of the model object we trained (<code>model1</code>) followed by the <code>$</code> operator and <code>bestTune$lambda</code>, which when combined with the first argument, limits the retrieved regression coefficients to only those associated with the optimal lambda value.</p>
+<div class="sourceCode" id="cb2056"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2056-1"><a href="lassoregression.html#cb2056-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lasso regression model coefficients</span></span>
+<span id="cb2056-2"><a href="lassoregression.html#cb2056-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(model1<span class="sc">$</span>finalModel, model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)</span></code></pre></div>
+<pre><code>## 37 x 1 sparse Matrix of class &quot;dgCMatrix&quot;
+##                        1
+## (Intercept)  0.001559301
+## x1           0.105710879
+## x2           0.132145274
+## x3           0.076835793
+## x4           0.137463746
+## x5           .          
+## x6           0.086437871
+## x7           0.064530835
+## x8           0.107235443
+## x9           0.023979445
+## x10          .          
+## x11          .          
+## x12          0.022841341
+## x13         -0.005409866
+## x14          0.070845008
+## x15          .          
+## x16          0.018059851
+## x17          .          
+## x18          0.038648205
+## x19          0.036944920
+## x20         -0.011799344
+## x21          0.040398213
+## x22          .          
+## x23          .          
+## x24          .          
+## x25          .          
+## x26          .          
+## x27          .          
+## x28          .          
+## x29          0.027449222
+## x30          .          
+## x31          0.012105496
+## x32          0.067979921
+## x33         -0.003821760
+## x34         -0.076544682
+## x35         -0.049270620
+## x36          0.075633216</code></pre>
+<p>As you can see, the optimal lambda value shrunk a number of the regression coefficients to zero, where zero is represented by a period (<code>.</code>). In this way, you can see how lasso regression can be used for variable selection (i.e., feature selection), as only the most predictive predictor variables had non-zero regression coefficients.</p>
+<p>The next step is not required, but I find it helpful to understand visually how the lambda value influences model prediction error (i.e., accuracy), as indicated by RMSE. For interpretation purposes, however, we perform a logarithmic transformation on the lambda values using the <code>log</code> function from base R. To create this data visualization, we will use the <code>plot</code> function from base R. As the first argument, introduce the <code>log</code> function with <code>model1$results$lambda</code> as the sole parenthetical argument, where the latter calls up our vector of 500 potential lambda values. As the second argument, type <code>model1$results$RMSE</code> to retrieve the vector of RMSE values (averaged across the 10 folds) based on applying each of our potential lambda values at each fold. As the third argument, we’ll type <code>xlab=</code> followed by a meaningful label for the x-axis (in quotation marks). As the fourth argument, we’ll type <code>ylab=</code> followed by a meaningful label for the y-axis (in quotation marks). As the final argument, I added <code>xlim=</code> followed by <code>c(-5, 0)</code> to constrain the x-axis limits to -5 and 0, respectively; you don’t necessarily need to do this, and if you do, you’ll likely need to play around with those limits to find ones that focus in on the more meaningful areas of the plot.</p>
+<div class="sourceCode" id="cb2058"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2058-1"><a href="lassoregression.html#cb2058-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot log(lambda) &amp; root mean-squared error (RMSE)</span></span>
+<span id="cb2058-2"><a href="lassoregression.html#cb2058-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(model1<span class="sc">$</span>results<span class="sc">$</span>lambda),</span>
+<span id="cb2058-3"><a href="lassoregression.html#cb2058-3" aria-hidden="true" tabindex="-1"></a>     model1<span class="sc">$</span>results<span class="sc">$</span>RMSE,</span>
+<span id="cb2058-4"><a href="lassoregression.html#cb2058-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;log(lambda)&quot;</span>,</span>
+<span id="cb2058-5"><a href="lassoregression.html#cb2058-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Root Mean-Squared Error (RMSE)&quot;</span>,</span>
+<span id="cb2058-6"><a href="lassoregression.html#cb2058-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">0</span>)</span>
+<span id="cb2058-7"><a href="lassoregression.html#cb2058-7" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1241-1.png" width="672" /></p>
+<p>Remember, our goal is to minimize model prediction error and, specifically, RMSE. As you can see in the plot above, the lowest RMSE value (~ .84) seems to occur around a log(lambda) value of approximately -4 or so. To see what that exact value is, let’s apply a logarithmic transformation to our optimal lambda using the <code>log</code> function.</p>
+<div class="sourceCode" id="cb2059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2059-1"><a href="lassoregression.html#cb2059-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best tuned lambda</span></span>
+<span id="cb2059-2"><a href="lassoregression.html#cb2059-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)</span></code></pre></div>
+<pre><code>## [1] -4.083743</code></pre>
+<p>As you can see, the log of our lambda is -4.084 (with rounding), which aligns with our visual estimate from the plot of about -4.</p>
+<p>Interestingly, I haven’t been able to find an existing function or command associated with the <code>caret</code> package and the <code>glmnet</code> model function that makes just the average RMSE and Rsquared values across the <em>k</em> (i.e., 10) folds easily accessible, and specifically for the optimal lambda value. Thus, we’re going to do this the old-fashioned way (or at least more cumbersome way) by creating our own functions to carry out those operations. For space considerations, I’m not going to explain each aspect of the functions, but I encourage you to take a peek at the operations within the braces (<code>{ }</code>) to see if you can follow the logic.</p>
+<p>First, let’s create a function called <code>RMSE_lasso</code>.</p>
+<div class="sourceCode" id="cb2061"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2061-1"><a href="lassoregression.html#cb2061-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to identify RMSE for best lambda, </span></span>
+<span id="cb2061-2"><a href="lassoregression.html#cb2061-2" aria-hidden="true" tabindex="-1"></a><span class="co"># where x = RMSE vector, y = lambda vector, &amp;  z = optimal lambda value</span></span>
+<span id="cb2061-3"><a href="lassoregression.html#cb2061-3" aria-hidden="true" tabindex="-1"></a>RMSE_lasso <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z){</span>
+<span id="cb2061-4"><a href="lassoregression.html#cb2061-4" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
+<span id="cb2061-5"><a href="lassoregression.html#cb2061-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(temp) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;RMSE&quot;</span>, <span class="st">&quot;lambda_val&quot;</span>)</span>
+<span id="cb2061-6"><a href="lassoregression.html#cb2061-6" aria-hidden="true" tabindex="-1"></a>  rownum <span class="ot">&lt;-</span> <span class="fu">which</span>(temp<span class="sc">$</span>lambda_val<span class="sc">==</span>z)</span>
+<span id="cb2061-7"><a href="lassoregression.html#cb2061-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(temp[rownum,]<span class="sc">$</span>RMSE)</span>
+<span id="cb2061-8"><a href="lassoregression.html#cb2061-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Now, let’s apply the <code>RMSE_lasso</code> to our data by plugging the RMSE and lambda vectors from our final model, along with the optimal lambda value.</p>
+<div class="sourceCode" id="cb2062"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2062-1"><a href="lassoregression.html#cb2062-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply newly created Rsquared_lasso function</span></span>
+<span id="cb2062-2"><a href="lassoregression.html#cb2062-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RMSE_lasso</span>(<span class="at">x=</span>model1<span class="sc">$</span>results<span class="sc">$</span>RMSE,         <span class="co"># x = RMSE vector</span></span>
+<span id="cb2062-3"><a href="lassoregression.html#cb2062-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y=</span>model1<span class="sc">$</span>results<span class="sc">$</span>lambda,   <span class="co"># y = lambda vector</span></span>
+<span id="cb2062-4"><a href="lassoregression.html#cb2062-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">z=</span>model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)  <span class="co"># z = optimal lambda value</span></span></code></pre></div>
+<pre><code>## [1] 0.8400556</code></pre>
+<p>Our RMSE value based on the final model with the optimal lambda is .840 (with rounding).</p>
+<p>Second, let’s create a function called <code>Rsquared_lasso</code></p>
+<div class="sourceCode" id="cb2064"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2064-1"><a href="lassoregression.html#cb2064-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create function to identify Rsquared for best lambda, </span></span>
+<span id="cb2064-2"><a href="lassoregression.html#cb2064-2" aria-hidden="true" tabindex="-1"></a><span class="co"># where x = Rsquared vector, y = lambda vector, &amp;  z = optimal lambda value</span></span>
+<span id="cb2064-3"><a href="lassoregression.html#cb2064-3" aria-hidden="true" tabindex="-1"></a>Rsquared_lasso <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y, z){</span>
+<span id="cb2064-4"><a href="lassoregression.html#cb2064-4" aria-hidden="true" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span>
+<span id="cb2064-5"><a href="lassoregression.html#cb2064-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(temp) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Rsquared&quot;</span>, <span class="st">&quot;lambda_val&quot;</span>)</span>
+<span id="cb2064-6"><a href="lassoregression.html#cb2064-6" aria-hidden="true" tabindex="-1"></a>  rownum <span class="ot">&lt;-</span> <span class="fu">which</span>(temp<span class="sc">$</span>lambda_val<span class="sc">==</span>z)</span>
+<span id="cb2064-7"><a href="lassoregression.html#cb2064-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(temp[rownum,]<span class="sc">$</span>Rsquared)</span>
+<span id="cb2064-8"><a href="lassoregression.html#cb2064-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Now, let’s apply the <code>Rsquared_lasso</code> to our data by plugging the Rsquared and lambda vectors from our final model, along with the optimal lambda value.</p>
+<div class="sourceCode" id="cb2065"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2065-1"><a href="lassoregression.html#cb2065-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply newly created Rsquared_lasso function</span></span>
+<span id="cb2065-2"><a href="lassoregression.html#cb2065-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Rsquared_lasso</span>(<span class="at">x=</span>model1<span class="sc">$</span>results<span class="sc">$</span>Rsquared, <span class="co"># x = Rsquared vector</span></span>
+<span id="cb2065-3"><a href="lassoregression.html#cb2065-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">y=</span>model1<span class="sc">$</span>results<span class="sc">$</span>lambda,   <span class="co"># y = lambda vector</span></span>
+<span id="cb2065-4"><a href="lassoregression.html#cb2065-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">z=</span>model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)  <span class="co"># z = optimal lambda value</span></span></code></pre></div>
+<pre><code>## [1] 0.4150716</code></pre>
+<p>Our Rsquared value based on the final model with the optimal lambda is .415 (with rounding). We’ll revisit these <code>RMSE_lasso</code> and <code>Rsquared_lasso</code> functions a little bit later on in this tutorial.</p>
+<p>Moving on, let’s investigate the regression coefficients from our final model based on the optimal lambda value. Specifically, we will evaluate the importance of the various predictor variables in our model. Variables with higher importance values contribute more to estimation. To do so, we’ll use the <code>varImp</code> function from the <code>caret</code> package, and as the sole parenthetical argument, we will type the name of our trained model (<code>model1</code>).</p>
+<div class="sourceCode" id="cb2067"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2067-1"><a href="lassoregression.html#cb2067-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate the importance of different predictor variables</span></span>
+<span id="cb2067-2"><a href="lassoregression.html#cb2067-2" aria-hidden="true" tabindex="-1"></a><span class="fu">varImp</span>(model1)</span></code></pre></div>
+<pre><code>## glmnet variable importance
+## 
+##   only 20 most important variables shown (out of 36)
+## 
+##     Overall
+## x4  100.000
+## x2   96.131
+## x8   78.010
+## x1   76.901
+## x6   62.880
+## x3   55.895
+## x34  55.684
+## x36  55.020
+## x14  51.537
+## x32  49.453
+## x7   46.944
+## x35  35.843
+## x21  29.388
+## x18  28.115
+## x19  26.876
+## x29  19.968
+## x9   17.444
+## x12  16.616
+## x16  13.138
+## x31   8.806</code></pre>
+<p>As you can see, variables <code>x4</code> and <code>x2</code> are two of the most important predictor variables in terms of estimating the outcome variable <code>y</code>. Let’s create a horizontal bar chart to view these same results. Simply call up the <code>ggplot2</code> package using the <code>library</code> function from base R (and if you haven’t already, be sure to install the package first: <code>install.packages("ggplot2")</code>). Next, type the name of the <code>ggplot</code> function with <code>varImp</code> function we specified above as the sole parenthetical argument.</p>
+<div class="sourceCode" id="cb2069"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2069-1"><a href="lassoregression.html#cb2069-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the importance of different predictor variables</span></span>
+<span id="cb2069-2"><a href="lassoregression.html#cb2069-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2069-3"><a href="lassoregression.html#cb2069-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">varImp</span>(model1))</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1248-1.png" width="672" /></p>
+<p>Note that the y-axis is labeled “Feature,” which is just another way of saying “predictor variable” in this context.</p>
+<p>Remember way back when in this tutorial when we partitioned our data into the <code>train_df</code> and <code>test_df</code>? Well, now we are going to apply our lasso regression model that we trained using <em>k</em>-fold cross-validation and the <code>train_df</code> data frame to our <code>test_df</code> data frame. First, using our final lasso regression model, we need to estimate predicted values for individuals’ scores on <code>y</code> based the predictor variable values in the <code>test_df</code> data. Let’s call the object to which we will assign these predictions <code>predictions</code> by using the <code>&lt;-</code> operator. To the right of the <code>&lt;-</code> operator, type the name of the <code>predict</code> function from base R. As the first argument, type the name of the model object we built using the <code>train</code> function (<code>model1</code>). As the second argument, type <code>newdata=</code> followed by the name of the testing data frame (<code>test_df</code>).</p>
+<div class="sourceCode" id="cb2070"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2070-1"><a href="lassoregression.html#cb2070-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome using model from training data based on testing data</span></span>
+<span id="cb2070-2"><a href="lassoregression.html#cb2070-2" aria-hidden="true" tabindex="-1"></a>predictions1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>test_df)</span></code></pre></div>
+<p>Next, let’s calculate the RMSE and Rsquared values based on our predictions. At this point, you might be saying, “Wait, didn’t we just do that a few steps earlier?” Well, yes, we did previously compute RMSE and Rsquared values based on our optimal lambda value, but we did so based on the <code>train_df</code> data frame, and these values represent their averages across the <em>k</em> (i.e., 10) folds for the given lambda value. The RMSE and Rsquared values we are about to compute differ because they will be based on how well our final model predicts the outcome when applied to the holdout <code>test_df</code> data frame.</p>
+<p>We will use the <code>&lt;-</code> operator to name the data frame object containing the RMSE and Rsquared values, which we can reference later on; let’s call this object <code>mod1perf</code>. To the right of the <code>&lt;-</code> operator, type the name of the <code>data.frame</code> function from base R, which will allow us to create a data frame object. As the first argument, let’s create the first column of data and name this column <code>RMSE</code> followed by the <code>=</code> operator and the <code>RMSE</code> function from <code>caret</code> with our <code>predictions1</code> vector as the first argument and the vector containing our outcome (<code>y</code>) values from our <code>test_df</code> data frame as the second argument (<code>test_df$y</code>). As the second argument of the <code>data.frame</code> function, create the second column of data and name this column <code>Rsquared</code> followed by the <code>=</code> operator and the <code>R2</code> function from <code>caret</code> with our <code>predictions1</code> vector as the first argument and the vector containing our outcome (<code>y</code>) values from our <code>test_df</code> data frame as the second argument (<code>test_df$y</code>). As a final step, use the <code>print</code> function from base R to print the <code>mod1perf</code> data frame object to our console.</p>
+<div class="sourceCode" id="cb2071"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2071-1"><a href="lassoregression.html#cb2071-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Model performance/accuracy</span></span>
+<span id="cb2071-2"><a href="lassoregression.html#cb2071-2" aria-hidden="true" tabindex="-1"></a>mod1perf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">RMSE=</span><span class="fu">RMSE</span>(predictions1, test_df<span class="sc">$</span>y),</span>
+<span id="cb2071-3"><a href="lassoregression.html#cb2071-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Rsquared=</span><span class="fu">R2</span>(predictions1, test_df<span class="sc">$</span>y))</span>
+<span id="cb2071-4"><a href="lassoregression.html#cb2071-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2071-5"><a href="lassoregression.html#cb2071-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model performance/accuracy results</span></span>
+<span id="cb2071-6"><a href="lassoregression.html#cb2071-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mod1perf)</span></code></pre></div>
+<pre><code>##        RMSE  Rsquared
+## 1 0.8219381 0.4700103</code></pre>
+<p>As you can see, using predictive analytics, we found that our lasso regression model yielded an RMSE of .822 and an Rsquared of .470 (with rounding) when applied to the holdout <code>test_df</code> data frame. Note that our RMSE value is lower and our Rsquared value is higher when we apply the model to new data (<code>test_df</code>), as compared to the same values based on the old data (<code>train_df</code>); this illustrates one of the advantages of using <em>k</em>-fold cross-validation and lasso regression, as they help to reduce shrinkage in terms of model fit/performance when a model is applied to new data. Below I provide some generic benchmarks for interpreting the practical significance of the Rsquared (<em>R</em><sup>2</sup>) values.</p>
+<table>
+<thead>
+<tr class="header">
+<th><em>R</em><sup>2</sup></th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.01</td>
+<td>Small</td>
+</tr>
+<tr class="even">
+<td>.09</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>.25</td>
+<td>Large</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, we can also estimate 95% prediction intervals.</p>
+<div class="sourceCode" id="cb2073"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2073-1"><a href="lassoregression.html#cb2073-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate 95% prediction intervals</span></span>
+<span id="cb2073-2"><a href="lassoregression.html#cb2073-2" aria-hidden="true" tabindex="-1"></a>pred.int <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>test_df, <span class="at">interval=</span><span class="st">&quot;prediction&quot;</span>)</span>
+<span id="cb2073-3"><a href="lassoregression.html#cb2073-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2073-4"><a href="lassoregression.html#cb2073-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Join fitted (predicted) values and upper and lower prediction interval values to data frame</span></span>
+<span id="cb2073-5"><a href="lassoregression.html#cb2073-5" aria-hidden="true" tabindex="-1"></a>test_df <span class="ot">&lt;-</span> <span class="fu">cbind</span>(test_df, pred.int)</span>
+<span id="cb2073-6"><a href="lassoregression.html#cb2073-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2073-7"><a href="lassoregression.html#cb2073-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows</span></span>
+<span id="cb2073-8"><a href="lassoregression.html#cb2073-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(test_df)</span></code></pre></div>
+<pre><code>##         y     x1     x2     x3     x4     x5     x6     x7     x8     x9    x10    x11    x12    x13
+## 6  -0.458 -0.619 -1.822 -1.348 -0.036 -3.787 -2.025 -0.072 -1.263 -0.999 -1.121 -2.608 -1.849 -2.163
+## 12 -0.150  0.841  0.449  0.574  0.762  0.741 -0.511  0.062  1.318  1.177 -0.842 -0.953 -0.824  0.603
+## 19 -0.182  0.039 -0.283 -0.512 -0.872 -0.650  0.485 -1.231 -1.971  0.936 -0.749 -1.812 -0.138 -1.548
+## 25  2.373  1.123  1.160  0.310  1.276  0.422  1.447  0.328  0.777  0.713  0.409  0.823  1.081  2.032
+## 33  2.304  0.535  0.626 -0.031 -0.231  1.821 -0.836  0.147  1.840  1.076 -0.835  0.040  0.143 -0.403
+## 37  0.679  0.843  0.730  0.469  0.840  0.085  0.670  0.930  0.894  1.584  0.605  0.331  0.578 -0.761
+##       x14    x15    x16    x17    x18    x19    x20    x21    x22    x23    x24    x25    x26    x27
+## 6   0.311 -5.685 -0.409 -0.999 -3.667 -0.419 -0.516 -1.090 -0.493 -0.106 -2.004  0.371  0.561 -0.411
+## 12 -0.106  0.264  0.605 -2.714  0.646 -0.236 -1.133 -0.216 -0.014 -0.242 -0.227  0.860 -0.279  0.088
+## 19  0.646 -0.769  0.630  5.730  4.166  0.202  0.812 -1.785 -1.057 -0.014 -0.128 -2.299  0.027 -0.778
+## 25  3.576 -0.527  0.566  2.347  5.440  0.259 -1.100  0.179 -0.497 -1.819 -0.033 -0.031  0.596  0.835
+## 33 -2.242  0.355  0.407  3.195  1.348 -0.042 -0.475  0.488 -0.117  2.058 -0.186 -0.450  0.758 -0.999
+## 37  2.498  3.071  0.546  6.986 -1.552  0.183  1.617  1.013  1.045 -1.877  0.354  1.543 -0.803  0.082
+##       x28    x29    x30    x31    x32    x33    x34    x35    x36     pred.int
+## 6  -2.154  0.332 -0.683  0.592 -1.762 -1.748  2.331 -1.404 -2.973 -1.147386264
+## 12  1.367 -2.066 -0.651 -0.750  0.483 -0.142  2.579  0.310 -2.223 -0.003962978
+## 19  0.615 -2.827 -1.479  0.832 -0.736 -0.856 -0.351 -2.330 -1.208 -0.325320211
+## 25 -0.113  0.394 -1.702  0.701  1.204  0.844 -0.205  0.257  2.426  1.148565410
+## 33  1.564 -0.949  1.817  1.786  1.041 -0.176 -0.525  2.055  0.232  0.153837839
+## 37 -0.748  1.446 -0.856 -0.214  0.572  2.362  1.199  1.440  1.778  0.690189801</code></pre>
+<div id="compare_ols_lasso" class="section level3" number="52.5.1">
+<h3><span class="header-section-number">52.5.1</span> Optional: Compare to Lasso Model to OLS Multiple Linear Regression Model</h3>
+<p>This next section is optional, so proceed if you wish. In the event you are interested, we will learn how to train a conventional ordinary least squares (OLS) multiple linear regression (MLR) model based on the same variables that we used for the LASSO regression. Further, just like we did with LASSO regression, we will train the OLS MLR model using <em>k</em>-fold cross-validation. If you need a refresher on OLS MLR, please refer to the <a href="incrementalvalidity.html#incrementalvalidity">chapter on estimating incremental validity using multiple linear regression</a>. Note, however, that when using <em>k</em>-fold cross-validation for an OLS MLR model (or other non-machine learning model), we are really just interested in getting a glimpse at how well the model will likely perform when given new data at a later time.</p>
+<p>We will use the same <em>k</em>-fold cross-validation specifications object that we created for our LASSO regression model training (<code>ctrlspecs</code>), so if you’re starting a fresh section with this section, then you will need to go to the previous section in this section in which we created the <code>ctrlspecs</code> object and run it.</p>
+<p>Just as we did before, be sure to set a seed using the <code>set.seed</code> function prior to training your model. Let’s call this OLS MLR training model object <code>model2</code> using the <code>&lt;-</code> operator. To the right of the <code>&lt;-</code>, type the name of the <code>train</code> function from the <code>caret</code> package. With the exception of the <code>method="lm"</code> argument, the rest of the arguments should look familiar. The <code>method="lm"</code> argument simply tells the function that we want to use the <code>lm</code> (linear model) function from base R to estimate our OLS MLR model. After specifying the <code>train</code> function and creating the <code>model2</code> object, use the <code>print</code> function to print the results of the model to your console.</p>
+<div class="sourceCode" id="cb2075"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2075-1"><a href="lassoregression.html#cb2075-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducible random selection and assignment operations</span></span>
+<span id="cb2075-2"><a href="lassoregression.html#cb2075-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1985</span>)</span>
+<span id="cb2075-3"><a href="lassoregression.html#cb2075-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2075-4"><a href="lassoregression.html#cb2075-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify OLS MLR model to be estimated using training data</span></span>
+<span id="cb2075-5"><a href="lassoregression.html#cb2075-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and k-fold cross-validation process</span></span>
+<span id="cb2075-6"><a href="lassoregression.html#cb2075-6" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">train</span>(y <span class="sc">~</span> ., </span>
+<span id="cb2075-7"><a href="lassoregression.html#cb2075-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">data=</span>train_df,</span>
+<span id="cb2075-8"><a href="lassoregression.html#cb2075-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">preProcess=</span><span class="fu">c</span>(<span class="st">&quot;center&quot;</span>,<span class="st">&quot;scale&quot;</span>),</span>
+<span id="cb2075-9"><a href="lassoregression.html#cb2075-9" aria-hidden="true" tabindex="-1"></a>                <span class="at">method=</span><span class="st">&quot;lm&quot;</span>, </span>
+<span id="cb2075-10"><a href="lassoregression.html#cb2075-10" aria-hidden="true" tabindex="-1"></a>                <span class="at">trControl=</span>ctrlspecs,</span>
+<span id="cb2075-11"><a href="lassoregression.html#cb2075-11" aria-hidden="true" tabindex="-1"></a>                <span class="at">na.action=</span>na.omit)</span>
+<span id="cb2075-12"><a href="lassoregression.html#cb2075-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2075-13"><a href="lassoregression.html#cb2075-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Model fit</span></span>
+<span id="cb2075-14"><a href="lassoregression.html#cb2075-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(model2)</span></code></pre></div>
+<pre><code>## Linear Regression 
+## 
+## 801 samples
+##  36 predictor
+## 
+## Pre-processing: centered (36), scaled (36) 
+## Resampling: Cross-Validated (10 fold) 
+## Summary of sample sizes: 721, 721, 721, 721, 720, 721, ... 
+## Resampling results:
+## 
+##   RMSE       Rsquared   MAE      
+##   0.8467902  0.4069315  0.6730339
+## 
+## Tuning parameter &#39;intercept&#39; was held constant at a value of TRUE</code></pre>
+<p>As you can see in the output, the average RMSE across the 10 folds is .847, and the average Rsquared is .407.</p>
+<p>Let’s take a peek at the regression coefficients for the OLS MLR model estimated based on the entire <code>train_df</code> data frame. To do so, type the name of the <code>summary</code> function from base R with the name of the model object (<code>model2</code>) as the sole parenthetical argument.</p>
+<div class="sourceCode" id="cb2077"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2077-1"><a href="lassoregression.html#cb2077-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OLS MLR model coefficients with statistical significance tests</span></span>
+<span id="cb2077-2"><a href="lassoregression.html#cb2077-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = Perf ~ c_ES + I(c_ES^2), data = df)
+## lm(formula = .outcome ~ ., data = dat)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -16.2757  -4.1173   0.9039   4.9100  10.9401 
+## -2.31440 -0.54251  0.05817  0.52693  2.95915 
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept) 22.70895    0.94469  24.038 &lt; 0.0000000000000002 ***
-## c_ES         0.57739    0.21850   2.642               0.0095 ** 
-## I(c_ES^2)   -0.47454    0.09405  -5.045           0.00000193 ***
+##               Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept)  0.0015593  0.0292866   0.053  0.95755   
+## x1           0.1064869  0.0393948   2.703  0.00702 **
+## x2           0.1288509  0.0415154   3.104  0.00198 **
+## x3           0.0844271  0.0405929   2.080  0.03787 * 
+## x4           0.1374366  0.0444428   3.092  0.00206 **
+## x5           0.0037226  0.0403916   0.092  0.92659   
+## x6           0.0900118  0.0422154   2.132  0.03331 * 
+## x7           0.0797314  0.0417962   1.908  0.05681 . 
+## x8           0.1052692  0.0391978   2.686  0.00740 **
+## x9           0.0231167  0.0409762   0.564  0.57282   
+## x10         -0.0245487  0.0410393  -0.598  0.54990   
+## x11          0.0115515  0.0406161   0.284  0.77618   
+## x12          0.0429262  0.0421068   1.019  0.30831   
+## x13         -0.0540795  0.0401108  -1.348  0.17798   
+## x14          0.0920183  0.0368723   2.496  0.01278 * 
+## x15         -0.0131627  0.0394906  -0.333  0.73899   
+## x16          0.0400716  0.0386785   1.036  0.30052   
+## x17         -0.0157952  0.0380508  -0.415  0.67818   
+## x18          0.0615636  0.0387173   1.590  0.11223   
+## x19          0.0609104  0.0383000   1.590  0.11217   
+## x20         -0.0390587  0.0392237  -0.996  0.31966   
+## x21          0.0637443  0.0401520   1.588  0.11280   
+## x22          0.0123254  0.0406316   0.303  0.76171   
+## x23          0.0105869  0.0335785   0.315  0.75263   
+## x24         -0.0135661  0.0406415  -0.334  0.73862   
+## x25          0.0190199  0.0391689   0.486  0.62740   
+## x26          0.0070111  0.0358145   0.196  0.84485   
+## x27         -0.0001692  0.0408429  -0.004  0.99670   
+## x28         -0.0403859  0.0392460  -1.029  0.30378   
+## x29          0.0509068  0.0387079   1.315  0.18885   
+## x30          0.0014375  0.0380287   0.038  0.96986   
+## x31          0.0321008  0.0352222   0.911  0.36238   
+## x32          0.0954990  0.0414220   2.306  0.02140 * 
+## x33         -0.0488635  0.0407278  -1.200  0.23061   
+## x34         -0.0911234  0.0355243  -2.565  0.01050 * 
+## x35         -0.0815071  0.0400127  -2.037  0.04199 * 
+## x36          0.0975800  0.0398941   2.446  0.01467 * 
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 6.259 on 104 degrees of freedom
-## Multiple R-squared:  0.2272, Adjusted R-squared:  0.2124 
-## F-statistic: 15.29 on 2 and 104 DF,  p-value: 0.00000151</code></pre>
-<p>Looking at the output, note that the product (quadratic, second-order) term is statistically significant (<em>b</em> = -.475, <em>p</em> &lt; .001), which implies that there is a statistically significant nonlinear association between <code>ES</code> and <code>Perf</code> that specifically takes a quadratic functional form. Note that the unadjusted <em>R</em><sup>2</sup> value increased from .038 (3.8%) in the simple linear regression model to .227 (22.7%) in this polynomial regression model; that is a huge amount of incremental variance explained in <code>Perf</code> after adding the quadratic term of <code>ES</code> to the model.</p>
-<p>Let’s plot the fitted/predicted values in relation to the residuals, as we did with the simple linear regression model above.</p>
-<div class="sourceCode" id="cb2114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2114-1"><a href="polynomialregression.html#cb2114-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plot: Residuals vs. Fitted Values</span></span>
-<span id="cb2114-2"><a href="polynomialregression.html#cb2114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mod2, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1273-1.png" width="672" /></p>
-<p>That looks much better with regard to meeting the statistical assumption that the average residual error value is zero.</p>
-<p>Next, let’s check to see if we can feel reasonably confident that the data meet the statistical assumption that the residual errors are normally distributed for each level of the predictor variable. To do so, we will use the histogram (<code>hist</code>) function from base R. As the sole argument, enter the <code>summary</code> function with the regression model (<code>mod2</code>) in the parentheses, followed by the <code>$</code> operator and <code>residuals</code> (which extracts the vector of residuals from your model summary).</p>
-<div class="sourceCode" id="cb2115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2115-1"><a href="polynomialregression.html#cb2115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plot: Distribution of residuals</span></span>
-<span id="cb2115-2"><a href="polynomialregression.html#cb2115-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">summary</span>(mod2)<span class="sc">$</span>residuals)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1274-1.png" width="672" /></p>
-<p>The distribution of the residuals seems to be approximately normal and centered around zero, so we can conclude that we have pretty good evidence that we have met that statistical assumption. Given that we have good reason to believe we have met the aforementioned statistical assumptions, we can proceed forward with interpreting and exploring our polynomial regression model.</p>
-<p>If we create a sequence of predictor (x) variable values (that I call <code>xvalues</code>) using the <code>seq</code> function from base R and plug those values along with the regression equation values from the output above into the <code>plot</code> function from base R, we view the predicted form of the nonlinear association.</p>
-<div class="sourceCode" id="cb2116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2116-1"><a href="polynomialregression.html#cb2116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object xvalues w/ continuous sequence of 1000 values </span></span>
-<span id="cb2116-2"><a href="polynomialregression.html#cb2116-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to include observed range of centered predictor values</span></span>
-<span id="cb2116-3"><a href="polynomialregression.html#cb2116-3" aria-hidden="true" tabindex="-1"></a>xvalues <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(df<span class="sc">$</span>c_ES), <span class="co"># Mininum of observed range</span></span>
-<span id="cb2116-4"><a href="polynomialregression.html#cb2116-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">max</span>(df<span class="sc">$</span>c_ES), <span class="co"># Maximum of observed range</span></span>
-<span id="cb2116-5"><a href="polynomialregression.html#cb2116-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">length=</span><span class="dv">1000</span>) <span class="co"># Number of sequence values within range</span></span>
-<span id="cb2116-6"><a href="polynomialregression.html#cb2116-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2116-7"><a href="polynomialregression.html#cb2116-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot for predictor and outcome variables</span></span>
-<span id="cb2116-8"><a href="polynomialregression.html#cb2116-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df<span class="sc">$</span>c_ES, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2116-9"><a href="polynomialregression.html#cb2116-9" aria-hidden="true" tabindex="-1"></a>     df<span class="sc">$</span>Perf, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2116-10"><a href="polynomialregression.html#cb2116-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Emotional Stability&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2116-11"><a href="polynomialregression.html#cb2116-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Supervisor-Rated Performance&quot;</span>) <span class="co"># Set y-axis label</span></span>
-<span id="cb2116-12"><a href="polynomialregression.html#cb2116-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2116-13"><a href="polynomialregression.html#cb2116-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add estimated regression equation line to scatterplot</span></span>
-<span id="cb2116-14"><a href="polynomialregression.html#cb2116-14" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xvalues, <span class="co"># Insert continuous sequence of values object</span></span>
-<span id="cb2116-15"><a href="polynomialregression.html#cb2116-15" aria-hidden="true" tabindex="-1"></a>      <span class="fl">22.70895</span> <span class="sc">+</span> <span class="fl">0.57739</span><span class="sc">*</span>(xvalues<span class="sc">^</span><span class="dv">1</span>) <span class="sc">+</span> <span class="sc">-</span><span class="fl">0.47454</span><span class="sc">*</span>(xvalues<span class="sc">^</span><span class="dv">2</span>), <span class="co"># Insert regression equation</span></span>
-<span id="cb2116-16"><a href="polynomialregression.html#cb2116-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># Set line color to red</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1275-1.png" width="672" /></p>
-<p>As you can see, supervisor-ratings of performance are highest when emotional stability is somewhere around its mean. Thus, it seems that there is a sweet-spot for the Big Five personality dimension of emotional stability when it comes to performance. People who are really high in emotional stability might have a tendency to be too relaxed and may not be motivated to perform, whereas those who are really low in emotional stability might be too prone to experiencing emotional fluctuations and volatility to perform well.</p>
-<p>We can also estimate the polynomial regression model <em>without</em> having to create a new grand-mean-centered predictor variable. The <code>poly</code> function from base R allows us to create orthogonal (uncorrelated) polynomial (e.g., product, quadratic) terms. We’ll name this model <code>mod3</code>.</p>
-<div class="sourceCode" id="cb2117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2117-1"><a href="polynomialregression.html#cb2117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate polynomial regression model: Option 2</span></span>
-<span id="cb2117-2"><a href="polynomialregression.html#cb2117-2" aria-hidden="true" tabindex="-1"></a>mod3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Perf <span class="sc">~</span> <span class="fu">poly</span>(ES, <span class="dv">2</span>), <span class="co"># Insert 2 for quadratic</span></span>
-<span id="cb2117-3"><a href="polynomialregression.html#cb2117-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">data=</span>df) <span class="co"># Specify data frame</span></span>
-<span id="cb2117-4"><a href="polynomialregression.html#cb2117-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2117-5"><a href="polynomialregression.html#cb2117-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb2117-6"><a href="polynomialregression.html#cb2117-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod3)</span></code></pre></div>
+## Residual standard error: 0.8289 on 764 degrees of freedom
+## Multiple R-squared:  0.4548, Adjusted R-squared:  0.4291 
+## F-statistic:  17.7 on 36 and 764 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+<p>The <code>summary</code> function provides us with the regression coefficients along with their statistical significance tests. Note that none of the regression coefficients are zeroed out, which contrasts with our final LASSO regression model. If you just want to call up the regression coefficients without their statistical significance tests, then just specify your model object (<code>model2</code>) followed by <code>$finalModel$coefficients</code>.</p>
+<div class="sourceCode" id="cb2079"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2079-1"><a href="lassoregression.html#cb2079-1" aria-hidden="true" tabindex="-1"></a><span class="co"># OLS MLR model coefficients</span></span>
+<span id="cb2079-2"><a href="lassoregression.html#cb2079-2" aria-hidden="true" tabindex="-1"></a>model2<span class="sc">$</span>finalModel<span class="sc">$</span>coefficients</span></code></pre></div>
+<pre><code>##   (Intercept)            x1            x2            x3            x4            x5            x6 
+##  0.0015593009  0.1064868762  0.1288508857  0.0844271182  0.1374366297  0.0037225690  0.0900118226 
+##            x7            x8            x9           x10           x11           x12           x13 
+##  0.0797314105  0.1052691528  0.0231166560 -0.0245487466  0.0115514738  0.0429261616 -0.0540795343 
+##           x14           x15           x16           x17           x18           x19           x20 
+##  0.0920183162 -0.0131626874  0.0400715853 -0.0157952042  0.0615636356  0.0609103741 -0.0390587426 
+##           x21           x22           x23           x24           x25           x26           x27 
+##  0.0637442959  0.0123254180  0.0105869070 -0.0135661097  0.0190199415  0.0070111163 -0.0001692177 
+##           x28           x29           x30           x31           x32           x33           x34 
+## -0.0403859078  0.0509067573  0.0014374660  0.0321007692  0.0954989890 -0.0488634949 -0.0911234150 
+##           x35           x36 
+## -0.0815070991  0.0975800099</code></pre>
+<p>Now it’s time to compare our lasso regression model (<code>model1</code>) with our OLS MLR model (<code>model2</code>), and we’ll start by comparing how well the models performed on the training data during the 10-fold cross-validation process. I’ll show you two ways in which you can compile this information.</p>
+<p>For the first approach, we will use the <code>list</code> function from base R. Enter the name of the first model (<code>model1</code>) as the first argument and the name of the second model (<code>model2</code>) as the second argument. Assign this list object to an object we’ll call <code>model_list</code> using the <code>&lt;-</code> operator. Next, we will type the name of the <code>resamples</code> object from the <code>caret</code> package with our <code>model_list</code> object as the sole parenthetical argument, and we will assign the results of this function to an object we’ll call <code>resamp</code>; the <code>resamples</code> function collates the model performance metrics (i.e., mean absolute error [MAE], RMSE, Rsquared) across the folds of the <em>k</em>-fold cross-validations for us. Finally, as the last step, enter the <code>resamp</code> object as the sole parenthetical argument in the <code>summary</code> function.</p>
+<div class="sourceCode" id="cb2081"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2081-1"><a href="lassoregression.html#cb2081-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare model performance of k-fold cross-validation on train_df</span></span>
+<span id="cb2081-2"><a href="lassoregression.html#cb2081-2" aria-hidden="true" tabindex="-1"></a>model_list <span class="ot">&lt;-</span> <span class="fu">list</span>(model1, model2)</span>
+<span id="cb2081-3"><a href="lassoregression.html#cb2081-3" aria-hidden="true" tabindex="-1"></a>resamp <span class="ot">&lt;-</span> <span class="fu">resamples</span>(model_list)</span>
+<span id="cb2081-4"><a href="lassoregression.html#cb2081-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(resamp)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = Perf ~ poly(ES, 2), data = df)
+## summary.resamples(object = resamp)
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -16.2757  -4.1173   0.9039   4.9100  10.9401 
+## Models: Model1, Model2 
+## Number of resamples: 10 
 ## 
-## Coefficients:
-##              Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept)   19.0486     0.6051  31.481 &lt; 0.0000000000000002 ***
-## poly(ES, 2)1  14.1666     6.2589   2.263               0.0257 *  
-## poly(ES, 2)2 -31.5788     6.2589  -5.045           0.00000193 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## MAE 
+##             Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA&#39;s
+## Model1 0.6001450 0.6485866 0.6542165 0.6676563 0.6872213 0.7584773    0
+## Model2 0.6087479 0.6460566 0.6594453 0.6730339 0.6904705 0.7568991    0
 ## 
-## Residual standard error: 6.259 on 104 degrees of freedom
-## Multiple R-squared:  0.2272, Adjusted R-squared:  0.2124 
-## F-statistic: 15.29 on 2 and 104 DF,  p-value: 0.00000151</code></pre>
-<p>Note that the unadjusted <em>R</em><sup>2</sup> value of .227 is the same for both approaches, but due to differences in how the polynomial is created/estimated, we see differences in the coefficients between the two approaches. Nonetheless, if we plot the second approach, we see the same functional form. Here, we use the <code>predict</code> function from base R to create predicted values. A benefit to using this approach is that the predictor (x) variable remains in its original scale (i.e., 1-5) in the model and plot. In the script below, I also show a different way of specifying the <code>plot</code> function arguments.</p>
-<div class="sourceCode" id="cb2119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2119-1"><a href="polynomialregression.html#cb2119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object xvalues w/ continuous sequence of 1,000 values </span></span>
-<span id="cb2119-2"><a href="polynomialregression.html#cb2119-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to include observed range of uncentered predictor values</span></span>
-<span id="cb2119-3"><a href="polynomialregression.html#cb2119-3" aria-hidden="true" tabindex="-1"></a>xvalues <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(df<span class="sc">$</span>ES), <span class="co"># Mininum of observed range</span></span>
-<span id="cb2119-4"><a href="polynomialregression.html#cb2119-4" aria-hidden="true" tabindex="-1"></a>               <span class="fu">max</span>(df<span class="sc">$</span>ES), <span class="co"># Maximum of observed range</span></span>
-<span id="cb2119-5"><a href="polynomialregression.html#cb2119-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">length=</span><span class="dv">1000</span>) <span class="co"># Number of sequence values within range</span></span>
-<span id="cb2119-6"><a href="polynomialregression.html#cb2119-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2119-7"><a href="polynomialregression.html#cb2119-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate predicted values</span></span>
-<span id="cb2119-8"><a href="polynomialregression.html#cb2119-8" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod3, <span class="co"># Regression model/equation </span></span>
-<span id="cb2119-9"><a href="polynomialregression.html#cb2119-9" aria-hidden="true" tabindex="-1"></a>                            <span class="fu">data.frame</span>(<span class="at">ES=</span>xvalues)) <span class="co"># Values to fit</span></span>
-<span id="cb2119-10"><a href="polynomialregression.html#cb2119-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2119-11"><a href="polynomialregression.html#cb2119-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot for predictor and outcome variables</span></span>
-<span id="cb2119-12"><a href="polynomialregression.html#cb2119-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Perf <span class="sc">~</span> ES, <span class="co"># Specify outcome and predictor</span></span>
-<span id="cb2119-13"><a href="polynomialregression.html#cb2119-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">data=</span>df, <span class="co"># Specify data frame</span></span>
-<span id="cb2119-14"><a href="polynomialregression.html#cb2119-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Emotional Stability&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2119-15"><a href="polynomialregression.html#cb2119-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Supervisor-Rated Performance&quot;</span>) <span class="co"># Set y-axis label</span></span>
-<span id="cb2119-16"><a href="polynomialregression.html#cb2119-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2119-17"><a href="polynomialregression.html#cb2119-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Add estimated regression equation line to scatterplot</span></span>
-<span id="cb2119-18"><a href="polynomialregression.html#cb2119-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xvalues, <span class="co"># sequence of predictor values</span></span>
-<span id="cb2119-19"><a href="polynomialregression.html#cb2119-19" aria-hidden="true" tabindex="-1"></a>      predicted_values, <span class="co"># Insert fitted/predicted values based on model</span></span>
-<span id="cb2119-20"><a href="polynomialregression.html#cb2119-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># Set line color to red</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1277-1.png" width="672" /></p>
-<p>As you can see, those two options for estimating a polynomial regression model reach the same end.</p>
-<p>If you’d like to add a cubic term to the model, please do the following.</p>
-<div class="sourceCode" id="cb2120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2120-1"><a href="polynomialregression.html#cb2120-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate polynomial regression model: Option 1</span></span>
-<span id="cb2120-2"><a href="polynomialregression.html#cb2120-2" aria-hidden="true" tabindex="-1"></a>mod4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Perf <span class="sc">~</span> c_ES <span class="sc">+</span> <span class="fu">I</span>(c_ES<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(c_ES<span class="sc">^</span><span class="dv">3</span>), <span class="at">data=</span>df)</span>
-<span id="cb2120-3"><a href="polynomialregression.html#cb2120-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2120-4"><a href="polynomialregression.html#cb2120-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb2120-5"><a href="polynomialregression.html#cb2120-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod4)</span></code></pre></div>
+## RMSE 
+##             Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA&#39;s
+## Model1 0.7564365 0.8136099 0.8355552 0.8400556 0.8681174 0.9250472    0
+## Model2 0.7665855 0.8211470 0.8463947 0.8467902 0.8670284 0.9312064    0
+## 
+## Rsquared 
+##             Min.   1st Qu.    Median      Mean  3rd Qu.      Max. NA&#39;s
+## Model1 0.2692479 0.3360087 0.4404051 0.4150716 0.487333 0.5324680    0
+## Model2 0.2510815 0.3348805 0.4255335 0.4069315 0.473309 0.5384864    0</code></pre>
+<p>As you can see, the model performance metrics are grouped into MAE, RMSE, and Rsquared for <code>Model1</code> and <code>Model2</code>. For <code>Model1</code>, the “Mean” column provides the average model performance metric value across the 10 folds (i.e., resamples) for the optimal lambda tuning parameter value. For <code>Model2</code>, the “Mean” column provides the average model performance metric value across the 10 folds. As you can see, <code>Model1</code> (which is the lasso regression model) has a slightly lower RMSE value and a slightly higher Rsquared value, which indicates better model performance with the training data (<code>train_df</code>).</p>
+<p>If you’d like to create a single trimmed down table of the different RMSE and Rsquared values for <code>model1</code> and <code>model2</code>, you can create a matrix object using the <code>matrix</code> function from base R. We’ll call this matrix object <code>comp</code> using the <code>&lt;-</code> operator. As the first argument in the <code>matrix</code> function, type the <code>c</code> (combine) function, with the values for the lasso regression RMSE and Rsquared followed by the same metric values for the OLS MLR, for a total of four arguments. Note that for the LASSO regression RMSE and Rsquared values, I have entered the <code>RMSE_lasso</code> and <code>Rsquared_lasso</code> functions we created previously. As the second argument in the <code>matrix</code> object, indicate there are two columns (i.e., one for RMSE values and one for Rsquared values). As the final argument, type <code>byrow=TRUE</code> argument to indicate that the matrix will be filled by rows. As a next step, name the columns and rows of the matrix object using the <code>colnames</code> and <code>rownames</code> functions from base R. After that, use the <code>as.table</code> function to convert the matrix to a table object. Finally, use the <code>round</code> function to display on three places after the decimal in the table.</p>
+<div class="sourceCode" id="cb2083"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2083-1"><a href="lassoregression.html#cb2083-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create matrix to compare model performance based on train_df</span></span>
+<span id="cb2083-2"><a href="lassoregression.html#cb2083-2" aria-hidden="true" tabindex="-1"></a>comp <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(</span>
+<span id="cb2083-3"><a href="lassoregression.html#cb2083-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">RMSE_lasso</span>(<span class="at">x=</span>model1<span class="sc">$</span>results<span class="sc">$</span>RMSE,</span>
+<span id="cb2083-4"><a href="lassoregression.html#cb2083-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">y=</span>model1<span class="sc">$</span>results<span class="sc">$</span>lambda,</span>
+<span id="cb2083-5"><a href="lassoregression.html#cb2083-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">z=</span>model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda),</span>
+<span id="cb2083-6"><a href="lassoregression.html#cb2083-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Rsquared_lasso</span>(<span class="at">x=</span>model1<span class="sc">$</span>results<span class="sc">$</span>Rsquared,</span>
+<span id="cb2083-7"><a href="lassoregression.html#cb2083-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y=</span>model1<span class="sc">$</span>results<span class="sc">$</span>lambda,</span>
+<span id="cb2083-8"><a href="lassoregression.html#cb2083-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">z=</span>model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda), </span>
+<span id="cb2083-9"><a href="lassoregression.html#cb2083-9" aria-hidden="true" tabindex="-1"></a>  model2<span class="sc">$</span>results<span class="sc">$</span>RMSE, </span>
+<span id="cb2083-10"><a href="lassoregression.html#cb2083-10" aria-hidden="true" tabindex="-1"></a>  model2<span class="sc">$</span>results<span class="sc">$</span>Rsquared),</span>
+<span id="cb2083-11"><a href="lassoregression.html#cb2083-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ncol=</span><span class="dv">2</span>,</span>
+<span id="cb2083-12"><a href="lassoregression.html#cb2083-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 0.8400556
+## [1] 0.4150716</code></pre>
+<div class="sourceCode" id="cb2085"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2085-1"><a href="lassoregression.html#cb2085-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Name the columns and rows of comp matrix object</span></span>
+<span id="cb2085-2"><a href="lassoregression.html#cb2085-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(comp) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;RMSE&quot;</span>,<span class="st">&quot;R-square&quot;</span>)</span>
+<span id="cb2085-3"><a href="lassoregression.html#cb2085-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(comp) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LASSO Regression&quot;</span>,<span class="st">&quot;OLS Linear Regression&quot;</span>)</span>
+<span id="cb2085-4"><a href="lassoregression.html#cb2085-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2085-5"><a href="lassoregression.html#cb2085-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert matrix to a table</span></span>
+<span id="cb2085-6"><a href="lassoregression.html#cb2085-6" aria-hidden="true" tabindex="-1"></a>comp <span class="ot">&lt;-</span> <span class="fu">as.table</span>(comp)</span>
+<span id="cb2085-7"><a href="lassoregression.html#cb2085-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2085-8"><a href="lassoregression.html#cb2085-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to three places after decimal</span></span>
+<span id="cb2085-9"><a href="lassoregression.html#cb2085-9" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(comp, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##                        RMSE R-square
+## LASSO Regression      0.840    0.415
+## OLS Linear Regression 0.847    0.407</code></pre>
+<p>If you would like to know whether the estimated RMSE and Rsquared values from the 10 folds for the <code>model1</code> 10-fold cross-validation differ significantly from the estimated RMSE and Rsquared values from the 10 folds for the <code>model2</code> 10-fold cross-validation, we can use the <code>compare_models</code> function from the <code>caret</code> package. Simply enter the model object names as the first two arguments and <code>metric="RMSE"</code>or <code>metric="Rsquared"</code> as the third argument. This function applies a paired-samples (i.e., one-sample) <em>t</em>-test to evaluate with the mean of the differences between the two models’ performance metric values (across the 10 folds) differs significantly from zero.</p>
+<div class="sourceCode" id="cb2087"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2087-1"><a href="lassoregression.html#cb2087-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare models with paired-samples (one-sample) t-test</span></span>
+<span id="cb2087-2"><a href="lassoregression.html#cb2087-2" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_models</span>(model1, model2, <span class="at">metric=</span><span class="st">&quot;RMSE&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## Call:
-## lm(formula = Perf ~ c_ES + I(c_ES^2) + I(c_ES^3), data = df)
+##  One Sample t-test
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -16.4004  -4.2345   0.9338   4.9217  10.9981 
-## 
-## Coefficients:
-##              Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept) 22.720359   0.951473  23.879 &lt; 0.0000000000000002 ***
-## c_ES         0.664814   0.556168   1.195                0.235    
-## I(c_ES^2)   -0.474834   0.094512  -5.024           0.00000214 ***
-## I(c_ES^3)   -0.006664   0.038953  -0.171                0.864    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 6.288 on 103 degrees of freedom
-## Multiple R-squared:  0.2274, Adjusted R-squared:  0.2049 
-## F-statistic: 10.11 on 3 and 103 DF,  p-value: 0.000006791</code></pre>
-<p>Or, an equivalent approach is the following.</p>
-<div class="sourceCode" id="cb2122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2122-1"><a href="polynomialregression.html#cb2122-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate polynomial regression model: Option 2</span></span>
-<span id="cb2122-2"><a href="polynomialregression.html#cb2122-2" aria-hidden="true" tabindex="-1"></a>mod5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Perf <span class="sc">~</span> <span class="fu">poly</span>(ES, <span class="dv">3</span>), <span class="co"># Insert 3 for cubic</span></span>
-<span id="cb2122-3"><a href="polynomialregression.html#cb2122-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">data=</span>df) </span>
-<span id="cb2122-4"><a href="polynomialregression.html#cb2122-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2122-5"><a href="polynomialregression.html#cb2122-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb2122-6"><a href="polynomialregression.html#cb2122-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod5)</span></code></pre></div>
+## data:  x
+## t = -2.5958, df = 9, p-value = 0.02893
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  -0.0126036525 -0.0008657173
+## sample estimates:
+##    mean of x 
+## -0.006734685</code></pre>
+<div class="sourceCode" id="cb2089"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2089-1"><a href="lassoregression.html#cb2089-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_models</span>(model1, model2, <span class="at">metric=</span><span class="st">&quot;Rsquared&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## Call:
-## lm(formula = Perf ~ poly(ES, 3), data = df)
+##  One Sample t-test
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -16.4004  -4.2345   0.9338   4.9217  10.9981 
-## 
-## Coefficients:
-##              Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept)   19.0486     0.6079  31.334 &lt; 0.0000000000000002 ***
-## poly(ES, 3)1  14.1666     6.2884   2.253               0.0264 *  
-## poly(ES, 3)2 -31.5788     6.2884  -5.022           0.00000216 ***
-## poly(ES, 3)3  -1.0758     6.2884  -0.171               0.8645    
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 6.288 on 103 degrees of freedom
-## Multiple R-squared:  0.2274, Adjusted R-squared:  0.2049 
-## F-statistic: 10.11 on 3 and 103 DF,  p-value: 0.000006791</code></pre>
-<p>As you can see, adding the cubic term did not explain additional variability in the outcome. Thus, we would conclude in this situation that the association between <code>ES</code> and <code>Perf</code> has a quadratic functional form.</p>
-<p><strong>Sample Technical Write-Up:</strong> Based on a sample of 107 employees (<em>N</em> = 107), We found that the association between emotional stability scores and supervisor ratings of job performance was nonlinear. Using polynomial regression, we found that the quadratic term for emotional stability was statistically significant (<em>b</em> = -.475, <em>p</em> &lt; .001), which implies that there is a statistically significant nonlinear association between <code>ES</code> and <code>Perf</code> that specifically takes a quadratic functional form. Moreover, with the quadratic term included, the model explained 22.7% of the variability in supervisor ratings of job performance, which was an 18.9% improvement over a simple linear regression model that lacked the quadratic term. The functional form of the association can be described as an inverted “U”, such that supervisor ratings of performance are highest for those employees with more moderate levels of emotional stability.</p>
+## data:  x
+## t = 2.7233, df = 9, p-value = 0.02348
+## alternative hypothesis: true mean is not equal to 0
+## 95 percent confidence interval:
+##  0.001378438 0.014901850
+## sample estimates:
+##   mean of x 
+## 0.008140144</code></pre>
+<p>As you can see, both <em>t</em>-tests indicate that <code>model1</code> outperformed <code>model2</code> in the training data <code>train_df</code> with respect to RMSE and Rsquared values.</p>
+<p>As a final step, let’s repeat what we did for our lasso regression model (<code>model1</code>) by seeing how well our OLS MLR model (<code>model2</code>) predicts the outcome <code>y</code> when we feed fresh data from the <code>test_df</code> into our model. As before, we’ll create a data frame object (<code>mod2perf</code>) containing the RMSE and Rsquared values.</p>
+<div class="sourceCode" id="cb2091"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2091-1"><a href="lassoregression.html#cb2091-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome using model from training data based on testing data</span></span>
+<span id="cb2091-2"><a href="lassoregression.html#cb2091-2" aria-hidden="true" tabindex="-1"></a>predictions2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(model2, <span class="at">newdata=</span>test_df)</span>
+<span id="cb2091-3"><a href="lassoregression.html#cb2091-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2091-4"><a href="lassoregression.html#cb2091-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Model performance</span></span>
+<span id="cb2091-5"><a href="lassoregression.html#cb2091-5" aria-hidden="true" tabindex="-1"></a>mod2perf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">RMSE=</span><span class="fu">RMSE</span>(predictions2, test_df<span class="sc">$</span>y),</span>
+<span id="cb2091-6"><a href="lassoregression.html#cb2091-6" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Rsquared=</span><span class="fu">R2</span>(predictions2, test_df<span class="sc">$</span>y))</span>
+<span id="cb2091-7"><a href="lassoregression.html#cb2091-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2091-8"><a href="lassoregression.html#cb2091-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print model performance results</span></span>
+<span id="cb2091-9"><a href="lassoregression.html#cb2091-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mod2perf)</span></code></pre></div>
+<pre><code>##        RMSE  Rsquared
+## 1 0.8360987 0.4512161</code></pre>
+<p>Using this predictive analytics approach, we found that our OLS MLR regression model yielded an RMSE of .836 and an Rsquared of .451 (with rounding) when applied to the holdout <code>test_df</code> data frame.</p>
+<p>Let’s see how well the OLS MLR regression model compares to our LASSO regression model in terms of predictive performance/accuracy. To do so, we’ll apply the <code>matrix</code>, <code>colnames</code>, <code>rownames</code>, <code>as.table</code>, and <code>round</code> functions, which are all from base R. These functions were explained previously in this tutorial, so if you have questions, venture back to their prior applications.</p>
+<div class="sourceCode" id="cb2093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2093-1"><a href="lassoregression.html#cb2093-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare model1 and model2 predictive performance based on test_df</span></span>
+<span id="cb2093-2"><a href="lassoregression.html#cb2093-2" aria-hidden="true" tabindex="-1"></a>comp2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(mod1perf<span class="sc">$</span>RMSE, mod1perf<span class="sc">$</span>Rsquared,</span>
+<span id="cb2093-3"><a href="lassoregression.html#cb2093-3" aria-hidden="true" tabindex="-1"></a>                  mod2perf<span class="sc">$</span>RMSE, mod2perf<span class="sc">$</span>Rsquared),</span>
+<span id="cb2093-4"><a href="lassoregression.html#cb2093-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">ncol=</span><span class="dv">2</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2093-5"><a href="lassoregression.html#cb2093-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2093-6"><a href="lassoregression.html#cb2093-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Name the columns and rows of comp matrix object</span></span>
+<span id="cb2093-7"><a href="lassoregression.html#cb2093-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(comp2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;RMSE&quot;</span>,<span class="st">&quot;R-square&quot;</span>)</span>
+<span id="cb2093-8"><a href="lassoregression.html#cb2093-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(comp2) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;LASSO Regression&quot;</span>,<span class="st">&quot;OLS Multiple Linear Regression&quot;</span>)</span>
+<span id="cb2093-9"><a href="lassoregression.html#cb2093-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2093-10"><a href="lassoregression.html#cb2093-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert matrix object to a table</span></span>
+<span id="cb2093-11"><a href="lassoregression.html#cb2093-11" aria-hidden="true" tabindex="-1"></a>comp2 <span class="ot">&lt;-</span> <span class="fu">as.table</span>(comp2)</span>
+<span id="cb2093-12"><a href="lassoregression.html#cb2093-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2093-13"><a href="lassoregression.html#cb2093-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to three places after decimal</span></span>
+<span id="cb2093-14"><a href="lassoregression.html#cb2093-14" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(comp2, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##                                 RMSE R-square
+## LASSO Regression               0.822    0.470
+## OLS Multiple Linear Regression 0.836    0.451</code></pre>
+<p>As displayed in the table, in terms of predictive performance/accuracy, the lasso regression model outperforms the OLS MLR regression model. That is, the lasso regression model “learned” a more predictive model.</p>
 </div>
 </div>
-<div id="summary_polynomialregression" class="section level3" number="53.2.5">
-<h3><span class="header-section-number">53.2.5</span> Summary</h3>
-<p>In this chapter, we learned how to explore a nonlinear association by estimating a polynomial regression model.</p>
+<div id="summary_lasso" class="section level2" number="52.6">
+<h2><span class="header-section-number">52.6</span> Summary</h2>
+<p>In this tutorial, we learned how to train a linear lasso regression model using <em>k</em>-fold cross-validation and how to evaluate the model using holdout test data (i.e., predictive analytics). Further, we compared the predictive performance/accuracy of a lasso regression model to an ordinary least squares (OLS) multiple linear regression (MLR) model.</p>
 
 </div>
 </div>
-</div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="lassoregression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="convergentdiscriminantvalidity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="polynomialregression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
