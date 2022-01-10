@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2022-01-04" />
+<meta name="date" content="2022-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,7 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.6</b> Structure</a></li>
 <li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.7</b> About the Author</a></li>
-<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.8</b> Acknowledgements</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#contactauthor"><i class="fa fa-check"></i><b>0.8</b> Contacting the Author</a></li>
+<li class="chapter" data-level="0.9" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.9</b> Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
 <li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
@@ -1085,7 +1086,6 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="readcsv" class="section level3" number="13.2.4">
 <h3><span class="header-section-number">13.2.4</span> Read a .csv File</h3>
-<p><a href="https://youtu.be/xsnOGUKtECo" class="uri">https://youtu.be/xsnOGUKtECo</a></p>
 <p>One of the easiest data file formats to work with when reading data into R is the .csv (comma-separated values) file format. Many HR analysts and other types of data analysts regularly work with .csv files, and .csv files can be created in Microsoft Excel and Google Sheets (as well as using many other programs). For example, many survey, data-analysis, and data-acquisition platforms allow data to be exported to .csv files.</p>
 <p>When getting started in R, the way in which the .csv file is formatted can make your life easier. Specifically, the most straightforward .csv file format to read is structured such that (a) the first row contains the names of the variables (i.e., columns, fields), and (b) the second, third, fourth, and fifth rows (and so on) contain the observed scores on the variables (i.e., data), where each row represents a case (i.e., observation, employee). In the <a href="read.html#read_skiprows">chapter supplement</a> section of this chapter, you will have an opportunity to read in .csv files in which the observed values do not begin until the third row or later.</p>
 <p>As part of the <code>tidyverse</code> of R packages <span class="citation">(<a href="references.html#ref-R-tidyverse" role="doc-biblioref">Wickham 2021b</a>; <a href="references.html#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>, the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span> and its functions can be used to read in a few different data file formats (as long as they are rectangular), including .csv files. To read in .csv files, we will use the <code>read_csv</code> function from the <code>readr</code> package, as it tends to be faster than some of the other functions developed to read in data. There are several other R functions that can read in .csv files (e.g., <code>read.csv</code>, <code>Read</code>), and if you’re interested in learning two of those functions, feel free to check out the end-of-book supplement called <a href="read.html#read_supplement">Reading Data: Chapter Supplement</a>.</p>
@@ -1100,7 +1100,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="read.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv file into R as data frame</span></span>
 <span id="cb148-2"><a href="read.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -1125,7 +1125,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="read.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R and name data frame object</span></span>
 <span id="cb151-2"><a href="read.html#cb151-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -1209,7 +1209,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="read.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R from a website</span></span>
 <span id="cb165-2"><a href="read.html#cb165-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -1384,7 +1384,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="read.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read variable names from first row of data</span></span>
 <span id="cb187-2"><a href="read.html#cb187-2" aria-hidden="true" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>))</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),
@@ -1399,7 +1399,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb189-4"><a href="read.html#cb189-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">skip=</span><span class="dv">3</span>,</span>
 <span id="cb189-5"><a href="read.html#cb189-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_names=</span>var_names)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   id = col_double(),
 ##   lastname = col_character(),

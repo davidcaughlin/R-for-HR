@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2022-01-04" />
+<meta name="date" content="2022-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,7 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.6</b> Structure</a></li>
 <li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.7</b> About the Author</a></li>
-<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.8</b> Acknowledgements</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#contactauthor"><i class="fa fa-check"></i><b>0.8</b> Contacting the Author</a></li>
+<li class="chapter" data-level="0.9" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.9</b> Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
 <li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
@@ -1100,7 +1101,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb876-4"><a href="cronbachsalpha.html#cb876-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb876-5"><a href="cronbachsalpha.html#cb876-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   SurveyID = col_double(),
 ##   JobSat1 = col_double(),
@@ -1116,22 +1117,23 @@ BOOK UNDER CONSTRUCTION</a>
 ## )</code></pre>
 <div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb878-1"><a href="cronbachsalpha.html#cb878-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
 <span id="cb878-2"><a href="cronbachsalpha.html#cb878-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>##  [1] &quot;SurveyID&quot; &quot;JobSat1&quot;  &quot;JobSat2&quot;  &quot;JobSat3&quot;  &quot;TurnInt1&quot; &quot;TurnInt2&quot; &quot;TurnInt3&quot; &quot;Engage1&quot;  &quot;Engage2&quot; 
-## [10] &quot;Engage3&quot;  &quot;Engage4&quot;</code></pre>
+<pre><code>##  [1] &quot;SurveyID&quot; &quot;JobSat1&quot;  &quot;JobSat2&quot;  &quot;JobSat3&quot;  &quot;TurnInt1&quot; &quot;TurnInt2&quot; &quot;TurnInt3&quot;
+##  [8] &quot;Engage1&quot;  &quot;Engage2&quot;  &quot;Engage3&quot;  &quot;Engage4&quot;</code></pre>
 <div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb880-1"><a href="cronbachsalpha.html#cb880-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
 <span id="cb880-2"><a href="cronbachsalpha.html#cb880-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 156</code></pre>
 <div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb882-1"><a href="cronbachsalpha.html#cb882-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
 <span id="cb882-2"><a href="cronbachsalpha.html#cb882-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
-##   SurveyID JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4
-##      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1        1       3       3       3        3        3        3       2       1       2       2
-## 2        2       4       4       4        3        3        2       4       4       4       4
-## 3        3       4       4       5        2        1        2       4       4       4       4
-## 4        4       2       3       3        4        4        4       4       4       4       4
-## 5        5       3       3       3        4        3        3       3       3       3       3
-## 6        6       3       3       3        3        2        2       4       4       5       3</code></pre>
+##   SurveyID JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3
+##      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1        1       3       3       3        3        3        3       2       1       2
+## 2        2       4       4       4        3        3        2       4       4       4
+## 3        3       4       4       5        2        1        2       4       4       4
+## 4        4       2       3       3        4        4        4       4       4       4
+## 5        5       3       3       3        4        3        3       3       3       3
+## 6        6       3       3       3        3        2        2       4       4       5
+## # ... with 1 more variable: Engage4 &lt;dbl&gt;</code></pre>
 <p>The data frame includes annual employee survey responses from 156 employees to three Job Satisfaction items (<code>JobSat1</code>, <code>JobSat2</code>, <code>JobSat3</code>), three Turnover Intentions items (<code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>), and four Engagement items (<code>Engage1</code>, <code>Engage2</code>, <code>Engage3</code>, <code>Engage4</code>). Employees responded to each item using a 5-point response format, ranging from <em>Strongly Disagree</em> (1) to <em>Strongly Agree</em> (5). Assume that higher scores on an item indicate higher levels of that variable; for example, a higher score on <code>TurnInt1</code> would indicate that the respondent has higher intentions of quitting the organization.</p>
 </div>
 <div id="cronbachsalpha_alpha" class="section level3" number="29.2.4">

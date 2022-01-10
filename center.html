@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2022-01-04" />
+<meta name="date" content="2022-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,7 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.6</b> Structure</a></li>
 <li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.7</b> About the Author</a></li>
-<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.8</b> Acknowledgements</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#contactauthor"><i class="fa fa-check"></i><b>0.8</b> Contacting the Author</a></li>
+<li class="chapter" data-level="0.9" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.9</b> Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
 <li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
@@ -1076,7 +1077,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb587-4"><a href="center.html#cb587-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb587-5"><a href="center.html#cb587-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   emp_id = col_character(),
 ##   perf_eval = col_double(),
@@ -1235,14 +1236,15 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb611-1"><a href="center.html#cb611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame</span></span>
 <span id="cb611-2"><a href="center.html#cb611-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview st_interview[,1]
-##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
-## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730             0.203
-## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53              1.70 
-## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730             0.203
-## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23              0.618
-## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877             1.70 
-## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305           -0.378</code></pre>
+##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730 
+## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53  
+## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730 
+## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23  
+## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877 
+## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305
+## # ... with 1 more variable: st_interview &lt;dbl[,1]&gt;</code></pre>
 </div>
 <div id="mutate_function_standardize" class="section level4" number="21.2.6.2">
 <h4><span class="header-section-number">21.2.6.2</span> Option 2: <code>mutate</code> Function from <code>dplyr</code> and <code>scale</code> Function from Base R</h4>
@@ -1259,14 +1261,15 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="center.html#cb616-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame</span></span>
 <span id="cb616-2"><a href="center.html#cb616-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview st_interview[,1]
-##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
-## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730             0.203
-## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53              1.70 
-## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730             0.203
-## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23              0.618
-## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877             1.70 
-## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305           -0.378</code></pre>
+##   emp_id perf_eval interview   age gender race  c_interview c_age gpmc_interview
+##   &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;          &lt;dbl&gt;
+## 1 MA322        4.2       7.5  29.7 woman  asian       0.245 -7.04         0.730 
+## 2 MA323        4.9       9.3  31.7 man    asian       2.04  -5.04         2.53  
+## 3 MA324        4.2       7.5  29.4 woman  asian       0.245 -7.34         0.730 
+## 4 MA325        5.3       8    37.9 woman  asian       0.745  1.16         1.23  
+## 5 MA326        4.2       9.3  30.9 man    black       2.04  -5.84         0.877 
+## 6 MA327        6.9       6.8  46.2 woman  asian      -0.455  9.46         0.0305
+## # ... with 1 more variable: st_interview &lt;dbl[,1]&gt;</code></pre>
 <p>One of the advantages of using this approach is that we can standardize multiple variables in a single step. To do so, we simply specify which additional variable we would like to standardize by adding an additional argument to the <code>mutate</code> function.</p>
 <div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="center.html#cb618-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardizing: Multiple variables</span></span>
 <span id="cb618-2"><a href="center.html#cb618-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>

@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2022-01-04" />
+<meta name="date" content="2022-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,7 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.6</b> Structure</a></li>
 <li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.7</b> About the Author</a></li>
-<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.8</b> Acknowledgements</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#contactauthor"><i class="fa fa-check"></i><b>0.8</b> Contacting the Author</a></li>
+<li class="chapter" data-level="0.9" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.9</b> Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
 <li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
@@ -1136,7 +1137,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1258-4"><a href="incrementalvalidity.html#cb1258-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1258-5"><a href="incrementalvalidity.html#cb1258-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1704,7 +1705,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1277-4"><a href="incrementalvalidity.html#cb1277-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1277-5"><a href="incrementalvalidity.html#cb1277-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_character(),
 ##   SJT = col_double(),
@@ -1830,12 +1831,12 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1304-6"><a href="incrementalvalidity.html#cb1304-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1304-7"><a href="incrementalvalidity.html#cb1304-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1304-8"><a href="incrementalvalidity.html#cb1304-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        201         70        170        270        233        101          1         69        169 
-## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 0.08140835 0.08140835 
-##         92        192        292         20        120        283        269         97        197 
-## 0.06114519 0.06114519 0.06114519 0.05121764 0.05121764 0.04481510 0.04456115 0.01981777 0.01981777 
-##        297         82 
-## 0.01981777 0.01656404</code></pre>
+<pre><code>##        201         70        170        270        233        101          1 
+## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 
+##         69        169         92        192        292         20        120 
+## 0.08140835 0.08140835 0.06114519 0.06114519 0.06114519 0.05121764 0.05121764 
+##        283        269         97        197        297         82 
+## 0.04481510 0.04456115 0.01981777 0.01981777 0.01981777 0.01656404</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>201</em> is by far the largest, and the next largest values are clustered closer together, which include the cases associated with row numbers <em>70</em>, <em>170</em>, and <em>270</em>. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>201</em> appears to be consistently the most concerning case, and cases associated with row numbers <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> may also be problematic. For the most part, the distribution of the residuals look mostly normal. As such, as a sensitivity analysis and for the sake of demonstration, we will estimate our model once more after removing the cases associated with row numbers <em>201</em>, <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> from our data frame. If you’ve completed the entire tutorial thus far, you may have noted that some of the plots we are using with the <code>lm</code> function are different than those that come with the <code>Regression</code> function from <code>lessR</code> (see above), and further, you may have noticed that we have flagged more potential problematic cases in using these plots than the ones for the <code>Regression</code> function. This goes to show, again, how thoughtful we must be with the tools that we use, and again, I recommend erring on the side of caution when it comes to removing cases for subsequent analyses. And, remember, no model will ever be perfect. For now, let’s go ahead and interpret the results of the multiple linear regression model.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod2</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>
@@ -1943,10 +1944,14 @@ BOOK UNDER CONSTRUCTION</a>
 ## -3.1135 -0.4371 -0.0115  0.2990  3.8792 
 ## 
 ## Coefficients:
-##                                  Estimate               Std. Error t value        Pr(&gt;|t|)    
-## (Intercept)      -0.000000000000000002772  0.049688712929418260567   0.000               1    
-## scale(SJT)        0.343978856791380960267  0.051235702957663491197   6.714 0.0000000000964 ***
-## scale(Interview)  0.309010486383703486535  0.051235702957663539769   6.031 0.0000000048298 ***
+##                                  Estimate               Std. Error t value
+## (Intercept)      -0.000000000000000002772  0.049688712929418260567   0.000
+## scale(SJT)        0.343978856791380960267  0.051235702957663491197   6.714
+## scale(Interview)  0.309010486383703486535  0.051235702957663539769   6.031
+##                         Pr(&gt;|t|)    
+## (Intercept)                    1    
+## scale(SJT)       0.0000000000964 ***
+## scale(Interview) 0.0000000048298 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -2028,13 +2033,20 @@ BOOK UNDER CONSTRUCTION</a>
 ## Regression results using Performance as the criterion
 ##  
 ## 
-##    Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r             Fit
-##  (Intercept) 5.53** [4.47, 6.59]                                                       
-##          SJT 0.57** [0.40, 0.73] 0.34 [0.24, 0.44] .11 [.05, .17] .42**                
-##    Interview 0.39** [0.26, 0.51] 0.31 [0.21, 0.41] .09 [.03, .15] .39**                
-##                                                                             R2 = .264**
-##                                                                         95% CI[.18,.34]
-##                                                                                        
+##    Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r
+##  (Intercept) 5.53** [4.47, 6.59]                                       
+##          SJT 0.57** [0.40, 0.73] 0.34 [0.24, 0.44] .11 [.05, .17] .42**
+##    Interview 0.39** [0.26, 0.51] 0.31 [0.21, 0.41] .09 [.03, .15] .39**
+##                                                                        
+##                                                                        
+##                                                                        
+##              Fit
+##                 
+##                 
+##                 
+##      R2 = .264**
+##  95% CI[.18,.34]
+##                 
 ## 
 ## Note. A significant b-weight indicates the beta-weight and semi-partial correlation are also significant.
 ## b represents unstandardized regression weights. beta indicates the standardized regression weights. 
@@ -2050,13 +2062,20 @@ BOOK UNDER CONSTRUCTION</a>
 ## Regression results using Performance as the criterion
 ##  
 ## 
-##    Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r             Fit
-##  (Intercept) 5.53** [4.47, 6.59]                                                       
-##          SJT 0.57** [0.40, 0.73] 0.34 [0.24, 0.44] .11 [.05, .17] .42**                
-##    Interview 0.39** [0.26, 0.51] 0.31 [0.21, 0.41] .09 [.03, .15] .39**                
-##                                                                             R2 = .264**
-##                                                                         95% CI[.18,.34]
-##                                                                                        
+##    Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r
+##  (Intercept) 5.53** [4.47, 6.59]                                       
+##          SJT 0.57** [0.40, 0.73] 0.34 [0.24, 0.44] .11 [.05, .17] .42**
+##    Interview 0.39** [0.26, 0.51] 0.31 [0.21, 0.41] .09 [.03, .15] .39**
+##                                                                        
+##                                                                        
+##                                                                        
+##              Fit
+##                 
+##                 
+##                 
+##      R2 = .264**
+##  95% CI[.18,.34]
+##                 
 ## 
 ## Note. A significant b-weight indicates the beta-weight and semi-partial correlation are also significant.
 ## b represents unstandardized regression weights. beta indicates the standardized regression weights. 

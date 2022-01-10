@@ -24,7 +24,7 @@
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2022-01-04" />
+<meta name="date" content="2022-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -147,7 +147,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.6</b> Structure</a></li>
 <li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.7</b> About the Author</a></li>
-<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.8</b> Acknowledgements</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#contactauthor"><i class="fa fa-check"></i><b>0.8</b> Contacting the Author</a></li>
+<li class="chapter" data-level="0.9" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.9</b> Acknowledgements</a></li>
 </ul></li>
 <li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
 <li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
@@ -1176,7 +1177,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1186-4"><a href="predictingcriterionscores.html#cb1186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1186-5"><a href="predictingcriterionscores.html#cb1186-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1233,7 +1234,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-710-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
-## Plot(Conscientiousness, Performance, fill=&quot;skyblue&quot;)  # interior fill color of points
+## Plot(Conscientiousness, Performance, color=&quot;red&quot;)  # exterior edge color of points
 ## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
 ## Plot(Conscientiousness, Performance, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
@@ -1683,7 +1684,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1218-4"><a href="predictingcriterionscores.html#cb1218-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1218-5"><a href="predictingcriterionscores.html#cb1218-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------------------------
+## -- Column specification ---------------------------------------------------------------
 ## cols(
 ##   EmployeeID = col_double(),
 ##   Conscientiousness = col_double(),
@@ -1759,12 +1760,12 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1232-6"><a href="predictingcriterionscores.html#cb1232-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1232-7"><a href="predictingcriterionscores.html#cb1232-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1232-8"><a href="predictingcriterionscores.html#cb1232-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        134        161        130        116         64        110         39        106         43 
-## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 0.02443426 
-##         99        127         34        143        126         55        132         92         95 
-## 0.02292889 0.02292889 0.02189203 0.02098965 0.02012473 0.01941305 0.01905427 0.01887586 0.01739145 
-##         28        142 
-## 0.01723973 0.01723973</code></pre>
+<pre><code>##        134        161        130        116         64        110         39 
+## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 
+##        106         43         99        127         34        143        126 
+## 0.02537055 0.02443426 0.02292889 0.02292889 0.02189203 0.02098965 0.02012473 
+##         55        132         92         95         28        142 
+## 0.01941305 0.01905427 0.01887586 0.01739145 0.01723973 0.01723973</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>134</em> is by far the largest, and the next largest values are clustered closer together. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed 1.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>134</em> appears to be consistently the most extreme outlier, but it still may not be extreme enough to consider removing. One could perform a sensitivity analysis by estimating the model with and without case <em>134</em> to see if the pattern of results remains the same.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod1</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>
@@ -1865,9 +1866,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## -2.27833 -0.51458 -0.00982  0.68429  1.95341 
 ## 
 ## Coefficients:
-##                                         Estimate              Std. Error t value      Pr(&gt;|t|)    
-## (Intercept)              -0.00000000000000000661  0.06940583793586863059   0.000             1    
-## scale(Conscientiousness)  0.46866634251609151640  0.06961972392189001713   6.732 0.00000000028 ***
+##                                         Estimate              Std. Error t value
+## (Intercept)              -0.00000000000000000661  0.06940583793586863059   0.000
+## scale(Conscientiousness)  0.46866634251609151640  0.06961972392189001713   6.732
+##                               Pr(&gt;|t|)    
+## (Intercept)                          1    
+## scale(Conscientiousness) 0.00000000028 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
@@ -1888,8 +1892,10 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Next, as the first argument in the <code>predict</code> function, type <code>object=</code> followed by the estimated model object that we named <code>reg.mod1</code>. As the second argument, type <code>newdata=</code> followed by the name of the data frame object that contains new data on the predictor variable. It’s important to make sure that the predictor variable’s name (<code>Conscientiousness</code>) in our new data is exactly the same as the predictor variable’s name (<code>Conscientiousness</code>) in our original data that we used to estimate the model. If that were not the case, we would want to rename the predictor variable in the new data frame object to match the corresponding name in the original data frame object.</p>
 <div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1244-1"><a href="predictingcriterionscores.html#cb1244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable</span></span>
 <span id="cb1244-2"><a href="predictingcriterionscores.html#cb1244-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object=</span>reg.mod1, <span class="at">newdata=</span>new_df)</span></code></pre></div>
-<pre><code>##        1        2        3        4        5        6        7        8        9       10 
-## 3.494549 2.736947 1.474276 1.411143 2.295012 2.610680 3.557682 3.873350 3.242015 3.747083</code></pre>
+<pre><code>##        1        2        3        4        5        6        7        8        9 
+## 3.494549 2.736947 1.474276 1.411143 2.295012 2.610680 3.557682 3.873350 3.242015 
+##       10 
+## 3.747083</code></pre>
 <p>In your console, you should see a vector of scores – these are the predicted criterion scores. In many cases, we might want to append this vector as a variable to our new data frame object. To do so, we just need to apply the <code>&lt;-</code> operator and, to the left of it, specify the name of the new data frame object (<code>new_df</code>) followed by the <code>$</code> operator and a name for the new variable that will contain the predicted criterion scores (<code>Perf_Predict_Consc</code>).</p>
 <div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1246-1"><a href="predictingcriterionscores.html#cb1246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable </span></span>
 <span id="cb1246-2"><a href="predictingcriterionscores.html#cb1246-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and append as new variable in data frame</span></span>
@@ -1928,12 +1934,18 @@ BOOK UNDER CONSTRUCTION</a>
 ## Regression results using Performance as the criterion
 ##  
 ## 
-##          Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r             Fit
-##        (Intercept)  0.78* [0.12, 1.44]                                                       
-##  Conscientiousness 0.63** [0.45, 0.82] 0.47 [0.33, 0.61] .22 [.12, .32] .47**                
-##                                                                                   R2 = .220**
-##                                                                               95% CI[.12,.32]
-##                                                                                              
+##          Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r
+##        (Intercept)  0.78* [0.12, 1.44]                                       
+##  Conscientiousness 0.63** [0.45, 0.82] 0.47 [0.33, 0.61] .22 [.12, .32] .47**
+##                                                                              
+##                                                                              
+##                                                                              
+##              Fit
+##                 
+##                 
+##      R2 = .220**
+##  95% CI[.12,.32]
+##                 
 ## 
 ## Note. A significant b-weight indicates the beta-weight and semi-partial correlation are also significant.
 ## b represents unstandardized regression weights. beta indicates the standardized regression weights. 
@@ -1949,12 +1961,18 @@ BOOK UNDER CONSTRUCTION</a>
 ## Regression results using Performance as the criterion
 ##  
 ## 
-##          Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r             Fit
-##        (Intercept)  0.78* [0.12, 1.44]                                                       
-##  Conscientiousness 0.63** [0.45, 0.82] 0.47 [0.33, 0.61] .22 [.12, .32] .47**                
-##                                                                                   R2 = .220**
-##                                                                               95% CI[.12,.32]
-##                                                                                              
+##          Predictor      b     b_95%_CI beta  beta_95%_CI sr2 sr2_95%_CI     r
+##        (Intercept)  0.78* [0.12, 1.44]                                       
+##  Conscientiousness 0.63** [0.45, 0.82] 0.47 [0.33, 0.61] .22 [.12, .32] .47**
+##                                                                              
+##                                                                              
+##                                                                              
+##              Fit
+##                 
+##                 
+##      R2 = .220**
+##  95% CI[.12,.32]
+##                 
 ## 
 ## Note. A significant b-weight indicates the beta-weight and semi-partial correlation are also significant.
 ## b represents unstandardized regression weights. beta indicates the standardized regression weights. 
