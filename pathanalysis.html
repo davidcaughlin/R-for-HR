@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="lassoregression.html"/>
-<link rel="next" href="create_portfolio.html"/>
+<link rel="next" href="mediationanalysis.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -1029,9 +1029,29 @@ div.csl-indent {
 <li class="chapter" data-level="54.2.6" data-path="pathanalysis.html"><a href="pathanalysis.html#summary_pathanalysis"><i class="fa fa-check"></i><b>54.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="55" data-path="mediationanalysis.html"><a href="mediationanalysis.html"><i class="fa fa-check"></i><b>55</b> Estimating a Mediation Model Using Path Analysis</a>
+<ul>
+<li class="chapter" data-level="55.1" data-path="mediationanalysis.html"><a href="mediationanalysis.html#conceptualoverview_mediationanalysis"><i class="fa fa-check"></i><b>55.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="55.1.1" data-path="mediationanalysis.html"><a href="mediationanalysis.html#indirecteffect_mediationanalysis"><i class="fa fa-check"></i><b>55.1.1</b> Estimation of Indirect Effect</a></li>
+<li class="chapter" data-level="55.1.2" data-path="mediationanalysis.html"><a href="mediationanalysis.html#modelidentification_mediationanalysis"><i class="fa fa-check"></i><b>55.1.2</b> Model Identification</a></li>
+<li class="chapter" data-level="55.1.3" data-path="mediationanalysis.html"><a href="mediationanalysis.html#modelfit_mediationanalysis"><i class="fa fa-check"></i><b>55.1.3</b> Model Fit</a></li>
+<li class="chapter" data-level="55.1.4" data-path="mediationanalysis.html"><a href="mediationanalysis.html#parameterestimatese_mediationanalysis"><i class="fa fa-check"></i><b>55.1.4</b> Parameter Estimates</a></li>
+<li class="chapter" data-level="55.1.5" data-path="mediationanalysis.html"><a href="mediationanalysis.html#statisticalassumptions_mediationanalysis"><i class="fa fa-check"></i><b>55.1.5</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="55.1.6" data-path="mediationanalysis.html"><a href="mediationanalysis.html#conceptualvideo_mediationanalysis"><i class="fa fa-check"></i><b>55.1.6</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="55.2" data-path="mediationanalysis.html"><a href="mediationanalysis.html#tutorial_mediationanalysis"><i class="fa fa-check"></i><b>55.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="55.2.1" data-path="mediationanalysis.html"><a href="mediationanalysis.html#videotutorial_mediationanalysis"><i class="fa fa-check"></i><b>55.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="55.2.2" data-path="mediationanalysis.html"><a href="mediationanalysis.html#functions_mediationanalysis"><i class="fa fa-check"></i><b>55.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="55.2.3" data-path="mediationanalysis.html"><a href="mediationanalysis.html#initsteps_mediationanalysis"><i class="fa fa-check"></i><b>55.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="55.2.4" data-path="mediationanalysis.html"><a href="mediationanalysis.html#specifymodel_mediationanalysis"><i class="fa fa-check"></i><b>55.2.4</b> Specify &amp; Estimate a Mediation Analysis Model</a></li>
+<li class="chapter" data-level="55.2.5" data-path="mediationanalysis.html"><a href="mediationanalysis.html#summary_mediationanalysis"><i class="fa fa-check"></i><b>55.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>X Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="55" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>55</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="56" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>56</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="56" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>56</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="57" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>57</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1065,7 +1085,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>In this chapter, we will focus on <strong>recursive</strong> models, which means the direct relations between two variables presumed to be causally related can only be unidirectional. A <strong>nonrecursive</strong> model allows for bidirectional associations between variables presumed to be causally related and for a predictor variable to be correlated with the residual error of its presumed outcome variable.</p>
 <div id="pathdiagram_pathanalysis" class="section level3" number="54.1.1">
 <h3><span class="header-section-number">54.1.1</span> Path Diagram</h3>
-<p>It is customary to depict a path analysis model visually using a path diagram, and as mentioned above, path analysis can be used to test a theoretical or conceptual model of interest. Let’s use the Theory of Planned Behavior <span class="citation">(<a href="#ref-ajzen1991theory" role="doc-biblioref">Ajzen 1991b</a>)</span>. For a simplified version of the theory, please refer to the Figure 1 below.</p>
+<p>It is customary to depict a path analysis model visually using a path diagram, and as mentioned above, path analysis can be used to test a theoretical or conceptual model of interest. Let’s use the Theory of Planned Behavior <span class="citation">(<a href="#ref-ajzen1991" role="doc-biblioref">Ajzen 1991</a>)</span>. For a simplified version of the theory, please refer to the Figure 1 below.</p>
 <div class="figure">
 <img src="TPB_conceptualmodel.png" alt="" />
 <p class="caption">Figure 1: Conceptual representation of the Theory of Planned Behavior (Ajzen, 1991)</p>
@@ -1214,7 +1234,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb2245-4"><a href="pathanalysis.html#cb2245-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2245-5"><a href="pathanalysis.html#cb2245-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 199 Columns: 5</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification --------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (5): attitude, norms, control, intention, behavior</code></pre>
 <pre><code>## 
@@ -1637,13 +1657,10 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
-
-
-
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-ajzen1991theory" class="csl-entry">
-———. 1991b. <span>“The Theory of Planned Behavior.”</span> <em>Organizational Behavior and Human Decision Processes</em> 50 (2): 179–211.
+<div id="ref-ajzen1991" class="csl-entry">
+Ajzen, Icek. 1991. <span>“The Theory of Planned Behavior.”</span> <em>Organizational Behavior and Human Decision Processes</em> 50: 179–211.
 </div>
 <div id="ref-hu1999cutoff" class="csl-entry">
 Hu, Li-tze, and Peter M Bentler. 1999. <span>“Cutoff Criteria for Fit Indexes in Covariance Structure Analysis: Conventional Criteria Versus New Alternatives.”</span> <em>Structural Equation Modeling</em> 6 (1): 1–55.
@@ -1658,7 +1675,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
         </div>
       </div>
 <a href="lassoregression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create_portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mediationanalysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

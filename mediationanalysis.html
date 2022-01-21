@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 40 Applying a Compensatory Approach to Selection Decisions Using Multiple Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 40 Applying a Compensatory Approach to Selection Decisions Using Multiple Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.com/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 40 Applying a Compensatory Approach to Selection Decisions Using Multiple Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.com/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="incrementalvalidity.html"/>
-<link rel="next" href="multiplecutoff.html"/>
+<link rel="prev" href="pathanalysis.html"/>
+<link rel="next" href="create_portfolio.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -1075,522 +1075,430 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="compensatory" class="section level1" number="40">
-<h1><span class="header-section-number">Chapter 40</span> Applying a Compensatory Approach to Selection Decisions Using Multiple Linear Regression</h1>
-<p>In this chapter, we will learn how to apply a compensatory approach to making selection decisions by using multiple linear regression. We’ll begin with a conceptual overview of the compensatory approach, and we’ll conclude with a tutorial.</p>
-<div id="conceptualoverview_compensatory" class="section level2" number="40.1">
-<h2><span class="header-section-number">40.1</span> Conceptual Overview</h2>
-<p>Just as we can use multiple linear regression to evaluate whether evidence of incremental validity exists for a selection tool, we can also use multiple linear regression to apply a compensatory approach to making selection decisions. In general, there are three overarching (and mutually non-exclusive) approaches to making selection decisions: (a) compensatory (e.g., multiple linear regression), (b) noncompensatory (e.g., multiple-cutoff), and (c) multiple-hurdle. These three approaches can be mixed and matched to fit the selection-decision needs of an organization; however, in this chapter, we’ll focus specifically on the compensatory approach, whereas in the <a href="multiplecutoff.html#multiplecutoff">next chapter</a>, we will focus on the multiple-cutoff noncompensatory approach.</p>
-<div id="review_compensatory_mlr" class="section level3" number="40.1.1">
-<h3><span class="header-section-number">40.1.1</span> Review of Multiple Linear Regression</h3>
-<p>This chapter is an extension of the <a href="incrementalvalidity.html#incrementalvalidity">chapter on estimating the incremental validity of a selection tool using multiple linear regression</a>. Thus, in this chapter, I will forgo a review of ordinary least squares (OLS) multiple linear regression, as that is already covered in the previous chapter, along with a discussion of statistical assumptions, statistical significance, and a sample write-up.</p>
+<div id="mediationanalysis" class="section level1" number="55">
+<h1><span class="header-section-number">Chapter 55</span> Estimating a Mediation Model Using Path Analysis</h1>
+<p>In this chapter, we will learn how to estimate a mediation analysis using path analysis .</p>
+<div id="conceptualoverview_mediationanalysis" class="section level2" number="55.1">
+<h2><span class="header-section-number">55.1</span> Conceptual Overview</h2>
+<p><strong>Mediation analysis</strong> is used to investigate whether an intervening variable transmits the effects of a predictor variable on an outcome variable. Both multiple regression and structural equation modeling (path analysis) can be used to perform mediation analysis, but structural equation modeling (path analysis) offers a single-step process that often more efficient. When implemented using path analysis, mediation analysis follows the same model specification, model identification, and model fit considerations as general applications of path analysis. For more information on path analysis, please refer to the <em>Path Analysis in <code>R</code></em> tutorial.</p>
+<p>Just as in a conventional path analysis model, we often represent our mediation analysis model visually as a <em>path diagram</em>. For illustration purposes, let’s begin with a path diagram of the direct relation between a predictor variable called Attitude with an outcome variable called Behavior (see Figure 1). This path diagram specifies Attitude (towards the Behavior) as a predictor of the Behavior, with any error in prediction captured in the (residual) error term. By convention, we commonly refer to this path as the <strong>c</strong> path.</p>
+<div class="figure">
+<img src="Mediation1.png" alt="" />
+<p class="caption">Figure 1: Path diagram of the direct relation between Attitude (predictor variable) and Behavior (outcome variable)</p>
 </div>
-<div id="review_compensatory" class="section level3" number="40.1.2">
-<h3><span class="header-section-number">40.1.2</span> Review of Compensatory Approach</h3>
-<p>In the context of employee selection, a <strong>compensatory approach</strong> refers to the process of using applicants’ scores on multiple selection tools to predict who will have the highest scores on the criterion. In doing so, applicants can compensate for lower scores on one selection tool with higher scores on one or more other selection tools – hence the name “compensatory approach.” One of the simpler ways to apply a compensatory approach is to apply equal weights to scores from the various selection tools when predicting future criterion scores; however, such an approach does not acknowledge that some selection tools may explain more variance in the criterion (e.g., job performance) than others. Using regression coefficients from a multiple linear regression model, we can weight scores on selection tools differentially when predicting criterion scores. Notably, these weights are empirically driven (e.g., data informed) as opposed to judgment informed (e.g., subject matter expert ratings). In essence, applying a compensatory approach using multiple linear regression allows us to apply our estimated regression model equation to predict criterion scores for applicants. Subsequently, we can sort the predicted criterion scores to determine which applicants are most promising and to inform selection decisions.</p>
-<p>To understand how a compensatory approach works, let’s consider a hypothetical scenario in which we administer three selection tools to applicants: cognitive ability test (CA), work simulation (WS), and structured interview (SI). Let’s assume that a predictive validation study was conducted previously to estimate the criterion-related validities of these three selection tools and whether they each showed evidence of incremental validity with respect to each other – and let’s imagine that our criterion of interest is job performance. Finally let’s assume that the following equation represents the general framework for the multiple linear regression model we estimated for investigating incremental validity:</p>
-<p><span class="math inline">\(\hat{Y}_{Performance} = b_{Intercept} + b_{CA}X_{CA} + b_{WS}X_{WS} + b_{SI}X_{SI}\)</span></p>
-<p>where <span class="math inline">\(\hat{Y}_{Performance}\)</span> represents the predicted score on the performance criterion variable, <span class="math inline">\(b_{Intercept}\)</span> represents the <span class="math inline">\(\hat{Y}\)</span>-intercept value (i.e., model constant) when the predictor variables are equal to zero, <span class="math inline">\(b_{CA}\)</span>, <span class="math inline">\(b_{WS}\)</span>, and <span class="math inline">\(b_{SI}\)</span> represent the unstandardized coefficients (i.e., weights, slopes) of the associations between the predictor variables <span class="math inline">\(X_{CA}\)</span> (cognitive ability), <span class="math inline">\(X_{WS}\)</span> (work simulation), and <span class="math inline">\(X_{SI} (structured interview)\)</span>, respectively, and the outcome variable <span class="math inline">\(\hat{Y}_{Performance}\)</span>.</p>
-<p>Now, let’s plug some hypothetical intercept and regression coefficient estimates into the equation, and assume that these estimates were pulled from our unstandardized multiple linear regression output.</p>
-<p><span class="math inline">\(\hat{Y}_{Performance} = 1.32 + .42_{CA}X_{CA} + .50_{WS}X_{WS} + .22_{SI}X_{SI}\)</span></p>
-<p>Finally, let’s imagine that we administered the cognitive ability test, work simulation, and structured interview to two applicants with the goal of predicting their future job performance scores. The first applicant received the following scores on the selection tools, where all tests happened to be out of a possible 10 points: cognitive ability (CA) = 5, work simulation (WS) = 7, and structured interview (SI) = 9. If we plug those values into the regression equation, we get a predicted job performance score of 8.90.</p>
-<p><span class="math inline">\(8.90_{Performance} = 1.32 + .42_{CA}*5_{CA} + .50_{WS}*7_{WS} + .22_{SI}*9_{SI}\)</span></p>
-<p>In contrast, the second applicant received the following scores on the selection tools: cognitive ability (CA) = 7, work simulation (WS) = 5, and structured interview (SI) = 9. Notice that the structured interview score was the same for both applicants but that the cognitive ability and work simulation scores were flipped-flopped. In this hypothetical example, if you were to add up each applicants total score across the three selection tools, the sum would be the same: 21 points. Because each test in this example has maximum potential score of 10, the total possible points is 30 points. Thus, if we were to simply add up both applicants’ scores, these applicants would be “tied.” Fortunately, just like we did for the first applicant, we can apply our regression coefficients (i.e., weights) to these three scores to generated a score that reflects a weighted compensatory approach. For the second applicant, the predicted performance score is 8.74.</p>
-<p><span class="math inline">\(8.74_{Performance} = 1.32 + .42_{CA}*7_{CA} + .50_{WS}*5_{WS} + .22_{SI}*9_{SI}\)</span></p>
-<p>As you can see, the first applicant has a higher predicted performance score (8.90) than the second applicant (8.74), so based purely off of this information, we would rank the first applicant higher. Hopefully, you can see how the selection tool scores are differentially weighted based on their corresponding regression coefficient estimates.</p>
+<p>In the path diagram depicted in Figure 2, we introduce an intervening variable, which we commonly refer to as the <strong>mediator variable</strong> – or just as the <strong>mediator</strong>. As we saw in Figure 1, a direct relation between the predictor variable Attitude and the outcome variable Behavior is shown; however, note that we now refer to this relation as the <strong>c’</strong> path (spoken: “c prime”) because it represents the <strong>direct effect</strong> of the predictor variable on the outcome variable in the presence of (i.e., statistically controlling) for the effect of the mediator variable. The mediator variable is called Intention, and as you can see, it intervenes between the predictor and outcome variables. The direct relation between the predictor variable and mediator variable is commonly referred to as the <strong>a</strong> path, and note that because the mediator variable is an <strong>endogenous variable</strong> (i.e., has a specified cause in the model), it as a (residual) error term. The direct relation between the mediator variable and the outcome variable is commonly referred to as the <strong>b</strong> path. The effect of the predictor variable on the outcome variable via the mediating variable is referred to as the <strong>indirect effect</strong> given that the predictor variable indirectly influences the outcome variable through another variable; in other words, the mediator variable transmits the effect of the predictor variable to the outcome variable.</p>
+<div class="figure">
+<img src="Mediation2.png" alt="" />
+<p class="caption">Figure 2: Path diagram of the mediation analysis model in which Intention (mediator) mediates the effect of Attitude (predictor variable) on Behavior (outcome variable)</p>
 </div>
+<p>The mediation model shown in Figure 2 is an example of a partial mediation. We can distinguish between a partial and a complete mediation. A <strong>partial mediation</strong> is a mediation in which the direct relation (<strong>c’</strong>) between the predictor variable and the outcome variable is <em>non-zero</em>; in other words, a direct relation between the predictor and the outcome is estimated as a free parameter. A <strong>complete mediation</strong> (i.e., <strong>full mediation</strong>) is a mediation in which the direct relation (<strong>c’</strong>) between the predictor variable and the outcome variable is <em>zero</em>; in other words, the direct relation between the predictor and the outcome is fixed at zero, which means we don’t specify the direct relation at all in our model – or we specify the direct relation but fix it to zero. A complete mediation is shown in Figure 3.</p>
+<div class="figure">
+<img src="Mediation3.png" alt="" />
+<p class="caption">Figure 3: Examples of two equivalent path diagram representations of the same complete mediation</p>
 </div>
-<div id="tutorial_compensatory" class="section level2" number="40.2">
-<h2><span class="header-section-number">40.2</span> Tutorial</h2>
-<p>This chapter’s tutorial demonstrates how to apply a compensatory approach to making selection decisions by estimate a multiple linear regression model.</p>
-<div id="videotutorial_compensatory" class="section level3" number="40.2.1">
-<h3><span class="header-section-number">40.2.1</span> Video Tutorial</h3>
-<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/vtnYvcs1yUQ?rel=0" width="672" height="400px" data-external="1">
+<div id="indirecteffect_mediationanalysis" class="section level3" number="55.1.1">
+<h3><span class="header-section-number">55.1.1</span> Estimation of Indirect Effect</h3>
+<p>There are different approaches to estimating the indirect effect, such as <em>causal steps</em> <span class="citation">(<a href="#ref-baron1986moderator" role="doc-biblioref">Baron and Kenny 1986</a>)</span>, <em>difference in coefficients</em>, and <em>product of coefficients</em> <span class="citation">(<a href="#ref-mackinnon1993estimating" role="doc-biblioref">MacKinnon and Dwyer 1993</a>)</span>. Because the <strong>product of coefficients</strong> approach is efficient to implement, we will focus on that approach in this tutorial. Using this approach, the indirect effect is estimated by computing the product of the coefficients for directional relations (i.e., paths), which include the relation between the predictor variable and the mediator variable (<strong>a</strong> path) and the relation between the mediator variable and the outcome variable (<strong>b</strong>). The statistical significance of the indirect effect can be computed by dividing the product of the coefficients by its standard error, and then the resulting ratio (quotient) can be compared to a standard normal distribution – or another distribution.</p>
+<p>There are different methods for implementing the product of coefficients approach, and we will focus on the (multivariate) delta method and a resampling method. First, in the <strong>(multivariate) delta method</strong> (where the Sobel test is a specific form), the standard error for the product of coefficients is compared to a standard normal distribution to determine the indirect effect’s significance level (i.e., <em>p</em>-value). This method does tend to show bias in smaller samples [e.g., <em>N</em> &lt; 50; <span class="citation"><a href="#ref-mackinnon1995simulation" role="doc-biblioref">MacKinnon, Warsi, and Dwyer</a> (<a href="#ref-mackinnon1995simulation" role="doc-biblioref">1995</a>)</span>; <span class="citation"><a href="#ref-mackinnon2002comparison" role="doc-biblioref">MacKinnon et al.</a> (<a href="#ref-mackinnon2002comparison" role="doc-biblioref">2002</a>)</span>], however, and assumes the sampling distribution of the indirect effect is normal, which is not often a tenable assumption when dealing with the product of two coefficients. Second, <strong>resampling methods</strong> constitute a broad family of methods in which data are re-sampled (with replacement) a specified number of times (e.g., 5,000), and a normal sampling distribution need not be assumed. Examples of resampling methods broadly include bootstrapping, the permutation method, and the Monte Carlo method. <strong>Bootstrapping</strong> is perhaps one of the most common a popular resampling methods today, and bootstrapping can be used to estimate confidence intervals for an indirect effect estimated using the product of coefficients approach. Many resampling approaches tend to show some bias in small samples [e.g., <em>N</em> &lt; 20-80; <span class="citation"><a href="#ref-koopman2015small" role="doc-biblioref">Koopman et al.</a> (<a href="#ref-koopman2015small" role="doc-biblioref">2015</a>)</span>]; however, resampling methods like bootstrapping are often preferred over the delta method because they do not hold the strict assumption that the sampling distribution is normal. There are a multiple types of bootstrapping, such as percentile, bias-corrected, and bias-corrected and accelerated, most of which can be implemented with relative ease in <code>R</code>.</p>
+</div>
+<div id="modelidentification_mediationanalysis" class="section level3" number="55.1.2">
+<h3><span class="header-section-number">55.1.2</span> Model Identification</h3>
+<p>Because we are testing for mediation using path analysis in this chapter, please refer to the <a href="pathanalysis.html#modelidentification_pathanalysis">Model Identification section from previous chapter on path analysis</a>.</p>
+</div>
+<div id="modelfit_mediationanalysis" class="section level3" number="55.1.3">
+<h3><span class="header-section-number">55.1.3</span> Model Fit</h3>
+<p>please refer to the <a href="pathanalysis.html#modelfit_pathanalysis">Model Fit section from previous chapter on path analysis</a>.</p>
+</div>
+<div id="parameterestimatese_mediationanalysis" class="section level3" number="55.1.4">
+<h3><span class="header-section-number">55.1.4</span> Parameter Estimates</h3>
+<p>In mediation analysis, parameter estimates (e.g., direct relations, covariances, variances) can be interpreted like those from a regression model, where the associated <em>p</em>-values or confidence intervals can be used as indicators of statistical significance.</p>
+</div>
+<div id="statisticalassumptions_mediationanalysis" class="section level3" number="55.1.5">
+<h3><span class="header-section-number">55.1.5</span> Statistical Assumptions</h3>
+<p>The statistical assumptions that should be met prior to estimating and/or interpreting a mediation analysis model are the same that should be met when running a path analysis model; for a review of those assumptions please review to the <a href="pathanalysis.html#pathanalysis">previous chapter path analysis</a>.</p>
+</div>
+<div id="conceptualvideo_mediationanalysis" class="section level3" number="55.1.6">
+<h3><span class="header-section-number">55.1.6</span> Conceptual Video</h3>
+<p>For a more in-depth review of path analysis, please check out the following conceptual video.</p>
+<iframe src="https://youtube.com/embed/3zA4iB0aAvg?rel=0" width="672" height="400px" data-external="1">
 </iframe>
-<p>Link to video tutorial: <a href="https://youtu.be/vtnYvcs1yUQ" class="uri">https://youtu.be/vtnYvcs1yUQ</a></p>
+<p>Link to conceptual video: <a href="https://youtu.be/3zA4iB0aAvg" class="uri">https://youtu.be/3zA4iB0aAvg</a></p>
 </div>
-<div id="function_compensatory" class="section level3" number="40.2.2">
-<h3><span class="header-section-number">40.2.2</span> Functions &amp; Packages Introduced</h3>
+</div>
+<div id="tutorial_mediationanalysis" class="section level2" number="55.2">
+<h2><span class="header-section-number">55.2</span> Tutorial</h2>
+<p>This chapter’s tutorial demonstrates perform mediation analysis in a path analysis framework using R.</p>
+<div id="videotutorial_mediationanalysis" class="section level3" number="55.2.1">
+<h3><span class="header-section-number">55.2.1</span> Video Tutorials</h3>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/za-KTX1A5us?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/za-KTX1A5us" class="uri">https://youtu.be/za-KTX1A5us</a></p>
+</div>
+<div id="functions_mediationanalysis" class="section level3" number="55.2.2">
+<h3><span class="header-section-number">55.2.2</span> Functions &amp; Packages Introduced</h3>
 <table>
 <thead>
 <tr class="header">
-<th>Function</th>
-<th>Package</th>
+<th align="center">Function</th>
+<th align="center">Package</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>Regression</code></td>
-<td><code>lessR</code></td>
+<td align="center"><code>sem</code></td>
+<td align="center"><code>lavaan</code></td>
 </tr>
 <tr class="even">
-<td><code>order</code></td>
-<td>base R</td>
+<td align="center"><code>summary</code></td>
+<td align="center">base <code>R</code></td>
+</tr>
+<tr class="odd">
+<td align="center"><code>set.seed</code></td>
+<td align="center">base <code>R</code></td>
+</tr>
+<tr class="even">
+<td align="center"><code>parameterEsitmates</code></td>
+<td align="center"><code>lavaan</code></td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="initsteps_compensatory" class="section level3" number="40.2.3">
-<h3><span class="header-section-number">40.2.3</span> Initial Steps</h3>
-<p>If you haven’t already, save the file called <strong>“ConcurrentValidation.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<div id="initsteps_mediationanalysis" class="section level3" number="55.2.3">
+<h3><span class="header-section-number">55.2.3</span> Initial Steps</h3>
+<p>If you haven’t already, save the file called <strong>“PlannedBehavior.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb1410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1410-1"><a href="compensatory.html#cb1410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1410-2"><a href="compensatory.html#cb1410-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“ConcurrentValidation.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb1411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1411-1"><a href="compensatory.html#cb1411-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1411-2"><a href="compensatory.html#cb1411-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1411-3"><a href="compensatory.html#cb1411-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1411-4"><a href="compensatory.html#cb1411-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1412-1"><a href="compensatory.html#cb1412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1412-2"><a href="compensatory.html#cb1412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1412-3"><a href="compensatory.html#cb1412-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1412-4"><a href="compensatory.html#cb1412-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb1412-5"><a href="compensatory.html#cb1412-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 300 Columns: 5</code></pre>
+<div class="sourceCode" id="cb2271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2271-1"><a href="mediationanalysis.html#cb2271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2271-2"><a href="mediationanalysis.html#cb2271-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PlannedBehavior.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2272-1"><a href="mediationanalysis.html#cb2272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2272-2"><a href="mediationanalysis.html#cb2272-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2272-3"><a href="mediationanalysis.html#cb2272-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2272-4"><a href="mediationanalysis.html#cb2272-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2273-1"><a href="mediationanalysis.html#cb2273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2273-2"><a href="mediationanalysis.html#cb2273-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2273-3"><a href="mediationanalysis.html#cb2273-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2273-4"><a href="mediationanalysis.html#cb2273-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb2273-5"><a href="mediationanalysis.html#cb2273-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 199 Columns: 5</code></pre>
 <pre><code>## -- Column specification --------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
-## chr (1): EmployeeID
-## dbl (4): SJT, EI, Interview, Performance</code></pre>
+## dbl (5): attitude, norms, control, intention, behavior</code></pre>
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb1416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1416-1"><a href="compensatory.html#cb1416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb1416-2"><a href="compensatory.html#cb1416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmployeeID&quot;  &quot;SJT&quot;         &quot;EI&quot;          &quot;Interview&quot;   &quot;Performance&quot;</code></pre>
-<div class="sourceCode" id="cb1418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1418-1"><a href="compensatory.html#cb1418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
-<span id="cb1418-2"><a href="compensatory.html#cb1418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre><code>## spec_tbl_df [300 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ EmployeeID : chr [1:300] &quot;EE23&quot; &quot;EE24&quot; &quot;EE25&quot; &quot;EE26&quot; ...
-##  $ SJT        : num [1:300] 9 8 7 6 6 5 5 4 3 8 ...
-##  $ EI         : num [1:300] 8 6 6 5 5 5 4 2 2 7 ...
-##  $ Interview  : num [1:300] 2 3 4 5 6 7 7 8 9 2 ...
-##  $ Performance: num [1:300] 22 11 5 11 12 12 12 12 12 10 ...
+<div class="sourceCode" id="cb2277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2277-1"><a href="mediationanalysis.html#cb2277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb2277-2"><a href="mediationanalysis.html#cb2277-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;attitude&quot;  &quot;norms&quot;     &quot;control&quot;   &quot;intention&quot; &quot;behavior&quot;</code></pre>
+<div class="sourceCode" id="cb2279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2279-1"><a href="mediationanalysis.html#cb2279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2279-2"><a href="mediationanalysis.html#cb2279-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df [199 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ attitude : num [1:199] 2.31 4.66 3.85 4.24 2.91 2.99 3.96 3.01 4.77 3.67 ...
+##  $ norms    : num [1:199] 2.31 4.01 3.56 2.25 3.31 2.51 4.65 2.98 3.09 3.63 ...
+##  $ control  : num [1:199] 2.03 3.63 4.2 2.84 2.4 2.95 3.77 1.9 3.83 5 ...
+##  $ intention: num [1:199] 2.5 3.99 4.35 1.51 1.45 2.59 4.08 2.58 4.87 3.09 ...
+##  $ behavior : num [1:199] 2.62 3.64 3.83 2.25 2 2.2 4.41 4.15 4.35 3.95 ...
 ##  - attr(*, &quot;spec&quot;)=
 ##   .. cols(
-##   ..   EmployeeID = col_character(),
-##   ..   SJT = col_double(),
-##   ..   EI = col_double(),
-##   ..   Interview = col_double(),
-##   ..   Performance = col_double()
+##   ..   attitude = col_double(),
+##   ..   norms = col_double(),
+##   ..   control = col_double(),
+##   ..   intention = col_double(),
+##   ..   behavior = col_double()
 ##   .. )
 ##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb1420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1420-1"><a href="compensatory.html#cb1420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
-<span id="cb1420-2"><a href="compensatory.html#cb1420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb2281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2281-1"><a href="mediationanalysis.html#cb2281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2281-2"><a href="mediationanalysis.html#cb2281-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
-##   EmployeeID   SJT    EI Interview Performance
-##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-## 1 EE23           9     8         2          22
-## 2 EE24           8     6         3          11
-## 3 EE25           7     6         4           5
-## 4 EE26           6     5         5          11
-## 5 EE27           6     5         6          12
-## 6 EE28           5     5         7          12</code></pre>
-<p>The data frame contains 5 variables and 300 cases (i.e., employees): <code>EmployeeID</code>, <code>SJT</code>, <code>EI</code>, <code>Interview</code>, and <code>Performance</code>. Let’s assume that these data were collected as part of a concurrent validation study aimed at estimating the criterion-related validity of selection tools (e.g., procedures, assessments, tests); this means that the selection tools (i.e., <code>SJT</code>, <code>EI</code>, <code>Interview</code>) were administered to job incumbents and the criterion measure (<code>Performance</code>) was administered at about the same time. To begin, <code>EmployeeID</code> is the unique identifier variable. The <code>SJT</code> variable contains the scores on a situational judgment test designed to “tap into” the psychological concepts of emotional intelligence and empathy; potential scores on this variable could range from 1 (<em>low emotional intelligence &amp; empathy</em>) to 10 (<em>emotional intelligence &amp; empathy</em>). The <code>EI</code> variable contains scores on an emotional intelligence assessment; potential scores on this variable could range from 1 (<em>low emotional intelligence</em>) to 10 (<em>emotional intelligence</em>). The <code>Interview</code> variable contains the scores for a structured interview designed to assess interviewees’ level of interpersonal skills; potential scores on this variable could range from 1 (<em>poor interpersonal skills</em>) to 15 (<em>interpersonal skills</em>). Finally, the <em>criterion</em> for this concurrent validation study is the <code>Performance</code> variable, which contains the job performance evaluation ratings for the job incumbents; potential scores on this variable could range from 1 (<em>does not meet performance standards</em>) to 30 (<em>exceeds performance standards</em>).</p>
+##   attitude norms control intention behavior
+##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1     2.31  2.31    2.03      2.5      2.62
+## 2     4.66  4.01    3.63      3.99     3.64
+## 3     3.85  3.56    4.2       4.35     3.83
+## 4     4.24  2.25    2.84      1.51     2.25
+## 5     2.91  3.31    2.4       1.45     2   
+## 6     2.99  2.51    2.95      2.59     2.2</code></pre>
+<div class="sourceCode" id="cb2283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2283-1"><a href="mediationanalysis.html#cb2283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2283-2"><a href="mediationanalysis.html#cb2283-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<pre><code>## [1] 199</code></pre>
+<p>There are 5 variables and 199 cases (i.e., employees) in the <code>df</code> data frame: <code>attitude</code>, <code>norms</code>, <code>control</code>, <code>intention</code>, and <code>behavior</code>. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>numeric</em> (continuous: interval/ratio). All of the variables are self-reports from a survey, where respondents rated their level of agreement (1 = strongly disagree, 5 = strongly agree) for the items associated with the <code>attitude</code>, <code>norms</code>, <code>control</code>, and <code>intention</code> scales, and where respondents rated the frequency with which they enact the behavior associated with the <code>behavior</code> variable (1 = never, 5 = all of the time). The <code>attitude</code> variable reflects an employee’s attitude toward the behavior in question. The <code>norms</code> variable reflects an employee’s perception of norms pertaining to the enactment of the behavior. The <code>control</code> variable reflects an employee’s feeling of control over being able to perform the behavior. The <code>intention</code> variable reflects an employee’s intention to enact the behavior. The <code>behavior</code> variable reflects an employee’s perception of the frequency with which they actually engage in the behavior.</p>
 </div>
-<div id="estimate_compensatory" class="section level3" number="40.2.4">
-<h3><span class="header-section-number">40.2.4</span> Estimate Multiple Linear Regression Model</h3>
-<p>We’ll begin by first assuming that that evidence of <em>criterion-related validity</em> was already found for the three selection tools (<code>SJT</code>, <code>EI</code>, <code>Interview</code>) using correlations. Second, we’ll assume that the <code>EI</code> selection tool was not found to have incremental validity when all three selection tools were included in a multiple linear regression model, thereby leaving us to estimate a second multiple linear regression model in which only <code>SJT</code> and <code>Interview</code> were included as predictors. For reviews of the aforementioned assumed prior steps, please refer to the previous chapters on <a href="criterionrelatedvalidity.html#criterionrelatedvalidity">estimating criterion-related validity using a correlation</a> and <a href="incrementalvalidity.html#incrementalvalidity">estimating the incremental validity of a selection tool using multiple linear regression</a>. In this chapter, we’ll begin by estimating the multiple linear regression model with <code>SJT</code> and <code>Interview</code> specified as predictor variables and <code>Performance</code> specified as the outcome variable.</p>
-<p>There are different functions we could use to estimate a multiple linear regression model, and in this tutorial we’ll focus on just one: the <code>Regression</code> function from <code>lessR</code>. Note that this is the same function that we can use to estimate a simple linear regression model. If you haven’t already install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb1422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1422-1"><a href="compensatory.html#cb1422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb1422-2"><a href="compensatory.html#cb1422-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1423-1"><a href="compensatory.html#cb1423-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb1423-2"><a href="compensatory.html#cb1423-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
-<p>To use the <code>Regression</code> function from the <code>lessR</code> package, type the name of the <code>Regression</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome (i.e., criterion) variable (<code>Performance</code>) to the left of the tilde (<code>~</code>) operator and the names of the predictor (e.g., selection tool) variables (<code>SJT</code>, <code>Interview</code>) separated by the <code>+</code> operator to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>SJT</code> and <code>Interview</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>).</p>
-<div class="sourceCode" id="cb1424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1424-1"><a href="compensatory.html#cb1424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
-<span id="cb1424-2"><a href="compensatory.html#cb1424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Regression</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-798-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-798-2.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-798-3.png" width="672" /></p>
-<pre><code>## &gt;&gt;&gt; Suggestion
-## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
-## Regression(my_formula=Performance ~ SJT + Interview, data=df, Rmd=&quot;eg&quot;)  
+<div id="specifymodel_mediationanalysis" class="section level3" number="55.2.4">
+<h3><span class="header-section-number">55.2.4</span> Specify &amp; Estimate a Mediation Analysis Model</h3>
+<p>We will use functions from the <code>lavaan</code> package to specify and estimate our mediation analysis model. The <code>lavaan</code> package also allows structural equation modeling with latent variables, but we won’t cover that in this tutorial. If you haven’t already install and access the <code>lavaan</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. For background information on the <code>lavaan</code> package, check out the <a href="http://lavaan.ugent.be/tutorial/syntax1.html">package website</a>.</p>
+<div class="sourceCode" id="cb2285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2285-1"><a href="mediationanalysis.html#cb2285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb2285-2"><a href="mediationanalysis.html#cb2285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lavaan&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2286-1"><a href="mediationanalysis.html#cb2286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb2286-2"><a href="mediationanalysis.html#cb2286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code></pre></div>
+<p>Let’s specify a <em>partial</em> mediation model in which <code>attitude</code> is the predictor variable, <code>intention</code> is the mediator variable, and <code>behavior</code> is the outcome variable. [<em>Note</em>: If we wanted to specify a <em>complete</em> mediation model, then we would <em>not</em> specify the direct relation from the predictor variable to the outcome variable.] We will first apply the <em>delta method</em> for estimating the indirect effect and then follow it up with the <strong>percentile bootstrapping</strong> method.</p>
+<div id="deltamethod_mediationanalysis" class="section level4" number="55.2.4.1">
+<h4><span class="header-section-number">55.2.4.1</span> Delta Method</h4>
+<p>To apply the delta method, which is a product of coefficients method, we will do the following.</p>
+<ol style="list-style-type: decimal">
+<li>We will specify the model and name it <code>specmod</code> using the <code>&lt;-</code> operator.</li>
+</ol>
+<ul>
+<li>If we precede a predictor variable with a letter or a series of characters without spaces between them and then follow that up with an asterisk (<code>*</code>), we can label a path (or covariance or variance) so that later we can reference it. In this case, we will label the direct relation between the predictor variable (<code>attitude</code>) and the outcome variable as <code>c</code> (i.e., <code>behavior ~ c*attitude</code>), and we will label the paths between the predictor variable and the mediator variable and the mediator variable and the outcome variable as <code>a</code> and <code>b</code> (respectively).</li>
+<li>To estimate the indirect effect using the product of coefficients method, we will type an arbitrary name for the indirect effect (such as <code>ab</code>) followed by the <code>:=</code> operator, and then followed by the product of the <code>a</code> and <code>b</code> paths we previously labeled (i.e., <code>a*b</code>).</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>We will create a model estimation object (which here we label <code>fitmod</code>), and apply the <code>sem</code> function from <code>lavaan</code>, with the model specification object (<code>specmod</code>) as the first argument. As the second argument, type <code>data=</code> followed by the name of the data from which the variables named in the model specification object come (<code>df</code>).</li>
+<li>Type the name of the <code>summary</code> function from base <code>R</code>. As the first argument, type the name of the model estimation object we created in the previous step (<code>fitmod</code>). As the second and third arguments, respectively, type <code>fit.measures=TRUE</code> and <code>rsquare=TRUE</code> to request the model fit indices and the unadjusted <em>R</em><sup>2</sup> values for the endogenous variables.</li>
+</ol>
+<div class="sourceCode" id="cb2287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2287-1"><a href="mediationanalysis.html#cb2287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify mediation analysis model</span></span>
+<span id="cb2287-2"><a href="mediationanalysis.html#cb2287-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2287-3"><a href="mediationanalysis.html#cb2287-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Path c&#39; (direct effect)</span></span>
+<span id="cb2287-4"><a href="mediationanalysis.html#cb2287-4" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ c*attitude</span></span>
+<span id="cb2287-5"><a href="mediationanalysis.html#cb2287-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Path a</span></span>
+<span id="cb2287-6"><a href="mediationanalysis.html#cb2287-6" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ a*attitude</span></span>
+<span id="cb2287-7"><a href="mediationanalysis.html#cb2287-7" aria-hidden="true" tabindex="-1"></a><span class="st"># Path b</span></span>
+<span id="cb2287-8"><a href="mediationanalysis.html#cb2287-8" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ b*intention</span></span>
+<span id="cb2287-9"><a href="mediationanalysis.html#cb2287-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2287-10"><a href="mediationanalysis.html#cb2287-10" aria-hidden="true" tabindex="-1"></a><span class="st"># Indirect effect (a*b)</span></span>
+<span id="cb2287-11"><a href="mediationanalysis.html#cb2287-11" aria-hidden="true" tabindex="-1"></a><span class="st">ab := a*b</span></span>
+<span id="cb2287-12"><a href="mediationanalysis.html#cb2287-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2287-13"><a href="mediationanalysis.html#cb2287-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2287-14"><a href="mediationanalysis.html#cb2287-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
+<span id="cb2287-15"><a href="mediationanalysis.html#cb2287-15" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
+<span id="cb2287-16"><a href="mediationanalysis.html#cb2287-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2287-17"><a href="mediationanalysis.html#cb2287-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2287-18"><a href="mediationanalysis.html#cb2287-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## lavaan 0.6-9 ended normally after 11 iterations
 ## 
-##   BACKGROUND 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                         5
+##                                                       
+##   Number of observations                           199
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
 ## 
-## Data Frame:  df 
-##  
-## Response Variable: Performance 
-## Predictor Variable 1: SJT 
-## Predictor Variable 2: Interview 
-##  
-## Number of cases (rows) of data:  300 
-## Number of cases retained for analysis:  300 
+## Model Test Baseline Model:
 ## 
-##   BASIC ANALYSIS 
+##   Test statistic                               103.700
+##   Degrees of freedom                                 3
+##   P-value                                        0.000
 ## 
-##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
-## (Intercept)     5.527      0.539   10.249    0.000       4.465       6.588 
-##         SJT     0.567      0.085    6.714    0.000       0.401       0.734 
-##   Interview     0.385      0.064    6.031    0.000       0.260       0.511 
+## User Model versus Baseline Model:
 ## 
-## Standard deviation of Performance: 3.477 
-##  
-## Standard deviation of residuals:  2.992 for 297 degrees of freedom 
-## 95% range of residual variation:  11.777 = 2 * (1.968 * 2.992) 
-##  
-## R-squared:  0.264    Adjusted R-squared:  0.259    PRESS R-squared:  0.236 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.000
 ## 
-## Null hypothesis of all 0 population slope coefficients:
-##   F-statistic: 53.339     df: 2 and 297     p-value:  0.000 
+## Loglikelihood and Information Criteria:
 ## 
-##               df    Sum Sq   Mean Sq   F-value   p-value 
-##         SJT    1   629.432   629.432    70.303     0.000 
-##   Interview    1   325.670   325.670    36.375     0.000 
-##  
-## Model          2   955.102   477.551    53.339     0.000 
-## Residuals    297  2659.095     8.953 
-## Performance  299  3614.197    12.088 
+##   Loglikelihood user model (H0)               -481.884
+##   Loglikelihood unrestricted model (H1)       -481.884
+##                                                       
+##   Akaike (AIC)                                 973.767
+##   Bayesian (BIC)                               990.234
+##   Sample-size adjusted Bayesian (BIC)          974.393
 ## 
-##   K-FOLD CROSS-VALIDATION 
+## Root Mean Square Error of Approximation:
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   RMSEA                                          0.000
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.000
+##   P-value RMSEA &lt;= 0.05                             NA
 ## 
-##               Performance  SJT Interview 
-##   Performance        1.00 0.42      0.39 
-##           SJT        0.42 1.00      0.24 
-##     Interview        0.39 0.24      1.00 
+## Standardized Root Mean Square Residual:
 ## 
-##             Tolerance       VIF 
-##         SJT     0.944     1.060 
-##   Interview     0.944     1.060 
+##   SRMR                                           0.000
 ## 
-##  SJT Interview    R2adj    X&#39;s 
-##    1         1    0.259      2 
-##    1         0    0.171      1 
-##    0         1    0.150      1 
-##  
-## [based on Thomas Lumley&#39;s leaps function from the leaps package] 
-##  
+## Parameter Estimates:
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
 ## 
-## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
-##    [sorted by Cook&#39;s Distance] 
-##    [res_rows = 20, out of 300 rows of data, or do res_rows=&quot;all&quot;] 
-## --------------------------------------------------------------------- 
-##          SJT Interview Performance fitted   resid rstdnt dffits cooks 
-##   201  9.000     1.000      24.000 11.019  12.981  4.537  0.736 0.169 
-##    70 10.000    12.000       5.000 15.825 -10.825 -3.755 -0.670 0.143 
-##   170 10.000    12.000       5.000 15.825 -10.825 -3.755 -0.670 0.143 
-##   270 10.000    12.000       5.000 15.825 -10.825 -3.755 -0.670 0.143 
-##   233 10.000     6.000      27.000 13.513  13.487  4.709  0.645 0.129 
-##     1  9.000     2.000      22.000 11.404  10.596  3.653  0.537 0.092 
-##   101  9.000     2.000      22.000 11.404  10.596  3.653  0.537 0.092 
-##    69  2.000     1.000      18.000  7.047  10.953  3.775  0.505 0.081 
-##   169  2.000     1.000      18.000  7.047  10.953  3.775  0.505 0.081 
-##    92  8.000    15.000      10.000 15.846  -5.846 -2.008 -0.430 0.061 
-##   192  8.000    15.000      10.000 15.846  -5.846 -2.008 -0.430 0.061 
-##   292  8.000    15.000      10.000 15.846  -5.846 -2.008 -0.430 0.061 
-##    20  2.000     8.000      18.000  9.744   8.256  2.819  0.397 0.051 
-##   120  2.000     8.000      18.000  9.744   8.256  2.819  0.397 0.051 
-##   283  9.000     5.000      22.000 12.560   9.440  3.226  0.372 0.045 
-##   269  2.000     5.000      18.000  8.588   9.412  3.216  0.371 0.045 
-##    97  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
-##   197  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
-##   297  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
-##    82  2.000     4.000      14.000  8.203   5.797  1.959  0.224 0.017 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   behavior ~                                          
+##     attitude   (c)    0.029    0.071    0.412    0.680
+##   intention ~                                         
+##     attitude   (a)    0.484    0.058    8.333    0.000
+##   behavior ~                                          
+##     intention  (b)    0.438    0.075    5.832    0.000
 ## 
-##   PREDICTION ERROR 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .behavior          0.698    0.070    9.975    0.000
+##    .intention         0.623    0.062    9.975    0.000
 ## 
-## Data, Predicted, Standard Error of Forecast, 
-## 95% Prediction Intervals 
-##    [sorted by lower bound of prediction interval] 
-##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ---------------------------------------------- 
+## R-Square:
+##                    Estimate
+##     behavior          0.199
+##     intention         0.259
 ## 
-##         SJT Interview Performance   pred    sf pi.lwr pi.upr  width 
-##    69 2.000     1.000      18.000  7.047 3.018  1.107 12.987 11.880 
-##   169 2.000     1.000      18.000  7.047 3.018  1.107 12.987 11.880 
-##    41 1.000     3.000       8.000  7.250 3.021  1.305 13.195 11.891 
-## ... 
-##   210 8.000     2.000      10.000 10.837 3.015  4.903 16.771 11.868 
-##     4 6.000     5.000      11.000 10.858 2.998  4.959 16.757 11.798 
-##    47 6.000     5.000      11.000 10.858 2.998  4.959 16.757 11.798 
-## ... 
-##   222 9.000     9.000      11.000 14.102 3.015  8.168 20.035 11.867 
-##    92 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
-##   192 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
-## 
-## ---------------------------------- 
-## Plot 1: Distribution of Residuals 
-## Plot 2: Residuals vs Fitted Values 
-## Plot 3: ScatterPlot Matrix 
-## ----------------------------------</code></pre>
-<p>Given that the output for this model has already been reviewed in detail in the chapter on <a href="incrementalvalidity.html#incrementalvalidity">estimating the incremental validity of a selection tool using multiple linear regression</a>, we’ll focus only on the information that is relevant for applying a compensatory model – namely the regression coefficients.</p>
-<p>For the estimated model, we find that both selection tools (i.e., predictor variables) show evidence of incremental validity; that is, both selection tools are significantly associated with the criterion of job performance when statistically controlling for the effects of each other. Specifically, the association between <code>SJT</code> and <code>Performance</code> (when controlling for <code>Interview</code>) is positive and statistically significant (<em>b</em> = .567, <em>p</em> &lt; .001), and the association between <code>Interview</code> and <code>Performance</code> (when controlling for <code>SJT</code>) is also positive and statistically significant (<em>b</em> = .385, <em>p</em> &lt; .001).</p>
-<p>If you recall from the chapter on <a href="predictingcriterionscores.html#predictingcriterionscores">predicting criterion scores on using simple linear regression</a>, the intercept and predictor variable regression coefficients can be used to construct an equation, and this equation serves as the basis for making criterion-score predictions. In fact, when an equation comes from estimated multiple linear regression coefficients, the equation can serve as the basis for applying a compensatory approach to selection decisions.</p>
-<p>Using the intercept and predictor variable coefficient estimates from our multiple linear regression model, we can write out the equation for the regression model as follows:</p>
-<p><span class="math inline">\(Performance_{predicted} = 5.527 + (.567 * SJT_{observed}) + (.385 * Interview_{observed})\)</span></p>
-<p>Let’s assume, for example, that a future applicant scores 5 points on the <code>SJT</code> and 7 points on the <code>Interview</code>. If we plug those values into our equation, we get a predictor criterion score (i.e., <code>Performance</code> score) of 11.057:</p>
-<p><span class="math inline">\(11.057 = 5.527 + (.567 * 5) + (.385 * 7)\)</span></p>
-<p>Thus, based on our estimate model (i.e., equation), we are able to predict scores on the criterion variable <code>Performance</code>. We’ll bring this process to life in the following section in order to apply a compensatory approach to selection decisions.</p>
+## Defined Parameters:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     ab                0.212    0.044    4.778    0.000</code></pre>
+<p>Again, we have 199 observations (employees) used in this analysis, and the degrees of freedom is equal to 0, which indicates that our model is just-identified. Because the model is just-identified, there are no available degrees of freedom with which to estimate some of the common model fit indices (e.g., RMSEA), so we will not evaluate model fit. Instead, we will move on to interpreting model parameter estimates. The path coefficient (i.e., direct relation, presumed causal relation) between <code>attitude</code> and <code>intention</code> (i.e., path <strong>a</strong>) is statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). Further, the path coefficient between <code>intention</code> and <code>behavior</code> (i.e., path <strong>b</strong>) is also statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). The direct effect path between <code>attitude</code> and <code>behavior</code>, however, is nonsignificant (<em>b</em> = .029, <em>p</em> = .680). The (residual) error variances for <code>behavior</code> and <code>intentions</code> are not of substantive interest, so we will ignore them. The unadjusted <em>R</em><sup>2</sup> values for the endogenous variable <code>intention</code> is .259, which indicates that <code>attitude</code> explains 25.9% of the variance in <code>intention</code>, and the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>behavior</code> is .199, which indicates that, collectively <code>attitude</code> and <code>intention</code> explain 19.9% of the variance in <code>behavior</code>. Moving on to the estimate of the indirect effect (which you can find in the <em>Defined Parameters</em> section), we see that the indirect effect object we specified (<code>ab</code>) is positive and statistically significant (IE = .212, <em>p</em> &lt; .001), which indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>intention</code>. Again, this estimate was computed using the delta method.</p>
 </div>
-<div id="predictcriterionscores_compensatory" class="section level3" number="40.2.5">
-<h3><span class="header-section-number">40.2.5</span> Predict Criterion Scores</h3>
-<p>Using the multiple linear regression model we estimated above, we can write code that generates predicted criterion scores based on new data we feed into the model. In fact, we can even add these predictions to the new data frame to which the new data belong.</p>
-<p>We’ll begin by specifying the same multiple linear regression model as above – except this time we will assign the estimated model to an object that we can subsequently reference. To do so, we’ll use the <code>&lt;-</code> operator. In this example, I’m naming the model <code>reg_mod</code>.</p>
-<div class="sourceCode" id="cb1426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1426-1"><a href="compensatory.html#cb1426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign multiple linear regression model to object</span></span>
-<span id="cb1426-2"><a href="compensatory.html#cb1426-2" aria-hidden="true" tabindex="-1"></a>reg_mod <span class="ot">&lt;-</span> <span class="fu">Regression</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
-<p>Now that because we have assigned the multiple linear regression model to the object <code>reg_mod</code>, we can reference specific elements from that model, such as the regression coefficients. We’re going to do so to build our regression model equation as an R formula.</p>
-<p>Let’s begin by referencing the model intercept value and assigning it to an object called <code>b0</code>. I’m calling this object <code>b0</code> because conventionally the “b” or “B” notation is used to signify regression coefficients and because the “0” (zero) is often used as a subscript to signify our intercept value in a regression model equation. To “pull” or reference the intercept value from our regression model, we can specify the name of our regression model object (<code>reg_mod</code>) followed by the <code>$</code> operator and <code>coefficients</code>. If we were to run this by itself, it would print all of the regression coefficient values estimated for the model; we, however, want just the intercept value. Given that, immediately following <code>coefficients</code>, include brackets (<code>[ ]</code>). Within the brackets, include the exact text: <code>"(Intercept)"</code>. This will call up the intercept coefficient for any model estimated using the <code>Regression</code> function from <code>lessR</code>.</p>
-<div class="sourceCode" id="cb1427"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1427-1"><a href="compensatory.html#cb1427-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model intercept and assign to object</span></span>
-<span id="cb1427-2"><a href="compensatory.html#cb1427-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;(Intercept)&quot;</span>]</span></code></pre></div>
-<p>Next, let’s “pull” the regression coefficients associated with the two predictor variables: <code>SJT</code> and <code>Interview</code>. Let’s assign these regression coefficients to objects called <code>b1</code> and <code>b2</code>, respectively, which adhere to conventional notation. To reference the coefficient associated with <code>SJT</code>, we will specify the name of our regression model object (<code>reg_mod</code>) followed by the <code>$</code> operator and <code>coefficients</code> – just as we did above with the model intercept. Immediately following <code>coefficients</code>, include brackets (<code>[ ]</code>). Within the brackets, include the exact name of the predictor variable associated with the coefficient you wish to reference (within quotation marks): <code>"SJT"</code>.</p>
-<div class="sourceCode" id="cb1428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1428-1"><a href="compensatory.html#cb1428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model regression coefficient for SJT and assign to object</span></span>
-<span id="cb1428-2"><a href="compensatory.html#cb1428-2" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;SJT&quot;</span>]</span></code></pre></div>
-<p>Let’s repeat the process for the <code>Interview</code> variable, except name this object <code>b2</code>.</p>
-<div class="sourceCode" id="cb1429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1429-1"><a href="compensatory.html#cb1429-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reference estimated model regression coefficient for Interview and assign to object</span></span>
-<span id="cb1429-2"><a href="compensatory.html#cb1429-2" aria-hidden="true" tabindex="-1"></a>b2 <span class="ot">&lt;-</span> reg_mod<span class="sc">$</span>coefficients[<span class="st">&quot;Interview&quot;</span>]</span></code></pre></div>
-<p>Now that we’ve pulled the coefficients and assigned them to objects (<code>b0</code>, <code>b1</code>, <code>b2</code>) that we can reference in our regression model equation, let’s read in new data so that we can reference new applicants’ scores on the same conscientiousness selection tool. As we did above in the <a href="compensatory.html#initsteps_compensatory">Initial Steps section</a>, let’s read in the data file called <em>“NewApplicants.csv”</em> and assign it to a new object. Here I call this new object <code>new_df</code>.</p>
-<div class="sourceCode" id="cb1430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1430-1"><a href="compensatory.html#cb1430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
-<span id="cb1430-2"><a href="compensatory.html#cb1430-2" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;NewApplicants.csv&quot;</span>)</span></code></pre></div>
-<p>Let’s take a peek at first six rows of the <code>new_df</code> data frame object.</p>
-<div class="sourceCode" id="cb1431"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1431-1"><a href="compensatory.html#cb1431-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first six rows</span></span>
-<span id="cb1431-2"><a href="compensatory.html#cb1431-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(new_df)</span></code></pre></div>
-<pre><code>##   ApplicantID SJT Interview
-## 1         AA1   6         9
-## 2         AA2   2         7
-## 3         AA3   6         3
-## 4         AA4  10         5
-## 5         AA5   7        13
-## 6         AA6   4        10</code></pre>
-<p>Note that the data frame object includes an <code>ApplicantID</code> unique identifier variable as well as variables associated with two selection tools: <code>SJT</code> and <code>Interview</code>. Note that we don’t have any criterion (<code>Performance</code>) scores here because these folks are still applicants. Our goal then is to predict their future criterion scores using our regression model from above.</p>
-<p>To make criterion-score predictions based on the new applicant data for the <code>SJT</code> and <code>Interview</code> selection tools, we’ll need to create a regression equation based on estimates from the multiple linear regression model. Fortunately, we’ve already created objects corresponding to our model intercept (<code>b0</code>), <code>SJT</code> coefficient (<code>b1</code>), and <code>Interview</code> coefficient (<code>b2</code>). Using these values, we’ll specify a linear equation (e.g., Y = b0 + b1 * X + b2 * W).</p>
-<p>In our model equation, we’ll start by specifying a new variable containing what will be our vector of criterion-score predictions based on the <code>SJT</code> and <code>Interview</code> selection tool variables. I’m going to call this new variable <code>Perf_Predict</code>, as hopefully that name signals that the variable contains performance predictions. Using the <code>$</code> operator, we can attach this new variable to the new data frame object we read in called <code>new_df</code>. To the right of the <code>&lt;-</code> operator, we’ll specify the rest of the equation; in this context, you can think of the <code>&lt;-</code> operator as being the equal sign in our equation; in fact, you could replace the <code>&lt;-</code> operator with <code>=</code> if you wanted to. First, type in the object associated with model intercept (<code>b0</code>) followed by the <code>+</code> operator. Second, type in the object associated with the <code>SJT</code> coefficient (<code>b1</code>), and follow that with the multiplication operator (<code>*</code>) so that we can multiple the coefficient by the new values for the selection tool called <code>SJT</code>; after the <code>*</code> operator, type in the name of the corresponding selection tool variable from the <em>new</em> data frame object: <code>new_df$SJT</code>; follow this with the <code>+</code> operator. Third, type in the object associated with the <code>Interview</code> coefficient (<code>b2</code>), and follow that with the multiplication operator (<code>*</code>) so that we can multiple the coefficient by the new values for the selection tool called <code>Interview</code>; after the <code>*</code> operator, type in the name of the corresponding selection tool variable from the <em>new</em> data frame object: <code>new_df$Interview</code>.</p>
-<div class="sourceCode" id="cb1433"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1433-1"><a href="compensatory.html#cb1433-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assemble regression equation and assign to new variable in second data frame</span></span>
-<span id="cb1433-2"><a href="compensatory.html#cb1433-2" aria-hidden="true" tabindex="-1"></a>new_df<span class="sc">$</span>Perf_Predict <span class="ot">&lt;-</span> b0 <span class="sc">+</span> b1 <span class="sc">*</span> new_df<span class="sc">$</span>SJT <span class="sc">+</span> b2 <span class="sc">*</span> new_df<span class="sc">$</span>Interview</span></code></pre></div>
-<p>Let’s take a look at the <code>new_df</code> data frame object to verify that the new <code>Perf_Predict</code> variable (containing the predicted criterion scores) was added successfully.</p>
-<div class="sourceCode" id="cb1434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1434-1"><a href="compensatory.html#cb1434-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame object</span></span>
-<span id="cb1434-2"><a href="compensatory.html#cb1434-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(new_df)</span></code></pre></div>
-<p>In the viewer tab, we can use the up and down arrows to sort by variable scores.</p>
-<p>Alternatively and optionally, we can use the <code>order</code> function from base R and bracket (<code>[ ]</code>) notation to sort in <em>ascending</em> order (by default). Simply type the name of the data frame object (<code>new_df</code>), followed by brackets (<code>[ ]</code>). Within the brackets type the name of the <code>order</code> function, and within the function parentheses by the name of the variable(s) we wish to sort by, which is <code>Perf_Predict_Consc</code> from the <code>new_df</code> data frame in this example. After the function parentheses (<code>( )</code>) and still within the brackets, type a comma (<code>,</code>), as anything within brackets that comes to the left of the comma indicates that columns (not rows) are being referenced.</p>
-<div class="sourceCode" id="cb1435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1435-1"><a href="compensatory.html#cb1435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default ascending order</span></span>
-<span id="cb1435-2"><a href="compensatory.html#cb1435-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
-<pre><code>##    ApplicantID SJT Interview Perf_Predict
-## 2          AA2   2         7     9.358599
-## 7          AA7   2         8     9.743899
-## 3          AA3   6         3    10.087326
-## 10        AA10   8         2    10.836989
-## 8          AA8   2        11    10.899798
-## 15        AA15   6         6    11.243225
-## 6          AA6   4        10    11.649461
-## 11        AA11   5        10    12.216943
-## 1          AA1   6         9    12.399124
-## 13        AA13   6         9    12.399124
-## 4          AA4  10         5    13.127851
-## 5          AA5   7        13    14.507805
-## 9          AA9   8        12    14.689987
-## 12        AA12   8        12    14.689987
-## 14        AA14   6        15    14.710923</code></pre>
-<p>Conversely, we can sort in <em>descending</em> order by typing a minus (<code>-</code>) before the variable(s) we wish to sort by. when making selection decisions using a compensatory approach (like we are doing in this tutorial), it often makes most sense to sort in descending order.</p>
-<div class="sourceCode" id="cb1437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1437-1"><a href="compensatory.html#cb1437-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default descending order</span></span>
-<span id="cb1437-2"><a href="compensatory.html#cb1437-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(<span class="sc">-</span>new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
-<pre><code>##    ApplicantID SJT Interview Perf_Predict
-## 14        AA14   6        15    14.710923
-## 9          AA9   8        12    14.689987
-## 12        AA12   8        12    14.689987
-## 5          AA5   7        13    14.507805
-## 4          AA4  10         5    13.127851
-## 1          AA1   6         9    12.399124
-## 13        AA13   6         9    12.399124
-## 11        AA11   5        10    12.216943
-## 6          AA6   4        10    11.649461
-## 15        AA15   6         6    11.243225
-## 8          AA8   2        11    10.899798
-## 10        AA10   8         2    10.836989
-## 3          AA3   6         3    10.087326
-## 7          AA7   2         8     9.743899
-## 2          AA2   2         7     9.358599</code></pre>
-<p>As you can see, applicants AA14, AA9, and AA12 have the highest predicted criterion scores, where the criterion in this context is future job performance. If we had three open positions in need of filling, using a compensatory approach, we could extend offers first to these three applicants. If any one of them were to decline, we could start working our way down the list. In some instances, we might set a “floor” for the lowest acceptable predicted score and not consider any applicants with scores below that threshold. Alternatively, we could use a banding approach to identify groups of applicants for which we treat their predicted criterion scores as essentially equivalent <span class="citation">(<a href="#ref-mueller2007implementation" role="doc-biblioref">Mueller et al. 2007</a>)</span>. One potential drawback to using a compensatory approach is that all applicants needs need to participate in all selection tools used in the multiple linear regression model, which can add expense and time.</p>
-</div>
-<div id="summary_compensatory" class="section level3" number="40.2.6">
-<h3><span class="header-section-number">40.2.6</span> Summary</h3>
-<p>In this tutorial, we learned how to estimate a multiple linear regression model using the <code>Regression</code> function from the <code>lessR</code> package in order to apply a compensatory approach to selection decisions.</p>
-</div>
-</div>
-<div id="compensatory_supplement" class="section level2" number="40.3">
-<h2><span class="header-section-number">40.3</span> Chapter Supplement</h2>
-<p>In addition to the <code>Regression</code> function from the <code>lessR</code> package covered <a href="compensatory.html#estimate_compensatory">above</a>, we can use the <code>lm</code> and <code>predict</code> functions from base R to estimate a multiple linear regression model and predict future criterion scores. Because this function comes from base R, we do not need to install and access an additional package.</p>
-<div id="compensatory_supplement_functions" class="section level3" number="40.3.1">
-<h3><span class="header-section-number">40.3.1</span> Functions &amp; Packages Introduced</h3>
-<table>
-<thead>
-<tr class="header">
-<th>Function</th>
-<th>Package</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>lm</code></td>
-<td>base R</td>
-</tr>
-<tr class="even">
-<td><code>summary</code></td>
-<td>base R</td>
-</tr>
-<tr class="odd">
-<td><code>predict</code></td>
-<td>base R</td>
-</tr>
-<tr class="even">
-<td><code>order</code></td>
-<td><code>car</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="compensatory_initsteps_supplement" class="section level3" number="40.3.2">
-<h3><span class="header-section-number">40.3.2</span> Initial Steps</h3>
-<p>If required, please refer to the <a href="compensatory.html#initsteps_compensatory">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb1439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1439-1"><a href="compensatory.html#cb1439-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1439-2"><a href="compensatory.html#cb1439-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1440-1"><a href="compensatory.html#cb1440-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1440-2"><a href="compensatory.html#cb1440-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1440-3"><a href="compensatory.html#cb1440-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1440-4"><a href="compensatory.html#cb1440-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1441-1"><a href="compensatory.html#cb1441-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1441-2"><a href="compensatory.html#cb1441-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1441-3"><a href="compensatory.html#cb1441-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1441-4"><a href="compensatory.html#cb1441-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb1441-5"><a href="compensatory.html#cb1441-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification --------------------------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (1): EmployeeID
-## dbl (4): SJT, EI, Interview, Performance</code></pre>
-<pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb1445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1445-1"><a href="compensatory.html#cb1445-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb1445-2"><a href="compensatory.html#cb1445-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>## [1] &quot;EmployeeID&quot;  &quot;SJT&quot;         &quot;EI&quot;          &quot;Interview&quot;   &quot;Performance&quot;</code></pre>
-<div class="sourceCode" id="cb1447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1447-1"><a href="compensatory.html#cb1447-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
-<span id="cb1447-2"><a href="compensatory.html#cb1447-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre><code>## spec_tbl_df [300 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ EmployeeID : chr [1:300] &quot;EE23&quot; &quot;EE24&quot; &quot;EE25&quot; &quot;EE26&quot; ...
-##  $ SJT        : num [1:300] 9 8 7 6 6 5 5 4 3 8 ...
-##  $ EI         : num [1:300] 8 6 6 5 5 5 4 2 2 7 ...
-##  $ Interview  : num [1:300] 2 3 4 5 6 7 7 8 9 2 ...
-##  $ Performance: num [1:300] 22 11 5 11 12 12 12 12 12 10 ...
-##  - attr(*, &quot;spec&quot;)=
-##   .. cols(
-##   ..   EmployeeID = col_character(),
-##   ..   SJT = col_double(),
-##   ..   EI = col_double(),
-##   ..   Interview = col_double(),
-##   ..   Performance = col_double()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb1449"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1449-1"><a href="compensatory.html#cb1449-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
-<span id="cb1449-2"><a href="compensatory.html#cb1449-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##   EmployeeID   SJT    EI Interview Performance
-##   &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;
-## 1 EE23           9     8         2          22
-## 2 EE24           8     6         3          11
-## 3 EE25           7     6         4           5
-## 4 EE26           6     5         5          11
-## 5 EE27           6     5         6          12
-## 6 EE28           5     5         7          12</code></pre>
-</div>
-<div id="lm_predict_functions_compensatory" class="section level3" number="40.3.3">
-<h3><span class="header-section-number">40.3.3</span> <code>lm</code> &amp; <code>predict</code> Functions from Base R</h3>
-<p>In the following section, we will learn how to apply the <code>lm</code> and <code>predict</code> functions from base R to estimate a multiple linear regression model and predict future criterion scores.</p>
-<p>As a critical first step, we must specify the regression model using the <code>lm</code> function. To use the <code>lm</code> (linear model) function, create a name for your regression model (<code>reg.mod1</code>) using the <code>&lt;-</code> symbol. Next, type the name of the <code>lm</code> function. As the first argument, specify the regression model you wish to estimate. Specifically, type the name of the outcome variable (<code>Performance</code>) to the left of the <code>~</code> operator and the name of the predictor variables (<code>SJT</code>, <code>Interview</code>) to the right of the <code>~</code> operator. We are telling the function to “regress <code>Performance</code> on <code>SJT</code> and <code>Interview</code>.” As the second argument, type <code>data=</code> followed by the name of the data frame object to which the variables in your model belong (<code>df</code>). Now we are ready to determine whether we have satisfied key statistical assumptions and, if so, review the summary of our model estimation results.</p>
-<div class="sourceCode" id="cb1451"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1451-1"><a href="compensatory.html#cb1451-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify multiple linear regression model</span></span>
-<span id="cb1451-2"><a href="compensatory.html#cb1451-2" aria-hidden="true" tabindex="-1"></a>reg.mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
-<p>To view the model estimation results, we’ll use the <code>summary</code> function and specify the name of our regression model object as the sole parenthetical argument.</p>
-<div class="sourceCode" id="cb1452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1452-1"><a href="compensatory.html#cb1452-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of multiple linear regression model results</span></span>
-<span id="cb1452-2"><a href="compensatory.html#cb1452-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.mod)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = Performance ~ SJT + Interview, data = df)
+<div id="percentilebootstrapmethod_mediationanalysis" class="section level4" number="55.2.4.2">
+<h4><span class="header-section-number">55.2.4.2</span> Percentile Bootstrapping Method</h4>
+<p>The percentile bootstrapping method is generally recommended over the delta method, and <strong>thus, my recommendation is to use the percentile bootstrapping method when estimating indirect effects.</strong> Depending upon the processing speed and power of your machine, the approach make take a minute or multiple minutes to perform the number of bootstrap iterations (i.e., re-samples) requested. The initial model specification and model estimation steps the same as would be used for the delta method, as we will use these to get the model fit information and direct effect parameter estimates, which don’t require bootstrapping. However, after that, differences emerge.</p>
+<ol style="list-style-type: decimal">
+<li>Specify the model in the same way as was done previously in preparation for the delta method, and name the object something (e.g., <code>specmod</code>).</li>
+<li>Estimate the model using the <code>sem</code> function, just as you would with the delta method, as this will generate the model fit indices and parameter estimates that we will interpret for direction relations; let’s name the model estimation object <code>fitmod1</code> in this example.</li>
+<li>Just as you would with the delta method, type the name of the <code>summary</code> function from base <code>R</code>. As the first argument, type the name of the model estimation object we created in the previous step (<code>fitmod1</code>). As the second and third arguments, respectively, type <code>fit.measures=TRUE</code> and <code>rsquare=TRUE</code> to request the model fit indices and the unadjusted <em>R</em><sup>2</sup> values for the endogenous variables.</li>
+<li>Bootstrapping involves random draws (i.e., re-samples) so the results may vary each time unless we set a “random seed” to allow us to reproduce the results; using the <code>set.seed</code> function from base <code>R</code>, let’s choose <code>2019</code> as the arbitrary seed value, and enter it as the sole parenthetical argument in the <code>set.seed</code> function.</li>
+<li>Now it’s time to generate the bootstrap re-sampling by once again applying the <code>sem</code> function. This time, let’s use the <code>&lt;-</code> operator to name the model estimation object <code>fitmod2</code> to distinguish it from the one we previously created.</li>
+</ol>
+<ul>
+<li>As the first argument in the <code>sem</code> function, the name of the model specification object is entered (<code>specmod</code>).</li>
+<li>As the second argument, <code>data=</code> is entered, followed by the name of the data frame object (<code>df</code>).</li>
+<li>As the third argument, the approach for estimating the standard errors is indicated by typing <code>se=</code> followed by <code>bootstrap</code> to request bootstrap standard errors.</li>
+<li>As the fourth argument, type <code>bootstrap=</code> followed by the number of bootstrap re-samples (with replacement) we wish to request. Generally, requesting at least 5,000 re-sampling iterations is advisable, so let’s type <code>5000</code> after <code>bootstrap=</code>.</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>Type the name of the <code>parameterEstimates</code> function from the <code>lavaan</code> package to request that percentile bootstrapping be applied to the 5,000 re-sampling iterations requested earlier.</li>
+</ol>
+<ul>
+<li>As the first argument, type the name of the model estimation object (<code>fitmod</code>).</li>
+<li>As the second argument, type <code>ci=TRUE</code> to request confidence intervals.</li>
+<li>As the third argument, type <code>level=0.95</code> to request the 95% confidence interval be estimated.</li>
+<li>As the fourth argument, type <code>boot.ci.type="perc"</code> to apply the percentile bootstrap approach. It may take a few minutes for your requested bootstraps to run.</li>
+</ul>
+<div class="sourceCode" id="cb2289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2289-1"><a href="mediationanalysis.html#cb2289-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify mediation analysis model</span></span>
+<span id="cb2289-2"><a href="mediationanalysis.html#cb2289-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2289-3"><a href="mediationanalysis.html#cb2289-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Path c&#39; (direct effect)</span></span>
+<span id="cb2289-4"><a href="mediationanalysis.html#cb2289-4" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ c*attitude</span></span>
+<span id="cb2289-5"><a href="mediationanalysis.html#cb2289-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Path a</span></span>
+<span id="cb2289-6"><a href="mediationanalysis.html#cb2289-6" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ a*attitude</span></span>
+<span id="cb2289-7"><a href="mediationanalysis.html#cb2289-7" aria-hidden="true" tabindex="-1"></a><span class="st"># Path b</span></span>
+<span id="cb2289-8"><a href="mediationanalysis.html#cb2289-8" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ b*intention</span></span>
+<span id="cb2289-9"><a href="mediationanalysis.html#cb2289-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2289-10"><a href="mediationanalysis.html#cb2289-10" aria-hidden="true" tabindex="-1"></a><span class="st"># Indirect effect (a*b)</span></span>
+<span id="cb2289-11"><a href="mediationanalysis.html#cb2289-11" aria-hidden="true" tabindex="-1"></a><span class="st">ab := a*b</span></span>
+<span id="cb2289-12"><a href="mediationanalysis.html#cb2289-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2289-13"><a href="mediationanalysis.html#cb2289-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2289-14"><a href="mediationanalysis.html#cb2289-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model (direct effect parameter estimates)</span></span>
+<span id="cb2289-15"><a href="mediationanalysis.html#cb2289-15" aria-hidden="true" tabindex="-1"></a>fitmod1 <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
+<span id="cb2289-16"><a href="mediationanalysis.html#cb2289-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2289-17"><a href="mediationanalysis.html#cb2289-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2289-18"><a href="mediationanalysis.html#cb2289-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod1, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## lavaan 0.6-9 ended normally after 11 iterations
 ## 
-## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -10.8249  -1.5198  -0.0401   1.0396  13.4868 
+##   Estimator                                         ML
+##   Optimization method                           NLMINB
+##   Number of model parameters                         5
+##                                                       
+##   Number of observations                           199
+##                                                       
+## Model Test User Model:
+##                                                       
+##   Test statistic                                 0.000
+##   Degrees of freedom                                 0
 ## 
-## Coefficients:
-##             Estimate Std. Error t value             Pr(&gt;|t|)    
-## (Intercept)  5.52654    0.53925  10.249 &lt; 0.0000000000000002 ***
-## SJT          0.56748    0.08453   6.714      0.0000000000964 ***
-## Interview    0.38530    0.06388   6.031      0.0000000048298 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Model Test Baseline Model:
 ## 
-## Residual standard error: 2.992 on 297 degrees of freedom
-## Multiple R-squared:  0.2643, Adjusted R-squared:  0.2593 
-## F-statistic: 53.34 on 2 and 297 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<p>Given that the output for this model has already been reviewed in detail in the chapter on <a href="incrementalvalidity.html#incrementalvalidity">estimating the incremental validity of a selection tool using multiple linear regression</a>, we’ll focus only on the information that is relevant for applying a compensatory model – namely the regression coefficients.</p>
-<p>For the estimated model, we find that both selection tools (i.e., predictor variables) show evidence of incremental validity; that is, both selection tools are significantly associated with the criterion of job performance when statistically controlling for the effects of each other. Specifically, the association between <code>SJT</code> and <code>Performance</code> (when controlling for <code>Interview</code>) is positive and statistically significant (<em>b</em> = .567, <em>p</em> &lt; .001), and the association between <code>Interview</code> and <code>Performance</code> (when controlling for <code>SJT</code>) is also positive and statistically significant (<em>b</em> = .385, <em>p</em> &lt; .001).</p>
-<p>If you recall from the chapter on <a href="predictingcriterionscores.html#predictingcriterionscores">predicting criterion scores on using simple linear regression</a>, the intercept and predictor variable regression coefficients can be used to construct an equation, and this equation serves as the basis for making criterion-score predictions. In fact, when an equation comes from estimated multiple linear regression coefficients, the equation can serve as the basis for applying a compensatory approach to selection decisions.</p>
-<p>Using the intercept and predictor variable coefficient estimates from our multiple linear regression model, we can write out the equation for the regression model as follows:</p>
-<p><span class="math inline">\(Performance_{predicted} = 5.527 + (.567 * SJT_{observed}) + (.385 * Interview_{observed})\)</span></p>
-<p>Let’s assume, for example, that a future applicant scores 5 points on the <code>SJT</code> and 7 points on the <code>Interview</code>. If we plug those values into our equation, we get a predictor criterion score (i.e., <code>Performance</code> score) of 11.057:</p>
-<p><span class="math inline">\(11.057 = 5.527 + (.567 * 5) + (.385 * 7)\)</span></p>
-<p>Thus, based on our estimate model (i.e., equation), we are able to predict scores on the criterion variable <code>Performance</code>. Next, we’ll bring this process to life in order to apply a compensatory approach to selection decisions.</p>
-<p>The <code>predict</code> function from base R pairs nicely with the <code>lm</code> function, and it makes it easier to take an estimated regression model – and associated regression equation – and apply that model to new (“fresh”) predictor variable data.</p>
-<p>Before applying the <code>predict</code> function, let’s read in the data file called <em>“NewApplicants.csv”</em> and assign it to a new object. Here I call this new object <code>new_df</code>. Let’s pretend this new data frame object contains data from future applicants who have completed the <code>SJT</code> and <code>Interview</code> tools as part of the organization’s selection process. We will ultimately plug these applicants’ <code>SJT</code> and <code>Interview</code> scores into our multiple linear regression model equation to predict the applicants’ scores on the criterion variable called <code>Performance</code>.</p>
-<div class="sourceCode" id="cb1454"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1454-1"><a href="compensatory.html#cb1454-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
-<span id="cb1454-2"><a href="compensatory.html#cb1454-2" aria-hidden="true" tabindex="-1"></a>new_df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;NewApplicants.csv&quot;</span>)</span></code></pre></div>
-<p>Next, as the first argument in the <code>predict</code> function, type <code>object=</code> followed by the estimated model object that we named <code>reg.mod</code> above. As the second argument, type <code>newdata=</code> followed by the name of the data frame object that contains new data on the predictor variable. It’s important to make sure that the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our new data are exactly the same as the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our original data that we used to estimate the model. If that were not the case, we would want to rename the predictor variable in the new data frame object to match the corresponding name in the original data frame object, which is covered in the <a href="addnames.html#addnames">chapter on adding/removing variable names and renaming specific variables</a>.</p>
-<div class="sourceCode" id="cb1455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1455-1"><a href="compensatory.html#cb1455-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable</span></span>
-<span id="cb1455-2"><a href="compensatory.html#cb1455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object=</span>reg.mod, <span class="at">newdata=</span>new_df)</span></code></pre></div>
-<pre><code>##         1         2         3         4         5         6         7         8         9        10        11        12 
-## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 10.836989 12.216943 14.689987 
-##        13        14        15 
-## 12.399124 14.710923 11.243225</code></pre>
-<p>In your console, you should see a vector of scores – these are the predicted criterion scores. In many cases, we might want to append this vector as a variable to our new data frame object. To do so, we just need to apply the <code>&lt;-</code> operator and, to the left of it, specify the name of the new data frame object (<code>new_df</code>) followed by the <code>$</code> operator and a name for the new variable that will contain the predicted criterion scores (<code>Perf_Predict</code>).</p>
-<div class="sourceCode" id="cb1457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1457-1"><a href="compensatory.html#cb1457-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable </span></span>
-<span id="cb1457-2"><a href="compensatory.html#cb1457-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and append as new variable in data frame</span></span>
-<span id="cb1457-3"><a href="compensatory.html#cb1457-3" aria-hidden="true" tabindex="-1"></a>new_df<span class="sc">$</span>Perf_Predict <span class="ot">&lt;-</span> <span class="fu">predict</span>(<span class="at">object=</span>reg.mod, <span class="at">newdata=</span>new_df)</span></code></pre></div>
-<p>We can use the <code>order</code> function from base R and bracket (<code>[ ]</code>) notation to sort in <em>ascending</em> order (by default). Simply type the name of the data frame object (<code>new_df</code>), followed by brackets (<code>[ ]</code>). Within the brackets type the name of the <code>order</code> function, and within the function parentheses by the name of the variable(s) we wish to sort by, which is <code>Perf_Predict</code> from the <code>new_df</code> data frame in this example. After the function parentheses (<code>( )</code>) and still within the brackets, type a comma (<code>,</code>), as anything within brackets that comes to the left of the comma indicates that columns (not rows) are being referenced.</p>
-<div class="sourceCode" id="cb1458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1458-1"><a href="compensatory.html#cb1458-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default ascending order</span></span>
-<span id="cb1458-2"><a href="compensatory.html#cb1458-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
-<pre><code>##    ApplicantID SJT Interview Perf_Predict
-## 2          AA2   2         7     9.358599
-## 7          AA7   2         8     9.743899
-## 3          AA3   6         3    10.087326
-## 10        AA10   8         2    10.836989
-## 8          AA8   2        11    10.899798
-## 15        AA15   6         6    11.243225
-## 6          AA6   4        10    11.649461
-## 11        AA11   5        10    12.216943
-## 1          AA1   6         9    12.399124
-## 13        AA13   6         9    12.399124
-## 4          AA4  10         5    13.127851
-## 5          AA5   7        13    14.507805
-## 9          AA9   8        12    14.689987
-## 12        AA12   8        12    14.689987
-## 14        AA14   6        15    14.710923</code></pre>
-<p>Conversely, we can sort in <em>descending</em> order by typing a minus (<code>-</code>) before the variable(s) we wish to sort by. when making selection decisions using a compensatory approach (like we are doing in this tutorial), it often makes most sense to sort in descending order.</p>
-<div class="sourceCode" id="cb1460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1460-1"><a href="compensatory.html#cb1460-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort data frame by new variable in default descending order</span></span>
-<span id="cb1460-2"><a href="compensatory.html#cb1460-2" aria-hidden="true" tabindex="-1"></a>new_df[<span class="fu">order</span>(<span class="sc">-</span>new_df<span class="sc">$</span>Perf_Predict), ]</span></code></pre></div>
-<pre><code>##    ApplicantID SJT Interview Perf_Predict
-## 14        AA14   6        15    14.710923
-## 9          AA9   8        12    14.689987
-## 12        AA12   8        12    14.689987
-## 5          AA5   7        13    14.507805
-## 4          AA4  10         5    13.127851
-## 1          AA1   6         9    12.399124
-## 13        AA13   6         9    12.399124
-## 11        AA11   5        10    12.216943
-## 6          AA6   4        10    11.649461
-## 15        AA15   6         6    11.243225
-## 8          AA8   2        11    10.899798
-## 10        AA10   8         2    10.836989
-## 3          AA3   6         3    10.087326
-## 7          AA7   2         8     9.743899
-## 2          AA2   2         7     9.358599</code></pre>
-<p>As you can see, applicants AA14, AA9, and AA12 have the highest predicted criterion scores, where the criterion in this context is future job performance. If we had three open positions in need of filling, using a compensatory approach, we could extend offers first to these three applicants. If any one of them were to decline, we could start working our way down the list. In some instances, we might set a “floor” for the lowest acceptable predicted score and not consider any applicants with scores below that threshold. Alternatively, we could use a banding approach to identify groups of applicants for which we treat their predicted criterion scores as essentially equivalent <span class="citation">(<a href="#ref-mueller2007implementation" role="doc-biblioref">Mueller et al. 2007</a>)</span>. One potential drawback to using a compensatory approach is that all applicants needs need to participate in all selection tools used in the multiple linear regression model, which can add expense and time.</p>
+##   Test statistic                               103.700
+##   Degrees of freedom                                 3
+##   P-value                                        0.000
+## 
+## User Model versus Baseline Model:
+## 
+##   Comparative Fit Index (CFI)                    1.000
+##   Tucker-Lewis Index (TLI)                       1.000
+## 
+## Loglikelihood and Information Criteria:
+## 
+##   Loglikelihood user model (H0)               -481.884
+##   Loglikelihood unrestricted model (H1)       -481.884
+##                                                       
+##   Akaike (AIC)                                 973.767
+##   Bayesian (BIC)                               990.234
+##   Sample-size adjusted Bayesian (BIC)          974.393
+## 
+## Root Mean Square Error of Approximation:
+## 
+##   RMSEA                                          0.000
+##   90 Percent confidence interval - lower         0.000
+##   90 Percent confidence interval - upper         0.000
+##   P-value RMSEA &lt;= 0.05                             NA
+## 
+## Standardized Root Mean Square Residual:
+## 
+##   SRMR                                           0.000
+## 
+## Parameter Estimates:
+## 
+##   Standard errors                             Standard
+##   Information                                 Expected
+##   Information saturated (h1) model          Structured
+## 
+## Regressions:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##   behavior ~                                          
+##     attitude   (c)    0.029    0.071    0.412    0.680
+##   intention ~                                         
+##     attitude   (a)    0.484    0.058    8.333    0.000
+##   behavior ~                                          
+##     intention  (b)    0.438    0.075    5.832    0.000
+## 
+## Variances:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##    .behavior          0.698    0.070    9.975    0.000
+##    .intention         0.623    0.062    9.975    0.000
+## 
+## R-Square:
+##                    Estimate
+##     behavior          0.199
+##     intention         0.259
+## 
+## Defined Parameters:
+##                    Estimate  Std.Err  z-value  P(&gt;|z|)
+##     ab                0.212    0.044    4.778    0.000</code></pre>
+<div class="sourceCode" id="cb2291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2291-1"><a href="mediationanalysis.html#cb2291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
+<span id="cb2291-2"><a href="mediationanalysis.html#cb2291-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
+<span id="cb2291-3"><a href="mediationanalysis.html#cb2291-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2291-4"><a href="mediationanalysis.html#cb2291-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model (bootstrap)</span></span>
+<span id="cb2291-5"><a href="mediationanalysis.html#cb2291-5" aria-hidden="true" tabindex="-1"></a>fitmod2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df, <span class="at">se=</span><span class="st">&quot;bootstrap&quot;</span>, <span class="at">bootstrap=</span><span class="dv">5000</span>)</span>
+<span id="cb2291-6"><a href="mediationanalysis.html#cb2291-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2291-7"><a href="mediationanalysis.html#cb2291-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Request percentile bootstrap 95% confidence intervals</span></span>
+<span id="cb2291-8"><a href="mediationanalysis.html#cb2291-8" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fitmod2, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">level=</span><span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">&quot;perc&quot;</span>)</span></code></pre></div>
+<pre><code>##         lhs op       rhs label   est    se      z pvalue ci.lower ci.upper
+## 1  behavior  ~  attitude     c 0.029 0.065  0.453   0.65   -0.095    0.162
+## 2 intention  ~  attitude     a 0.484 0.053  9.150   0.00    0.378    0.585
+## 3  behavior  ~ intention     b 0.438 0.070  6.232   0.00    0.298    0.573
+## 4  behavior ~~  behavior       0.698 0.057 12.201   0.00    0.581    0.804
+## 5 intention ~~ intention       0.623 0.055 11.364   0.00    0.512    0.729
+## 6  attitude ~~  attitude       0.928 0.000     NA     NA    0.928    0.928
+## 7        ab :=       a*b    ab 0.212 0.041  5.159   0.00    0.135    0.296</code></pre>
+<p><em>Note:</em> If you receive the following error message, you can safely ignore it, as it simply means that some of the bootstrap draws (i.e., re-samples) did not work successfully but most did; we can still be confident in our findings, and this warning does not apply to the original model we estimated prior to the bootstrapping.</p>
+<p><strong>lavaan WARNING: the optimizer warns that a solution has NOT been found!lavaan WARNING: the optimizer warns that a solution has NOT been found!lavaan WARNING: only 4997 bootstrap draws were successful.</strong></p>
+<p>The model fit information and direct relation (non-bootstrapped) parameter estimates are the same as when we estimated the model as part of the delta method. Nonetheless, I repeat those findings here and then extend them with the percentile bootstrap findings for the indirect effect. We have 199 observations (employees) used in this analysis, and the degrees of freedom is equal to 0, which indicates that our model is just-identified. Because the model is just-identified, there are no available degrees of freedom with which to estimate some of the common model fit indices (e.g., RMSEA), so we will not evaluate model fit. Instead, we will move on to interpreting model parameter estimates. The path coefficient (i.e., direct relation, presumed causal relation) between <code>attitude</code> and <code>intention</code> (i.e., path <strong>a</strong>) is statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). Further, the path coefficient between <code>intention</code> and <code>behavior</code> (i.e., path <strong>b</strong>) is also statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). The direct effect path between <code>attitude</code> and <code>behavior</code>, however, is nonsignificant (<em>b</em> = .029, <em>p</em> = .680). The (residual) error variances for <code>behavior</code> and <code>intentions</code> are not of substantive interest, so we will ignore them. The unadjusted <em>R</em><sup>2</sup> values for the endogenous variable <code>intention</code> is .259, which indicates that <code>attitude</code> explains 25.9% of the variance in <code>intention</code>, and the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>behavior</code> is .199, which indicates that, collectively <code>attitude</code> and <code>intention</code> explain 19.9% of the variance in <code>behavior</code>. Moving on, we get the delta method estimate of the indirect effect (which you can find in the <em>Defined Parameters</em> section), and we see that the indirect effect object we specified (<code>ab</code>) is positive and statistically significant (IE = .212, <em>p</em> &lt; .001), which indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>intention</code>. Again, however, that is the delta method estimate of the indirect effect, so let’s now take a look at the percentile bootstrap estimate of the indirect effect. At the very end of the output appears a table containing, among other things, the 95% confidence intervals for various parameters. We are only interested in the very last row which displays the 95% confidence interval for the <code>ab</code> object we specified using the product of coefficients approach. The point estimate for the indirect effect is .212, and 95% confidence interval does <em>not</em> include zero and positive, so we can conclude that the indirect effect of <code>attitude</code> on <code>behavior</code> via <code>intention</code> is statistically significant and positive (95% CI[.136, 300]). In other words, the percentile bootstrapping method indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>behavior</code>. If this confidence interval included zero in its range, then we would conclude that there is no evidence that <code>intention</code> is a mediator.</p>
+</div>
+</div>
+<div id="summary_mediationanalysis" class="section level3" number="55.2.5">
+<h3><span class="header-section-number">55.2.5</span> Summary</h3>
+<p>In this chapter, we explored the building blocks of mediation analysis using a path analysis framework. To do so, we used the <code>sem</code> <code>parameterEstimates</code> functions from the <code>lavaan</code> package and to estimate the indirect effect.</p>
 
 </div>
 </div>
 </div>
+
+
+
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-mueller2007implementation" class="csl-entry">
-Mueller, Lorin, Dwayne Norris, Scott Oppler, and SM McPhail. 2007. <span>“Implementation Based on Alternate Validation Procedures: Ranking, Cut Scores, Banding, and Compensatory Models.”</span> <em>Alternative Validation Strategies: Developing New and Leveraging Existing Validity Evidence</em>, 349–405.
+<div id="ref-baron1986moderator" class="csl-entry">
+Baron, Reuben M, and David A Kenny. 1986. <span>“The Moderator-Mediator Variable Distinction in Social Psychological Research: Conceptual, Strategic, and Statistical Considerations.”</span> <em>Journal of Personality and Social Psychology</em> 51 (6): 1173–82.
+</div>
+<div id="ref-koopman2015small" class="csl-entry">
+Koopman, Joel, Michael Howe, John R Hollenbeck, and Hock-Peng Sin. 2015. <span>“Small Sample Mediation Testing: Misplaced Confidence in Bootstrapped Confidence Intervals.”</span> <em>Journal of Applied Psychology</em> 100 (1): 194–202.
+</div>
+<div id="ref-mackinnon1993estimating" class="csl-entry">
+MacKinnon, David P, and James H Dwyer. 1993. <span>“Estimating Mediated Effects in Prevention Studies.”</span> <em>Evaluation Review</em> 17 (2): 144–58.
+</div>
+<div id="ref-mackinnon2002comparison" class="csl-entry">
+MacKinnon, David P, Chondra M Lockwood, Jeanne M Hoffman, Stephen G West, and Virgil Sheets. 2002. <span>“A Comparison of Methods to Test Mediation and Other Intervening Variable Effects.”</span> <em>Psychological Methods</em> 7 (1): 83–104.
+</div>
+<div id="ref-mackinnon1995simulation" class="csl-entry">
+MacKinnon, David P, Ghulam Warsi, and James H Dwyer. 1995. <span>“A Simulation Study of Mediated Effect Measures.”</span> <em>Multivariate Behavioral Research</em> 30 (1): 41–62.
 </div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
@@ -1601,8 +1509,8 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
           </div>
         </div>
       </div>
-<a href="incrementalvalidity.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="multiplecutoff.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pathanalysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create_portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
