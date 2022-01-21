@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 16 Arranging (Sorting) Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 16 Arranging (Sorting) Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Chapter 16 Arranging (Sorting) Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2022-01-10" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="write.html"/>
 <link rel="next" href="join.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +51,8 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +118,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -626,29 +651,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -968,6 +993,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="53.1.4" data-path="lassoregression.html"><a href="lassoregression.html#modeltype_selection_lassoregression"><i class="fa fa-check"></i><b>53.1.4</b> Model Type Selection</a></li>
 <li class="chapter" data-level="53.1.5" data-path="lassoregression.html"><a href="lassoregression.html#crossvalidation_lassoregression"><i class="fa fa-check"></i><b>53.1.5</b> Cross-Validation</a></li>
 <li class="chapter" data-level="53.1.6" data-path="lassoregression.html"><a href="lassoregression.html#predictiveanalytics_lassoregression"><i class="fa fa-check"></i><b>53.1.6</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="53.1.7" data-path="lassoregression.html"><a href="lassoregression.html#conceptualvideo_lassoregression"><i class="fa fa-check"></i><b>53.1.7</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="53.2" data-path="lassoregression.html"><a href="lassoregression.html#tutorial_lassoregression"><i class="fa fa-check"></i><b>53.2</b> Tutorial</a>
 <ul>
@@ -982,9 +1008,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="53.2.9" data-path="lassoregression.html"><a href="lassoregression.html#summary_lasso"><i class="fa fa-check"></i><b>53.2.9</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="54" data-path="pathanalysis.html"><a href="pathanalysis.html"><i class="fa fa-check"></i><b>54</b> Investigating Processes Using Path Analysis</a>
+<ul>
+<li class="chapter" data-level="54.1" data-path="pathanalysis.html"><a href="pathanalysis.html#conceptualoverview_pathanalysis"><i class="fa fa-check"></i><b>54.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="54.1.1" data-path="pathanalysis.html"><a href="pathanalysis.html#pathdiagram_pathanalysis"><i class="fa fa-check"></i><b>54.1.1</b> Path Diagram</a></li>
+<li class="chapter" data-level="54.1.2" data-path="pathanalysis.html"><a href="pathanalysis.html#modelidentification_pathanalysis"><i class="fa fa-check"></i><b>54.1.2</b> Model Identification</a></li>
+<li class="chapter" data-level="54.1.3" data-path="pathanalysis.html"><a href="pathanalysis.html#modelfit_pathanalysis"><i class="fa fa-check"></i><b>54.1.3</b> Model Fit</a></li>
+<li class="chapter" data-level="54.1.4" data-path="pathanalysis.html"><a href="pathanalysis.html#parameterestimatese_pathanalysis"><i class="fa fa-check"></i><b>54.1.4</b> Parameter Estimates</a></li>
+</ul></li>
+<li class="chapter" data-level="54.2" data-path="pathanalysis.html"><a href="pathanalysis.html#statisticalassumptions_pathanalysis"><i class="fa fa-check"></i><b>54.2</b> Statistical Assumptions</a>
+<ul>
+<li class="chapter" data-level="54.2.1" data-path="pathanalysis.html"><a href="pathanalysis.html#conceptualvideo_pathanalysis"><i class="fa fa-check"></i><b>54.2.1</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="54.3" data-path="pathanalysis.html"><a href="pathanalysis.html#tutorial_pathanalysis"><i class="fa fa-check"></i><b>54.3</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="54.3.1" data-path="pathanalysis.html"><a href="pathanalysis.html#videotutorial_pathanalysis"><i class="fa fa-check"></i><b>54.3.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="54.3.2" data-path="pathanalysis.html"><a href="pathanalysis.html#functions_pathanalysis"><i class="fa fa-check"></i><b>54.3.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="54.3.3" data-path="pathanalysis.html"><a href="pathanalysis.html#initsteps_pathanalysis"><i class="fa fa-check"></i><b>54.3.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="54.3.4" data-path="pathanalysis.html"><a href="pathanalysis.html#specifymodel_pathanalysis"><i class="fa fa-check"></i><b>54.3.4</b> Specify &amp; Estimate Path Analysis Models</a></li>
+<li class="chapter" data-level="54.3.5" data-path="pathanalysis.html"><a href="pathanalysis.html#additionalinfo_pathanalysis"><i class="fa fa-check"></i><b>54.3.5</b> Additional Information on Model Specification Notation</a></li>
+<li class="chapter" data-level="54.3.6" data-path="pathanalysis.html"><a href="pathanalysis.html#summary_pathanalysis"><i class="fa fa-check"></i><b>54.3.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>X Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="54" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>54</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="55" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>55</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="55" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>55</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="56" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>56</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1021,7 +1070,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="videotutorial_arrange" class="section level3" number="16.2.1">
 <h3><span class="header-section-number">16.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below. Both versions of the tutorial will show you how to arrange (sort) data with or without the pipe (<code>%&gt;%</code>) operator. If you’re unfamiliar with the pipe operator, no need to worry: I provide a brief explanation and demonstration regarding their purpose in both versions of the tutorial.</p>
-<iframe src="https://youtube.com/embed/wVwJQsLNbmw?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/wVwJQsLNbmw?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/wVwJQsLNbmw" class="uri">https://youtu.be/wVwJQsLNbmw</a></p>
 </div>
@@ -1049,34 +1098,33 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="initsteps_arrange" class="section level3" number="16.2.3">
 <h3><span class="header-section-number">16.2.3</span> Initial Steps</h3>
 <p>Please note, that any function that appears in the <em>Initial Steps</em> section has been covered in a previous chapter. If you need a refresher, please view the relevant chapter. In addition, a previous chapter may show you how to perform the same action using different functions or packages.</p>
-<p>If you haven’t already, save the file called <strong>“PersData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the file called <strong>“PersData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="arrange.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb232-2"><a href="arrange.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="arrange.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb233-2"><a href="arrange.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb233-3"><a href="arrange.html#cb233-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb233-4"><a href="arrange.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="arrange.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb234-2"><a href="arrange.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb234-3"><a href="arrange.html#cb234-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb234-4"><a href="arrange.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb234-5"><a href="arrange.html#cb234-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="arrange.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb246-2"><a href="arrange.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="arrange.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb247-2"><a href="arrange.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb247-3"><a href="arrange.html#cb247-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb247-4"><a href="arrange.html#cb247-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="arrange.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb248-2"><a href="arrange.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb248-3"><a href="arrange.html#cb248-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb248-4"><a href="arrange.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb248-5"><a href="arrange.html#cb248-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 9 Columns: 5</code></pre>
+<pre><code>## -- Column specification ---------------------------------------------------------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (4): lastname, firstname, startdate, gender
+## dbl (1): id</code></pre>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="arrange.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb236-2"><a href="arrange.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="arrange.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb252-2"><a href="arrange.html#cb252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="arrange.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
-<span id="cb238-2"><a href="arrange.html#cb238-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="arrange.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
+<span id="cb254-2"><a href="arrange.html#cb254-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1089,26 +1137,26 @@ BOOK UNDER CONSTRUCTION</a>
 ## 7   198 Morales    Linda     1/7/2016  female
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>As you can see from the output generated in your console, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. Technically, the <code>read_csv</code> function reads in what is called a “tibble” object (as opposed to a data frame object), but for our purposes a tibble will behave similarly to a data frame. For more information on tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="references.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</p>
+<p>As you can see from the output generated in your console, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. Technically, the <code>read_csv</code> function reads in what is called a “tibble” object (as opposed to a data frame object), but for our purposes a tibble will behave similarly to a data frame. For more information on tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</p>
 </div>
 <div id="arrangebyvalues" class="section level3" number="16.2.4">
 <h3><span class="header-section-number">16.2.4</span> Arrange (Sort) Data</h3>
-<p>There are different functions we could use to arrange (sort) the data in the data frame, and in this chapter, we will focus on the <code>arrange</code> function from the <code>dplyr</code> package <span class="citation">(<a href="references.html#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>. Please note that there are other functions we could use to sort data, and if you’re interested, in the <a href="arrange.html#arrange_supplement">Arranging (Sorting) Data: Chapter Supplement</a>, I demonstrate how to use the <code>order</code> function from base R to carry out the same operations we will cover below.</p>
-<p>Because the <code>arrange</code> function comes from the <code>dplyr</code> package, which is part of the <code>tidyverse</code> of R packages <span class="citation">(<a href="references.html#ref-R-tidyverse" role="doc-biblioref">Wickham 2021b</a>; <a href="references.html#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>. If you haven’t already, install and access the <code>dplyr</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="arrange.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
-<span id="cb240-2"><a href="arrange.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb240-3"><a href="arrange.html#cb240-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb240-4"><a href="arrange.html#cb240-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="arrange.html#cb241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
-<span id="cb241-2"><a href="arrange.html#cb241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p>There are different functions we could use to arrange (sort) the data in the data frame, and in this chapter, we will focus on the <code>arrange</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>. Please note that there are other functions we could use to sort data, and if you’re interested, in the <a href="arrange.html#arrange_supplement">Arranging (Sorting) Data: Chapter Supplement</a>, I demonstrate how to use the <code>order</code> function from base R to carry out the same operations we will cover below.</p>
+<p>Because the <code>arrange</code> function comes from the <code>dplyr</code> package, which is part of the <code>tidyverse</code> of R packages <span class="citation">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2021b</a>; <a href="#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>. If you haven’t already, install and access the <code>dplyr</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="arrange.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb256-2"><a href="arrange.html#cb256-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb256-3"><a href="arrange.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb256-4"><a href="arrange.html#cb256-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="arrange.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
+<span id="cb257-2"><a href="arrange.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>Before diving into arranging the data, as a disclaimer, I will demonstrate two techniques for arranging (sorting) data using the <code>arrange</code> function.</p>
-<p>The <em>first technique</em> uses a “pipe” which in R is represented by the <code>%&gt;%</code> operator. The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(<a href="references.html#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2020</a>)</span>, on which the <code>dplyr</code> is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="references.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on pipes: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
+<p>The <em>first technique</em> uses a “pipe” which in R is represented by the <code>%&gt;%</code> operator. The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(<a href="#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2020</a>)</span>, on which the <code>dplyr</code> is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on pipes: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
 <p>This brings us to the <em>second technique</em> for arranging (sorting) data using the <code>arrange</code> function. The second technique uses a more traditional approach that some may argue lacks the efficiency and readability of the pipe. Conversely, others may argue against the use of pipes altogether. I’m not here to settle any “pipes versus no pipes” debate, and you’re welcome to use either technique. If you don’t want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called <a href="arrange.html#opt1_arrange_withoutpipe">Without Pipe</a>.</p>
 <div id="opt1_arrange_withpipe" class="section level4" number="16.2.4.1">
 <h4><span class="header-section-number">16.2.4.1</span> <em>With</em> Pipe</h4>
 <p>To use the “with pipe” technique, first, type the name of our data frame object, which we previously named <code>personaldata</code>, followed by the pipe (<code>%&gt;%</code>) operator. This will “pipe” our data frame into the subsequent function. Second, either on the same line or on the next line, type the name of the <code>arrange</code> function, and within the parentheses, enter the variable name <code>startdate</code> as the argument to indicate that we want to arrange (sort) the data by the start date of the employees. The default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order. If you’re wondering where I found the exact names of the variables in the data frame, revisit the use of the <code>names</code> function, which I demonstrated previously in this chapter in the <a href="arrange.html#initsteps_arrange">Initial Steps</a> section.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="arrange.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order (single line) (with pipe)</span></span>
-<span id="cb242-2"><a href="arrange.html#cb242-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate)</span></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="arrange.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order (single line) (with pipe)</span></span>
+<span id="cb258-2"><a href="arrange.html#cb258-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1122,9 +1170,9 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <p>Alternatively, we can write this script over two lines and achieve the same output in our Console.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="arrange.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order (two lines) (with pipe)</span></span>
-<span id="cb244-2"><a href="arrange.html#cb244-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> </span>
-<span id="cb244-3"><a href="arrange.html#cb244-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(startdate)</span></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="arrange.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order (two lines) (with pipe)</span></span>
+<span id="cb260-2"><a href="arrange.html#cb260-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> </span>
+<span id="cb260-3"><a href="arrange.html#cb260-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(startdate)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1138,8 +1186,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <p>Please note that the operations we have performed thus far have not changed anything in the <code>personaldata</code> data frame object itself; rather, the output in the Console simply shows what it <em>looks like</em> if the data are sorted by the variable in question. We can verify this by viewing the first six rows of data in our data frame object using the <code>head</code> function. As you can see below, nothing changed in the data frame itself.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="arrange.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb246-2"><a href="arrange.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="arrange.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb262-2"><a href="arrange.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1150,12 +1198,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   125 Franklin Benjamin  1/5/2016  male  
 ## 6   111 Newton   Isaac     1/9/2016  male</code></pre>
 <p>To change the ordering of data in the <code>personaldata</code> data frame object itself, we will need to (re)name the data frame object using the <code>&lt;-</code> variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the <em>exact</em> same name as it had originally (i.e., <code>personaldata</code>). To do so, to the <em>left</em> of the <code>&lt;-</code> operator, type what you would like to name the new (updated) sorted data frame object (<code>personaldata</code>). Next, to the <em>right</em> of the <code>&lt;-</code> operator, copy and paste the same code we wrote above. Finally, use the <code>head</code> function from base R to view the first six rows of the new data frame object.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="arrange.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
-<span id="cb248-2"><a href="arrange.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object (with pipe)</span></span>
-<span id="cb248-3"><a href="arrange.html#cb248-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate)</span>
-<span id="cb248-4"><a href="arrange.html#cb248-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb248-5"><a href="arrange.html#cb248-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb248-6"><a href="arrange.html#cb248-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="arrange.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
+<span id="cb264-2"><a href="arrange.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object (with pipe)</span></span>
+<span id="cb264-3"><a href="arrange.html#cb264-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate)</span>
+<span id="cb264-4"><a href="arrange.html#cb264-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb264-5"><a href="arrange.html#cb264-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb264-6"><a href="arrange.html#cb264-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1167,12 +1215,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 6   155 Smith    John      1/9/2016  male</code></pre>
 <p>As you can see in the Console output, now the <code>personaldata</code> data frame object has been changed such that the data are arranged (sorted) by the <code>startdate</code> variable.</p>
 <p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function as shown below.</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="arrange.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
-<span id="cb250-2"><a href="arrange.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object (with pipe)</span></span>
-<span id="cb250-3"><a href="arrange.html#cb250-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(startdate))</span>
-<span id="cb250-4"><a href="arrange.html#cb250-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb250-5"><a href="arrange.html#cb250-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb250-6"><a href="arrange.html#cb250-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="arrange.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
+<span id="cb266-2"><a href="arrange.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object (with pipe)</span></span>
+<span id="cb266-3"><a href="arrange.html#cb266-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(startdate))</span>
+<span id="cb266-4"><a href="arrange.html#cb266-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb266-5"><a href="arrange.html#cb266-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb266-6"><a href="arrange.html#cb266-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1183,8 +1231,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   282 Legend     John      1/9/2016  male  
 ## 6   198 Morales    Linda     1/7/2016  female</code></pre>
 <p>To arrange (sort) data by values/levels of two variables, we simply enter the names of two variables as consecutive arguments. Let’s enter the <code>gender</code> variable first, followed by the <code>startdate</code> variable. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so <em>within</em> the values/levels of the first variable listed. As shown below, <code>startdate</code> is sorted within the sorted levels of the <code>gender</code> variable. As a reminder, the default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order. <em>Remember, we use commas to separate arguments used in a function (if there are more than one arguments).</em></p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="arrange.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order (with pipe)</span></span>
-<span id="cb252-2"><a href="arrange.html#cb252-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gender, startdate)</span></code></pre></div>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="arrange.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order (with pipe)</span></span>
+<span id="cb268-2"><a href="arrange.html#cb268-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gender, startdate)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1198,8 +1246,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   111 Newton     Isaac     1/9/2016  male  
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <p>Watch what happens when we switch the order of the two variables we are using to sort the data.</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="arrange.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order (with pipe)</span></span>
-<span id="cb254-2"><a href="arrange.html#cb254-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate, gender)</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="arrange.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order (with pipe)</span></span>
+<span id="cb270-2"><a href="arrange.html#cb270-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate, gender)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1214,8 +1262,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <p>As you can see, the order of the two sorting variables matters.</p>
 <p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function.</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="arrange.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order (with pipe)</span></span>
-<span id="cb256-2"><a href="arrange.html#cb256-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(gender,startdate))</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="arrange.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order (with pipe)</span></span>
+<span id="cb272-2"><a href="arrange.html#cb272-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(gender,startdate))</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1229,8 +1277,8 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   198 Morales    Linda     1/7/2016  female
 ## 9   165 Doe        Jane      1/4/2016  female</code></pre>
 <p>Or, we can sort one variable in the default ascending order and the other in descending order.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="arrange.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending &amp; descending order (with pipe)</span></span>
-<span id="cb258-2"><a href="arrange.html#cb258-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gender, <span class="fu">desc</span>(startdate))</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="arrange.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending &amp; descending order (with pipe)</span></span>
+<span id="cb274-2"><a href="arrange.html#cb274-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gender, <span class="fu">desc</span>(startdate))</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1248,8 +1296,8 @@ BOOK UNDER CONSTRUCTION</a>
 <h4><span class="header-section-number">16.2.4.2</span> <em>Without</em> Pipe</h4>
 <p>We can achieve the same output <em>without</em> using the pipe (<code>%&gt;%</code>) operator as <a href="arrange.html#opt1_arrange_withpipe"><em>with</em> the pipe operator</a>; again, your choice of using or not using the pipe operator is up to you.</p>
 <p>To use the <code>arrange</code> function without the pipe operator, type the name of the <code>arrange</code> function, and within the parentheses, as the first argument, type the name of the <code>personaldata</code> data frame object, and as the second argument, type the <code>startdate</code> variable, where the latter indicates that we want to arrange (sort) the data frame object by the start date of the employees. The default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order. <em>Remember, we use commas to separate arguments used in a function (if there are more than one arguments).</em> If you’re wondering where I found the exact names of the variables in the data frame, revisit the use of the <code>names</code> function, which I demonstrated previously in this chapter in the <a href="arrange.html#initsteps_arrange">Initial Steps</a> section.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="arrange.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order without pipe</span></span>
-<span id="cb260-2"><a href="arrange.html#cb260-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(personaldata, startdate)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="arrange.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order without pipe</span></span>
+<span id="cb276-2"><a href="arrange.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(personaldata, startdate)</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1263,12 +1311,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <p>To change the ordering of data in the <code>personaldata</code> data frame object itself, we will need to (re)name the data frame object using the <code>&lt;-</code> variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the <em>exact</em> same name as it had originally (i.e., <code>personaldata</code>). To do so, to the <em>left</em> of the <code>&lt;-</code> operator, type what you would like to name the new (updated) sorted data frame object (<code>personaldata</code>). Next, to the <em>right</em> of the <code>&lt;-</code> operator, copy and paste the same code we wrote above. Finally, use the <code>head</code> function from base R to view the first six rows of the new data frame object.</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="arrange.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
-<span id="cb262-2"><a href="arrange.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object without pipe</span></span>
-<span id="cb262-3"><a href="arrange.html#cb262-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, startdate)</span>
-<span id="cb262-4"><a href="arrange.html#cb262-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb262-5"><a href="arrange.html#cb262-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb262-6"><a href="arrange.html#cb262-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="arrange.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
+<span id="cb278-2"><a href="arrange.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object without pipe</span></span>
+<span id="cb278-3"><a href="arrange.html#cb278-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, startdate)</span>
+<span id="cb278-4"><a href="arrange.html#cb278-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb278-5"><a href="arrange.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb278-6"><a href="arrange.html#cb278-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1279,12 +1327,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   154 McDonald Ronald    1/9/2016  male  
 ## 6   155 Smith    John      1/9/2016  male</code></pre>
 <p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function as shown below.</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="arrange.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order and </span></span>
-<span id="cb264-2"><a href="arrange.html#cb264-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object without pipe</span></span>
-<span id="cb264-3"><a href="arrange.html#cb264-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, <span class="fu">desc</span>(startdate))</span>
-<span id="cb264-4"><a href="arrange.html#cb264-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb264-5"><a href="arrange.html#cb264-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb264-6"><a href="arrange.html#cb264-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="arrange.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order and </span></span>
+<span id="cb280-2"><a href="arrange.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object without pipe</span></span>
+<span id="cb280-3"><a href="arrange.html#cb280-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, <span class="fu">desc</span>(startdate))</span>
+<span id="cb280-4"><a href="arrange.html#cb280-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-5"><a href="arrange.html#cb280-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb280-6"><a href="arrange.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1295,16 +1343,16 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   282 Legend     John      1/9/2016  male  
 ## 6   198 Morales    Linda     1/7/2016  female</code></pre>
 <p>To arrange (sort) data by values/levels of two variables, we simply enter the names of two variables as consecutive arguments (after the name of the data frame, which is the first argument). Let’s enter the <code>gender</code> variable first, followed by the <code>startdate</code> variable. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so <em>within</em> the values/levels of the first variable listed.</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="arrange.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order without pipe</span></span>
-<span id="cb266-2"><a href="arrange.html#cb266-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, gender, startdate)</span></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="arrange.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order without pipe</span></span>
+<span id="cb282-2"><a href="arrange.html#cb282-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, gender, startdate)</span></code></pre></div>
 <p>As shown in the output above, <code>startdate</code> is sorted within the sorted levels of the <code>gender</code> variable. This also verifies that the default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order.</p>
 <p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function as shown below. You can use the <code>desc</code> function on one or both sorting variables.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="arrange.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by one variable in ascending order and </span></span>
-<span id="cb267-2"><a href="arrange.html#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the other in descending order without pipe</span></span>
-<span id="cb267-3"><a href="arrange.html#cb267-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, gender, <span class="fu">desc</span>(startdate))</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="arrange.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by one variable in ascending order and </span></span>
+<span id="cb283-2"><a href="arrange.html#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the other in descending order without pipe</span></span>
+<span id="cb283-3"><a href="arrange.html#cb283-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, gender, <span class="fu">desc</span>(startdate))</span></code></pre></div>
 <p>Or we can apply the <code>desc</code> function to both variables.</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="arrange.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by both variables descending order without pipe</span></span>
-<span id="cb268-2"><a href="arrange.html#cb268-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, <span class="fu">desc</span>(gender, startdate))</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="arrange.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by both variables descending order without pipe</span></span>
+<span id="cb284-2"><a href="arrange.html#cb284-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, <span class="fu">desc</span>(gender, startdate))</span></code></pre></div>
 </div>
 </div>
 <div id="summary_arrange" class="section level3" number="16.2.5">
@@ -1339,22 +1387,21 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="arrange_initsteps_supplement" class="section level3" number="16.3.2">
 <h3><span class="header-section-number">16.3.2</span> Initial Steps</h3>
 <p>If required, please refer to the <a href="arrange.html#initsteps_arrange">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="arrange.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb269-2"><a href="arrange.html#cb269-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="arrange.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb270-2"><a href="arrange.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb270-3"><a href="arrange.html#cb270-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb270-4"><a href="arrange.html#cb270-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb270-5"><a href="arrange.html#cb270-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="arrange.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb285-2"><a href="arrange.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="arrange.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb286-2"><a href="arrange.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb286-3"><a href="arrange.html#cb286-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb286-4"><a href="arrange.html#cb286-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb286-5"><a href="arrange.html#cb286-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 9 Columns: 5</code></pre>
+<pre><code>## -- Column specification ---------------------------------------------------------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (4): lastname, firstname, startdate, gender
+## dbl (1): id</code></pre>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <div id="arrange_orderfunction" class="section level3" number="16.3.3">
 <h3><span class="header-section-number">16.3.3</span> <code>order</code> Function from Base R</h3>
@@ -1364,8 +1411,8 @@ BOOK UNDER CONSTRUCTION</a>
 <li>Insert brackets (<code>[ ]</code>), which allow us to reference rows or columns depending on how we format the brackets. If we type a function or value before the comma, we are indicating that we wish to apply operations to row(s), and if we type a function or value after the comma, we are indicating that we wish to apply operations to column(s).</li>
 <li>To sort the data frame into ascending rows by the <code>startdate</code> variable, type the name of the <code>order</code> function <em>before</em> the comma in the brackets. As the sole parenthetical argument of the <code>order</code> function, type the name of the <code>personaldata</code> data frame object, followed by the <code>$</code> operator and the name of the variable by which we wish to sort the data frame, which to reiterate is the <code>startdate</code> variable. The <code>$</code> operator signals to R that a variable belongs to a particular data frame object. By default, the <code>order</code> function sorts in ascending order.</li>
 </ol>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="arrange.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order </span></span>
-<span id="cb272-2"><a href="arrange.html#cb272-2" aria-hidden="true" tabindex="-1"></a>personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate),]</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="arrange.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order </span></span>
+<span id="cb290-2"><a href="arrange.html#cb290-2" aria-hidden="true" tabindex="-1"></a>personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate),]</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1379,12 +1426,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 8   201 Providence Cindy     1/9/2016  female
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <p>To change the ordering of data in the <code>personaldata</code> data frame object itself, we will need to (re)name the data frame object using the <code>&lt;-</code> variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the <em>exact</em> same name as it had originally (i.e., <code>personaldata</code>). To do so, to the <em>left</em> of the <code>&lt;-</code> operator, type what you would like to name the new (updated) sorted data frame object (<code>personaldata</code>). Next, to the <em>right</em> of the <code>&lt;-</code> operator, copy and paste the same code we wrote above. Finally, use the <code>head</code> function from base R to view the first six rows of the new data frame object.</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="arrange.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order </span></span>
-<span id="cb274-2"><a href="arrange.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and overwrite existing data frame object</span></span>
-<span id="cb274-3"><a href="arrange.html#cb274-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate),]</span>
-<span id="cb274-4"><a href="arrange.html#cb274-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb274-5"><a href="arrange.html#cb274-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb274-6"><a href="arrange.html#cb274-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="arrange.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order </span></span>
+<span id="cb292-2"><a href="arrange.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and overwrite existing data frame object</span></span>
+<span id="cb292-3"><a href="arrange.html#cb292-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate),]</span>
+<span id="cb292-4"><a href="arrange.html#cb292-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb292-5"><a href="arrange.html#cb292-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb292-6"><a href="arrange.html#cb292-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1395,11 +1442,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   154 McDonald Ronald    1/9/2016  male  
 ## 6   155 Smith    John      1/9/2016  male</code></pre>
 <p>To sort in <em>descending</em> order, add the argument <code>decreasing=TRUE</code> within the <code>order</code> function parentheses. <em>Remember, we use commas to separate arguments used in a function (if there are two or more arguments).</em></p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="arrange.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order</span></span>
-<span id="cb276-2"><a href="arrange.html#cb276-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="cn">TRUE</span>),]</span>
-<span id="cb276-3"><a href="arrange.html#cb276-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb276-4"><a href="arrange.html#cb276-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb276-5"><a href="arrange.html#cb276-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="arrange.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order</span></span>
+<span id="cb294-2"><a href="arrange.html#cb294-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="cn">TRUE</span>),]</span>
+<span id="cb294-3"><a href="arrange.html#cb294-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb294-4"><a href="arrange.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb294-5"><a href="arrange.html#cb294-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1410,11 +1457,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   282 Legend     John      1/9/2016  male  
 ## 6   198 Morales    Linda     1/7/2016  female</code></pre>
 <p>If we wish to sort a data frame object by two variables, as the second argument in the <code>order</code> function parentheses, simply add the name of the data frame object, followed by the <code>$</code> operator and the name of the second second variable. We will sort the data frame in by <code>gender</code> and <code>startdate</code>. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so <em>within</em> the values/levels of the first variable listed. As shown below, <code>startdate</code> is sorted within the sorted levels of the <code>gender</code> variable. The default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="arrange.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order</span></span>
-<span id="cb278-2"><a href="arrange.html#cb278-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate),]</span>
-<span id="cb278-3"><a href="arrange.html#cb278-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb278-4"><a href="arrange.html#cb278-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb278-5"><a href="arrange.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="arrange.html#cb296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order</span></span>
+<span id="cb296-2"><a href="arrange.html#cb296-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate),]</span>
+<span id="cb296-3"><a href="arrange.html#cb296-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb296-4"><a href="arrange.html#cb296-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb296-5"><a href="arrange.html#cb296-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1425,12 +1472,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   125 Franklin   Benjamin  1/5/2016  male  
 ## 6   154 McDonald   Ronald    1/9/2016  male</code></pre>
 <p>To sort by one of the variables in descending order and the other variable by the default ascending order, we need to add the <code>decreasing=</code> argument, but because we have two variables, we need to provide a vector containing logical values (<code>TRUE</code>, <code>FALSE</code>) to indicate which variable we wish to apply a <em>descending</em> order. If the logical value is <code>TRUE</code> for the <code>decreasing=</code> argument, then we sort in descending variable. Using the <code>c</code> (combine) function from base R, we create a vector of two logical values whose order corresponds to the order in which we listed the two variables in the <code>order</code> function. For example, if the argument is <code>decreasing=c(FALSE, TRUE)</code>, then we sort the first variable in the default ascending order and the second variable in descending order, which is what we do below.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="arrange.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by gender in ascending order and </span></span>
-<span id="cb280-2"><a href="arrange.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="co"># startdate in descending order</span></span>
-<span id="cb280-3"><a href="arrange.html#cb280-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>)),]</span>
-<span id="cb280-4"><a href="arrange.html#cb280-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb280-5"><a href="arrange.html#cb280-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb280-6"><a href="arrange.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="arrange.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by gender in ascending order and </span></span>
+<span id="cb298-2"><a href="arrange.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="co"># startdate in descending order</span></span>
+<span id="cb298-3"><a href="arrange.html#cb298-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>)),]</span>
+<span id="cb298-4"><a href="arrange.html#cb298-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb298-5"><a href="arrange.html#cb298-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb298-6"><a href="arrange.html#cb298-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1441,11 +1488,11 @@ BOOK UNDER CONSTRUCTION</a>
 ## 5   125 Franklin   Benjamin  1/5/2016  male  
 ## 6   154 McDonald   Ronald    1/9/2016  male</code></pre>
 <p>Or, you could sort by both variables in descending order by change the argument to <code>decreasing=c(TRUE, TRUE)</code>.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="arrange.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by gender and startdate variables descending order</span></span>
-<span id="cb282-2"><a href="arrange.html#cb282-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)),]</span>
-<span id="cb282-3"><a href="arrange.html#cb282-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb282-4"><a href="arrange.html#cb282-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb282-5"><a href="arrange.html#cb282-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="arrange.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by gender and startdate variables descending order</span></span>
+<span id="cb300-2"><a href="arrange.html#cb300-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)),]</span>
+<span id="cb300-3"><a href="arrange.html#cb300-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb300-4"><a href="arrange.html#cb300-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
+<span id="cb300-5"><a href="arrange.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1459,6 +1506,27 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-magrittr" class="csl-entry">
+Bache, Stefan Milton, and Hadley Wickham. 2020. <em>Magrittr: A Forward-Pipe Operator for r</em>. <a href="https://CRAN.R-project.org/package=magrittr">https://CRAN.R-project.org/package=magrittr</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry">
+———. 2021b. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-tidyverse2019" class="csl-entry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-R-dplyr" class="csl-entry">
+Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2021. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
+<div id="ref-wickham2017" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em><span>R</span> for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.
+</div>
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -1469,7 +1537,6 @@ BOOK UNDER CONSTRUCTION</a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1496,6 +1563,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

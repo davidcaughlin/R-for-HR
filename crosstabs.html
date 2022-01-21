@@ -6,12 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 25 Summarizing Two or More Categorical Variables Using Cross-Tabulations | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 25 Summarizing Two or More Categorical Variables Using Cross-Tabulations | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Chapter 25 Summarizing Two or More Categorical Variables Using Cross-Tabulations | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
 
-<meta name="date" content="2022-01-10" />
+<meta name="date" content="2022-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +33,9 @@
   
 <link rel="prev" href="descriptives.html"/>
 <link rel="next" href="pivottables.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,7 +51,8 @@
 
 
 
-
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -116,6 +118,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -626,29 +651,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -968,6 +993,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="53.1.4" data-path="lassoregression.html"><a href="lassoregression.html#modeltype_selection_lassoregression"><i class="fa fa-check"></i><b>53.1.4</b> Model Type Selection</a></li>
 <li class="chapter" data-level="53.1.5" data-path="lassoregression.html"><a href="lassoregression.html#crossvalidation_lassoregression"><i class="fa fa-check"></i><b>53.1.5</b> Cross-Validation</a></li>
 <li class="chapter" data-level="53.1.6" data-path="lassoregression.html"><a href="lassoregression.html#predictiveanalytics_lassoregression"><i class="fa fa-check"></i><b>53.1.6</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="53.1.7" data-path="lassoregression.html"><a href="lassoregression.html#conceptualvideo_lassoregression"><i class="fa fa-check"></i><b>53.1.7</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="53.2" data-path="lassoregression.html"><a href="lassoregression.html#tutorial_lassoregression"><i class="fa fa-check"></i><b>53.2</b> Tutorial</a>
 <ul>
@@ -982,9 +1008,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="53.2.9" data-path="lassoregression.html"><a href="lassoregression.html#summary_lasso"><i class="fa fa-check"></i><b>53.2.9</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="54" data-path="pathanalysis.html"><a href="pathanalysis.html"><i class="fa fa-check"></i><b>54</b> Investigating Processes Using Path Analysis</a>
+<ul>
+<li class="chapter" data-level="54.1" data-path="pathanalysis.html"><a href="pathanalysis.html#conceptualoverview_pathanalysis"><i class="fa fa-check"></i><b>54.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="54.1.1" data-path="pathanalysis.html"><a href="pathanalysis.html#pathdiagram_pathanalysis"><i class="fa fa-check"></i><b>54.1.1</b> Path Diagram</a></li>
+<li class="chapter" data-level="54.1.2" data-path="pathanalysis.html"><a href="pathanalysis.html#modelidentification_pathanalysis"><i class="fa fa-check"></i><b>54.1.2</b> Model Identification</a></li>
+<li class="chapter" data-level="54.1.3" data-path="pathanalysis.html"><a href="pathanalysis.html#modelfit_pathanalysis"><i class="fa fa-check"></i><b>54.1.3</b> Model Fit</a></li>
+<li class="chapter" data-level="54.1.4" data-path="pathanalysis.html"><a href="pathanalysis.html#parameterestimatese_pathanalysis"><i class="fa fa-check"></i><b>54.1.4</b> Parameter Estimates</a></li>
+</ul></li>
+<li class="chapter" data-level="54.2" data-path="pathanalysis.html"><a href="pathanalysis.html#statisticalassumptions_pathanalysis"><i class="fa fa-check"></i><b>54.2</b> Statistical Assumptions</a>
+<ul>
+<li class="chapter" data-level="54.2.1" data-path="pathanalysis.html"><a href="pathanalysis.html#conceptualvideo_pathanalysis"><i class="fa fa-check"></i><b>54.2.1</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="54.3" data-path="pathanalysis.html"><a href="pathanalysis.html#tutorial_pathanalysis"><i class="fa fa-check"></i><b>54.3</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="54.3.1" data-path="pathanalysis.html"><a href="pathanalysis.html#videotutorial_pathanalysis"><i class="fa fa-check"></i><b>54.3.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="54.3.2" data-path="pathanalysis.html"><a href="pathanalysis.html#functions_pathanalysis"><i class="fa fa-check"></i><b>54.3.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="54.3.3" data-path="pathanalysis.html"><a href="pathanalysis.html#initsteps_pathanalysis"><i class="fa fa-check"></i><b>54.3.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="54.3.4" data-path="pathanalysis.html"><a href="pathanalysis.html#specifymodel_pathanalysis"><i class="fa fa-check"></i><b>54.3.4</b> Specify &amp; Estimate Path Analysis Models</a></li>
+<li class="chapter" data-level="54.3.5" data-path="pathanalysis.html"><a href="pathanalysis.html#additionalinfo_pathanalysis"><i class="fa fa-check"></i><b>54.3.5</b> Additional Information on Model Specification Notation</a></li>
+<li class="chapter" data-level="54.3.6" data-path="pathanalysis.html"><a href="pathanalysis.html#summary_pathanalysis"><i class="fa fa-check"></i><b>54.3.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>X Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="54" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>54</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="55" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>55</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="55" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>55</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="56" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>56</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1031,7 +1080,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="videotutorial_crosstabs" class="section level3" number="25.2.1">
 <h3><span class="header-section-number">25.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/Ja_CM253oDQ?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/Ja_CM253oDQ?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/Ja_CM253oDQ" class="uri">https://youtu.be/Ja_CM253oDQ</a></p>
 </div>
@@ -1074,35 +1123,32 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="initsteps_tables" class="section level3" number="25.2.3">
 <h3><span class="header-section-number">25.2.3</span> Initial Steps</h3>
-<p>If you haven’t already, save the file called <strong>“EmployeeDemographics.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the file called <strong>“EmployeeDemographics.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="crosstabs.html#cb713-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb713-2"><a href="crosstabs.html#cb713-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“EmployeeDemographics.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="crosstabs.html#cb714-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb714-2"><a href="crosstabs.html#cb714-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb714-3"><a href="crosstabs.html#cb714-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb714-4"><a href="crosstabs.html#cb714-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="crosstabs.html#cb715-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb715-2"><a href="crosstabs.html#cb715-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb715-3"><a href="crosstabs.html#cb715-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb715-4"><a href="crosstabs.html#cb715-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb715-5"><a href="crosstabs.html#cb715-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="crosstabs.html#cb757-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb757-2"><a href="crosstabs.html#cb757-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“EmployeeDemographics.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb758-1"><a href="crosstabs.html#cb758-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb758-2"><a href="crosstabs.html#cb758-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb758-3"><a href="crosstabs.html#cb758-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb758-4"><a href="crosstabs.html#cb758-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="crosstabs.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb759-2"><a href="crosstabs.html#cb759-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb759-3"><a href="crosstabs.html#cb759-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb759-4"><a href="crosstabs.html#cb759-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb759-5"><a href="crosstabs.html#cb759-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 163 Columns: 7</code></pre>
+<pre><code>## -- Column specification ---------------------------------------------------------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (3): Sex, RaceEthnicity, Veteran
+## dbl (4): EmployeeID, OrgTenureYrs_2019, JobLevel, AgeYrs_2019</code></pre>
 <pre><code>## 
-## -- Column specification ---------------------------------------------------------------
-## cols(
-##   EmployeeID = col_double(),
-##   OrgTenureYrs_2019 = col_double(),
-##   JobLevel = col_double(),
-##   Sex = col_character(),
-##   RaceEthnicity = col_character(),
-##   AgeYrs_2019 = col_double(),
-##   Veteran = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="crosstabs.html#cb717-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb717-2"><a href="crosstabs.html#cb717-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
-<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;              
-## [5] &quot;RaceEthnicity&quot;     &quot;AgeYrs_2019&quot;       &quot;Veteran&quot;</code></pre>
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="crosstabs.html#cb763-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb763-2"><a href="crosstabs.html#cb763-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(demodata)</span></code></pre></div>
+<pre><code>## [1] &quot;EmployeeID&quot;        &quot;OrgTenureYrs_2019&quot; &quot;JobLevel&quot;          &quot;Sex&quot;               &quot;RaceEthnicity&quot;     &quot;AgeYrs_2019&quot;      
+## [7] &quot;Veteran&quot;</code></pre>
 <p>Note in the data frame that the <code>EmployeeID</code> variable (i.e., column, field) is a unique identifier variable, and each row contains an individual employee’s demographic data on the following variables: organizational tenure (<code>OrgTenureYrs_2019</code>), job level (<code>JobLevel</code>), sex (<code>Sex</code>), race/ethnicity (<code>RaceEthnicity</code>), age (<code>AgeYrs_2019</code>), and veteran status (<code>Veteran</code>).</p>
 </div>
 <div id="twoway_crosstabs" class="section level3" number="25.2.4">
@@ -1111,8 +1157,8 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="twoway_crosstabs_table" class="section level4" number="25.2.4.1">
 <h4><span class="header-section-number">25.2.4.1</span> Option 1: Using the <code>table</code> Function</h4>
 <p>Using the <code>table</code> function from base R, let’s create a two-way cross-tabulation table containing frequencies based on the <code>JobLevel</code> and <code>Sex</code> variables contained in the <code>demodata</code> data frame object. To begin, type the name of the <code>table</code> function. As the first argument in the function, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the first variable (<code>JobLevel</code>). As the second argument, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the second variable (<code>Sex</code>).</p>
-<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="crosstabs.html#cb719-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two-way cross-tabulation table from JobLevel and Sex variables</span></span>
-<span id="cb719-2"><a href="crosstabs.html#cb719-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb765-1"><a href="crosstabs.html#cb765-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create two-way cross-tabulation table from JobLevel and Sex variables</span></span>
+<span id="cb765-2"><a href="crosstabs.html#cb765-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
 <pre><code>##    
 ##     Female Male
 ##   1     47   35
@@ -1123,11 +1169,11 @@ BOOK UNDER CONSTRUCTION</a>
 <p>As you can see, the levels of the <code>JobLevel</code> variable (i.e., 1-5) appear as the row labels, and the categories of the <code>Sex</code> variable (i.e., Female, Male) appear as the column labels. If we wanted the categories of the <code>Sex</code> variable to appear as the row labels and the levels of the <code>JobLevel</code> variable to appear as the column labels, we would reverse the order of the two variables in our <code>table</code> function.</p>
 <p>Each “cell” in the cross-tabulation table contains the frequency (i.e., count) of employees who are in the intersecting categories. For example, the table shows that 47 female employees are in job level 1, whereas 35 male employees are in job level 2. Because there are five levels associated with the <code>JobLevel</code> variable (i.e., 1-5) and two levels associated with the <code>Sex</code> variable (i.e., Female, Male), the 5x2 cross-tabulation table has a total of 10 cells.</p>
 <p>Using the same code as above, let’s assign the cross-tabulation table we created to an object that we’ll (arbitrarily) call <code>table_2</code>. We’ll use the <code>&lt;-</code> operator to do this.</p>
-<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="crosstabs.html#cb721-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign two-way cross-tabulation table to object</span></span>
-<span id="cb721-2"><a href="crosstabs.html#cb721-2" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> <span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb767-1"><a href="crosstabs.html#cb767-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign two-way cross-tabulation table to object</span></span>
+<span id="cb767-2"><a href="crosstabs.html#cb767-2" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> <span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
 <p>Using the cross-tabulation table object we created above (<code>table_2</code>), we can apply the <code>prop.table</code> function from base R to estimate the proportions in each table cell. To calculate the cell proportions, simply type the name of the <code>prop.table</code> function, and as the only parenthetical argument, type the name of the cross-tabulation table object we created above (<code>table_2</code>).</p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="crosstabs.html#cb722-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Present the cell proportions for the cross-tabulation table</span></span>
-<span id="cb722-2"><a href="crosstabs.html#cb722-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2)</span></code></pre></div>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="crosstabs.html#cb768-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Present the cell proportions for the cross-tabulation table</span></span>
+<span id="cb768-2"><a href="crosstabs.html#cb768-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2)</span></code></pre></div>
 <pre><code>##    
 ##          Female        Male
 ##   1 0.288343558 0.214723926
@@ -1136,8 +1182,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4 0.018404908 0.042944785
 ##   5 0.006134969 0.049079755</code></pre>
 <p>When inspecting the cell proportion table displayed above, you might find it challenging to read given that number of decimal places after zero that are reported. To round values to 2 places after the decimal, let’s wrap the code from above in the <code>round</code> function from base R. As the first argument, let’s copy in our <code>prop.table</code> code from above, and as the second argument, let’s type the number of decimals after zero to which we wish to round (e.g., 2).</p>
-<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="crosstabs.html#cb724-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
-<span id="cb724-2"><a href="crosstabs.html#cb724-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb770-1"><a href="crosstabs.html#cb770-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb770-2"><a href="crosstabs.html#cb770-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    
 ##     Female Male
 ##   1   0.29 0.21
@@ -1146,13 +1192,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4   0.02 0.04
 ##   5   0.01 0.05</code></pre>
 <p>If you were to sum all of the proportions in the table, you would get a total of 1 (100%). To demonstrate, let’s apply the <code>sum</code> function base R by wrapping our <code>prop.table</code> function code in the <code>sum</code> function.</p>
-<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb726-1"><a href="crosstabs.html#cb726-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
-<span id="cb726-2"><a href="crosstabs.html#cb726-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_2))</span></code></pre></div>
+<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb772-1"><a href="crosstabs.html#cb772-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb772-2"><a href="crosstabs.html#cb772-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_2))</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>As expected, all of the proportions in the table sum to 1 (100%).</p>
 <p>What if we wish to compute the proportions by row or by column? Well, to compute those row-by-row or column-by-column proportions, we simply add an argument to the <code>prop.table</code> function. To compute the <em>row</em> proportions, enter <code>1</code> as the second argument.</p>
-<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb728-1"><a href="crosstabs.html#cb728-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the cross-tabulation table</span></span>
-<span id="cb728-2"><a href="crosstabs.html#cb728-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="crosstabs.html#cb774-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the cross-tabulation table</span></span>
+<span id="cb774-2"><a href="crosstabs.html#cb774-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##    
 ##        Female      Male
 ##   1 0.5731707 0.4268293
@@ -1161,8 +1207,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4 0.3000000 0.7000000
 ##   5 0.1111111 0.8888889</code></pre>
 <p>In the output, you can see that the proportions in each row now sum to 1 (100%). Now, let’s round the row proportions to 2 places after the decimal.</p>
-<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb730-1"><a href="crosstabs.html#cb730-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round cross-tabulation table values to 2 places after decimal</span></span>
-<span id="cb730-2"><a href="crosstabs.html#cb730-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb776-1"><a href="crosstabs.html#cb776-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round cross-tabulation table values to 2 places after decimal</span></span>
+<span id="cb776-2"><a href="crosstabs.html#cb776-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    
 ##     Female Male
 ##   1   0.57 0.43
@@ -1171,8 +1217,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4   0.30 0.70
 ##   5   0.11 0.89</code></pre>
 <p>Next, let’s convert those proportions to percentages by multiplying the previous code by 100. If you recall, the multiplication operator in R is the <code>*</code> symbol. Just be sure to remember that the values presented in the subsequent output represent percentages and <em>not</em> raw frequencies (i.e., counts).</p>
-<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb732-1"><a href="crosstabs.html#cb732-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
-<span id="cb732-2"><a href="crosstabs.html#cb732-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb778-1"><a href="crosstabs.html#cb778-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
+<span id="cb778-2"><a href="crosstabs.html#cb778-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    
 ##     Female Male
 ##   1     57   43
@@ -1181,8 +1227,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4     30   70
 ##   5     11   89</code></pre>
 <p>We can retain two digits after the decimal by re-specifying the code from above in the following way.</p>
-<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb734-1"><a href="crosstabs.html#cb734-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
-<span id="cb734-2"><a href="crosstabs.html#cb734-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb780"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb780-1"><a href="crosstabs.html#cb780-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
+<span id="cb780-2"><a href="crosstabs.html#cb780-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    
 ##     Female  Male
 ##   1  57.32 42.68
@@ -1191,8 +1237,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4  30.00 70.00
 ##   5  11.11 88.89</code></pre>
 <p>Alternatively, we can compute the <em>column</em> proportions by typing <code>2</code> instead of <code>1</code> in the second argument of the <code>prop.table</code> function. As you can see below, each column now adds up to 1 (100%).</p>
-<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb736-1"><a href="crosstabs.html#cb736-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the cross-tabulation table</span></span>
-<span id="cb736-2"><a href="crosstabs.html#cb736-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb782"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb782-1"><a href="crosstabs.html#cb782-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the cross-tabulation table</span></span>
+<span id="cb782-2"><a href="crosstabs.html#cb782-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    
 ##         Female       Male
 ##   1 0.58750000 0.42168675
@@ -1201,8 +1247,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4 0.03750000 0.08433735
 ##   5 0.01250000 0.09638554</code></pre>
 <p>Now, let’s multiply by 100 to convert the proportions to percentages and round to 2 places after the decimal.</p>
-<div class="sourceCode" id="cb738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb738-1"><a href="crosstabs.html#cb738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal and convert to percentages</span></span>
-<span id="cb738-2"><a href="crosstabs.html#cb738-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">prop.table</span>(table_2, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb784"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb784-1"><a href="crosstabs.html#cb784-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal and convert to percentages</span></span>
+<span id="cb784-2"><a href="crosstabs.html#cb784-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> <span class="fu">prop.table</span>(table_2, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##    
 ##     Female  Male
 ##   1  58.75 42.17
@@ -1214,8 +1260,8 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="twoway_crosstabs_xtabs" class="section level4" number="25.2.4.2">
 <h4><span class="header-section-number">25.2.4.2</span> Option 2: Using the <code>xtabs</code> Function</h4>
 <p>The <code>xtabs</code> function from base R can also be used to create a two-way cross-tabulation table. To begin, type the name of the <code>xtabs</code> function. As the first argument in the function parentheses, insert the tilde (<code>~</code>) operator followed by the name of the first variable (<code>JobLevel</code>), the addition (<code>+</code>) operator, and the name of the second variable (<code>Sex</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object two which the aforementioned variables belong (<code>demodata</code>).</p>
-<div class="sourceCode" id="cb740"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb740-1"><a href="crosstabs.html#cb740-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables </span></span>
-<span id="cb740-2"><a href="crosstabs.html#cb740-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex, <span class="at">data=</span>demodata)</span></code></pre></div>
+<div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb786-1"><a href="crosstabs.html#cb786-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables </span></span>
+<span id="cb786-2"><a href="crosstabs.html#cb786-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex, <span class="at">data=</span>demodata)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel Female Male
 ##        1     47   35
@@ -1224,11 +1270,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4      3    7
 ##        5      1    8</code></pre>
 <p>Using the same code as above, let’s assign the cross-tabulation table we created to an object that we’ll (arbitrarily) call <code>table_2</code>. We’ll use the <code>&lt;-</code> operator to do this.</p>
-<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb742-1"><a href="crosstabs.html#cb742-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign two-way cross-tabulation table to object</span></span>
-<span id="cb742-2"><a href="crosstabs.html#cb742-2" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex, <span class="at">data=</span>demodata)</span></code></pre></div>
+<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb788-1"><a href="crosstabs.html#cb788-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign two-way cross-tabulation table to object</span></span>
+<span id="cb788-2"><a href="crosstabs.html#cb788-2" aria-hidden="true" tabindex="-1"></a>table_2 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex, <span class="at">data=</span>demodata)</span></code></pre></div>
 <p>Using the cross-tabulation table object we created above (<code>table_2</code>), we can apply the <code>prop.table</code> function from base R to estimate the proportions in each table cell. To calculate the cell proportions, simply type the name of the <code>prop.table</code> function, and as the only parenthetical argument, type the name of the cross-tabulation table object we created above (<code>table_2</code>).</p>
-<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb743-1"><a href="crosstabs.html#cb743-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the cell proportions for the cross-tabulation table</span></span>
-<span id="cb743-2"><a href="crosstabs.html#cb743-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2)</span></code></pre></div>
+<div class="sourceCode" id="cb789"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb789-1"><a href="crosstabs.html#cb789-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the cell proportions for the cross-tabulation table</span></span>
+<span id="cb789-2"><a href="crosstabs.html#cb789-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel      Female        Male
 ##        1 0.288343558 0.214723926
@@ -1237,8 +1283,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4 0.018404908 0.042944785
 ##        5 0.006134969 0.049079755</code></pre>
 <p>When inspecting the cell proportion table displayed above, you might find it challenging to read given that number of decimal places after zero that are reported. To round values to 2 places after the decimal, let’s wrap the code from above in the <code>round</code> function from base R. As the first argument, let’s copy in our <code>prop.table</code> code from above, and as the second argument, let’s type the number of decimals after zero to which we wish to round (e.g., 2).</p>
-<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb745-1"><a href="crosstabs.html#cb745-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
-<span id="cb745-2"><a href="crosstabs.html#cb745-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb791"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb791-1"><a href="crosstabs.html#cb791-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb791-2"><a href="crosstabs.html#cb791-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel Female Male
 ##        1   0.29 0.21
@@ -1247,13 +1293,13 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4   0.02 0.04
 ##        5   0.01 0.05</code></pre>
 <p>If you were to sum all of the proportions in the table, you would get a total of 1 (100%). To demonstrate, let’s apply the <code>sum</code> function base R by wrapping our <code>prop.table</code> function code in the <code>sum</code> function.</p>
-<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb747-1"><a href="crosstabs.html#cb747-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
-<span id="cb747-2"><a href="crosstabs.html#cb747-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_2))</span></code></pre></div>
+<div class="sourceCode" id="cb793"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb793-1"><a href="crosstabs.html#cb793-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round values to 2 places after decimal</span></span>
+<span id="cb793-2"><a href="crosstabs.html#cb793-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">prop.table</span>(table_2))</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>As expected, all of the proportions in the table sum to 1 (100%).</p>
 <p>What if we wish to compute the proportions by row or by column? Well, to compute those row-by-row or column-by-column proportions, we simply add an argument to the <code>prop.table</code> function. To compute the <em>row</em> proportions, enter <code>1</code> as the second argument.</p>
-<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb749-1"><a href="crosstabs.html#cb749-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the cross-tabulation table</span></span>
-<span id="cb749-2"><a href="crosstabs.html#cb749-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb795"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb795-1"><a href="crosstabs.html#cb795-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the cross-tabulation table</span></span>
+<span id="cb795-2"><a href="crosstabs.html#cb795-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel    Female      Male
 ##        1 0.5731707 0.4268293
@@ -1262,8 +1308,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4 0.3000000 0.7000000
 ##        5 0.1111111 0.8888889</code></pre>
 <p>In the output, you can see that the proportions in each row now sum to 1 (100%). Now, let’s round the row proportions to 2 places after the decimal.</p>
-<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb751-1"><a href="crosstabs.html#cb751-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round cross-tabulation table values to 2 places after decimal</span></span>
-<span id="cb751-2"><a href="crosstabs.html#cb751-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb797-1"><a href="crosstabs.html#cb797-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round cross-tabulation table values to 2 places after decimal</span></span>
+<span id="cb797-2"><a href="crosstabs.html#cb797-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel Female Male
 ##        1   0.57 0.43
@@ -1272,8 +1318,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4   0.30 0.70
 ##        5   0.11 0.89</code></pre>
 <p>Next, let’s convert those proportions to percentages by multiplying the previous code by 100. If you recall, the multiplication operator in R is the <code>*</code> symbol. Just be sure to remember that the values presented in the subsequent output represent percentages and <em>not</em> raw frequencies (i.e., counts).</p>
-<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb753-1"><a href="crosstabs.html#cb753-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
-<span id="cb753-2"><a href="crosstabs.html#cb753-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb799"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb799-1"><a href="crosstabs.html#cb799-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert proportions to percentages by multiplying by 100</span></span>
+<span id="cb799-2"><a href="crosstabs.html#cb799-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">1</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel Female Male
 ##        1     57   43
@@ -1282,8 +1328,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4     30   70
 ##        5     11   89</code></pre>
 <p>Alternatively, we can compute the <em>column</em> proportions by typing <code>2</code> instead of <code>1</code> in the second argument of the <code>prop.table</code> function. As you can see below, each column now adds up to 1 (100%).</p>
-<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb755-1"><a href="crosstabs.html#cb755-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the table</span></span>
-<span id="cb755-2"><a href="crosstabs.html#cb755-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb801-1"><a href="crosstabs.html#cb801-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the row proportions for the table</span></span>
+<span id="cb801-2"><a href="crosstabs.html#cb801-2" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(table_2, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel     Female       Male
 ##        1 0.58750000 0.42168675
@@ -1292,8 +1338,8 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4 0.03750000 0.08433735
 ##        5 0.01250000 0.09638554</code></pre>
 <p>Now, let’s round to 2 places after the decimal and multiply by 100 to convert the proportions to percentages.</p>
-<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb757-1"><a href="crosstabs.html#cb757-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal and convert to percentages</span></span>
-<span id="cb757-2"><a href="crosstabs.html#cb757-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="crosstabs.html#cb803-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Round table values to 2 places after decimal and convert to percentages</span></span>
+<span id="cb803-2"><a href="crosstabs.html#cb803-2" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(table_2, <span class="dv">2</span>), <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##         Sex
 ## JobLevel Female Male
 ##        1     59   42
@@ -1305,13 +1351,13 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="twoway_crosstabs_CrossTable" class="section level4" number="25.2.4.3">
 <h4><span class="header-section-number">25.2.4.3</span> Option 3: Using the <code>CrossTable</code> Function</h4>
 <p>The <code>CrossTable</code> function from the <code>gmodels</code> package is another option when it comes to creating a two-way cross-tabulation table. The function includes multiple arguments that can eliminate additional steps (e.g., rounding) that would be required when using the <code>table</code> or <code>xtabs</code> function from base R. Before using the <code>CrossTable</code> function, we must install and access the <code>gmodels</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. The downside of the <code>CrossTable</code> function is that it can only be used to create two-way cross-tabulation tables.</p>
-<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb759-1"><a href="crosstabs.html#cb759-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install gmodels package if you haven&#39;t already</span></span>
-<span id="cb759-2"><a href="crosstabs.html#cb759-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gmodels&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb760"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb760-1"><a href="crosstabs.html#cb760-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access gmodels package</span></span>
-<span id="cb760-2"><a href="crosstabs.html#cb760-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span></code></pre></div>
+<div class="sourceCode" id="cb805"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb805-1"><a href="crosstabs.html#cb805-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install gmodels package if you haven&#39;t already</span></span>
+<span id="cb805-2"><a href="crosstabs.html#cb805-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gmodels&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb806-1"><a href="crosstabs.html#cb806-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access gmodels package</span></span>
+<span id="cb806-2"><a href="crosstabs.html#cb806-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span></code></pre></div>
 <p>To create a two-way cross-tabulation table using the <code>JobLevel</code> and <code>Sex</code> variables, type the name of the <code>CrossTable</code> function. As the first argument in the function parentheses, type the name of first variable you wish to use to make the table, and use the <code>$</code> symbol to indicate that the variable (<code>JobLevel</code>) belongs to the data frame in question (<code>demodata</code>), which should look like this: <code>demodata$JobLevel</code>. As the second argument, type the name of the second variable you wish to use to make the table, and use the <code>$</code> symbol to indicate that the variable (<code>Sex</code>) belongs to the data frame in question (<code>demodata</code>), which should look like this: <code>demodata$Sex</code>. Make sure you use a comma (<code>,</code>) to separate the two arguments.</p>
-<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb761-1"><a href="crosstabs.html#cb761-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables from demodata data frame</span></span>
-<span id="cb761-2"><a href="crosstabs.html#cb761-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
+<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="crosstabs.html#cb807-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables from demodata data frame</span></span>
+<span id="cb807-2"><a href="crosstabs.html#cb807-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex)</span></code></pre></div>
 <pre><code>## 
 ##  
 ##    Cell Contents
@@ -1367,12 +1413,12 @@ BOOK UNDER CONSTRUCTION</a>
 ## </code></pre>
 <p>The resulting cross-tabulation table is packed with information! Fortunately, there is a key titled “Cell Contents” that explains how to interpret the value displayed in each row within each cell. As you can see, by default, the table displays the raw frequencies (i.e., counts), the proportions by row, the proportions by column, and the overall cell proportions – and we only had to use a single function!</p>
 <p>In some cases, you may wish to reduce the amount of information displayed. To find additional documentation, use the help (<code>?</code>) feature for the <code>CrossTable</code> function.</p>
-<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb763-1"><a href="crosstabs.html#cb763-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access background information on function</span></span>
-<span id="cb763-2"><a href="crosstabs.html#cb763-2" aria-hidden="true" tabindex="-1"></a>?CrossTable</span></code></pre></div>
+<div class="sourceCode" id="cb809"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb809-1"><a href="crosstabs.html#cb809-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access background information on function</span></span>
+<span id="cb809-2"><a href="crosstabs.html#cb809-2" aria-hidden="true" tabindex="-1"></a>?CrossTable</span></code></pre></div>
 <p>Once the Help window opens, you can explore the different arguments that can be used within the function to change the default settings. The default number of digits displayed after the decimal is 3, but let’s change to 2 by adding the argument <code>digits=2</code>. Next, let’s add the following arguments: (a) <code>prop.r=FALSE</code> to hide the row proportions, (b) <code>prop.c=FALSE</code> to hide the column proportions, (c) <code>prop.t=TRUE</code> to keep the total proportions visible, and (d) <code>prop.chisq=FALSE</code> to hide the chi-square contribution of each cell.</p>
-<div class="sourceCode" id="cb764"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb764-1"><a href="crosstabs.html#cb764-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables from demodata data frame</span></span>
-<span id="cb764-2"><a href="crosstabs.html#cb764-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, <span class="at">digits=</span><span class="dv">2</span>,</span>
-<span id="cb764-3"><a href="crosstabs.html#cb764-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">prop.r=</span><span class="cn">FALSE</span>, <span class="at">prop.c=</span><span class="cn">FALSE</span>, <span class="at">prop.t=</span><span class="cn">TRUE</span>, <span class="at">prop.chisq=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb810"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb810-1"><a href="crosstabs.html#cb810-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables from demodata data frame</span></span>
+<span id="cb810-2"><a href="crosstabs.html#cb810-2" aria-hidden="true" tabindex="-1"></a><span class="fu">CrossTable</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, <span class="at">digits=</span><span class="dv">2</span>,</span>
+<span id="cb810-3"><a href="crosstabs.html#cb810-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">prop.r=</span><span class="cn">FALSE</span>, <span class="at">prop.c=</span><span class="cn">FALSE</span>, <span class="at">prop.t=</span><span class="cn">TRUE</span>, <span class="at">prop.chisq=</span><span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  
 ##    Cell Contents
@@ -1415,8 +1461,8 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="threeway_crosstabs_table" class="section level4" number="25.2.5.1">
 <h4><span class="header-section-number">25.2.5.1</span> Option 1: Using the <code>table</code> Function</h4>
 <p>Using the <code>table</code> function from base R, let’s create a three-way cross-tabulation table containing frequencies based on the <code>JobLevel</code>, <code>Sex</code>, and <code>RaceEthnicity</code> variables contained in the <code>demodata</code> data frame object. To begin, type the name of the <code>table</code> function. As the first argument in the function, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the first variable (<code>JobLevel</code>). As the second argument, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the second variable (<code>Sex</code>). As the third argument, specify the name of the data frame object (<code>demodata</code>) followed by the <code>$</code> operator and the name of the third variable (<code>RaceEthnicity</code>).</p>
-<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb766-1"><a href="crosstabs.html#cb766-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three-way cross-tabulation table from JobLevel, Sex, and RaceEthnicity variables</span></span>
-<span id="cb766-2"><a href="crosstabs.html#cb766-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, demodata<span class="sc">$</span>RaceEthnicity)</span></code></pre></div>
+<div class="sourceCode" id="cb812"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb812-1"><a href="crosstabs.html#cb812-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three-way cross-tabulation table from JobLevel, Sex, and RaceEthnicity variables</span></span>
+<span id="cb812-2"><a href="crosstabs.html#cb812-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, demodata<span class="sc">$</span>RaceEthnicity)</span></code></pre></div>
 <pre><code>## , ,  = Asian
 ## 
 ##    
@@ -1457,11 +1503,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##   4      0    0
 ##   5      1    2</code></pre>
 <p>As you can see, when used to create a three-way cross-tabulation table, the <code>table</code> function creates one two-way cross-tabulation table based on the first two variables for each category or level of the third variable. Let’s assign this table to an object that we’ll call <code>table3</code>.</p>
-<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb768-1"><a href="crosstabs.html#cb768-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign three-way cross-tabulation table to object</span></span>
-<span id="cb768-2"><a href="crosstabs.html#cb768-2" aria-hidden="true" tabindex="-1"></a>table_3 <span class="ot">&lt;-</span> <span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, demodata<span class="sc">$</span>RaceEthnicity)</span></code></pre></div>
+<div class="sourceCode" id="cb814"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb814-1"><a href="crosstabs.html#cb814-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign three-way cross-tabulation table to object</span></span>
+<span id="cb814-2"><a href="crosstabs.html#cb814-2" aria-hidden="true" tabindex="-1"></a>table_3 <span class="ot">&lt;-</span> <span class="fu">table</span>(demodata<span class="sc">$</span>JobLevel, demodata<span class="sc">$</span>Sex, demodata<span class="sc">$</span>RaceEthnicity)</span></code></pre></div>
 <p>If you would prefer to view the frequencies (i.e., counts) in a single table, then use the <code>ftable</code> function from base R. Simply type the name of the table object we created in the previous step (<code>table_3</code>) as the sole argument in the <code>ftable</code> function.</p>
-<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb769-1"><a href="crosstabs.html#cb769-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print three-way cross-tabulation table in a different format</span></span>
-<span id="cb769-2"><a href="crosstabs.html#cb769-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(table_3)</span></code></pre></div>
+<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb815-1"><a href="crosstabs.html#cb815-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print three-way cross-tabulation table in a different format</span></span>
+<span id="cb815-2"><a href="crosstabs.html#cb815-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(table_3)</span></code></pre></div>
 <pre><code>##           Asian Black HispanicLatino White
 ##                                           
 ## 1 Female     14     2             14    17
@@ -1479,8 +1525,8 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="threeway_crosstabs_xtabs" class="section level4" number="25.2.5.2">
 <h4><span class="header-section-number">25.2.5.2</span> Option 2: Using the <code>xtabs</code> Function</h4>
 <p>The <code>xtabs</code> function from base R can also be used to create a three-way cross-tabulation table. To begin, type the name of the <code>xtabs</code> function. As the first argument in the function parentheses, insert the tilde (<code>~</code>) operator followed by the name of the first variable (<code>JobLevel</code>), the addition (<code>+</code>) operator, and the name of the second variable (<code>Sex</code>), the addition (<code>+</code>) operator, and the name of the third variable (<code>RaceEthnicity</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object two which the aforementioned variables belong (<code>demodata</code>).</p>
-<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb771-1"><a href="crosstabs.html#cb771-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables </span></span>
-<span id="cb771-2"><a href="crosstabs.html#cb771-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex <span class="sc">+</span> RaceEthnicity, <span class="at">data=</span>demodata)</span></code></pre></div>
+<div class="sourceCode" id="cb817"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb817-1"><a href="crosstabs.html#cb817-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation table from JobLevel and Sex variables </span></span>
+<span id="cb817-2"><a href="crosstabs.html#cb817-2" aria-hidden="true" tabindex="-1"></a><span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex <span class="sc">+</span> RaceEthnicity, <span class="at">data=</span>demodata)</span></code></pre></div>
 <pre><code>## , , RaceEthnicity = Asian
 ## 
 ##         Sex
@@ -1521,11 +1567,11 @@ BOOK UNDER CONSTRUCTION</a>
 ##        4      0    0
 ##        5      1    2</code></pre>
 <p>As you can see, when used to create a three-way cross-tabulation table, the <code>xtabs</code> function creates one two-way cross-tabulation table based on the first two variables for each category or level of the third variable. Let’s assign this table to an object that we’ll call <code>table3</code>.</p>
-<div class="sourceCode" id="cb773"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb773-1"><a href="crosstabs.html#cb773-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign three-way cross-tabulation table to object</span></span>
-<span id="cb773-2"><a href="crosstabs.html#cb773-2" aria-hidden="true" tabindex="-1"></a>table_3 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex <span class="sc">+</span> RaceEthnicity, <span class="at">data=</span>demodata)</span></code></pre></div>
+<div class="sourceCode" id="cb819"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb819-1"><a href="crosstabs.html#cb819-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign three-way cross-tabulation table to object</span></span>
+<span id="cb819-2"><a href="crosstabs.html#cb819-2" aria-hidden="true" tabindex="-1"></a>table_3 <span class="ot">&lt;-</span> <span class="fu">xtabs</span>(<span class="sc">~</span> JobLevel <span class="sc">+</span> Sex <span class="sc">+</span> RaceEthnicity, <span class="at">data=</span>demodata)</span></code></pre></div>
 <p>If you would prefer to view the frequencies (i.e., counts) in a single table, then use the <code>ftable</code> function from base R. Simply type the name of the table object we created in the previous step (<code>table_3</code>) as the sole argument in the <code>ftable</code> function.</p>
-<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb774-1"><a href="crosstabs.html#cb774-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print three-way cross-tabulation table in a different format</span></span>
-<span id="cb774-2"><a href="crosstabs.html#cb774-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(table_3)</span></code></pre></div>
+<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb820-1"><a href="crosstabs.html#cb820-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print three-way cross-tabulation table in a different format</span></span>
+<span id="cb820-2"><a href="crosstabs.html#cb820-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ftable</span>(table_3)</span></code></pre></div>
 <pre><code>##                 RaceEthnicity Asian Black HispanicLatino White
 ## JobLevel Sex                                                  
 ## 1        Female                  14     2             14    17
@@ -1548,6 +1594,12 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -1558,7 +1610,6 @@ BOOK UNDER CONSTRUCTION</a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1585,6 +1636,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
