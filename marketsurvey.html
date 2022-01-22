@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Preparing Market Survey Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Preparing Market Survey Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://rforhr.com" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="github-repo" content="davidcaughlin/R-for-HR" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Preparing Market Survey Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+
+<meta name="author" content="David E. Caughlin" />
+
+
+<meta name="date" content="2022-01-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="compensation.html"/>
+<link rel="next" href="overviewR.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R for HR</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#hragrowth"><i class="fa fa-check"></i><b>0.1</b> Growth of HR Analytics</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#hranalytics_skillsgap"><i class="fa fa-check"></i><b>0.2</b> Skills Gap</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#hraplc"><i class="fa fa-check"></i><b>0.3</b> Project Life Cycle Perspective</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#hranalytics_hris_overview"><i class="fa fa-check"></i><b>0.4</b> Overview of HRIS &amp; HR Analytics</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#philosophy"><i class="fa fa-check"></i><b>0.5</b> My Philosophy for This Book</a>
+<ul>
+<li class="chapter" data-level="0.5.1" data-path="index.html"><a href="index.html#rationalerpref"><i class="fa fa-check"></i><b>0.5.1</b> Rationale for Using R</a></li>
+<li class="chapter" data-level="0.5.2" data-path="index.html"><a href="index.html#audiencepref"><i class="fa fa-check"></i><b>0.5.2</b> Audience</a></li>
+</ul></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#structurepref"><i class="fa fa-check"></i><b>0.6</b> Structure</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#aboutauthor"><i class="fa fa-check"></i><b>0.7</b> About the Author</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#contactauthor"><i class="fa fa-check"></i><b>0.8</b> Contacting the Author</a></li>
+<li class="chapter" data-level="0.9" data-path="index.html"><a href="index.html#acknowpref"><i class="fa fa-check"></i><b>0.9</b> Acknowledgements</a></li>
+</ul></li>
+<li class="part"><span><b>I HR Analytics Project Life Cycle</b></span></li>
+<li class="chapter" data-level="1" data-path="overviewhraplc.html"><a href="overviewhraplc.html"><i class="fa fa-check"></i><b>1</b> Overview of HR Analytics Project Life Cycle</a></li>
+<li class="chapter" data-level="2" data-path="questionformulation.html"><a href="questionformulation.html"><i class="fa fa-check"></i><b>2</b> Question Formulation</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="questionformulation.html"><a href="questionformulation.html#adoptstrategicmindset"><i class="fa fa-check"></i><b>2.1</b> Adopting a Strategic Mindset</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="questionformulation.html"><a href="questionformulation.html#strategy"><i class="fa fa-check"></i><b>2.1.1</b> Strategy</a></li>
+<li class="chapter" data-level="2.1.2" data-path="questionformulation.html"><a href="questionformulation.html#strategyformulation"><i class="fa fa-check"></i><b>2.1.2</b> Strategy Formulation</a></li>
+<li class="chapter" data-level="2.1.3" data-path="questionformulation.html"><a href="questionformulation.html#strategyimplementation"><i class="fa fa-check"></i><b>2.1.3</b> Strategy Implementation</a></li>
+<li class="chapter" data-level="2.1.4" data-path="questionformulation.html"><a href="questionformulation.html#strategichrm"><i class="fa fa-check"></i><b>2.1.4</b> Strategic Human Resource Management</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="questionformulation.html"><a href="questionformulation.html#defining-problems-formulating-questions"><i class="fa fa-check"></i><b>2.2</b> Defining Problems &amp; Formulating Questions</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="questionformulation.html"><a href="questionformulation.html#definingaproblem"><i class="fa fa-check"></i><b>2.2.1</b> Defining a Problem</a></li>
+<li class="chapter" data-level="2.2.2" data-path="questionformulation.html"><a href="questionformulation.html#formulatingaquestion"><i class="fa fa-check"></i><b>2.2.2</b> Formulating a Question</a></li>
+<li class="chapter" data-level="2.2.3" data-path="questionformulation.html"><a href="questionformulation.html#divergentconvergentthinking"><i class="fa fa-check"></i><b>2.2.3</b> Thinking Divergently &amp; Convergently</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="questionformulation.html"><a href="questionformulation.html#summary"><i class="fa fa-check"></i><b>2.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dataacquisition.html"><a href="dataacquisition.html"><i class="fa fa-check"></i><b>3</b> Data Acquisition</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="dataacquisition.html"><a href="dataacquisition.html#employee-surveys"><i class="fa fa-check"></i><b>3.1</b> Employee Surveys</a></li>
+<li class="chapter" data-level="3.2" data-path="dataacquisition.html"><a href="dataacquisition.html#rating-forms"><i class="fa fa-check"></i><b>3.2</b> Rating Forms</a></li>
+<li class="chapter" data-level="3.3" data-path="dataacquisition.html"><a href="dataacquisition.html#surveillance-monitoring"><i class="fa fa-check"></i><b>3.3</b> Surveillance &amp; Monitoring</a></li>
+<li class="chapter" data-level="3.4" data-path="dataacquisition.html"><a href="dataacquisition.html#database-queries"><i class="fa fa-check"></i><b>3.4</b> Database Queries</a></li>
+<li class="chapter" data-level="3.5" data-path="dataacquisition.html"><a href="dataacquisition.html#scraping"><i class="fa fa-check"></i><b>3.5</b> Scraping</a></li>
+<li class="chapter" data-level="3.6" data-path="dataacquisition.html"><a href="dataacquisition.html#summary-1"><i class="fa fa-check"></i><b>3.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="datamanagement.html"><a href="datamanagement.html"><i class="fa fa-check"></i><b>4</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_clean"><i class="fa fa-check"></i><b>4.1</b> Data Cleaning</a></li>
+<li class="chapter" data-level="4.2" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_manipulate"><i class="fa fa-check"></i><b>4.2</b> Data Manipulation &amp; Structuring</a></li>
+<li class="chapter" data-level="4.3" data-path="datamanagement.html"><a href="datamanagement.html#datamanage_tools"><i class="fa fa-check"></i><b>4.3</b> Common Data-Management Tools</a></li>
+<li class="chapter" data-level="4.4" data-path="datamanagement.html"><a href="datamanagement.html#summary-2"><i class="fa fa-check"></i><b>4.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="dataanalysis.html"><a href="dataanalysis.html"><i class="fa fa-check"></i><b>5</b> Data Analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="dataanalysis.html"><a href="dataanalysis.html#dataanalysis_toolstechniques"><i class="fa fa-check"></i><b>5.1</b> Tools &amp; Techniques</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="dataanalysis.html"><a href="dataanalysis.html#mathematics"><i class="fa fa-check"></i><b>5.1.1</b> Mathematics</a></li>
+<li class="chapter" data-level="5.1.2" data-path="dataanalysis.html"><a href="dataanalysis.html#statistics"><i class="fa fa-check"></i><b>5.1.2</b> Statistics</a></li>
+<li class="chapter" data-level="5.1.3" data-path="dataanalysis.html"><a href="dataanalysis.html#machinelearning"><i class="fa fa-check"></i><b>5.1.3</b> Machine Learning</a></li>
+<li class="chapter" data-level="5.1.4" data-path="dataanalysis.html"><a href="dataanalysis.html#computationalmodelsimulation"><i class="fa fa-check"></i><b>5.1.4</b> Computational Modeling &amp; Simulations</a></li>
+<li class="chapter" data-level="5.1.5" data-path="dataanalysis.html"><a href="dataanalysis.html#textqualitativeanalyses"><i class="fa fa-check"></i><b>5.1.5</b> Text Analyses &amp; Qualitative Analyses</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="dataanalysis.html"><a href="dataanalysis.html#continuum_dataanalytics"><i class="fa fa-check"></i><b>5.2</b> Continuum of Data Analytics</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="dataanalysis.html"><a href="dataanalysis.html#descriptive_analytics"><i class="fa fa-check"></i><b>5.2.1</b> Descriptive Analytics</a></li>
+<li class="chapter" data-level="5.2.2" data-path="dataanalysis.html"><a href="dataanalysis.html#predictish_analytics"><i class="fa fa-check"></i><b>5.2.2</b> Predict-ish Analytics</a></li>
+<li class="chapter" data-level="5.2.3" data-path="dataanalysis.html"><a href="dataanalysis.html#predictive_analytics"><i class="fa fa-check"></i><b>5.2.3</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="5.2.4" data-path="dataanalysis.html"><a href="dataanalysis.html#prescriptive_analytics"><i class="fa fa-check"></i><b>5.2.4</b> Prescriptive Analytics</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="dataanalysis.html"><a href="dataanalysis.html#summary-3"><i class="fa fa-check"></i><b>5.3</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html"><i class="fa fa-check"></i><b>6</b> Data Interpretation &amp; Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datainterpretation"><i class="fa fa-check"></i><b>6.1</b> Data Interpretation</a></li>
+<li class="chapter" data-level="6.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling"><i class="fa fa-check"></i><b>6.2</b> Storytelling</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#structure"><i class="fa fa-check"></i><b>6.2.1</b> Structure</a></li>
+<li class="chapter" data-level="6.2.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#clarity-parsimony"><i class="fa fa-check"></i><b>6.2.2</b> Clarity &amp; Parsimony</a></li>
+<li class="chapter" data-level="6.2.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#influence-persuasion"><i class="fa fa-check"></i><b>6.2.3</b> Influence &amp; Persuasion</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#storytelling_withdata"><i class="fa fa-check"></i><b>6.3</b> Storytelling with Data</a></li>
+<li class="chapter" data-level="6.4" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary-4"><i class="fa fa-check"></i><b>6.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
+<li class="part"><span><b>II Employee Compensation &amp; Reward Systems</b></span></li>
+<li class="chapter" data-level="8" data-path="compensation.html"><a href="compensation.html"><i class="fa fa-check"></i><b>8</b> Introduction to Employee Compensation &amp; Reward Systems</a></li>
+<li class="chapter" data-level="9" data-path="marketsurvey.html"><a href="marketsurvey.html"><i class="fa fa-check"></i><b>9</b> Preparing Market Survey Data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualoverview_marketsurvey"><i class="fa fa-check"></i><b>9.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>9.1.1</b> Aging Market Survey Data</a></li>
+<li class="chapter" data-level="9.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>9.1.2</b> Applying Market Survey Weights</a></li>
+<li class="chapter" data-level="9.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>9.1.3</b> Conceptual Videos</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>9.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="marketsurvey.html"><a href="marketsurvey.html#videotutorial_marketsurvey"><i class="fa fa-check"></i><b>9.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="9.2.2" data-path="marketsurvey.html"><a href="marketsurvey.html#functions_marketsurvey"><i class="fa fa-check"></i><b>9.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="9.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>9.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="9.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>9.2.4</b> Age the Data</a></li>
+<li class="chapter" data-level="9.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>9.2.5</b> Compute the Sample-Weighted Means</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>9.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>9.3.1</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>III Introduction to R</b></span></li>
+<li class="chapter" data-level="10" data-path="overviewR.html"><a href="overviewR.html"><i class="fa fa-check"></i><b>10</b> Overview of R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="overviewR.html"><a href="overviewR.html#R_overview"><i class="fa fa-check"></i><b>10.1</b> R Programming Language</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="overviewR.html"><a href="overviewR.html#R_what"><i class="fa fa-check"></i><b>10.1.1</b> What Is R?</a></li>
+<li class="chapter" data-level="10.1.2" data-path="overviewR.html"><a href="overviewR.html#R_why"><i class="fa fa-check"></i><b>10.1.2</b> Why Use R?</a></li>
+<li class="chapter" data-level="10.1.3" data-path="overviewR.html"><a href="overviewR.html#R_who"><i class="fa fa-check"></i><b>10.1.3</b> Who Uses R?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_overview"><i class="fa fa-check"></i><b>10.2</b> RStudio</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="overviewR.html"><a href="overviewR.html#RStudio_what"><i class="fa fa-check"></i><b>10.2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="10.2.2" data-path="overviewR.html"><a href="overviewR.html#RStudio_why"><i class="fa fa-check"></i><b>10.2.2</b> Why RStudio?</a></li>
+<li class="chapter" data-level="10.2.3" data-path="overviewR.html"><a href="overviewR.html#RStudio_who"><i class="fa fa-check"></i><b>10.2.3</b> Who Uses RStudio?</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="overviewR.html"><a href="overviewR.html#packages_overview"><i class="fa fa-check"></i><b>10.3</b> Packages</a></li>
+<li class="chapter" data-level="10.4" data-path="overviewR.html"><a href="overviewR.html#summary-5"><i class="fa fa-check"></i><b>10.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="install.html"><a href="install.html"><i class="fa fa-check"></i><b>11</b> Installing R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="install.html"><a href="install.html#videotutorial_install"><i class="fa fa-check"></i><b>11.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="11.2" data-path="install.html"><a href="install.html#installR"><i class="fa fa-check"></i><b>11.2</b> Downloading &amp; Installing R</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="install.html"><a href="install.html#installR_windows"><i class="fa fa-check"></i><b>11.2.1</b> For Windows Operation Systems</a></li>
+<li class="chapter" data-level="11.2.2" data-path="install.html"><a href="install.html#installR_macos"><i class="fa fa-check"></i><b>11.2.2</b> For Mac Operating Systems</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="install.html"><a href="install.html#installRStudio"><i class="fa fa-check"></i><b>11.3</b> Downloading &amp; Installing RStudio</a></li>
+<li class="chapter" data-level="11.4" data-path="install.html"><a href="install.html#summary_install"><i class="fa fa-check"></i><b>11.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="gettingstarted.html"><a href="gettingstarted.html"><i class="fa fa-check"></i><b>12</b> Getting Started with R &amp; RStudio</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="gettingstarted.html"><a href="gettingstarted.html#orientation_gettingstarted"><i class="fa fa-check"></i><b>12.1</b> Orientation to RStudio</a></li>
+<li class="chapter" data-level="12.2" data-path="gettingstarted.html"><a href="gettingstarted.html#createRscript"><i class="fa fa-check"></i><b>12.2</b> Creating &amp; Saving an R Script</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="gettingstarted.html"><a href="gettingstarted.html#createnewRscript_gettingstarted"><i class="fa fa-check"></i><b>12.2.1</b> Creating a New R Script</a></li>
+<li class="chapter" data-level="12.2.2" data-path="gettingstarted.html"><a href="gettingstarted.html#usenewRscript_gettingstarted"><i class="fa fa-check"></i><b>12.2.2</b> Using an R Script</a></li>
+<li class="chapter" data-level="12.2.3" data-path="gettingstarted.html"><a href="gettingstarted.html#saveRscript_gettingstarted"><i class="fa fa-check"></i><b>12.2.3</b> Saving an R Script</a></li>
+<li class="chapter" data-level="12.2.4" data-path="gettingstarted.html"><a href="gettingstarted.html#openRscript_gettingstarted"><i class="fa fa-check"></i><b>12.2.4</b> Opening a Saved R Script</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="gettingstarted.html"><a href="gettingstarted.html#RStudioproject_gettingstarted"><i class="fa fa-check"></i><b>12.3</b> Creating an RStudio Project</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="gettingstarted.html"><a href="gettingstarted.html#createRStudioproject_gettingstarted"><i class="fa fa-check"></i><b>12.3.1</b> Creating a New RStudio Project</a></li>
+<li class="chapter" data-level="12.3.2" data-path="gettingstarted.html"><a href="gettingstarted.html#openRStudioproject_gettingstarted"><i class="fa fa-check"></i><b>12.3.2</b> Opening an Existing RStudio Project</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="gettingstarted.html"><a href="gettingstarted.html#writtentutorials_gettingstarted"><i class="fa fa-check"></i><b>12.4</b> Orientation to Written Tutorials</a></li>
+<li class="chapter" data-level="12.5" data-path="gettingstarted.html"><a href="gettingstarted.html#summary_gettingstarted"><i class="fa fa-check"></i><b>12.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="gentleintro.html"><a href="gentleintro.html"><i class="fa fa-check"></i><b>13</b> Basic Features and Operations of the R Language</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="gentleintro.html"><a href="gentleintro.html#videotutorial_gentleintro"><i class="fa fa-check"></i><b>13.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="13.2" data-path="gentleintro.html"><a href="gentleintro.html#functions_gentleintro"><i class="fa fa-check"></i><b>13.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="13.3" data-path="gentleintro.html"><a href="gentleintro.html#r_as_calculator"><i class="fa fa-check"></i><b>13.3</b> R as a Calculator</a></li>
+<li class="chapter" data-level="13.4" data-path="gentleintro.html"><a href="gentleintro.html#functions"><i class="fa fa-check"></i><b>13.4</b> Functions</a></li>
+<li class="chapter" data-level="13.5" data-path="gentleintro.html"><a href="gentleintro.html#packages"><i class="fa fa-check"></i><b>13.5</b> Packages</a></li>
+<li class="chapter" data-level="13.6" data-path="gentleintro.html"><a href="gentleintro.html#variableassignment"><i class="fa fa-check"></i><b>13.6</b> Variable Assignment</a></li>
+<li class="chapter" data-level="13.7" data-path="gentleintro.html"><a href="gentleintro.html#typesofdata"><i class="fa fa-check"></i><b>13.7</b> Types of Data</a>
+<ul>
+<li class="chapter" data-level="13.7.1" data-path="gentleintro.html"><a href="gentleintro.html#numeric-data"><i class="fa fa-check"></i><b>13.7.1</b> <code>numeric</code> Data</a></li>
+<li class="chapter" data-level="13.7.2" data-path="gentleintro.html"><a href="gentleintro.html#character-data"><i class="fa fa-check"></i><b>13.7.2</b> <code>character</code> Data</a></li>
+<li class="chapter" data-level="13.7.3" data-path="gentleintro.html"><a href="gentleintro.html#date-data"><i class="fa fa-check"></i><b>13.7.3</b> <code>Date</code> Data</a></li>
+<li class="chapter" data-level="13.7.4" data-path="gentleintro.html"><a href="gentleintro.html#logical-data"><i class="fa fa-check"></i><b>13.7.4</b> <code>logical</code> Data</a></li>
+</ul></li>
+<li class="chapter" data-level="13.8" data-path="gentleintro.html"><a href="gentleintro.html#vectors"><i class="fa fa-check"></i><b>13.8</b> Vectors</a></li>
+<li class="chapter" data-level="13.9" data-path="gentleintro.html"><a href="gentleintro.html#lists"><i class="fa fa-check"></i><b>13.9</b> Lists</a></li>
+<li class="chapter" data-level="13.10" data-path="gentleintro.html"><a href="gentleintro.html#dataframes"><i class="fa fa-check"></i><b>13.10</b> Data Frames</a></li>
+<li class="chapter" data-level="13.11" data-path="gentleintro.html"><a href="gentleintro.html#annotate"><i class="fa fa-check"></i><b>13.11</b> Annotations</a></li>
+<li class="chapter" data-level="13.12" data-path="gentleintro.html"><a href="gentleintro.html#summary_gentleintro"><i class="fa fa-check"></i><b>13.12</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="setwd.html"><a href="setwd.html"><i class="fa fa-check"></i><b>14</b> Setting a Working Directory</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="setwd.html"><a href="setwd.html#videotutorial_setwd"><i class="fa fa-check"></i><b>14.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="14.2" data-path="setwd.html"><a href="setwd.html#functions_setwd"><i class="fa fa-check"></i><b>14.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="14.3" data-path="setwd.html"><a href="setwd.html#getwd_setwd"><i class="fa fa-check"></i><b>14.3</b> Identify the Current Working Directory</a></li>
+<li class="chapter" data-level="14.4" data-path="setwd.html"><a href="setwd.html#setwd_setwd"><i class="fa fa-check"></i><b>14.4</b> Set a New Working Directory</a></li>
+<li class="chapter" data-level="14.5" data-path="setwd.html"><a href="setwd.html#summary_setwd"><i class="fa fa-check"></i><b>14.5</b> Summary</a></li>
+</ul></li>
+<li class="part"><span><b>IV Data Acquisition &amp; Management</b></span></li>
+<li class="chapter" data-level="15" data-path="read.html"><a href="read.html"><i class="fa fa-check"></i><b>15</b> Reading Data into R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="read.html"><a href="read.html#conceptualoverview_read"><i class="fa fa-check"></i><b>15.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="15.2" data-path="read.html"><a href="read.html#tutorial_read"><i class="fa fa-check"></i><b>15.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="read.html"><a href="read.html#videotutorial_read"><i class="fa fa-check"></i><b>15.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="15.2.2" data-path="read.html"><a href="read.html#functions_read"><i class="fa fa-check"></i><b>15.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="15.2.3" data-path="read.html"><a href="read.html#initialsteps_read"><i class="fa fa-check"></i><b>15.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="15.2.4" data-path="read.html"><a href="read.html#readcsv"><i class="fa fa-check"></i><b>15.2.4</b> Read a .csv File</a></li>
+<li class="chapter" data-level="15.2.5" data-path="read.html"><a href="read.html#readxlsx"><i class="fa fa-check"></i><b>15.2.5</b> Read a .xlsx File</a></li>
+<li class="chapter" data-level="15.2.6" data-path="read.html"><a href="read.html#read_summary"><i class="fa fa-check"></i><b>15.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="read.html"><a href="read.html#read_supplement"><i class="fa fa-check"></i><b>15.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="read.html"><a href="read.html#read_supplement_functions"><i class="fa fa-check"></i><b>15.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="15.3.2" data-path="read.html"><a href="read.html#read_initsteps_supplement"><i class="fa fa-check"></i><b>15.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="15.3.3" data-path="read.html"><a href="read.html#read_additionalfunctions"><i class="fa fa-check"></i><b>15.3.3</b> Additional Functions for Reading a .csv File</a></li>
+<li class="chapter" data-level="15.3.4" data-path="read.html"><a href="read.html#read_skiprows"><i class="fa fa-check"></i><b>15.3.4</b> Skip Rows of Data During Read</a></li>
+<li class="chapter" data-level="15.3.5" data-path="read.html"><a href="read.html#listdatafiles"><i class="fa fa-check"></i><b>15.3.5</b> List Data File Names in Working Directory</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="addnames.html"><a href="addnames.html"><i class="fa fa-check"></i><b>16</b> Removing, Adding, &amp; Changing Variable Names</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="addnames.html"><a href="addnames.html#conceptualoverview_addnames"><i class="fa fa-check"></i><b>16.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="16.2" data-path="addnames.html"><a href="addnames.html#tutorial_addnames"><i class="fa fa-check"></i><b>16.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="addnames.html"><a href="addnames.html#videotutorial_addnames"><i class="fa fa-check"></i><b>16.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="16.2.2" data-path="addnames.html"><a href="addnames.html#function_addnames"><i class="fa fa-check"></i><b>16.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="16.2.3" data-path="addnames.html"><a href="addnames.html#initsteps_addnames"><i class="fa fa-check"></i><b>16.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="16.2.4" data-path="addnames.html"><a href="addnames.html#remove_variablenames"><i class="fa fa-check"></i><b>16.2.4</b> Remove Variable Names from a Data Frame Object</a></li>
+<li class="chapter" data-level="16.2.5" data-path="addnames.html"><a href="addnames.html#add_variablenames"><i class="fa fa-check"></i><b>16.2.5</b> Add Variable Names to a Data Frame Object</a></li>
+<li class="chapter" data-level="16.2.6" data-path="addnames.html"><a href="addnames.html#change_variablenames"><i class="fa fa-check"></i><b>16.2.6</b> Change Specific Variable Names in a Data Frame Object</a></li>
+<li class="chapter" data-level="16.2.7" data-path="addnames.html"><a href="addnames.html#summary_addnames"><i class="fa fa-check"></i><b>16.2.7</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="write.html"><a href="write.html"><i class="fa fa-check"></i><b>17</b> Writing Data from R</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="write.html"><a href="write.html#conceptualoverview_write"><i class="fa fa-check"></i><b>17.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="17.2" data-path="write.html"><a href="write.html#tutorial_write"><i class="fa fa-check"></i><b>17.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="17.2.1" data-path="write.html"><a href="write.html#videotutorial_write"><i class="fa fa-check"></i><b>17.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="17.2.2" data-path="write.html"><a href="write.html#functions_write"><i class="fa fa-check"></i><b>17.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="17.2.3" data-path="write.html"><a href="write.html#initialsteps_write"><i class="fa fa-check"></i><b>17.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="17.2.4" data-path="write.html"><a href="write.html#write_dataframe"><i class="fa fa-check"></i><b>17.2.4</b> Write Data Frame to Working Directory</a></li>
+<li class="chapter" data-level="17.2.5" data-path="write.html"><a href="write.html#write_table"><i class="fa fa-check"></i><b>17.2.5</b> Write Table to Working Directory</a></li>
+<li class="chapter" data-level="17.2.6" data-path="write.html"><a href="write.html#summary_write"><i class="fa fa-check"></i><b>17.2.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="arrange.html"><a href="arrange.html"><i class="fa fa-check"></i><b>18</b> Arranging (Sorting) Data</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="arrange.html"><a href="arrange.html#conceptualoverview_arrange"><i class="fa fa-check"></i><b>18.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="18.2" data-path="arrange.html"><a href="arrange.html#tutorial_arrange"><i class="fa fa-check"></i><b>18.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="18.2.1" data-path="arrange.html"><a href="arrange.html#videotutorial_arrange"><i class="fa fa-check"></i><b>18.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="18.2.2" data-path="arrange.html"><a href="arrange.html#functions_arrange"><i class="fa fa-check"></i><b>18.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="18.2.3" data-path="arrange.html"><a href="arrange.html#initsteps_arrange"><i class="fa fa-check"></i><b>18.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="18.2.4" data-path="arrange.html"><a href="arrange.html#arrangebyvalues"><i class="fa fa-check"></i><b>18.2.4</b> Arrange (Sort) Data</a></li>
+<li class="chapter" data-level="18.2.5" data-path="arrange.html"><a href="arrange.html#summary_arrange"><i class="fa fa-check"></i><b>18.2.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="18.3" data-path="arrange.html"><a href="arrange.html#arrange_supplement"><i class="fa fa-check"></i><b>18.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="18.3.1" data-path="arrange.html"><a href="arrange.html#arrange_supplement_functions"><i class="fa fa-check"></i><b>18.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="18.3.2" data-path="arrange.html"><a href="arrange.html#arrange_initsteps_supplement"><i class="fa fa-check"></i><b>18.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="18.3.3" data-path="arrange.html"><a href="arrange.html#arrange_orderfunction"><i class="fa fa-check"></i><b>18.3.3</b> <code>order</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="join.html"><a href="join.html"><i class="fa fa-check"></i><b>19</b> Joining (Merging) Data</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="join.html"><a href="join.html#conceptualoverview_join"><i class="fa fa-check"></i><b>19.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="19.1.1" data-path="join.html"><a href="join.html#review_horizontaljoin"><i class="fa fa-check"></i><b>19.1.1</b> Review of Horizontal Joins (Merges)</a></li>
+<li class="chapter" data-level="19.1.2" data-path="join.html"><a href="join.html#review_verticaljoin"><i class="fa fa-check"></i><b>19.1.2</b> Review of Vertical Joins (Merges)</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="join.html"><a href="join.html#tutorial_join"><i class="fa fa-check"></i><b>19.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="19.2.1" data-path="join.html"><a href="join.html#videotutorial_join"><i class="fa fa-check"></i><b>19.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="19.2.2" data-path="join.html"><a href="join.html#functions-packages-introduced"><i class="fa fa-check"></i><b>19.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="19.2.3" data-path="join.html"><a href="join.html#initsteps_join"><i class="fa fa-check"></i><b>19.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="19.2.4" data-path="join.html"><a href="join.html#horizontaljoin"><i class="fa fa-check"></i><b>19.2.4</b> Horizontal Join (Merge)</a></li>
+<li class="chapter" data-level="19.2.5" data-path="join.html"><a href="join.html#verticaljoin"><i class="fa fa-check"></i><b>19.2.5</b> Vertical Join (Merge)</a></li>
+<li class="chapter" data-level="19.2.6" data-path="join.html"><a href="join.html#summary_join"><i class="fa fa-check"></i><b>19.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="join.html"><a href="join.html#join_supplement"><i class="fa fa-check"></i><b>19.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="19.3.1" data-path="join.html"><a href="join.html#supp_join_video"><i class="fa fa-check"></i><b>19.3.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="19.3.2" data-path="join.html"><a href="join.html#join_supplement_functions"><i class="fa fa-check"></i><b>19.3.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="19.3.3" data-path="join.html"><a href="join.html#join_initsteps_supplement"><i class="fa fa-check"></i><b>19.3.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="19.3.4" data-path="join.html"><a href="join.html#join_mergefunction"><i class="fa fa-check"></i><b>19.3.4</b> <code>merge</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="filter.html"><a href="filter.html"><i class="fa fa-check"></i><b>20</b> Filtering (Subsetting) Data</a>
+<ul>
+<li class="chapter" data-level="20.1" data-path="filter.html"><a href="filter.html#conceptualoverview_filter"><i class="fa fa-check"></i><b>20.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="20.1.1" data-path="filter.html"><a href="filter.html#review_logicaloperators"><i class="fa fa-check"></i><b>20.1.1</b> Review of Logical Operators</a></li>
+</ul></li>
+<li class="chapter" data-level="20.2" data-path="filter.html"><a href="filter.html#tutorial_filter"><i class="fa fa-check"></i><b>20.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="20.2.1" data-path="filter.html"><a href="filter.html#videotutorial_filter"><i class="fa fa-check"></i><b>20.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="20.2.2" data-path="filter.html"><a href="filter.html#function_filter"><i class="fa fa-check"></i><b>20.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="20.2.3" data-path="filter.html"><a href="filter.html#initsteps_filter"><i class="fa fa-check"></i><b>20.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="20.2.4" data-path="filter.html"><a href="filter.html#filter_cases"><i class="fa fa-check"></i><b>20.2.4</b> Filter Cases from Data Frame</a></li>
+<li class="chapter" data-level="20.2.5" data-path="filter.html"><a href="filter.html#remove-single-variable-from-data-frame"><i class="fa fa-check"></i><b>20.2.5</b> Remove Single Variable from Data Frame</a></li>
+<li class="chapter" data-level="20.2.6" data-path="filter.html"><a href="filter.html#select_multiplevariables"><i class="fa fa-check"></i><b>20.2.6</b> Select Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="20.2.7" data-path="filter.html"><a href="filter.html#remove_multiplevariables"><i class="fa fa-check"></i><b>20.2.7</b> Remove Multiple Variables from Data Frame</a></li>
+<li class="chapter" data-level="20.2.8" data-path="filter.html"><a href="filter.html#summary_filter"><i class="fa fa-check"></i><b>20.2.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="20.3" data-path="filter.html"><a href="filter.html#filter_supplement"><i class="fa fa-check"></i><b>20.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="20.3.1" data-path="filter.html"><a href="filter.html#supp_filter_video"><i class="fa fa-check"></i><b>20.3.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="20.3.2" data-path="filter.html"><a href="filter.html#filter_supplement_functions"><i class="fa fa-check"></i><b>20.3.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="20.3.3" data-path="filter.html"><a href="filter.html#filter_initsteps_supplement"><i class="fa fa-check"></i><b>20.3.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="20.3.4" data-path="filter.html"><a href="filter.html#filter_subset_supplement"><i class="fa fa-check"></i><b>20.3.4</b> <code>subset</code> Function from Base R</a></li>
+<li class="chapter" data-level="20.3.5" data-path="filter.html"><a href="filter.html#str_detect_supp"><i class="fa fa-check"></i><b>20.3.5</b> Filter by Pattern Contained within String</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="clean.html"><a href="clean.html"><i class="fa fa-check"></i><b>21</b> Cleaning Data</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="clean.html"><a href="clean.html#conceptualoverview_clean"><i class="fa fa-check"></i><b>21.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="21.2" data-path="clean.html"><a href="clean.html#tutorial_clean"><i class="fa fa-check"></i><b>21.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="21.2.1" data-path="clean.html"><a href="clean.html#videotutorial_clean"><i class="fa fa-check"></i><b>21.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="21.2.2" data-path="clean.html"><a href="clean.html#functions_clean"><i class="fa fa-check"></i><b>21.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="21.2.3" data-path="clean.html"><a href="clean.html#initsteps_clean"><i class="fa fa-check"></i><b>21.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="21.2.4" data-path="clean.html"><a href="clean.html#reviewdata_clean"><i class="fa fa-check"></i><b>21.2.4</b> Review Data</a></li>
+<li class="chapter" data-level="21.2.5" data-path="clean.html"><a href="clean.html#cleandata_clean"><i class="fa fa-check"></i><b>21.2.5</b> Clean Data</a></li>
+<li class="chapter" data-level="21.2.6" data-path="clean.html"><a href="clean.html#renamevariables_clean"><i class="fa fa-check"></i><b>21.2.6</b> Rename Variables</a></li>
+<li class="chapter" data-level="21.2.7" data-path="clean.html"><a href="clean.html#otherapproaches_clean"><i class="fa fa-check"></i><b>21.2.7</b> Other Approaches to Cleaning Data</a></li>
+<li class="chapter" data-level="21.2.8" data-path="clean.html"><a href="clean.html#summary_clean"><i class="fa fa-check"></i><b>21.2.8</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="manipulate.html"><a href="manipulate.html"><i class="fa fa-check"></i><b>22</b> Manipulating &amp; Restructuring Data</a>
+<ul>
+<li class="chapter" data-level="22.1" data-path="manipulate.html"><a href="manipulate.html#conceptualoverview_manipulate"><i class="fa fa-check"></i><b>22.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="22.2" data-path="manipulate.html"><a href="manipulate.html#tutorial_manipulate"><i class="fa fa-check"></i><b>22.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="22.2.1" data-path="manipulate.html"><a href="manipulate.html#videotutorial_manipulate"><i class="fa fa-check"></i><b>22.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="22.2.2" data-path="manipulate.html"><a href="manipulate.html#functions_manipulate"><i class="fa fa-check"></i><b>22.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="22.2.3" data-path="manipulate.html"><a href="manipulate.html#initsteps_manipulate"><i class="fa fa-check"></i><b>22.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="22.2.4" data-path="manipulate.html"><a href="manipulate.html#manipulate_widetolong"><i class="fa fa-check"></i><b>22.2.4</b> Wide-to-Long Format Data Manipulation</a></li>
+<li class="chapter" data-level="22.2.5" data-path="manipulate.html"><a href="manipulate.html#manipulate_longtowide"><i class="fa fa-check"></i><b>22.2.5</b> Long-to-Wide Format Data Manipulation</a></li>
+<li class="chapter" data-level="22.2.6" data-path="manipulate.html"><a href="manipulate.html#summary_manipulate"><i class="fa fa-check"></i><b>22.2.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="center.html"><a href="center.html"><i class="fa fa-check"></i><b>23</b> Centering &amp; Standardizing Variables</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="center.html"><a href="center.html#conceptualoverview_center"><i class="fa fa-check"></i><b>23.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="23.1.1" data-path="center.html"><a href="center.html#review_center"><i class="fa fa-check"></i><b>23.1.1</b> Review of Centering Variables</a></li>
+<li class="chapter" data-level="23.1.2" data-path="center.html"><a href="center.html#review_standardize"><i class="fa fa-check"></i><b>23.1.2</b> Review of Standardizing Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="23.2" data-path="center.html"><a href="center.html#tutorial_center"><i class="fa fa-check"></i><b>23.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="23.2.1" data-path="center.html"><a href="center.html#videotutorial_center"><i class="fa fa-check"></i><b>23.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="23.2.2" data-path="center.html"><a href="center.html#functions_center"><i class="fa fa-check"></i><b>23.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="23.2.3" data-path="center.html"><a href="center.html#initsteps_center"><i class="fa fa-check"></i><b>23.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="23.2.4" data-path="center.html"><a href="center.html#grandmean_center"><i class="fa fa-check"></i><b>23.2.4</b> Grand-Mean Center Variables</a></li>
+<li class="chapter" data-level="23.2.5" data-path="center.html"><a href="center.html#groupmean_center"><i class="fa fa-check"></i><b>23.2.5</b> Group-Mean Center Variables</a></li>
+<li class="chapter" data-level="23.2.6" data-path="center.html"><a href="center.html#standardize_center"><i class="fa fa-check"></i><b>23.2.6</b> Standardize Variables</a></li>
+<li class="chapter" data-level="23.2.7" data-path="center.html"><a href="center.html#summary_center"><i class="fa fa-check"></i><b>23.2.7</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="removeobjects.html"><a href="removeobjects.html"><i class="fa fa-check"></i><b>24</b> Removing Objects from the R Environment</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="removeobjects.html"><a href="removeobjects.html#conceptualoverview_removeobjects"><i class="fa fa-check"></i><b>24.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="24.2" data-path="removeobjects.html"><a href="removeobjects.html#tutorial_removeobjects"><i class="fa fa-check"></i><b>24.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="removeobjects.html"><a href="removeobjects.html#videotutorial_removeobjects"><i class="fa fa-check"></i><b>24.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="24.2.2" data-path="removeobjects.html"><a href="removeobjects.html#function_removeobjects"><i class="fa fa-check"></i><b>24.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="24.2.3" data-path="removeobjects.html"><a href="removeobjects.html#initsteps_removeobjects"><i class="fa fa-check"></i><b>24.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="24.2.4" data-path="removeobjects.html"><a href="removeobjects.html#listobjects_removeobjects"><i class="fa fa-check"></i><b>24.2.4</b> List Objects in R Environment</a></li>
+<li class="chapter" data-level="24.2.5" data-path="removeobjects.html"><a href="removeobjects.html#removeobjects_removeobjects"><i class="fa fa-check"></i><b>24.2.5</b> Remove Objects from R Environment</a></li>
+<li class="chapter" data-level="24.2.6" data-path="removeobjects.html"><a href="removeobjects.html#summary_removeobjects"><i class="fa fa-check"></i><b>24.2.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>V Employee Demographics</b></span></li>
+<li class="chapter" data-level="25" data-path="employeedemographics.html"><a href="employeedemographics.html"><i class="fa fa-check"></i><b>25</b> Introduction to Employee Demographics</a></li>
+<li class="chapter" data-level="26" data-path="descriptives.html"><a href="descriptives.html"><i class="fa fa-check"></i><b>26</b> Describing Employee Demographics Using Descriptive Statistics</a>
+<ul>
+<li class="chapter" data-level="26.1" data-path="descriptives.html"><a href="descriptives.html#conceptualoverview_descriptives"><i class="fa fa-check"></i><b>26.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="26.1.1" data-path="descriptives.html"><a href="descriptives.html#measurementscales"><i class="fa fa-check"></i><b>26.1.1</b> Review of Measurement Scales</a></li>
+<li class="chapter" data-level="26.1.2" data-path="descriptives.html"><a href="descriptives.html#constructs_measures_measurementscales"><i class="fa fa-check"></i><b>26.1.2</b> Constructs, Measures, &amp; Measurement Scales</a></li>
+<li class="chapter" data-level="26.1.3" data-path="descriptives.html"><a href="descriptives.html#typesof_descriptivestatistics"><i class="fa fa-check"></i><b>26.1.3</b> Types of Descriptive Statistics</a></li>
+<li class="chapter" data-level="26.1.4" data-path="descriptives.html"><a href="descriptives.html#samplewriteup_descriptives"><i class="fa fa-check"></i><b>26.1.4</b> Sample Write-Up</a></li>
+</ul></li>
+<li class="chapter" data-level="26.2" data-path="descriptives.html"><a href="descriptives.html#tutorial_descriptives"><i class="fa fa-check"></i><b>26.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="26.2.1" data-path="descriptives.html"><a href="descriptives.html#videotutorial_descriptives"><i class="fa fa-check"></i><b>26.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="26.2.2" data-path="descriptives.html"><a href="descriptives.html#functions_descriptives"><i class="fa fa-check"></i><b>26.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="26.2.3" data-path="descriptives.html"><a href="descriptives.html#initsteps_descriptives"><i class="fa fa-check"></i><b>26.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="26.2.4" data-path="descriptives.html"><a href="descriptives.html#determine_measurementscale"><i class="fa fa-check"></i><b>26.2.4</b> Determine the Measurement Scale</a></li>
+<li class="chapter" data-level="26.2.5" data-path="descriptives.html"><a href="descriptives.html#describe_nominal_ordinal"><i class="fa fa-check"></i><b>26.2.5</b> Describe Nominal &amp; Ordinal (Categorical) Variables</a></li>
+<li class="chapter" data-level="26.2.6" data-path="descriptives.html"><a href="descriptives.html#describe_interval_ratio"><i class="fa fa-check"></i><b>26.2.6</b> Describe Interval &amp; Ratio (Continuous) Variables</a></li>
+<li class="chapter" data-level="26.2.7" data-path="descriptives.html"><a href="descriptives.html#summary_descriptives"><i class="fa fa-check"></i><b>26.2.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="26.3" data-path="descriptives.html"><a href="descriptives.html#descriptives_supplement"><i class="fa fa-check"></i><b>26.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="26.3.1" data-path="descriptives.html"><a href="descriptives.html#descriptives_supplement_functions"><i class="fa fa-check"></i><b>26.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="26.3.2" data-path="descriptives.html"><a href="descriptives.html#descriptives_initsteps_supplement"><i class="fa fa-check"></i><b>26.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="26.3.3" data-path="descriptives.html"><a href="descriptives.html#descriptives_coefficientofvariation_supplement"><i class="fa fa-check"></i><b>26.3.3</b> Compute Coefficient of Variation (CV)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="27" data-path="crosstabs.html"><a href="crosstabs.html"><i class="fa fa-check"></i><b>27</b> Summarizing Two or More Categorical Variables Using Cross-Tabulations</a>
+<ul>
+<li class="chapter" data-level="27.1" data-path="crosstabs.html"><a href="crosstabs.html#conceptualoverview_crosstabs"><i class="fa fa-check"></i><b>27.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="27.1.1" data-path="crosstabs.html"><a href="crosstabs.html#review_crosstabs"><i class="fa fa-check"></i><b>27.1.1</b> Review of Cross-Tabulation</a></li>
+<li class="chapter" data-level="27.1.2" data-path="crosstabs.html"><a href="crosstabs.html#samplewriteup_crosstabs"><i class="fa fa-check"></i><b>27.1.2</b> Sample Write-Up</a></li>
+</ul></li>
+<li class="chapter" data-level="27.2" data-path="crosstabs.html"><a href="crosstabs.html#tutorial_crosstabs"><i class="fa fa-check"></i><b>27.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="27.2.1" data-path="crosstabs.html"><a href="crosstabs.html#videotutorial_crosstabs"><i class="fa fa-check"></i><b>27.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="27.2.2" data-path="crosstabs.html"><a href="crosstabs.html#functions_crosstabs"><i class="fa fa-check"></i><b>27.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="27.2.3" data-path="crosstabs.html"><a href="crosstabs.html#initsteps_tables"><i class="fa fa-check"></i><b>27.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="27.2.4" data-path="crosstabs.html"><a href="crosstabs.html#twoway_crosstabs"><i class="fa fa-check"></i><b>27.2.4</b> Two-Way Cross-Tabulation</a></li>
+<li class="chapter" data-level="27.2.5" data-path="crosstabs.html"><a href="crosstabs.html#threeway_crosstabs"><i class="fa fa-check"></i><b>27.2.5</b> Three-Way Cross-Tabulation</a></li>
+<li class="chapter" data-level="27.2.6" data-path="crosstabs.html"><a href="crosstabs.html#summary_crosstabs"><i class="fa fa-check"></i><b>27.2.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="28" data-path="pivottables.html"><a href="pivottables.html"><i class="fa fa-check"></i><b>28</b> Applying Pivot Tables to Explore Employee Demographic Data</a>
+<ul>
+<li class="chapter" data-level="28.1" data-path="pivottables.html"><a href="pivottables.html#conceptualoverview_pivottables"><i class="fa fa-check"></i><b>28.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="28.2" data-path="pivottables.html"><a href="pivottables.html#tutorial_pivottables"><i class="fa fa-check"></i><b>28.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="28.2.1" data-path="pivottables.html"><a href="pivottables.html#videotutorial_pivottables"><i class="fa fa-check"></i><b>28.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="28.2.2" data-path="pivottables.html"><a href="pivottables.html#functions_pivottables"><i class="fa fa-check"></i><b>28.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="28.2.3" data-path="pivottables.html"><a href="pivottables.html#initsteps_pivottables"><i class="fa fa-check"></i><b>28.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="28.2.4" data-path="pivottables.html"><a href="pivottables.html#create_pivottables"><i class="fa fa-check"></i><b>28.2.4</b> Create a Pivot Table</a></li>
+<li class="chapter" data-level="28.2.5" data-path="pivottables.html"><a href="pivottables.html#summary_pivottables"><i class="fa fa-check"></i><b>28.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VI Employee Surveys</b></span></li>
+<li class="chapter" data-level="29" data-path="employeesurveys.html"><a href="employeesurveys.html"><i class="fa fa-check"></i><b>29</b> Introduction to Employee Surveys</a></li>
+<li class="chapter" data-level="30" data-path="aggregatesegment.html"><a href="aggregatesegment.html"><i class="fa fa-check"></i><b>30</b> Aggregating &amp; Segmenting Employee Survey Data</a>
+<ul>
+<li class="chapter" data-level="30.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#conceptualoverview_aggregatesegment"><i class="fa fa-check"></i><b>30.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="30.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#tutorial_aggregatesegment"><i class="fa fa-check"></i><b>30.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="30.2.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#videotutorial_aggregatesegment"><i class="fa fa-check"></i><b>30.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="30.2.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#functions_aggregatesegment"><i class="fa fa-check"></i><b>30.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="30.2.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#initsteps_aggregatesegment"><i class="fa fa-check"></i><b>30.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="30.2.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#counts_bygroup"><i class="fa fa-check"></i><b>30.2.4</b> Counts By Group</a></li>
+<li class="chapter" data-level="30.2.5" data-path="aggregatesegment.html"><a href="aggregatesegment.html#centraldispersion_bygroup"><i class="fa fa-check"></i><b>30.2.5</b> Measures of Central Tendency and Dispersion By Group</a></li>
+<li class="chapter" data-level="30.2.6" data-path="aggregatesegment.html"><a href="aggregatesegment.html#addaggregatedvariable"><i class="fa fa-check"></i><b>30.2.6</b> Add Variable to Data Frame Containing Aggregated Values</a></li>
+<li class="chapter" data-level="30.2.7" data-path="aggregatesegment.html"><a href="aggregatesegment.html#visualize_bygroup"><i class="fa fa-check"></i><b>30.2.7</b> Visualize Data By Group</a></li>
+<li class="chapter" data-level="30.2.8" data-path="aggregatesegment.html"><a href="aggregatesegment.html#summary_aggregatesegment"><i class="fa fa-check"></i><b>30.2.8</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="30.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement"><i class="fa fa-check"></i><b>30.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="30.3.1" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_supplement_functions"><i class="fa fa-check"></i><b>30.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="30.3.2" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_initsteps_supplement"><i class="fa fa-check"></i><b>30.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="30.3.3" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_describeby_supplement"><i class="fa fa-check"></i><b>30.3.3</b> <code>describeBy</code> Function from <code>psych</code> Package</a></li>
+<li class="chapter" data-level="30.3.4" data-path="aggregatesegment.html"><a href="aggregatesegment.html#aggregatesegment_aggregate_supplement"><i class="fa fa-check"></i><b>30.3.4</b> <code>aggregate</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="31" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html"><i class="fa fa-check"></i><b>31</b> Estimating Internal Consistency Reliability Using Cronbach’s alpha</a>
+<ul>
+<li class="chapter" data-level="31.1" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#conceptualoverview_cronbachsalpha"><i class="fa fa-check"></i><b>31.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="31.2" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#tutorial_cronbachsalpha"><i class="fa fa-check"></i><b>31.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="31.2.1" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#videotutorial_cronbachsalpha"><i class="fa fa-check"></i><b>31.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="31.2.2" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#functions_cronbachsalpha"><i class="fa fa-check"></i><b>31.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="31.2.3" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#initsteps_cronbachsalpha"><i class="fa fa-check"></i><b>31.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="31.2.4" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#cronbachsalpha_alpha"><i class="fa fa-check"></i><b>31.2.4</b> Compute Cronbach’s alpha</a></li>
+<li class="chapter" data-level="31.2.5" data-path="cronbachsalpha.html"><a href="cronbachsalpha.html#summary_cronbachsalpha"><i class="fa fa-check"></i><b>31.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="32" data-path="compositevariable.html"><a href="compositevariable.html"><i class="fa fa-check"></i><b>32</b> Creating a Composite Variable Based on a Multi-Item Measure</a>
+<ul>
+<li class="chapter" data-level="32.1" data-path="compositevariable.html"><a href="compositevariable.html#conceptualoverview_compositevariable"><i class="fa fa-check"></i><b>32.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="32.2" data-path="compositevariable.html"><a href="compositevariable.html#tutorial_compositevariable"><i class="fa fa-check"></i><b>32.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="32.2.1" data-path="compositevariable.html"><a href="compositevariable.html#videotutorial_compositevariable"><i class="fa fa-check"></i><b>32.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="32.2.2" data-path="compositevariable.html"><a href="compositevariable.html#functions_compositevariable"><i class="fa fa-check"></i><b>32.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="32.2.3" data-path="compositevariable.html"><a href="compositevariable.html#initsteps_compositevariable"><i class="fa fa-check"></i><b>32.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="32.2.4" data-path="compositevariable.html"><a href="compositevariable.html#compositevariable_cronbachsalpha"><i class="fa fa-check"></i><b>32.2.4</b> Compute Cronbach’s alpha</a></li>
+<li class="chapter" data-level="32.2.5" data-path="compositevariable.html"><a href="compositevariable.html#compositevariable_composite"><i class="fa fa-check"></i><b>32.2.5</b> Create a Composite Variable</a></li>
+<li class="chapter" data-level="32.2.6" data-path="compositevariable.html"><a href="compositevariable.html#summary_compositevariable"><i class="fa fa-check"></i><b>32.2.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VII Employee Training</b></span></li>
+<li class="chapter" data-level="33" data-path="employeetraining.html"><a href="employeetraining.html"><i class="fa fa-check"></i><b>33</b> Introduction to Employee Training</a>
+<ul>
+<li class="chapter" data-level="33.1" data-path="employeetraining.html"><a href="employeetraining.html#trainingevaluation_employeetraining"><i class="fa fa-check"></i><b>33.1</b> Training Evaluation</a></li>
+</ul></li>
+<li class="chapter" data-level="34" data-path="pretestposttest.html"><a href="pretestposttest.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Pre-Test/Post-Test without Control Group Design Using Paired-Samples <em>t</em>-test</a>
+<ul>
+<li class="chapter" data-level="34.1" data-path="pretestposttest.html"><a href="pretestposttest.html#conceptualoverview_pretestposttest_psttest"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="34.1.1" data-path="pretestposttest.html"><a href="pretestposttest.html#review_pretestposttest"><i class="fa fa-check"></i><b>34.1.1</b> Review of Pre-Test/Post-Test without Control Group Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="pretestposttest.html"><a href="pretestposttest.html#review_psttest"><i class="fa fa-check"></i><b>34.1.2</b> Review of Paired-Samples <em>t</em>-test</a></li>
+</ul></li>
+<li class="chapter" data-level="34.2" data-path="pretestposttest.html"><a href="pretestposttest.html#tutorial_psttest"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="34.2.1" data-path="pretestposttest.html"><a href="pretestposttest.html#videotutorial_psttest"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="pretestposttest.html"><a href="pretestposttest.html#functions_psttest"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="pretestposttest.html"><a href="pretestposttest.html#initsteps_psttest"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="pretestposttest.html"><a href="pretestposttest.html#estimate_psttest"><i class="fa fa-check"></i><b>34.2.4</b> Estimate Paired-Samples <em>t</em>-test</a></li>
+<li class="chapter" data-level="34.2.5" data-path="pretestposttest.html"><a href="pretestposttest.html#barchart_psttest"><i class="fa fa-check"></i><b>34.2.5</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.6" data-path="pretestposttest.html"><a href="pretestposttest.html#summary_psttest"><i class="fa fa-check"></i><b>34.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="34.3" data-path="pretestposttest.html"><a href="pretestposttest.html#psttest_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="34.3.1" data-path="pretestposttest.html"><a href="pretestposttest.html#psttest_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="pretestposttest.html"><a href="pretestposttest.html#psttest_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="pretestposttest.html"><a href="pretestposttest.html#t.test_function_psttest"><i class="fa fa-check"></i><b>34.3.3</b> <code>t.test</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="35" data-path="posttestonly.html"><a href="posttestonly.html"><i class="fa fa-check"></i><b>35</b> Evaluating a Post-Test-Only with Control Group Design Using Independent-Samples <em>t</em>-test</a>
+<ul>
+<li class="chapter" data-level="35.1" data-path="posttestonly.html"><a href="posttestonly.html#conceptualoverview_posttestonly_isttest"><i class="fa fa-check"></i><b>35.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="35.1.1" data-path="posttestonly.html"><a href="posttestonly.html#review_posttestonly"><i class="fa fa-check"></i><b>35.1.1</b> Review of Post-Test-Only with Control Group Design</a></li>
+<li class="chapter" data-level="35.1.2" data-path="posttestonly.html"><a href="posttestonly.html#review_isttest"><i class="fa fa-check"></i><b>35.1.2</b> Review of Independent-Samples <em>t</em>-test</a></li>
+</ul></li>
+<li class="chapter" data-level="35.2" data-path="posttestonly.html"><a href="posttestonly.html#tutorial_isttest"><i class="fa fa-check"></i><b>35.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="35.2.1" data-path="posttestonly.html"><a href="posttestonly.html#videotutorial_isttest"><i class="fa fa-check"></i><b>35.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="35.2.2" data-path="posttestonly.html"><a href="posttestonly.html#functions_isttest"><i class="fa fa-check"></i><b>35.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="35.2.3" data-path="posttestonly.html"><a href="posttestonly.html#initsteps_isttest"><i class="fa fa-check"></i><b>35.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="35.2.4" data-path="posttestonly.html"><a href="posttestonly.html#estimate_isttest"><i class="fa fa-check"></i><b>35.2.4</b> Estimate Independent-Samples <em>t</em>-test</a></li>
+<li class="chapter" data-level="35.2.5" data-path="posttestonly.html"><a href="posttestonly.html#barchart_isttest"><i class="fa fa-check"></i><b>35.2.5</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="35.2.6" data-path="posttestonly.html"><a href="posttestonly.html#summary_isttest"><i class="fa fa-check"></i><b>35.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="35.3" data-path="posttestonly.html"><a href="posttestonly.html#isttest_supplement"><i class="fa fa-check"></i><b>35.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="35.3.1" data-path="posttestonly.html"><a href="posttestonly.html#isttest_supplement_functions"><i class="fa fa-check"></i><b>35.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="35.3.2" data-path="posttestonly.html"><a href="posttestonly.html#isttest_initsteps_supplement"><i class="fa fa-check"></i><b>35.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="35.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>35.3.3</b> <code>t.test</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="36" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>36</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<ul>
+<li class="chapter" data-level="36.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>36.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="36.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>36.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="36.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>36.1.2</b> Review of One-Way ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="36.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>36.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="36.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>36.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="36.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>36.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="36.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>36.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="36.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>36.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="36.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>36.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="36.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>36.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="36.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>36.2.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="36.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>36.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="36.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>36.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="36.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>36.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="36.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>36.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="36.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>36.3.4</b> APA-Style Table of Results</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>VIII Employee Selection</b></span></li>
+<li class="chapter" data-level="37" data-path="selection.html"><a href="selection.html"><i class="fa fa-check"></i><b>37</b> Introduction to Employee Selection</a></li>
+<li class="chapter" data-level="38" data-path="disparateimpact.html"><a href="disparateimpact.html"><i class="fa fa-check"></i><b>38</b> Investigating Disparate Impact</a>
+<ul>
+<li class="chapter" data-level="38.1" data-path="disparateimpact.html"><a href="disparateimpact.html#conceptualoverview_disparateimpact"><i class="fa fa-check"></i><b>38.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="38.2" data-path="disparateimpact.html"><a href="disparateimpact.html#tutorial_disparateimpact"><i class="fa fa-check"></i><b>38.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="38.2.1" data-path="disparateimpact.html"><a href="disparateimpact.html#videotutorial_disparateimpact"><i class="fa fa-check"></i><b>38.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="38.2.2" data-path="disparateimpact.html"><a href="disparateimpact.html#functions_disparateimpact"><i class="fa fa-check"></i><b>38.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="38.2.3" data-path="disparateimpact.html"><a href="disparateimpact.html#initsteps_disparateimpact"><i class="fa fa-check"></i><b>38.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="38.2.4" data-path="disparateimpact.html"><a href="disparateimpact.html#fourfifthsrule"><i class="fa fa-check"></i><b>38.2.4</b> 4/5ths Rule</a></li>
+<li class="chapter" data-level="38.2.5" data-path="disparateimpact.html"><a href="disparateimpact.html#chisquaretest_disparateimpact"><i class="fa fa-check"></i><b>38.2.5</b> chi-square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
+<li class="chapter" data-level="38.2.6" data-path="disparateimpact.html"><a href="disparateimpact.html#fisherexacttest"><i class="fa fa-check"></i><b>38.2.6</b> Fisher Exact Test</a></li>
+<li class="chapter" data-level="38.2.7" data-path="disparateimpact.html"><a href="disparateimpact.html#zdifference_test_disparateimpact"><i class="fa fa-check"></i><b>38.2.7</b> <span class="math inline">\(Z_{D}\)</span> Test</a></li>
+<li class="chapter" data-level="38.2.8" data-path="disparateimpact.html"><a href="disparateimpact.html#z_impactratiotest"><i class="fa fa-check"></i><b>38.2.8</b> <span class="math inline">\(Z_{IR}\)</span> Test</a></li>
+<li class="chapter" data-level="38.2.9" data-path="disparateimpact.html"><a href="disparateimpact.html#summary_disparatetreatment"><i class="fa fa-check"></i><b>38.2.9</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="39" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html"><i class="fa fa-check"></i><b>39</b> Estimating Criterion-Related Validity of a Selection Tool Using Correlation</a>
+<ul>
+<li class="chapter" data-level="39.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#conceptualoverview_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="39.1.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#review_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.1.1</b> Review of Criterion-Related Validity</a></li>
+<li class="chapter" data-level="39.1.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#review_correlation"><i class="fa fa-check"></i><b>39.1.2</b> Review of Correlation</a></li>
+</ul></li>
+<li class="chapter" data-level="39.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#tutorial_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="39.2.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#videotutorial_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="39.2.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#functions_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="39.2.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#initsteps_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="39.2.4" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#scatterplot_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.2.4</b> Visualize Association Using a Scatter Plot</a></li>
+<li class="chapter" data-level="39.2.5" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#estimate_correlation"><i class="fa fa-check"></i><b>39.2.5</b> Estimate Correlation</a></li>
+<li class="chapter" data-level="39.2.6" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#summary_criterionrelatedvalidity"><i class="fa fa-check"></i><b>39.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="39.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_supplement"><i class="fa fa-check"></i><b>39.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="39.3.1" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_supplement_functions"><i class="fa fa-check"></i><b>39.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="39.3.2" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#criterionrelatedvalidity_initsteps_supplement"><i class="fa fa-check"></i><b>39.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="39.3.3" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cor_function"><i class="fa fa-check"></i><b>39.3.3</b> <code>cor</code> Function from Base R</a></li>
+<li class="chapter" data-level="39.3.4" data-path="criterionrelatedvalidity.html"><a href="criterionrelatedvalidity.html#cortest_function"><i class="fa fa-check"></i><b>39.3.4</b> <code>cor.test</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="40" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html"><i class="fa fa-check"></i><b>40</b> Predicting Criterion Scores Based on Selection Tool Scores Using Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="40.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#conceptualoverview_predictingcriterionscores"><i class="fa fa-check"></i><b>40.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="40.1.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#review_slr"><i class="fa fa-check"></i><b>40.1.1</b> Review of Simple Linear Regression</a></li>
+<li class="chapter" data-level="40.1.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#review_prediction_slr"><i class="fa fa-check"></i><b>40.1.2</b> Predicting Future Criterion Scores Using Simple Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="40.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#tutorial_predictingcriterionscores"><i class="fa fa-check"></i><b>40.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="40.2.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#videotutorial_predictingcriterionscores"><i class="fa fa-check"></i><b>40.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="40.2.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#functions_predictingcriterionscores"><i class="fa fa-check"></i><b>40.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="40.2.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#initsteps_slr"><i class="fa fa-check"></i><b>40.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="40.2.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#estimate_slr"><i class="fa fa-check"></i><b>40.2.4</b> Estimate Simple Linear Regression Model</a></li>
+<li class="chapter" data-level="40.2.5" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_slr"><i class="fa fa-check"></i><b>40.2.5</b> Predict Criterion Scores</a></li>
+<li class="chapter" data-level="40.2.6" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#summary_predictingcriterionscores"><i class="fa fa-check"></i><b>40.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="40.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement"><i class="fa fa-check"></i><b>40.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="40.3.1" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_supplement_functions"><i class="fa fa-check"></i><b>40.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="40.3.2" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predictingcriterionscores_initsteps_supplement"><i class="fa fa-check"></i><b>40.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="40.3.3" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#lm_function_slr"><i class="fa fa-check"></i><b>40.3.3</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="40.3.4" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#predict_function_slr"><i class="fa fa-check"></i><b>40.3.4</b> <code>predict</code> Function from Base R</a></li>
+<li class="chapter" data-level="40.3.5" data-path="predictingcriterionscores.html"><a href="predictingcriterionscores.html#apatable_slr"><i class="fa fa-check"></i><b>40.3.5</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="41" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html"><i class="fa fa-check"></i><b>41</b> Estimating Incremental Validity of a Selection Tool Using Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="41.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#conceptualoverview_incrementalvalidity"><i class="fa fa-check"></i><b>41.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="41.1.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#review_mlr"><i class="fa fa-check"></i><b>41.1.1</b> Review of Multiple Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="41.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#tutorial_incrementalvalidity"><i class="fa fa-check"></i><b>41.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="41.2.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#videotutorial_incrementalvalidity"><i class="fa fa-check"></i><b>41.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="41.2.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#function_incrementalvalidity"><i class="fa fa-check"></i><b>41.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="41.2.3" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#initsteps_mlr"><i class="fa fa-check"></i><b>41.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="41.2.4" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#estimate_mlr"><i class="fa fa-check"></i><b>41.2.4</b> Estimate Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="41.2.5" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#summary_incrementalvalidity"><i class="fa fa-check"></i><b>41.2.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="41.3" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#incrementalvalidity_supplement"><i class="fa fa-check"></i><b>41.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="41.3.1" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#incrementalvalidity_supplement_functions"><i class="fa fa-check"></i><b>41.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="41.3.2" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#incrementalvalidity_initsteps_supplement"><i class="fa fa-check"></i><b>41.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="41.3.3" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#lm_function_mlr"><i class="fa fa-check"></i><b>41.3.3</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="41.3.4" data-path="incrementalvalidity.html"><a href="incrementalvalidity.html#apatable_mlr"><i class="fa fa-check"></i><b>41.3.4</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="42" data-path="compensatory.html"><a href="compensatory.html"><i class="fa fa-check"></i><b>42</b> Applying a Compensatory Approach to Selection Decisions Using Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="42.1" data-path="compensatory.html"><a href="compensatory.html#conceptualoverview_compensatory"><i class="fa fa-check"></i><b>42.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="42.1.1" data-path="compensatory.html"><a href="compensatory.html#review_compensatory_mlr"><i class="fa fa-check"></i><b>42.1.1</b> Review of Multiple Linear Regression</a></li>
+<li class="chapter" data-level="42.1.2" data-path="compensatory.html"><a href="compensatory.html#review_compensatory"><i class="fa fa-check"></i><b>42.1.2</b> Review of Compensatory Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="42.2" data-path="compensatory.html"><a href="compensatory.html#tutorial_compensatory"><i class="fa fa-check"></i><b>42.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="42.2.1" data-path="compensatory.html"><a href="compensatory.html#videotutorial_compensatory"><i class="fa fa-check"></i><b>42.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="42.2.2" data-path="compensatory.html"><a href="compensatory.html#function_compensatory"><i class="fa fa-check"></i><b>42.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="42.2.3" data-path="compensatory.html"><a href="compensatory.html#initsteps_compensatory"><i class="fa fa-check"></i><b>42.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="42.2.4" data-path="compensatory.html"><a href="compensatory.html#estimate_compensatory"><i class="fa fa-check"></i><b>42.2.4</b> Estimate Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="42.2.5" data-path="compensatory.html"><a href="compensatory.html#predictcriterionscores_compensatory"><i class="fa fa-check"></i><b>42.2.5</b> Predict Criterion Scores</a></li>
+<li class="chapter" data-level="42.2.6" data-path="compensatory.html"><a href="compensatory.html#summary_compensatory"><i class="fa fa-check"></i><b>42.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="42.3" data-path="compensatory.html"><a href="compensatory.html#compensatory_supplement"><i class="fa fa-check"></i><b>42.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="42.3.1" data-path="compensatory.html"><a href="compensatory.html#compensatory_supplement_functions"><i class="fa fa-check"></i><b>42.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="42.3.2" data-path="compensatory.html"><a href="compensatory.html#compensatory_initsteps_supplement"><i class="fa fa-check"></i><b>42.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="42.3.3" data-path="compensatory.html"><a href="compensatory.html#lm_predict_functions_compensatory"><i class="fa fa-check"></i><b>42.3.3</b> <code>lm</code> &amp; <code>predict</code> Functions from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="43" data-path="multiplecutoff.html"><a href="multiplecutoff.html"><i class="fa fa-check"></i><b>43</b> Applying a Noncompensatory Approach to Selection Decisions Using Angoff Method</a>
+<ul>
+<li class="chapter" data-level="43.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#conceptualoverview_multiplecutoff"><i class="fa fa-check"></i><b>43.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="43.1.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#review_multiplecutoff"><i class="fa fa-check"></i><b>43.1.1</b> Review of Noncompensatory Approach</a></li>
+</ul></li>
+<li class="chapter" data-level="43.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#tutorial_multiplecutoff"><i class="fa fa-check"></i><b>43.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="43.2.1" data-path="multiplecutoff.html"><a href="multiplecutoff.html#function_multiplecutoff"><i class="fa fa-check"></i><b>43.2.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="43.2.2" data-path="multiplecutoff.html"><a href="multiplecutoff.html#initsteps_multiplecutoff"><i class="fa fa-check"></i><b>43.2.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="43.2.3" data-path="multiplecutoff.html"><a href="multiplecutoff.html#createcutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>43.2.3</b> Create Cutoff Scores</a></li>
+<li class="chapter" data-level="43.2.4" data-path="multiplecutoff.html"><a href="multiplecutoff.html#applycutoffscores_multiplecutoff"><i class="fa fa-check"></i><b>43.2.4</b> Apply Cutoff Scores to Make Selection Decisions</a></li>
+<li class="chapter" data-level="43.2.5" data-path="multiplecutoff.html"><a href="multiplecutoff.html#summary_multiplecutoff"><i class="fa fa-check"></i><b>43.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="44" data-path="differentialprediction.html"><a href="differentialprediction.html"><i class="fa fa-check"></i><b>44</b> Testing for Differential Prediction Using Moderated Multiple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="44.1" data-path="differentialprediction.html"><a href="differentialprediction.html#conceptualoverview_differentialprediction"><i class="fa fa-check"></i><b>44.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="44.1.1" data-path="differentialprediction.html"><a href="differentialprediction.html#review_mmlr"><i class="fa fa-check"></i><b>44.1.1</b> Review of Moderated Multiple Linear Regression</a></li>
+<li class="chapter" data-level="44.1.2" data-path="differentialprediction.html"><a href="differentialprediction.html#review_differentialprediction"><i class="fa fa-check"></i><b>44.1.2</b> Review of Differential Prediction</a></li>
+</ul></li>
+<li class="chapter" data-level="44.2" data-path="differentialprediction.html"><a href="differentialprediction.html#tutorial_differentialprediction"><i class="fa fa-check"></i><b>44.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="44.2.1" data-path="differentialprediction.html"><a href="differentialprediction.html#videotutorial_differentialprediction"><i class="fa fa-check"></i><b>44.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="44.2.2" data-path="differentialprediction.html"><a href="differentialprediction.html#function_mmlr"><i class="fa fa-check"></i><b>44.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="44.2.3" data-path="differentialprediction.html"><a href="differentialprediction.html#initsteps_mmlr"><i class="fa fa-check"></i><b>44.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="44.2.4" data-path="differentialprediction.html"><a href="differentialprediction.html#center_mmlr"><i class="fa fa-check"></i><b>44.2.4</b> Grand-Mean Center Continuous Predictor Variables</a></li>
+<li class="chapter" data-level="44.2.5" data-path="differentialprediction.html"><a href="differentialprediction.html#estimate_mmlr"><i class="fa fa-check"></i><b>44.2.5</b> Estimate Moderated Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="44.2.6" data-path="differentialprediction.html"><a href="differentialprediction.html#summary_differentialprediction"><i class="fa fa-check"></i><b>44.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="44.3" data-path="differentialprediction.html"><a href="differentialprediction.html#differentialprediction_supplement"><i class="fa fa-check"></i><b>44.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="44.3.1" data-path="differentialprediction.html"><a href="differentialprediction.html#differentialprediction_supplement_functions"><i class="fa fa-check"></i><b>44.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="44.3.2" data-path="differentialprediction.html"><a href="differentialprediction.html#differentialprediction_initsteps_supplement"><i class="fa fa-check"></i><b>44.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="44.3.3" data-path="differentialprediction.html"><a href="differentialprediction.html#lm_function_mmlr"><i class="fa fa-check"></i><b>44.3.3</b> <code>lm</code> Function from Base R</a></li>
+<li class="chapter" data-level="44.3.4" data-path="differentialprediction.html"><a href="differentialprediction.html#apatable_mmlr"><i class="fa fa-check"></i><b>44.3.4</b> APA-Style Results Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="45" data-path="crossvalidation.html"><a href="crossvalidation.html"><i class="fa fa-check"></i><b>45</b> Statistically &amp; Empirically Cross-Validating a Selection Tool</a>
+<ul>
+<li class="chapter" data-level="45.1" data-path="crossvalidation.html"><a href="crossvalidation.html#conceptualoverview_crossvalidation"><i class="fa fa-check"></i><b>45.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="45.1.1" data-path="crossvalidation.html"><a href="crossvalidation.html#review_statistical_crossvalidation"><i class="fa fa-check"></i><b>45.1.1</b> Review of Statistical Cross-Validation</a></li>
+<li class="chapter" data-level="45.1.2" data-path="crossvalidation.html"><a href="crossvalidation.html#review_empirical_crossvalidation"><i class="fa fa-check"></i><b>45.1.2</b> Review of Empirical Cross-Validation</a></li>
+</ul></li>
+<li class="chapter" data-level="45.2" data-path="crossvalidation.html"><a href="crossvalidation.html#tutorial_crossvalidation"><i class="fa fa-check"></i><b>45.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="45.2.1" data-path="crossvalidation.html"><a href="crossvalidation.html#function_crossvalidation"><i class="fa fa-check"></i><b>45.2.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="45.2.2" data-path="crossvalidation.html"><a href="crossvalidation.html#initsteps_crossvalidation"><i class="fa fa-check"></i><b>45.2.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="45.2.3" data-path="crossvalidation.html"><a href="crossvalidation.html#crossvalidation_statistical"><i class="fa fa-check"></i><b>45.2.3</b> Perform Statistical Cross-Validation</a></li>
+<li class="chapter" data-level="45.2.4" data-path="crossvalidation.html"><a href="crossvalidation.html#crossvalidation_empirical"><i class="fa fa-check"></i><b>45.2.4</b> Perform Empirical Cross-Validation</a></li>
+<li class="chapter" data-level="45.2.5" data-path="crossvalidation.html"><a href="crossvalidation.html#summary_crossvalidation"><i class="fa fa-check"></i><b>45.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>IX Employee Separation &amp; Retention</b></span></li>
+<li class="chapter" data-level="46" data-path="turnover.html"><a href="turnover.html"><i class="fa fa-check"></i><b>46</b> Introduction to Employee Separation &amp; Retention</a></li>
+<li class="chapter" data-level="47" data-path="turnoverrate.html"><a href="turnoverrate.html"><i class="fa fa-check"></i><b>47</b> Computing Monthly &amp; Annual Turnover Rates</a>
+<ul>
+<li class="chapter" data-level="47.1" data-path="turnoverrate.html"><a href="turnoverrate.html#conceptualoverview_turnoverrate"><i class="fa fa-check"></i><b>47.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="47.2" data-path="turnoverrate.html"><a href="turnoverrate.html#tutorial_turnoverrate"><i class="fa fa-check"></i><b>47.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="47.2.1" data-path="turnoverrate.html"><a href="turnoverrate.html#videotutorial_turnoverrate"><i class="fa fa-check"></i><b>47.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="47.2.2" data-path="turnoverrate.html"><a href="turnoverrate.html#functions_turnoverrate"><i class="fa fa-check"></i><b>47.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="47.2.3" data-path="turnoverrate.html"><a href="turnoverrate.html#initsteps_turnoverrate"><i class="fa fa-check"></i><b>47.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="47.2.4" data-path="turnoverrate.html"><a href="turnoverrate.html#turnoverrate_monthlyturnoverrate"><i class="fa fa-check"></i><b>47.2.4</b> Compute Monthly Turnover Rates</a></li>
+<li class="chapter" data-level="47.2.5" data-path="turnoverrate.html"><a href="turnoverrate.html#turnoverrate_annualturnoverrate"><i class="fa fa-check"></i><b>47.2.5</b> Compute Annual Turnover Rate</a></li>
+<li class="chapter" data-level="47.2.6" data-path="turnoverrate.html"><a href="turnoverrate.html#summary_turnoverrate"><i class="fa fa-check"></i><b>47.2.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="48" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html"><i class="fa fa-check"></i><b>48</b> Estimating the Association Between Two Categorical Variables Using Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a>
+<ul>
+<li class="chapter" data-level="48.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#conceptualoverview_turnoverchisquare"><i class="fa fa-check"></i><b>48.1</b> Conceptual Overview</a></li>
+<li class="chapter" data-level="48.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#tutorial_turnoverchisquare"><i class="fa fa-check"></i><b>48.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="48.2.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#videotutorial_turnoverchisquare"><i class="fa fa-check"></i><b>48.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="48.2.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#functions_turnoverchisquare"><i class="fa fa-check"></i><b>48.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.2.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#initsteps_turnoverchisquare"><i class="fa fa-check"></i><b>48.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.2.4" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_contingencytable"><i class="fa fa-check"></i><b>48.2.4</b> Create a Contingency Table for Observed Data</a></li>
+<li class="chapter" data-level="48.2.5" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_chisquare"><i class="fa fa-check"></i><b>48.2.5</b> Estimate Chi-Square (<span class="math inline">\(\chi^2\)</span>) Test of Independence</a></li>
+<li class="chapter" data-level="48.2.6" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#summary_turnoverchisquare"><i class="fa fa-check"></i><b>48.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="48.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement"><i class="fa fa-check"></i><b>48.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="48.3.1" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_supplement_functions"><i class="fa fa-check"></i><b>48.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="48.3.2" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#turnoverchisquare_initsteps_supplement"><i class="fa fa-check"></i><b>48.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="48.3.3" data-path="turnoverchisquare.html"><a href="turnoverchisquare.html#supplement_turnoverchisquare_oddsratio"><i class="fa fa-check"></i><b>48.3.3</b> Compute Odds Ratio for 2x2 Contingency Table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="49" data-path="logistic.html"><a href="logistic.html"><i class="fa fa-check"></i><b>49</b> Identifying Predictors of Turnover Using Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="49.1" data-path="logistic.html"><a href="logistic.html#conceptualoverview_logistic"><i class="fa fa-check"></i><b>49.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="49.1.1" data-path="logistic.html"><a href="logistic.html#review_logistic"><i class="fa fa-check"></i><b>49.1.1</b> Review of Logistic Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="49.2" data-path="logistic.html"><a href="logistic.html#tutorial_logistic"><i class="fa fa-check"></i><b>49.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="49.2.1" data-path="logistic.html"><a href="logistic.html#videotutorial_logistic"><i class="fa fa-check"></i><b>49.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="49.2.2" data-path="logistic.html"><a href="logistic.html#functions_logistic"><i class="fa fa-check"></i><b>49.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="49.2.3" data-path="logistic.html"><a href="logistic.html#initsteps_logistic"><i class="fa fa-check"></i><b>49.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="49.2.4" data-path="logistic.html"><a href="logistic.html#estimate_simple_logistic"><i class="fa fa-check"></i><b>49.2.4</b> Estimate Simple Logistic Regression Model</a></li>
+<li class="chapter" data-level="49.2.5" data-path="logistic.html"><a href="logistic.html#estimate_multiple_logistic"><i class="fa fa-check"></i><b>49.2.5</b> Estimate Multiple Logistic Regression Model</a></li>
+<li class="chapter" data-level="49.2.6" data-path="logistic.html"><a href="logistic.html#summary_logistic"><i class="fa fa-check"></i><b>49.2.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="49.3" data-path="logistic.html"><a href="logistic.html#logistic_supplement"><i class="fa fa-check"></i><b>49.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="49.3.1" data-path="logistic.html"><a href="logistic.html#logistic_supplement_functions"><i class="fa fa-check"></i><b>49.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="49.3.2" data-path="logistic.html"><a href="logistic.html#logistic_initsteps_supplement"><i class="fa fa-check"></i><b>49.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="49.3.3" data-path="logistic.html"><a href="logistic.html#glm_function_simple_logistic"><i class="fa fa-check"></i><b>49.3.3</b> Simple Logistic Regression Model Using <code>glm</code> Function from Base R</a></li>
+<li class="chapter" data-level="49.3.4" data-path="logistic.html"><a href="logistic.html#glm_function_multiple_logistic"><i class="fa fa-check"></i><b>49.3.4</b> Multiple Logistic Regression Using <code>glm</code> Function from Base R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="50" data-path="kfold.html"><a href="kfold.html"><i class="fa fa-check"></i><b>50</b> Applying <em>k</em>-Fold Cross-Validation to Logistic Regression</a>
+<ul>
+<li class="chapter" data-level="50.1" data-path="kfold.html"><a href="kfold.html#conceptualoverview_kfold"><i class="fa fa-check"></i><b>50.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="50.1.1" data-path="kfold.html"><a href="kfold.html#review_predictiveanalytics"><i class="fa fa-check"></i><b>50.1.1</b> Review of Predictive Analytics</a></li>
+<li class="chapter" data-level="50.1.2" data-path="kfold.html"><a href="kfold.html#review_kfold"><i class="fa fa-check"></i><b>50.1.2</b> Review of <em>k</em>-Fold Cross-Validation</a></li>
+<li class="chapter" data-level="50.1.3" data-path="kfold.html"><a href="kfold.html#conceptualvideo_kfold"><i class="fa fa-check"></i><b>50.1.3</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="50.2" data-path="kfold.html"><a href="kfold.html#tutorial_kfold"><i class="fa fa-check"></i><b>50.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="50.2.1" data-path="kfold.html"><a href="kfold.html#videotutorial_kfold"><i class="fa fa-check"></i><b>50.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="50.2.2" data-path="kfold.html"><a href="kfold.html#functions_kfold"><i class="fa fa-check"></i><b>50.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="50.2.3" data-path="kfold.html"><a href="kfold.html#initsteps_kfold"><i class="fa fa-check"></i><b>50.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="50.2.4" data-path="kfold.html"><a href="kfold.html#estimate_kfold_logistic"><i class="fa fa-check"></i><b>50.2.4</b> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</a></li>
+<li class="chapter" data-level="50.2.5" data-path="kfold.html"><a href="kfold.html#summary_kfold"><i class="fa fa-check"></i><b>50.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="51" data-path="survival.html"><a href="survival.html"><i class="fa fa-check"></i><b>51</b> Understanding Length of Service Using Survival Analysis</a>
+<ul>
+<li class="chapter" data-level="51.1" data-path="survival.html"><a href="survival.html#conceptualoverview_survival"><i class="fa fa-check"></i><b>51.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="51.1.1" data-path="survival.html"><a href="survival.html#review_censoring_survival"><i class="fa fa-check"></i><b>51.1.1</b> Censoring</a></li>
+<li class="chapter" data-level="51.1.2" data-path="survival.html"><a href="survival.html#review_types_survival"><i class="fa fa-check"></i><b>51.1.2</b> Types of Survival Analysis</a></li>
+<li class="chapter" data-level="51.1.3" data-path="survival.html"><a href="survival.html#conceptualvideo_survival"><i class="fa fa-check"></i><b>51.1.3</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="51.2" data-path="survival.html"><a href="survival.html#tutorial_survival"><i class="fa fa-check"></i><b>51.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="51.2.1" data-path="survival.html"><a href="survival.html#videotutorial_survival"><i class="fa fa-check"></i><b>51.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="51.2.2" data-path="survival.html"><a href="survival.html#functions_survival"><i class="fa fa-check"></i><b>51.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="51.2.3" data-path="survival.html"><a href="survival.html#initsteps_survival"><i class="fa fa-check"></i><b>51.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="51.2.4" data-path="survival.html"><a href="survival.html#createcensoring_survival"><i class="fa fa-check"></i><b>51.2.4</b> Create a Censoring Variable</a></li>
+<li class="chapter" data-level="51.2.5" data-path="survival.html"><a href="survival.html#inspectlosdistribution_survival"><i class="fa fa-check"></i><b>51.2.5</b> Inspect Distribution of Length of Service</a></li>
+<li class="chapter" data-level="51.2.6" data-path="survival.html"><a href="survival.html#conductkmanalysis_lifetable_survival"><i class="fa fa-check"></i><b>51.2.6</b> Conduct Kaplan-Meier Analysis &amp; Create Life Table</a></li>
+<li class="chapter" data-level="51.2.7" data-path="survival.html"><a href="survival.html#estimatecox_survival"><i class="fa fa-check"></i><b>51.2.7</b> Estimate Cox Proportional Hazards Model</a></li>
+<li class="chapter" data-level="51.2.8" data-path="survival.html"><a href="survival.html#summary_survival"><i class="fa fa-check"></i><b>51.2.8</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>X Employee Performance Management</b></span></li>
+<li class="chapter" data-level="52" data-path="performancemanagement.html"><a href="performancemanagement.html"><i class="fa fa-check"></i><b>52</b> Introduction to Employee Performance Management</a></li>
+<li class="chapter" data-level="53" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html"><i class="fa fa-check"></i><b>53</b> Evaluating Convergent &amp; Discriminant Validity Using Scatter Plots &amp; Correlations</a>
+<ul>
+<li class="chapter" data-level="53.1" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#conceptualoverview_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="53.1.1" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#review_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.1.1</b> Review of Concurrent &amp; Discriminant Validity</a></li>
+<li class="chapter" data-level="53.1.2" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#review_pearson_pointbiserial_correlation"><i class="fa fa-check"></i><b>53.1.2</b> Review of Pearson Product-Moment &amp; Point-Biserial Correlation</a></li>
+<li class="chapter" data-level="53.1.3" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#review_bivariatescatterplot"><i class="fa fa-check"></i><b>53.1.3</b> Review of Bivariate Scatter Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="53.2" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#tutorial_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="53.2.1" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#videotutorial_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="53.2.2" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#functions_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="53.2.3" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#initsteps_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="53.2.4" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#bivariatescatterplot_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2.4</b> Visualize Association Using a Bivariate Scatter Plot</a></li>
+<li class="chapter" data-level="53.2.5" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#estimate_correlation_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2.5</b> Estimate Correlations</a></li>
+<li class="chapter" data-level="53.2.6" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#correlationmatrix_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2.6</b> Create Correlation Matrix</a></li>
+<li class="chapter" data-level="53.2.7" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#summary_convergentdiscriminantvalidity"><i class="fa fa-check"></i><b>53.2.7</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="53.3" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#convergentdiscriminantvalidity_supplement"><i class="fa fa-check"></i><b>53.3</b> Chapter Supplement</a>
+<ul>
+<li class="chapter" data-level="53.3.1" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#convergentdiscriminantvalidity_supplement_functions"><i class="fa fa-check"></i><b>53.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="53.3.2" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#convergentdiscriminantvalidity_initsteps_supplement"><i class="fa fa-check"></i><b>53.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="53.3.3" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#shapiro.test_function"><i class="fa fa-check"></i><b>53.3.3</b> <code>shapiro.test</code> Function from Base R</a></li>
+<li class="chapter" data-level="53.3.4" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#apatable_correlationmatrix"><i class="fa fa-check"></i><b>53.3.4</b> APA-Style Results Table</a></li>
+<li class="chapter" data-level="53.3.5" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#cor.plot_psych_function"><i class="fa fa-check"></i><b>53.3.5</b> <code>cor.plot</code> Function from <code>psych</code> package</a></li>
+<li class="chapter" data-level="53.3.6" data-path="convergentdiscriminantvalidity.html"><a href="convergentdiscriminantvalidity.html#corrgram_corrgram_function"><i class="fa fa-check"></i><b>53.3.6</b> <code>corrgram</code> Function from <code>corrgram</code> package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="54" data-path="polynomialregression.html"><a href="polynomialregression.html"><i class="fa fa-check"></i><b>54</b> Investigating Nonlinear Associations Using Polynomial Regression</a>
+<ul>
+<li class="chapter" data-level="54.1" data-path="polynomialregression.html"><a href="polynomialregression.html#conceptualoverview_polynomialregression"><i class="fa fa-check"></i><b>54.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="54.1.1" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalassumptions_polynomialregression"><i class="fa fa-check"></i><b>54.1.1</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="54.1.2" data-path="polynomialregression.html"><a href="polynomialregression.html#statisticalsignficance_polynomialregression"><i class="fa fa-check"></i><b>54.1.2</b> Statistical Significance</a></li>
+</ul></li>
+<li class="chapter" data-level="54.2" data-path="polynomialregression.html"><a href="polynomialregression.html#tutorial_polynomialregression"><i class="fa fa-check"></i><b>54.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="54.2.1" data-path="polynomialregression.html"><a href="polynomialregression.html#functions_polynomialregression"><i class="fa fa-check"></i><b>54.2.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="54.2.2" data-path="polynomialregression.html"><a href="polynomialregression.html#initsteps_polynomialregression"><i class="fa fa-check"></i><b>54.2.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="54.2.3" data-path="polynomialregression.html"><a href="polynomialregression.html#bivariatescatterplot_polynomialregression"><i class="fa fa-check"></i><b>54.2.3</b> Visualize Association Using a Bivariate Scatter Plot</a></li>
+<li class="chapter" data-level="54.2.4" data-path="polynomialregression.html"><a href="polynomialregression.html#estimate_polynomialregression"><i class="fa fa-check"></i><b>54.2.4</b> Estimate Polynomial Regression Model</a></li>
+<li class="chapter" data-level="54.2.5" data-path="polynomialregression.html"><a href="polynomialregression.html#summary_polynomialregression"><i class="fa fa-check"></i><b>54.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="55" data-path="lassoregression.html"><a href="lassoregression.html"><i class="fa fa-check"></i><b>55</b> Supervised Statistical Learning Using Lasso Regression</a>
+<ul>
+<li class="chapter" data-level="55.1" data-path="lassoregression.html"><a href="lassoregression.html#conceptualoverview_lassoregression"><i class="fa fa-check"></i><b>55.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="55.1.1" data-path="lassoregression.html"><a href="lassoregression.html#shrinkage_lassoregression"><i class="fa fa-check"></i><b>55.1.1</b> Shrinkage</a></li>
+<li class="chapter" data-level="55.1.2" data-path="lassoregression.html"><a href="lassoregression.html#regularization_lassoregression"><i class="fa fa-check"></i><b>55.1.2</b> Regularization</a></li>
+<li class="chapter" data-level="55.1.3" data-path="lassoregression.html"><a href="lassoregression.html#tuning_lassoregression"><i class="fa fa-check"></i><b>55.1.3</b> Tuning</a></li>
+<li class="chapter" data-level="55.1.4" data-path="lassoregression.html"><a href="lassoregression.html#modeltype_selection_lassoregression"><i class="fa fa-check"></i><b>55.1.4</b> Model Type Selection</a></li>
+<li class="chapter" data-level="55.1.5" data-path="lassoregression.html"><a href="lassoregression.html#crossvalidation_lassoregression"><i class="fa fa-check"></i><b>55.1.5</b> Cross-Validation</a></li>
+<li class="chapter" data-level="55.1.6" data-path="lassoregression.html"><a href="lassoregression.html#predictiveanalytics_lassoregression"><i class="fa fa-check"></i><b>55.1.6</b> Predictive Analytics</a></li>
+<li class="chapter" data-level="55.1.7" data-path="lassoregression.html"><a href="lassoregression.html#conceptualvideo_lassoregression"><i class="fa fa-check"></i><b>55.1.7</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="55.2" data-path="lassoregression.html"><a href="lassoregression.html#tutorial_lassoregression"><i class="fa fa-check"></i><b>55.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="55.2.1" data-path="lassoregression.html"><a href="lassoregression.html#videotutorial_lassoregression"><i class="fa fa-check"></i><b>55.2.1</b> Video Tutorials</a></li>
+<li class="chapter" data-level="55.2.2" data-path="lassoregression.html"><a href="lassoregression.html#functions_lassoregression"><i class="fa fa-check"></i><b>55.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="55.2.3" data-path="lassoregression.html"><a href="lassoregression.html#initsteps_lassoregression"><i class="fa fa-check"></i><b>55.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="55.2.4" data-path="lassoregression.html"><a href="lassoregression.html#processoverview_lasso"><i class="fa fa-check"></i><b>55.2.4</b> Process Overview</a></li>
+<li class="chapter" data-level="55.2.5" data-path="lassoregression.html"><a href="lassoregression.html#partitiondata_lasso"><i class="fa fa-check"></i><b>55.2.5</b> Partition the Data</a></li>
+<li class="chapter" data-level="55.2.6" data-path="lassoregression.html"><a href="lassoregression.html#specify-k-fold-cross-validation"><i class="fa fa-check"></i><b>55.2.6</b> Specify <em>k</em>-Fold Cross-Validation</a></li>
+<li class="chapter" data-level="55.2.7" data-path="lassoregression.html"><a href="lassoregression.html#trainlasso_lasso"><i class="fa fa-check"></i><b>55.2.7</b> Specify and Train Lasso Regression Model</a></li>
+<li class="chapter" data-level="55.2.8" data-path="lassoregression.html"><a href="lassoregression.html#compare_ols_lasso"><i class="fa fa-check"></i><b>55.2.8</b> Optional: Compare to Lasso Model to OLS Multiple Linear Regression Model</a></li>
+<li class="chapter" data-level="55.2.9" data-path="lassoregression.html"><a href="lassoregression.html#summary_lasso"><i class="fa fa-check"></i><b>55.2.9</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="56" data-path="pathanalysis.html"><a href="pathanalysis.html"><i class="fa fa-check"></i><b>56</b> Investigating Processes Using Path Analysis</a>
+<ul>
+<li class="chapter" data-level="56.1" data-path="pathanalysis.html"><a href="pathanalysis.html#conceptualoverview_pathanalysis"><i class="fa fa-check"></i><b>56.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="56.1.1" data-path="pathanalysis.html"><a href="pathanalysis.html#pathdiagram_pathanalysis"><i class="fa fa-check"></i><b>56.1.1</b> Path Diagram</a></li>
+<li class="chapter" data-level="56.1.2" data-path="pathanalysis.html"><a href="pathanalysis.html#modelidentification_pathanalysis"><i class="fa fa-check"></i><b>56.1.2</b> Model Identification</a></li>
+<li class="chapter" data-level="56.1.3" data-path="pathanalysis.html"><a href="pathanalysis.html#modelfit_pathanalysis"><i class="fa fa-check"></i><b>56.1.3</b> Model Fit</a></li>
+<li class="chapter" data-level="56.1.4" data-path="pathanalysis.html"><a href="pathanalysis.html#parameterestimatese_pathanalysis"><i class="fa fa-check"></i><b>56.1.4</b> Parameter Estimates</a></li>
+<li class="chapter" data-level="56.1.5" data-path="pathanalysis.html"><a href="pathanalysis.html#statisticalassumptions_pathanalysis"><i class="fa fa-check"></i><b>56.1.5</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="56.1.6" data-path="pathanalysis.html"><a href="pathanalysis.html#conceptualvideo_pathanalysis"><i class="fa fa-check"></i><b>56.1.6</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="56.2" data-path="pathanalysis.html"><a href="pathanalysis.html#tutorial_pathanalysis"><i class="fa fa-check"></i><b>56.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="56.2.1" data-path="pathanalysis.html"><a href="pathanalysis.html#videotutorial_pathanalysis"><i class="fa fa-check"></i><b>56.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="56.2.2" data-path="pathanalysis.html"><a href="pathanalysis.html#functions_pathanalysis"><i class="fa fa-check"></i><b>56.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="56.2.3" data-path="pathanalysis.html"><a href="pathanalysis.html#initsteps_pathanalysis"><i class="fa fa-check"></i><b>56.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="56.2.4" data-path="pathanalysis.html"><a href="pathanalysis.html#specifymodel_pathanalysis"><i class="fa fa-check"></i><b>56.2.4</b> Specify &amp; Estimate Path Analysis Models</a></li>
+<li class="chapter" data-level="56.2.5" data-path="pathanalysis.html"><a href="pathanalysis.html#additionalinfo_pathanalysis"><i class="fa fa-check"></i><b>56.2.5</b> Additional Information on Model Specification Notation</a></li>
+<li class="chapter" data-level="56.2.6" data-path="pathanalysis.html"><a href="pathanalysis.html#summary_pathanalysis"><i class="fa fa-check"></i><b>56.2.6</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="57" data-path="mediationanalysis.html"><a href="mediationanalysis.html"><i class="fa fa-check"></i><b>57</b> Estimating a Mediation Model Using Path Analysis</a>
+<ul>
+<li class="chapter" data-level="57.1" data-path="mediationanalysis.html"><a href="mediationanalysis.html#conceptualoverview_mediationanalysis"><i class="fa fa-check"></i><b>57.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="57.1.1" data-path="mediationanalysis.html"><a href="mediationanalysis.html#indirecteffect_mediationanalysis"><i class="fa fa-check"></i><b>57.1.1</b> Estimation of Indirect Effect</a></li>
+<li class="chapter" data-level="57.1.2" data-path="mediationanalysis.html"><a href="mediationanalysis.html#modelidentification_mediationanalysis"><i class="fa fa-check"></i><b>57.1.2</b> Model Identification</a></li>
+<li class="chapter" data-level="57.1.3" data-path="mediationanalysis.html"><a href="mediationanalysis.html#modelfit_mediationanalysis"><i class="fa fa-check"></i><b>57.1.3</b> Model Fit</a></li>
+<li class="chapter" data-level="57.1.4" data-path="mediationanalysis.html"><a href="mediationanalysis.html#parameterestimatese_mediationanalysis"><i class="fa fa-check"></i><b>57.1.4</b> Parameter Estimates</a></li>
+<li class="chapter" data-level="57.1.5" data-path="mediationanalysis.html"><a href="mediationanalysis.html#statisticalassumptions_mediationanalysis"><i class="fa fa-check"></i><b>57.1.5</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="57.1.6" data-path="mediationanalysis.html"><a href="mediationanalysis.html#conceptualvideo_mediationanalysis"><i class="fa fa-check"></i><b>57.1.6</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="57.2" data-path="mediationanalysis.html"><a href="mediationanalysis.html#tutorial_mediationanalysis"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="57.2.1" data-path="mediationanalysis.html"><a href="mediationanalysis.html#videotutorial_mediationanalysis"><i class="fa fa-check"></i><b>57.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="57.2.2" data-path="mediationanalysis.html"><a href="mediationanalysis.html#functions_mediationanalysis"><i class="fa fa-check"></i><b>57.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="57.2.3" data-path="mediationanalysis.html"><a href="mediationanalysis.html#initsteps_mediationanalysis"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="57.2.4" data-path="mediationanalysis.html"><a href="mediationanalysis.html#specifymodel_mediationanalysis"><i class="fa fa-check"></i><b>57.2.4</b> Specify &amp; Estimate a Mediation Analysis Model</a></li>
+<li class="chapter" data-level="57.2.5" data-path="mediationanalysis.html"><a href="mediationanalysis.html#summary_mediationanalysis"><i class="fa fa-check"></i><b>57.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
+<li class="chapter" data-level="58" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>58</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="59" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>59</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R for HR:<br />
+<em>An Introduction to Human Resource Analytics Using R</em><br />
+BOOK UNDER CONSTRUCTION</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="marketsurvey" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Preparing Market Survey Data</h1>
+<p>In this chapter, we will learn how to prepare market survey data by aging and applying weights to the data.</p>
+<div id="conceptualoverview_marketsurvey" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Conceptual Overview</h2>
+<p>A <strong>market review</strong> refers to the “process of collecting pay data for benchmark jobs from other organizations” <span class="citation">(<a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. When conducting a market review, it is a common practice to acquire data from a market survey, where a <strong>market survey (salary survey)</strong> refers to a survey used to collect pay data on benchmark jobs (key jobs), which is often conducted by a third-party vendor or government agency. Examples of such third-party parties include traditional surveys (e.g., CareerOneStop.org), customized surveys, and web-based platforms or surveys (e.g., PayScale.com).</p>
+<p>The overarching goal of a market review is often to ensure what is called <strong>external equity (external competitiveness)</strong>, which has to do with how competitive an organization’s pay practices are for particular job relative to other competitor organizations. For example, for a given job, an organization might lead, match, or lag the market pay rates for that job. By ensuring external equity in our organization for critical jobs, we will hopefully be better positioned to attract, motivate, and retain talented individuals. In fact, some organization’s adopt adhere to <strong>market pricing</strong> for certain jobs, which refers basing the pay levels for a job directly on competitor organizations’ pay levels <span class="citation">(<a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>.</p>
+<p>The market-review process consists of the following four steps.</p>
+<p><strong>Step 1: Choose Two or More Market-Survey Sources.</strong> No single market survey is ever perfect, as every market survey suffers from sampling and measurement error, some market surveys are conducting using more (or less) rigorous survey methodologies, and some market survey provide more breadth whereas others provide more depth. Given these reasons, we typically opt to gather data from at least two market-survey sources so that we don’t rely to heavily on a single flawed survey.</p>
+<p><strong>Step 2: Match the Job Descriptions.</strong> Often we won’t be able to find market survey data for every single job in our organization. Instead, we focus on what are called <strong>benchmark jobs (key jobs)</strong>, which are jobs that are common within or across industries. For example, in the healthcare industry in the U.S., the job of a Registered Nurse would be considered a benchmark job, as most hospitals will employee at least one Registered Nurse and thus have pay data for that job. Once we’ve identified our benchmark jobs, we look through the market survey to see if we can find job title and/or job description matches. Even if the job title of our benchmark job differs from that of a benchmark job in the market survey, we can still potentially match the job based on the job description. This can be a tricky step, as the amount of information you have in your organization’s job description for the benchmark job in question may far exceed the amount of information in the market survey. Thus, using our subject matter expertise and knowledge of the job in question, we do our best to ensure that the market survey job is in fact equivalent or comparable to the job in our organization. As an example of how job titles and job descriptions in two market-survey sources can differ for what is essentially the same benchmark job, please refer to Table 1.</p>
+<div class="figure">
+<img src="marketsurvey_jobdescriptions.png" alt="" />
+<p class="caption">Table 1: Example of how job titles and descriptions can differ between market-survey sources for the same benchmark job.</p>
+</div>
+<p><strong>Step 3: Age the Survey Data.</strong> Different market surveys will collect pay data from organizations at different points in time, which means that the raw data from these surveys will often need to be aged to some date in the future. That is, often we wish to estimate the market pay rate of a benchmark job for some time point in the future. In doing so, we can make the survey data more up-to-date, consistent, and comparable across the market-survey sources we have access to. To do so, we need to determine the <strong>annual market movement rate</strong> (e.g., 3.1%) based on a budget growth projection, and using this information we can calculate what is referred to as an <strong>aging factor</strong>.</p>
+<p><strong>Step 4: Apply Survey Weights.</strong> Different market surveys are based on different sample sizes (e.g., number of organizations, number of employees), and as noted above, some market surveys are more rigorous from a methodological perspective. To account for sampling error, we can apply compute sample-weighted means (i.e., averages) in order to “weight” the survey data. In doing so, we can prioritize market pay data from market surveys based on larger sample sizes. Larger sample sizes are associated with lower sampling error, as they tend to me more representative of the underlying population from which the sample was drawn.</p>
+<p>In the following sections, we will learn what it means to “age” market survey data and how we can apply market survey weights to the data. Doing so, allows us to make better judgments regarding the external competitiveness of an organization’s pay practices.</p>
+<div id="agingdata_marketsurvey" class="section level3" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Aging Market Survey Data</h3>
+<p><strong>Aging market survey (or pay) data</strong> refers to the process of “[identifying] when the pay data were originally collected and then [weighting] the data based on the expected change in the market pay rates resulting from merit-based increases, cost-of-living adjustments, and other factors that affect pay” [<span class="citation"><a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al.</a> (<a href="#ref-baueretal2019" role="doc-biblioref">2019</a>)</span>; pp. 380-381]. The process requires simple arithmetic and includes the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Identify an appropriate annual wage/salary budget growth projection from a vendor like WorldatWork (e.g., 3.1% or .031).</li>
+<li>If the the budget growth projection from step 1 is an annual growth projection, then divide the value by 12 obtain a monthly value (e.g., .031 / 12 = .003).</li>
+<li>Determine how many months the data need to be aged (e.g., 7 months), multiply the value from step 2 by the number of months (e.g., .003 x 7 = .018), and given that growth is expected, add 1 to the product (e.g., .018 + 1 = 1.018) – the resulting value (e.g., 1.018) is the <strong>aging factor</strong>.</li>
+<li>Multiply each pay rate by the aging factor (e.g., 15.00 x 1.018 = 15.27) to age the data.</li>
+</ol>
+<p>Given that different market survey sources might have been collected at different times, we may need to calculate and apply a different aging factor to each market survey source.</p>
+</div>
+<div id="applyingweights_marketsurvey" class="section level3" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Applying Market Survey Weights</h3>
+<p><strong>Applying market survey weights</strong> allows us to take into consideration the amount of sampling error (or lack thereof) in and/or level of rigor of different market survey sources <span class="citation">(<a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. The process requires simple arithmetic and follows any aging of the data that was needed. We weight market survey data in different ways and for different reasons. For example, we could give greater weights to those surveys whose pay rate estimates were based on more employees or on more organizations. Alternatively, we could weight market survey data on the level of methodological rigor applied by the developer of the survey. In this chapter, we will calculate <strong>sample-weighted means</strong> based on the number of employees used to calculate the median hourly rate for a given job from a given survey; we could, however, have just as easily applied the same process but based on the number of organizations used to calculate the median hourly rate for a given job from a given survey.</p>
+</div>
+<div id="conceptualvideo_marketsurvey" class="section level3" number="9.1.3">
+<h3><span class="header-section-number">9.1.3</span> Conceptual Videos</h3>
+<p>For a more in-depth review of market surveys, aging market survey data, and applying market survey weights, please check out the following conceptual videos.</p>
+<iframe src="https://youtube.com/embed/ey_QzvUIFyQ?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to conceptual video: <a href="https://youtu.be/ey_QzvUIFyQ" class="uri">https://youtu.be/ey_QzvUIFyQ</a></p>
+<iframe src="https://youtube.com/embed/RUWuiwV8PPE?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to conceptual video: <a href="https://youtu.be/RUWuiwV8PPE" class="uri">https://youtu.be/RUWuiwV8PPE</a></p>
+<iframe src="https://youtube.com/embed/ixi7vozspUs?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to conceptual video: <a href="https://youtu.be/ixi7vozspUs" class="uri">https://youtu.be/ixi7vozspUs</a></p>
+</div>
+</div>
+<div id="tutorial_marketsurvey" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Tutorial</h2>
+<p>This chapter’s tutorial demonstrates perform age market survey and apply market survey weights using R.</p>
+<div id="videotutorial_marketsurvey" class="section level3" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Video Tutorials</h3>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorials below.</p>
+<iframe src="https://youtube.com/embed/RUWuiwV8PPE?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/RUWuiwV8PPE" class="uri">https://youtu.be/RUWuiwV8PPE</a></p>
+<iframe src="https://youtube.com/embed/ixi7vozspUs?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/ixi7vozspUs" class="uri">https://youtu.be/ixi7vozspUs</a></p>
+</div>
+<div id="functions_marketsurvey" class="section level3" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> Functions &amp; Packages Introduced</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Function</th>
+<th align="center">Package</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><code>round</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>View</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>print</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>function</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>matrix</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>nrow</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>rowSums</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>c</code></td>
+<td align="center">base R</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="initsteps_marketsurvey" class="section level3" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> Initial Steps</h3>
+<p>If you haven’t already, save the file called <strong>“MarketSurveyData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="marketsurvey.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1-2"><a href="marketsurvey.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“MarketSurveyData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="marketsurvey.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2-2"><a href="marketsurvey.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2-3"><a href="marketsurvey.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2-4"><a href="marketsurvey.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="marketsurvey.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb3-2"><a href="marketsurvey.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb3-3"><a href="marketsurvey.html#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="marketsurvey.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb3-5"><a href="marketsurvey.html#cb3-5" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MarketSurveyData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 6 Columns: 8</code></pre>
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+## Delimiter: &quot;,&quot;
+## chr (2): Job_ID, Job_Title
+## dbl (6): Survey_1, Survey_2, Survey_3, SS_Survey_1, SS_Survey_2, SS_Survey_3</code></pre>
+<pre><code>## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="marketsurvey.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb7-2"><a href="marketsurvey.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(md)</span></code></pre></div>
+<pre><code>## [1] &quot;Job_ID&quot;      &quot;Job_Title&quot;   &quot;Survey_1&quot;    &quot;Survey_2&quot;    &quot;Survey_3&quot;    &quot;SS_Survey_1&quot; &quot;SS_Survey_2&quot; &quot;SS_Survey_3&quot;</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="marketsurvey.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb9-2"><a href="marketsurvey.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(md)</span></code></pre></div>
+<pre><code>## spec_tbl_df [6 x 8] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ Job_ID     : chr [1:6] &quot;FE10&quot; &quot;FE12&quot; &quot;GE12&quot; &quot;GE13&quot; ...
+##  $ Job_Title  : chr [1:6] &quot;Packaging Operator&quot; &quot;Machine Operator&quot; &quot;Electronics Assembler&quot; &quot;Coil Winder&quot; ...
+##  $ Survey_1   : num [1:6] 14.1 15.9 15.7 16 19.4 ...
+##  $ Survey_2   : num [1:6] 14.5 15.8 15.8 15.5 20.1 ...
+##  $ Survey_3   : num [1:6] 14 16 15.3 16.1 19.8 ...
+##  $ SS_Survey_1: num [1:6] 101 88 90 56 26 32
+##  $ SS_Survey_2: num [1:6] 35 29 27 21 20 22
+##  $ SS_Survey_3: num [1:6] 13 11 11 6 4 4
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   Job_ID = col_character(),
+##   ..   Job_Title = col_character(),
+##   ..   Survey_1 = col_double(),
+##   ..   Survey_2 = col_double(),
+##   ..   Survey_3 = col_double(),
+##   ..   SS_Survey_1 = col_double(),
+##   ..   SS_Survey_2 = col_double(),
+##   ..   SS_Survey_3 = col_double()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="marketsurvey.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb11-2"><a href="marketsurvey.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(md)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 8
+##   Job_ID Job_Title                    Survey_1 Survey_2 Survey_3 SS_Survey_1 SS_Survey_2 SS_Survey_3
+##   &lt;chr&gt;  &lt;chr&gt;                           &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+## 1 FE10   Packaging Operator               14.1     14.5     14.0         101          35          13
+## 2 FE12   Machine Operator                 15.9     15.8     16.0          88          29          11
+## 3 GE12   Electronics Assembler            15.7     15.8     15.3          90          27          11
+## 4 GE13   Coil Winder                      16.0     15.5     16.1          56          21           6
+## 5 GE14   Electronics Technician           19.4     20.1     19.8          26          20           4
+## 6 IE08   Quality Assurance Technician     18.0     17.9     18.6          32          22           4</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="marketsurvey.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb13-2"><a href="marketsurvey.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(md)</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<p>There are 6 variables and 6 cases (i.e., jobs) in the <code>md</code> data frame: <code>Job_ID</code>, <code>Job_Title</code>, <code>Survey_1</code>, <code>Survey_2</code>, <code>Survey_3</code>, <code>SS_Survey_1</code>, <code>SS_Survey_2</code>, and <code>SS_Survey_3</code>. Per the output of the <code>str</code> (structure) function above, the <code>Job_ID</code> and <code>Job_Title</code>variables are of type <em>character</em>, and the other variables are of type <em>numeric</em> (continuous: interval/ratio). The <code>Job_ID</code> variable contains the unique identifiers for jobs, and the <code>Job_Title</code> variable contains the job titles. The three survey variables (<code>Survey_1</code>, <code>Survey_2</code>, <code>Survey_3</code>) include the median hourly pay rates for these jobs, all of which are nonexempt, from each of the three market survey sources used by the organization. The variables <code>SS_Survey_1</code>, <code>SS_Survey_2</code>, and <code>SS_Survey_3</code> contain the number of employees used in each market survey source to estimate the median hourly pay rate for a given job.</p>
+</div>
+<div id="agedata_marketsurvey" class="section level3" number="9.2.4">
+<h3><span class="header-section-number">9.2.4</span> Age the Data</h3>
+<p>To age the data from the first market survey (<code>Survey_1</code>), follow the following four steps.</p>
+<p><strong>Step One:</strong> To identify an appropriate annual wage/salary budget growth projection, we will use a reputable source (e.g., WorldatWork). For this tutorial, let’s assume that the annual wage/salary budget growth projection is <strong>3.1%</strong> (i.e., .031). We’ll assign the budget growth projection value to an object called <code>ABG</code> (Annual Budget Growth) using the <code>&lt;-</code> assignment operator.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="marketsurvey.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step One: Assign annual budget growth projection value to object ABG</span></span>
+<span id="cb15-2"><a href="marketsurvey.html#cb15-2" aria-hidden="true" tabindex="-1"></a>ABG <span class="ot">&lt;-</span> .<span class="dv">031</span></span></code></pre></div>
+<p><strong>Step Two:</strong> If the the budget growth projection from Step One is an annual growth projection (which it is in this case), then for Step Two, we will divide the value by 12 obtain a monthly value. Let’s assign the calculated monthly budget growth projection value to an object called <code>MBG</code> (Monthly Budget Growth) using the <code>&lt;-</code> assignment operator.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="marketsurvey.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step Two: Assign monthly budget growth projection value to object MBG</span></span>
+<span id="cb16-2"><a href="marketsurvey.html#cb16-2" aria-hidden="true" tabindex="-1"></a>MBG <span class="ot">&lt;-</span> ABG <span class="sc">/</span> <span class="dv">12</span></span></code></pre></div>
+<p><strong>Step Three:</strong> For this step, we will first determine how many months the data need to be aged. Let’s assume that the data for the first market survey (<code>Survey_1</code>) were estimated 6 months ago and that we want to age the data 1 month into the future. Given those assumptions, we need to age the market survey data by a total of 7 months (i.e., 6 + 1 = 7). Second, multiply the value from Step Two by the number of months that the data need to be aged. Third, given that growth is expected, add 1 to the product. The resulting value is the <strong>aging factor</strong>. Let’s assign the aging factor value to the object <code>AF</code> (aging factor).</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="marketsurvey.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step Three: Calculate and assign aging factor to object AF</span></span>
+<span id="cb17-2"><a href="marketsurvey.html#cb17-2" aria-hidden="true" tabindex="-1"></a>AF <span class="ot">&lt;-</span> (MBG <span class="sc">*</span> <span class="dv">7</span>) <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<p><strong>Step Four:</strong> Let’s multiply each hourly pay rate from the first market survey (<code>Survey_1</code>) by the aging factor to age the data. We’ll create a new variable called <code>Survey_1_aged</code> and and assign the aged survey data to it using the <code>&lt;-</code> assignment operator. Make sure to note that the <code>Survey_1</code> variable and the new <code>Survey_1_aged</code>variable belong to the <code>md</code> data frame by using the <code>$</code> operator. As an optional follow-up step, use the <code>round</code> function from base R to round the values from the new <code>Survey_1_aged</code>variable to two digits after the decimal.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="marketsurvey.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step Four: Age the data</span></span>
+<span id="cb18-2"><a href="marketsurvey.html#cb18-2" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Survey_1_aged <span class="ot">&lt;-</span> md<span class="sc">$</span>Survey_1 <span class="sc">*</span> AF</span>
+<span id="cb18-3"><a href="marketsurvey.html#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="marketsurvey.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Round the new variable to two digits after the decimal</span></span>
+<span id="cb18-5"><a href="marketsurvey.html#cb18-5" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Survey_1_aged <span class="ot">&lt;-</span> <span class="fu">round</span>(md<span class="sc">$</span>Survey_1_aged, <span class="dv">2</span>)</span></code></pre></div>
+<p>Now that you have aged the data, take a look at the data frame object (<code>md</code>) to marvel at your work.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="marketsurvey.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame</span></span>
+<span id="cb19-2"><a href="marketsurvey.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(md)</span></code></pre></div>
+<p>Alternatively, you can print the vector of sample-weighted means to your console.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="marketsurvey.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of aged survey data</span></span>
+<span id="cb20-2"><a href="marketsurvey.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(md<span class="sc">$</span>Survey_1_aged)</span></code></pre></div>
+<pre><code>## [1] 14.37 16.19 15.94 16.30 19.70 18.27</code></pre>
+<p><em>Note: Given that different market survey sources might have been collected at different times, you may need to calculate and apply a different aging factor to each market survey source.</em></p>
+<p>For the sake of brevity, let’s assume that the three market-survey sources all require the same aging factor (which likely won’t be the case in real life). We are doing this so that we can prepare to pass the aged data along to the next, phase in which we apply market-survey weights.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="marketsurvey.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Age remaining market survey data (with rounding to two digits)</span></span>
+<span id="cb22-2"><a href="marketsurvey.html#cb22-2" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Survey_2_aged <span class="ot">&lt;-</span> <span class="fu">round</span>(md<span class="sc">$</span>Survey_2 <span class="sc">*</span> AF, <span class="dv">2</span>)</span>
+<span id="cb22-3"><a href="marketsurvey.html#cb22-3" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Survey_3_aged <span class="ot">&lt;-</span> <span class="fu">round</span>(md<span class="sc">$</span>Survey_3 <span class="sc">*</span> AF, <span class="dv">2</span>)</span></code></pre></div>
+<div id="agedata_withfunction_marketsurvey" class="section level4" number="9.2.4.1">
+<h4><span class="header-section-number">9.2.4.1</span> Optional: Age the Data with a Function</h4>
+<p>To streamline the four-step process from above, we can create our own function to age data. For example, we can create a function called <code>age</code> using <code>function</code> from base R. The script contained within the curly braces (<code>{ }</code>) essentially replicates what we did in the four-step process above. You don’t need to change anything in the script below – just run it as is.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="marketsurvey.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Create an aging function</span></span>
+<span id="cb23-2"><a href="marketsurvey.html#cb23-2" aria-hidden="true" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="cf">function</span>(data, ABG, age_months) {</span>
+<span id="cb23-3"><a href="marketsurvey.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  MBG <span class="ot">&lt;-</span> ABG <span class="sc">/</span> <span class="dv">12</span></span>
+<span id="cb23-4"><a href="marketsurvey.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  AF <span class="ot">&lt;-</span> (MBG <span class="sc">*</span> age_months) <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb23-5"><a href="marketsurvey.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>((data <span class="sc">*</span> AF), <span class="dv">2</span>)</span>
+<span id="cb23-6"><a href="marketsurvey.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<p>Using the new <code>age</code> function, as the first argument, type <code>data=</code> followed by the name of data frame (<code>md</code>) followed by <code>$</code> and the name of the market survey variable (<code>Survey_1</code>). As the second argument, type <code>ABG=</code> followed by the projected budget growth value (.031). As the third argument, type <code>age_months</code> followed by the number of months for which you would like to age the data. Use the <code>&lt;-</code> assignment operator to assign the resulting values to a new variable (<code>Survey_1_aged</code>) to be added to your existing data frame (<code>md</code>).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="marketsurvey.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Age the market survey data</span></span>
+<span id="cb24-2"><a href="marketsurvey.html#cb24-2" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Survey_1_aged <span class="ot">&lt;-</span> <span class="fu">age</span>(<span class="at">data=</span>md<span class="sc">$</span>Survey_1, <span class="at">ABG=</span>.<span class="dv">031</span>, <span class="at">age_months=</span><span class="dv">7</span>)</span>
+<span id="cb24-3"><a href="marketsurvey.html#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="marketsurvey.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of aged survey data</span></span>
+<span id="cb24-5"><a href="marketsurvey.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(md<span class="sc">$</span>Survey_1_aged)</span></code></pre></div>
+<pre><code>## [1] 14.37 16.19 15.94 16.30 19.70 18.27</code></pre>
+<p><em>Note: Given that different market survey sources might have been collected at different times, you may need to calculate and apply a different aging factor to each market survey source.</em></p>
+<p>For the sake of brevity, let’s assume that the three market-survey sources all require the same aging factor (which likely won’t be the case in real life). We are doing this so that we can prepare to pass the aged data along to the next, phase in which we apply market-survey weights.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="marketsurvey.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Age remaining market survey data (with rounding to two digits)</span></span>
+<span id="cb26-2"><a href="marketsurvey.html#cb26-2" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Survey_2_aged <span class="ot">&lt;-</span> <span class="fu">age</span>(<span class="at">data=</span>md<span class="sc">$</span>Survey_2, <span class="at">ABG=</span>.<span class="dv">031</span>, <span class="at">age_months=</span><span class="dv">7</span>)</span>
+<span id="cb26-3"><a href="marketsurvey.html#cb26-3" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Survey_3_aged <span class="ot">&lt;-</span> <span class="fu">age</span>(<span class="at">data=</span>md<span class="sc">$</span>Survey_3, <span class="at">ABG=</span>.<span class="dv">031</span>, <span class="at">age_months=</span><span class="dv">7</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="weightdata_marketsurvey" class="section level3" number="9.2.5">
+<h3><span class="header-section-number">9.2.5</span> Compute the Sample-Weighted Means</h3>
+<p>After aging the data, we are ready to compute the sample-weighted means, which allows us to apply market survey weights to the data.</p>
+<p>To compute the sample-weighted means for each job, first, we will multiply each job’s median hourly pay rate by the survey sample size on which its based, sum those products, and then divide that sum by the grand total of the sample sizes for all surveys used to estimate a job’s median hourly rate. This process gives us the sample-weighted mean for each job. Let’s use the <code>&lt;-</code> assignment operator to assign the sample-weighted means to a new variable called <code>Weighted_Mean</code> that we will apply to our data frame (<code>md</code>). As a final step, let’s apply the <code>round</code> function from base R to round the values from the new <code>Weighted_Mean</code>variable to two digits after the decimal.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="marketsurvey.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute sample-weighted means</span></span>
+<span id="cb27-2"><a href="marketsurvey.html#cb27-2" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Weighted_Mean <span class="ot">&lt;-</span> </span>
+<span id="cb27-3"><a href="marketsurvey.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  ((md<span class="sc">$</span>Survey_1_aged <span class="sc">*</span> md<span class="sc">$</span>SS_Survey_1) <span class="sc">+</span> (md<span class="sc">$</span>Survey_2_aged <span class="sc">*</span> md<span class="sc">$</span>SS_Survey_2) <span class="sc">+</span> (md<span class="sc">$</span>Survey_3_aged <span class="sc">*</span> md<span class="sc">$</span>SS_Survey_3)) <span class="sc">/</span> </span>
+<span id="cb27-4"><a href="marketsurvey.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  (md<span class="sc">$</span>SS_Survey_1 <span class="sc">+</span> md<span class="sc">$</span>SS_Survey_2 <span class="sc">+</span> md<span class="sc">$</span>SS_Survey_3)</span>
+<span id="cb27-5"><a href="marketsurvey.html#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="marketsurvey.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Round the new variable to two digits after the decimal</span></span>
+<span id="cb27-7"><a href="marketsurvey.html#cb27-7" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Weighted_Mean <span class="ot">&lt;-</span> <span class="fu">round</span>(md<span class="sc">$</span>Weighted_Mean, <span class="dv">2</span>)</span></code></pre></div>
+<p>Now that we have computed sample-weighted means based on the median hourly pay rate for each job, take a look at the data frame verify that we performed this operation correctly.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="marketsurvey.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View data frame</span></span>
+<span id="cb28-2"><a href="marketsurvey.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(md)</span></code></pre></div>
+<p>Alternatively, you can print the vector of sample-weighted means to your console.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="marketsurvey.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of sample-weighted means</span></span>
+<span id="cb29-2"><a href="marketsurvey.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(md<span class="sc">$</span>Weighted_Mean)</span></code></pre></div>
+<pre><code>## [1] 14.45 16.19 15.94 16.18 20.05 18.29</code></pre>
+</div>
+</div>
+<div id="weightdata_withfunction_marketsurvey" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Optional: Compute the Sample-Weighted Means with a Function</h2>
+<p>If we wish to streamline the sample-weighted mean calculations from above, we can create our own function. For example, we can create a function called <code>weighted.mean</code> using <code>function</code> from base R. The script contained within the curly braces (<code>{ }</code>) replicates what we did above but uses matrix mathematics instead. You don’t need to change anything in the script below – just run it as is.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="marketsurvey.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Create a sample-weighted mean function</span></span>
+<span id="cb31-2"><a href="marketsurvey.html#cb31-2" aria-hidden="true" tabindex="-1"></a>weighted.mean <span class="ot">&lt;-</span> <span class="cf">function</span>(pay_rates, sample_sizes) {</span>
+<span id="cb31-3"><a href="marketsurvey.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">matrix</span>(pay_rates, <span class="at">nrow=</span><span class="fu">nrow</span>(md))</span>
+<span id="cb31-4"><a href="marketsurvey.html#cb31-4" aria-hidden="true" tabindex="-1"></a>  b <span class="ot">&lt;-</span> <span class="fu">matrix</span>(sample_sizes, <span class="at">nrow=</span><span class="fu">nrow</span>(md))</span>
+<span id="cb31-5"><a href="marketsurvey.html#cb31-5" aria-hidden="true" tabindex="-1"></a>  c <span class="ot">&lt;-</span> a <span class="sc">*</span> b</span>
+<span id="cb31-6"><a href="marketsurvey.html#cb31-6" aria-hidden="true" tabindex="-1"></a>  d <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(c) <span class="sc">/</span> <span class="fu">rowSums</span>(b)</span>
+<span id="cb31-7"><a href="marketsurvey.html#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(d, <span class="dv">2</span>)</span>
+<span id="cb31-8"><a href="marketsurvey.html#cb31-8" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
+<p>Using the new <code>weighted.mean</code> function, as the first argument, we will type <code>pay_rates=</code> followed by the vector of market survey variables that contain the pay rate data from each market survey; be sure to include the name of the data frame (<code>md</code>) followed by <code>$</code> and the name of the market survey variable (e.g., <code>Survey_1</code>) for each market survey variable. As the second argument, we will type <code>sample_sizes=</code> followed by the vector of sample size variables that contain the sample size data for each market survey, making sure to include the name of the data frame (<code>md</code>) followed by <code>$</code> and the name of the sample size variable (e.g., <code>SS_Survey_1</code>). To create the aforementioned vectors, we will use the <code>c</code> function from base R. Use the <code>&lt;-</code> assignment operator to assign the resulting values to a new variable (<code>Weighted_Mean</code>) to be added to your existing data frame (<code>md</code>).</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="marketsurvey.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate sample-weighted means</span></span>
+<span id="cb32-2"><a href="marketsurvey.html#cb32-2" aria-hidden="true" tabindex="-1"></a>md<span class="sc">$</span>Weighted_Mean <span class="ot">&lt;-</span> <span class="fu">weighted.mean</span>(<span class="at">pay_rates=</span><span class="fu">c</span>(md<span class="sc">$</span>Survey_1_aged, md<span class="sc">$</span>Survey_2_aged, md<span class="sc">$</span>Survey_3_aged), </span>
+<span id="cb32-3"><a href="marketsurvey.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sample_sizes=</span><span class="fu">c</span>(md<span class="sc">$</span>SS_Survey_1, md<span class="sc">$</span>SS_Survey_2, md<span class="sc">$</span>SS_Survey_3))</span>
+<span id="cb32-4"><a href="marketsurvey.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="marketsurvey.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of sample-weighted means</span></span>
+<span id="cb32-6"><a href="marketsurvey.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(md<span class="sc">$</span>Weighted_Mean)</span></code></pre></div>
+<pre><code>## [1] 14.45 16.19 15.94 16.18 20.05 18.29</code></pre>
+<div id="summary_marketsurvey" class="section level3" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Summary</h3>
+<p>In this chapter, we first learned how to age market survey data using simple arithmetic and variable assignment in R. Next, we learned how to apply market survey weights by calculating sample-weighted means in R.</p>
+
+</div>
+</div>
+</div>
+
+
+
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-baueretal2019" class="csl-entry">
+Bauer, Talya N., Berrin Erdogan, David E. Caughlin, and Donald M. Truxillo. 2019. <em>Human Resource Management: People, Data, and Analytics</em>. Thousand Oaks, California: Sage.
+</div>
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="compensation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="overviewR.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
