@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1267,7 +1264,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1489-4"><a href="differentialprediction.html#cb1489-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1489-5"><a href="differentialprediction.html#cb1489-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 377 Columns: 6</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (3): emp_id, gender, race
 ## dbl (3): perf_eval, interview, age</code></pre>
@@ -1319,7 +1316,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="estimate_mmlr" class="section level3" number="42.2.5">
 <h3><span class="header-section-number">42.2.5</span> Estimate Moderated Multiple Linear Regression Model</h3>
-<p>As described <a href="differentialprediction.html#review_differentialprediction">above</a>, we will use the standard three-step differential prediction assessment using MMLR. We will repeat this three step process for all three protected class variables in our data frame: <code>gender</code>, <code>c_age</code>, and <code>race</code>. [Note that we are using the grand-mean centered age variable we created above.]. Our selection tool of interest is our <code>c_interview</code> (which is the grand-mean centered version of the variable we created above), and our criterion of interest is <code>perf_eval</code>. I will show you how to test differential prediction for each of these protected class variables using the <code>Regression</code> (or <code>reg_brief</code>) function from <code>lessR</code>.</p>
+<p>As described <a href="differentialprediction.html#review_differentialprediction">above</a>, we will use the standard three-step differential prediction assessment using MMLR. We will repeat this three step process for all three protected class variables in our data frame: <code>gender</code>, <code>c_age</code>, and <code>race</code>. [Note that we are using the grand-mean centered age variable we created above.]. Our selection tool of interest is our <code>c_interview</code> (which is the grand-mean centered version of the variable we created above), and our criterion of interest is <code>perf_eval</code>. I will show you how to test differential prediction for each of these protected class variables using the <code>Regression</code> (or <code>reg_brief</code>) function from <code>lessR</code> <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>.</p>
 <p><em>Note:</em> To reduce the overall length of this tutorial, I have omitted the diagnostic tests of the statistical assumptions, and thus for the purposes of this tutorial, we will assume that the statistical assumptions have been met. For your own work, be sure to run diagnostic tests to evaluate whether your model meets these statistical assumptions. For more information on statistical assumption testing in this context, check out the <a href="#incremental%20validity">chapter on estimating increment validity using multiple linear regression</a>.</p>
 <p>If you haven’t already install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively (see above). This will allow us to access the <code>Regression</code> and <code>reg_brief</code> functions.</p>
 <div class="sourceCode" id="cb1500"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1500-1"><a href="differentialprediction.html#cb1500-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package if you haven&#39;t already</span></span>
@@ -1449,7 +1446,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with <code>gender</code> (or more specifically <code>genderwoman</code>) is negative and statistically significant (<em>b</em> = -.602, <em>p</em> &lt; .001) when controlling for <code>c_interview</code>, which indicates that there is evidence of intercept differences. Note that the name of the regression coefficient for <code>gender</code> has <code>woman</code> appended to it. This means that the intercept represents the <code>perf_eval</code> scores of women minus those for men; because the coefficient is negative, it implies that the intercept value is significantly lower for women relative to men. The amount of variance explained by <code>c_interview</code> <em>and</em> <code>gender</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .182, adjusted <em>R</em><sup>2</sup> = .177, <em>p</em> &lt; .001), which is larger than when just <code>c_interview</code> was included in the model.</p>
-<p>We can visualize the nature of the intercept differences by creating a plot with the simple slopes. To do so, we will use a package called <code>interactions</code>, so if you haven’t already, install and access the package.</p>
+<p>We can visualize the nature of the intercept differences by creating a plot with the simple slopes. To do so, we will use a package called <code>interactions</code> <span class="citation">(<a href="#ref-interactions" role="doc-biblioref">Long 2019</a>)</span>, so if you haven’t already, install and access the package.</p>
 <div class="sourceCode" id="cb1506"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1506-1"><a href="differentialprediction.html#cb1506-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install interactions package if you haven&#39;t already</span></span>
 <span id="cb1506-2"><a href="differentialprediction.html#cb1506-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;interactions&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb1507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1507-1"><a href="differentialprediction.html#cb1507-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access interactions package</span></span>
@@ -2034,7 +2031,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1539-4"><a href="differentialprediction.html#cb1539-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1539-5"><a href="differentialprediction.html#cb1539-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 377 Columns: 6</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (3): emp_id, gender, race
 ## dbl (3): perf_eval, interview, age</code></pre>
@@ -2560,7 +2557,7 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 </div>
 <div id="apatable_mmlr" class="section level3" number="42.3.4">
 <h3><span class="header-section-number">42.3.4</span> APA-Style Results Table</h3>
-<p>If you want to present the results of your moderated multiple linear regression (MMLR) model to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package.</p>
+<p>If you want to present the results of your moderated multiple linear regression (MMLR) model to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package <span class="citation">(<a href="#ref-R-apaTables" role="doc-biblioref">Stanley 2021</a>)</span>.</p>
 <p>Using the <code>lm</code> function from base R, as we did above, let’s begin by estimating a MMLR model and naming the model object (<code>model.3</code>).</p>
 <div class="sourceCode" id="cb1604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1604-1"><a href="differentialprediction.html#cb1604-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
 <span id="cb1604-2"><a href="differentialprediction.html#cb1604-2" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">*</span> gender, <span class="at">data=</span>DiffPred)</span></code></pre></div>
@@ -2634,8 +2631,17 @@ Cascio, WF, and H Aguinis. 2005. <em>Applied Psychology in Human Resource Manage
 <div id="ref-cleary1968test" class="csl-entry">
 Cleary, T Anne. 1968. <span>“Test Bias: Prediction of Grades of Black and White Students in Integrated Colleges.”</span> <em>Journal of Educational Measurement</em> 5 (2): 115–24.
 </div>
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
+</div>
+<div id="ref-interactions" class="csl-entry">
+Long, Jacob A. 2019. <em>Interactions: Comprehensive, User-Friendly Toolkit for Probing Interactions</em>. <a href="https://cran.r-project.org/package=interactions">https://cran.r-project.org/package=interactions</a>.
+</div>
 <div id="ref-siop2018" class="csl-entry">
 Society for Industrial &amp; Organizational Psychology. 2018. <em>Principles for the Validation and Use of Personnel Selection Procedures (5th Ed.)</em>. Bowling Green, OH: Pearson Prentice Hall.
+</div>
+<div id="ref-R-apaTables" class="csl-entry">
+Stanley, David. 2021. <em><span class="nocase">apaTables</span>: Create American Psychological Association (APA) Style Tables</em>. <a href="https://CRAN.R-project.org/package=apaTables">https://CRAN.R-project.org/package=apaTables</a>.
 </div>
 <div id="ref-stone1994type" class="csl-entry">
 Stone-Romero, Eugene F, George M Alliger, and Herman Aguinis. 1994. <span>“Type II Error Problems in the Use of Moderated Multiple Regression for the Detection of Moderating Effects of Dichotomous Variables.”</span> <em>Journal of Management</em> 20 (1): 167–78.

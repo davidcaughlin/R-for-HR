@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1160,7 +1157,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb213-4"><a href="addnames.html#cb213-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb213-5"><a href="addnames.html#cb213-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 9 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (4): lastname, firstname, startdate, gender
 ## dbl (1): id</code></pre>
@@ -1228,7 +1225,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="change_variablenames" class="section level3" number="14.2.6">
 <h3><span class="header-section-number">14.2.6</span> Change Specific Variable Names in a Data Frame Object</h3>
-<p>Using the resulting data frame object from the previous section (<code>personaldata</code>), we can rename specific variables using the <code>rename</code> function from the <code>dplyr</code> package. To get started, we’ll need to install the <code>dplyr</code> package so that we can access the <code>rename</code> function. If you haven’t already, install and access the <code>dplyr</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
+<p>Using the resulting data frame object from the previous section (<code>personaldata</code>), we can rename specific variables using the <code>rename</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>. To get started, we’ll need to install the <code>dplyr</code> package so that we can access the <code>rename</code> function. If you haven’t already, install and access the <code>dplyr</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="addnames.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb225-2"><a href="addnames.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="addnames.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -1263,6 +1260,9 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-mplus" class="csl-entry">
 Muthén, B O, and L K Muthén. 1998-2018. <em>Mplus Version 8.3.</em> Los Angeles, California: Muthén &amp; Muthén.
+</div>
+<div id="ref-R-dplyr" class="csl-entry">
+Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2021. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
 </div>
 <div id="ref-wickham2017" class="csl-entry">
 Wickham, Hadley, and Garrett Grolemund. 2017. <em><span>R</span> for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.

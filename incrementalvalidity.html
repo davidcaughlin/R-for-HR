@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1227,7 +1224,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1337-4"><a href="incrementalvalidity.html#cb1337-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1337-5"><a href="incrementalvalidity.html#cb1337-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -1273,7 +1270,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Given that evidence of criterion-related validity was already found for the three selection tools, our next step is to include all three selection tools as predictors in a multiple linear regression model. The criterion (<code>Performance</code>) variable will serve as our sole outcome variable in the model. In doing so, we can evaluate which selection tools show evidence of <strong>incremental validity</strong>.</p>
 <div id="teststatisticalassumptions_mlr" class="section level4" number="39.2.4.1">
 <h4><span class="header-section-number">39.2.4.1</span> Test Statistical Assumptions</h4>
-<p>To determine whether it’s appropriate to interpret the results of a multiple linear regression model, we need to first test the <a href="incrementalvalidity.html#statisticalassumptions_mlr">statistical assumptions</a>. Fortunately, the <code>Regression</code> function from the <code>lessR</code> package automatically produces common tests of statistical assumptions. So to get started, let’s install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. In the chapter supplement, you can learn how to carry how the same tests using the <code>lm</code> function from base R.</p>
+<p>To determine whether it’s appropriate to interpret the results of a multiple linear regression model, we need to first test the <a href="incrementalvalidity.html#statisticalassumptions_mlr">statistical assumptions</a>. Fortunately, the <code>Regression</code> function from the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span> automatically produces common tests of statistical assumptions. So to get started, let’s install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. In the chapter supplement, you can learn how to carry how the same tests using the <code>lm</code> function from base R.</p>
 <div class="sourceCode" id="cb1347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1347-1"><a href="incrementalvalidity.html#cb1347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb1347-2"><a href="incrementalvalidity.html#cb1347-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb1348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1348-1"><a href="incrementalvalidity.html#cb1348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -1795,7 +1792,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1358-4"><a href="incrementalvalidity.html#cb1358-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1358-5"><a href="incrementalvalidity.html#cb1358-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -1864,7 +1861,7 @@ BOOK UNDER CONSTRUCTION</a>
 ## Interview   0.2373394 0.3175592 1.0000000   0.3906502
 ## Performance 0.4173192 0.4255306 0.3906502   1.0000000</code></pre>
 <p>High correlations between pairs of predictor variables are indicative of high collinearity. The correlation between <code>SJT</code> and <code>Interview</code> is approximately .24, and the correlation between <code>EI</code> and <code>Interview</code> is .32, both of which are in the acceptable range. The correlation between <code>SJT</code> and <code>EI</code> is <em>HUGE</em> at .93. Generally speaking, a correlation that is .85 or higher can indicate that two predictors are practically distinguishable from one another, and here the correlation between <code>SJT</code> and <code>EmotionalIntelligence</code> is a whopping .93! These two selection tools seem to be measuring the same thing and are mostly redundant aside from some likely measurement error.</p>
-<p>To further explore this collinearity issue, let’s estimate two indices of collinearity: tolerance and valence inflation factor (VIF). If you haven’t already, install the <code>car</code> package which contains the <code>vif</code> function we will use.</p>
+<p>To further explore this collinearity issue, let’s estimate two indices of collinearity: tolerance and valence inflation factor (VIF). If you haven’t already, install the <code>car</code> package <span class="citation">(<a href="#ref-R-car" role="doc-biblioref">Fox and Weisberg 2019</a>)</span> which contains the <code>vif</code> function we will use.</p>
 <div class="sourceCode" id="cb1373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1373-1"><a href="incrementalvalidity.html#cb1373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install car package if you haven&#39;t already</span></span>
 <span id="cb1373-2"><a href="incrementalvalidity.html#cb1373-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span></code></pre></div>
 <p>Now, access the <code>car</code> package using the <code>library</code> function.</p>
@@ -2100,7 +2097,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="apatable_mlr" class="section level3" number="39.3.4">
 <h3><span class="header-section-number">39.3.4</span> APA-Style Results Table</h3>
-<p>If you want to present the results of your multiple linear regression to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package.</p>
+<p>If you want to present the results of your multiple linear regression to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package <span class="citation">(<a href="#ref-R-apaTables" role="doc-biblioref">Stanley 2021</a>)</span>.</p>
 <p>Using the <code>lm</code> function from base R, as we did above, let’s begin by estimating a multiple linear regression model and naming the model object (<code>reg.mod1</code>).</p>
 <div class="sourceCode" id="cb1403"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1403-1"><a href="incrementalvalidity.html#cb1403-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
 <span id="cb1403-2"><a href="incrementalvalidity.html#cb1403-2" aria-hidden="true" tabindex="-1"></a>reg.mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> SJT <span class="sc">+</span> Interview, <span class="at">data=</span>df)</span></code></pre></div>
@@ -2165,6 +2162,15 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-bollen1985regression" class="csl-entry">
 Bollen, Kenneth A, and Robert W Jackman. 1985. <span>“Regression Diagnostics: An Expository Treatment of Outliers and Influential Cases.”</span> <em>Sociological Methods &amp; Research</em> 13 (4): 510–42.
+</div>
+<div id="ref-R-car" class="csl-entry">
+Fox, John, and Sanford Weisberg. 2019. <em>An <span>R</span> Companion to Applied Regression</em>. Third. Thousand Oaks <span>CA</span>: Sage. <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">https://socialsciences.mcmaster.ca/jfox/Books/Companion/</a>.
+</div>
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
+</div>
+<div id="ref-R-apaTables" class="csl-entry">
+Stanley, David. 2021. <em><span class="nocase">apaTables</span>: Create American Psychological Association (APA) Style Tables</em>. <a href="https://CRAN.R-project.org/package=apaTables">https://CRAN.R-project.org/package=apaTables</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.

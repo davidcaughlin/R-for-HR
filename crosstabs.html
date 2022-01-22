@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1179,7 +1176,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb760-4"><a href="crosstabs.html#cb760-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb760-5"><a href="crosstabs.html#cb760-5" aria-hidden="true" tabindex="-1"></a>demodata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeDemographics.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 163 Columns: 7</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (3): Sex, RaceEthnicity, Veteran
 ## dbl (4): EmployeeID, OrgTenureYrs_2019, JobLevel, AgeYrs_2019</code></pre>
@@ -1390,7 +1387,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="twoway_crosstabs_CrossTable" class="section level4" number="25.2.4.3">
 <h4><span class="header-section-number">25.2.4.3</span> Option 3: Using the <code>CrossTable</code> Function</h4>
-<p>The <code>CrossTable</code> function from the <code>gmodels</code> package is another option when it comes to creating a two-way cross-tabulation table. The function includes multiple arguments that can eliminate additional steps (e.g., rounding) that would be required when using the <code>table</code> or <code>xtabs</code> function from base R. Before using the <code>CrossTable</code> function, we must install and access the <code>gmodels</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. The downside of the <code>CrossTable</code> function is that it can only be used to create two-way cross-tabulation tables.</p>
+<p>The <code>CrossTable</code> function from the <code>gmodels</code> package is another option when it comes to creating a two-way cross-tabulation table. The function includes multiple arguments that can eliminate additional steps (e.g., rounding) that would be required when using the <code>table</code> or <code>xtabs</code> function from base R. Before using the <code>CrossTable</code> function, we must install and access the <code>gmodels</code> package <span class="citation">(<a href="#ref-R-gmodels" role="doc-biblioref">Warnes et al. 2018</a>)</span> using the <code>install.packages</code> and <code>library</code> functions, respectively. The downside of the <code>CrossTable</code> function is that it can only be used to create two-way cross-tabulation tables.</p>
 <div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb806-1"><a href="crosstabs.html#cb806-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install gmodels package if you haven&#39;t already</span></span>
 <span id="cb806-2"><a href="crosstabs.html#cb806-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;gmodels&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb807-1"><a href="crosstabs.html#cb807-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access gmodels package</span></span>
@@ -1636,6 +1633,9 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-gmodels" class="csl-entry">
+Warnes, Gregory R., Ben Bolker, Thomas Lumley, and Randall C Johnson. 2018. <em>Gmodels: Various r Programming Tools for Model Fitting</em>. <a href="https://CRAN.R-project.org/package=gmodels">https://CRAN.R-project.org/package=gmodels</a>.
+</div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>

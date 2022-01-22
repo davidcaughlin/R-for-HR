@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1220,7 +1217,7 @@ BOOK UNDER CONSTRUCTION</a>
 </tr>
 <tr class="odd">
 <td align="center"><code>drop_na</code></td>
-<td align="center"><code>dplyr</code></td>
+<td align="center"><code>tidyr</code></td>
 </tr>
 </tbody>
 </table>
@@ -1242,7 +1239,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1955-4"><a href="kfold.html#cb1955-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1955-5"><a href="kfold.html#cb1955-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PredictiveAnalytics.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 1000 Columns: 6</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (6): ID, Turnover, JS, OC, TI, Naff</code></pre>
 <pre><code>## 
@@ -1289,12 +1286,12 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="estimate_kfold_logistic" class="section level3" number="48.2.4">
 <h3><span class="header-section-number">48.2.4</span> Apply <em>k</em>-Fold Cross-Validation Using Logistic Regression</h3>
 <p>In this tutorial, we will apply <em>k</em>-fold cross-validation to estimate and evaluate a multiple logistic regression model. You can think of <em>k</em>-fold cross-validation as an enhanced version of the conventional empirical cross-validation process described and demonstrated in <a href="crossvalidation.html#crossvalidation_empirical">previous chapter</a>. We can perform <em>k</em>-fold cross-validation with different types of regression models, and in this tutorial, we will focus on applying it using multiple logistic regression. Because we have access to 1,000 cases, we will randomly split our data into training and test data frames, and then within the training data frame, we will perform <em>k</em>-fold cross-validation to come up with a more accurate model. We will then we will apply the final model to the test data frame data frame to see how well it predicts with a completely new set of data.</p>
-<p><strong>Note:</strong> The type of model we will apply in our <em>k</em>-fold cross-validation approach will delete any cases with missing data on any variables in the model (i.e., listwise deletion). We don’t have any missing data in <code>df</code> data frame object, but if we did, I would recommend deleting cases with missing data on the focal variables prior to randomly splitting the data. The <code>drop_na</code> function from the <code>tidyr</code> package works well for this purpose.</p>
+<p><strong>Note:</strong> The type of model we will apply in our <em>k</em>-fold cross-validation approach will delete any cases with missing data on any variables in the model (i.e., listwise deletion). We don’t have any missing data in <code>df</code> data frame object, but if we did, I would recommend deleting cases with missing data on the focal variables prior to randomly splitting the data. The <code>drop_na</code> function from the <code>tidyr</code> package <span class="citation">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham 2021a</a>)</span> works well for this purpose.</p>
 <div class="sourceCode" id="cb1967"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1967-1"><a href="kfold.html#cb1967-1" aria-hidden="true" tabindex="-1"></a><span class="co"># In the event of missing data on focal variables, </span></span>
 <span id="cb1967-2"><a href="kfold.html#cb1967-2" aria-hidden="true" tabindex="-1"></a><span class="co"># perform listwise deletion prior to randomly splitting/partitioning</span></span>
 <span id="cb1967-3"><a href="kfold.html#cb1967-3" aria-hidden="true" tabindex="-1"></a><span class="co"># the data</span></span>
 <span id="cb1967-4"><a href="kfold.html#cb1967-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1967-5"><a href="kfold.html#cb1967-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb1967-5"><a href="kfold.html#cb1967-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package if you haven&#39;t already</span></span>
 <span id="cb1967-6"><a href="kfold.html#cb1967-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
 <span id="cb1967-7"><a href="kfold.html#cb1967-7" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
 <span id="cb1967-8"><a href="kfold.html#cb1967-8" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
@@ -1308,7 +1305,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1968-8"><a href="kfold.html#cb1968-8" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
 <p>Because we didn’t have missing data for any of the focal variables, the number of rows (i.e., cases) remains at 1000.</p>
-<p>Now we’re ready to install and access the <code>caret</code> package, if we haven’t already. The <code>caret</code> package has a number of different functions that are useful for running predictive analytics and various machine learning models/algorithms.</p>
+<p>Now we’re ready to install and access the <code>caret</code> package <span class="citation">(<a href="#ref-R-caret" role="doc-biblioref">Kuhn 2021</a>)</span>, if we haven’t already. The <code>caret</code> package has a number of different functions that are useful for running predictive analytics and various machine learning models/algorithms.</p>
 <div class="sourceCode" id="cb1970"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1970-1"><a href="kfold.html#cb1970-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
 <span id="cb1970-2"><a href="kfold.html#cb1970-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb1971"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1971-1"><a href="kfold.html#cb1971-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
@@ -1543,8 +1540,14 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="ref-jamesetal2013" class="csl-entry">
 James, G, T Witten D abd Hastie, and R Tibshirani. 2013. <em>An Introduction to Statistical Learning: With Applications in r</em>. New York, NY: Springer.
 </div>
+<div id="ref-R-caret" class="csl-entry">
+Kuhn, Max. 2021. <em>Caret: Classification and Regression Training</em>. <a href="https://CRAN.R-project.org/package=caret">https://CRAN.R-project.org/package=caret</a>.
+</div>
 <div id="ref-landiskoch1977" class="csl-entry">
 Landis, J R, and G G Koch. 1977. <span>“The Measurement of Observer Agreement for Categorical Data.”</span> <em>Biometrics</em> 33: 159–74.
+</div>
+<div id="ref-R-tidyr" class="csl-entry">
+———. 2021a. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.

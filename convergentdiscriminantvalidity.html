@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1290,7 +1287,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb2038-4"><a href="convergentdiscriminantvalidity.html#cb2038-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2038-5"><a href="convergentdiscriminantvalidity.html#cb2038-5" aria-hidden="true" tabindex="-1"></a>PerfRew <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfMgmtRewardSystemsExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 95 Columns: 11</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr  (1): Sex
 ## dbl (10): EmpID, Perf_Qual, Perf_Prod, Perf_Effort, Perf_Admin, SalesRevenue, BasePay_2018, VariablePay_2018, Age, EducationLevel</code></pre>
@@ -1422,7 +1419,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="bivariatescatterplot_convergentdiscriminantvalidity" class="section level3" number="51.2.4">
 <h3><span class="header-section-number">51.2.4</span> Visualize Association Using a Bivariate Scatter Plot</h3>
 <p>A <strong>bivariate scatter plot</strong> can be used to visualize the association between two continuous (interval, ratio) variables. Let’s create a bivariate scatter plot to visualize the association between the <code>Perf_Prod</code> (productivity) dimension of the performance evaluation tool and the <code>SalesRevenue</code> (sales revenue generated) variable, both of which are continuous.</p>
-<p>The <code>ScatterPlot</code> function from the <code>lessR</code> package does a nice job generating scatter plots – and it even provides an estimate of the correlation by default. If you haven’t already, install and access the <code>lessR</code> package.</p>
+<p>The <code>ScatterPlot</code> function from the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span> does a nice job generating scatter plots – and it even provides an estimate of the correlation by default. If you haven’t already, install and access the <code>lessR</code> package.</p>
 <div class="sourceCode" id="cb2058"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2058-1"><a href="convergentdiscriminantvalidity.html#cb2058-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2058-2"><a href="convergentdiscriminantvalidity.html#cb2058-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb2059"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2059-1"><a href="convergentdiscriminantvalidity.html#cb2059-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -1498,7 +1495,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Because both <code>Perf_Overall</code> and <code>SalesRevenue</code> are measures of job performance, we will consider them to be conceptually similar – and even measures of the same overarching construct: job performance. Thus, we will investigate whether there is evidence of <em>convergent validity</em> between these two variables.</p>
 <p>Given that both <code>Perf_Overall</code> and <code>SalesRevenue</code> are continuous variables, let’s see if these two variables satisfy the statistical assumptions for estimating and interpreting a Pearson product-moment correlation.</p>
 <p><strong>Cases Are Randomly Sampled from the Population:</strong> As mentioned in the <a href="convergentdiscriminantvalidity.html#statisticalassumptions_pearson_pointbiserial_correlation">statistical assumptions</a> section, we will assume that the cases (i.e., employees) were randomly sampled from the population, and thus conclude that this assumption has been satisfied.</p>
-<p><strong>Each Variable Shows a Univariate Normal Distribution:</strong> In accordance with the central limit theorem, a sampling distribution will tend to approximate a normal distribution when it is based on more than 30 cases (<em>N</em> &gt; 30). Given that, we’ll begin by checking to see how many cases have data for both continuous variables, and we’ll use a combination of the <code>drop_na</code> function from the <code>tidyr</code> package and the <code>nrow</code> function from base R. First, if you haven’t already, install and access the <code>tidyr</code> package.</p>
+<p><strong>Each Variable Shows a Univariate Normal Distribution:</strong> In accordance with the central limit theorem, a sampling distribution will tend to approximate a normal distribution when it is based on more than 30 cases (<em>N</em> &gt; 30). Given that, we’ll begin by checking to see how many cases have data for both continuous variables, and we’ll use a combination of the <code>drop_na</code> function from the <code>tidyr</code> package <span class="citation">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham 2021a</a>)</span> and the <code>nrow</code> function from base R. First, if you haven’t already, install and access the <code>tidyr</code> package.</p>
 <div class="sourceCode" id="cb2067"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2067-1"><a href="convergentdiscriminantvalidity.html#cb2067-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2067-2"><a href="convergentdiscriminantvalidity.html#cb2067-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb2068"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2068-1"><a href="convergentdiscriminantvalidity.html#cb2068-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -1724,8 +1721,8 @@ Thus, we can assume that the assumption of univariate normality has been met for
 ## Level         cations   Values 
 ## ------------------------------ 
 ## Perf_Overall     10     2.25</code></pre>
-<p>If outliers or other influential cases were present, they would appear beyond the whiskers (i.e., outer bars) in the plot. No potential outliers were detected for <code>Perf_Overall</code>, which indicates that we have satisifed the statistical assumption that the continuous variable is free of univariate outliers.</p>
-<p><strong>The Variance of the Continuous Variable Is Approximately Equal for Each Level of the Dichotomous Variable:</strong> To test this statistical assumption, we will perform a statistical test called <em>Levene’s test</em> using the <code>leveneTest</code> function from the <code>car</code> package. This function will allow us to test whether we can assume the variances to be approximately equal, which is sometimes referred to as <em>homogeneity of variances</em>.</p>
+<p>If outliers or other influential cases were present, they would appear beyond the whiskers (i.e., outer bars) in the plot. No potential outliers were detected for <code>Perf_Overall</code>, which indicates that we have satisfied the statistical assumption that the continuous variable is free of univariate outliers.</p>
+<p><strong>The Variance of the Continuous Variable Is Approximately Equal for Each Level of the Dichotomous Variable:</strong> To test this statistical assumption, we will perform a statistical test called <em>Levene’s test</em> using the <code>leveneTest</code> function from the <code>car</code> package <span class="citation">(<a href="#ref-R-car" role="doc-biblioref">Fox and Weisberg 2019</a>)</span>. This function will allow us to test whether we can assume the variances to be approximately equal, which is sometimes referred to as <em>homogeneity of variances</em>.</p>
 <p>If you haven’t already, install and access the <code>car</code> package.</p>
 <div class="sourceCode" id="cb2088"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2088-1"><a href="convergentdiscriminantvalidity.html#cb2088-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2088-2"><a href="convergentdiscriminantvalidity.html#cb2088-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span></code></pre></div>
@@ -1761,7 +1758,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 </div>
 <div id="correlationmatrix_convergentdiscriminantvalidity" class="section level3" number="51.2.6">
 <h3><span class="header-section-number">51.2.6</span> Create Correlation Matrix</h3>
-<p>When we have a large number of variables for which we wish to evaluate convergent and discriminant validity, often it makes sense to create a correlation matrix as opposed to estimating the correlation for each pair of variables one by one. There are different functions we can use to create a correlation matrix for a set of numeric variables. Here, we will learn how to use the<code>corr.test</code> and <code>lowerCor</code> functions from the <code>psych</code> package. Before we review the functions, let’s drop the <code>EmpID</code> variable from the data frame, as it wouldn’t make sense to correlate another variable with a unique identifier variable like <code>EmpID</code>.</p>
+<p>When we have a large number of variables for which we wish to evaluate convergent and discriminant validity, often it makes sense to create a correlation matrix as opposed to estimating the correlation for each pair of variables one by one. There are different functions we can use to create a correlation matrix for a set of numeric variables. Here, we will learn how to use the<code>corr.test</code> and <code>lowerCor</code> functions from the <code>psych</code> package <span class="citation">(<a href="#ref-R-psych" role="doc-biblioref">Revelle 2021</a>)</span>. Before we review the functions, let’s drop the <code>EmpID</code> variable from the data frame, as it wouldn’t make sense to correlate another variable with a unique identifier variable like <code>EmpID</code>.</p>
 <div class="sourceCode" id="cb2094"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2094-1"><a href="convergentdiscriminantvalidity.html#cb2094-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop EmpID unique identifier variable</span></span>
 <span id="cb2094-2"><a href="convergentdiscriminantvalidity.html#cb2094-2" aria-hidden="true" tabindex="-1"></a>PerfRew<span class="sc">$</span>EmpID <span class="ot">&lt;-</span> <span class="cn">NULL</span></span></code></pre></div>
 <p>Previously, we recoded the <code>Sex</code> variable such that Female became 1 and Male became 0. As a precautionary step, we will ensure that the <code>Sex</code> variable is indeed now numeric by applying the <code>as.numeric</code> function.</p>
@@ -1996,7 +1993,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 <span id="cb2107-4"><a href="convergentdiscriminantvalidity.html#cb2107-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2107-5"><a href="convergentdiscriminantvalidity.html#cb2107-5" aria-hidden="true" tabindex="-1"></a>PerfRew <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfMgmtRewardSystemsExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 95 Columns: 11</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr  (1): Sex
 ## dbl (10): EmpID, Perf_Qual, Perf_Prod, Perf_Effort, Perf_Admin, SalesRevenue, BasePay_2018, VariablePay_2018, Age, EducationLevel</code></pre>
@@ -2073,7 +2070,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 <div id="shapiro.test_function" class="section level3" number="51.3.3">
 <h3><span class="header-section-number">51.3.3</span> <code>shapiro.test</code> Function from Base R</h3>
 <p>Evidence of a univariate normal distribution is a common statistical assumption for parametric statistical analyses like the Pearson product-moment correlation, point-biserial correlation, independent-samples <em>t</em>-test, and paired-samples <em>t</em>-test. In accordance with the central limit theorem, when the sample size exceeds 30 (<em>N</em> &gt; 30), then the sampling distribution tends to approximate normality. Consequently, when we have larger sample sizes, we can generally assume that we have met the assumption of univariate normality. In contrast, when the sample size has 30 or fewer cases, then we should formally test the assumption of univariate normality using a statistical test like the <em>Shapiro-Wilk test</em> and/or a data visualization like a histogram. The null hypothesis for the Shapiro-Wilk test is that the distribution is normal; thus, only when the associated <em>p</em>-value is less than the alpha level of .05 will we conclude that the distribution violates the assumption of normality.</p>
-<p>For the sake of demonstration, let’s randomly select 25 cases from our <code>PerfRew</code> data frame object by using the <code>slice_sample.</code> function from the <code>dplyr</code> package. If you haven’t already, be sure to install and access the <code>dplyr</code> package.</p>
+<p>For the sake of demonstration, let’s randomly select 25 cases from our <code>PerfRew</code> data frame object by using the <code>slice_sample.</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>. If you haven’t already, be sure to install and access the <code>dplyr</code> package.</p>
 <div class="sourceCode" id="cb2123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2123-1"><a href="convergentdiscriminantvalidity.html#cb2123-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2123-2"><a href="convergentdiscriminantvalidity.html#cb2123-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb2124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2124-1"><a href="convergentdiscriminantvalidity.html#cb2124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -2131,7 +2128,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 </div>
 <div id="apatable_correlationmatrix" class="section level3" number="51.3.4">
 <h3><span class="header-section-number">51.3.4</span> APA-Style Results Table</h3>
-<p>If we wish to present the results of our correlation matrix to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package.</p>
+<p>If we wish to present the results of our correlation matrix to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package <span class="citation">(<a href="#ref-R-apaTables" role="doc-biblioref">Stanley 2021</a>)</span>.</p>
 <p>If you haven’t already, be sure to install and access the <code>apaTables</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
 <div class="sourceCode" id="cb2131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2131-1"><a href="convergentdiscriminantvalidity.html#cb2131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2131-2"><a href="convergentdiscriminantvalidity.html#cb2131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;apaTables&quot;</span>)</span></code></pre></div>
@@ -2244,7 +2241,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 </div>
 <div id="corrgram_corrgram_function" class="section level3" number="51.3.6">
 <h3><span class="header-section-number">51.3.6</span> <code>corrgram</code> Function from <code>corrgram</code> package</h3>
-<p>To create a correlogram heatmap, we will use the <code>corrgram</code> function from the <code>corrgram</code> package. If you haven’t already, install and access the <code>corrgram</code> package.</p>
+<p>To create a correlogram heatmap, we will use the <code>corrgram</code> function from the <code>corrgram</code> package <span class="citation">(<a href="#ref-R-corrgram" role="doc-biblioref">Wright 2021</a>)</span>. If you haven’t already, install and access the <code>corrgram</code> package.</p>
 <div class="sourceCode" id="cb2140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2140-1"><a href="convergentdiscriminantvalidity.html#cb2140-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2140-2"><a href="convergentdiscriminantvalidity.html#cb2140-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;corrgram&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb2141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2141-1"><a href="convergentdiscriminantvalidity.html#cb2141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -2271,8 +2268,29 @@ Thus, we can assume that the assumption of univariate normality has been met for
 <div id="ref-cohen1992power" class="csl-entry">
 Cohen, Jacob. 1992. <span>“A Power Primer.”</span> <em>Psychological Bulletin</em> 112 (1): 155–59.
 </div>
+<div id="ref-R-car" class="csl-entry">
+Fox, John, and Sanford Weisberg. 2019. <em>An <span>R</span> Companion to Applied Regression</em>. Third. Thousand Oaks <span>CA</span>: Sage. <a href="https://socialsciences.mcmaster.ca/jfox/Books/Companion/">https://socialsciences.mcmaster.ca/jfox/Books/Companion/</a>.
+</div>
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
+</div>
+<div id="ref-R-psych" class="csl-entry">
+Revelle, William. 2021. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. <a href="https://personality-project.org/r/psych/
+https://personality-project.org/r/psych-manual.pdf">https://personality-project.org/r/psych/
+<div id="ref-R-apaTables" class="csl-entry">
+Stanley, David. 2021. <em><span class="nocase">apaTables</span>: Create American Psychological Association (APA) Style Tables</em>. <a href="https://CRAN.R-project.org/package=apaTables">https://CRAN.R-project.org/package=apaTables</a>.
+</div>
+<div id="ref-R-tidyr" class="csl-entry">
+———. 2021a. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
+</div>
+<div id="ref-R-dplyr" class="csl-entry">
+Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2021. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+<div id="ref-R-corrgram" class="csl-entry">
+Wright, Kevin. 2021. <em>Corrgram: Plot a Correlogram</em>. <a href="https://CRAN.R-project.org/package=corrgram">https://CRAN.R-project.org/package=corrgram</a>.
 </div>
 </div>
             </section>

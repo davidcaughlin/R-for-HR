@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1161,7 +1158,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb593-4"><a href="manipulate.html#cb593-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb593-5"><a href="manipulate.html#cb593-5" aria-hidden="true" tabindex="-1"></a>datam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ManipulatingData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 20 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (5): SurveyID, JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement</code></pre>
 <pre><code>## 
@@ -1203,7 +1200,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="manipulate_widetolong" class="section level3" number="20.2.4">
 <h3><span class="header-section-number">20.2.4</span> Wide-to-Long Format Data Manipulation</h3>
-<p>The data frame we read in called <code>datam</code> is in <em>wide format</em>, as each substantive variable has its own column. To restructure the data from wide to long format, we will use the <code>pivot_longer</code> function from the <code>tidyr</code> package. Along with <code>readr</code> and <code>dplyr</code> (as well as other useful packages), the <code>tidyr</code> package is part of the <code>tidyverse</code> of packages. Let’s begin by installing and accessing the <code>tidyr</code> package so that we can use the <code>pivot_longer</code> function.</p>
+<p>The data frame we read in called <code>datam</code> is in <em>wide format</em>, as each substantive variable has its own column. To restructure the data from wide to long format, we will use the <code>pivot_longer</code> function from the <code>tidyr</code> package <span class="citation">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham 2021a</a>)</span>. Along with <code>readr</code> and <code>dplyr</code> (as well as other useful packages), the <code>tidyr</code> package is part of the <code>tidyverse</code> of packages. Let’s begin by installing and accessing the <code>tidyr</code> package so that we can use the <code>pivot_longer</code> function.</p>
 <div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb603-1"><a href="manipulate.html#cb603-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package if you haven&#39;t already</span></span>
 <span id="cb603-2"><a href="manipulate.html#cb603-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb604-1"><a href="manipulate.html#cb604-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package</span></span>
@@ -1378,6 +1375,9 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-magrittr" class="csl-entry">
 Bache, Stefan Milton, and Hadley Wickham. 2020. <em>Magrittr: A Forward-Pipe Operator for r</em>. <a href="https://CRAN.R-project.org/package=magrittr">https://CRAN.R-project.org/package=magrittr</a>.
+</div>
+<div id="ref-R-tidyr" class="csl-entry">
+———. 2021a. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
 </div>
 <div id="ref-wickham2017" class="csl-entry">
 Wickham, Hadley, and Garrett Grolemund. 2017. <em><span>R</span> for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.

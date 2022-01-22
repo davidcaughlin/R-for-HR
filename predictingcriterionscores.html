@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1267,7 +1264,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1261-4"><a href="predictingcriterionscores.html#cb1261-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1261-5"><a href="predictingcriterionscores.html#cb1261-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 163 Columns: 4</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (4): EmployeeID, Conscientiousness, Interview, Performance</code></pre>
 <pre><code>## 
@@ -1310,7 +1307,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>In this chapter, we’ll specify a simple linear regression model in which the selection tool called <code>Conscientiousness</code> is the predictor variable and the job performance variable called <code>Performance</code> is our criterion.</p>
 <div id="teststatisticalassumptions_slr" class="section level4" number="38.2.4.1">
 <h4><span class="header-section-number">38.2.4.1</span> Test Statistical Assumptions</h4>
-<p>To determine whether it’s appropriate to interpret the results of a simple linear regression model, we need to first test the <a href="predictingcriterionscores.html#statisticalassumptions_slr">statistical assumptions</a>. To begin, let’s generate a scatter plot to visualize the association between the two variables and get a rough idea of whether a few of the statistical assumptions have been met. To do so, we’ll use the <code>ScatterPlot</code> function from the <code>lessR</code> package. If you haven’t already, install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
+<p>To determine whether it’s appropriate to interpret the results of a simple linear regression model, we need to first test the <a href="predictingcriterionscores.html#statisticalassumptions_slr">statistical assumptions</a>. To begin, let’s generate a scatter plot to visualize the association between the two variables and get a rough idea of whether a few of the statistical assumptions have been met. To do so, we’ll use the <code>ScatterPlot</code> function from the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>. If you haven’t already, install and access the <code>lessR</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
 <div class="sourceCode" id="cb1271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1271-1"><a href="predictingcriterionscores.html#cb1271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb1271-2"><a href="predictingcriterionscores.html#cb1271-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb1272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1272-1"><a href="predictingcriterionscores.html#cb1272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -1774,7 +1771,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1295-4"><a href="predictingcriterionscores.html#cb1295-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1295-5"><a href="predictingcriterionscores.html#cb1295-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 163 Columns: 4</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (4): EmployeeID, Conscientiousness, Interview, Performance</code></pre>
 <pre><code>## 
@@ -2000,7 +1997,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="apatable_slr" class="section level3" number="38.3.5">
 <h3><span class="header-section-number">38.3.5</span> APA-Style Results Table</h3>
-<p>If you want to present the results of your simple linear regression to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package.</p>
+<p>If you want to present the results of your simple linear regression to a more statistically inclined audience, particularly an audience that prefers American Psychological Association (APA) style, consider using functions from the <code>apaTables</code> package <span class="citation">(<a href="#ref-R-apaTables" role="doc-biblioref">Stanley 2021</a>)</span>.</p>
 <p>Using the <code>lm</code> function from base R, as we did above, let’s begin by estimating a simple linear regression model and naming the model object (<code>reg.mod1</code>).</p>
 <div class="sourceCode" id="cb1328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1328-1"><a href="predictingcriterionscores.html#cb1328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate simple linear regression model</span></span>
 <span id="cb1328-2"><a href="predictingcriterionscores.html#cb1328-2" aria-hidden="true" tabindex="-1"></a>reg.mod1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Performance <span class="sc">~</span> Conscientiousness, <span class="at">data=</span>df)</span></code></pre></div>
@@ -2066,6 +2063,12 @@ Bollen, Kenneth A, and Robert W Jackman. 1985. <span>“Regression Diagnostics: 
 </div>
 <div id="ref-cohen1992power" class="csl-entry">
 Cohen, Jacob. 1992. <span>“A Power Primer.”</span> <em>Psychological Bulletin</em> 112 (1): 155–59.
+</div>
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
+</div>
+<div id="ref-R-apaTables" class="csl-entry">
+Stanley, David. 2021. <em><span class="nocase">apaTables</span>: Create American Psychological Association (APA) Style Tables</em>. <a href="https://CRAN.R-project.org/package=apaTables">https://CRAN.R-project.org/package=apaTables</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.

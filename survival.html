@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1314,7 +1311,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1995-4"><a href="survival.html#cb1995-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1995-5"><a href="survival.html#cb1995-5" aria-hidden="true" tabindex="-1"></a>survdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Survival.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 701 Columns: 9</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (4): Start_date, Gender, Race, Turnover_date
 ## dbl (5): id, Pay_hourly, Pay_sat, Turnover, LOS</code></pre>
@@ -1389,7 +1386,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="conductkmanalysis_lifetable_survival" class="section level3" number="49.2.6">
 <h3><span class="header-section-number">49.2.6</span> Conduct Kaplan-Meier Analysis &amp; Create Life Table</h3>
-<p>We’ll begin by taking a descriptive approach to survival analysis. That is, we’ll creating a life table and conduct a Kaplan-Meier analysis. If you haven’t already, be sure to install and access the <code>survival</code> package.</p>
+<p>We’ll begin by taking a descriptive approach to survival analysis. That is, we’ll creating a life table and conduct a Kaplan-Meier analysis. If you haven’t already, be sure to install and access the <code>survival</code> package <span class="citation">(<a href="#ref-survival-package" role="doc-biblioref">Therneau 2021</a>; <a href="#ref-survival-book" role="doc-biblioref">Terry M. Therneau and Patricia M. Grambsch 2000</a>)</span>.</p>
 <div class="sourceCode" id="cb2009"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2009-1"><a href="survival.html#cb2009-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install survival package if you haven&#39;t already</span></span>
 <span id="cb2009-2"><a href="survival.html#cb2009-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;survival&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb2010"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2010-1"><a href="survival.html#cb2010-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access survival package</span></span>
@@ -1499,7 +1496,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb2017-2"><a href="survival.html#cb2017-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(km_fit1)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1139-1.png" width="672" /></p>
 <p>The data visualization shown above provides a visual depiction of the survival curve/trajectory along with the 95% confidence interval for each time interval. Corroborating what we saw in our first life table output using the default time-interval settings, the cumulative survival rate begins to drop more precipitously when length of service is between 500 and 100 days. Note that the x-axis shows the length of service (in days), and the y-axis shows the cumulative survival rate (i.e., probability).</p>
-<p>We can also create a more aesthetically pleasing data visualization of our <code>km_fit1</code> model by using the <code>ggsurvplot</code> function from the <code>survminer</code> package. If you haven’t already, install and access the <code>survminer</code> package.</p>
+<p>We can also create a more aesthetically pleasing data visualization of our <code>km_fit1</code> model by using the <code>ggsurvplot</code> function from the <code>survminer</code> package <span class="citation">(<a href="#ref-R-survminer" role="doc-biblioref">Kassambara, Kosinski, and Biecek 2021</a>)</span>. If you haven’t already, install and access the <code>survminer</code> package.</p>
 <div class="sourceCode" id="cb2018"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2018-1"><a href="survival.html#cb2018-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install survminer package if you haven&#39;t already</span></span>
 <span id="cb2018-2"><a href="survival.html#cb2018-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;survminer&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb2019"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2019-1"><a href="survival.html#cb2019-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access survminer package</span></span>
@@ -1893,6 +1890,15 @@ BOOK UNDER CONSTRUCTION</a>
 
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-survminer" class="csl-entry">
+Kassambara, Alboukadel, Marcin Kosinski, and Przemyslaw Biecek. 2021. <em>Survminer: Drawing Survival Curves Using ’Ggplot2’</em>. <a href="https://CRAN.R-project.org/package=survminer">https://CRAN.R-project.org/package=survminer</a>.
+</div>
+<div id="ref-survival-book" class="csl-entry">
+Terry M. Therneau, and Patricia M. Grambsch. 2000. <em>Modeling Survival Data: Extending the <span>C</span>ox Model</em>. New York: Springer.
+</div>
+<div id="ref-survival-package" class="csl-entry">
+Therneau, Terry M. 2021. <em>A Package for Survival Analysis in r</em>. <a href="https://CRAN.R-project.org/package=survival">https://CRAN.R-project.org/package=survival</a>.
+</div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>

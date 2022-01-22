@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1104,7 +1101,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="conceptualoverview_marketsurvey" class="section level2" number="57.1">
 <h2><span class="header-section-number">57.1</span> Conceptual Overview</h2>
 <p>A <strong>market review</strong> refers to the “process of collecting pay data for benchmark jobs from other organizations” <span class="citation">(<a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. When conducting a market review, it is a common practice to acquire data from a market survey, where a <strong>market survey (salary survey)</strong> refers to a survey used to collect pay data on benchmark jobs (key jobs), which is often conducted by a third-party vendor or government agency. Examples of such third-party parties include traditional surveys (e.g., CareerOneStop.org), customized surveys, and web-based platforms or surveys (e.g., PayScale.com).</p>
-<p>The overarching goal of a market review is often to ensure what is called <strong>external equity (external competitiveness)</strong>, which has to do with how competitive an organization’s pay practices are for particular job relative to other competitor organizations. For example, for a given job, an organization might lead, match, or lag the market pay rates for that job. By ensuring external equity in our organization for critical jobs, we will hopefully be better positioned to attract, motivate, and retain talented individuals. In fact, some organization’s adopt adhere to <strong>market pricing</strong> for certain jobs, which refers basing the pay levels for a job directly on competitor organizations’ pay levels <span class="citation">(<a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>.</p>
+<p>The overarching goal of a market review is often to ensure what is called <strong>external equity (external competitiveness)</strong>, which has to do with how competitive an organization’s pay practices are for particular job relative to other competitor organizations. For example, for a given job, an organization might lead, match, or lag the market pay rates for that job. By ensuring external equity in our organization for critical jobs, we will hopefully be better positioned to attract, motivate, and retain talented individuals. In fact, some organization’s adopt adhere to <strong>market pricing</strong> for certain jobs, which refers basing the pay levels for a job directly on competitor organizations’ pay levels.</p>
 <p>The market-review process consists of the following four steps.</p>
 <p><strong>Step 1: Choose Two or More Market-Survey Sources.</strong> No single market survey is ever perfect, as every market survey suffers from sampling and measurement error, some market surveys are conducting using more (or less) rigorous survey methodologies, and some market survey provide more breadth whereas others provide more depth. Given these reasons, we typically opt to gather data from at least two market-survey sources so that we don’t rely to heavily on a single flawed survey.</p>
 <p><strong>Step 2: Match the Job Descriptions.</strong> Often we won’t be able to find market survey data for every single job in our organization. Instead, we focus on what are called <strong>benchmark jobs (key jobs)</strong>, which are jobs that are common within or across industries. For example, in the healthcare industry in the U.S., the job of a Registered Nurse would be considered a benchmark job, as most hospitals will employee at least one Registered Nurse and thus have pay data for that job. Once we’ve identified our benchmark jobs, we look through the market survey to see if we can find job title and/or job description matches. Even if the job title of our benchmark job differs from that of a benchmark job in the market survey, we can still potentially match the job based on the job description. This can be a tricky step, as the amount of information you have in your organization’s job description for the benchmark job in question may far exceed the amount of information in the market survey. Thus, using our subject matter expertise and knowledge of the job in question, we do our best to ensure that the market survey job is in fact equivalent or comparable to the job in our organization. As an example of how job titles and job descriptions in two market-survey sources can differ for what is essentially the same benchmark job, please refer to Table 1.</p>
@@ -1131,17 +1128,11 @@ BOOK UNDER CONSTRUCTION</a>
 <p><strong>Applying market survey weights</strong> allows us to take into consideration the amount of sampling error (or lack thereof) in and/or level of rigor of different market survey sources <span class="citation">(<a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. The process requires simple arithmetic and follows any aging of the data that was needed. We weight market survey data in different ways and for different reasons. For example, we could give greater weights to those surveys whose pay rate estimates were based on more employees or on more organizations. Alternatively, we could weight market survey data on the level of methodological rigor applied by the developer of the survey. In this chapter, we will calculate <strong>sample-weighted means</strong> based on the number of employees used to calculate the median hourly rate for a given job from a given survey; we could, however, have just as easily applied the same process but based on the number of organizations used to calculate the median hourly rate for a given job from a given survey.</p>
 </div>
 <div id="conceptualvideo_marketsurvey" class="section level3" number="57.1.3">
-<h3><span class="header-section-number">57.1.3</span> Conceptual Videos</h3>
-<p>For a more in-depth review of market surveys, aging market survey data, and applying market survey weights, please check out the following conceptual videos.</p>
+<h3><span class="header-section-number">57.1.3</span> Conceptual Video</h3>
+<p>For a more in-depth review of market surveys, please check out the following conceptual video.</p>
 <iframe src="https://youtube.com/embed/ey_QzvUIFyQ?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/ey_QzvUIFyQ" class="uri">https://youtu.be/ey_QzvUIFyQ</a></p>
-<iframe src="https://youtube.com/embed/RUWuiwV8PPE?rel=0" width="672" height="400px" data-external="1">
-</iframe>
-<p>Link to conceptual video: <a href="https://youtu.be/RUWuiwV8PPE" class="uri">https://youtu.be/RUWuiwV8PPE</a></p>
-<iframe src="https://youtube.com/embed/ixi7vozspUs?rel=0" width="672" height="400px" data-external="1">
-</iframe>
-<p>Link to conceptual video: <a href="https://youtu.be/ixi7vozspUs" class="uri">https://youtu.be/ixi7vozspUs</a></p>
 </div>
 </div>
 <div id="tutorial_marketsurvey" class="section level2" number="57.2">
@@ -1219,7 +1210,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb2295-4"><a href="marketsurvey.html#cb2295-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2295-5"><a href="marketsurvey.html#cb2295-5" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MarketSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 6 Columns: 8</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (2): Job_ID, Job_Title
 ## dbl (6): Survey_1, Survey_2, Survey_3, SS_Survey_1, SS_Survey_2, SS_Survey_3</code></pre>
@@ -1339,10 +1330,8 @@ BOOK UNDER CONSTRUCTION</a>
 <div class="sourceCode" id="cb2321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2321-1"><a href="marketsurvey.html#cb2321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of sample-weighted means</span></span>
 <span id="cb2321-2"><a href="marketsurvey.html#cb2321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(md<span class="sc">$</span>Weighted_Mean)</span></code></pre></div>
 <pre><code>## [1] 14.45 16.19 15.94 16.18 20.05 18.29</code></pre>
-</div>
-</div>
-<div id="weightdata_withfunction_marketsurvey" class="section level2" number="57.3">
-<h2><span class="header-section-number">57.3</span> Optional: Compute the Sample-Weighted Means with a Function</h2>
+<div id="weightdata_withfunction_marketsurvey" class="section level4" number="57.2.5.1">
+<h4><span class="header-section-number">57.2.5.1</span> Optional: Compute the Sample-Weighted Means with a Function</h4>
 <p>If we wish to streamline the sample-weighted mean calculations from above, we can create our own function. For example, we can create a function called <code>weighted.mean</code> using <code>function</code> from base R. The script contained within the curly braces (<code>{ }</code>) replicates what we did above but uses matrix mathematics instead. You don’t need to change anything in the script below – just run it as is.</p>
 <div class="sourceCode" id="cb2323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2323-1"><a href="marketsurvey.html#cb2323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Optional: Create a sample-weighted mean function</span></span>
 <span id="cb2323-2"><a href="marketsurvey.html#cb2323-2" aria-hidden="true" tabindex="-1"></a>weighted.mean <span class="ot">&lt;-</span> <span class="cf">function</span>(pay_rates, sample_sizes) {</span>
@@ -1360,9 +1349,11 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb2324-5"><a href="marketsurvey.html#cb2324-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of sample-weighted means</span></span>
 <span id="cb2324-6"><a href="marketsurvey.html#cb2324-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(md<span class="sc">$</span>Weighted_Mean)</span></code></pre></div>
 <pre><code>## [1] 14.45 16.19 15.94 16.18 20.05 18.29</code></pre>
-<div id="summary_marketsurvey" class="section level3" number="57.3.1">
-<h3><span class="header-section-number">57.3.1</span> Summary</h3>
-<p>In this chapter, we first learned how to age market survey data using simple arithmetic and variable assignment in R. Next, we learned how to apply market survey weights by calculating sample-weighted means in R.</p>
+</div>
+</div>
+<div id="summary_marketsurvey" class="section level3" number="57.2.6">
+<h3><span class="header-section-number">57.2.6</span> Summary</h3>
+<p>In this chapter, we first learned how to age market survey data using simple arithmetic and variable assignment in R. Next, we learned how to apply market survey weights by calculating sample-weighted means.</p>
 
 </div>
 </div>

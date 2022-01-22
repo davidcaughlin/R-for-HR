@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1204,7 +1201,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb2273-4"><a href="mediationanalysis.html#cb2273-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2273-5"><a href="mediationanalysis.html#cb2273-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 199 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (5): attitude, norms, control, intention, behavior</code></pre>
 <pre><code>## 
@@ -1248,7 +1245,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="specifymodel_mediationanalysis" class="section level3" number="55.2.4">
 <h3><span class="header-section-number">55.2.4</span> Specify &amp; Estimate a Mediation Analysis Model</h3>
-<p>We will use functions from the <code>lavaan</code> package to specify and estimate our mediation analysis model. The <code>lavaan</code> package also allows structural equation modeling with latent variables, but we won’t cover that in this tutorial. If you haven’t already install and access the <code>lavaan</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. For background information on the <code>lavaan</code> package, check out the <a href="http://lavaan.ugent.be/tutorial/syntax1.html">package website</a>.</p>
+<p>We will use functions from the <code>lavaan</code> package <span class="citation">(<a href="#ref-R-lavaan" role="doc-biblioref">Rosseel 2012</a>)</span> to specify and estimate our mediation analysis model. The <code>lavaan</code> package also allows structural equation modeling with latent variables, but we won’t cover that in this tutorial. If you haven’t already install and access the <code>lavaan</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. For background information on the <code>lavaan</code> package, check out the <a href="http://lavaan.ugent.be/tutorial/syntax1.html">package website</a>.</p>
 <div class="sourceCode" id="cb2285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2285-1"><a href="mediationanalysis.html#cb2285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2285-2"><a href="mediationanalysis.html#cb2285-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lavaan&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb2286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2286-1"><a href="mediationanalysis.html#cb2286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
@@ -1522,6 +1519,9 @@ MacKinnon, David P, Chondra M Lockwood, Jeanne M Hoffman, Stephen G West, and Vi
 </div>
 <div id="ref-mackinnon1995simulation" class="csl-entry">
 MacKinnon, David P, Ghulam Warsi, and James H Dwyer. 1995. <span>“A Simulation Study of Mediated Effect Measures.”</span> <em>Multivariate Behavioral Research</em> 30 (1): 41–62.
+</div>
+<div id="ref-R-lavaan" class="csl-entry">
+Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="https://www.jstatsoft.org/v48/i02/">https://www.jstatsoft.org/v48/i02/</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.

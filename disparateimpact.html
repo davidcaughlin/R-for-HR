@@ -1057,7 +1057,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="57.1.1" data-path="marketsurvey.html"><a href="marketsurvey.html#agingdata_marketsurvey"><i class="fa fa-check"></i><b>57.1.1</b> Aging Market Survey Data</a></li>
 <li class="chapter" data-level="57.1.2" data-path="marketsurvey.html"><a href="marketsurvey.html#applyingweights_marketsurvey"><i class="fa fa-check"></i><b>57.1.2</b> Applying Market Survey Weights</a></li>
-<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Videos</a></li>
+<li class="chapter" data-level="57.1.3" data-path="marketsurvey.html"><a href="marketsurvey.html#conceptualvideo_marketsurvey"><i class="fa fa-check"></i><b>57.1.3</b> Conceptual Video</a></li>
 </ul></li>
 <li class="chapter" data-level="57.2" data-path="marketsurvey.html"><a href="marketsurvey.html#tutorial_marketsurvey"><i class="fa fa-check"></i><b>57.2</b> Tutorial</a>
 <ul>
@@ -1066,10 +1066,7 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.3" data-path="marketsurvey.html"><a href="marketsurvey.html#initsteps_marketsurvey"><i class="fa fa-check"></i><b>57.2.3</b> Initial Steps</a></li>
 <li class="chapter" data-level="57.2.4" data-path="marketsurvey.html"><a href="marketsurvey.html#agedata_marketsurvey"><i class="fa fa-check"></i><b>57.2.4</b> Age the Data</a></li>
 <li class="chapter" data-level="57.2.5" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_marketsurvey"><i class="fa fa-check"></i><b>57.2.5</b> Compute the Sample-Weighted Means</a></li>
-</ul></li>
-<li class="chapter" data-level="57.3" data-path="marketsurvey.html"><a href="marketsurvey.html#weightdata_withfunction_marketsurvey"><i class="fa fa-check"></i><b>57.3</b> Optional: Compute the Sample-Weighted Means with a Function</a>
-<ul>
-<li class="chapter" data-level="57.3.1" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.3.1</b> Summary</a></li>
+<li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
@@ -1214,7 +1211,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb1145-4"><a href="disparateimpact.html#cb1145-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1145-5"><a href="disparateimpact.html#cb1145-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DisparateImpact.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 274 Columns: 3</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (2): Cognitive_Test, Gender
 ## dbl (1): ID</code></pre>
@@ -1368,7 +1365,7 @@ BOOK UNDER CONSTRUCTION</a>
 <div id="chisquaretest_phi" class="section level4" number="36.2.5.1">
 <h4><span class="header-section-number">36.2.5.1</span> Optional: Compute Phi (<span class="math inline">\(\phi\)</span>) Coefficient (Effect Size) for chi-square Test of Independence</h4>
 <p>The <em>p</em>-value we computed for the 2x2 chi-square (<span class="math inline">\(\chi^2\)</span>) test of independence is a test of statistical significance, which informs whether we should treat the association between two categorical variables is statistically significant. The <em>p</em>-value, however, does not give us any indication of practical significance or effect size, where an effect size is a standardized metric that can be compared across tests and samples. As an indicator of effect size, the phi (<span class="math inline">\(\phi\)</span>) coefficient can be computed for a 2x2 <span class="math inline">\(\chi^2\)</span> test of independence, where both variables have two levels (i.e., categories). <strong>Important note: Typically, we would only compute the phi (<span class="math inline">\(\phi\)</span>) coefficient in the event we observed a statistically significant <span class="math inline">\(\chi^2\)</span> test of independence. As shown in the previous section, we did not find evidence that the <span class="math inline">\(\chi^2\)</span> test of independence was statistically significant, so would not usually go ahead and compute an effect size. That being said, we will compute phi (<span class="math inline">\(\phi\)</span>) coefficient just for demonstration purposes.</strong></p>
-<p>To compute the phi (<span class="math inline">\(\phi\)</span>) coefficient, we will use the <code>phi</code> function from the <code>psych</code> package, which means we first need to install (if not already installed) the <code>psych</code> package using the <code>install.packages</code> function from base R and then access the package using the <code>library</code> function from base R.</p>
+<p>To compute the phi (<span class="math inline">\(\phi\)</span>) coefficient, we will use the <code>phi</code> function from the <code>psych</code> package <span class="citation">(<a href="#ref-R-psych" role="doc-biblioref">Revelle 2021</a>)</span>, which means we first need to install (if not already installed) the <code>psych</code> package using the <code>install.packages</code> function from base R and then access the package using the <code>library</code> function from base R.</p>
 <div class="sourceCode" id="cb1182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1182-1"><a href="disparateimpact.html#cb1182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install psych package (if not already installed)</span></span>
 <span id="cb1182-2"><a href="disparateimpact.html#cb1182-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb1183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1183-1"><a href="disparateimpact.html#cb1183-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access the psych package</span></span>
@@ -1563,6 +1560,9 @@ Morris, Scott B. 2001. <span>“Sample Size Required for Adverse Impact Analysis
 <div id="ref-morris2000significance" class="csl-entry">
 Morris, Scott B, and Russell E Lobsenz. 2000. <span>“Significance Tests and Confidence Intervals for the Adverse Impact Ratio.”</span> <em>Personnel Psychology</em> 53 (1): 89–111.
 </div>
+<div id="ref-R-psych" class="csl-entry">
+Revelle, William. 2021. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. <a href="https://personality-project.org/r/psych/
+https://personality-project.org/r/psych-manual.pdf">https://personality-project.org/r/psych/
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
