@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="compensation.html"/>
-<link rel="next" href="create_portfolio.html"/>
+<link rel="next" href="marketpayline.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -1069,9 +1069,27 @@ div.csl-indent {
 <li class="chapter" data-level="57.2.6" data-path="marketsurvey.html"><a href="marketsurvey.html#summary_marketsurvey"><i class="fa fa-check"></i><b>57.2.6</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="58" data-path="marketpayline.html"><a href="marketpayline.html"><i class="fa fa-check"></i><b>58</b> Estimating a Market Pay Line</a>
+<ul>
+<li class="chapter" data-level="58.1" data-path="marketpayline.html"><a href="marketpayline.html#conceptualoverview_marketpayline"><i class="fa fa-check"></i><b>58.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="58.1.1" data-path="marketpayline.html"><a href="marketpayline.html#statisticalassumptions_marketpayline"><i class="fa fa-check"></i><b>58.1.1</b> Statistical Assumptions</a></li>
+<li class="chapter" data-level="58.1.2" data-path="marketpayline.html"><a href="marketpayline.html#statisticalsignificance_marketpayline"><i class="fa fa-check"></i><b>58.1.2</b> Statistical Significance</a></li>
+<li class="chapter" data-level="58.1.3" data-path="marketpayline.html"><a href="marketpayline.html#practicalsignificance_marketpayline"><i class="fa fa-check"></i><b>58.1.3</b> Practical Significance</a></li>
+<li class="chapter" data-level="58.1.4" data-path="marketpayline.html"><a href="marketpayline.html#conceptualvideo_marketpayline"><i class="fa fa-check"></i><b>58.1.4</b> Conceptual Video</a></li>
+</ul></li>
+<li class="chapter" data-level="58.2" data-path="marketpayline.html"><a href="marketpayline.html#tutorial_marketpayline"><i class="fa fa-check"></i><b>58.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="58.2.1" data-path="marketpayline.html"><a href="marketpayline.html#videotutorial_marketpayline"><i class="fa fa-check"></i><b>58.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="58.2.2" data-path="marketpayline.html"><a href="marketpayline.html#functions_marketpayline"><i class="fa fa-check"></i><b>58.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="58.2.3" data-path="marketpayline.html"><a href="marketpayline.html#initsteps_marketpayline"><i class="fa fa-check"></i><b>58.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="58.2.4" data-path="marketpayline.html"><a href="marketpayline.html#estimate_slr_marketpayline"><i class="fa fa-check"></i><b>58.2.4</b> Estimate a Market Pay Line</a></li>
+<li class="chapter" data-level="58.2.5" data-path="marketpayline.html"><a href="marketpayline.html#summary_marketpayline"><i class="fa fa-check"></i><b>58.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="58" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>58</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="59" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>59</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="59" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>59</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="60" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>60</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1125,7 +1143,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="applyingweights_marketsurvey" class="section level3" number="57.1.2">
 <h3><span class="header-section-number">57.1.2</span> Applying Market Survey Weights</h3>
-<p><strong>Applying market survey weights</strong> allows us to take into consideration the amount of sampling error (or lack thereof) in and/or level of rigor of different market survey sources <span class="citation">(<a href="#ref-baueretal2019" role="doc-biblioref">Bauer et al. 2019</a>)</span>. The process requires simple arithmetic and follows any aging of the data that was needed. We weight market survey data in different ways and for different reasons. For example, we could give greater weights to those surveys whose pay rate estimates were based on more employees or on more organizations. Alternatively, we could weight market survey data on the level of methodological rigor applied by the developer of the survey. In this chapter, we will calculate <strong>sample-weighted means</strong> based on the number of employees used to calculate the median hourly rate for a given job from a given survey; we could, however, have just as easily applied the same process but based on the number of organizations used to calculate the median hourly rate for a given job from a given survey.</p>
+<p><strong>Applying market survey weights</strong> allows us to take into consideration the amount of sampling error (or lack thereof) in and/or level of rigor of different market survey sources. The process requires simple arithmetic and follows any aging of the data that was needed. We weight market survey data in different ways and for different reasons. For example, we could give greater weights to those surveys whose pay rate estimates were based on more employees or on more organizations. Alternatively, we could weight market survey data on the level of methodological rigor applied by the developer of the survey. In this chapter, we will calculate <strong>sample-weighted means</strong> based on the number of employees used to calculate the median hourly rate for a given job from a given survey; we could, however, have just as easily applied the same process but based on the number of organizations used to calculate the median hourly rate for a given job from a given survey.</p>
 </div>
 <div id="conceptualvideo_marketsurvey" class="section level3" number="57.1.3">
 <h3><span class="header-section-number">57.1.3</span> Conceptual Video</h3>
@@ -1210,7 +1228,7 @@ BOOK UNDER CONSTRUCTION</a>
 <span id="cb2295-4"><a href="marketsurvey.html#cb2295-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2295-5"><a href="marketsurvey.html#cb2295-5" aria-hidden="true" tabindex="-1"></a>md <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MarketSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 6 Columns: 8</code></pre>
-<pre><code>## -- Column specification -------------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (2): Job_ID, Job_Title
 ## dbl (6): Survey_1, Survey_2, Survey_3, SS_Survey_1, SS_Survey_2, SS_Survey_3</code></pre>
@@ -1358,9 +1376,6 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
-
-
-
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-baueretal2019" class="csl-entry">
@@ -1376,7 +1391,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
         </div>
       </div>
 <a href="compensation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create_portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="marketpayline.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
