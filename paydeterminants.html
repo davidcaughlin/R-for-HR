@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 Arranging (Sorting) Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
+  <title>Chapter 59 Identifying Pay Determinants Using Hierarchical Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 Arranging (Sorting) Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta property="og:title" content="Chapter 59 Identifying Pay Determinants Using Hierarchical Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
   <meta property="og:image" content="https://rforhr.com/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 Arranging (Sorting) Data | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
+  <meta name="twitter:title" content="Chapter 59 Identifying Pay Determinants Using Hierarchical Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R BOOK UNDER CONSTRUCTION" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This book is currently under construction.]" />
   <meta name="twitter:image" content="https://rforhr.com/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="write.html"/>
-<link rel="next" href="join.html"/>
+<link rel="prev" href="marketpayline.html"/>
+<link rel="next" href="create_portfolio.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -1129,25 +1129,52 @@ BOOK UNDER CONSTRUCTION</a>
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="arrange" class="section level1" number="16">
-<h1><span class="header-section-number">Chapter 16</span> Arranging (Sorting) Data</h1>
-<p>In this chapter, we will learn how to arrange (sort) data within a data frame object, which can be useful for identifying high or low numeric values or to alphabetize character values.</p>
-<div id="conceptualoverview_arrange" class="section level2" number="16.1">
-<h2><span class="header-section-number">16.1</span> Conceptual Overview</h2>
-<p><strong>Arranging (sorting) data</strong> refers to the process of ordering rows numerically or alphabetically in a data frame or table by the values of one or more variables. Sorting can make it easier to visually scan raw data, such as for the purposes of identifying extreme or outlier values. Sorting can also make facilitate decision making when rank ordering applicants’ scores, for example, on different selection tools.</p>
+<div id="paydeterminants" class="section level1" number="59">
+<h1><span class="header-section-number">Chapter 59</span> Identifying Pay Determinants Using Hierarchical Linear Regression</h1>
+<p>In this chapter, we will learn how to identify pay determinants using hierarchical linear regression.</p>
+<div id="conceptualoverview_paydeterminants" class="section level2" number="59.1">
+<h2><span class="header-section-number">59.1</span> Conceptual Overview</h2>
+<p>Pay determinants refer to any characteristics, behaviors, or conditions that are associated with the amount of pay employees receive. For example, in an organization that monetarily rewards those with longer lengths of service, length of service will likely be a pay determinant. Ideally, pay determinants should be legally defensible and should be related to job performance and other characteristics or behaviors that are valued by the organization. We can use hierarchical linear regression to identify pay determinants and evaluate their incremental validity.</p>
+<div id="review_hiearchicallinearregression_paydeterminants" class="section level3" number="59.1.1">
+<h3><span class="header-section-number">59.1.1</span> Review of Hiearchical Linear Regression</h3>
+<p><strong>Hierarchical linear regression</strong> is an extension of multiple linear regression, where the latter was introduced in the <a href="incrementalvalidity.html#incrementalvalidity">chapter on incremental validity</a>. The approach simply means that we are building up to a full model in what are called <strong>steps</strong> or <strong>blocks</strong>, wherein each step or block we add more predictor variables to our model until we eventually reach whatever we have specified as our full model. There are different reasons why we might do this. For instance, we might want to know if, collectively, two or more additional predictor variables explain incremental variance in the outcome variable after accounting for the other predictor variables already in the model. In doing so, we can compare what are referred to as nested models. A <strong>nested model</strong> model is a model that is missing one or more of the predictor variables of a full model (i.e., larger model) that contains the same predictor variables as the nested model as well as additional predictor variables. In practice, it is fairly simple to implement hierarchical linear regression as long as you are already comfortable with multiple linear regression.</p>
+<div id="statisticalassumptions_hiearchicallinearregression_paydeterminants" class="section level4" number="59.1.1.1">
+<h4><span class="header-section-number">59.1.1.1</span> Statistical Assumptions</h4>
+<p>Because we will be performing hierarchical linear regression using multiple linear regression, to estimate and interpret the associated models, we need to make sure we have satisfied the statistical assumptions of multiple linear regression, which are described <a href="incrementalvalidity.html#statisticalassumptions_mlr">here</a>.</p>
 </div>
-<div id="tutorial_arrange" class="section level2" number="16.2">
-<h2><span class="header-section-number">16.2</span> Tutorial</h2>
-<p>This chapter’s tutorial demonstrates how to arrange (sort) data in R.</p>
-<div id="videotutorial_arrange" class="section level3" number="16.2.1">
-<h3><span class="header-section-number">16.2.1</span> Video Tutorial</h3>
-<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below. Both versions of the tutorial will show you how to arrange (sort) data with or without the pipe (<code>%&gt;%</code>) operator. If you’re unfamiliar with the pipe operator, no need to worry: I provide a brief explanation and demonstration regarding their purpose in both versions of the tutorial.</p>
-<iframe src="https://youtube.com/embed/wVwJQsLNbmw?rel=0" width="672" height="400px" data-external="1">
+<div id="statisticalsignificance_hiearchicallinearregression_paydeterminants" class="section level4" number="59.1.1.2">
+<h4><span class="header-section-number">59.1.1.2</span> Statistical Significance</h4>
+<p>For information regarding statistical significance in the context of multiple linear regression, please refer to the corresponding section from this <a href="incrementalvalidity.html#statisticalsignficance_mlr">chapter on incremental validity</a>.</p>
+</div>
+<div id="practicalsignificance_hiearchicallinearregression_paydeterminants" class="section level4" number="59.1.1.3">
+<h4><span class="header-section-number">59.1.1.3</span> Practical Significance</h4>
+<p>For information regarding practical significance in the context of multiple linear regression, please refer to the corresponding section from this <a href="incrementalvalidity.html#practicalsignficance_mlr">chapter on incremental validity</a>.</p>
+</div>
+</div>
+<div id="conceptualvideo_paydeterminants" class="section level3" number="59.1.2">
+<h3><span class="header-section-number">59.1.2</span> Conceptual Videos</h3>
+<p>For a more in-depth review of pay determinants, please check out the following conceptual video.</p>
+<iframe src="https://youtube.com/embed/EMC2aBvjB2s?rel=0" width="672" height="400px" data-external="1">
 </iframe>
-<p>Link to video tutorial: <a href="https://youtu.be/wVwJQsLNbmw" class="uri">https://youtu.be/wVwJQsLNbmw</a></p>
+<p>Link to conceptual video: <a href="https://youtu.be/EMC2aBvjB2s" class="uri">https://youtu.be/EMC2aBvjB2s</a></p>
+<p>For a more in-depth review of hierarchical linear regression, please check out the following conceptual video.</p>
+<iframe src="https://youtube.com/embed/Ney5uM6sWgY?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to conceptual video: <a href="https://youtu.be/Ney5uM6sWgY" class="uri">https://youtu.be/Ney5uM6sWgY</a></p>
 </div>
-<div id="functions_arrange" class="section level3" number="16.2.2">
-<h3><span class="header-section-number">16.2.2</span> Functions &amp; Packages Introduced</h3>
+</div>
+<div id="tutorial_paydeterminants" class="section level2" number="59.2">
+<h2><span class="header-section-number">59.2</span> Tutorial</h2>
+<p>This chapter’s tutorial demonstrates how to perform hierarchical linear regression in R.</p>
+<div id="videotutorial_paydeterminants" class="section level3" number="59.2.1">
+<h3><span class="header-section-number">59.2.1</span> Video Tutorial</h3>
+<p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
+<iframe src="https://youtube.com/embed/OGXX3ldUMoI?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to video tutorial: <a href="https://youtu.be/OGXX3ldUMoI" class="uri">https://youtu.be/OGXX3ldUMoI</a></p>
+</div>
+<div id="functions_paydeterminants" class="section level3" number="59.2.2">
+<h3><span class="header-section-number">59.2.2</span> Functions &amp; Packages Introduced</h3>
 <table>
 <thead>
 <tr class="header">
@@ -1157,444 +1184,265 @@ BOOK UNDER CONSTRUCTION</a>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><code>arrange</code></td>
-<td align="center"><code>dplyr</code></td>
+<td align="center"><code>lm</code></td>
+<td align="center">base R</td>
 </tr>
 <tr class="even">
-<td align="center"><code>desc</code></td>
-<td align="center"><code>dplyr</code></td>
+<td align="center"><code>summary</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>nrow</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>model.frame</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>anova</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="even">
+<td align="center"><code>tapply</code></td>
+<td align="center">base R</td>
+</tr>
+<tr class="odd">
+<td align="center"><code>mean</code></td>
+<td align="center">base R</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="initsteps_arrange" class="section level3" number="16.2.3">
-<h3><span class="header-section-number">16.2.3</span> Initial Steps</h3>
-<p>Please note, that any function that appears in the <em>Initial Steps</em> section has been covered in a previous chapter. If you need a refresher, please view the relevant chapter. In addition, a previous chapter may show you how to perform the same action using different functions or packages.</p>
-<p>If you haven’t already, save the file called <strong>“PersData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<div id="initsteps_paydeterminants" class="section level3" number="59.2.3">
+<h3><span class="header-section-number">59.2.3</span> Initial Steps</h3>
+<p>If you haven’t already, save the file called <strong>“PayDeterminants.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="arrange.html#cb247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb247-2"><a href="arrange.html#cb247-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="arrange.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb248-2"><a href="arrange.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb248-3"><a href="arrange.html#cb248-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb248-4"><a href="arrange.html#cb248-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="arrange.html#cb249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb249-2"><a href="arrange.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb249-3"><a href="arrange.html#cb249-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb249-4"><a href="arrange.html#cb249-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb249-5"><a href="arrange.html#cb249-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 9 Columns: 5</code></pre>
+<div class="sourceCode" id="cb2396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2396-1"><a href="paydeterminants.html#cb2396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2396-2"><a href="paydeterminants.html#cb2396-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PayDeterminants.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2397-1"><a href="paydeterminants.html#cb2397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2397-2"><a href="paydeterminants.html#cb2397-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2397-3"><a href="paydeterminants.html#cb2397-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2397-4"><a href="paydeterminants.html#cb2397-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2398-1"><a href="paydeterminants.html#cb2398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2398-2"><a href="paydeterminants.html#cb2398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2398-3"><a href="paydeterminants.html#cb2398-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2398-4"><a href="paydeterminants.html#cb2398-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb2398-5"><a href="paydeterminants.html#cb2398-5" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PayDeterminants.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 132 Columns: 5</code></pre>
 <pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
-## chr (4): lastname, firstname, startdate, gender
-## dbl (1): id</code></pre>
+## chr (2): sex, race
+## dbl (3): raise, educ, perf</code></pre>
 <pre><code>## 
 ## i Use `spec()` to retrieve the full column specification for this data.
 ## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="arrange.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb253-2"><a href="arrange.html#cb253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="arrange.html#cb255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
-<span id="cb255-2"><a href="arrange.html#cb255-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez    Alejandro 1/1/2016  male  
-## 2   154 McDonald   Ronald    1/9/2016  male  
-## 3   155 Smith      John      1/9/2016  male  
-## 4   165 Doe        Jane      1/4/2016  female
-## 5   125 Franklin   Benjamin  1/5/2016  male  
-## 6   111 Newton     Isaac     1/9/2016  male  
-## 7   198 Morales    Linda     1/7/2016  female
-## 8   201 Providence Cindy     1/9/2016  female
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>As you can see from the output generated in your console, the <code>personaldata</code> data frame object contains basic employee demographic information. The variable names include: <code>id</code>, <code>lastname</code>, <code>firstname</code>, <code>startdate</code>, and <code>gender</code>. Technically, the <code>read_csv</code> function reads in what is called a “tibble” object (as opposed to a data frame object), but for our purposes a tibble will behave similarly to a data frame. For more information on tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</p>
-</div>
-<div id="arrangebyvalues" class="section level3" number="16.2.4">
-<h3><span class="header-section-number">16.2.4</span> Arrange (Sort) Data</h3>
-<p>There are different functions we could use to arrange (sort) the data in the data frame, and in this chapter, we will focus on the <code>arrange</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>. Please note that there are other functions we could use to sort data, and if you’re interested, in the <a href="arrange.html#arrange_supplement">Arranging (Sorting) Data: Chapter Supplement</a>, I demonstrate how to use the <code>order</code> function from base R to carry out the same operations we will cover below.</p>
-<p>Because the <code>arrange</code> function comes from the <code>dplyr</code> package, which is part of the <code>tidyverse</code> of R packages <span class="citation">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2021b</a>; <a href="#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>. If you haven’t already, install and access the <code>dplyr</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="arrange.html#cb257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
-<span id="cb257-2"><a href="arrange.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb257-3"><a href="arrange.html#cb257-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb257-4"><a href="arrange.html#cb257-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="arrange.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
-<span id="cb258-2"><a href="arrange.html#cb258-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
-<p>Before diving into arranging the data, as a disclaimer, I will demonstrate two techniques for arranging (sorting) data using the <code>arrange</code> function.</p>
-<p>The <em>first technique</em> uses a “pipe” which in R is represented by the <code>%&gt;%</code> operator. The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(<a href="#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2020</a>)</span>, on which the <code>dplyr</code> is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on pipes: <a href="https://r4ds.had.co.nz/pipes.html" class="uri">https://r4ds.had.co.nz/pipes.html</a>.</p>
-<p>This brings us to the <em>second technique</em> for arranging (sorting) data using the <code>arrange</code> function. The second technique uses a more traditional approach that some may argue lacks the efficiency and readability of the pipe. Conversely, others may argue against the use of pipes altogether. I’m not here to settle any “pipes versus no pipes” debate, and you’re welcome to use either technique. If you don’t want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called <a href="arrange.html#opt1_arrange_withoutpipe">Without Pipe</a>.</p>
-<div id="opt1_arrange_withpipe" class="section level4" number="16.2.4.1">
-<h4><span class="header-section-number">16.2.4.1</span> <em>With</em> Pipe</h4>
-<p>To use the “with pipe” technique, first, type the name of our data frame object, which we previously named <code>personaldata</code>, followed by the pipe (<code>%&gt;%</code>) operator. This will “pipe” our data frame into the subsequent function. Second, either on the same line or on the next line, type the name of the <code>arrange</code> function, and within the parentheses, enter the variable name <code>startdate</code> as the argument to indicate that we want to arrange (sort) the data by the start date of the employees. The default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order. If you’re wondering where I found the exact names of the variables in the data frame, revisit the use of the <code>names</code> function, which I demonstrated previously in this chapter in the <a href="arrange.html#initsteps_arrange">Initial Steps</a> section.</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="arrange.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order (single line) (with pipe)</span></span>
-<span id="cb259-2"><a href="arrange.html#cb259-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez    Alejandro 1/1/2016  male  
-## 2   165 Doe        Jane      1/4/2016  female
-## 3   125 Franklin   Benjamin  1/5/2016  male  
-## 4   198 Morales    Linda     1/7/2016  female
-## 5   154 McDonald   Ronald    1/9/2016  male  
-## 6   155 Smith      John      1/9/2016  male  
-## 7   111 Newton     Isaac     1/9/2016  male  
-## 8   201 Providence Cindy     1/9/2016  female
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>Alternatively, we can write this script over two lines and achieve the same output in our Console.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="arrange.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order (two lines) (with pipe)</span></span>
-<span id="cb261-2"><a href="arrange.html#cb261-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> </span>
-<span id="cb261-3"><a href="arrange.html#cb261-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(startdate)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez    Alejandro 1/1/2016  male  
-## 2   165 Doe        Jane      1/4/2016  female
-## 3   125 Franklin   Benjamin  1/5/2016  male  
-## 4   198 Morales    Linda     1/7/2016  female
-## 5   154 McDonald   Ronald    1/9/2016  male  
-## 6   155 Smith      John      1/9/2016  male  
-## 7   111 Newton     Isaac     1/9/2016  male  
-## 8   201 Providence Cindy     1/9/2016  female
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>Please note that the operations we have performed thus far have not changed anything in the <code>personaldata</code> data frame object itself; rather, the output in the Console simply shows what it <em>looks like</em> if the data are sorted by the variable in question. We can verify this by viewing the first six rows of data in our data frame object using the <code>head</code> function. As you can see below, nothing changed in the data frame itself.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="arrange.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb263-2"><a href="arrange.html#cb263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb2402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2402-1"><a href="paydeterminants.html#cb2402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb2402-2"><a href="paydeterminants.html#cb2402-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pd)</span></code></pre></div>
+<pre><code>## [1] &quot;raise&quot; &quot;educ&quot;  &quot;perf&quot;  &quot;sex&quot;   &quot;race&quot;</code></pre>
+<div class="sourceCode" id="cb2404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2404-1"><a href="paydeterminants.html#cb2404-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2404-2"><a href="paydeterminants.html#cb2404-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pd)</span></code></pre></div>
+<pre><code>## spec_tbl_df [132 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##  $ raise: num [1:132] 2.4 1.7 2.6 1.1 3.6 2.4 1 0.6 2.2 2.5 ...
+##  $ educ : num [1:132] 3 3 5 5 4 2 2 2 4 4 ...
+##  $ perf : num [1:132] 7.1 3.8 10 4 10 8.9 9.9 5.4 7.4 7.5 ...
+##  $ sex  : chr [1:132] &quot;female&quot; &quot;female&quot; &quot;male&quot; &quot;female&quot; ...
+##  $ race : chr [1:132] &quot;asian&quot; &quot;black&quot; &quot;black&quot; &quot;black&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   raise = col_double(),
+##   ..   educ = col_double(),
+##   ..   perf = col_double(),
+##   ..   sex = col_character(),
+##   ..   race = col_character()
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<div class="sourceCode" id="cb2406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2406-1"><a href="paydeterminants.html#cb2406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2406-2"><a href="paydeterminants.html#cb2406-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pd)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
-##      id lastname firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez  Alejandro 1/1/2016  male  
-## 2   154 McDonald Ronald    1/9/2016  male  
-## 3   155 Smith    John      1/9/2016  male  
-## 4   165 Doe      Jane      1/4/2016  female
-## 5   125 Franklin Benjamin  1/5/2016  male  
-## 6   111 Newton   Isaac     1/9/2016  male</code></pre>
-<p>To change the ordering of data in the <code>personaldata</code> data frame object itself, we will need to (re)name the data frame object using the <code>&lt;-</code> variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the <em>exact</em> same name as it had originally (i.e., <code>personaldata</code>). To do so, to the <em>left</em> of the <code>&lt;-</code> operator, type what you would like to name the new (updated) sorted data frame object (<code>personaldata</code>). Next, to the <em>right</em> of the <code>&lt;-</code> operator, copy and paste the same code we wrote above. Finally, use the <code>head</code> function from base R to view the first six rows of the new data frame object.</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="arrange.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
-<span id="cb265-2"><a href="arrange.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object (with pipe)</span></span>
-<span id="cb265-3"><a href="arrange.html#cb265-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate)</span>
-<span id="cb265-4"><a href="arrange.html#cb265-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb265-5"><a href="arrange.html#cb265-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb265-6"><a href="arrange.html#cb265-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez  Alejandro 1/1/2016  male  
-## 2   165 Doe      Jane      1/4/2016  female
-## 3   125 Franklin Benjamin  1/5/2016  male  
-## 4   198 Morales  Linda     1/7/2016  female
-## 5   154 McDonald Ronald    1/9/2016  male  
-## 6   155 Smith    John      1/9/2016  male</code></pre>
-<p>As you can see in the Console output, now the <code>personaldata</code> data frame object has been changed such that the data are arranged (sorted) by the <code>startdate</code> variable.</p>
-<p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function as shown below.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="arrange.html#cb267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
-<span id="cb267-2"><a href="arrange.html#cb267-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object (with pipe)</span></span>
-<span id="cb267-3"><a href="arrange.html#cb267-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(startdate))</span>
-<span id="cb267-4"><a href="arrange.html#cb267-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb267-5"><a href="arrange.html#cb267-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb267-6"><a href="arrange.html#cb267-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   154 McDonald   Ronald    1/9/2016  male  
-## 2   155 Smith      John      1/9/2016  male  
-## 3   111 Newton     Isaac     1/9/2016  male  
-## 4   201 Providence Cindy     1/9/2016  female
-## 5   282 Legend     John      1/9/2016  male  
-## 6   198 Morales    Linda     1/7/2016  female</code></pre>
-<p>To arrange (sort) data by values/levels of two variables, we simply enter the names of two variables as consecutive arguments. Let’s enter the <code>gender</code> variable first, followed by the <code>startdate</code> variable. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so <em>within</em> the values/levels of the first variable listed. As shown below, <code>startdate</code> is sorted within the sorted levels of the <code>gender</code> variable. As a reminder, the default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order. <em>Remember, we use commas to separate arguments used in a function (if there are more than one arguments).</em></p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="arrange.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order (with pipe)</span></span>
-<span id="cb269-2"><a href="arrange.html#cb269-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gender, startdate)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   165 Doe        Jane      1/4/2016  female
-## 2   198 Morales    Linda     1/7/2016  female
-## 3   201 Providence Cindy     1/9/2016  female
-## 4   153 Sanchez    Alejandro 1/1/2016  male  
-## 5   125 Franklin   Benjamin  1/5/2016  male  
-## 6   154 McDonald   Ronald    1/9/2016  male  
-## 7   155 Smith      John      1/9/2016  male  
-## 8   111 Newton     Isaac     1/9/2016  male  
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>Watch what happens when we switch the order of the two variables we are using to sort the data.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="arrange.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order (with pipe)</span></span>
-<span id="cb271-2"><a href="arrange.html#cb271-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(startdate, gender)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez    Alejandro 1/1/2016  male  
-## 2   165 Doe        Jane      1/4/2016  female
-## 3   125 Franklin   Benjamin  1/5/2016  male  
-## 4   198 Morales    Linda     1/7/2016  female
-## 5   201 Providence Cindy     1/9/2016  female
-## 6   154 McDonald   Ronald    1/9/2016  male  
-## 7   155 Smith      John      1/9/2016  male  
-## 8   111 Newton     Isaac     1/9/2016  male  
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>As you can see, the order of the two sorting variables matters.</p>
-<p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="arrange.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order (with pipe)</span></span>
-<span id="cb273-2"><a href="arrange.html#cb273-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(<span class="fu">desc</span>(gender,startdate))</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   154 McDonald   Ronald    1/9/2016  male  
-## 2   155 Smith      John      1/9/2016  male  
-## 3   111 Newton     Isaac     1/9/2016  male  
-## 4   282 Legend     John      1/9/2016  male  
-## 5   125 Franklin   Benjamin  1/5/2016  male  
-## 6   153 Sanchez    Alejandro 1/1/2016  male  
-## 7   201 Providence Cindy     1/9/2016  female
-## 8   198 Morales    Linda     1/7/2016  female
-## 9   165 Doe        Jane      1/4/2016  female</code></pre>
-<p>Or, we can sort one variable in the default ascending order and the other in descending order.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="arrange.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending &amp; descending order (with pipe)</span></span>
-<span id="cb275-2"><a href="arrange.html#cb275-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="sc">%&gt;%</span> <span class="fu">arrange</span>(gender, <span class="fu">desc</span>(startdate))</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   201 Providence Cindy     1/9/2016  female
-## 2   198 Morales    Linda     1/7/2016  female
-## 3   165 Doe        Jane      1/4/2016  female
-## 4   154 McDonald   Ronald    1/9/2016  male  
-## 5   155 Smith      John      1/9/2016  male  
-## 6   111 Newton     Isaac     1/9/2016  male  
-## 7   282 Legend     John      1/9/2016  male  
-## 8   125 Franklin   Benjamin  1/5/2016  male  
-## 9   153 Sanchez    Alejandro 1/1/2016  male</code></pre>
+##   raise  educ  perf sex    race 
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;
+## 1   2.4     3   7.1 female asian
+## 2   1.7     3   3.8 female black
+## 3   2.6     5  10   male   black
+## 4   1.1     5   4   female black
+## 5   3.6     4  10   female black
+## 6   2.4     2   8.9 male   black</code></pre>
+<div class="sourceCode" id="cb2408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2408-1"><a href="paydeterminants.html#cb2408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2408-2"><a href="paydeterminants.html#cb2408-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pd)</span></code></pre></div>
+<pre><code>## [1] 132</code></pre>
+<p>There are 5 variables and 132 cases (i.e., employees) in the <code>pd</code> data frame: <code>raise</code>, <code>educ</code>, <code>perf</code>, <code>sex</code>, and <code>race</code>. Per the output of the <code>str</code> (structure) function above, the <code>raise</code>, <code>educ</code>, and <code>perf</code> variables are of type <em>numeric</em>, and the <code>sex</code> and <code>race</code> variables are of type <em>character</em>. The <code>raise</code> variable represents the percentage annual raise each employee received. The <code>educ</code> variable is ordinal but numerically coded and can be treated as a continuous variable in this context, where 1 = high school diploma or GED, 2 = some college, 3 = associate’s degree, 4 = bachelor’s degree, and 5 = graduate certificate or degree. The <code>perf</code> variable contains the supervisor-rated annual performance rating scores, which can range from 1-10, with 10 indicating very high performance. The <code>sex</code>variable refers to employee sex (female, male). The <code>race</code> variable contains three level (asian, black, white).</p>
 </div>
-<div id="opt1_arrange_withoutpipe" class="section level4" number="16.2.4.2">
-<h4><span class="header-section-number">16.2.4.2</span> <em>Without</em> Pipe</h4>
-<p>We can achieve the same output <em>without</em> using the pipe (<code>%&gt;%</code>) operator as <a href="arrange.html#opt1_arrange_withpipe"><em>with</em> the pipe operator</a>; again, your choice of using or not using the pipe operator is up to you.</p>
-<p>To use the <code>arrange</code> function without the pipe operator, type the name of the <code>arrange</code> function, and within the parentheses, as the first argument, type the name of the <code>personaldata</code> data frame object, and as the second argument, type the <code>startdate</code> variable, where the latter indicates that we want to arrange (sort) the data frame object by the start date of the employees. The default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order. <em>Remember, we use commas to separate arguments used in a function (if there are more than one arguments).</em> If you’re wondering where I found the exact names of the variables in the data frame, revisit the use of the <code>names</code> function, which I demonstrated previously in this chapter in the <a href="arrange.html#initsteps_arrange">Initial Steps</a> section.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="arrange.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order without pipe</span></span>
-<span id="cb277-2"><a href="arrange.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(personaldata, startdate)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez    Alejandro 1/1/2016  male  
-## 2   165 Doe        Jane      1/4/2016  female
-## 3   125 Franklin   Benjamin  1/5/2016  male  
-## 4   198 Morales    Linda     1/7/2016  female
-## 5   154 McDonald   Ronald    1/9/2016  male  
-## 6   155 Smith      John      1/9/2016  male  
-## 7   111 Newton     Isaac     1/9/2016  male  
-## 8   201 Providence Cindy     1/9/2016  female
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>To change the ordering of data in the <code>personaldata</code> data frame object itself, we will need to (re)name the data frame object using the <code>&lt;-</code> variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the <em>exact</em> same name as it had originally (i.e., <code>personaldata</code>). To do so, to the <em>left</em> of the <code>&lt;-</code> operator, type what you would like to name the new (updated) sorted data frame object (<code>personaldata</code>). Next, to the <em>right</em> of the <code>&lt;-</code> operator, copy and paste the same code we wrote above. Finally, use the <code>head</code> function from base R to view the first six rows of the new data frame object.</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="arrange.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order and </span></span>
-<span id="cb279-2"><a href="arrange.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object without pipe</span></span>
-<span id="cb279-3"><a href="arrange.html#cb279-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, startdate)</span>
-<span id="cb279-4"><a href="arrange.html#cb279-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb279-5"><a href="arrange.html#cb279-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb279-6"><a href="arrange.html#cb279-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez  Alejandro 1/1/2016  male  
-## 2   165 Doe      Jane      1/4/2016  female
-## 3   125 Franklin Benjamin  1/5/2016  male  
-## 4   198 Morales  Linda     1/7/2016  female
-## 5   154 McDonald Ronald    1/9/2016  male  
-## 6   155 Smith    John      1/9/2016  male</code></pre>
-<p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function as shown below.</p>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="arrange.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order and </span></span>
-<span id="cb281-2"><a href="arrange.html#cb281-2" aria-hidden="true" tabindex="-1"></a><span class="co"># overwrite existing data frame object without pipe</span></span>
-<span id="cb281-3"><a href="arrange.html#cb281-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, <span class="fu">desc</span>(startdate))</span>
-<span id="cb281-4"><a href="arrange.html#cb281-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb281-5"><a href="arrange.html#cb281-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb281-6"><a href="arrange.html#cb281-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   154 McDonald   Ronald    1/9/2016  male  
-## 2   155 Smith      John      1/9/2016  male  
-## 3   111 Newton     Isaac     1/9/2016  male  
-## 4   201 Providence Cindy     1/9/2016  female
-## 5   282 Legend     John      1/9/2016  male  
-## 6   198 Morales    Linda     1/7/2016  female</code></pre>
-<p>To arrange (sort) data by values/levels of two variables, we simply enter the names of two variables as consecutive arguments (after the name of the data frame, which is the first argument). Let’s enter the <code>gender</code> variable first, followed by the <code>startdate</code> variable. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so <em>within</em> the values/levels of the first variable listed.</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="arrange.html#cb283-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order without pipe</span></span>
-<span id="cb283-2"><a href="arrange.html#cb283-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, gender, startdate)</span></code></pre></div>
-<p>As shown in the output above, <code>startdate</code> is sorted within the sorted levels of the <code>gender</code> variable. This also verifies that the default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order.</p>
-<p>To arrange the data in <em>descending</em> order, just use the <code>desc</code> function from <code>dplyr</code> within the <code>arrange</code> function as shown below. You can use the <code>desc</code> function on one or both sorting variables.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="arrange.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by one variable in ascending order and </span></span>
-<span id="cb284-2"><a href="arrange.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the other in descending order without pipe</span></span>
-<span id="cb284-3"><a href="arrange.html#cb284-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, gender, <span class="fu">desc</span>(startdate))</span></code></pre></div>
-<p>Or we can apply the <code>desc</code> function to both variables.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="arrange.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by both variables descending order without pipe</span></span>
-<span id="cb285-2"><a href="arrange.html#cb285-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">arrange</span>(personaldata, <span class="fu">desc</span>(gender, startdate))</span></code></pre></div>
+<div id="perform_hiearchicallinearregression_paydeterminants" class="section level3" number="59.2.4">
+<h3><span class="header-section-number">59.2.4</span> Perform Hierarchical Linear Regression</h3>
+<p>I will demonstrate one approach to running hierarchical linear regression models, which is fairly straightforward to implement. The approach requires the use of the <code>lm</code> and <code>anova</code> functions from base R. Specifically, I will demonstrate hierarchical linear regression using a two-step (i.e., two-block) example. For both steps/blocks, the percentage pay raise (<code>raise</code>) will be the outcome variable. In the first step/block, we will specify a model in which education level (<code>educ</code>) and performance level (<code>perf</code>) are the predictor variables, as these are expected to be acceptable determinants of pay raise percentage. In the second step/block, we will specify the full model in which sex (<code>sex</code>) and race/ethnicity (<code>race</code>) are added to the model as additional predictor variables, where <code>sex</code> and <code>race</code> are considered unacceptable determinants of pay raise percentage. Our goal will be two determine if the <code>sex</code> and <code>race</code> variables collectively explain a statistically significant amount of incremental variance in the outcome variable <code>raise</code> after accounting for the variance explained by <code>educ</code> and <code>perf</code>. If we find significant incremental variance explained in <code>raise</code> by <code>sex</code> and <code>race</code>, then we potentially have evidence of managers exhibiting implicit or explicit bias when determining pay raise percentages for employees.</p>
+<p><em>Note: To save space, I don’t review the statistical assumption testing that should be conducted when estimating a multiple linear regression model. When analyzing real data, be sure to carry out those diagnostic tests.</em></p>
+<div id="perform_hiearchicallinearregression_stepone" class="section level4" number="59.2.4.1">
+<h4><span class="header-section-number">59.2.4.1</span> Step One (Block One)</h4>
+<p>In the first step (first block), we will specify a multiple linear regression model with <code>raise</code> as the outcome variable and <code>educ</code> and <code>perf</code> as the predictor variables. We are going to use the <code>lm</code> (linear model) function from base R instead of the <code>Regression</code> or <code>reg.brief</code> functions from <code>lessR</code> because the models we create using the <code>lm</code> function are a bit easier to work with (in my opinion) when it comes to hierarchical linear regression. Using the <code>&lt;-</code> assignment operator, let’s name the model object <code>step1</code> to reference the fact that it is our first step in the hierarchical linear regression process. Next, type the name of the <code>lm</code> function. As the first parenthetical argument, specify the following regression model: <code>raise ~ educ + perf</code>. Note that the tilde <code>~</code> symbol separates the outcome variable (left of the tilde) from the predictor variables (right of the tilde). As the second argument, type <code>data=</code> followed by the name of the data frame object (<code>pd</code>) in which our model variables can be found. On a subsequent line, type the name of the <code>summary</code> function from base R, with the name of our regression model object (<code>step1</code>) as the sole parenthetical argument. Finally, to determine the number of cases retained for the analysis (which becomes relevant if any data were missing on the focal variables), use the <code>nrow</code> function from base R with the <code>model.frame</code> function from base R as an argument. As the sole argument for the <code>model.frame</code> function, type the name of the regression model object (<code>step1</code>).</p>
+<div class="sourceCode" id="cb2410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2410-1"><a href="paydeterminants.html#cb2410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1 Model: Regress raise on educ and perf</span></span>
+<span id="cb2410-2"><a href="paydeterminants.html#cb2410-2" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> educ <span class="sc">+</span> perf, <span class="at">data=</span>pd)</span>
+<span id="cb2410-3"><a href="paydeterminants.html#cb2410-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = raise ~ educ + perf, data = pd)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.02060 -0.51293 -0.06175  0.51531  2.32785 
+## 
+## Coefficients:
+##             Estimate Std. Error t value          Pr(&gt;|t|)    
+## (Intercept) -0.59071    0.33450  -1.766          0.079767 .  
+## educ         0.21700    0.06016   3.607          0.000441 ***
+## perf         0.29603    0.03607   8.207 0.000000000000201 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.7999 on 129 degrees of freedom
+## Multiple R-squared:  0.3837, Adjusted R-squared:  0.3742 
+## F-statistic: 40.16 on 2 and 129 DF,  p-value: 0.00000000000002752</code></pre>
+<div class="sourceCode" id="cb2412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2412-1"><a href="paydeterminants.html#cb2412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cases retained for the analysis</span></span>
+<span id="cb2412-2"><a href="paydeterminants.html#cb2412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">model.frame</span>(step1))</span></code></pre></div>
+<pre><code>## [1] 132</code></pre>
+<p>Let’s review the findings from the first step of our hierarchical linear regression. Using a sample of 132 employees, we estimated the first step in a two-step hierarchical linear regression. Specifically, we regressed the percentage pay raise received by employees (<code>raise</code>) on their education level (<code>educ</code>) and supervisor-rated performance (<code>perf</code>). We found that both education level (<em>b</em> = .217, <em>p</em> &lt; .001) and performance (<em>b</em> = .296, <em>p</em> &lt; .001) were significantly and positively associated with the percentage raise received when controlling for one another. The (unadjusted multiple) <em>R</em><sup>2</sup> and adjusted <em>R</em><sup>2</sup> values are .384 and .374 (<em>F</em> = 40.16, <em>p</em> &lt; .001); focusing on the unadjusted <em>R</em><sup>2</sup> value, approximately 38% of the variance in percentage pay raise received by employees is explained by their education level and supervisor-rated performance scores. Because the <em>F</em>-value associated with the model is statistically significant (<em>p</em> &lt; .001), we can conclude that this model fits the data better than a model containing no predictor variables.</p>
 </div>
+<div id="perform_hiearchicallinearregression_steptwo" class="section level4" number="59.2.4.2">
+<h4><span class="header-section-number">59.2.4.2</span> Step Two (Block Two)</h4>
+<p>In the second step (second block), we will specify a multiple linear regression model with <code>raise</code> as the outcome variable and <code>educ</code> and <code>perf</code> as the predictor variables, but we will also add the predictor variables of <code>sex</code> and <code>race</code>. For this model, let’s name the model object <code>step2</code>.</p>
+<div class="sourceCode" id="cb2414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2414-1"><a href="paydeterminants.html#cb2414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2 Model: Regress raise on educ, perf, sex, and race</span></span>
+<span id="cb2414-2"><a href="paydeterminants.html#cb2414-2" aria-hidden="true" tabindex="-1"></a>step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> educ <span class="sc">+</span> perf <span class="sc">+</span> sex <span class="sc">+</span> race, <span class="at">data=</span>pd)</span>
+<span id="cb2414-3"><a href="paydeterminants.html#cb2414-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = raise ~ educ + perf + sex + race, data = pd)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.65048 -0.42558 -0.00791  0.45156  2.32498 
+## 
+## Coefficients:
+##             Estimate Std. Error t value             Pr(&gt;|t|)    
+## (Intercept) -1.22478    0.29597  -4.138     0.00006355901993 ***
+## educ         0.21890    0.04959   4.414     0.00002159553969 ***
+## perf         0.28282    0.02988   9.464 &lt; 0.0000000000000002 ***
+## sexmale      0.16160    0.11633   1.389             0.167236    
+## raceblack    0.58704    0.14852   3.953             0.000128 ***
+## racewhite    1.18247    0.15405   7.676     0.00000000000394 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.6583 on 126 degrees of freedom
+## Multiple R-squared:  0.5923, Adjusted R-squared:  0.5761 
+## F-statistic: 36.61 on 5 and 126 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+<div class="sourceCode" id="cb2416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2416-1"><a href="paydeterminants.html#cb2416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cases retained for the analysis</span></span>
+<span id="cb2416-2"><a href="paydeterminants.html#cb2416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">model.frame</span>(step2))</span></code></pre></div>
+<pre><code>## [1] 132</code></pre>
+<p>Let’s review the findings from the second step of our hierarchical linear regression. Using the same sample of 132 employees as the first step, we regressed the percentage pay raise received by employees (<code>raise</code>) on their education level (<code>educ</code>), supervisor-rated performance (<code>perf</code>), sex (<code>sex</code>), and race/ethnicity (<code>race</code>). Both education level (<em>b</em> = .219, <em>p</em> &lt; .001) and performance (<em>b</em> = .283, <em>p</em> &lt; .001) remained significantly and positively associated with the percentage raise received when controlling for one another and the sex and race/ethnicity variables. On the one hand, employee sex was not significantly associated with the percentage pay raise received when controlling for the other variables in the model (<em>b</em> = .162, <em>p</em> = .167). On the other hand, employee race/ethnicity was significantly associated with percentage pay raise received. Because the employee race/ethnicity variable (<code>race</code>) is categorical and has three or more levels (i.e., asian, black, white), the <code>lm</code> function uses a process called <strong>dummy coding</strong> (<strong>contrast coding</strong>) to make comparisons between the different races/ethnicities with respect to the <code>raise</code> outcome variable. For more information on dummy coding, see the section called <a href="paydeterminants.html#dummycoding_hierarchicallinearregression_paydeterminants">Optional: More Information on Dummy Coding</a> below. The results indicate that <em>black</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = .587, <em>p</em> &lt; .001) when controlling for other predictor variables in the model, and likewise <em>white</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = 1.182, <em>p</em> &lt; .001). Thus, there is evidence that employee race/ethnicity influenced manager decisions when it came to determining the pay raise percentage for employees, which could be evidence of implicit or explicit bias. The (unadjusted multiple) <em>R</em><sup>2</sup> and adjusted <em>R</em><sup>2</sup> values are .592 and .576 (<em>F</em> = 36.61, <em>p</em> &lt; .001); focusing on the unadjusted <em>R</em><sup>2</sup> value, approximately 59% of the variance in percentage pay raise received by employees is explained by their education level, supervisor-rated performance scores, employee sex, and employee race/ethnicity. Because the <em>F</em>-value associated with the model is statistically significant (<em>p</em> &lt; .001), we can conclude that this model fits the data better than a model containing no predictor variables.</p>
 </div>
-<div id="summary_arrange" class="section level3" number="16.2.5">
-<h3><span class="header-section-number">16.2.5</span> Summary</h3>
-<p>In this chapter, we learned how to arrange (sort) data by one or more variables using the <code>arrange</code> and <code>desc</code> functions from the <code>dplyr</code> package. This chapter also introduced the pipe (<code>%&gt;%</code>) operator, which can help make code easier to read in some contexts.</p>
-</div>
-</div>
-<div id="arrange_supplement" class="section level2" number="16.3">
-<h2><span class="header-section-number">16.3</span> Chapter Supplement</h2>
-<p>In addition to the <code>arrange</code> function from the <code>dplyr</code> package covered <a href="arrange.html#arrangebyvalues">above</a>, we can use the <code>order</code> function from base R to arrange (sort) data by values for one or more variable. Because this function comes from base R, we do not need to install and access an additional package like we do with the <code>arrange</code> functions, which some may find advantageous.</p>
-<div id="arrange_supplement_functions" class="section level3" number="16.3.1">
-<h3><span class="header-section-number">16.3.1</span> Functions &amp; Packages Introduced</h3>
+<div id="perform_hiearchicallinearregression_nestedmodel" class="section level4" number="59.2.4.3">
+<h4><span class="header-section-number">59.2.4.3</span> Compare Nested Models</h4>
+<p>As a final step in our hierarchical linear regression, let’s use the <code>anova</code> function from base R to do a nested model comparison between the <code>step1</code> and <code>step2</code> models. This will tell us whether adding <code>sex</code> and <code>race</code> to the model significantly improved model fit (i.e., explained incrementally more variance in the outcome) over and above <code>educ</code> and <code>perf</code>. Type the name of the <code>anova</code> function. As the first argument, type the name of our first step model object (<code>step1</code>), and as the second argument, type the name of our second step model object (<code>step2</code>).</p>
+<div class="sourceCode" id="cb2418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2418-1"><a href="paydeterminants.html#cb2418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested Model Comparison: Step 1 vs. Step 2</span></span>
+<span id="cb2418-2"><a href="paydeterminants.html#cb2418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(step1, step2)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: raise ~ educ + perf
+## Model 2: raise ~ educ + perf + sex + race
+##   Res.Df    RSS Df Sum of Sq      F           Pr(&gt;F)    
+## 1    129 82.541                                         
+## 2    126 54.604  3    27.936 21.488 0.00000000002637 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The <em>F</em>-value and its associated <em>p</em>-value (the latter of which is less than the conventional cutoff of .05) indicate that the second step model fits the data significantly better than the first step model. In other words, <code>sex</code> and <code>race</code> explain incremental variance in <code>raise</code> beyond the variance already explained by <code>educ</code> and <code>perf</code>. In the context of a pay raise, this is of course concerning because an employee’s sex or race/ethnicity should not factor into the percentage raise they receive.</p>
+<p>Finally, let’s reference the summary/output for each model and specifically the <code>r.squared</code> values to determine what the change in <em>R</em><sup>2</sup> was from the first step to the second step. The change in <em>R</em><sup>2</sup> gives as an idea of how much (in terms of practical significance) the model fit improved when adding the additional variables (i.e., <code>sex</code>, <code>race</code>). Note that we use the <code>$</code> symbol to indicate that we want the <code>r.squared</code> value from the <code>summary(step2)</code> and <code>summary(step1)</code> output, and then we do a simple subtraction to get the change in <em>R</em><sup>2</sup>. Note that we typically only interpret the change in <em>R</em><sup>2</sup> if we find that the models fit the data significantly differently from one another based on the <em>F</em>-value and its associated <em>p</em>-value in the model comparison step.</p>
+<div class="sourceCode" id="cb2420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2420-1"><a href="paydeterminants.html#cb2420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change in R-squared</span></span>
+<span id="cb2420-2"><a href="paydeterminants.html#cb2420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step2)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">summary</span>(step1)<span class="sc">$</span>r.squared</span></code></pre></div>
+<pre><code>## [1] 0.2085752</code></pre>
+<p>As you can see, the change in <em>R</em><sup>2</sup> is .209, which indicates that <code>sex</code> and <code>race</code> explain approximately 21% additional variance in <code>raise</code> beyond the variance already explained by <code>educ</code> and <code>perf</code>. If we consider our conventional rules of thumb for interpreting <em>R</em><sup>2</sup> as an effect size (i.e., indicator of practical significance), this is medium-to-large change, which is impressive in terms of magnitude (and deeply concerning in this specific context).</p>
 <table>
 <thead>
 <tr class="header">
-<th align="center">Function</th>
-<th align="center">Package</th>
+<th align="center"><em>R</em><sup>2</sup></th>
+<th align="center">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="center"><code>order</code></td>
-<td align="center">base R</td>
+<td align="center">.01</td>
+<td align="center">Small</td>
 </tr>
 <tr class="even">
-<td align="center"><code>c</code></td>
-<td align="center">base R</td>
+<td align="center">.09</td>
+<td align="center">Medium</td>
+</tr>
+<tr class="odd">
+<td align="center">.25</td>
+<td align="center">Large</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div id="arrange_initsteps_supplement" class="section level3" number="16.3.2">
-<h3><span class="header-section-number">16.3.2</span> Initial Steps</h3>
-<p>If required, please refer to the <a href="arrange.html#initsteps_arrange">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="arrange.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb286-2"><a href="arrange.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="arrange.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb287-2"><a href="arrange.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb287-3"><a href="arrange.html#cb287-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-4"><a href="arrange.html#cb287-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb287-5"><a href="arrange.html#cb287-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 9 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (4): lastname, firstname, startdate, gender
-## dbl (1): id</code></pre>
+<div id="dummycoding_hierarchicallinearregression_paydeterminants" class="section level4" number="59.2.4.4">
+<h4><span class="header-section-number">59.2.4.4</span> Optional: More Information on Dummy Coding</h4>
+<p><strong>Dummy coding</strong> (<strong>contrast coding</strong>) is used in regression when we have a categorical predictor variable. To illustrate dummy coding, I reference the results from Step 2 above. In a simple two-level/category categorical variable such as <code>sex</code> (<em>female</em>, <em>male</em>) just one dummy variable is needed to represent <code>sex</code>, and by default, the <code>lm</code> function uses the name of the level/category that comes first alphabetically as the reference group, setting it equal to 0 (e.g., <em>female</em> = 0); in turn, the name of the level/category that comes next alphabetically is used as the focal group and is set equal to 1 (e.g., <em>male</em> = 1). Using this coding, a positive and significant regression coefficient for <em>male</em> (i.e., <em>sexmale</em>) would indicate that male employees have higher scores/values on the outcome variable. Things get a little bit trickier when we have a categorical variable with three or more categories/levels. Using the present findings as an example, behind the scenes, the <code>lm</code> function has created two dichotomous “dummy” variables with respect to the <code>race</code> variable, both of which reference the focal level/category (e.g., <em>raceblack</em>) as 1 and all other levels/categories (e.g., <em>asian</em>, <em>white</em>) as 0. The number of dummy variables created to analyze a categorical variable is equal to the number of categories/levels (<em>k</em>) minus 1 (<em>k</em> - 1); in this example, we have three categories/levels (<em>asian</em>, <em>black</em>, <em>white</em>), and thus two dummy variables were created behind the scenes. Only two dummy variables are needed for a categorical variable with three levels/categories because it can be inferred what a third dummy variable’s values would be if we have two dummy variables’ values. In this example, because the <em>asian</em> level/category comes first alphabetically, it is treated as the reference group, which means its mean value is reflected in the intercept/constant value of -1.22478 when controlling for other variables in the model. We can interpret each dummy variable regression coefficient as the difference between the mean of the focal level/category (e.g., <em>raceblack</em>) and the intercept (e.g., <em>asian</em>) when controlling for other variables in the model. Thus, in the second step model above, <em>black</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = .587, <em>p</em> &lt; .001) when controlling for other predictor variables in the model, and likewise <em>white</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = 1.182, <em>p</em> &lt; .001).</p>
+<p>Let’s dig deeper into dummy coding and illustrate its connection to analysis of variance (ANOVA). For solely explanatory purposes, let’s take a look at a model that only contains the dummy variables for the <code>race</code> variable in relation to the <code>raise</code> variable. Let’s name this model object <code>mod</code>.</p>
+<div class="sourceCode" id="cb2422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2422-1"><a href="paydeterminants.html#cb2422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example model with dummy coding: Regress raise on race</span></span>
+<span id="cb2422-2"><a href="paydeterminants.html#cb2422-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> race, <span class="at">data=</span>pd)</span>
+<span id="cb2422-3"><a href="paydeterminants.html#cb2422-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+## Call:
+## lm(formula = raise ~ race, data = pd)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.78478 -0.59925  0.00645  0.61522  2.31522 
+## 
+## Coefficients:
+##             Estimate Std. Error t value             Pr(&gt;|t|)    
+## (Intercept)   1.5935     0.1600   9.961 &lt; 0.0000000000000002 ***
+## raceblack     0.6228     0.2001   3.113              0.00228 ** 
+## racewhite     1.2912     0.2070   6.238        0.00000000586 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8908 on 129 degrees of freedom
+## Multiple R-squared:  0.2358, Adjusted R-squared:  0.224 
+## F-statistic:  19.9 on 2 and 129 DF,  p-value: 0.00000002925</code></pre>
+<p>Note that in this model, the intercept/constant value of 1.594 represents the mean percentage raise for <em>asian</em> employees. The regression coefficient associated with <em>raceblack</em> (<em>b</em> = .623) represents the mean percentage raise for <em>black</em> employees minus the mean percentage raise for <em>asian</em> employees; because the values is positive, it means that <em>black</em> employees have a descriptively higher mean than <em>asian</em> employees. Next, the regression coefficient associated with <em>racewhite</em> (<em>b</em> = 1.291) represents the mean percentage raise for <em>black</em> employees minus the mean percentage raise for <em>asian</em> employees; because the values is positive, it means that <em>white</em> employees also have a descriptively higher mean than <em>asian</em> employees.</p>
+<p>We can confirm that the regression coefficient values mean outcome for each level of the categorical variable by using the <code>tapply</code> and <code>mean</code> functions to calculate the mean for the <code>raise</code> variable for each level of the <code>race</code> variable.</p>
+<div class="sourceCode" id="cb2424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2424-1"><a href="paydeterminants.html#cb2424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean values on outcome variable for each level of categorical variable</span></span>
+<span id="cb2424-2"><a href="paydeterminants.html#cb2424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pd<span class="sc">$</span>raise, pd<span class="sc">$</span>race, mean)</span></code></pre></div>
+<pre><code>##    asian    black    white 
+## 1.593548 2.216364 2.884783</code></pre>
+<p>Note that the intercept/constant value for above, which represents the mean percentage raise for the reference group (<em>asian</em> employees), is 1.594; this is the same as the mean we just calculated. In addition, if we add the regression coefficient for the dummy variable associated with <em>black</em> employees to the mean of the reference group (<em>asian</em> employees), we get 2.216 (1.5935 + .6228 = 2.2164), which is equal to the mean for <em>black</em> employees we calculated. Finally, if we add the regression coefficient for the dummy variable associated with <em>white</em> employees to the mean of the reference group (<em>asian</em> employees), we get 2.885 (1.5935 + 1.2912 = 2.8848), which is equal to the mean for <em>white</em> employees we calculated.</p>
+<p>Next, using the <code>anova</code> function from base R, we can interpret the regression model (<code>mod</code>) as a one-way ANOVA.</p>
+<div class="sourceCode" id="cb2426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2426-1"><a href="paydeterminants.html#cb2426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display ANOVA results</span></span>
+<span id="cb2426-2"><a href="paydeterminants.html#cb2426-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: raise
+##            Df  Sum Sq Mean Sq F value        Pr(&gt;F)    
+## race        2  31.585 15.7927  19.904 0.00000002925 ***
+## Residuals 129 102.353  0.7934                          
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The row in the table associated with <em>race</em> can be interpreted as an omnibus <em>F</em>-test for a one-way ANOVA. As you can see, the <code>race</code> variable explained a significant amount of the variability in <code>raise</code> (<em>F</em> = 19.904, <em>p</em> &lt; .001). However, like any omnibus test with three or more levels for the categorical predictor variable, we don’t know yet where the significant mean differences exist. The summary of the regression model above, provides us with information about those mean comparisons in the form of regression coefficients. In addition to illustrating how dummy coding works, this also shows that a one-way ANOVA (and other types of ANOVA) can be implemented and interpreted in a regression framework. This just goes to show that ANOVA is a specific type of regression.</p>
 </div>
-<div id="arrange_orderfunction" class="section level3" number="16.3.3">
-<h3><span class="header-section-number">16.3.3</span> <code>order</code> Function from Base R</h3>
-<p>To sort a data frame object in ascending order based on a single variable, we will use the <code>order</code> function from base R to do the following:</p>
-<ol style="list-style-type: decimal">
-<li>Type the name of the data frame object that you wish to arrange (sort) (<code>personaldata</code>).</li>
-<li>Insert brackets (<code>[ ]</code>), which allow us to reference rows or columns depending on how we format the brackets. If we type a function or value before the comma, we are indicating that we wish to apply operations to row(s), and if we type a function or value after the comma, we are indicating that we wish to apply operations to column(s).</li>
-<li>To sort the data frame into ascending rows by the <code>startdate</code> variable, type the name of the <code>order</code> function <em>before</em> the comma in the brackets. As the sole parenthetical argument of the <code>order</code> function, type the name of the <code>personaldata</code> data frame object, followed by the <code>$</code> operator and the name of the variable by which we wish to sort the data frame, which to reiterate is the <code>startdate</code> variable. The <code>$</code> operator signals to R that a variable belongs to a particular data frame object. By default, the <code>order</code> function sorts in ascending order.</li>
-</ol>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="arrange.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order </span></span>
-<span id="cb291-2"><a href="arrange.html#cb291-2" aria-hidden="true" tabindex="-1"></a>personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate),]</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez    Alejandro 1/1/2016  male  
-## 2   165 Doe        Jane      1/4/2016  female
-## 3   125 Franklin   Benjamin  1/5/2016  male  
-## 4   198 Morales    Linda     1/7/2016  female
-## 5   154 McDonald   Ronald    1/9/2016  male  
-## 6   155 Smith      John      1/9/2016  male  
-## 7   111 Newton     Isaac     1/9/2016  male  
-## 8   201 Providence Cindy     1/9/2016  female
-## 9   282 Legend     John      1/9/2016  male</code></pre>
-<p>To change the ordering of data in the <code>personaldata</code> data frame object itself, we will need to (re)name the data frame object using the <code>&lt;-</code> variable assignment operator. In this example, I will demonstrate how to overwrite the existing data frame object, and thus I give the data frame object the <em>exact</em> same name as it had originally (i.e., <code>personaldata</code>). To do so, to the <em>left</em> of the <code>&lt;-</code> operator, type what you would like to name the new (updated) sorted data frame object (<code>personaldata</code>). Next, to the <em>right</em> of the <code>&lt;-</code> operator, copy and paste the same code we wrote above. Finally, use the <code>head</code> function from base R to view the first six rows of the new data frame object.</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="arrange.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in ascending order </span></span>
-<span id="cb293-2"><a href="arrange.html#cb293-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and overwrite existing data frame object</span></span>
-<span id="cb293-3"><a href="arrange.html#cb293-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate),]</span>
-<span id="cb293-4"><a href="arrange.html#cb293-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb293-5"><a href="arrange.html#cb293-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb293-6"><a href="arrange.html#cb293-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   153 Sanchez  Alejandro 1/1/2016  male  
-## 2   165 Doe      Jane      1/4/2016  female
-## 3   125 Franklin Benjamin  1/5/2016  male  
-## 4   198 Morales  Linda     1/7/2016  female
-## 5   154 McDonald Ronald    1/9/2016  male  
-## 6   155 Smith    John      1/9/2016  male</code></pre>
-<p>To sort in <em>descending</em> order, add the argument <code>decreasing=TRUE</code> within the <code>order</code> function parentheses. <em>Remember, we use commas to separate arguments used in a function (if there are two or more arguments).</em></p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="arrange.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by variable in descending order</span></span>
-<span id="cb295-2"><a href="arrange.html#cb295-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="cn">TRUE</span>),]</span>
-<span id="cb295-3"><a href="arrange.html#cb295-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb295-4"><a href="arrange.html#cb295-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb295-5"><a href="arrange.html#cb295-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   154 McDonald   Ronald    1/9/2016  male  
-## 2   155 Smith      John      1/9/2016  male  
-## 3   111 Newton     Isaac     1/9/2016  male  
-## 4   201 Providence Cindy     1/9/2016  female
-## 5   282 Legend     John      1/9/2016  male  
-## 6   198 Morales    Linda     1/7/2016  female</code></pre>
-<p>If we wish to sort a data frame object by two variables, as the second argument in the <code>order</code> function parentheses, simply add the name of the data frame object, followed by the <code>$</code> operator and the name of the second second variable. We will sort the data frame in by <code>gender</code> and <code>startdate</code>. The ordering of the two variables matters; the function sorts initially by the values/levels of the first variable listed and sorts subsequently by the values/levels of the second variable listed, but does so <em>within</em> the values/levels of the first variable listed. As shown below, <code>startdate</code> is sorted within the sorted levels of the <code>gender</code> variable. The default operation of the <code>arrange</code> function is to arrange (sort) the data in <em>ascending</em> order.</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="arrange.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by two variables in ascending order</span></span>
-<span id="cb297-2"><a href="arrange.html#cb297-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate),]</span>
-<span id="cb297-3"><a href="arrange.html#cb297-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb297-4"><a href="arrange.html#cb297-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb297-5"><a href="arrange.html#cb297-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   165 Doe        Jane      1/4/2016  female
-## 2   198 Morales    Linda     1/7/2016  female
-## 3   201 Providence Cindy     1/9/2016  female
-## 4   153 Sanchez    Alejandro 1/1/2016  male  
-## 5   125 Franklin   Benjamin  1/5/2016  male  
-## 6   154 McDonald   Ronald    1/9/2016  male</code></pre>
-<p>To sort by one of the variables in descending order and the other variable by the default ascending order, we need to add the <code>decreasing=</code> argument, but because we have two variables, we need to provide a vector containing logical values (<code>TRUE</code>, <code>FALSE</code>) to indicate which variable we wish to apply a <em>descending</em> order. If the logical value is <code>TRUE</code> for the <code>decreasing=</code> argument, then we sort in descending variable. Using the <code>c</code> (combine) function from base R, we create a vector of two logical values whose order corresponds to the order in which we listed the two variables in the <code>order</code> function. For example, if the argument is <code>decreasing=c(FALSE, TRUE)</code>, then we sort the first variable in the default ascending order and the second variable in descending order, which is what we do below.</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="arrange.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by gender in ascending order and </span></span>
-<span id="cb299-2"><a href="arrange.html#cb299-2" aria-hidden="true" tabindex="-1"></a><span class="co"># startdate in descending order</span></span>
-<span id="cb299-3"><a href="arrange.html#cb299-3" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="fu">c</span>(<span class="cn">FALSE</span>, <span class="cn">TRUE</span>)),]</span>
-<span id="cb299-4"><a href="arrange.html#cb299-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb299-5"><a href="arrange.html#cb299-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb299-6"><a href="arrange.html#cb299-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname   firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   165 Doe        Jane      1/4/2016  female
-## 2   198 Morales    Linda     1/7/2016  female
-## 3   201 Providence Cindy     1/9/2016  female
-## 4   153 Sanchez    Alejandro 1/1/2016  male  
-## 5   125 Franklin   Benjamin  1/5/2016  male  
-## 6   154 McDonald   Ronald    1/9/2016  male</code></pre>
-<p>Or, you could sort by both variables in descending order by change the argument to <code>decreasing=c(TRUE, TRUE)</code>.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="arrange.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange (sort) data by gender and startdate variables descending order</span></span>
-<span id="cb301-2"><a href="arrange.html#cb301-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> personaldata[<span class="fu">order</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate, <span class="at">decreasing=</span><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>)),]</span>
-<span id="cb301-3"><a href="arrange.html#cb301-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-4"><a href="arrange.html#cb301-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame in Console</span></span>
-<span id="cb301-5"><a href="arrange.html#cb301-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
-##      id lastname firstname startdate gender
-##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
-## 1   154 McDonald Ronald    1/9/2016  male  
-## 2   155 Smith    John      1/9/2016  male  
-## 3   111 Newton   Isaac     1/9/2016  male  
-## 4   282 Legend   John      1/9/2016  male  
-## 5   125 Franklin Benjamin  1/5/2016  male  
-## 6   153 Sanchez  Alejandro 1/1/2016  male</code></pre>
+</div>
+<div id="summary_paydeterminants" class="section level3" number="59.2.5">
+<h3><span class="header-section-number">59.2.5</span> Summary</h3>
+<p>In this chapter, we learned how to perform hierarchical linear regression in order to identify pay determinants. Hierarchical linear regression is a specific application of multiple linear regression in which we build up to a final/full model in what are often called steps or blocks. Specifically, we are comparing nested models. In this tutorial, we learned how to use the <code>lm</code> and <code>anova</code> functions from base R to conduct hierarchical linear regression.</p>
 
 </div>
 </div>
 </div>
+
+
+
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-R-magrittr" class="csl-entry">
-Bache, Stefan Milton, and Hadley Wickham. 2020. <em>Magrittr: A Forward-Pipe Operator for r</em>. <a href="https://CRAN.R-project.org/package=magrittr">https://CRAN.R-project.org/package=magrittr</a>.
-</div>
-<div id="ref-R-tidyverse" class="csl-entry">
-———. 2021b. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
-</div>
-<div id="ref-tidyverse2019" class="csl-entry">
-Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
-</div>
-<div id="ref-R-dplyr" class="csl-entry">
-Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2021. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
-</div>
-<div id="ref-wickham2017" class="csl-entry">
-Wickham, Hadley, and Garrett Grolemund. 2017. <em><span>R</span> for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.
-</div>
 <div id="ref-R-readr" class="csl-entry">
 Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
@@ -1604,8 +1452,8 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
           </div>
         </div>
       </div>
-<a href="write.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="join.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="marketpayline.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="create_portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

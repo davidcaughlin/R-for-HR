@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="marketsurvey.html"/>
-<link rel="next" href="create_portfolio.html"/>
+<link rel="next" href="paydeterminants.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -1087,9 +1087,25 @@ div.csl-indent {
 <li class="chapter" data-level="58.2.5" data-path="marketpayline.html"><a href="marketpayline.html#summary_marketpayline"><i class="fa fa-check"></i><b>58.2.5</b> Summary</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="59" data-path="paydeterminants.html"><a href="paydeterminants.html"><i class="fa fa-check"></i><b>59</b> Identifying Pay Determinants Using Hierarchical Linear Regression</a>
+<ul>
+<li class="chapter" data-level="59.1" data-path="paydeterminants.html"><a href="paydeterminants.html#conceptualoverview_paydeterminants"><i class="fa fa-check"></i><b>59.1</b> Conceptual Overview</a>
+<ul>
+<li class="chapter" data-level="59.1.1" data-path="paydeterminants.html"><a href="paydeterminants.html#review_hiearchicallinearregression_paydeterminants"><i class="fa fa-check"></i><b>59.1.1</b> Review of Hiearchical Linear Regression</a></li>
+<li class="chapter" data-level="59.1.2" data-path="paydeterminants.html"><a href="paydeterminants.html#conceptualvideo_paydeterminants"><i class="fa fa-check"></i><b>59.1.2</b> Conceptual Videos</a></li>
+</ul></li>
+<li class="chapter" data-level="59.2" data-path="paydeterminants.html"><a href="paydeterminants.html#tutorial_paydeterminants"><i class="fa fa-check"></i><b>59.2</b> Tutorial</a>
+<ul>
+<li class="chapter" data-level="59.2.1" data-path="paydeterminants.html"><a href="paydeterminants.html#videotutorial_paydeterminants"><i class="fa fa-check"></i><b>59.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="59.2.2" data-path="paydeterminants.html"><a href="paydeterminants.html#functions_paydeterminants"><i class="fa fa-check"></i><b>59.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="59.2.3" data-path="paydeterminants.html"><a href="paydeterminants.html#initsteps_paydeterminants"><i class="fa fa-check"></i><b>59.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="59.2.4" data-path="paydeterminants.html"><a href="paydeterminants.html#perform_hiearchicallinearregression_paydeterminants"><i class="fa fa-check"></i><b>59.2.4</b> Perform Hierarchical Linear Regression</a></li>
+<li class="chapter" data-level="59.2.5" data-path="paydeterminants.html"><a href="paydeterminants.html#summary_paydeterminants"><i class="fa fa-check"></i><b>59.2.5</b> Summary</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="59" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>59</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="60" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>60</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="60" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>60</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="61" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>61</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1115,7 +1131,7 @@ BOOK UNDER CONSTRUCTION</a>
             <section class="normal" id="section-">
 <div id="marketpayline" class="section level1" number="58">
 <h1><span class="header-section-number">Chapter 58</span> Estimating a Market Pay Line</h1>
-<p>In this chapter, we will learn how to prepare market survey data by aging and applying weights to the data.</p>
+<p>In this chapter, we will learn how to estimate a market pay line using simple linear regression and polynomial regression.</p>
 <div id="conceptualoverview_marketpayline" class="section level2" number="58.1">
 <h2><span class="header-section-number">58.1</span> Conceptual Overview</h2>
 <p><strong>Estimating a market pay line</strong> allows us to determine the extent to which our internal job structure is aligned with external market pay practices for benchmark jobs. Further, a market pay line can help us estimate an appropriate pay level for a nonbenchmark job. Finally, a market pay line can be used as the basis for a pay policy line and, ultimately, creating pay bands/grades.</p>
@@ -1123,7 +1139,7 @@ BOOK UNDER CONSTRUCTION</a>
 <p>Please note that in this chapter our predictor variable will be job evaluation points, as the point-factor system/method of job evaluation tends to be one of the most common approaches. Using numeric pay grades/levels that were developed using some type of job evaluation approach would also be acceptable.</p>
 <div id="statisticalassumptions_marketpayline" class="section level3" number="58.1.1">
 <h3><span class="header-section-number">58.1.1</span> Statistical Assumptions</h3>
-<p>For information regarding the statistical assumptions that should be met for simple linear regression and polynomial regression, please refer to the corresponding section from the chapters covering <a href="#statisticalassumptions_slrs">simple linear regression</a> and <a href="polynomialregression.html#statisticalassumptions_polynomialregression">polynomial regression</a>.</p>
+<p>For information regarding the statistical assumptions that should be met for simple linear regression and polynomial regression, please refer to the corresponding section from the chapters covering <a href="predictingcriterionscores.html#statisticalassumptions_slr">simple linear regression</a> and <a href="polynomialregression.html#statisticalassumptions_polynomialregression">polynomial regression</a>.</p>
 </div>
 <div id="statisticalsignificance_marketpayline" class="section level3" number="58.1.2">
 <h3><span class="header-section-number">58.1.2</span> Statistical Significance</h3>
@@ -1143,7 +1159,7 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 <div id="tutorial_marketpayline" class="section level2" number="58.2">
 <h2><span class="header-section-number">58.2</span> Tutorial</h2>
-<p>This chapter’s tutorial demonstrates perform age market survey and apply market survey weights using R.</p>
+<p>This chapter’s tutorial demonstrates how to estimate a market pay line using simple linear regression and polynomial regression in R.</p>
 <div id="videotutorial_marketpayline" class="section level3" number="58.2.1">
 <h3><span class="header-section-number">58.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
@@ -1926,9 +1942,6 @@ BOOK UNDER CONSTRUCTION</a>
 </div>
 </div>
 </div>
-
-
-
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-bollen1985regression" class="csl-entry">
@@ -1947,7 +1960,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
         </div>
       </div>
 <a href="marketsurvey.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create_portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="paydeterminants.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
