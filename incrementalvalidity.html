@@ -1299,7 +1299,7 @@ div.csl-indent {
 <span id="cb1337-4"><a href="incrementalvalidity.html#cb1337-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1337-5"><a href="incrementalvalidity.html#cb1337-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -1358,7 +1358,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ SJT + EI + Interview, data=df, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  df 
 ##  
@@ -1370,16 +1371,20 @@ div.csl-indent {
 ## Number of cases (rows) of data:  300 
 ## Number of cases retained for analysis:  300 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## Performance:  Mean = 10.737   SD = 3.477 
+##               Min = 4.000   Max = 27.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.602      0.574    9.756    0.000       4.472       6.732 
 ##         SJT     0.485      0.231    2.099    0.037       0.030       0.939 
 ##          EI     0.091      0.237    0.385    0.700      -0.376       0.559 
 ##   Interview     0.378      0.067    5.686    0.000       0.247       0.509 
 ## 
-## Standard deviation of Performance: 3.477 
-##  
+## 
 ## Standard deviation of residuals:  2.996 for 296 degrees of freedom 
 ## 95% range of residual variation:  11.794 = 2 * (1.968 * 2.996) 
 ##  
@@ -1387,6 +1392,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 35.507     df: 3 and 296     p-value:  0.000 
+## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ##         SJT    1   629.432   629.432    70.101     0.000 
@@ -1397,9 +1403,10 @@ div.csl-indent {
 ## Residuals    296  2657.762     8.979 
 ## Performance  299  3614.197    12.088 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
 ## 
 ##               Performance  SJT   EI Interview 
 ##   Performance        1.00 0.42 0.43      0.39 
@@ -1407,10 +1414,12 @@ div.csl-indent {
 ##            EI        0.43 0.93 1.00      0.32 
 ##     Interview        0.39 0.24 0.32      1.00 
 ## 
+## 
 ##             Tolerance       VIF 
 ##         SJT     0.127     7.887 
 ##          EI     0.121     8.278 
 ##   Interview     0.873     1.146 
+## 
 ## 
 ##  SJT  EI Interview    R2adj    X&#39;s 
 ##    1   0         1    0.259      2 
@@ -1424,7 +1433,8 @@ div.csl-indent {
 ## [based on Thomas Lumley&#39;s leaps function from the leaps package] 
 ##  
 ## 
-##   RESIDUALS AND INFLUENCE 
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1452,13 +1462,14 @@ div.csl-indent {
 ##   297  2.000 1.000     3.000      14.000  7.797   6.203  2.096  0.248 0.015 
 ##    82  2.000 1.000     4.000      14.000  8.176   5.824  1.966  0.230 0.013 
 ## 
+## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ---------------------------------------------- 
+##  ----------------------------------------------
 ## 
 ##         SJT    EI Interview Performance   pred    sf pi.lwr pi.upr  width 
 ##    69 2.000 1.000     1.000      18.000  7.041 3.023  1.092 12.990 11.898 
@@ -1472,6 +1483,7 @@ div.csl-indent {
 ##   225 7.000 6.000     9.000      16.000 12.948 3.011  7.022 18.874 11.852 
 ##    28 4.000 7.000    14.000      12.000 13.477 3.149  7.278 19.675 12.396 
 ##   128 4.000 7.000    14.000      12.000 13.477 3.149  7.278 19.675 12.396 
+## 
 ## 
 ## ---------------------------------- 
 ## Plot 1: Distribution of Residuals 
@@ -1495,7 +1507,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ SJT + Interview, data=df, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  df 
 ##  
@@ -1506,15 +1519,19 @@ div.csl-indent {
 ## Number of cases (rows) of data:  300 
 ## Number of cases retained for analysis:  300 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## Performance:  Mean = 10.737   SD = 3.477 
+##               Min = 4.000   Max = 27.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.527      0.539   10.249    0.000       4.465       6.588 
 ##         SJT     0.567      0.085    6.714    0.000       0.401       0.734 
 ##   Interview     0.385      0.064    6.031    0.000       0.260       0.511 
 ## 
-## Standard deviation of Performance: 3.477 
-##  
+## 
 ## Standard deviation of residuals:  2.992 for 297 degrees of freedom 
 ## 95% range of residual variation:  11.777 = 2 * (1.968 * 2.992) 
 ##  
@@ -1522,6 +1539,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 53.339     df: 2 and 297     p-value:  0.000 
+## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ##         SJT    1   629.432   629.432    70.303     0.000 
@@ -1531,18 +1549,21 @@ div.csl-indent {
 ## Residuals    297  2659.095     8.953 
 ## Performance  299  3614.197    12.088 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
 ## 
 ##               Performance  SJT Interview 
 ##   Performance        1.00 0.42      0.39 
 ##           SJT        0.42 1.00      0.24 
 ##     Interview        0.39 0.24      1.00 
 ## 
+## 
 ##             Tolerance       VIF 
 ##         SJT     0.944     1.060 
 ##   Interview     0.944     1.060 
+## 
 ## 
 ##  SJT Interview    R2adj    X&#39;s 
 ##    1         1    0.259      2 
@@ -1552,7 +1573,8 @@ div.csl-indent {
 ## [based on Thomas Lumley&#39;s leaps function from the leaps package] 
 ##  
 ## 
-##   RESIDUALS AND INFLUENCE 
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1580,13 +1602,14 @@ div.csl-indent {
 ##   297  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
 ##    82  2.000     4.000      14.000  8.203   5.797  1.959  0.224 0.017 
 ## 
+## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ---------------------------------------------- 
+##  ----------------------------------------------
 ## 
 ##         SJT Interview Performance   pred    sf pi.lwr pi.upr  width 
 ##    69 2.000     1.000      18.000  7.047 3.018  1.107 12.987 11.880 
@@ -1600,6 +1623,7 @@ div.csl-indent {
 ##   222 9.000     9.000      11.000 14.102 3.015  8.168 20.035 11.867 
 ##    92 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
 ##   192 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
+## 
 ## 
 ## ---------------------------------- 
 ## Plot 1: Distribution of Residuals 
@@ -1667,7 +1691,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ SJT + EI, data=df, new_scale=&quot;z&quot;, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  df 
 ##  
@@ -1680,15 +1705,19 @@ div.csl-indent {
 ##  
 ## Data are Standardized 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## Performance:  Mean = -0.000   SD = 1.000 
+##               Min = -1.938   Max = 4.678
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)    -0.000      0.052   -0.000    1.000      -0.103       0.103 
 ##         SJT     0.158      0.145    1.089    0.277      -0.127       0.443 
 ##          EI     0.278      0.145    1.919    0.056      -0.007       0.564 
 ## 
-## Standard deviation of Performance: 1.000 
-##  
+## 
 ## Standard deviation of residuals:  0.906 for 297 degrees of freedom 
 ## 95% range of residual variation:  3.567 = 2 * (1.968 * 0.906) 
 ##  
@@ -1696,6 +1725,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 33.551     df: 2 and 297     p-value:  0.000 
+## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ##         SJT    1    52.079    52.079    63.418     0.000 
@@ -1705,18 +1735,21 @@ div.csl-indent {
 ## Residuals    297   243.898     0.821 
 ## Performance  299   299.002     1.000 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
 ## 
 ##               Performance  SJT   EI 
 ##   Performance        1.00 0.42 0.43 
 ##           SJT        0.42 1.00 0.93 
 ##            EI        0.43 0.93 1.00 
 ## 
+## 
 ##       Tolerance       VIF 
 ##   SJT     0.131     7.655 
 ##    EI     0.131     7.655 
+## 
 ## 
 ##  SJT  EI    R2adj    X&#39;s 
 ##    1   1    0.179      2 
@@ -1726,7 +1759,8 @@ div.csl-indent {
 ## [based on Thomas Lumley&#39;s leaps function from the leaps package] 
 ##  
 ## 
-##   RESIDUALS AND INFLUENCE 
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1754,13 +1788,14 @@ div.csl-indent {
 ##   182 -1.689 -1.724       0.939 -0.746  1.685  1.881  0.220 0.016 
 ##   197 -1.689 -1.724       0.939 -0.746  1.685  1.881  0.220 0.016 
 ## 
+## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ---------------------------------------------- 
+##  ----------------------------------------------
 ## 
 ##          SJT     EI Performance   pred    sf pi.lwr pi.upr width 
 ##    20 -1.689 -1.724       2.089 -0.746 0.912 -2.542  1.049 3.591 
@@ -1774,6 +1809,7 @@ div.csl-indent {
 ##   294  0.209  0.181      -0.212  0.083 0.908 -1.703  1.870 3.573 
 ##    28 -0.740  1.133       0.363  0.198 0.946 -1.664  2.061 3.724 
 ##   128 -0.740  1.133       0.363  0.198 0.946 -1.664  2.061 3.724 
+## 
 ## 
 ## ---------------------------------- 
 ## Plot 1: Distribution of Residuals 
@@ -1867,7 +1903,7 @@ div.csl-indent {
 <span id="cb1358-4"><a href="incrementalvalidity.html#cb1358-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1358-5"><a href="incrementalvalidity.html#cb1358-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -1993,12 +2029,10 @@ div.csl-indent {
 <span id="cb1387-6"><a href="incrementalvalidity.html#cb1387-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1387-7"><a href="incrementalvalidity.html#cb1387-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1387-8"><a href="incrementalvalidity.html#cb1387-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        201         70        170        270        233        101          1         69        169 
-## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 0.08140835 0.08140835 
-##         92        192        292         20        120        283        269         97        197 
-## 0.06114519 0.06114519 0.06114519 0.05121764 0.05121764 0.04481510 0.04456115 0.01981777 0.01981777 
-##        297         82 
-## 0.01981777 0.01656404</code></pre>
+<pre><code>##        201         70        170        270        233        101          1         69        169         92        192        292         20 
+## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 0.08140835 0.08140835 0.06114519 0.06114519 0.06114519 0.05121764 
+##        120        283        269         97        197        297         82 
+## 0.05121764 0.04481510 0.04456115 0.01981777 0.01981777 0.01981777 0.01656404</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>201</em> is by far the largest, and the next largest values are clustered closer together, which include the cases associated with row numbers <em>70</em>, <em>170</em>, and <em>270</em>. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>201</em> appears to be consistently the most concerning case, and cases associated with row numbers <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> may also be problematic. For the most part, the distribution of the residuals look mostly normal. As such, as a sensitivity analysis and for the sake of demonstration, we will estimate our model once more after removing the cases associated with row numbers <em>201</em>, <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> from our data frame. If you’ve completed the entire tutorial thus far, you may have noted that some of the plots we are using with the <code>lm</code> function are different than those that come with the <code>Regression</code> function from <code>lessR</code> (see above), and further, you may have noticed that we have flagged more potential problematic cases in using these plots than the ones for the <code>Regression</code> function. This goes to show, again, how thoughtful we must be with the tools that we use, and again, I recommend erring on the side of caution when it comes to removing cases for subsequent analyses. And, remember, no model will ever be perfect. For now, let’s go ahead and interpret the results of the multiple linear regression model.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod2</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>

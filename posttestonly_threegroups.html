@@ -1354,7 +1354,7 @@ div.csl-indent {
 <span id="cb1064-4"><a href="posttestonly_threegroups.html#cb1064-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1064-5"><a href="posttestonly_threegroups.html#cb1064-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 75 Columns: 3</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): Condition
 ## dbl (2): EmpID, PostTest</code></pre>
@@ -1404,7 +1404,7 @@ div.csl-indent {
 ## &gt;&gt;&gt; Suggestions
 ## Plot(PostTest, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(PostTest, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry
-## ANOVA(PostTest ~ Condition)  # Add the data parameter if not the d data frame</code></pre>
+## ANOVA(PostTest ~ Condition)  # add the data parameter if not d</code></pre>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-595-1.png" width="672" /></p>
 <pre><code>## PostTest 
 ##   - by levels of - 
@@ -1415,12 +1415,14 @@ div.csl-indent {
 ## No    25      0    62.36     8.09    47.00    61.00    79.00 
 ## Old   25      0    69.60     9.11    51.00    70.00    89.00 
 ## 
+## 
 ##        Max Dupli- 
 ## Level   cations   Values 
 ## ------------------------------ 
 ## New         4     73 
 ## No          3     60 
 ## Old         3     70 
+## 
 ## 
 ## Parameter values (can be manually set) 
 ## ------------------------------------------------------- 
@@ -1487,7 +1489,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb1087"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1087-1"><a href="posttestonly_threegroups.html#cb1087-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using ANOVA function from lessR</span></span>
 <span id="cb1087-2"><a href="posttestonly_threegroups.html#cb1087-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ANOVA</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-602-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-602-2.png" width="672" /></p>
-<pre><code>##   BACKGROUND 
+<pre><code>##   BACKGROUND
 ## 
 ## Response Variable: PostTest 
 ##  
@@ -1497,7 +1499,8 @@ div.csl-indent {
 ## Number of cases (rows) of data:  75 
 ## Number of cases retained for analysis:  75 
 ## 
-##   DESCRIPTIVE STATISTICS  
+## 
+##   DESCRIPTIVE STATISTICS 
 ## 
 ##       n    mean     sd     min     max 
 ## New  25   72.36   6.98   60.00   84.00 
@@ -1506,11 +1509,13 @@ div.csl-indent {
 ##  
 ## Grand Mean: 68.107 
 ## 
-##   BASIC ANALYSIS 
+## 
+##   BASIC ANALYSIS
 ## 
 ##              df    Sum Sq   Mean Sq   F-value   p-value 
 ## Condition     2   1333.63    666.81     10.16    0.0001 
 ## Residuals    72   4727.52     65.66 
+## 
 ## 
 ## R Squared: 0.22 
 ## R Sq Adjusted: 0.20 
@@ -1518,7 +1523,8 @@ div.csl-indent {
 ##  
 ## Cohen&#39;s f: 0.49 
 ## 
-##   TUKEY MULTIPLE COMPARISONS OF MEANS 
+## 
+##   TUKEY MULTIPLE COMPARISONS OF MEANS
 ## 
 ## Family-wise Confidence Level:  
 ## ----------------------------------- 
@@ -1527,7 +1533,8 @@ div.csl-indent {
 ##   Old-New  -2.76  -8.24  2.72  0.45 
 ##    Old-No   7.24   1.76 12.72  0.01 
 ## 
-##   RESIDUALS 
+## 
+##   RESIDUALS
 ## 
 ## Fitted Values, Residuals, Standardized Residuals 
 ##    [sorted by Standardized Residuals, ignoring + or - sign] 
@@ -1554,6 +1561,7 @@ div.csl-indent {
 ##   28       New    62.00  72.36   -10.36   -1.30 
 ##   41       New    82.00  72.36     9.64    1.21 
 ##   51       Old    79.00  69.60     9.40    1.18 
+## 
 ## 
 ## ---------------------------------------- 
 ## Plot 1: Scatterplot with Cell Means 
@@ -1678,6 +1686,7 @@ div.csl-indent {
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(PostTest, Condition) # lollipop plot 
 ## 
+## 
 ##  Data for:  PostTest 
 ##  ------------------- 
 ##     New     No    Old 
@@ -1759,7 +1768,7 @@ div.csl-indent {
 <span id="cb1102-4"><a href="posttestonly_threegroups.html#cb1102-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1102-5"><a href="posttestonly_threegroups.html#cb1102-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 75 Columns: 3</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): Condition
 ## dbl (2): EmpID, PostTest</code></pre>

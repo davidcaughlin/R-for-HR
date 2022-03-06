@@ -1339,7 +1339,7 @@ div.csl-indent {
 <span id="cb1261-4"><a href="predictingcriterionscores.html#cb1261-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1261-5"><a href="predictingcriterionscores.html#cb1261-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 163 Columns: 4</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (4): EmployeeID, Conscientiousness, Interview, Performance</code></pre>
 <pre><code>## 
@@ -1395,16 +1395,19 @@ div.csl-indent {
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-711-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options
-## Plot(Conscientiousness, Performance, fill=&quot;skyblue&quot;)  # interior fill color of points
-## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
-## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% from center as outliers 
+## Plot(Conscientiousness, Performance, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
+## Plot(Conscientiousness, Performance, out_cut=.10)  # label top 10% potential outliers
+## Plot(Conscientiousness, Performance, enhance=TRUE)  # many options 
+## 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 163 
+## 
+## 
 ## Sample Correlation of Conscientiousness and Performance: r = 0.469 
-##   
+## 
+## 
 ## Hypothesis Test of 0 Correlation:  t = 6.732,  df = 161,  p-value = 0.000 
 ## 95% Confidence Interval for Correlation:  0.339 to 0.581</code></pre>
 <p>Based on the output from the <code>ScatterPlot</code> function, first, note that the association between the two variables appears to be linear, which means that a simple linear regression model might be appropriate. Second, note that the association between the two variables seems to have a bivariate normal distribution, as we can see a general ellipse (or American football) shape of the data points. Third, it does look like we might have one or more bivariate outliers, which are those points that seem to notably deviate from the rest. As you can see, we can “eyeball” the data to give us an initial (yet rough) idea of whether three of the statistical assumptions may have been met: (a) data are free of bivariate outliers, (b) association between variables is linear, and (c) variables display a bivariate normal distribution. Fortunately, we have some other diagnostic tools that we will use to further test some of these assumptions (as well as the others) when we estimate our simple linear regression model.</p>
@@ -1417,7 +1420,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ Conscientiousness, data=df, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  df 
 ##  
@@ -1427,14 +1431,18 @@ div.csl-indent {
 ## Number of cases (rows) of data:  163 
 ## Number of cases retained for analysis:  163 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## Performance:  Mean = 2.974   SD = 0.966 
+##               Min = 1.000   Max = 5.000
+## 
+##  
 ##                    Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ##       (Intercept)     0.780      0.333    2.343    0.020       0.123       1.437 
 ## Conscientiousness     0.631      0.094    6.732    0.000       0.446       0.817 
 ## 
-## Standard deviation of Performance: 0.966 
-##  
+## 
 ## Standard deviation of residuals:  0.856 for 161 degrees of freedom 
 ## 95% range of residual variation:  3.379 = 2 * (1.975 * 0.856) 
 ##  
@@ -1443,20 +1451,23 @@ div.csl-indent {
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 45.317     df: 1 and 161     p-value:  0.000 
 ## 
+## 
 ##                     df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model                1    33.176    33.176    45.317     0.000 
 ## Residuals          161   117.866     0.732 
 ## Performance        162   151.043     0.932 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
 ## 
 ##                     Performance Conscientiousness 
 ##         Performance        1.00              0.47 
 ##   Conscientiousness        0.47              1.00 
 ## 
-##   RESIDUALS AND INFLUENCE 
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1484,13 +1495,14 @@ div.csl-indent {
 ##    28             3.000       1.000  2.674 -1.674 -1.983 -0.187 0.017 
 ##   142             3.000       1.000  2.674 -1.674 -1.983 -0.187 0.017 
 ## 
+## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ---------------------------------------------- 
+##  ----------------------------------------------
 ## 
 ##       Conscientiousness Performance  pred    sf pi.lwr pi.upr width 
 ##   134             1.667       3.350 1.832 0.875  0.104  3.560 3.455 
@@ -1503,6 +1515,7 @@ div.csl-indent {
 ##    36             5.000       3.420 3.936 0.870  2.218  5.655 3.436 
 ##    64             5.000       5.000 3.936 0.870  2.218  5.655 3.436 
 ##   107             5.000       3.220 3.936 0.870  2.218  5.655 3.436 
+## 
 ## 
 ## --------------------------------------------------- 
 ## Plot 1: Distribution of Residuals 
@@ -1599,7 +1612,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ Conscientiousness, data=df, new_scale=&quot;z&quot;, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  df 
 ##  
@@ -1611,14 +1625,18 @@ div.csl-indent {
 ##  
 ## Data are Standardized 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## Performance:  Mean = 0.000   SD = 1.000 
+##               Min = -2.044   Max = 2.098
+## 
+##  
 ##                    Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ##       (Intercept)     0.000      0.069    0.000    1.000      -0.137       0.137 
 ## Conscientiousness     0.469      0.070    6.732    0.000       0.331       0.606 
 ## 
-## Standard deviation of Performance: 1.000 
-##  
+## 
 ## Standard deviation of residuals:  0.886 for 161 degrees of freedom 
 ## 95% range of residual variation:  3.500 = 2 * (1.975 * 0.886) 
 ##  
@@ -1627,20 +1645,23 @@ div.csl-indent {
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 45.326     df: 1 and 161     p-value:  0.000 
 ## 
+## 
 ##                     df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model                1    35.584    35.584    45.326     0.000 
 ## Residuals          161   126.396     0.785 
 ## Performance        162   161.981     1.000 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
 ## 
 ##                     Performance Conscientiousness 
 ##         Performance        1.00              0.47 
 ##   Conscientiousness        0.47              1.00 
 ## 
-##   RESIDUALS AND INFLUENCE 
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1668,13 +1689,14 @@ div.csl-indent {
 ##    28            -0.663      -2.044 -0.311 -1.733 -1.983 -0.187 0.017 
 ##   142            -0.663      -2.044 -0.311 -1.733 -1.983 -0.187 0.017 
 ## 
+## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ---------------------------------------------- 
+##  ----------------------------------------------
 ## 
 ##       Conscientiousness Performance   pred    sf pi.lwr pi.upr width 
 ##   134            -2.523       0.389 -1.183 0.906 -2.972  0.607 3.578 
@@ -1687,6 +1709,7 @@ div.csl-indent {
 ##    36             2.127       0.462  0.997 0.901 -0.782  2.776 3.559 
 ##    64             2.127       2.098  0.997 0.901 -0.782  2.776 3.559 
 ##   107             2.127       0.255  0.997 0.901 -0.782  2.776 3.559 
+## 
 ## 
 ## --------------------------------------------------- 
 ## Plot 1: Distribution of Residuals 
@@ -1846,7 +1869,7 @@ div.csl-indent {
 <span id="cb1295-4"><a href="predictingcriterionscores.html#cb1295-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1295-5"><a href="predictingcriterionscores.html#cb1295-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;SelectionData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 163 Columns: 4</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## dbl (4): EmployeeID, Conscientiousness, Interview, Performance</code></pre>
 <pre><code>## 
@@ -1922,12 +1945,10 @@ div.csl-indent {
 <span id="cb1311-6"><a href="predictingcriterionscores.html#cb1311-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1311-7"><a href="predictingcriterionscores.html#cb1311-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1311-8"><a href="predictingcriterionscores.html#cb1311-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        134        161        130        116         64        110         39        106         43 
-## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 0.02443426 
-##         99        127         34        143        126         55        132         92         95 
-## 0.02292889 0.02292889 0.02189203 0.02098965 0.02012473 0.01941305 0.01905427 0.01887586 0.01739145 
-##         28        142 
-## 0.01723973 0.01723973</code></pre>
+<pre><code>##        134        161        130        116         64        110         39        106         43         99        127         34        143 
+## 0.07848460 0.06028472 0.05444552 0.02820208 0.02819805 0.02575822 0.02559242 0.02537055 0.02443426 0.02292889 0.02292889 0.02189203 0.02098965 
+##        126         55        132         92         95         28        142 
+## 0.02012473 0.01941305 0.01905427 0.01887586 0.01739145 0.01723973 0.01723973</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>134</em> is by far the largest, and the next largest values are clustered closer together. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed 1.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>134</em> appears to be consistently the most extreme outlier, but it still may not be extreme enough to consider removing. One could perform a sensitivity analysis by estimating the model with and without case <em>134</em> to see if the pattern of results remains the same.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod1</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>

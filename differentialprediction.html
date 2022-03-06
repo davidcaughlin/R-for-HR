@@ -1257,7 +1257,7 @@ div.csl-indent {
 </div>
 <div id="review_differentialprediction" class="section level3" number="42.1.2">
 <h3><span class="header-section-number">42.1.2</span> Review of Differential Prediction</h3>
-<p><strong>Differential prediction</strong> refers to differences in intercepts, slopes, or both based on subgroup (projected class) membership <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>, and sometimes differential prediction is referred to as <em>differential predictability</em> or <em>predictive bias</em>. Assuming a single regression line is used to predict criterion (e.g., job performance) scores of applicants, differential prediction is concerned with overpredicting or underpredicting criterion scores for one group relative to another <span class="citation">(<a href="#ref-cascio2005applied" role="doc-biblioref">WF Cascio and Aguinis 2005</a>)</span>. For example, imagine a situation in which scores on a selection tool differentially predict scores on job performance for men and women, such that the slopes are the same, but the intercepts of each slope are different (see figure below). The dashed black line indicates what a single regression line would like if it were used. As you can see, if we used a single common regression line when intercept differences exist between men and women, then we would tend to underpredict job performance scores for men and overpredict for women. Thus, a common regression line would be inappropriate when evidence of intercept differences exists. Plus, in the U.S., the federal government requires that a common regression line is used as opposed to separate regression lines for each subgroup.</p>
+<p><strong>Differential prediction</strong> refers to differences in intercepts, slopes, or both based on subgroup (projected class) membership <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>, and sometimes differential prediction is referred to as <em>differential predictability</em> or <em>predictive bias</em>. Assuming a single regression line is used to predict criterion (e.g., job performance) scores of applicants, differential prediction is concerned with overpredicting or underpredicting criterion scores for one group relative to another <span class="citation">(<a href="#ref-cascio2005applied" role="doc-biblioref">WF Cascio and Aguinis 2005</a>)</span>. For example, imagine a situation in which scores on a selection tool differentially predict scores on job performance for men and women, such that the slopes are the same, but the intercepts of each slope are different (see figure below). The dashed black line indicates what a single regression line would like if it were used. As you can see, if we used a single common regression line when intercept differences exist between men and women, then we would tend to underpredict job performance scores for men and overpredict for women. Thus, a common regression line would be inappropriate when evidence of intercept differences exists. In the U.S., the use of separate regression lines – one for each subgroup – is legally murky, with some interpreting separate regression lines as violation of federal law and others cautioning that the practice might be interpreted as score adjustment and running afoul of the Civil Rights Act of 1991 <span class="citation">(<a href="#ref-berry2015differential" role="doc-biblioref">Berry 2015</a>; <a href="#ref-saad2002investigating" role="doc-biblioref">Saad and Sackett 2002</a>)</span>. A legally cautious approach would be to discontinue the use of a selection tool in its current form if evidence of differential prediction were found.</p>
 <div class="figure">
 <img src="DiffPred_Figure2.png" alt="" />
 <p class="caption">This simple slopes plot illustrates intercept differences by group but not slope differences. The dashed line indicates what a single regression line would like if it were used.</p>
@@ -1274,12 +1274,13 @@ div.csl-indent {
 </div>
 <p><strong>Words of Caution:</strong> In this tutorial, we will learn how to apply MMLR in the service of detecting differential predication using an approach that is generally supported by the U.S. court system and researchers. With that said, using MMLR to detect differential prediction should be used cautiously with small samples, as failure to detect differential prediction that actually exists (i.e., Type II Error, false negative) could be the result of low statistical power, and relatedly, unreliability or bias in the selection tool or criterion and violation of certain statistical assumptions (e.g., homoscedasticity of residual error variances) can affect our ability to find differential prediction that actually exists <span class="citation">(<a href="#ref-aguinis1998heterogeneity" role="doc-biblioref">Aguinis and Pierce 1998</a>)</span>. Further, when one subgroup is less than 30% of the total sample size, statistical power is also diminished <span class="citation">(<a href="#ref-stone1994type" role="doc-biblioref">Stone-Romero, Alliger, and Aguinis 1994</a>)</span>. The take-home message is to not necessarily assume that the absence of evidence is evidence of absence when it comes to differential prediction.</p>
 <p><strong>Multistep MMLR Process for Differential Prediction:</strong> We will use a three-step “step-up” process for investigating differential prediction using MMLR <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. This process uses what is referred to as hierarchical regression, as additional predictor variables are added at each subsequent step, and their incremental validity above and beyond the other predictors in the model is assessed.</p>
-<p>In the <strong>first step</strong>, we will regress the criterion variable on the selection tool variable, and in this step, we will verify whether the selection tool shows <em>criterion-related validity</em> by itself.</p>
+<p>In the <strong>first step</strong>, we will regress the criterion variable on the selection tool variable, and in this step, we will verify whether the selection tool shows <em>criterion-related validity</em> by itself. If we find evidence of criterion-related validity for the selection tool in this first step, then we proceed to the second step.</p>
 <p>In the <strong>second step</strong>, we include the selection tool variable as before but add the dichotomous (binary) protected class/group variable to the model. If the protected class variable is statistically significant when controlling for the selection tool variable, then there is evidence of <em>intercept differences</em>. You might be asking yourself: What happens when a protected class variable is not inherently categorical or, specifically, dichotomous? When it comes to the protected class of race, many organizations have more than two races represented among their employees. In this situation, it is customary (at least within the U.S.) to compare two subgroups at time (e.g., White and Black) or to create a dichotomy consisting of the majority race and members of other non-majority races (e.g., White and Non-White). For a inherently continuous variable like age, classically, the standard procedure was to dichotomize the age variable by those who are 40 years and older and those who are younger than 40 years, as this is consistent with the U.S. Age Discrimination in Employment Act (ADEA) of 1967. There are two potential issues with this: (a) Some states have further age protections in place that protect workers under 40 as well, and (b) Some jobs in organizations have very young workforces, leaving the question of whether people in their 30s are being favored over people in their 20s, or vice versa (for example). In addition, when we look at organizations with workers who are well into their 50s, 60s, and 70s, then there might be evidence of age discrimination and differential prediction for those who are in their 50s compared to those who are in their 60s. Dichotomizing the age variable using a 40 and above vs. under 40 split might miss these issues and generally nuance. [For a review of this topic, see Fisher, Finkelstein, Truxillo, and Wallace, 2017.] As such, with a variable like age, there might be some advantages to keeping it as a continuous variable, as MMLR can handle this.</p>
 <p>In the <strong>third step</strong>, we include the selection tool and protected class variables as before but add the interaction term between the selection tool and protected class variables. If the interaction term is statistically significant, then there is evidence of differential prediction in the form of <em>slope differences</em>.</p>
 <div id="samplewriteup_mmlr" class="section level4" number="42.1.2.1">
 <h4><span class="header-section-number">42.1.2.1</span> Sample Write-Up</h4>
-<p>Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we recommend that the structured interview <em>not</em> be used for employee selection purposes.</p>
+<p>Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender.
+In the interim, we caution against using separate regression lines for men and women, as this may be interpreted as running afoul of the U.S. Civil Rights Act of 1991 <span class="citation">(<a href="#ref-saad2002investigating" role="doc-biblioref">Saad and Sackett 2002</a>)</span>. A more conservative approach would be to develop a structured interview process that allows for the use of a common regression line across legally protected groups.</p>
 </div>
 </div>
 </div>
@@ -1339,7 +1340,7 @@ div.csl-indent {
 <span id="cb1489-4"><a href="differentialprediction.html#cb1489-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1489-5"><a href="differentialprediction.html#cb1489-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 377 Columns: 6</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (3): emp_id, gender, race
 ## dbl (3): perf_eval, interview, age</code></pre>
@@ -1409,7 +1410,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1419,14 +1421,18 @@ div.csl-indent {
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.705   SD = 1.028 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.705      0.049   95.145    0.000       4.608       4.802 
 ## c_interview     0.307      0.041    7.465    0.000       0.226       0.387 
 ## 
-## Standard deviation of perf_eval: 1.028 
-##  
+## 
 ## Standard deviation of residuals:  0.960 for 375 degrees of freedom 
 ## 95% range of residual variation:  3.776 = 2 * (1.966 * 0.960) 
 ##  
@@ -1435,16 +1441,18 @@ div.csl-indent {
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 55.732     df: 1 and 375     p-value:  0.000 
 ## 
+## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model          1    51.380    51.380    55.732     0.000 
 ## Residuals    375   345.720     0.922 
 ## perf_eval    376   397.100     1.056 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient for <code>c_interview</code> is statistically significant and positive (<em>b</em> = .307, <em>p</em> &lt; .001), which provides evidence of criterion-related validity. The amount of variance explained by <code>c_interview</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .129, adjusted <em>R</em><sup>2</sup> = .127, <em>p</em> &lt; .001). See table below for common rules of thumbs for qualitatively describing <em>R</em><sup>2</sup> values.</p>
@@ -1470,6 +1478,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
+<p>Because Step One revealed a statistically significant association between <code>c_interview</code> and <code>perf_eval</code> – and thus evidence of criterion-related validity for the selection tool – we will proceed to Step Two.</p>
 <p><strong>Step Two:</strong> Next, let’s add the protected class variable <code>gender</code> to our model to investigate whether <em>intercept differences</em> exist. For more information on how to interpret and test the statistical assumptions of a multiple linear regression model, check out the <a href="#incremental%20validity">chapter on estimating incremental validity using multiple linear regression</a>.</p>
 <div class="sourceCode" id="cb1504"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1504-1"><a href="differentialprediction.html#cb1504-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (gender)</span></span>
 <span id="cb1504-2"><a href="differentialprediction.html#cb1504-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">+</span> gender, <span class="at">data=</span>DiffPred)</span></code></pre></div>
@@ -1477,7 +1486,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + gender, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1488,15 +1498,19 @@ div.csl-indent {
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.705   SD = 1.028 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.083      0.091   55.833    0.000       4.904       5.262 
 ## c_interview     0.164      0.049    3.325    0.001       0.067       0.261 
 ## genderwoman    -0.602      0.123   -4.889    0.000      -0.844      -0.360 
 ## 
-## Standard deviation of perf_eval: 1.028 
-##  
+## 
 ## Standard deviation of residuals:  0.932 for 374 degrees of freedom 
 ## 95% range of residual variation:  3.666 = 2 * (1.966 * 0.932) 
 ##  
@@ -1504,6 +1518,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 41.521     df: 2 and 374     p-value:  0.000 
+## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## c_interview    1    51.380    51.380    59.136     0.000 
@@ -1513,11 +1528,12 @@ div.csl-indent {
 ## Residuals    374   324.950     0.869 
 ## perf_eval    376   397.100     1.056 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with <code>gender</code> (or more specifically <code>genderwoman</code>) is negative and statistically significant (<em>b</em> = -.602, <em>p</em> &lt; .001) when controlling for <code>c_interview</code>, which indicates that there is evidence of intercept differences. Note that the name of the regression coefficient for <code>gender</code> has <code>woman</code> appended to it. This means that the intercept represents the <code>perf_eval</code> scores of women minus those for men; because the coefficient is negative, it implies that the intercept value is significantly lower for women relative to men. The amount of variance explained by <code>c_interview</code> <em>and</em> <code>gender</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .182, adjusted <em>R</em><sup>2</sup> = .177, <em>p</em> &lt; .001), which is larger than when just <code>c_interview</code> was included in the model.</p>
@@ -1526,7 +1542,7 @@ div.csl-indent {
 <span id="cb1506-2"><a href="differentialprediction.html#cb1506-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;interactions&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb1507"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1507-1"><a href="differentialprediction.html#cb1507-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access interactions package</span></span>
 <span id="cb1507-2"><a href="differentialprediction.html#cb1507-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(interactions)</span></code></pre></div>
-<p>As input to the <code>probe_interaction</code> function from the <code>interactions</code> package, we will need to use the <code>lm</code> function base R to specify our regression model from above. We can just copy and paste the same arguments from the <code>reg_brief</code> function above into the <code>lm</code> function parentheses. We need to name this model something so that we can reference it in the next function, so let’s name it <code>Int_Model</code> (for intercept differences model) using the <code>&lt;-</code> operator.</p>
+<p>As input to the <code>probe_interaction</code> function from the <code>interactions</code> package, we will need to use the <code>lm</code> function base R to specify our regression model from above. We can just copy and paste the same arguments from the <code>reg_brief</code> function above into the <code>lm</code> function parentheses. We need to name this model something so that we can reference it in the next function, so let’s name it <code>Int_Model</code> (for intercept differences model) using the <code>&lt;-</code> operator. <strong>Note: If your selection tool variable is dichotomous and is of type factor or character, you will need to convert it to a variable of type numeric (e.g., levels: 0 &amp; 1) – a requirement of the <code>probe_interaction</code> function.</strong></p>
 <div class="sourceCode" id="cb1508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1508-1"><a href="differentialprediction.html#cb1508-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (gender)</span></span>
 <span id="cb1508-2"><a href="differentialprediction.html#cb1508-2" aria-hidden="true" tabindex="-1"></a>Int_Model <span class="ot">&lt;-</span> <span class="fu">lm</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">+</span> gender, <span class="at">data=</span>DiffPred)</span></code></pre></div>
 <p>Now we’re ready to use the <code>probe_interaction</code> to plot this additive model. As the first argument, enter the name of the regression model we just created above (<code>Int_Model</code>). As the second argument, type the name of the variable you are framing as the predictor after <code>pred=</code>, which in our case is the selection tool variable (<code>c_interview</code>). As the third argument, type the name of the variable you are framing as the moderator after <code>modx=</code>, which in our case is the protected class variable (<code>gender</code>). As the fourth argument, enter <code>johnson_neyman=FALSE</code>, as we aren’t requesting the Johnson-Neyman test in this tutorial. Finally, if you choose to, you can use <code>x.label=</code> and <code>y.label=</code> to create more informative names for the predictor and outcome variables, respectively. You could also add, if you should choose to do so, the <code>legend.main=</code> argument to provide a more informative name for the moderator variable, and/or the <code>modx.labels=</code> to provide more informative names for the moderator variable labels.</p>
@@ -1561,7 +1577,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * gender, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1572,16 +1589,20 @@ div.csl-indent {
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.705   SD = 1.028 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.258      0.111   47.559    0.000       5.040       5.475 
 ## c_interview    -0.025      0.085   -0.291    0.771      -0.191       0.142 
 ## genderwoman    -0.724      0.130   -5.572    0.000      -0.980      -0.469 
 ## c_interview:genderwoman     0.284      0.104    2.734    0.007       0.080       0.488 
 ## 
-## Standard deviation of perf_eval: 1.028 
-##  
+## 
 ## Standard deviation of residuals:  0.924 for 373 degrees of freedom 
 ## 95% range of residual variation:  3.634 = 2 * (1.966 * 0.924) 
 ##  
@@ -1589,6 +1610,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 30.652     df: 3 and 373     p-value:  0.000 
+## 
 ## 
 ##                      df    Sum Sq   Mean Sq   F-value   p-value 
 ##        c_interview    1    51.380    51.380    60.160     0.000 
@@ -1599,11 +1621,12 @@ div.csl-indent {
 ## Residuals           373   318.565     0.854 
 ## perf_eval           376   397.100     1.056 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>In our output, we now have a third regression term (<code>c_interview:gender</code>) that is our interaction term. You may find that the because the label for the interaction term is long-ish, the columns associated with regression coefficients, standard errors, etc. are shifted over a bit, so make sure that you are referencing the values that you think you are. The regression coefficient associated with the interaction term (<code>c_interview:gender</code>) is positive and statistically signficant (<em>b</em> = .284, <em>p</em> = .007), but don’t pay too much attention to the sign of the interaction term as it is difficult to interpret it without graphing the entire regression equation. What we do care about is that the interaction term is statistically significant, which indicates that there is evidence of <em>slope differences</em>; in other words, there seems to be multiplicative between <code>c_interview</code> and <code>gender</code>. We already know that there is evidence of intercept differences, where men have a higher intercept, but now we have evidence that the criterion-related validities for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) are significantly different from one another. The amount of variance explained by <code>c_interview</code>, <code>gender</code>, <em>and</em> their interaction in relation to <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .198, adjusted <em>R</em><sup>2</sup> = .191, <em>p</em> &lt; .001), which is larger than when just <code>c_interview</code> and <code>gender</code> were included in the model.</p>
@@ -1635,7 +1658,7 @@ div.csl-indent {
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-854-1.png" width="672" /></p>
 <p>The plot output shows that the two slopes are indeed different, such that there doesn’t seem to be much of an association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) for men, but there seems to be a positive association for women. Now take a look at the text output in your console. The simple slopes analysis automatically estimates the regression coefficient (slope) for both levels of the moderator variable (<code>gender</code>: man, woman). Corroborating what we see in the plot, we find that the simple slope for women is indeed statistically significant and positive (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in interview scores, job performance scores tend to go up by .26 units. In contrast, we find that the simple slope for men is nonsignificant (<em>b</em> = -.02, <em>p</em> = .77).</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the levels/subgroups of the protected class variable (<code>gender</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
-<p><strong>Sample Write-Up:</strong> Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we recommend that the structured interview <em>not</em> be used for employee selection purposes.</p>
+<p><strong>Sample Write-Up:</strong> Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we caution against using separate regression lines for men and women, as this may be interpreted as running afoul of the U.S. Civil Rights Act of 1991 <span class="citation">(<a href="#ref-saad2002investigating" role="doc-biblioref">Saad and Sackett 2002</a>)</span>. A more conservative approach would be to develop a structured interview process that allows for the use of a common regression line across legally protected groups.</p>
 </div>
 <div id="age_differentialprediction" class="section level4" number="42.2.5.2">
 <h4><span class="header-section-number">42.2.5.2</span> Test Differential Prediction Based on <code>c_age</code></h4>
@@ -1648,7 +1671,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1658,14 +1682,18 @@ div.csl-indent {
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.705   SD = 1.028 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.705      0.049   95.145    0.000       4.608       4.802 
 ## c_interview     0.307      0.041    7.465    0.000       0.226       0.387 
 ## 
-## Standard deviation of perf_eval: 1.028 
-##  
+## 
 ## Standard deviation of residuals:  0.960 for 375 degrees of freedom 
 ## 95% range of residual variation:  3.776 = 2 * (1.966 * 0.960) 
 ##  
@@ -1674,16 +1702,18 @@ div.csl-indent {
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 55.732     df: 1 and 375     p-value:  0.000 
 ## 
+## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model          1    51.380    51.380    55.732     0.000 
 ## Residuals    375   345.720     0.922 
 ## perf_eval    376   397.100     1.056 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient for <code>c_interview</code> is statistically significant and positive (<em>b</em> = .307, <em>p</em> &lt; .001), which provides evidence of criterion-related validity. The amount of variance explained by <code>c_interview</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .129, adjusted <em>R</em><sup>2</sup> = .127, <em>p</em> &lt; .001).</p>
@@ -1695,7 +1725,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + c_age, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1706,15 +1737,19 @@ div.csl-indent {
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.705   SD = 1.028 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.705      0.046  102.806    0.000       4.615       4.795 
 ## c_interview     0.558      0.049   11.307    0.000       0.461       0.655 
 ##       c_age     0.059      0.007    7.988    0.000       0.045       0.074 
 ## 
-## Standard deviation of perf_eval: 1.028 
-##  
+## 
 ## Standard deviation of residuals:  0.889 for 374 degrees of freedom 
 ## 95% range of residual variation:  3.495 = 2 * (1.966 * 0.889) 
 ##  
@@ -1722,6 +1757,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 64.442     df: 2 and 374     p-value:  0.000 
+## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## c_interview    1    51.380    51.380    65.067     0.000 
@@ -1731,11 +1767,12 @@ div.csl-indent {
 ## Residuals    374   295.328     0.790 
 ## perf_eval    376   397.100     1.056 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with <code>c_age</code> is positive and statistically significant (<em>b</em> = .059, <em>p</em> &lt; .001) when controlling for <code>c_interview</code>, which indicates that there is evidence of intercept differences. Because the coefficient is positive, it implies that the intercept value is significantly higher for older workers relative to younger workers. The amount of variance explained by <code>c_interview</code> <em>and</em> <code>c_age</code> in <code>perf_eval</code> is large in magnitude (<em>R</em><sup>2</sup> = .256, adjusted <em>R</em><sup>2</sup> = .252, <em>p</em> &lt; .001), which is notably larger than when just <code>c_interview</code> was included in the model.</p>
@@ -1779,7 +1816,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * c_age, data=DiffPred, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1790,16 +1828,20 @@ div.csl-indent {
 ## Number of cases (rows) of data:  377 
 ## Number of cases retained for analysis:  377 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.705   SD = 1.028 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.795      0.051   93.404    0.000       4.694       4.896 
 ## c_interview     0.572      0.049   11.753    0.000       0.476       0.668 
 ##       c_age     0.069      0.008    8.893    0.000       0.054       0.085 
 ## c_interview:c_age     0.015      0.004    3.658    0.000       0.007       0.023 
 ## 
-## Standard deviation of perf_eval: 1.028 
-##  
+## 
 ## Standard deviation of residuals:  0.874 for 373 degrees of freedom 
 ## 95% range of residual variation:  3.438 = 2 * (1.966 * 0.874) 
 ##  
@@ -1807,6 +1849,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 48.845     df: 3 and 373     p-value:  0.000 
+## 
 ## 
 ##                     df    Sum Sq   Mean Sq   F-value   p-value 
 ##       c_interview    1    51.380    51.380    67.222     0.000 
@@ -1817,11 +1860,12 @@ div.csl-indent {
 ## Residuals          373   285.098     0.764 
 ## perf_eval          376   397.100     1.056 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with the interaction term (<code>c_interview:c_age</code>) is positive and statistically signficant (<em>b</em> = .015, <em>p</em> &lt; .001), which indicates that there is evidence of <em>slope differences</em>. The amount of variance explained by <code>c_interview</code>, <code>c_age</code>, <em>and</em> their interaction in relation to <code>perf_eval</code> is large in magnitude (<em>R</em><sup>2</sup> = .282, adjusted <em>R</em><sup>2</sup> = .276, <em>p</em> &lt; .001), which is larger than when just <code>c_interview</code> and <code>c_age</code> were included in the model. Given the statistically significant interaction term, we will use the <code>probe_interaction</code> function from the <code>interactions</code> package to probe the interaction. As input to the <code>probe_interaction</code> function from the <code>interactions</code> package, we will need to use the <code>lm</code> function base R to specify our regression model from above. We need to name this model something so that we can reference it in the next function, so let’s name it <code>Slope_Model</code> (for slope differences model) using the <code>&lt;-</code> operator.</p>
@@ -1871,7 +1915,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1881,14 +1926,18 @@ div.csl-indent {
 ## Number of cases (rows) of data:  346 
 ## Number of cases retained for analysis:  346 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.715   SD = 1.024 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.751      0.051   93.696    0.000       4.651       4.851 
 ## c_interview     0.348      0.043    8.128    0.000       0.264       0.433 
 ## 
-## Standard deviation of perf_eval: 1.024 
-##  
+## 
 ## Standard deviation of residuals:  0.940 for 344 degrees of freedom 
 ## 95% range of residual variation:  3.696 = 2 * (1.967 * 0.940) 
 ##  
@@ -1897,16 +1946,18 @@ div.csl-indent {
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 66.064     df: 1 and 344     p-value:  0.000 
 ## 
+## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## Model          1    58.317    58.317    66.064     0.000 
 ## Residuals    344   303.658     0.883 
 ## perf_eval    345   361.975     1.049 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient for <code>c_interview</code> is statistically significant and positive (<em>b</em> = .348, <em>p</em> &lt; .001) based on this reduced sample of 346 individuals, which provides evidence of criterion-related validity. The amount of variance explained by <code>c_interview</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .161, adjusted <em>R</em><sup>2</sup> = .159, <em>p</em> &lt; .001).</p>
@@ -1918,7 +1969,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + race, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -1929,15 +1981,19 @@ div.csl-indent {
 ## Number of cases (rows) of data:  346 
 ## Number of cases retained for analysis:  346 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.715   SD = 1.024 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.918      0.070   70.754    0.000       4.781       5.054 
 ## c_interview     0.407      0.045    8.945    0.000       0.317       0.496 
 ##   racewhite    -0.373      0.108   -3.445    0.001      -0.586      -0.160 
 ## 
-## Standard deviation of perf_eval: 1.024 
-##  
+## 
 ## Standard deviation of residuals:  0.925 for 343 degrees of freedom 
 ## 95% range of residual variation:  3.639 = 2 * (1.967 * 0.925) 
 ##  
@@ -1945,6 +2001,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 40.010     df: 2 and 343     p-value:  0.000 
+## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ## c_interview    1    58.317    58.317    68.152     0.000 
@@ -1954,11 +2011,12 @@ div.csl-indent {
 ## Residuals    343   293.502     0.856 
 ## perf_eval    345   361.975     1.049 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with <code>race</code> (or more specifically <code>racewhite</code>) is negative and statistically signficant (<em>b</em> = -.373, <em>p</em> = .001) when controlling for <code>c_interview</code>, which indicates that there is evidence of intercept differences. Because the coefficient is negative and because <code>white</code> is appended to the <code>race</code> variable name, it implies that the intercept value is significantly lower for White individuals compared to Asian individuals. The amount of variance explained by <code>c_interview</code> <em>and</em> <code>race</code> in <code>perf_eval</code> is medium-large in magnitude (<em>R</em><sup>2</sup> = .189, adjusted <em>R</em><sup>2</sup> = .184, <em>p</em> &lt; .001).</p>
@@ -1997,7 +2055,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * race, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  DiffPred 
 ##  
@@ -2008,16 +2067,20 @@ div.csl-indent {
 ## Number of cases (rows) of data:  346 
 ## Number of cases retained for analysis:  346 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## perf_eval:  Mean = 4.715   SD = 1.024 
+##             Min = 1.600   Max = 7.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     4.896      0.072   67.863    0.000       4.754       5.038 
 ## c_interview     0.362      0.061    5.974    0.000       0.243       0.481 
 ##   racewhite    -0.374      0.108   -3.459    0.001      -0.587      -0.161 
 ## c_interview:racewhite     0.103      0.092    1.124    0.262      -0.077       0.283 
 ## 
-## Standard deviation of perf_eval: 1.024 
-##  
+## 
 ## Standard deviation of residuals:  0.925 for 342 degrees of freedom 
 ## 95% range of residual variation:  3.638 = 2 * (1.967 * 0.925) 
 ##  
@@ -2025,6 +2088,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 27.115     df: 3 and 342     p-value:  0.000 
+## 
 ## 
 ##                    df    Sum Sq   Mean Sq   F-value   p-value 
 ##      c_interview    1    58.317    58.317    68.204     0.000 
@@ -2035,11 +2099,12 @@ div.csl-indent {
 ## Residuals         342   292.421     0.855 
 ## perf_eval         345   361.975     1.049 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
 ## 
-##   RESIDUALS AND INFLUENCE 
+##   RELATIONS AMONG THE VARIABLES
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ##   PREDICTION ERROR</code></pre>
 <p>The regression coefficient associated with the interaction term (<code>c_interview:racewhite</code>) is <em>not</em> statistically significant (<em>b</em> = .103, <em>p</em> = .262), which indicates that there is no evidence of <em>slope differences</em>. Given this, we won’t probe the interaction because, well, there is not an interaction to probe.</p>
@@ -2106,7 +2171,7 @@ div.csl-indent {
 <span id="cb1539-4"><a href="differentialprediction.html#cb1539-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1539-5"><a href="differentialprediction.html#cb1539-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 377 Columns: 6</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (3): emp_id, gender, race
 ## dbl (3): perf_eval, interview, age</code></pre>
@@ -2332,7 +2397,7 @@ div.csl-indent {
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-883-1.png" width="672" /></p>
 <p>The plot output shows that the two slopes are indeed different, such that there doesn’t seem to be much of an association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) for men, but there seems to be a postive association for women. Now take a look at the text output in your console. The simple slopes analysis automatically estimates the regression coefficient (slope) for both levels of the moderator variable (<code>gender</code>: man, woman). Corroborating what we see in the plot, we find that the simple slope for women is indeed statistically significant and positive (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in interview scores, job performance scores tend to go up by .26 units. In contrast, we find that the simple slope for men is nonsignificant (<em>b</em> = -.02, <em>p</em> = .77).</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the levels/subgroups of the protected class variable (<code>gender</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
-<p><strong>Sample Write-Up:</strong> Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we recommend that the structured interview <em>not</em> be used for employee selection purposes.</p>
+<p><strong>Sample Write-Up:</strong> Our HR analytic team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we caution against using separate regression lines for men and women, as this may be interpreted as running afoul of the U.S. Civil Rights Act of 1991 <span class="citation">(<a href="#ref-saad2002investigating" role="doc-biblioref">Saad and Sackett 2002</a>)</span>. A more conservative approach would be to develop a structured interview process that allows for the use of a common regression line across legally protected groups.</p>
 </div>
 <div id="age_differentialprediction_lm" class="section level4" number="42.3.3.2">
 <h4><span class="header-section-number">42.3.3.2</span> Test Differential Prediction Based on <code>c_age</code></h4>
@@ -2700,6 +2765,9 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 <div id="ref-aguinis1998heterogeneity" class="csl-entry">
 Aguinis, Herman, and Charles A Pierce. 1998. <span>“Heterogeneity of Error Variance and the Assessment of Moderating Effects of Categorical Variables: A Conceptual Review.”</span> <em>Organizational Research Methods</em> 1 (3): 296–314.
 </div>
+<div id="ref-berry2015differential" class="csl-entry">
+Berry, Christopher M. 2015. <span>“Differential Validity and Differential Prediction of Cognitive Ability Tests: Understanding Test Bias in the Employment Context.”</span> <em>Annuual Review of Organizational Psychology and Organizational Behavior</em> 2 (1): 435–63.
+</div>
 <div id="ref-cascio2005applied" class="csl-entry">
 Cascio, WF, and H Aguinis. 2005. <em>Applied Psychology in Human Resource Management (6th Ed.)</em>. Upper Saddle River, NJ: Pearson Prentice Hall.
 </div>
@@ -2711,6 +2779,9 @@ Gerbing, David, The School of Business, and Portland State University. 2021. <em
 </div>
 <div id="ref-interactions" class="csl-entry">
 Long, Jacob A. 2019. <em>Interactions: Comprehensive, User-Friendly Toolkit for Probing Interactions</em>. <a href="https://cran.r-project.org/package=interactions">https://cran.r-project.org/package=interactions</a>.
+</div>
+<div id="ref-saad2002investigating" class="csl-entry">
+Saad, Syed, and Paul R Sackett. 2002. <span>“Investigating Differential Prediction by Gender in Employment-Oriented Personality Measures.”</span> <em>Journal of Applied Psychology</em> 87 (4): 667–74.
 </div>
 <div id="ref-siop2018" class="csl-entry">
 Society for Industrial &amp; Organizational Psychology. 2018. <em>Principles for the Validation and Use of Personnel Selection Procedures (5th Ed.)</em>. Bowling Green, OH: Pearson Prentice Hall.

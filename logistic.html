@@ -1362,7 +1362,7 @@ div.csl-indent {
 <span id="cb1767-4"><a href="logistic.html#cb1767-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1767-5"><a href="logistic.html#cb1767-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 99 Columns: 6</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): ID
 ## dbl (5): Turnover, JS, OC, TI, NAff</code></pre>
@@ -1532,7 +1532,7 @@ div.csl-indent {
 ## Recall: 83.05 
 ## Precision: 61.25</code></pre>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-988-1.png" width="672" /></p>
-<p><strong>Note: In some instances, you might receive the error message shown below. You can ignore this message, as it just indicates that you have a poor predictor variable in the model that results in fitted/predicted values that are all the same. If you get this message, proceed forward with your interpretation of the output.</strong></p>
+<p><strong>Note: In some instances, you might receive an error message like the one shown below. You can ignore such a message, as it just indicates that you have a very poor-performing model that results in predicted outcome-variable classifications that are all the same (e.g., all of the predicted values are 0). If you receive such a message, you can proceed forward with your interpretation of the output.</strong></p>
 <p><span class="math inline">\(\color{red}{\text{Error:}}\)</span>
 <span class="math inline">\(\color{red}{\text{All predicted values are 0.}}\)</span>
 <span class="math inline">\(\color{red}{\text{Something is wrong here.}}\)</span></p>
@@ -3013,7 +3013,7 @@ div.csl-indent {
 <span id="cb1831-4"><a href="logistic.html#cb1831-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1831-5"><a href="logistic.html#cb1831-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 99 Columns: 6</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): ID
 ## dbl (5): Turnover, JS, OC, TI, NAff</code></pre>
@@ -3088,12 +3088,10 @@ div.csl-indent {
 <span id="cb1843-6"><a href="logistic.html#cb1843-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1843-7"><a href="logistic.html#cb1843-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1843-8"><a href="logistic.html#cb1843-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##         69          7         73         58         12         31         13          1         33 
-## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 0.02352896 
-##         84         63         61         97         70         74         75         67         80 
-## 0.01756755 0.01733141 0.01693066 0.01692984 0.01648318 0.01614505 0.01595550 0.01453516 0.01431210 
-##         77         39 
-## 0.01336026 0.01281733</code></pre>
+<pre><code>##         69          7         73         58         12         31         13          1         33         84         63         61         97 
+## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 0.02352896 0.01756755 0.01733141 0.01693066 0.01692984 
+##         70         74         75         67         80         77         39 
+## 0.01648318 0.01614505 0.01595550 0.01453516 0.01431210 0.01336026 0.01281733</code></pre>
 <p>Again, we see cases associated with row numbers <em>66</em> (.085), <em>67</em> (.062), and <em>71</em> (.049) having the highest Cook’s distance values, with <em>66</em> and <em>67</em> still looking like the most influential cases of the lot. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>66</em> and <em>67</em> from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>Association Between Any Continuous Predictor Variable and Logit Transformation of Outcome Variable Is Linear:</strong> To test the assumption of linearity between a <em>continuous</em> predictor variable and the logit transformation of the outcome variable, we can add the interaction between the predictor variable and its logarithmic (i.e., natural log) transformation. <strong>[Note: We do not perform the following test/approach for <em>categorical</em> predictor variables.]</strong> We will use an approach that is commonly referred to as the Box-Tidwell approach <span class="citation">(<a href="#ref-hosmerlemeshow2000" role="doc-biblioref">Hosmer and Lemeshow 2000</a>)</span>. To apply this approach, we need to add the interaction term between our predictor variable <code>JS</code> and its logarithmic transformation to our logistic regression model – but not the main effect for the logarithmic transformation of <code>JS</code>. In our regression model formula, specify the dichotomous outcome variable <code>Turnover</code> to the left of the <code>~</code> operator. To the right of the <code>~</code> operator, type the name of the predictor variable <code>JS</code> followed by the <code>+</code> operator. After the <code>+</code> operator, type the name of the predictor variable <code>JS</code>, followed by the <code>:</code> operator and the <code>log</code> function from base R with the predictor variable <code>JS</code> as its sole parenthetical argument. Finally, we will use the <code>summary</code> function from base R to generate the model output, and within the parentheses, enter the name of the model you created in the prior step (<code>boxtidwell</code>).</p>
 <div class="sourceCode" id="cb1845"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1845-1"><a href="logistic.html#cb1845-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box-Tidwell diagnostic test of linearity between continuous predictor variable and</span></span>
@@ -3546,12 +3544,10 @@ div.csl-indent {
 <span id="cb1901-6"><a href="logistic.html#cb1901-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1901-7"><a href="logistic.html#cb1901-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1901-8"><a href="logistic.html#cb1901-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          6          1         66         42         96         74         27         26         67 
-## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 0.03973226 
-##         61         68          4         25         52         54         69          8         75 
-## 0.02634920 0.02182251 0.01882168 0.01802907 0.01720366 0.01718997 0.01718628 0.01661234 0.01611474 
-##         77         64 
-## 0.01593173 0.01552323</code></pre>
+<pre><code>##          6          1         66         42         96         74         27         26         67         61         68          4         25 
+## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 0.03973226 0.02634920 0.02182251 0.01882168 0.01802907 
+##         52         54         69          8         75         77         64 
+## 0.01720366 0.01718997 0.01718628 0.01661234 0.01611474 0.01593173 0.01552323</code></pre>
 <p>Again, we see cases associated with row numbers <em>6</em> (.152), <em>1</em> (.134), and <em>66</em> (.101) having the highest Cook’s distance values. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>6</em> and <em>1</em> (and maybe even <em>66</em>) from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>No (Multi)Collinearity Between Predictor Variables:</strong> To assess whether (multi)collinearity might be an issue, let’s estimate two indices of collinearity: tolerance and valence inflation factor (VIF). If you haven’t already, install the <code>car</code> package <span class="citation">(<a href="#ref-R-car" role="doc-biblioref">Fox and Weisberg 2019</a>)</span> which contains the <code>vif</code> function we will use to compute tolerance.</p>
 <div class="sourceCode" id="cb1903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1903-1"><a href="logistic.html#cb1903-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install car package if you haven&#39;t already</span></span>
@@ -3832,20 +3828,13 @@ div.csl-indent {
 <p>If we print the first six rows from the <code>td</code> data frame object, we will see the new column containing the predicted probabilities based on our simple logistic regression model.</p>
 <div class="sourceCode" id="cb1944"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1944-1"><a href="logistic.html#cb1944-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1944-2"><a href="logistic.html#cb1944-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
-<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS
-## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0
-## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1
-## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1
-## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1
-## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1
-## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0
-##   pred.prod.allpred
-## 1        0.08371016
-## 2        0.73187048
-## 3        0.79306191
-## 4        0.90827169
-## 5        0.57694329
-## 6        0.31447250</code></pre>
+<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS pred.prod.allpred
+## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0        0.08371016
+## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1        0.73187048
+## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1        0.79306191
+## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1        0.90827169
+## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1        0.57694329
+## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0        0.31447250</code></pre>
 <p>We can now dichotomize the predicted probabilities (<code>pred.prod.allpred</code>), such that any case with a predicted probability of .50 or higher is assigned a 1 (quit), and any case with a predicted probability that is less than .50 is assigned a 0 (stay). That is, we’re setting our threshold for experiencing the event in question as .50. As the first step, let’s create a new variable called <code>dich.pred.prod.allpred</code> (or whatever we would like to call it) based on the values from the <code>pred.prod.allpred</code> variable we just created. Next, for the <code>dich.pred.prod.allpred</code>, dichotomize the values as either a 1 or a 0 in accordance with the approach described above. For more information on the data-management operations below, check out <a href="clean.html#clean">chapter on cleaning data</a>.</p>
 <div class="sourceCode" id="cb1946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1946-1"><a href="logistic.html#cb1946-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dichotomize probabilities, where .50 or greater is 1 (quit) and less than .50 is 0 (stay)</span></span>
 <span id="cb1946-2"><a href="logistic.html#cb1946-2" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>dich.pred.prod.allpred <span class="ot">&lt;-</span> td<span class="sc">$</span>pred.prod.allpred</span>
@@ -3853,20 +3842,13 @@ div.csl-indent {
 <span id="cb1946-4"><a href="logistic.html#cb1946-4" aria-hidden="true" tabindex="-1"></a>td<span class="sc">$</span>dich.pred.prod.allpred[td<span class="sc">$</span>dich.pred.prod.allpred <span class="sc">&lt;</span> .<span class="dv">50</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
 <div class="sourceCode" id="cb1947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1947-1"><a href="logistic.html#cb1947-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1947-2"><a href="logistic.html#cb1947-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
-<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS
-## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0
-## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1
-## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1
-## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1
-## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1
-## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0
-##   pred.prod.allpred dich.pred.prod.allpred
-## 1        0.08371016                      0
-## 2        0.73187048                      1
-## 3        0.79306191                      1
-## 4        0.90827169                      1
-## 5        0.57694329                      1
-## 6        0.31447250                      0</code></pre>
+<pre><code>##   Row.names Row.names     ID Turnover   JS   OC   TI NAff JS_0 JS_1 pred.prob.JS dich.pred.prob.JS pred.prod.allpred dich.pred.prod.allpred
+## 1         1         1 EMP559        1 4.96 5.32 0.51 1.87 4.73 5.73    0.4216566                 0        0.08371016                      0
+## 2        10        18 EMP643        1 3.35 2.94 3.60 2.08 3.12 4.12    0.5960009                 1        0.73187048                      1
+## 3        11        19 EMP644        1 2.33 0.80 3.22 2.45 2.10 3.10    0.6974856                 1        0.79306191                      1
+## 4        12         2 EMP561        1 1.72 1.47 4.08 2.48 1.49 2.49    0.7507079                 1        0.90827169                      1
+## 5        13        20 EMP647        0 2.98 2.16 2.41 2.32 2.75 3.75    0.6343220                 1        0.57694329                      1
+## 6        14        21 EMP677        0 4.64 2.92 1.48 2.43 4.41 5.41    0.4561403                 0        0.31447250                      0</code></pre>
 <p>It’s important to keep in mind that these predicted probabilities are estimated based on the same data we used to estimate the model in the first place. Given this, I would describe this process as predict-ish analytics as opposed to true predictive analytics. To reach predictive analytics, we would need to obtain “fresh” data on the predictor variables, which we could then use to plug into our model; to do this with a model estimated using the <code>glm</code> model, will create a toy data frame with “fresh” predictor variable values sampled from the same population. In a real life situation, we would more than likely read in a new data file and assign that to an object – just like we did in the <a href="compensatory.html#compensatory">chapter on applying a compensatory approach to selection decisions using multiple linear regression</a>.</p>
 <p>In this toy data frame that we’re naming <code>fresh_td</code>, we use the <code>data.frame</code> function from base R. As the first argument, we’ll create an <code>ID</code> variable with some fictional employee ID numbers. As the second argument, we’ll create a <code>JS</code> variable with some fictional job satisfaction scores. As the third argument, we’ll create a <code>NAff</code> variable with some fictional negative affectivity scores. As the fourth argument, we’ll create a <code>TI</code> variable with some fictional turnover intentions scores.</p>
 <div class="sourceCode" id="cb1949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1949-1"><a href="logistic.html#cb1949-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create toy data frame object for illustration purposes</span></span>

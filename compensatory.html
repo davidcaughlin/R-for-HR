@@ -1243,7 +1243,7 @@ div.csl-indent {
 <span id="cb1412-4"><a href="compensatory.html#cb1412-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1412-5"><a href="compensatory.html#cb1412-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -1299,7 +1299,8 @@ div.csl-indent {
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## Regression(my_formula=Performance ~ SJT + Interview, data=df, Rmd=&quot;eg&quot;)  
 ## 
-##   BACKGROUND 
+## 
+##   BACKGROUND
 ## 
 ## Data Frame:  df 
 ##  
@@ -1310,15 +1311,19 @@ div.csl-indent {
 ## Number of cases (rows) of data:  300 
 ## Number of cases retained for analysis:  300 
 ## 
-##   BASIC ANALYSIS 
 ## 
+##   BASIC ANALYSIS
+## 
+## Performance:  Mean = 10.737   SD = 3.477 
+##               Min = 4.000   Max = 27.000
+## 
+##  
 ##              Estimate    Std Err  t-value  p-value   Lower 95%   Upper 95% 
 ## (Intercept)     5.527      0.539   10.249    0.000       4.465       6.588 
 ##         SJT     0.567      0.085    6.714    0.000       0.401       0.734 
 ##   Interview     0.385      0.064    6.031    0.000       0.260       0.511 
 ## 
-## Standard deviation of Performance: 3.477 
-##  
+## 
 ## Standard deviation of residuals:  2.992 for 297 degrees of freedom 
 ## 95% range of residual variation:  11.777 = 2 * (1.968 * 2.992) 
 ##  
@@ -1326,6 +1331,7 @@ div.csl-indent {
 ## 
 ## Null hypothesis of all 0 population slope coefficients:
 ##   F-statistic: 53.339     df: 2 and 297     p-value:  0.000 
+## 
 ## 
 ##               df    Sum Sq   Mean Sq   F-value   p-value 
 ##         SJT    1   629.432   629.432    70.303     0.000 
@@ -1335,18 +1341,21 @@ div.csl-indent {
 ## Residuals    297  2659.095     8.953 
 ## Performance  299  3614.197    12.088 
 ## 
-##   K-FOLD CROSS-VALIDATION 
 ## 
-##   RELATIONS AMONG THE VARIABLES 
+##   K-FOLD CROSS-VALIDATION
+## 
+##   RELATIONS AMONG THE VARIABLES
 ## 
 ##               Performance  SJT Interview 
 ##   Performance        1.00 0.42      0.39 
 ##           SJT        0.42 1.00      0.24 
 ##     Interview        0.39 0.24      1.00 
 ## 
+## 
 ##             Tolerance       VIF 
 ##         SJT     0.944     1.060 
 ##   Interview     0.944     1.060 
+## 
 ## 
 ##  SJT Interview    R2adj    X&#39;s 
 ##    1         1    0.259      2 
@@ -1356,7 +1365,8 @@ div.csl-indent {
 ## [based on Thomas Lumley&#39;s leaps function from the leaps package] 
 ##  
 ## 
-##   RESIDUALS AND INFLUENCE 
+## 
+##   RESIDUALS AND INFLUENCE
 ## 
 ## Data, Fitted, Residual, Studentized Residual, Dffits, Cook&#39;s Distance 
 ##    [sorted by Cook&#39;s Distance] 
@@ -1384,13 +1394,14 @@ div.csl-indent {
 ##   297  2.000     3.000      14.000  7.817   6.183  2.092  0.245 0.020 
 ##    82  2.000     4.000      14.000  8.203   5.797  1.959  0.224 0.017 
 ## 
+## 
 ##   PREDICTION ERROR 
 ## 
 ## Data, Predicted, Standard Error of Forecast, 
 ## 95% Prediction Intervals 
 ##    [sorted by lower bound of prediction interval] 
 ##    [to see all intervals do pred_rows=&quot;all&quot;] 
-##  ---------------------------------------------- 
+##  ----------------------------------------------
 ## 
 ##         SJT Interview Performance   pred    sf pi.lwr pi.upr  width 
 ##    69 2.000     1.000      18.000  7.047 3.018  1.107 12.987 11.880 
@@ -1404,6 +1415,7 @@ div.csl-indent {
 ##   222 9.000     9.000      11.000 14.102 3.015  8.168 20.035 11.867 
 ##    92 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
 ##   192 8.000    15.000      10.000 15.846 3.057  9.829 21.862 12.033 
+## 
 ## 
 ## ---------------------------------- 
 ## Plot 1: Distribution of Residuals 
@@ -1549,7 +1561,7 @@ div.csl-indent {
 <span id="cb1441-4"><a href="compensatory.html#cb1441-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1441-5"><a href="compensatory.html#cb1441-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification ------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ------------------------------------------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -1631,10 +1643,10 @@ div.csl-indent {
 <p>Next, as the first argument in the <code>predict</code> function, type <code>object=</code> followed by the estimated model object that we named <code>reg.mod</code> above. As the second argument, type <code>newdata=</code> followed by the name of the data frame object that contains new data on the predictor variable. It’s important to make sure that the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our new data are exactly the same as the predictor variables’ names (<code>SJT</code>, <code>Interview</code>) in our original data that we used to estimate the model. If that were not the case, we would want to rename the predictor variable in the new data frame object to match the corresponding name in the original data frame object, which is covered in the <a href="addnames.html#addnames">chapter on adding/removing variable names and renaming specific variables</a>.</p>
 <div class="sourceCode" id="cb1455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1455-1"><a href="compensatory.html#cb1455-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable</span></span>
 <span id="cb1455-2"><a href="compensatory.html#cb1455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(<span class="at">object=</span>reg.mod, <span class="at">newdata=</span>new_df)</span></code></pre></div>
-<pre><code>##         1         2         3         4         5         6         7         8         9        10 
-## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 10.836989 
-##        11        12        13        14        15 
-## 12.216943 14.689987 12.399124 14.710923 11.243225</code></pre>
+<pre><code>##         1         2         3         4         5         6         7         8         9        10        11        12        13        14 
+## 12.399124  9.358599 10.087326 13.127851 14.507805 11.649461  9.743899 10.899798 14.689987 10.836989 12.216943 14.689987 12.399124 14.710923 
+##        15 
+## 11.243225</code></pre>
 <p>In your console, you should see a vector of scores – these are the predicted criterion scores. In many cases, we might want to append this vector as a variable to our new data frame object. To do so, we just need to apply the <code>&lt;-</code> operator and, to the left of it, specify the name of the new data frame object (<code>new_df</code>) followed by the <code>$</code> operator and a name for the new variable that will contain the predicted criterion scores (<code>Perf_Predict</code>).</p>
 <div class="sourceCode" id="cb1457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1457-1"><a href="compensatory.html#cb1457-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict scores on the criterion (outcome) variable </span></span>
 <span id="cb1457-2"><a href="compensatory.html#cb1457-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and append as new variable in data frame</span></span>
