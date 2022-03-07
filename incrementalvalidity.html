@@ -1299,7 +1299,7 @@ div.csl-indent {
 <span id="cb1337-4"><a href="incrementalvalidity.html#cb1337-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1337-5"><a href="incrementalvalidity.html#cb1337-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification -----------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -1903,7 +1903,7 @@ div.csl-indent {
 <span id="cb1358-4"><a href="incrementalvalidity.html#cb1358-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1358-5"><a href="incrementalvalidity.html#cb1358-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ConcurrentValidation.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 300 Columns: 5</code></pre>
-<pre><code>## -- Column specification -----------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (1): EmployeeID
 ## dbl (4): SJT, EI, Interview, Performance</code></pre>
@@ -2029,10 +2029,10 @@ div.csl-indent {
 <span id="cb1387-6"><a href="incrementalvalidity.html#cb1387-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1387-7"><a href="incrementalvalidity.html#cb1387-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb1387-8"><a href="incrementalvalidity.html#cb1387-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##        201         70        170        270        233        101          1         69        169         92        192        292         20 
-## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 0.08140835 0.08140835 0.06114519 0.06114519 0.06114519 0.05121764 
-##        120        283        269         97        197        297         82 
-## 0.05121764 0.04481510 0.04456115 0.01981777 0.01981777 0.01981777 0.01656404</code></pre>
+<pre><code>##        201         70        170        270        233        101          1         69        169         92 
+## 0.16917874 0.14329599 0.14329599 0.14329599 0.12946844 0.09214623 0.09214623 0.08140835 0.08140835 0.06114519 
+##        192        292         20        120        283        269         97        197        297         82 
+## 0.06114519 0.06114519 0.05121764 0.05121764 0.04481510 0.04456115 0.01981777 0.01981777 0.01981777 0.01656404</code></pre>
 <p>Here we get the numeric values associated with Cook’s distances, which corroborates what we saw in the plot of Cook’s distances above. Again, the case associated with row <em>201</em> is by far the largest, and the next largest values are clustered closer together, which include the cases associated with row numbers <em>70</em>, <em>170</em>, and <em>270</em>. There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>.</p>
 <p>Across the three diagnostic plots and the vector of Cook’s distances, <em>201</em> appears to be consistently the most concerning case, and cases associated with row numbers <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> may also be problematic. For the most part, the distribution of the residuals look mostly normal. As such, as a sensitivity analysis and for the sake of demonstration, we will estimate our model once more after removing the cases associated with row numbers <em>201</em>, <em>69</em>, <em>70</em>, <em>170</em>, <em>270</em>, and <em>233</em> from our data frame. If you’ve completed the entire tutorial thus far, you may have noted that some of the plots we are using with the <code>lm</code> function are different than those that come with the <code>Regression</code> function from <code>lessR</code> (see above), and further, you may have noticed that we have flagged more potential problematic cases in using these plots than the ones for the <code>Regression</code> function. This goes to show, again, how thoughtful we must be with the tools that we use, and again, I recommend erring on the side of caution when it comes to removing cases for subsequent analyses. And, remember, no model will ever be perfect. For now, let’s go ahead and interpret the results of the multiple linear regression model.</p>
 <p><strong>Obtaining the Model Results:</strong> Type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.mod1</code>) as the sole parenthetical argument; we specified the regression model object called <code>reg.mod2</code>) earlier in the tutorial. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>

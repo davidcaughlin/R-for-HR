@@ -1302,7 +1302,7 @@ div.csl-indent {
 <span id="cb2328-4"><a href="marketpayline.html#cb2328-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2328-5"><a href="marketpayline.html#cb2328-5" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MarketPayLine.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 25 Columns: 5</code></pre>
-<pre><code>## -- Column specification -----------------------------------------------------------------------------------------------------------------------
+<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
 ## Delimiter: &quot;,&quot;
 ## chr (3): Job_Family, Job_ID, Job_Title
 ## dbl (2): Points, Pay</code></pre>
@@ -1549,10 +1549,10 @@ div.csl-indent {
 <span id="cb2363-6"><a href="marketpayline.html#cb2363-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2363-7"><a href="marketpayline.html#cb2363-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb2363-8"><a href="marketpayline.html#cb2363-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          18          17           2          16          13          15           8           4          10           5          12 
-## 0.656762965 0.223627186 0.077425779 0.074014305 0.049588694 0.048505115 0.048235670 0.048134209 0.045766159 0.043496277 0.037231721 
-##           7          14           1           6          11           9           3 
-## 0.036133566 0.030636966 0.029627806 0.012312294 0.008786797 0.001666541 0.001378862</code></pre>
+<pre><code>##          18          17           2          16          13          15           8           4          10 
+## 0.656762965 0.223627186 0.077425779 0.074014305 0.049588694 0.048505115 0.048235670 0.048134209 0.045766159 
+##           5          12           7          14           1           6          11           9           3 
+## 0.043496277 0.037231721 0.036133566 0.030636966 0.029627806 0.012312294 0.008786797 0.001666541 0.001378862</code></pre>
 <p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .22. Here, we see only the Cook’s distance values associated with row numbers 17 and 18 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed <em>1</em>, and thus we will assume that we don’t have any troublesome outliers/influential cases.</p>
 <p>While by no means have we completely satisfied the statistical assumptions, we can be reasonably satisfied - although it should already be apparent that we will have a weaker-fitting model.</p>
 <p><strong>Interpret the Model Results.</strong> To request the results of our simple linear regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.office</code>) as the sole parenthetical argument.</p>
@@ -1697,10 +1697,12 @@ div.csl-indent {
 <span id="cb2377-6"><a href="marketpayline.html#cb2377-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2377-7"><a href="marketpayline.html#cb2377-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb2377-8"><a href="marketpayline.html#cb2377-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          25           1          19           2          23          20          15          24          18          16           8 
-## 1.054185542 0.282264751 0.124866652 0.075576062 0.061955323 0.058036351 0.057818032 0.053965377 0.041351819 0.022738034 0.017260506 
-##           7          14          22          12           3          13          10          21          11 
-## 0.015861019 0.014309202 0.008216950 0.006718502 0.005249071 0.004335400 0.004304829 0.003941973 0.003246351</code></pre>
+<pre><code>##          25           1          19           2          23          20          15          24          18 
+## 1.054185542 0.282264751 0.124866652 0.075576062 0.061955323 0.058036351 0.057818032 0.053965377 0.041351819 
+##          16           8           7          14          22          12           3          13          10 
+## 0.022738034 0.017260506 0.015861019 0.014309202 0.008216950 0.006718502 0.005249071 0.004335400 0.004304829 
+##          21          11 
+## 0.003941973 0.003246351</code></pre>
 <p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .16. Here, we see only the Cook’s distance values associated with row numbers 1 and 25 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. Only the Cook’s distance value associated with row number 25 exceeds <em>1</em>, and thus we should be somewhat concerned that this case might be an outlier/influential case.</p>
 <p>While by no means have we satisfied the statistical assumptions, the diagnostics did not look too bad given the relatively small sample size we are working with. Let’s proceed forward and see what the model results look like.</p>
 <p><strong>Interpret the Simple Linear Regression Model Results.</strong> To request the results of our simple linear regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.all</code>) as the sole parenthetical argument.</p>
