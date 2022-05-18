@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Data Analysis | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Data Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 5 Data Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,9 +32,8 @@
   
 <link rel="prev" href="datamanagement.html"/>
 <link rel="next" href="datainterpretationstorytelling.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 <style type="text/css">
@@ -117,29 +115,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -663,29 +638,29 @@ div.csl-indent {
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1146,8 +1121,8 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1200,18 +1175,18 @@ div.csl-indent {
 </div>
 <div id="machinelearning" class="section level3" number="5.1.3">
 <h3><span class="header-section-number">5.1.3</span> Machine Learning</h3>
-<p>Machine learning allows us to extend mathematical and statistical analysis of data - often to very large amounts of data. Specifically, <strong>machine learning</strong> is form of artificial intelligence in which data are statistically analyzed in ways that allow the “machine” to “learn” when presented with new data <span class="citation">(for a brief yet broad overview, see <a href="#ref-JordanMitchell2015" role="doc-biblioref">Jordan and Mitchell 2015</a>)</span>. Machine-learning algorithms (i.e., models) are often developed for the purposes of making more accurate predictions or classifications – or for finding patterns. For example, an HR data analyst might train, test, and validate a model aimed at accurately predicting who is at-risk for leaving the organization within a given time period. These algorithms can also be applied more broadly to automate processes and systems, with a famous example being how spam emails are detected and assigned to a spam folder <span class="citation">(<a href="#ref-guzella2009review" role="doc-biblioref">Guzella and Caminhas 2009</a>; <a href="#ref-Gan2018" role="doc-biblioref">Gan 2018</a>)</span>.</p>
-<p>Let’s distinguish between two types of machine learning: supervised and unsupervised <span class="citation">(<a href="#ref-owsaldputka2016" role="doc-biblioref">Oswald and Putka 2016</a>)</span>. In <strong>supervised learning</strong>, the model is trained, tested, and validated on data with labeled variables and with particular types of patterns, predictions, or classifications specified (e.g., decision tree, Lasso regression). In contrast, in <strong>unsupervised learning</strong>, variables are unlabeled, and structures, patterns, or clusters are inferred from the data, making this type of machine learning more exploratory in nature (e.g., K-means).</p>
+<p>Machine learning allows us to extend mathematical and statistical analysis of data - often to very large amounts of data. Specifically, <strong>machine learning</strong> is form of artificial intelligence in which data are statistically analyzed in ways that allow the “machine” to “learn” when presented with new data <span class="citation">(for a brief yet broad overview, see <a href="references.html#ref-JordanMitchell2015" role="doc-biblioref">Jordan and Mitchell 2015</a>)</span>. Machine-learning algorithms (i.e., models) are often developed for the purposes of making more accurate predictions or classifications – or for finding patterns. For example, an HR data analyst might train, test, and validate a model aimed at accurately predicting who is at-risk for leaving the organization within a given time period. These algorithms can also be applied more broadly to automate processes and systems, with a famous example being how spam emails are detected and assigned to a spam folder <span class="citation">(<a href="references.html#ref-guzella2009review" role="doc-biblioref">Guzella and Caminhas 2009</a>; <a href="references.html#ref-Gan2018" role="doc-biblioref">Gan 2018</a>)</span>.</p>
+<p>Let’s distinguish between two types of machine learning: supervised and unsupervised <span class="citation">(<a href="references.html#ref-owsaldputka2016" role="doc-biblioref">Oswald and Putka 2016</a>)</span>. In <strong>supervised learning</strong>, the model is trained, tested, and validated on data with labeled variables and with particular types of patterns, predictions, or classifications specified (e.g., decision tree, Lasso regression). In contrast, in <strong>unsupervised learning</strong>, variables are unlabeled, and structures, patterns, or clusters are inferred from the data, making this type of machine learning more exploratory in nature (e.g., K-means).</p>
 </div>
 <div id="computationalmodelsimulation" class="section level3" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> Computational Modeling &amp; Simulations</h3>
-<p>To understand and predict how complex systems behave, we can apply <strong>computational modeling and simulations</strong>. These tools are particularly useful in contexts in which it might be impractical, difficult (e.g., expensive, resource-intensive), or just not feasible to acquire and analyze real data <span class="citation">(for a brief yet broad overview, see <a href="#ref-calder2018computational" role="doc-biblioref">Calder et al. 2018</a>)</span>. For example, employee interactions are complex and dynamic, and although technologies like <a href="https://hd.media.mit.edu/badges/">sociometric badges</a> enable us to monitor and surveil employee interactions in a mostly unobtrusive manner, such technologies may not be able to capture the specific type of interaction we’re interested in – and they may pose ethical and legal issues. Further, some types of interactions and relationship building may take months – or even years – to emerge, and it may not be practical to wait that long. To address these limitations and concerns, a tool like <em>agent-based modeling</em> <span class="citation">(<a href="#ref-Bonabeau7280" role="doc-biblioref">Bonabeau 2002</a>; <a href="#ref-smith2007agent" role="doc-biblioref">Smith and Conrey 2007</a>)</span> would allow us to specify evidence-informed characteristics and interaction decision rules (i.e., parameters) for each employee (i.e., agent) within a multi-employee system and to then observe that simulated system over a period of time. About a decade ago, I developed an agent-based model to simulate how employee emotional contagion and aggressive behavior propagate through a social network, which allowed me to understand how different social-network structures might affect the spread of emotion and aggressive behavior. In some sense, these types of simulations allow use to ask and answer “what if” questions.</p>
+<p>To understand and predict how complex systems behave, we can apply <strong>computational modeling and simulations</strong>. These tools are particularly useful in contexts in which it might be impractical, difficult (e.g., expensive, resource-intensive), or just not feasible to acquire and analyze real data <span class="citation">(for a brief yet broad overview, see <a href="references.html#ref-calder2018computational" role="doc-biblioref">Calder et al. 2018</a>)</span>. For example, employee interactions are complex and dynamic, and although technologies like <a href="https://hd.media.mit.edu/badges/">sociometric badges</a> enable us to monitor and surveil employee interactions in a mostly unobtrusive manner, such technologies may not be able to capture the specific type of interaction we’re interested in – and they may pose ethical and legal issues. Further, some types of interactions and relationship building may take months – or even years – to emerge, and it may not be practical to wait that long. To address these limitations and concerns, a tool like <em>agent-based modeling</em> <span class="citation">(<a href="references.html#ref-Bonabeau7280" role="doc-biblioref">Bonabeau 2002</a>; <a href="references.html#ref-smith2007agent" role="doc-biblioref">Smith and Conrey 2007</a>)</span> would allow us to specify evidence-informed characteristics and interaction decision rules (i.e., parameters) for each employee (i.e., agent) within a multi-employee system and to then observe that simulated system over a period of time. About a decade ago, I developed an agent-based model to simulate how employee emotional contagion and aggressive behavior propagate through a social network, which allowed me to understand how different social-network structures might affect the spread of emotion and aggressive behavior. In some sense, these types of simulations allow use to ask and answer “what if” questions.</p>
 <p>Other prominent examples of computational modeling and simulations include dynamical systems modeling and Monte Carlo methods, and the data generated by computational models can also be analyzed using the aforementioned data-analysis tools and techniques. Like any modeling technique, computational models are not without their limitations. For starters, the omission of relevant parameters will influence how closely the model approximates reality, and such models may fail to account for real-world unanticipated shocks to a system. Still, computation modeling can be a useful tool for helping us to test theory and to project what can or will happen in the future in complex systems.</p>
 </div>
 <div id="textqualitativeanalyses" class="section level3" number="5.1.5">
 <h3><span class="header-section-number">5.1.5</span> Text Analyses &amp; Qualitative Analyses</h3>
-<p><strong>Text analysis</strong> is a large umbrella term for a vast array of analyses aimed at analyzing text data, including quantitative and computer-algorithmic approaches and qualitative-analysis approaches. Let’s start by describing <strong>quantitative and computer-algorithmic approaches</strong>. These approaches are computer driven and tend to efficient and scalable for large (or very large) amounts of text, and include popular toots and techniques like text mining, sentiment analysis, natural language processing, latent semantic analysis, and (broadly) computational linguistics <span class="citation">(see <a href="#ref-banks2018review" role="doc-biblioref">Banks et al. 2018</a> for a review)</span>. As the label implies, quantitative and computer-algorithmic approaches often focus on translating rich sources of qualitative data into quantitative data and metrics. These approaches continue to evolve, which has led to improvements in classification and meaning-meaning extraction accuracy. Compared to a human being, quantitative and computer-algorithmic approaches can struggle to incorporate context and to detect and interpret tone and idiomatic expressions appropriately and accurately.</p>
-<p><strong>Qualitative-analysis approaches</strong> differ substantially from quantitative and computer-algorithmic approaches in that the former rely primarily on human beings to analyze and interpret text data. The human brain still offers one of the best tools for detecting subtle contextual influences and interpreting tone and idiomatic expressions. With their reliance on the human brain, qualitative-analysis approaches can lead to a richer and more robust understanding of a phenomenon of interest captured in text data. In terms of human work hours, rigorous qualitative analysis can be quite resource-intensive, as it requires iterative coding and sensemaking by (typically) multiple independent human coders. This can make qualitative-analysis approaches less practical and feasible for large amounts of text data. Examples of qualitative analysis include content analysis, thematic analysis, narrative analysis, discourse analysis, and grounded theory <span class="citation">(<a href="#ref-strauss1997grounded" role="doc-biblioref">Strauss and Corbin 1997</a>)</span>.</p>
+<p><strong>Text analysis</strong> is a large umbrella term for a vast array of analyses aimed at analyzing text data, including quantitative and computer-algorithmic approaches and qualitative-analysis approaches. Let’s start by describing <strong>quantitative and computer-algorithmic approaches</strong>. These approaches are computer driven and tend to efficient and scalable for large (or very large) amounts of text, and include popular toots and techniques like text mining, sentiment analysis, natural language processing, latent semantic analysis, and (broadly) computational linguistics <span class="citation">(see <a href="references.html#ref-banks2018review" role="doc-biblioref">Banks et al. 2018</a> for a review)</span>. As the label implies, quantitative and computer-algorithmic approaches often focus on translating rich sources of qualitative data into quantitative data and metrics. These approaches continue to evolve, which has led to improvements in classification and meaning-meaning extraction accuracy. Compared to a human being, quantitative and computer-algorithmic approaches can struggle to incorporate context and to detect and interpret tone and idiomatic expressions appropriately and accurately.</p>
+<p><strong>Qualitative-analysis approaches</strong> differ substantially from quantitative and computer-algorithmic approaches in that the former rely primarily on human beings to analyze and interpret text data. The human brain still offers one of the best tools for detecting subtle contextual influences and interpreting tone and idiomatic expressions. With their reliance on the human brain, qualitative-analysis approaches can lead to a richer and more robust understanding of a phenomenon of interest captured in text data. In terms of human work hours, rigorous qualitative analysis can be quite resource-intensive, as it requires iterative coding and sensemaking by (typically) multiple independent human coders. This can make qualitative-analysis approaches less practical and feasible for large amounts of text data. Examples of qualitative analysis include content analysis, thematic analysis, narrative analysis, discourse analysis, and grounded theory <span class="citation">(<a href="references.html#ref-strauss1997grounded" role="doc-biblioref">Strauss and Corbin 1997</a>)</span>.</p>
 </div>
 </div>
 <div id="continuum_dataanalytics" class="section level2" number="5.2">
@@ -1274,36 +1249,6 @@ div.csl-indent {
 
 </div>
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-banks2018review" class="csl-entry">
-Banks, George C, Haley M Woznyj, Ryan S Wesslen, and Roxanne L Ross. 2018. <span>“A Review of Best Practice Recommendations for Text Analysis in <span>R</span> (and a User-Friendly App).”</span> <em>Journal of Business and Psychology</em> 33 (4): 445–59.
-</div>
-<div id="ref-Bonabeau7280" class="csl-entry">
-Bonabeau, Eric. 2002. <span>“Agent-Based Modeling: Methods and Techniques for Simulating Human Systems.”</span> <em>Proceedings of the National Academy of Sciences</em> 99 (suppl 3): 7280–87. <a href="https://doi.org/10.1073/pnas.082080899">https://doi.org/10.1073/pnas.082080899</a>.
-</div>
-<div id="ref-calder2018computational" class="csl-entry">
-Calder, Muffy, Claire Craig, Dave Culley, Richard de Cani, Christl A Donnelly, Rowan Douglas, Bruce Edmonds, et al. 2018. <span>“Computational Modelling for Decision-Making: Where, Why, What, Who and How.”</span> <em>Royal Society Open Science</em> 5 (6): 172096.
-</div>
-<div id="ref-Gan2018" class="csl-entry">
-Gan, Sie H. 2018. <span>“How to Design a Spam Filtering System with Machine Learning Algorithm.”</span> Available at <a href="http://
-https://towardsdatascience.com/email-spam-detection-1-2-b0e06a5c0472">http://
-<div id="ref-guzella2009review" class="csl-entry">
-Guzella, Thiago S, and Walmir M Caminhas. 2009. <span>“A Review of Machine Learning Approaches to Spam Filtering.”</span> <em>Expert Systems with Applications</em> 36 (7): 10206–22.
-</div>
-<div id="ref-JordanMitchell2015" class="csl-entry">
-Jordan, Michael I, and Tom M Mitchell. 2015. <span>“Machine Learning: Trends, Perspectives, and Prospects.”</span> <em>Science</em> 349 (6245): 255–60.
-</div>
-<div id="ref-owsaldputka2016" class="csl-entry">
-Oswald, Fred S, and Dan J Putka. 2016. <span>“Statistical Methods for Big Data: A Scenic Tour.”</span> In <em>Big Data at Work: The Data Science Revolution and Organizational Psychology</em>, edited by Scott Tondandel, Eden B. King, and Jose M. Cortina, 43–63. New York, NY: Routledge.
-</div>
-<div id="ref-smith2007agent" class="csl-entry">
-Smith, Eliot R, and Frederica R Conrey. 2007. <span>“Agent-Based Modeling: A New Approach for Theory Building in Social Psychology.”</span> <em>Personality and Social Psychology Review</em> 11 (1): 87–104.
-</div>
-<div id="ref-strauss1997grounded" class="csl-entry">
-Strauss, Anselm, and Juliet M Corbin. 1997. <em>Grounded Theory in Practice</em>. Sage.
-</div>
-</div>
             </section>
 
           </div>
@@ -1314,6 +1259,7 @@ Strauss, Anselm, and Juliet M Corbin. 1997. <em>Grounded Theory in Practice</em>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1340,10 +1286,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }

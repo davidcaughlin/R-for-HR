@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 60 Computing Compa-Ratios &amp; Investigating Pay Compression | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 60 Computing Compa-Ratios &amp; Investigating Pay Compression | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 60 Computing Compa-Ratios &amp; Investigating Pay Compression | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -31,10 +31,9 @@
   
   
 <link rel="prev" href="paydeterminants.html"/>
-<link rel="next" href="create_portfolio.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link rel="next" href="create-portfolio.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 <style type="text/css">
@@ -117,29 +115,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -663,29 +638,29 @@ div.csl-indent {
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1146,8 +1121,8 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1185,7 +1160,7 @@ div.csl-indent {
 <div id="conceptualvideo_comparatio" class="section level3" number="60.1.1">
 <h3><span class="header-section-number">60.1.1</span> Conceptual Videos</h3>
 <p>For a more in-depth review of compa-ratios and adherence to pay policies, please check out the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/zGXVjDw_vX4?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/zGXVjDw_vX4?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/zGXVjDw_vX4" class="uri">https://youtu.be/zGXVjDw_vX4</a></p>
 </div>
@@ -1196,7 +1171,7 @@ div.csl-indent {
 <div id="videotutorial_comparatio" class="section level3" number="60.2.1">
 <h3><span class="header-section-number">60.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/nERabUWTubA?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/nERabUWTubA?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/nERabUWTubA" class="uri">https://youtu.be/nERabUWTubA</a></p>
 </div>
@@ -1251,52 +1226,55 @@ div.csl-indent {
 </div>
 <div id="initsteps_comparatio" class="section level3" number="60.2.3">
 <h3><span class="header-section-number">60.2.3</span> Initial Steps</h3>
-<p>If you haven’t already, save the files called <strong>“PData.csv”</strong> and <strong>“CData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the files called <strong>“PData.csv”</strong> and <strong>“CData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data files for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb2428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2428-1"><a href="comparatio.html#cb2428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb2428-2"><a href="comparatio.html#cb2428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data files called <strong>“PData.csv”</strong> and <strong>“CData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb2429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2429-1"><a href="comparatio.html#cb2429-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb2429-2"><a href="comparatio.html#cb2429-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb2429-3"><a href="comparatio.html#cb2429-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb2429-4"><a href="comparatio.html#cb2429-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2430-1"><a href="comparatio.html#cb2430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb2430-2"><a href="comparatio.html#cb2430-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb2430-3"><a href="comparatio.html#cb2430-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2430-4"><a href="comparatio.html#cb2430-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb2430-5"><a href="comparatio.html#cb2430-5" aria-hidden="true" tabindex="-1"></a>PersonalData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 521 Columns: 7</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (5): StartDate, Sex, RaceEthnicity, Disability, Veteran
-## dbl (2): EmployeeID, Age_2018</code></pre>
+<div class="sourceCode" id="cb2300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2300-1"><a href="comparatio.html#cb2300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2300-2"><a href="comparatio.html#cb2300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data files called <strong>“PData.csv”</strong> and <strong>“CData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2301-1"><a href="comparatio.html#cb2301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2301-2"><a href="comparatio.html#cb2301-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2301-3"><a href="comparatio.html#cb2301-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2301-4"><a href="comparatio.html#cb2301-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2302-1"><a href="comparatio.html#cb2302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2302-2"><a href="comparatio.html#cb2302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2302-3"><a href="comparatio.html#cb2302-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2302-4"><a href="comparatio.html#cb2302-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
+<span id="cb2302-5"><a href="comparatio.html#cb2302-5" aria-hidden="true" tabindex="-1"></a>PersonalData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb2434"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2434-1"><a href="comparatio.html#cb2434-1" aria-hidden="true" tabindex="-1"></a>CompensationData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;CData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 521 Columns: 4</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (1): PayGrade
-## dbl (3): EmployeeID, BasePay_2018, VariablePay_2018</code></pre>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   StartDate = col_character(),
+##   Sex = col_character(),
+##   RaceEthnicity = col_character(),
+##   Age_2018 = col_double(),
+##   Disability = col_character(),
+##   Veteran = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb2304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2304-1"><a href="comparatio.html#cb2304-1" aria-hidden="true" tabindex="-1"></a>CompensationData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;CData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb2438"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2438-1"><a href="comparatio.html#cb2438-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
-<span id="cb2438-2"><a href="comparatio.html#cb2438-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2439"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2439-1"><a href="comparatio.html#cb2439-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
-<span id="cb2439-2"><a href="comparatio.html#cb2439-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2439-3"><a href="comparatio.html#cb2439-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2439-4"><a href="comparatio.html#cb2439-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (merge) without pipes</span></span>
-<span id="cb2439-5"><a href="comparatio.html#cb2439-5" aria-hidden="true" tabindex="-1"></a>MergedDF <span class="ot">&lt;-</span> <span class="fu">full_join</span>(PersonalData, CompensationData, <span class="at">by=</span><span class="st">&quot;EmployeeID&quot;</span>)</span>
-<span id="cb2439-6"><a href="comparatio.html#cb2439-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2439-7"><a href="comparatio.html#cb2439-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names in joined (merged) data frame (tibble) object</span></span>
-<span id="cb2439-8"><a href="comparatio.html#cb2439-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(MergedDF)</span></code></pre></div>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   EmployeeID = col_double(),
+##   PayGrade = col_character(),
+##   BasePay_2018 = col_double(),
+##   VariablePay_2018 = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb2306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2306-1"><a href="comparatio.html#cb2306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb2306-2"><a href="comparatio.html#cb2306-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2307-1"><a href="comparatio.html#cb2307-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
+<span id="cb2307-2"><a href="comparatio.html#cb2307-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2307-3"><a href="comparatio.html#cb2307-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2307-4"><a href="comparatio.html#cb2307-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (merge) without pipes</span></span>
+<span id="cb2307-5"><a href="comparatio.html#cb2307-5" aria-hidden="true" tabindex="-1"></a>MergedDF <span class="ot">&lt;-</span> <span class="fu">full_join</span>(PersonalData, CompensationData, <span class="at">by=</span><span class="st">&quot;EmployeeID&quot;</span>)</span>
+<span id="cb2307-6"><a href="comparatio.html#cb2307-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2307-7"><a href="comparatio.html#cb2307-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names in joined (merged) data frame (tibble) object</span></span>
+<span id="cb2307-8"><a href="comparatio.html#cb2307-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(MergedDF)</span></code></pre></div>
 <pre><code>##  [1] &quot;EmployeeID&quot;       &quot;StartDate&quot;        &quot;Sex&quot;              &quot;RaceEthnicity&quot;    &quot;Age_2018&quot;        
 ##  [6] &quot;Disability&quot;       &quot;Veteran&quot;          &quot;PayGrade&quot;         &quot;BasePay_2018&quot;     &quot;VariablePay_2018&quot;</code></pre>
-<div class="sourceCode" id="cb2441"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2441-1"><a href="comparatio.html#cb2441-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb2441-2"><a href="comparatio.html#cb2441-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(MergedDF)</span></code></pre></div>
-<pre><code>## spec_tbl_df [521 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb2309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2309-1"><a href="comparatio.html#cb2309-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2309-2"><a href="comparatio.html#cb2309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(MergedDF)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,10] [521 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmployeeID      : num [1:521] 1001 1002 1003 1004 1005 ...
 ##  $ StartDate       : chr [1:521] &quot;1/29/2013&quot; &quot;2/1/2013&quot; &quot;2/10/2013&quot; &quot;2/10/2013&quot; ...
 ##  $ Sex             : chr [1:521] &quot;Male&quot; &quot;Male&quot; &quot;Male&quot; &quot;Female&quot; ...
@@ -1316,21 +1294,21 @@ div.csl-indent {
 ##   ..   Age_2018 = col_double(),
 ##   ..   Disability = col_character(),
 ##   ..   Veteran = col_character()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb2443"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2443-1"><a href="comparatio.html#cb2443-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb2443-2"><a href="comparatio.html#cb2443-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(MergedDF)</span></code></pre></div>
+##   .. )</code></pre>
+<div class="sourceCode" id="cb2311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2311-1"><a href="comparatio.html#cb2311-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2311-2"><a href="comparatio.html#cb2311-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(MergedDF)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 10
-##   EmployeeID StartDate Sex    RaceEthnicity Age_2018 Disability Veteran PayGrade BasePay_2018 VariablePay_2018
-##        &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;            &lt;dbl&gt;
-## 1       1001 1/29/2013 Male   White             38.1 No         No      C               43837            12777
-## 2       1002 2/1/2013  Male   White             33.8 No         No      C               42873            13453
-## 3       1003 2/10/2013 Male   White             31.8 No         No      C               42414            12553
-## 4       1004 2/10/2013 Female Black             38.8 No         No      C               42398            12300
-## 5       1005 2/18/2013 Female Asian             32.0 No         No      C               43253            13217
-## 6       1006 2/18/2013 Male   White             34.4 No         No      C               44038            12729</code></pre>
-<div class="sourceCode" id="cb2445"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2445-1"><a href="comparatio.html#cb2445-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb2445-2"><a href="comparatio.html#cb2445-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(MergedDF)</span></code></pre></div>
+##   EmployeeID StartDate Sex    RaceEthnicity Age_2018 Disability Veteran PayGrade BasePay_2018
+##        &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;
+## 1       1001 1/29/2013 Male   White             38.1 No         No      C               43837
+## 2       1002 2/1/2013  Male   White             33.8 No         No      C               42873
+## 3       1003 2/10/2013 Male   White             31.8 No         No      C               42414
+## 4       1004 2/10/2013 Female Black             38.8 No         No      C               42398
+## 5       1005 2/18/2013 Female Asian             32.0 No         No      C               43253
+## 6       1006 2/18/2013 Male   White             34.4 No         No      C               44038
+## # ... with 1 more variable: VariablePay_2018 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb2313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2313-1"><a href="comparatio.html#cb2313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2313-2"><a href="comparatio.html#cb2313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(MergedDF)</span></code></pre></div>
 <pre><code>## [1] 521</code></pre>
 <p>There are 10 variables and 56 cases (i.e., employees) in the <code>MergedDF</code> data frame: <code>EmployeeID</code>, <code>StartDate</code>, <code>Sex</code>, <code>RaceEthnicity</code>, <code>Age_2018</code>, <code>Disability</code>, <code>Veteran</code>, <code>PayGrade</code>, <code>BasePay_2018</code>, and <code>VariablePay_2018</code>. In this tutorial, we will focus on the <code>StartDate</code>, <code>BasePay_2018</code>, and <code>VariablePay_2018</code> variables. Please note that the <code>StartDate</code> variable is of type <em>character</em> and not <em>Date</em>; we will need to change this later on.</p>
 </div>
@@ -1338,74 +1316,79 @@ div.csl-indent {
 <h3><span class="header-section-number">60.2.4</span> Compute Compa-Ratio for Each Employee</h3>
 <p>The compa-ratio reflects how much an employee is actually paid a given pay grade relative to the midpoint of the pay grade. For this pay grade, we will assume that the pay policy specifies the midpoint for total compensation (base pay + variable pay) as $55,000 per year.</p>
 <p>To begin, we need to create a total pay (i.e., total compensation) variable by calculating the sum of base and variable pay for each employee. Let’s name this new variable <code>TotalPay_2018</code>. First, type <code>MergedDF$TotalPay_2018</code> followed by the <code>&lt;-</code> assignment operator to specify what you would like to name your new variable (<code>TotalPay_2018</code>). Second, add the <code>BasePay_2018</code> variable to the <code>VariablePay_2018</code> variable using the <code>+</code> operator.</p>
-<div class="sourceCode" id="cb2447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2447-1"><a href="comparatio.html#cb2447-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TotalPay variable</span></span>
-<span id="cb2447-2"><a href="comparatio.html#cb2447-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>TotalPay_2018 <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>BasePay_2018 <span class="sc">+</span> MergedDF<span class="sc">$</span>VariablePay_2018</span></code></pre></div>
+<div class="sourceCode" id="cb2315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2315-1"><a href="comparatio.html#cb2315-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TotalPay variable</span></span>
+<span id="cb2315-2"><a href="comparatio.html#cb2315-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>TotalPay_2018 <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>BasePay_2018 <span class="sc">+</span> MergedDF<span class="sc">$</span>VariablePay_2018</span></code></pre></div>
 <p>Next, to compute the compa-ratio for each employee, first, type <code>MergedDF$CompaRatio</code> followed by the <code>&lt;-</code> assignment operator to create and name a new variable called <code>CompaRatio</code>. Second, divide the <code>TotalPay_2018</code> variable values by the midpoint value for the pay grade (<em>$55,000</em>) using the division operator (<code>/</code>). Third, multiply the resulting quotient by <em>100</em> to convert the ratio to a percentage (using the multiplication <code>*</code> operator).</p>
-<div class="sourceCode" id="cb2448"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2448-1"><a href="comparatio.html#cb2448-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CompaRatio variable</span></span>
-<span id="cb2448-2"><a href="comparatio.html#cb2448-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>CompaRatio <span class="ot">&lt;-</span> (MergedDF<span class="sc">$</span>TotalPay_2018 <span class="sc">/</span> <span class="dv">55000</span>) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb2448-3"><a href="comparatio.html#cb2448-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2448-4"><a href="comparatio.html#cb2448-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of compa-ratios</span></span>
-<span id="cb2448-5"><a href="comparatio.html#cb2448-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>CompaRatio)</span></code></pre></div>
-<pre><code>##   [1] 102.93455 102.41091  99.94000  99.45091 102.67273 103.21273 100.78000 101.91091 102.59818 100.54182
-##  [11] 100.36182 101.45273 101.45818 101.91091  98.84545 102.44182 100.78727 101.67273 100.58545 103.08545
-##  [21]  96.13091  99.90727 101.01273 100.31636  99.92545 100.55818 101.81455  97.87091  98.13091 100.82182
-##  [31] 103.85636 103.25091 100.31091 100.82545 102.53636  99.19818 102.39455 102.43818 100.97636 105.27091
-##  [41]  99.21273  99.69091  99.53455 100.79455 102.69273 101.04182  96.62182  99.81455 102.13273 101.42909
-##  [51] 101.28000 103.68364 103.37818 101.49455 102.76545  99.71455 103.34182 102.51091 104.83091 100.79455
-##  [61] 100.63455 100.65636 100.88727  97.85273  99.19818  99.47818 102.52364 103.95636  99.96364  99.65455
-##  [71]  99.89636 101.16909  98.48000 101.32545 104.44364  99.52727 105.34000 100.74364 100.82182  99.74727
-##  [81]  98.53273 101.25818 100.00182 100.52909 103.63455 101.42182  98.28000 101.53818 102.08727 101.67273
-##  [91] 101.21091 102.84182 101.91636 100.08364 100.42545 101.98000  98.83636  97.11818 101.04727 100.34909
-## [101] 103.98545 100.73455 104.83818 102.08909  98.22364  99.24182 103.55273 101.00727 103.59818 104.69455
-## [111]  99.41455  99.57636  98.28182 102.50182 101.05818 100.13273 103.34545 100.16909 100.08364  99.96000
-## [121] 102.68182  98.33455  99.95818 101.23273 100.07636  99.65636 103.38909 100.06545 101.21273 102.22727
-## [131]  96.90545 103.89636  97.25273 103.99455  98.09273 101.63273  99.67818 101.21636 101.80727 100.70545
-## [141] 100.50909 103.63455 100.97091 100.88545 101.36545  99.69818 101.27818  97.04364 100.99455 102.31636
-## [151] 103.10909  99.72727 101.20545 103.90545  99.61455  99.10000 103.15091 100.82182 100.48182 103.61091
-## [161] 104.85636  98.27273 102.28364 102.17273  97.95455 100.96909 101.57636  99.86364 103.70909 100.13636
-## [171]  98.21818 100.75636 101.19091  94.88727 102.06545  97.74545 101.61455  96.45091  99.05091 101.37091
-## [181] 103.71455 102.42545 102.44000  99.01273 102.53091  98.81636  96.86727 100.03455 100.57636 102.18545
-## [191] 100.36000 101.01636 101.60182 101.52364  99.92364  98.84364  98.28182 101.66545  98.46545  95.66364
-## [201]  99.62909  98.68364 100.36909 102.20545  98.57455 100.69818 100.55636 101.51091 101.91636 100.72182
-## [211]  98.00000 101.42182 100.78727  98.79818  99.00364  99.44364 104.44727 104.08545 101.59455 103.98545
-## [221] 102.82545 101.32727 101.26364 104.41273 100.59636 103.99636  98.55455 102.20727 101.08000 103.42545
-## [231]  99.85455  99.48182  99.14727  98.21273 102.61273 103.42000  98.07455 101.98000 102.62545 100.23273
-## [241]  98.93091 103.51636 100.40182 103.37273 100.01273 102.51273  99.54182 100.88727  99.17818 100.85455
-## [251] 101.89273 100.16727  97.74364 105.03636  98.14727 100.66000 100.68182 101.01818 102.74545 100.94727
-## [261]  98.84545 100.26909 102.56182  99.45091  96.09455 101.67818  99.16545 101.60182 102.12727  99.23091
-## [271] 100.60909 102.78182 100.76909 101.82545  99.45818 104.44727 103.31636 100.57455 104.67636 103.63455
-## [281]  98.04727 102.61636 101.15818 100.59455  99.23455 102.81091  97.87091 101.85455 100.35091 103.24000
-## [291] 103.23273  99.30364 100.61818 100.40182 101.97091 100.96364 102.01091 100.39091  99.79455  97.88364
-## [301] 102.53273  99.94727  98.59818  99.61818 103.93273 101.24000 102.50545 101.36182 102.61091  99.13273
-## [311]  98.51091  99.14727  98.69818  98.77455  97.91636  98.13636 100.56545  97.22182 100.70364 101.55636
-## [321]  99.90909 100.32545 100.08364  99.34364 103.69636  98.78000  97.21273 102.41455 102.80364 102.77818
-## [331] 102.36182 100.95818 104.03273 100.15636 100.76364  98.53818 100.38909  97.71091 103.07091  97.09091
-## [341] 103.20909 100.58545 104.94909  99.00909  98.85455 105.56727  99.10727  99.93091  99.98182 100.25818
-## [351] 104.32364 103.45818 103.55455 105.20364 101.46727 100.25818  99.82727 101.08909 100.84182 103.13636
-## [361] 100.55091  96.31818  98.26364 103.61455 100.53091 100.64000  99.49455  97.98182 100.81818  99.67636
-## [371] 101.81273 103.03818 100.16545 101.36182  99.30000 102.81455 100.79273  99.11091 101.62545  98.10000
-## [381] 101.60545 100.60909  98.25273 102.60727  94.38182 101.37091 103.25455 102.39455 101.35091 102.12364
-## [391]  97.55273 103.73818 103.43455  98.92182 102.18909 100.14000 102.38545 104.12909 102.21273 100.17455
-## [401] 104.10182 101.56182 103.80182 100.64182  99.88000 101.51091 100.58727  99.96727 102.42364  98.79091
-## [411] 106.45273 101.48182 101.79818 100.25273 101.48182 105.98545 102.74727 101.72182  97.65455  99.36000
-## [421] 101.71273  96.34000 102.63818 102.05273  97.53636  97.82182 103.79273 100.23091 101.59818  97.14727
-## [431] 101.98000  99.67636 104.27455  99.38000 104.70364 100.30000 102.24182 101.07091 103.53273 101.63818
-## [441] 100.50909  98.26545  99.51636  99.58000 101.02909 103.68182  97.44727  99.94909 100.68909 101.01818
-## [451] 100.83091 103.10545 103.89636 102.14182  97.82000 102.07455 104.94909  97.32909  98.94545  99.34909
-## [461] 103.46727 100.29818  98.90000 103.40000 102.82182 103.41636 102.25636  98.99818 100.14182  98.37091
-## [471]  96.91455 101.46364 103.15455  99.12364 100.76909 101.16000 103.80364 102.32182 102.32364 101.94000
-## [481] 104.32727 102.20182  99.76182 101.62545 100.91636  99.92182 100.64909 102.45636  99.72545 102.97636
-## [491]  97.08727 100.64000 100.78727  98.95636 101.27091 102.82000  99.81091 102.24909 100.51455 102.13273
-## [501]  99.96364  99.02545 104.06727 103.83273  97.06182  97.63273 102.40182 100.16000  98.88182  99.46000
-## [511]  96.91273 100.87091  97.10909 103.69636 100.43455 106.18727 100.92727 101.51091 101.73091 101.50727
-## [521] 101.11273</code></pre>
+<div class="sourceCode" id="cb2316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2316-1"><a href="comparatio.html#cb2316-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CompaRatio variable</span></span>
+<span id="cb2316-2"><a href="comparatio.html#cb2316-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>CompaRatio <span class="ot">&lt;-</span> (MergedDF<span class="sc">$</span>TotalPay_2018 <span class="sc">/</span> <span class="dv">55000</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb2316-3"><a href="comparatio.html#cb2316-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2316-4"><a href="comparatio.html#cb2316-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of compa-ratios</span></span>
+<span id="cb2316-5"><a href="comparatio.html#cb2316-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>CompaRatio)</span></code></pre></div>
+<pre><code>##   [1] 102.93455 102.41091  99.94000  99.45091 102.67273 103.21273 100.78000 101.91091 102.59818
+##  [10] 100.54182 100.36182 101.45273 101.45818 101.91091  98.84545 102.44182 100.78727 101.67273
+##  [19] 100.58545 103.08545  96.13091  99.90727 101.01273 100.31636  99.92545 100.55818 101.81455
+##  [28]  97.87091  98.13091 100.82182 103.85636 103.25091 100.31091 100.82545 102.53636  99.19818
+##  [37] 102.39455 102.43818 100.97636 105.27091  99.21273  99.69091  99.53455 100.79455 102.69273
+##  [46] 101.04182  96.62182  99.81455 102.13273 101.42909 101.28000 103.68364 103.37818 101.49455
+##  [55] 102.76545  99.71455 103.34182 102.51091 104.83091 100.79455 100.63455 100.65636 100.88727
+##  [64]  97.85273  99.19818  99.47818 102.52364 103.95636  99.96364  99.65455  99.89636 101.16909
+##  [73]  98.48000 101.32545 104.44364  99.52727 105.34000 100.74364 100.82182  99.74727  98.53273
+##  [82] 101.25818 100.00182 100.52909 103.63455 101.42182  98.28000 101.53818 102.08727 101.67273
+##  [91] 101.21091 102.84182 101.91636 100.08364 100.42545 101.98000  98.83636  97.11818 101.04727
+## [100] 100.34909 103.98545 100.73455 104.83818 102.08909  98.22364  99.24182 103.55273 101.00727
+## [109] 103.59818 104.69455  99.41455  99.57636  98.28182 102.50182 101.05818 100.13273 103.34545
+## [118] 100.16909 100.08364  99.96000 102.68182  98.33455  99.95818 101.23273 100.07636  99.65636
+## [127] 103.38909 100.06545 101.21273 102.22727  96.90545 103.89636  97.25273 103.99455  98.09273
+## [136] 101.63273  99.67818 101.21636 101.80727 100.70545 100.50909 103.63455 100.97091 100.88545
+## [145] 101.36545  99.69818 101.27818  97.04364 100.99455 102.31636 103.10909  99.72727 101.20545
+## [154] 103.90545  99.61455  99.10000 103.15091 100.82182 100.48182 103.61091 104.85636  98.27273
+## [163] 102.28364 102.17273  97.95455 100.96909 101.57636  99.86364 103.70909 100.13636  98.21818
+## [172] 100.75636 101.19091  94.88727 102.06545  97.74545 101.61455  96.45091  99.05091 101.37091
+## [181] 103.71455 102.42545 102.44000  99.01273 102.53091  98.81636  96.86727 100.03455 100.57636
+## [190] 102.18545 100.36000 101.01636 101.60182 101.52364  99.92364  98.84364  98.28182 101.66545
+## [199]  98.46545  95.66364  99.62909  98.68364 100.36909 102.20545  98.57455 100.69818 100.55636
+## [208] 101.51091 101.91636 100.72182  98.00000 101.42182 100.78727  98.79818  99.00364  99.44364
+## [217] 104.44727 104.08545 101.59455 103.98545 102.82545 101.32727 101.26364 104.41273 100.59636
+## [226] 103.99636  98.55455 102.20727 101.08000 103.42545  99.85455  99.48182  99.14727  98.21273
+## [235] 102.61273 103.42000  98.07455 101.98000 102.62545 100.23273  98.93091 103.51636 100.40182
+## [244] 103.37273 100.01273 102.51273  99.54182 100.88727  99.17818 100.85455 101.89273 100.16727
+## [253]  97.74364 105.03636  98.14727 100.66000 100.68182 101.01818 102.74545 100.94727  98.84545
+## [262] 100.26909 102.56182  99.45091  96.09455 101.67818  99.16545 101.60182 102.12727  99.23091
+## [271] 100.60909 102.78182 100.76909 101.82545  99.45818 104.44727 103.31636 100.57455 104.67636
+## [280] 103.63455  98.04727 102.61636 101.15818 100.59455  99.23455 102.81091  97.87091 101.85455
+## [289] 100.35091 103.24000 103.23273  99.30364 100.61818 100.40182 101.97091 100.96364 102.01091
+## [298] 100.39091  99.79455  97.88364 102.53273  99.94727  98.59818  99.61818 103.93273 101.24000
+## [307] 102.50545 101.36182 102.61091  99.13273  98.51091  99.14727  98.69818  98.77455  97.91636
+## [316]  98.13636 100.56545  97.22182 100.70364 101.55636  99.90909 100.32545 100.08364  99.34364
+## [325] 103.69636  98.78000  97.21273 102.41455 102.80364 102.77818 102.36182 100.95818 104.03273
+## [334] 100.15636 100.76364  98.53818 100.38909  97.71091 103.07091  97.09091 103.20909 100.58545
+## [343] 104.94909  99.00909  98.85455 105.56727  99.10727  99.93091  99.98182 100.25818 104.32364
+## [352] 103.45818 103.55455 105.20364 101.46727 100.25818  99.82727 101.08909 100.84182 103.13636
+## [361] 100.55091  96.31818  98.26364 103.61455 100.53091 100.64000  99.49455  97.98182 100.81818
+## [370]  99.67636 101.81273 103.03818 100.16545 101.36182  99.30000 102.81455 100.79273  99.11091
+## [379] 101.62545  98.10000 101.60545 100.60909  98.25273 102.60727  94.38182 101.37091 103.25455
+## [388] 102.39455 101.35091 102.12364  97.55273 103.73818 103.43455  98.92182 102.18909 100.14000
+## [397] 102.38545 104.12909 102.21273 100.17455 104.10182 101.56182 103.80182 100.64182  99.88000
+## [406] 101.51091 100.58727  99.96727 102.42364  98.79091 106.45273 101.48182 101.79818 100.25273
+## [415] 101.48182 105.98545 102.74727 101.72182  97.65455  99.36000 101.71273  96.34000 102.63818
+## [424] 102.05273  97.53636  97.82182 103.79273 100.23091 101.59818  97.14727 101.98000  99.67636
+## [433] 104.27455  99.38000 104.70364 100.30000 102.24182 101.07091 103.53273 101.63818 100.50909
+## [442]  98.26545  99.51636  99.58000 101.02909 103.68182  97.44727  99.94909 100.68909 101.01818
+## [451] 100.83091 103.10545 103.89636 102.14182  97.82000 102.07455 104.94909  97.32909  98.94545
+## [460]  99.34909 103.46727 100.29818  98.90000 103.40000 102.82182 103.41636 102.25636  98.99818
+## [469] 100.14182  98.37091  96.91455 101.46364 103.15455  99.12364 100.76909 101.16000 103.80364
+## [478] 102.32182 102.32364 101.94000 104.32727 102.20182  99.76182 101.62545 100.91636  99.92182
+## [487] 100.64909 102.45636  99.72545 102.97636  97.08727 100.64000 100.78727  98.95636 101.27091
+## [496] 102.82000  99.81091 102.24909 100.51455 102.13273  99.96364  99.02545 104.06727 103.83273
+## [505]  97.06182  97.63273 102.40182 100.16000  98.88182  99.46000  96.91273 100.87091  97.10909
+## [514] 103.69636 100.43455 106.18727 100.92727 101.51091 101.73091 101.50727 101.11273</code></pre>
 <p>Employees with compa-ratios that are equal to 100% are paid at the midpoint for the pay grade. Employees with compa-ratios that are greater than 100% are paid more than the midpoint for their pay grade, and employees with compa-ratios that are less than 100% are paid less than the midpoint. There are rules of thumb for what can be considered large and small compa-ratios (e.g., 80% vs. 120%), but generally speaking, interpreting compa-ratio values should be based upon the width of the specific pay grade in question, as well as other organizational factors (e.g., pay philosophy).</p>
 </div>
 <div id="compute_comparatio_group" class="section level3" number="60.2.5">
 <h3><span class="header-section-number">60.2.5</span> Compute Compa-Ratio for Group of Employees</h3>
 <p>To compute the compa-ratio for an entire group of employees, apply the <code>mean</code> function from base R to the new <code>CompaRatio</code> variable.</p>
-<div class="sourceCode" id="cb2450"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2450-1"><a href="comparatio.html#cb2450-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean</span></span>
-<span id="cb2450-2"><a href="comparatio.html#cb2450-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>CompaRatio, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2318-1"><a href="comparatio.html#cb2318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean</span></span>
+<span id="cb2318-2"><a href="comparatio.html#cb2318-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>CompaRatio, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 100.9211</code></pre>
 <p>The value of <em>100.705</em> indicates that the organization is paying employees at 101% of the pay grade midpoint, which is a pretty good sign in terms of adherence to the pay policy midpoint for the grade. We would likely be very concerned if we instead saw a group compa-ratio of 75% or 125%.</p>
 </div>
@@ -1413,137 +1396,142 @@ div.csl-indent {
 <h3><span class="header-section-number">60.2.6</span> Investigate Pay Compression and Pay Inversion</h3>
 <p>While computing the mean compa-ratio value for a group of employees is useful, by itself, it does not provide us with direct evidence of pay compression or pay inversion. The scatter plot data visualization can be useful in this regard, particularly when we associate employee tenure with compa-ratio. Because we currently only have a start date (<code>StartDate</code>) variable in our data frame, we need to create a new variable that represents tenure.</p>
 <p>To create a new variable that we will call <code>Tenure</code>, we need to subtract employees’ start date (<code>StartDate</code>) values from some more recent date, which in this case is December 31, 2018 (<code>"2018-12-31"</code>). First, type <code>MergedDF$Tenure</code> followed by the <code>&lt;-</code> assignment operator to inform R that you wish to create and name new variable called <code>Tenure</code> and append it to the existing <code>MergedDF</code> data frame using the <code>$</code> operator. Second, enter the <code>as.Date</code> function from base R with <code>"2018-12-31"</code> as the sole parenthetical argument; this is the more recent date from which we will subtract <code>StartDate</code> values. Third, enter the subtraction operator (<code>-</code>). Fourth, earlier we found that the <code>StartDate</code> variable is of type <em>character</em> and not <em>Date</em>; consequently, we need to convert it to type <em>Date</em> by applying the <code>as.Date</code> function, with the name of the data frame (<code>MergedDF</code>), <code>$</code> operator, and name of the start date (<code>StartDate</code>) variable as the first argument, and <code>format="%m/%d/%Y"</code> as the second argument.</p>
-<div class="sourceCode" id="cb2452"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2452-1"><a href="comparatio.html#cb2452-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure variable</span></span>
-<span id="cb2452-2"><a href="comparatio.html#cb2452-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2018-12-31&quot;</span>) <span class="sc">-</span> <span class="fu">as.Date</span>(MergedDF<span class="sc">$</span>StartDate, <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2320-1"><a href="comparatio.html#cb2320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure variable</span></span>
+<span id="cb2320-2"><a href="comparatio.html#cb2320-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2018-12-31&quot;</span>) <span class="sc">-</span> <span class="fu">as.Date</span>(MergedDF<span class="sc">$</span>StartDate, <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
 <p>Take a look at the vector of values that belong to the new <code>Tenure</code> variable that we just added to the <code>MergedDF</code> data frame. When applying arithmetic to variables of type <em>Date</em>, the resulting variables/output will be of the unit <em>days</em>. That is, when you see the value of <em>2142</em> for <code>Tenure</code>, it refers to 2,142 days of employment.</p>
-<div class="sourceCode" id="cb2453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2453-1"><a href="comparatio.html#cb2453-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure variable values</span></span>
-<span id="cb2453-2"><a href="comparatio.html#cb2453-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
+<div class="sourceCode" id="cb2321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2321-1"><a href="comparatio.html#cb2321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure variable values</span></span>
+<span id="cb2321-2"><a href="comparatio.html#cb2321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
 <pre><code>## Time differences in days
-##   [1] 2162 2159 2150 2150 2142 2142 2130 2130 2120 2120 2100 2100 2060 2060 2055 2055 2043 2043 2021 2021 2001
-##  [22] 2001 1922 1922 1909 1909 1905 1905 1889 1889 1872 1872 1862 1862 1857 1857 1833 1833 1827 1827 1799 1799
-##  [43] 1799 1799 1797 1797 1768 1768 1767 1767 1762 1762 1741 1741 1724 1724 1696 1696 1688 1688 1679 1679 1675
-##  [64] 1675 1655 1655 1634 1634 1626 1626 1621 1621 1619 1619 1616 1616 1612 1612 1600 1600 1600 1600 1596 1596
-##  [85] 1590 1590 1583 1583 1581 1581 1536 1536 1533 1533 1516 1516 1514 1514 1511 1511 1503 1503 1484 1484 1475
-## [106] 1475 1449 1449 1436 1436 1404 1404 1397 1397 1394 1394 1377 1377 1370 1370 1368 1363 1357 1350 1347 1336
-## [127] 1326 1311 1299 1294 1289 1275 1268 1253 1235 1215 1211 1208 1208 1197 1197 1197 1197 1194 1194 1189 1189
-## [148] 1172 1172 1168 1168 1159 1159 1159 1159 1157 1157 1156 1156 1152 1152 1152 1152 1151 1151 1150 1150 1149
-## [169] 1149 1149 1149 1149 1149 1148 1148 1147 1147 1147 1147 1147 1147 1147 1147 1147 1147 1146 1146 1146 1146
-## [190] 1144 1144 1144 1144 1143 1143 1143 1143 1142 1142 1142 1142 1142 1142 1141 1141 1141 1141 1140 1140 1140
-## [211] 1140 1140 1140 1138 1138 1138 1138 1136 1136 1134 1134 1134 1134 1133 1133 1133 1133 1131 1131 1131 1131
-## [232] 1131 1131 1130 1130 1130 1130 1130 1130 1129 1129 1128 1128 1128 1128 1128 1128 1128 1128 1128 1128 1128
-## [253] 1128 1127 1127 1126 1126 1126 1126 1122 1122 1122 1122 1122 1122 1122 1122 1122 1122 1121 1121 1120 1120
-## [274] 1120 1120 1119 1119 1119 1119 1119 1119 1119 1119 1118 1118 1118 1118 1116 1116 1116 1114 1113 1113 1113
-## [295] 1111 1111 1111 1111 1111 1111 1111 1111 1110 1110 1110 1110 1110 1110 1109 1109 1108 1108 1108 1108 1107
-## [316] 1107 1107 1107 1106 1106 1106 1106 1105 1105 1105 1105 1105 1103 1103 1103 1103 1102 1102 1102 1101 1101
-## [337] 1101 1101 1099 1094 1094 1094 1093 1092 1091 1090 1090 1089 1088 1088 1086 1085 1085 1085 1085 1083 1082
-## [358] 1081 1080 1080 1080 1080 1078 1078 1077 1077 1075 1075 1075 1075 1074 1074 1073 1073 1072 1072 1072 1070
-## [379] 1069 1069 1069 1069 1068 1068 1068 1066 1065 1065 1064 1063 1061 1060 1058 1057 1056 1054 1054 1053 1051
-## [400] 1051 1049 1049 1046 1043 1042 1041 1041 1040 1039 1038 1038 1037 1036 1034 1034 1032 1032 1031 1029 1029
-## [421] 1028 1028 1027 1026 1026 1025 1023 1022 1022 1021 1021 1021 1020 1020 1019 1017 1017 1015 1015 1013 1013
-## [442] 1012 1011 1010 1010 1008 1007 1006 1005 1005 1005 1004 1004 1002 1002 1000 1000  999  998  997  997  996
-## [463]  996  996  995  995  995  994  994  992  991  991  990  990  989  989  988  986  985  984  983  983  981
-## [484]  981  979  979  979  978  977  975  975  974  973  971  971  969  968  967  967  964  963  961  960  960
-## [505]  959  958  953  952  951  950  949  948  947  946  945  945  944  943  943  941  941</code></pre>
+##   [1] 2162 2159 2150 2150 2142 2142 2130 2130 2120 2120 2100 2100 2060 2060 2055 2055 2043 2043 2021
+##  [20] 2021 2001 2001 1922 1922 1909 1909 1905 1905 1889 1889 1872 1872 1862 1862 1857 1857 1833 1833
+##  [39] 1827 1827 1799 1799 1799 1799 1797 1797 1768 1768 1767 1767 1762 1762 1741 1741 1724 1724 1696
+##  [58] 1696 1688 1688 1679 1679 1675 1675 1655 1655 1634 1634 1626 1626 1621 1621 1619 1619 1616 1616
+##  [77] 1612 1612 1600 1600 1600 1600 1596 1596 1590 1590 1583 1583 1581 1581 1536 1536 1533 1533 1516
+##  [96] 1516 1514 1514 1511 1511 1503 1503 1484 1484 1475 1475 1449 1449 1436 1436 1404 1404 1397 1397
+## [115] 1394 1394 1377 1377 1370 1370 1368 1363 1357 1350 1347 1336 1326 1311 1299 1294 1289 1275 1268
+## [134] 1253 1235 1215 1211 1208 1208 1197 1197 1197 1197 1194 1194 1189 1189 1172 1172 1168 1168 1159
+## [153] 1159 1159 1159 1157 1157 1156 1156 1152 1152 1152 1152 1151 1151 1150 1150 1149 1149 1149 1149
+## [172] 1149 1149 1148 1148 1147 1147 1147 1147 1147 1147 1147 1147 1147 1147 1146 1146 1146 1146 1144
+## [191] 1144 1144 1144 1143 1143 1143 1143 1142 1142 1142 1142 1142 1142 1141 1141 1141 1141 1140 1140
+## [210] 1140 1140 1140 1140 1138 1138 1138 1138 1136 1136 1134 1134 1134 1134 1133 1133 1133 1133 1131
+## [229] 1131 1131 1131 1131 1131 1130 1130 1130 1130 1130 1130 1129 1129 1128 1128 1128 1128 1128 1128
+## [248] 1128 1128 1128 1128 1128 1128 1127 1127 1126 1126 1126 1126 1122 1122 1122 1122 1122 1122 1122
+## [267] 1122 1122 1122 1121 1121 1120 1120 1120 1120 1119 1119 1119 1119 1119 1119 1119 1119 1118 1118
+## [286] 1118 1118 1116 1116 1116 1114 1113 1113 1113 1111 1111 1111 1111 1111 1111 1111 1111 1110 1110
+## [305] 1110 1110 1110 1110 1109 1109 1108 1108 1108 1108 1107 1107 1107 1107 1106 1106 1106 1106 1105
+## [324] 1105 1105 1105 1105 1103 1103 1103 1103 1102 1102 1102 1101 1101 1101 1101 1099 1094 1094 1094
+## [343] 1093 1092 1091 1090 1090 1089 1088 1088 1086 1085 1085 1085 1085 1083 1082 1081 1080 1080 1080
+## [362] 1080 1078 1078 1077 1077 1075 1075 1075 1075 1074 1074 1073 1073 1072 1072 1072 1070 1069 1069
+## [381] 1069 1069 1068 1068 1068 1066 1065 1065 1064 1063 1061 1060 1058 1057 1056 1054 1054 1053 1051
+## [400] 1051 1049 1049 1046 1043 1042 1041 1041 1040 1039 1038 1038 1037 1036 1034 1034 1032 1032 1031
+## [419] 1029 1029 1028 1028 1027 1026 1026 1025 1023 1022 1022 1021 1021 1021 1020 1020 1019 1017 1017
+## [438] 1015 1015 1013 1013 1012 1011 1010 1010 1008 1007 1006 1005 1005 1005 1004 1004 1002 1002 1000
+## [457] 1000  999  998  997  997  996  996  996  995  995  995  994  994  992  991  991  990  990  989
+## [476]  989  988  986  985  984  983  983  981  981  979  979  979  978  977  975  975  974  973  971
+## [495]  971  969  968  967  967  964  963  961  960  960  959  958  953  952  951  950  949  948  947
+## [514]  946  945  945  944  943  943  941  941</code></pre>
 <p>Using the <code>class</code> function from base R, let’s check the variable type for just the <code>Tenure</code> variable.</p>
-<div class="sourceCode" id="cb2455"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2455-1"><a href="comparatio.html#cb2455-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check variable type/class of Tenure variable</span></span>
-<span id="cb2455-2"><a href="comparatio.html#cb2455-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
+<div class="sourceCode" id="cb2323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2323-1"><a href="comparatio.html#cb2323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check variable type/class of Tenure variable</span></span>
+<span id="cb2323-2"><a href="comparatio.html#cb2323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
 <pre><code>## [1] &quot;difftime&quot;</code></pre>
 <p>As you can see, the <code>Tenure</code> variable is of a special numeric type called <em>difftime</em>. Let’s apply the <code>as.numeric</code> function from base R to convert the <code>Tenure</code> variable to a traditional variable of type <em>numeric</em>. Before the <code>as.numeric</code> function, we type <code>MergedDF$Tenure</code> followed by the <code>&lt;-</code> assignment operator to overwrite the existing <code>Tenure</code> variable in our <code>MergedDF</code> data frame.</p>
-<div class="sourceCode" id="cb2457"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2457-1"><a href="comparatio.html#cb2457-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Tenure variable to numeric type</span></span>
-<span id="cb2457-2"><a href="comparatio.html#cb2457-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
+<div class="sourceCode" id="cb2325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2325-1"><a href="comparatio.html#cb2325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Tenure variable to numeric type</span></span>
+<span id="cb2325-2"><a href="comparatio.html#cb2325-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
 <p>To make sure that worked, let’s apply the <code>class</code> function once more. The conversion worked.</p>
-<div class="sourceCode" id="cb2458"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2458-1"><a href="comparatio.html#cb2458-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check variable type/class of Tenure variable</span></span>
-<span id="cb2458-2"><a href="comparatio.html#cb2458-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
+<div class="sourceCode" id="cb2326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2326-1"><a href="comparatio.html#cb2326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check variable type/class of Tenure variable</span></span>
+<span id="cb2326-2"><a href="comparatio.html#cb2326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>Next, divide the Tenure variable values by <em>365</em> to get an estimate of how many <em>years</em> (as opposed to days) each employee has worked in their current pay grade, which is how we are defining tenure in this context. Before our subtraction equation, we type <code>MergedDF$Tenure_Yrs &lt;-</code> to create a new variable called <code>Tenure_Yrs</code> that will be appended to our <code>MergedDF</code> data frame.</p>
-<div class="sourceCode" id="cb2460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2460-1"><a href="comparatio.html#cb2460-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure_Yrs variable</span></span>
-<span id="cb2460-2"><a href="comparatio.html#cb2460-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure_Yrs <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>Tenure <span class="sc">/</span> <span class="dv">365</span></span></code></pre></div>
+<div class="sourceCode" id="cb2328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2328-1"><a href="comparatio.html#cb2328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure_Yrs variable</span></span>
+<span id="cb2328-2"><a href="comparatio.html#cb2328-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure_Yrs <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>Tenure <span class="sc">/</span> <span class="dv">365</span></span></code></pre></div>
 <p>Take a look at the vector of values that belong to the new <code>Tenure_Yrs</code> variable that we just added to the <code>MergedDF</code> data frame. The values are now in the unit <em>years</em>.</p>
-<div class="sourceCode" id="cb2461"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2461-1"><a href="comparatio.html#cb2461-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure_Yrs variable values</span></span>
-<span id="cb2461-2"><a href="comparatio.html#cb2461-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
-<pre><code>##   [1] 5.923288 5.915068 5.890411 5.890411 5.868493 5.868493 5.835616 5.835616 5.808219 5.808219 5.753425
-##  [12] 5.753425 5.643836 5.643836 5.630137 5.630137 5.597260 5.597260 5.536986 5.536986 5.482192 5.482192
-##  [23] 5.265753 5.265753 5.230137 5.230137 5.219178 5.219178 5.175342 5.175342 5.128767 5.128767 5.101370
-##  [34] 5.101370 5.087671 5.087671 5.021918 5.021918 5.005479 5.005479 4.928767 4.928767 4.928767 4.928767
-##  [45] 4.923288 4.923288 4.843836 4.843836 4.841096 4.841096 4.827397 4.827397 4.769863 4.769863 4.723288
-##  [56] 4.723288 4.646575 4.646575 4.624658 4.624658 4.600000 4.600000 4.589041 4.589041 4.534247 4.534247
-##  [67] 4.476712 4.476712 4.454795 4.454795 4.441096 4.441096 4.435616 4.435616 4.427397 4.427397 4.416438
-##  [78] 4.416438 4.383562 4.383562 4.383562 4.383562 4.372603 4.372603 4.356164 4.356164 4.336986 4.336986
-##  [89] 4.331507 4.331507 4.208219 4.208219 4.200000 4.200000 4.153425 4.153425 4.147945 4.147945 4.139726
-## [100] 4.139726 4.117808 4.117808 4.065753 4.065753 4.041096 4.041096 3.969863 3.969863 3.934247 3.934247
-## [111] 3.846575 3.846575 3.827397 3.827397 3.819178 3.819178 3.772603 3.772603 3.753425 3.753425 3.747945
-## [122] 3.734247 3.717808 3.698630 3.690411 3.660274 3.632877 3.591781 3.558904 3.545205 3.531507 3.493151
-## [133] 3.473973 3.432877 3.383562 3.328767 3.317808 3.309589 3.309589 3.279452 3.279452 3.279452 3.279452
-## [144] 3.271233 3.271233 3.257534 3.257534 3.210959 3.210959 3.200000 3.200000 3.175342 3.175342 3.175342
-## [155] 3.175342 3.169863 3.169863 3.167123 3.167123 3.156164 3.156164 3.156164 3.156164 3.153425 3.153425
-## [166] 3.150685 3.150685 3.147945 3.147945 3.147945 3.147945 3.147945 3.147945 3.145205 3.145205 3.142466
-## [177] 3.142466 3.142466 3.142466 3.142466 3.142466 3.142466 3.142466 3.142466 3.142466 3.139726 3.139726
-## [188] 3.139726 3.139726 3.134247 3.134247 3.134247 3.134247 3.131507 3.131507 3.131507 3.131507 3.128767
-## [199] 3.128767 3.128767 3.128767 3.128767 3.128767 3.126027 3.126027 3.126027 3.126027 3.123288 3.123288
-## [210] 3.123288 3.123288 3.123288 3.123288 3.117808 3.117808 3.117808 3.117808 3.112329 3.112329 3.106849
-## [221] 3.106849 3.106849 3.106849 3.104110 3.104110 3.104110 3.104110 3.098630 3.098630 3.098630 3.098630
-## [232] 3.098630 3.098630 3.095890 3.095890 3.095890 3.095890 3.095890 3.095890 3.093151 3.093151 3.090411
-## [243] 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411
-## [254] 3.087671 3.087671 3.084932 3.084932 3.084932 3.084932 3.073973 3.073973 3.073973 3.073973 3.073973
-## [265] 3.073973 3.073973 3.073973 3.073973 3.073973 3.071233 3.071233 3.068493 3.068493 3.068493 3.068493
-## [276] 3.065753 3.065753 3.065753 3.065753 3.065753 3.065753 3.065753 3.065753 3.063014 3.063014 3.063014
-## [287] 3.063014 3.057534 3.057534 3.057534 3.052055 3.049315 3.049315 3.049315 3.043836 3.043836 3.043836
-## [298] 3.043836 3.043836 3.043836 3.043836 3.043836 3.041096 3.041096 3.041096 3.041096 3.041096 3.041096
-## [309] 3.038356 3.038356 3.035616 3.035616 3.035616 3.035616 3.032877 3.032877 3.032877 3.032877 3.030137
-## [320] 3.030137 3.030137 3.030137 3.027397 3.027397 3.027397 3.027397 3.027397 3.021918 3.021918 3.021918
-## [331] 3.021918 3.019178 3.019178 3.019178 3.016438 3.016438 3.016438 3.016438 3.010959 2.997260 2.997260
-## [342] 2.997260 2.994521 2.991781 2.989041 2.986301 2.986301 2.983562 2.980822 2.980822 2.975342 2.972603
-## [353] 2.972603 2.972603 2.972603 2.967123 2.964384 2.961644 2.958904 2.958904 2.958904 2.958904 2.953425
-## [364] 2.953425 2.950685 2.950685 2.945205 2.945205 2.945205 2.945205 2.942466 2.942466 2.939726 2.939726
-## [375] 2.936986 2.936986 2.936986 2.931507 2.928767 2.928767 2.928767 2.928767 2.926027 2.926027 2.926027
-## [386] 2.920548 2.917808 2.917808 2.915068 2.912329 2.906849 2.904110 2.898630 2.895890 2.893151 2.887671
-## [397] 2.887671 2.884932 2.879452 2.879452 2.873973 2.873973 2.865753 2.857534 2.854795 2.852055 2.852055
-## [408] 2.849315 2.846575 2.843836 2.843836 2.841096 2.838356 2.832877 2.832877 2.827397 2.827397 2.824658
-## [419] 2.819178 2.819178 2.816438 2.816438 2.813699 2.810959 2.810959 2.808219 2.802740 2.800000 2.800000
-## [430] 2.797260 2.797260 2.797260 2.794521 2.794521 2.791781 2.786301 2.786301 2.780822 2.780822 2.775342
-## [441] 2.775342 2.772603 2.769863 2.767123 2.767123 2.761644 2.758904 2.756164 2.753425 2.753425 2.753425
-## [452] 2.750685 2.750685 2.745205 2.745205 2.739726 2.739726 2.736986 2.734247 2.731507 2.731507 2.728767
-## [463] 2.728767 2.728767 2.726027 2.726027 2.726027 2.723288 2.723288 2.717808 2.715068 2.715068 2.712329
-## [474] 2.712329 2.709589 2.709589 2.706849 2.701370 2.698630 2.695890 2.693151 2.693151 2.687671 2.687671
-## [485] 2.682192 2.682192 2.682192 2.679452 2.676712 2.671233 2.671233 2.668493 2.665753 2.660274 2.660274
-## [496] 2.654795 2.652055 2.649315 2.649315 2.641096 2.638356 2.632877 2.630137 2.630137 2.627397 2.624658
-## [507] 2.610959 2.608219 2.605479 2.602740 2.600000 2.597260 2.594521 2.591781 2.589041 2.589041 2.586301
-## [518] 2.583562 2.583562 2.578082 2.578082</code></pre>
+<div class="sourceCode" id="cb2329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2329-1"><a href="comparatio.html#cb2329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure_Yrs variable values</span></span>
+<span id="cb2329-2"><a href="comparatio.html#cb2329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
+<pre><code>##   [1] 5.923288 5.915068 5.890411 5.890411 5.868493 5.868493 5.835616 5.835616 5.808219 5.808219
+##  [11] 5.753425 5.753425 5.643836 5.643836 5.630137 5.630137 5.597260 5.597260 5.536986 5.536986
+##  [21] 5.482192 5.482192 5.265753 5.265753 5.230137 5.230137 5.219178 5.219178 5.175342 5.175342
+##  [31] 5.128767 5.128767 5.101370 5.101370 5.087671 5.087671 5.021918 5.021918 5.005479 5.005479
+##  [41] 4.928767 4.928767 4.928767 4.928767 4.923288 4.923288 4.843836 4.843836 4.841096 4.841096
+##  [51] 4.827397 4.827397 4.769863 4.769863 4.723288 4.723288 4.646575 4.646575 4.624658 4.624658
+##  [61] 4.600000 4.600000 4.589041 4.589041 4.534247 4.534247 4.476712 4.476712 4.454795 4.454795
+##  [71] 4.441096 4.441096 4.435616 4.435616 4.427397 4.427397 4.416438 4.416438 4.383562 4.383562
+##  [81] 4.383562 4.383562 4.372603 4.372603 4.356164 4.356164 4.336986 4.336986 4.331507 4.331507
+##  [91] 4.208219 4.208219 4.200000 4.200000 4.153425 4.153425 4.147945 4.147945 4.139726 4.139726
+## [101] 4.117808 4.117808 4.065753 4.065753 4.041096 4.041096 3.969863 3.969863 3.934247 3.934247
+## [111] 3.846575 3.846575 3.827397 3.827397 3.819178 3.819178 3.772603 3.772603 3.753425 3.753425
+## [121] 3.747945 3.734247 3.717808 3.698630 3.690411 3.660274 3.632877 3.591781 3.558904 3.545205
+## [131] 3.531507 3.493151 3.473973 3.432877 3.383562 3.328767 3.317808 3.309589 3.309589 3.279452
+## [141] 3.279452 3.279452 3.279452 3.271233 3.271233 3.257534 3.257534 3.210959 3.210959 3.200000
+## [151] 3.200000 3.175342 3.175342 3.175342 3.175342 3.169863 3.169863 3.167123 3.167123 3.156164
+## [161] 3.156164 3.156164 3.156164 3.153425 3.153425 3.150685 3.150685 3.147945 3.147945 3.147945
+## [171] 3.147945 3.147945 3.147945 3.145205 3.145205 3.142466 3.142466 3.142466 3.142466 3.142466
+## [181] 3.142466 3.142466 3.142466 3.142466 3.142466 3.139726 3.139726 3.139726 3.139726 3.134247
+## [191] 3.134247 3.134247 3.134247 3.131507 3.131507 3.131507 3.131507 3.128767 3.128767 3.128767
+## [201] 3.128767 3.128767 3.128767 3.126027 3.126027 3.126027 3.126027 3.123288 3.123288 3.123288
+## [211] 3.123288 3.123288 3.123288 3.117808 3.117808 3.117808 3.117808 3.112329 3.112329 3.106849
+## [221] 3.106849 3.106849 3.106849 3.104110 3.104110 3.104110 3.104110 3.098630 3.098630 3.098630
+## [231] 3.098630 3.098630 3.098630 3.095890 3.095890 3.095890 3.095890 3.095890 3.095890 3.093151
+## [241] 3.093151 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411 3.090411
+## [251] 3.090411 3.090411 3.090411 3.087671 3.087671 3.084932 3.084932 3.084932 3.084932 3.073973
+## [261] 3.073973 3.073973 3.073973 3.073973 3.073973 3.073973 3.073973 3.073973 3.073973 3.071233
+## [271] 3.071233 3.068493 3.068493 3.068493 3.068493 3.065753 3.065753 3.065753 3.065753 3.065753
+## [281] 3.065753 3.065753 3.065753 3.063014 3.063014 3.063014 3.063014 3.057534 3.057534 3.057534
+## [291] 3.052055 3.049315 3.049315 3.049315 3.043836 3.043836 3.043836 3.043836 3.043836 3.043836
+## [301] 3.043836 3.043836 3.041096 3.041096 3.041096 3.041096 3.041096 3.041096 3.038356 3.038356
+## [311] 3.035616 3.035616 3.035616 3.035616 3.032877 3.032877 3.032877 3.032877 3.030137 3.030137
+## [321] 3.030137 3.030137 3.027397 3.027397 3.027397 3.027397 3.027397 3.021918 3.021918 3.021918
+## [331] 3.021918 3.019178 3.019178 3.019178 3.016438 3.016438 3.016438 3.016438 3.010959 2.997260
+## [341] 2.997260 2.997260 2.994521 2.991781 2.989041 2.986301 2.986301 2.983562 2.980822 2.980822
+## [351] 2.975342 2.972603 2.972603 2.972603 2.972603 2.967123 2.964384 2.961644 2.958904 2.958904
+## [361] 2.958904 2.958904 2.953425 2.953425 2.950685 2.950685 2.945205 2.945205 2.945205 2.945205
+## [371] 2.942466 2.942466 2.939726 2.939726 2.936986 2.936986 2.936986 2.931507 2.928767 2.928767
+## [381] 2.928767 2.928767 2.926027 2.926027 2.926027 2.920548 2.917808 2.917808 2.915068 2.912329
+## [391] 2.906849 2.904110 2.898630 2.895890 2.893151 2.887671 2.887671 2.884932 2.879452 2.879452
+## [401] 2.873973 2.873973 2.865753 2.857534 2.854795 2.852055 2.852055 2.849315 2.846575 2.843836
+## [411] 2.843836 2.841096 2.838356 2.832877 2.832877 2.827397 2.827397 2.824658 2.819178 2.819178
+## [421] 2.816438 2.816438 2.813699 2.810959 2.810959 2.808219 2.802740 2.800000 2.800000 2.797260
+## [431] 2.797260 2.797260 2.794521 2.794521 2.791781 2.786301 2.786301 2.780822 2.780822 2.775342
+## [441] 2.775342 2.772603 2.769863 2.767123 2.767123 2.761644 2.758904 2.756164 2.753425 2.753425
+## [451] 2.753425 2.750685 2.750685 2.745205 2.745205 2.739726 2.739726 2.736986 2.734247 2.731507
+## [461] 2.731507 2.728767 2.728767 2.728767 2.726027 2.726027 2.726027 2.723288 2.723288 2.717808
+## [471] 2.715068 2.715068 2.712329 2.712329 2.709589 2.709589 2.706849 2.701370 2.698630 2.695890
+## [481] 2.693151 2.693151 2.687671 2.687671 2.682192 2.682192 2.682192 2.679452 2.676712 2.671233
+## [491] 2.671233 2.668493 2.665753 2.660274 2.660274 2.654795 2.652055 2.649315 2.649315 2.641096
+## [501] 2.638356 2.632877 2.630137 2.630137 2.627397 2.624658 2.610959 2.608219 2.605479 2.602740
+## [511] 2.600000 2.597260 2.594521 2.591781 2.589041 2.589041 2.586301 2.583562 2.583562 2.578082
+## [521] 2.578082</code></pre>
 <p>By applying the <code>mean</code> and <code>range</code> functions from base R, we see that the average tenure (in years) for these employees is 3.46 years, the minimum tenure is 2.58 years, and the maximum tenure is 5.87 years.</p>
-<div class="sourceCode" id="cb2463"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2463-1"><a href="comparatio.html#cb2463-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute mean for Tenure_Yrs variable</span></span>
-<span id="cb2463-2"><a href="comparatio.html#cb2463-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2331-1"><a href="comparatio.html#cb2331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute mean for Tenure_Yrs variable</span></span>
+<span id="cb2331-2"><a href="comparatio.html#cb2331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 3.387185</code></pre>
-<div class="sourceCode" id="cb2465"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2465-1"><a href="comparatio.html#cb2465-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute range for Tenure_Yrs variable</span></span>
-<span id="cb2465-2"><a href="comparatio.html#cb2465-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2333-1"><a href="comparatio.html#cb2333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute range for Tenure_Yrs variable</span></span>
+<span id="cb2333-2"><a href="comparatio.html#cb2333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 2.578082 5.923288</code></pre>
-<p>To visualize the relationship between <code>CompaRatio</code> and <code>Tenure_Yrs</code> (to search for evidence of pay compression/inversion), we will create a scatter plot using the <code>ScatterPlot</code> function from the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>. If you haven’t already, install and access the <code>lessR</code> package.</p>
-<div class="sourceCode" id="cb2467"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2467-1"><a href="comparatio.html#cb2467-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
-<span id="cb2467-2"><a href="comparatio.html#cb2467-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2468-1"><a href="comparatio.html#cb2468-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access lessR package</span></span>
-<span id="cb2468-2"><a href="comparatio.html#cb2468-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<p>To visualize the relationship between <code>CompaRatio</code> and <code>Tenure_Yrs</code> (to search for evidence of pay compression/inversion), we will create a scatter plot using the <code>ScatterPlot</code> function from the <code>lessR</code> package <span class="citation">(<a href="references.html#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>. If you haven’t already, install and access the <code>lessR</code> package.</p>
+<div class="sourceCode" id="cb2335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2335-1"><a href="comparatio.html#cb2335-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
+<span id="cb2335-2"><a href="comparatio.html#cb2335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2336-1"><a href="comparatio.html#cb2336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access lessR package</span></span>
+<span id="cb2336-2"><a href="comparatio.html#cb2336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
 <p>To apply the <code>ScatterPlot</code> function, first, type the name of the function. As the first argument, type the variable name you wish to be displayed on the x-axis (<code>CompaRatio</code>). As the second argument, type the variable name you wish to be displayed on the y-axis (<code>Tenure_Yrs</code>). Finally, enter <code>data=</code> followed by the name of the data frame (<code>MergedDF</code>) to which the two variables belong.</p>
-<div class="sourceCode" id="cb2469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2469-1"><a href="comparatio.html#cb2469-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; Tenure_Yrs</span></span>
-<span id="cb2469-2"><a href="comparatio.html#cb2469-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2337-1"><a href="comparatio.html#cb2337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; Tenure_Yrs</span></span>
+<span id="cb2337-2"><a href="comparatio.html#cb2337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1432-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(CompaRatio, Tenure_Yrs, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
-## Plot(CompaRatio, Tenure_Yrs, out_cut=.10)  # label top 10% potential outliers
-## Plot(CompaRatio, Tenure_Yrs, enhance=TRUE)  # many options 
-## 
+## Plot(CompaRatio, Tenure_Yrs, enhance=TRUE)  # many options
+## Plot(CompaRatio, Tenure_Yrs, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(CompaRatio, Tenure_Yrs, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
+## Plot(CompaRatio, Tenure_Yrs, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 521 
-## 
-## 
 ## Sample Correlation of CompaRatio and Tenure_Yrs: r = 0.036 
-## 
-## 
+##   
 ## Hypothesis Test of 0 Correlation:  t = 0.821,  df = 519,  p-value = 0.412 
-## 95% Confidence Interval for Correlation:  -0.0500000 to 0.1220000</code></pre>
+## 95% Confidence Interval for Correlation:  -0.050 to 0.122</code></pre>
 <p>The scatter plot (visually) reveals a slight positive relationship between compa-ratios and tenure. That said, a clear pattern or trend is not easy to discern from this scatterplot. Rather, the main take-away from the scatterplot is that a lot of employees were hired more recently, which suggests that the <code>Tenure_Yrs</code> variable has a skewed distribution. Let’s use the <code>Plot</code> function from <code>lessR</code> to look at the distribution for <code>Tenure_Yrs</code> by itself.</p>
-<div class="sourceCode" id="cb2471"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2471-1"><a href="comparatio.html#cb2471-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of Tenure_Yrs variable</span></span>
-<span id="cb2471-2"><a href="comparatio.html#cb2471-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2339-1"><a href="comparatio.html#cb2339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of Tenure_Yrs variable</span></span>
+<span id="cb2339-2"><a href="comparatio.html#cb2339-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
 <pre><code>## [Violin/Box/Scatterplot graphics from Deepayan Sarkar&#39;s lattice package]
 ## &gt;&gt;&gt; Suggestions
 ## Plot(Tenure_Yrs, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
@@ -1567,7 +1555,7 @@ div.csl-indent {
 ## Upper Whisker: 4.4547945 
 ## Maximum      : 5.9232877 
 ## 
-## 
+##   
 ## (Box plot) Outliers: 68 
 ##  
 ## Small      Large 
@@ -1593,12 +1581,10 @@ div.csl-indent {
 ## 
 ## + 50 more outliers 
 ## 
-## 
 ##            Max Dupli- 
 ## Level       cations   Values 
 ## ------------------------------ 
 ## Tenure_Yrs     12     3.09041095890411 
-## 
 ## 
 ## Parameter values (can be manually set) 
 ## ------------------------------------------------------- 
@@ -1609,11 +1595,11 @@ div.csl-indent {
 ## bw: 0.31       set bandwidth higher for smoother edges</code></pre>
 <p>Note how the distribution is positively skewed, which shows univariate deviation from normality for the <code>Tenure_Yrs</code> variable. The skewness statistic in the <code>Plot</code> output confirms this positive skewness (.545), but that skewness statistic is not too worrisome by most standards; meaning, we could probably feel comfortable using the <code>Tenure_Yrs</code> variable without transforming it.</p>
 <p>Despite the not-very-concerning amount of positive skewness for the <code>Tenure_Yrs</code> variable, let’s take this opportunity to practice transforming a variable using a logarithmic (log) transformation. Specifically, let’s transform the <code>Tenure_Yrs</code> variable using a natural log transformation. To do so, we can use the <code>log</code> function from base R, and let’s call the new variable <code>logTenure_Yrs</code>.</p>
-<div class="sourceCode" id="cb2474"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2474-1"><a href="comparatio.html#cb2474-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create logTenure variable</span></span>
-<span id="cb2474-2"><a href="comparatio.html#cb2474-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>logTenure_Yrs <span class="ot">&lt;-</span> <span class="fu">log</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
+<div class="sourceCode" id="cb2342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2342-1"><a href="comparatio.html#cb2342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create logTenure variable</span></span>
+<span id="cb2342-2"><a href="comparatio.html#cb2342-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>logTenure_Yrs <span class="ot">&lt;-</span> <span class="fu">log</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
 <p>Now, let’s take a look at the univariate distribution of the new <code>logTenure_Yrs</code> variable we just created.</p>
-<div class="sourceCode" id="cb2475"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2475-1"><a href="comparatio.html#cb2475-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of logTenure_Yrs variable</span></span>
-<span id="cb2475-2"><a href="comparatio.html#cb2475-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2343-1"><a href="comparatio.html#cb2343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of logTenure_Yrs variable</span></span>
+<span id="cb2343-2"><a href="comparatio.html#cb2343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
 <pre><code>## [Violin/Box/Scatterplot graphics from Deepayan Sarkar&#39;s lattice package]
 ## &gt;&gt;&gt; Suggestions
 ## Plot(logTenure_Yrs, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
@@ -1637,7 +1623,7 @@ div.csl-indent {
 ## Upper Whisker: 1.55250510 
 ## Maximum      : 1.77889164 
 ## 
-## 
+##   
 ## (Box plot) Outliers: 54 
 ##  
 ## Small      Large 
@@ -1663,12 +1649,10 @@ div.csl-indent {
 ## 
 ## + 36 more outliers 
 ## 
-## 
 ##               Max Dupli- 
 ## Level          cations   Values 
 ## ------------------------------ 
 ## logTenure_Yrs     12     1.12830407847551 
-## 
 ## 
 ## Parameter values (can be manually set) 
 ## ------------------------------------------------------- 
@@ -1678,43 +1662,38 @@ div.csl-indent {
 ## jitter_x: 0.33  random horizontal movement of points 
 ## bw: 0.10       set bandwidth higher for smoother edges</code></pre>
 <p>The positive skewness shows some improvement in the <code>logTenure_Yrs</code> variable but not much. Nevertheless, for the sake of demonstration, let’s create a scatter plot using <code>CompaRatio</code> the new transformed variable called (<code>logTenure_Yrs</code>).</p>
-<div class="sourceCode" id="cb2478"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2478-1"><a href="comparatio.html#cb2478-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; logTenure_Yrs</span></span>
-<span id="cb2478-2"><a href="comparatio.html#cb2478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2346-1"><a href="comparatio.html#cb2346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; logTenure_Yrs</span></span>
+<span id="cb2346-2"><a href="comparatio.html#cb2346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1436-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(CompaRatio, logTenure_Yrs, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, standard errors
-## Plot(CompaRatio, logTenure_Yrs, out_cut=.10)  # label top 10% potential outliers
-## Plot(CompaRatio, logTenure_Yrs, enhance=TRUE)  # many options 
-## 
+## Plot(CompaRatio, logTenure_Yrs, enhance=TRUE)  # many options
+## Plot(CompaRatio, logTenure_Yrs, fill=&quot;skyblue&quot;)  # interior fill color of points
+## Plot(CompaRatio, logTenure_Yrs, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
+## Plot(CompaRatio, logTenure_Yrs, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 521 
-## 
-## 
 ## Sample Correlation of CompaRatio and logTenure_Yrs: r = 0.033 
-## 
-## 
+##   
 ## Hypothesis Test of 0 Correlation:  t = 0.752,  df = 519,  p-value = 0.452 
-## 95% Confidence Interval for Correlation:  -0.05300000 to 0.11900000</code></pre>
+## 95% Confidence Interval for Correlation:  -0.053 to 0.119</code></pre>
 <p>The scatterplot shows a slightly positive upward association. Now, let’s use the <code>Correlation</code> function from <code>lessR</code> to see estimate whether a statistically significant association exists, and if so, how strong and in what direction. To apply the <code>Correlation</code> function, simply enter the name of the <code>Correlation</code> function, and within the parentheses, enter the same three arguments as you entered for the <code>ScatterPlot</code> function directly above. [Technically, we don’t need to apply the <code>Correlation</code> function if we already applied the <code>ScatterPlot</code> function because the latter provides an estimate of the correlation coefficient. Nevertheless, it will make your script clearer and more interpretable if you clearly specify the <code>Correlation</code> function separately from the <code>ScatterPlot</code> function.]</p>
-<div class="sourceCode" id="cb2480"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2480-1"><a href="comparatio.html#cb2480-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation between CompaRatio &amp; logTenure_Yrs</span></span>
-<span id="cb2480-2"><a href="comparatio.html#cb2480-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Correlation</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
-<pre><code>## Correlation Analysis for Variables  and logTenure_Yrs 
-## ----------------------------------------------------- 
+<div class="sourceCode" id="cb2348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2348-1"><a href="comparatio.html#cb2348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation between CompaRatio &amp; logTenure_Yrs</span></span>
+<span id="cb2348-2"><a href="comparatio.html#cb2348-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Correlation</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<pre><code>## Correlation Analysis for Variables CompaRatio and logTenure_Yrs 
+##   
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
 ##  
 ## Number of paired values with neither missing, n = 521 
 ## Number of cases (rows of data) deleted: 0 
 ## 
-## 
 ## Sample Covariance: s = 0.014 
 ##  
 ## Sample Correlation: r = 0.033 
 ## 
-## 
 ## Hypothesis Test of 0 Correlation:  t = 0.752,  df = 519,  p-value = 0.452 
-## 95% Confidence Interval for Correlation:  -0.05300000 to 0.11900000</code></pre>
+## 95% Confidence Interval for Correlation:  -0.053 to 0.119</code></pre>
 <p>We see that the correlation is statistically significant (<em>p</em> = .047). Further, the association between the two variables is positive and small-to-medium in magnitude (<em>r</em> = .266). Thus, there seems to be evidence that employees who are paid higher relative to their pay-grade midpoint tend to have held a job in that pay grade for a longer period of time, but remember, this is based on the tenure variable to which we applied a log-odds transformation; meaning, the interpretation isn’t quite so simple. The slight-to-moderate <em>positive</em> association, however, is a relatively good sign as it means that the organization tends to pay employees more who have higher tenure, which is often at least partially consistent with most organizations’ pay policies/philosophies. If we had seen a <em>negative</em> association, that would have been perhaps suggestive of pay compression or even pay inversion within the pay grade.</p>
 </div>
 <div id="summary_comparatio" class="section level3" number="60.2.7">
@@ -1727,25 +1706,17 @@ div.csl-indent {
 
 
 
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-R-lessR" class="csl-entry">
-Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
-</div>
-<div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
-</div>
-</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="paydeterminants.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create_portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1772,10 +1743,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }

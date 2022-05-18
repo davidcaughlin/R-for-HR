@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 43 Statistically &amp; Empirically Cross-Validating a Selection Tool | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 43 Statistically &amp; Empirically Cross-Validating a Selection Tool | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 43 Statistically &amp; Empirically Cross-Validating a Selection Tool | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,9 +32,8 @@
   
 <link rel="prev" href="differentialprediction.html"/>
 <link rel="next" href="turnover.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 <style type="text/css">
@@ -117,29 +115,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -663,29 +638,29 @@ div.csl-indent {
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1146,8 +1121,8 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1175,14 +1150,14 @@ div.csl-indent {
 <p>In this chapter, we will learn how to perform both statistical and empirical cross-validation, and we will do so in the context of validating an employee selection tool by estimating a multiple linear regression model. For a review of multiple linear regression, please refer to the <a href="incrementalvalidity.html#incrementalvalidity">chapter on estimating incremental validity</a>.</p>
 <div id="conceptualoverview_crossvalidation" class="section level2" number="43.1">
 <h2><span class="header-section-number">43.1</span> Conceptual Overview</h2>
-<p><strong>Cross-validation</strong> is a process through which we determine how well a regression model estimated using a sample from drawn from a particular population generalizes to another sample from that same population. More specifically, the term <strong>cross-validity</strong> “refers to whether the [regression coefficients] derived from one sample can predict outcomes to the same degree in the population as a whole or in other samples drawn from the same population” <span class="citation">(<a href="#ref-cascio2005applied" role="doc-biblioref">Cascio and Aguinis 2005, 173</a>)</span>. At its core, cross-validation represents a step toward true <em>predictive analytics</em>, as it involves training our data on one sample and then testing our data on one or more other samples from that population. In general, we can distinguish between two approaches to cross-validation: statistical and empirical.</p>
+<p><strong>Cross-validation</strong> is a process through which we determine how well a regression model estimated using a sample from drawn from a particular population generalizes to another sample from that same population. More specifically, the term <strong>cross-validity</strong> “refers to whether the [regression coefficients] derived from one sample can predict outcomes to the same degree in the population as a whole or in other samples drawn from the same population” <span class="citation">(<a href="references.html#ref-cascio2005applied" role="doc-biblioref">Cascio and Aguinis 2005, 173</a>)</span>. At its core, cross-validation represents a step toward true <em>predictive analytics</em>, as it involves training our data on one sample and then testing our data on one or more other samples from that population. In general, we can distinguish between two approaches to cross-validation: statistical and empirical.</p>
 <div id="review_statistical_crossvalidation" class="section level3" number="43.1.1">
 <h3><span class="header-section-number">43.1.1</span> Review of Statistical Cross-Validation</h3>
-<p><strong>Statistical cross-validation</strong> is performed <em>without</em> collecting additional data from the underlying population from which the original regression model was estimated. There are a couple of different statistical indicators of a model’s cross-validity, which can be used in tandem to inform judgments of regarding cross-validity: adjusted <em>R</em><sup>2</sup> and squared cross-validity <span class="citation">(<a href="#ref-raju1997methodology" role="doc-biblioref">Raju et al. 1997</a>)</span>.</p>
-<p>The <strong>adjusted <em>R</em><sup>2</sup></strong> (i.e., <span class="math inline">\(R^2_{adj}\)</span>, squared multiple correlation) <span class="citation">(<a href="#ref-ezekiel1930methods" role="doc-biblioref">Ezekiel 1930</a>; <a href="#ref-wherry1931new" role="doc-biblioref">Wherry 1931</a>)</span> appears in most statistical platforms’ regression output (including many R functions), and it provides a more accurate estimate of the amount of variance explained by the predictor variable(s) in the outcome variable than the unadjusted <em>R</em><sup>2</sup> (<span class="math inline">\(R^2_{unadj}\)</span>). Specifically, the <span class="math inline">\(R^2_{adj}\)</span> corrects for the sample size relative to the number of predictor variables in the model, which results in a lower estimate than its unadjusted counterpart. The <span class="math inline">\(R^2_{adj}\)</span> is a better indicator of the magnitude of the association in the underlying population than the <span class="math inline">\(R^2_{unadj}\)</span>. The formula for <span class="math inline">\(R^2_{adj}\)</span> is:</p>
+<p><strong>Statistical cross-validation</strong> is performed <em>without</em> collecting additional data from the underlying population from which the original regression model was estimated. There are a couple of different statistical indicators of a model’s cross-validity, which can be used in tandem to inform judgments of regarding cross-validity: adjusted <em>R</em><sup>2</sup> and squared cross-validity <span class="citation">(<a href="references.html#ref-raju1997methodology" role="doc-biblioref">Raju et al. 1997</a>)</span>.</p>
+<p>The <strong>adjusted <em>R</em><sup>2</sup></strong> (i.e., <span class="math inline">\(R^2_{adj}\)</span>, squared multiple correlation) <span class="citation">(<a href="references.html#ref-ezekiel1930methods" role="doc-biblioref">Ezekiel 1930</a>; <a href="references.html#ref-wherry1931new" role="doc-biblioref">Wherry 1931</a>)</span> appears in most statistical platforms’ regression output (including many R functions), and it provides a more accurate estimate of the amount of variance explained by the predictor variable(s) in the outcome variable than the unadjusted <em>R</em><sup>2</sup> (<span class="math inline">\(R^2_{unadj}\)</span>). Specifically, the <span class="math inline">\(R^2_{adj}\)</span> corrects for the sample size relative to the number of predictor variables in the model, which results in a lower estimate than its unadjusted counterpart. The <span class="math inline">\(R^2_{adj}\)</span> is a better indicator of the magnitude of the association in the underlying population than the <span class="math inline">\(R^2_{unadj}\)</span>. The formula for <span class="math inline">\(R^2_{adj}\)</span> is:</p>
 <p><span class="math inline">\(R^2_{adj} = \frac{N-1}{N-k-1}(1-R^2_{unadj})\)</span></p>
 <p>where <span class="math inline">\(N\)</span> refers to the sample size, <span class="math inline">\(k\)</span> refers to the number of predictor variables in the model, and <span class="math inline">\(R^2_{unadj}\)</span> is the <em>un</em>adjusted <em>R</em><sup>2</sup>, which reflects the sample-specific variance explained by the predictor variables in relation to the outcome variable. Again, this <span class="math inline">\(R^2_{adj}\)</span> is readily produced by most regression functions, so additional steps are not required to compute it.</p>
-<p>In contrast, the <strong>squared cross-validity</strong> (<span class="math inline">\(\rho^2_{c}\)</span>) <span class="citation">(<a href="#ref-browne1975predictive" role="doc-biblioref">Browne 1975</a>)</span> often requires additional computation beyond what our regression function computes. As you can see in the formula below, the <span class="math inline">\(\rho^2_{c}\)</span> formula uses the <span class="math inline">\(R^2_{adj}\)</span> as input.</p>
+<p>In contrast, the <strong>squared cross-validity</strong> (<span class="math inline">\(\rho^2_{c}\)</span>) <span class="citation">(<a href="references.html#ref-browne1975predictive" role="doc-biblioref">Browne 1975</a>)</span> often requires additional computation beyond what our regression function computes. As you can see in the formula below, the <span class="math inline">\(\rho^2_{c}\)</span> formula uses the <span class="math inline">\(R^2_{adj}\)</span> as input.</p>
 <p><span class="math inline">\(\rho^2_{c} = \frac{(N-k-3)(R^2_{adj})^2+R^2_{adj}}{(N-2k-2)(R^2_{adj})+k}\)</span></p>
 <p>Both <span class="math inline">\(R^2_{adj}\)</span> and <span class="math inline">\(\rho^2_{c}\)</span> can be used inform our understanding of a model’s squared cross-validity; however, preference should be given to the <span class="math inline">\(\rho^2_{c}\)</span>, as <span class="math inline">\(R^2_{adj}\)</span> by itself tends to overestimate the squared cross-validity. If we take the square root of <span class="math inline">\(\rho^2_{c}\)</span>, we get an estimate of <strong>cross-validity</strong> (<span class="math inline">\(\rho_{c}\)</span>).</p>
 </div>
@@ -1253,48 +1228,50 @@ div.csl-indent {
 </div>
 <div id="initsteps_crossvalidation" class="section level3" number="43.2.2">
 <h3><span class="header-section-number">43.2.2</span> Initial Steps</h3>
-<p>If you haven’t already, save the files called <strong>“Sample1.csv”</strong> and <strong>“Sample2.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the files called <strong>“Sample1.csv”</strong> and <strong>“Sample2.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data files for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb1611"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1611-1"><a href="crossvalidation.html#cb1611-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb1611-2"><a href="crossvalidation.html#cb1611-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data files called <strong>“Sample1.csv”</strong> and <strong>“Sample2.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb1612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1612-1"><a href="crossvalidation.html#cb1612-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb1612-2"><a href="crossvalidation.html#cb1612-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb1612-3"><a href="crossvalidation.html#cb1612-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb1612-4"><a href="crossvalidation.html#cb1612-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1613-1"><a href="crossvalidation.html#cb1613-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb1613-2"><a href="crossvalidation.html#cb1613-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1613-3"><a href="crossvalidation.html#cb1613-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1613-4"><a href="crossvalidation.html#cb1613-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb1613-5"><a href="crossvalidation.html#cb1613-5" aria-hidden="true" tabindex="-1"></a>Sample1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample1.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 182 Columns: 4</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## dbl (4): PerfEval, WorkSample, SJT, Consc</code></pre>
+<div class="sourceCode" id="cb1519"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1519-1"><a href="crossvalidation.html#cb1519-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb1519-2"><a href="crossvalidation.html#cb1519-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data files called <strong>“Sample1.csv”</strong> and <strong>“Sample2.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb1520"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1520-1"><a href="crossvalidation.html#cb1520-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb1520-2"><a href="crossvalidation.html#cb1520-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb1520-3"><a href="crossvalidation.html#cb1520-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb1520-4"><a href="crossvalidation.html#cb1520-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1521"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1521-1"><a href="crossvalidation.html#cb1521-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb1521-2"><a href="crossvalidation.html#cb1521-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1521-3"><a href="crossvalidation.html#cb1521-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1521-4"><a href="crossvalidation.html#cb1521-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
+<span id="cb1521-5"><a href="crossvalidation.html#cb1521-5" aria-hidden="true" tabindex="-1"></a>Sample1 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample1.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb1617"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1617-1"><a href="crossvalidation.html#cb1617-1" aria-hidden="true" tabindex="-1"></a>Sample2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample2.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 166 Columns: 4</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## dbl (4): PerfEval, WorkSample, SJT, Consc</code></pre>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   PerfEval = col_double(),
+##   WorkSample = col_double(),
+##   SJT = col_double(),
+##   Consc = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb1523"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1523-1"><a href="crossvalidation.html#cb1523-1" aria-hidden="true" tabindex="-1"></a>Sample2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Sample2.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb1621"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1621-1"><a href="crossvalidation.html#cb1621-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb1621-2"><a href="crossvalidation.html#cb1621-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Sample1)</span></code></pre></div>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   PerfEval = col_double(),
+##   WorkSample = col_double(),
+##   SJT = col_double(),
+##   Consc = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb1525"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1525-1"><a href="crossvalidation.html#cb1525-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb1525-2"><a href="crossvalidation.html#cb1525-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Sample1)</span></code></pre></div>
 <pre><code>## [1] &quot;PerfEval&quot;   &quot;WorkSample&quot; &quot;SJT&quot;        &quot;Consc&quot;</code></pre>
-<div class="sourceCode" id="cb1623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1623-1"><a href="crossvalidation.html#cb1623-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Sample2)</span></code></pre></div>
+<div class="sourceCode" id="cb1527"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1527-1"><a href="crossvalidation.html#cb1527-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(Sample2)</span></code></pre></div>
 <pre><code>## [1] &quot;PerfEval&quot;   &quot;WorkSample&quot; &quot;SJT&quot;        &quot;Consc&quot;</code></pre>
-<div class="sourceCode" id="cb1625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1625-1"><a href="crossvalidation.html#cb1625-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View number of rows/cases in data frame (tibble) objects</span></span>
-<span id="cb1625-2"><a href="crossvalidation.html#cb1625-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Sample1)</span></code></pre></div>
+<div class="sourceCode" id="cb1529"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1529-1"><a href="crossvalidation.html#cb1529-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View number of rows/cases in data frame (tibble) objects</span></span>
+<span id="cb1529-2"><a href="crossvalidation.html#cb1529-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Sample1)</span></code></pre></div>
 <pre><code>## [1] 182</code></pre>
-<div class="sourceCode" id="cb1627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1627-1"><a href="crossvalidation.html#cb1627-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Sample2)</span></code></pre></div>
+<div class="sourceCode" id="cb1531"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1531-1"><a href="crossvalidation.html#cb1531-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(Sample2)</span></code></pre></div>
 <pre><code>## [1] 166</code></pre>
-<div class="sourceCode" id="cb1629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1629-1"><a href="crossvalidation.html#cb1629-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame (tibble) objects</span></span>
-<span id="cb1629-2"><a href="crossvalidation.html#cb1629-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Sample1)</span></code></pre></div>
-<pre><code>## spec_tbl_df [182 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb1533"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1533-1"><a href="crossvalidation.html#cb1533-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame (tibble) objects</span></span>
+<span id="cb1533-2"><a href="crossvalidation.html#cb1533-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Sample1)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,4] [182 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ PerfEval  : num [1:182] 5.1 5 3.5 5 4 4.4 5.2 5.1 3.8 3.1 ...
 ##  $ WorkSample: num [1:182] 7.5 8.1 7.6 6.6 6 6 8 8.8 6.1 6.5 ...
 ##  $ SJT       : num [1:182] 7.9 5.6 4.4 5.7 8.5 5.8 6.1 4.7 4.5 5.1 ...
@@ -1305,10 +1282,9 @@ div.csl-indent {
 ##   ..   WorkSample = col_double(),
 ##   ..   SJT = col_double(),
 ##   ..   Consc = col_double()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb1631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1631-1"><a href="crossvalidation.html#cb1631-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Sample2)</span></code></pre></div>
-<pre><code>## spec_tbl_df [166 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+##   .. )</code></pre>
+<div class="sourceCode" id="cb1535"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1535-1"><a href="crossvalidation.html#cb1535-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Sample2)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,4] [166 x 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ PerfEval  : num [1:166] 4 4.3 3.9 5.6 4.5 4.9 4.2 4.7 4.5 5.6 ...
 ##  $ WorkSample: num [1:166] 6.7 9 6.8 7.6 4.5 8.1 6.5 7.1 6.1 5.3 ...
 ##  $ SJT       : num [1:166] 4.4 3.7 5.6 6.8 6.9 7.4 6.4 7 7.2 10 ...
@@ -1319,10 +1295,9 @@ div.csl-indent {
 ##   ..   WorkSample = col_double(),
 ##   ..   SJT = col_double(),
 ##   ..   Consc = col_double()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb1633"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1633-1"><a href="crossvalidation.html#cb1633-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame (tibble) objects</span></span>
-<span id="cb1633-2"><a href="crossvalidation.html#cb1633-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample1)</span></code></pre></div>
+##   .. )</code></pre>
+<div class="sourceCode" id="cb1537"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1537-1"><a href="crossvalidation.html#cb1537-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame (tibble) objects</span></span>
+<span id="cb1537-2"><a href="crossvalidation.html#cb1537-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample1)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   PerfEval WorkSample   SJT Consc
 ##      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1332,7 +1307,7 @@ div.csl-indent {
 ## 4      5          6.6   5.7   4.5
 ## 5      4          6     8.5   3.6
 ## 6      4.4        6     5.8   4.8</code></pre>
-<div class="sourceCode" id="cb1635"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1635-1"><a href="crossvalidation.html#cb1635-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample2)</span></code></pre></div>
+<div class="sourceCode" id="cb1539"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1539-1"><a href="crossvalidation.html#cb1539-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample2)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 4
 ##   PerfEval WorkSample   SJT Consc
 ##      &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -1347,11 +1322,11 @@ div.csl-indent {
 <div id="crossvalidation_statistical" class="section level3" number="43.2.3">
 <h3><span class="header-section-number">43.2.3</span> Perform Statistical Cross-Validation</h3>
 <p>In order to perform statistical cross-validation, we first need to estimate our model. In this chapter, we’ll estimate a multiple linear regression in which we treat the three selection tool variables (<code>WorkSample</code>, <code>SJT</code>, <code>Consc</code>) as predictors and the variable <code>PerfEval</code> as our criterion (outcome). In other words, we are estimating the criterion-related and incremental validity of these three selection tools in relation to the outcome. In doing so, we will determine whether each selection to explains unique variance in the outcome, and how much variance, collectively, all three selection tools explain in the outcome. For more information on multiple linear regression, check out the <a href="incrementalvalidity.html#incrementalvalidity">chapter on estimating incremental validity</a>. Note that in this chapter we will use the <code>lm</code> function from base R to estimate our multiple linear regression model, which is discussed in the <a href="incrementalvalidity.html#lm_function_mlr">chapter supplement</a> to the aforementioned chapter.</p>
-<div class="sourceCode" id="cb1637"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1637-1"><a href="crossvalidation.html#cb1637-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
-<span id="cb1637-2"><a href="crossvalidation.html#cb1637-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(PerfEval <span class="sc">~</span> WorkSample <span class="sc">+</span> SJT <span class="sc">+</span> Consc, <span class="at">data=</span>Sample1)</span>
-<span id="cb1637-3"><a href="crossvalidation.html#cb1637-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1637-4"><a href="crossvalidation.html#cb1637-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb1637-5"><a href="crossvalidation.html#cb1637-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1541"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1541-1"><a href="crossvalidation.html#cb1541-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
+<span id="cb1541-2"><a href="crossvalidation.html#cb1541-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(PerfEval <span class="sc">~</span> WorkSample <span class="sc">+</span> SJT <span class="sc">+</span> Consc, <span class="at">data=</span>Sample1)</span>
+<span id="cb1541-3"><a href="crossvalidation.html#cb1541-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1541-4"><a href="crossvalidation.html#cb1541-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
+<span id="cb1541-5"><a href="crossvalidation.html#cb1541-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = PerfEval ~ WorkSample + SJT + Consc, data = Sample1)
@@ -1373,24 +1348,24 @@ div.csl-indent {
 ## Multiple R-squared:  0.3592, Adjusted R-squared:  0.3484 
 ## F-statistic: 33.25 on 3 and 178 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>In the output, you can see that each of the regression coefficients associated with the predictor variables (i.e., selection tools) are statistically significant, which indicates that they each explain unique variance in the outcome (<code>PerfEval</code>) when controlling for the predictors in the model. Further, the <span class="math inline">\(R^2_{unadj}\)</span> (unadjusted <em>R</em><sup>2</sup>) is .359, and the <span class="math inline">\(R^2_{adj}\)</span> (adjusted <em>R</em><sup>2</sup>) is .348, both of which provide us with estimates of model fit and the amount of variance explained in the outcome variable collectively by the three predictor variables.</p>
-<p>Next, let’s define a function that will compute the <strong>squared cross-validity</strong> (<span class="math inline">\(\rho^2_{c}\)</span>) based on the Browne <span class="citation">(<a href="#ref-browne1975predictive" role="doc-biblioref">1975</a>)</span> formula when we type the name of a regression model object as the sole argument. Let’s name this function <code>rho2</code> for <span class="math inline">\(\rho^2_{c}\)</span>. As a reminder, the Browne formula is:</p>
+<p>Next, let’s define a function that will compute the <strong>squared cross-validity</strong> (<span class="math inline">\(\rho^2_{c}\)</span>) based on the Browne <span class="citation">(<a href="references.html#ref-browne1975predictive" role="doc-biblioref">1975</a>)</span> formula when we type the name of a regression model object as the sole argument. Let’s name this function <code>rho2</code> for <span class="math inline">\(\rho^2_{c}\)</span>. As a reminder, the Browne formula is:</p>
 <p><span class="math inline">\(\rho^2_{c} = \frac{(N-k-3)(R^2_{adj})^2+R^2_{adj}}{(N-2k-2)(R^2_{adj})+k}\)</span></p>
 <p>You don’t need to change anything in the function script below. Simply run it as is.</p>
-<div class="sourceCode" id="cb1639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1639-1"><a href="crossvalidation.html#cb1639-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write function for squared cross-validity formula (Browne, 1975)</span></span>
-<span id="cb1639-2"><a href="crossvalidation.html#cb1639-2" aria-hidden="true" tabindex="-1"></a>rho2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
-<span id="cb1639-3"><a href="crossvalidation.html#cb1639-3" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">nobs</span>(model1) <span class="co"># model sample size</span></span>
-<span id="cb1639-4"><a href="crossvalidation.html#cb1639-4" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(model1)) <span class="sc">-</span> <span class="dv">1</span> <span class="co"># number of predictor variables</span></span>
-<span id="cb1639-5"><a href="crossvalidation.html#cb1639-5" aria-hidden="true" tabindex="-1"></a>  R2_adj <span class="ot">&lt;-</span> <span class="fu">summary</span>(model1)<span class="sc">$</span>adj.r.squared <span class="co"># adjusted R-squared</span></span>
-<span id="cb1639-6"><a href="crossvalidation.html#cb1639-6" aria-hidden="true" tabindex="-1"></a>  ((N <span class="sc">-</span> k <span class="sc">-</span> <span class="dv">3</span>) <span class="sc">*</span> (R2_adj<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> R2_adj) <span class="sc">/</span> ((N <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span> k) <span class="sc">-</span> <span class="dv">2</span>) <span class="sc">*</span> R2_adj <span class="sc">+</span> k) <span class="co"># Browne formula</span></span>
-<span id="cb1639-7"><a href="crossvalidation.html#cb1639-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1543"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1543-1"><a href="crossvalidation.html#cb1543-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write function for squared cross-validity formula (Browne, 1975)</span></span>
+<span id="cb1543-2"><a href="crossvalidation.html#cb1543-2" aria-hidden="true" tabindex="-1"></a>rho2 <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb1543-3"><a href="crossvalidation.html#cb1543-3" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">nobs</span>(model1) <span class="co"># model sample size</span></span>
+<span id="cb1543-4"><a href="crossvalidation.html#cb1543-4" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">coef</span>(model1)) <span class="sc">-</span> <span class="dv">1</span> <span class="co"># number of predictor variables</span></span>
+<span id="cb1543-5"><a href="crossvalidation.html#cb1543-5" aria-hidden="true" tabindex="-1"></a>  R2_adj <span class="ot">&lt;-</span> <span class="fu">summary</span>(model1)<span class="sc">$</span>adj.r.squared <span class="co"># adjusted R-squared</span></span>
+<span id="cb1543-6"><a href="crossvalidation.html#cb1543-6" aria-hidden="true" tabindex="-1"></a>  ((N <span class="sc">-</span> k <span class="sc">-</span> <span class="dv">3</span>) <span class="sc">*</span> (R2_adj<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> R2_adj) <span class="sc">/</span> ((N <span class="sc">-</span> (<span class="dv">2</span> <span class="sc">*</span> k) <span class="sc">-</span> <span class="dv">2</span>) <span class="sc">*</span> R2_adj <span class="sc">+</span> k) <span class="co"># Browne formula</span></span>
+<span id="cb1543-7"><a href="crossvalidation.html#cb1543-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Using the new function called <code>rho2</code>, type the name of our regression model object as the sole parenthetical argument.</p>
-<div class="sourceCode" id="cb1640"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1640-1"><a href="crossvalidation.html#cb1640-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate squared cross-validity</span></span>
-<span id="cb1640-2"><a href="crossvalidation.html#cb1640-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rho2</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1544"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1544-1"><a href="crossvalidation.html#cb1544-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate squared cross-validity</span></span>
+<span id="cb1544-2"><a href="crossvalidation.html#cb1544-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rho2</span>(model1)</span></code></pre></div>
 <pre><code>## [1] 0.3412245</code></pre>
 <p>The output indicates that the squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) is .341, which indicates that, in the population, the predictor variables included in the model explain 34.1% of the variability in the outcome variable. If you recall, the <span class="math inline">\(R^2_{unadj}\)</span> was .359, and the <span class="math inline">\(R^2_{adj}\)</span> was .348. Thus, compared to <span class="math inline">\(R^2_{unadj}\)</span>, the model fit didn’t shrink too much.</p>
 <p>To estimate the <strong>cross-validity</strong> (<span class="math inline">\(\rho_{c}\)</span>), just take the square root of (<span class="math inline">\(\rho^2_{c}\)</span>).</p>
-<div class="sourceCode" id="cb1642"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1642-1"><a href="crossvalidation.html#cb1642-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate cross-validity</span></span>
-<span id="cb1642-2"><a href="crossvalidation.html#cb1642-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">rho2</span>(model1))</span></code></pre></div>
+<div class="sourceCode" id="cb1546"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1546-1"><a href="crossvalidation.html#cb1546-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate cross-validity</span></span>
+<span id="cb1546-2"><a href="crossvalidation.html#cb1546-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">rho2</span>(model1))</span></code></pre></div>
 <pre><code>## [1] 0.5841442</code></pre>
 <p>Thus, our cross-validity (multiple correlation) is .584.</p>
 <p><strong>Technical Write-Up:</strong> We performed a concurrent validation study based on a sample 182 job incumbents. Given that all three selection tools (i.e., conscientiousness inventory, work sample, situational judgment test) showed evidence of incremental validity, we included all three in a multiple linear regression model, with performance evaluation scores as the criterion. All three selection tools showed evidence of incremental validity with respect to one another. To understand how well this estimated model might generalize to the broader population, we performed statistical cross-validation. Specifically, we found that the adjusted <em>R</em><sup>2</sup> was .348 and the squared cross-validity (<span class="math inline">\(\rho^2_{c}\)</span>) was .341. The latter indicates that in the population, the three selection tools collectively explain 34.1% of the variability in the criterion.</p>
@@ -1398,11 +1373,11 @@ div.csl-indent {
 <div id="crossvalidation_empirical" class="section level3" number="43.2.4">
 <h3><span class="header-section-number">43.2.4</span> Perform Empirical Cross-Validation</h3>
 <p>There are different ways that we can go about performing empirical cross-validation, but regardless of the approach, we are entering the realm of predictive analytics. Why? Well, we are testing the model fit and predictive accuracy of our model estimated using one sample in a different sample from the same population. To get things started, let’s estimate our multiple linear regression model that contains the three selection tool variables (<code>WorkSample</code>, <code>SJT</code>, <code>Consc</code>) as predictors and <code>PerfEval</code> as the outcome (criterion) variable. We will estimate our model using the first sample data frame, which we named <code>Sample1</code> above.</p>
-<div class="sourceCode" id="cb1644"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1644-1"><a href="crossvalidation.html#cb1644-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
-<span id="cb1644-2"><a href="crossvalidation.html#cb1644-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(PerfEval <span class="sc">~</span> WorkSample <span class="sc">+</span> SJT <span class="sc">+</span> Consc, <span class="at">data=</span>Sample1)</span>
-<span id="cb1644-3"><a href="crossvalidation.html#cb1644-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1644-4"><a href="crossvalidation.html#cb1644-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
-<span id="cb1644-5"><a href="crossvalidation.html#cb1644-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
+<div class="sourceCode" id="cb1548"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1548-1"><a href="crossvalidation.html#cb1548-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
+<span id="cb1548-2"><a href="crossvalidation.html#cb1548-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(PerfEval <span class="sc">~</span> WorkSample <span class="sc">+</span> SJT <span class="sc">+</span> Consc, <span class="at">data=</span>Sample1)</span>
+<span id="cb1548-3"><a href="crossvalidation.html#cb1548-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1548-4"><a href="crossvalidation.html#cb1548-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print summary of results</span></span>
+<span id="cb1548-5"><a href="crossvalidation.html#cb1548-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = PerfEval ~ WorkSample + SJT + Consc, data = Sample1)
@@ -1425,75 +1400,75 @@ div.csl-indent {
 ## F-statistic: 33.25 on 3 and 178 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>In the output, you can see that each of the regression coefficients associated with the predictor variables (i.e., selection tools) are statistically significant, which indicates that they each explain unique variance in the outcome (<code>PerfEval</code>) when controlling for the predictors in the model. Further, the <span class="math inline">\(R^2_{unadj}\)</span> (unadjusted <em>R</em><sup>2</sup>) is .359, and the <span class="math inline">\(R^2_{adj}\)</span> (adjusted <em>R</em><sup>2</sup>) is .348, both of which provide us with estimates of model fit and the amount of variance explained in the outcome variable collectively by the three predictor variables.</p>
 <p>Let’s kick things up a notch by applying our model that we named <code>model1</code> to a new data frame called (<code>Sample2</code>). Using the <code>predict</code> function from base R, enter the name of the model object as the first argument and the name of the second data frame object as the second argument. Let’s assign these predicted values using the <code>&lt;-</code> assignment operator to an object called <code>predictions</code>. The <code>predict</code> function is using our regression model equation from the first sample to estimate the fitted (predicted) values of the outcome variable in the second sample based on the values for the different predictor variables.</p>
-<div class="sourceCode" id="cb1646"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1646-1"><a href="crossvalidation.html#cb1646-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict values on outcome using second sample</span></span>
-<span id="cb1646-2"><a href="crossvalidation.html#cb1646-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, Sample2)</span></code></pre></div>
-<p>Next, we will evaluate the quality of our model’s fit to the new dataset (<code>Sample2</code>). We’ll use several functions from the <code>caret</code> package <span class="citation">(<a href="#ref-R-caret" role="doc-biblioref">Kuhn 2021</a>)</span>, so be sure to install and access that package if you haven’t already. The <code>caret</code> package is renowned for its predictive modeling and machine learning functions.</p>
-<div class="sourceCode" id="cb1647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1647-1"><a href="crossvalidation.html#cb1647-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
-<span id="cb1647-2"><a href="crossvalidation.html#cb1647-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb1648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1648-1"><a href="crossvalidation.html#cb1648-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
-<span id="cb1648-2"><a href="crossvalidation.html#cb1648-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<div class="sourceCode" id="cb1550"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1550-1"><a href="crossvalidation.html#cb1550-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict values on outcome using second sample</span></span>
+<span id="cb1550-2"><a href="crossvalidation.html#cb1550-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, Sample2)</span></code></pre></div>
+<p>Next, we will evaluate the quality of our model’s fit to the new dataset (<code>Sample2</code>). We’ll use several functions from the <code>caret</code> package <span class="citation">(<a href="references.html#ref-R-caret" role="doc-biblioref">Kuhn 2021</a>)</span>, so be sure to install and access that package if you haven’t already. The <code>caret</code> package is renowned for its predictive modeling and machine learning functions.</p>
+<div class="sourceCode" id="cb1551"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1551-1"><a href="crossvalidation.html#cb1551-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install caret package if you haven&#39;t already</span></span>
+<span id="cb1551-2"><a href="crossvalidation.html#cb1551-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;caret&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1552"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1552-1"><a href="crossvalidation.html#cb1552-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access caret package</span></span>
+<span id="cb1552-2"><a href="crossvalidation.html#cb1552-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
 <p>For comparison, first, let’s extract the unadjusted <code>r.squared</code> value from the our regression model summary by appending <code>r.squared</code> to the end of <code>summary(model1)</code> using the <code>$</code> operator. Second, using the <code>R2</code> function from the <code>caret</code> package, enter the name of the <code>predictions</code> object we created above as the first argument, and as the second argument, enter the name of the second data frame (<code>Sample2</code>), followed by the the <code>$</code> operator and the name of the outcome variable (<code>PerfEval</code>). The first operation will extract our <span class="math inline">\(R^2_{unadj}\)</span> from the original sample, and the second operation will estimate our <span class="math inline">\(\rho^2_{c}\)</span> based on our new model and its performance in the second sample.</p>
-<div class="sourceCode" id="cb1649"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1649-1"><a href="crossvalidation.html#cb1649-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unadjusted R-squared based on the first sample</span></span>
-<span id="cb1649-2"><a href="crossvalidation.html#cb1649-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb1553"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1553-1"><a href="crossvalidation.html#cb1553-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Unadjusted R-squared based on the first sample</span></span>
+<span id="cb1553-2"><a href="crossvalidation.html#cb1553-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.359162</code></pre>
-<div class="sourceCode" id="cb1651"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1651-1"><a href="crossvalidation.html#cb1651-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R-squared based on the first sample</span></span>
-<span id="cb1651-2"><a href="crossvalidation.html#cb1651-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>adj.r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb1555"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1555-1"><a href="crossvalidation.html#cb1555-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R-squared based on the first sample</span></span>
+<span id="cb1555-2"><a href="crossvalidation.html#cb1555-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>adj.r.squared</span></code></pre></div>
 <pre><code>## [1] 0.3483614</code></pre>
-<div class="sourceCode" id="cb1653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1653-1"><a href="crossvalidation.html#cb1653-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squared cross-validity based on the second sample</span></span>
-<span id="cb1653-2"><a href="crossvalidation.html#cb1653-2" aria-hidden="true" tabindex="-1"></a><span class="fu">R2</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
+<div class="sourceCode" id="cb1557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1557-1"><a href="crossvalidation.html#cb1557-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Squared cross-validity based on the second sample</span></span>
+<span id="cb1557-2"><a href="crossvalidation.html#cb1557-2" aria-hidden="true" tabindex="-1"></a><span class="fu">R2</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
 <pre><code>## [1] 0.3412069</code></pre>
 <p>As one would expect, the <span class="math inline">\(\rho^2_{c}\)</span> is slightly lower the <span class="math inline">\(R^2_{unadj}\)</span> when the model is applied to new data, but fortunately, it doesn’t decrease that much. Further, the <span class="math inline">\(\rho^2_{c}\)</span> is only slightly lower than the <span class="math inline">\(R^2_{adj}\)</span>. This is our first indication that the model performed fairly well with the new data from the population.</p>
 <p>To calculate the multiple <em>R</em> and cross-validity (<span class="math inline">\(\rho_c\)</span>) values, we simply take the square root (<code>sqrt</code>) of the two values we calculated above.</p>
-<div class="sourceCode" id="cb1655"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1655-1"><a href="crossvalidation.html#cb1655-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple R for first sample</span></span>
-<span id="cb1655-2"><a href="crossvalidation.html#cb1655-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared)</span></code></pre></div>
+<div class="sourceCode" id="cb1559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1559-1"><a href="crossvalidation.html#cb1559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiple R for first sample</span></span>
+<span id="cb1559-2"><a href="crossvalidation.html#cb1559-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared)</span></code></pre></div>
 <pre><code>## [1] 0.5993013</code></pre>
-<div class="sourceCode" id="cb1657"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1657-1"><a href="crossvalidation.html#cb1657-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validity for second sample</span></span>
-<span id="cb1657-2"><a href="crossvalidation.html#cb1657-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">R2</span>(predictions, Sample2<span class="sc">$</span>PerfEval))</span></code></pre></div>
+<div class="sourceCode" id="cb1561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1561-1"><a href="crossvalidation.html#cb1561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validity for second sample</span></span>
+<span id="cb1561-2"><a href="crossvalidation.html#cb1561-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">R2</span>(predictions, Sample2<span class="sc">$</span>PerfEval))</span></code></pre></div>
 <pre><code>## [1] 0.5841292</code></pre>
 <p>Similarly, the multiple <em>R</em> and cross-validity (<span class="math inline">\(\rho_c\)</span>) values are comparable, with the cross-validity value only slightly lower than the multiple <em>R</em> value.</p>
 <p>The <strong>mean squared error (MSE)</strong> is another way that we can test how well our model performed. As the label implies, the MSE is the mean of the error (residual) values squared. First, let’s estimate the MSE for the initial sample, which reflects the extent to which the fitted (predicted) values based on the model deviate from the actual outcome variables in the initial sample (<code>Sample1</code>) on which the model was estimated. To estimate the MSE for the model based on the initial sample, we extract the <code>residuals</code> from the model (<code>model1</code>), square them, and then take the mean using the <code>mean</code> function from base R. Second, let’s estimate the MSE for the second sample based on the extent to which the fitted (predicted) values from our model (<code>model1</code>) deviate from the actual outcome variables in the second sample (<code>Sample2</code>). To estimate the MSE for the model (<code>model1</code>) in relation to the second sample, we subtract the predicted values (<code>predictions</code>) from the outcome variable (<code>PerfEval</code>) values for the second sample (<code>Sample2</code>), square the difference, and then compute the mean using the <code>mean</code> function from base R.</p>
-<div class="sourceCode" id="cb1659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1659-1"><a href="crossvalidation.html#cb1659-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE (Mean Squared Error) for first sample</span></span>
-<span id="cb1659-2"><a href="crossvalidation.html#cb1659-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1563-1"><a href="crossvalidation.html#cb1563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE (Mean Squared Error) for first sample</span></span>
+<span id="cb1563-2"><a href="crossvalidation.html#cb1563-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 0.3393501</code></pre>
-<div class="sourceCode" id="cb1661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1661-1"><a href="crossvalidation.html#cb1661-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE (Mean Squared Error) for second sample</span></span>
-<span id="cb1661-2"><a href="crossvalidation.html#cb1661-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((Sample2<span class="sc">$</span>PerfEval <span class="sc">-</span> predictions)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1565-1"><a href="crossvalidation.html#cb1565-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE (Mean Squared Error) for second sample</span></span>
+<span id="cb1565-2"><a href="crossvalidation.html#cb1565-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>((Sample2<span class="sc">$</span>PerfEval <span class="sc">-</span> predictions)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 0.4381229</code></pre>
 <p>In isolation, each MSE value does not mean much; however, each MSE value takes on mean when we compare it to another MSE value. As expected, the MSE is higher when we apply the model (<code>model1</code>) estimated from the first sample (<code>Sample1</code>) to the second sample (<code>Sample2</code>). With that said, we don’t want our MSE in the second, validation sample to be too much higher than the original, test sample. Often, however, we opt for the root mean squared error for evaluating the quality of our model’s fit because it is in the same units as the outcome variable.</p>
 <p>To calculate the root mean squared error (RMSE), we simply take the square root of the MSE. For our predicted (fitted) values based on our second, validation sample, we can simply apply the <code>RMSE</code> function from the <code>caret</code> package; as the first argument, type the name of the <code>predictions</code> object we created above, and as the second argument, type the name of the second sample (<code>Sample2</code>), followed by the <code>$</code> operator and the name of the outcome variable (<code>PerfEval</code>).</p>
-<div class="sourceCode" id="cb1663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1663-1"><a href="crossvalidation.html#cb1663-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE (Root Mean Squared Error) for first sample </span></span>
-<span id="cb1663-2"><a href="crossvalidation.html#cb1663-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1567-1"><a href="crossvalidation.html#cb1567-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE (Root Mean Squared Error) for first sample </span></span>
+<span id="cb1567-2"><a href="crossvalidation.html#cb1567-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## [1] 0.5825376</code></pre>
-<div class="sourceCode" id="cb1665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1665-1"><a href="crossvalidation.html#cb1665-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE (Root Mean Squared Error) for second sample</span></span>
-<span id="cb1665-2"><a href="crossvalidation.html#cb1665-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RMSE</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
+<div class="sourceCode" id="cb1569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1569-1"><a href="crossvalidation.html#cb1569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE (Root Mean Squared Error) for second sample</span></span>
+<span id="cb1569-2"><a href="crossvalidation.html#cb1569-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RMSE</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
 <pre><code>## [1] 0.6619085</code></pre>
 <p>Again, we expect to see that the RMSE for our model (<code>model1</code>) when applied to the second sample to be larger, as we expect larger errors in prediction when we apply our model to new data. That said, we don’t want the differences in RMSE to be too large. But how much is too much you might ask? Good question, and there isn’t a great answer. What is considered a large difference depends in part on the context and what you’re predicting. That said, it’s sometimes helpful to calculate how much larger one RMSE is than the other. Below, I simply calculate how much larger (as a percentage) is the RMSE from the second sample than the first sample.</p>
-<div class="sourceCode" id="cb1667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1667-1"><a href="crossvalidation.html#cb1667-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage difference in RMSE (Root Mean Squared Error) values</span></span>
-<span id="cb1667-2"><a href="crossvalidation.html#cb1667-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">RMSE</span>(predictions, Sample2<span class="sc">$</span>PerfEval) <span class="sc">-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))) <span class="sc">/</span> </span>
-<span id="cb1667-3"><a href="crossvalidation.html#cb1667-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb1571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1571-1"><a href="crossvalidation.html#cb1571-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage difference in RMSE (Root Mean Squared Error) values</span></span>
+<span id="cb1571-2"><a href="crossvalidation.html#cb1571-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">RMSE</span>(predictions, Sample2<span class="sc">$</span>PerfEval) <span class="sc">-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>))) <span class="sc">/</span> </span>
+<span id="cb1571-3"><a href="crossvalidation.html#cb1571-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="fu">mean</span>(model1<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
 <pre><code>## [1] 13.62503</code></pre>
 <p>We see that the RMSE for the second, validation sample is 13.6% larger than the RMSE for the first, test sample, which is actually pretty good. If it were me, I would allow my concern to grow when that percentage difference hits 30% or higher, but that’s not a strict rule.</p>
 <p>The mean absolute error (MAE) is another common indicator of a model’s fit to data. The MAE is just the average of the errors’ (residuals’) absolute values. We want the difference between MAE values to be as small as possible.</p>
-<div class="sourceCode" id="cb1669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1669-1"><a href="crossvalidation.html#cb1669-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE (Mean Absolute Error) for first sample</span></span>
-<span id="cb1669-2"><a href="crossvalidation.html#cb1669-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals))</span></code></pre></div>
+<div class="sourceCode" id="cb1573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1573-1"><a href="crossvalidation.html#cb1573-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE (Mean Absolute Error) for first sample</span></span>
+<span id="cb1573-2"><a href="crossvalidation.html#cb1573-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals))</span></code></pre></div>
 <pre><code>## [1] 0.4535265</code></pre>
-<div class="sourceCode" id="cb1671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1671-1"><a href="crossvalidation.html#cb1671-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE (Mean Absolute Error) for second sample</span></span>
-<span id="cb1671-2"><a href="crossvalidation.html#cb1671-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MAE</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
+<div class="sourceCode" id="cb1575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1575-1"><a href="crossvalidation.html#cb1575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE (Mean Absolute Error) for second sample</span></span>
+<span id="cb1575-2"><a href="crossvalidation.html#cb1575-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MAE</span>(predictions, Sample2<span class="sc">$</span>PerfEval)</span></code></pre></div>
 <pre><code>## [1] 0.5213717</code></pre>
 <p>As we did with the RMSE values, let’s calculate how much larger the MAE is when the model is applied to the second sample than the first sample.</p>
-<div class="sourceCode" id="cb1673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1673-1"><a href="crossvalidation.html#cb1673-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage difference in MAE (Mean Absolute Error) values</span></span>
-<span id="cb1673-2"><a href="crossvalidation.html#cb1673-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">MAE</span>(predictions, Sample2<span class="sc">$</span>PerfEval) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals))) <span class="sc">/</span> </span>
-<span id="cb1673-3"><a href="crossvalidation.html#cb1673-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb1577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1577-1"><a href="crossvalidation.html#cb1577-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage difference in MAE (Mean Absolute Error) values</span></span>
+<span id="cb1577-2"><a href="crossvalidation.html#cb1577-2" aria-hidden="true" tabindex="-1"></a>(<span class="fu">MAE</span>(predictions, Sample2<span class="sc">$</span>PerfEval) <span class="sc">-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals))) <span class="sc">/</span> </span>
+<span id="cb1577-3"><a href="crossvalidation.html#cb1577-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">abs</span>(model1<span class="sc">$</span>residuals)) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div>
 <pre><code>## [1] 14.95948</code></pre>
 <p>We see that the MAE for the second, validation sample is 15.0% larger than the MAE for the first, test sample, which again is actually pretty good.</p>
 <p>Finally, let’s estimate the 95% prediction intervals around each fitted (predicted) value based on our model (<code>model1</code>) when applied to the second, validation sample (<code>Sample2</code>). We will use the <code>predict</code> function from base R. As the first argument, enter the name of your model object (<code>model1</code>). As the second argument, type <code>newdata=</code> followed by the name of the data frame associated with the second sample (<code>Sample2</code>). As the third argument, type <code>interval="prediction"</code> to indicate that you want to estimate prediction intervals; the default is the 95% prediction interval. Let’s assign the prediction interval and fitted values to an object called <code>pred.int</code> so that we can append those vectors to the second sample data frame, which we do in the following step using the <code>cbind</code> function from base R. Use the <code>head</code> function from base R to view the first 6 rows of your updated <code>Sample2</code> data frame and to marvel at your work.</p>
-<div class="sourceCode" id="cb1675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1675-1"><a href="crossvalidation.html#cb1675-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate 95% prediction intervals</span></span>
-<span id="cb1675-2"><a href="crossvalidation.html#cb1675-2" aria-hidden="true" tabindex="-1"></a>pred.int <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>Sample2, <span class="at">interval=</span><span class="st">&quot;prediction&quot;</span>)</span>
-<span id="cb1675-3"><a href="crossvalidation.html#cb1675-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1675-4"><a href="crossvalidation.html#cb1675-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Join fitted (predicted) values and upper and lower prediction interval values to data frame</span></span>
-<span id="cb1675-5"><a href="crossvalidation.html#cb1675-5" aria-hidden="true" tabindex="-1"></a>Sample2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Sample2, pred.int)</span>
-<span id="cb1675-6"><a href="crossvalidation.html#cb1675-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1675-7"><a href="crossvalidation.html#cb1675-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows</span></span>
-<span id="cb1675-8"><a href="crossvalidation.html#cb1675-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample2)</span></code></pre></div>
+<div class="sourceCode" id="cb1579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1579-1"><a href="crossvalidation.html#cb1579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate 95% prediction intervals</span></span>
+<span id="cb1579-2"><a href="crossvalidation.html#cb1579-2" aria-hidden="true" tabindex="-1"></a>pred.int <span class="ot">&lt;-</span> <span class="fu">predict</span>(model1, <span class="at">newdata=</span>Sample2, <span class="at">interval=</span><span class="st">&quot;prediction&quot;</span>)</span>
+<span id="cb1579-3"><a href="crossvalidation.html#cb1579-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1579-4"><a href="crossvalidation.html#cb1579-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Join fitted (predicted) values and upper and lower prediction interval values to data frame</span></span>
+<span id="cb1579-5"><a href="crossvalidation.html#cb1579-5" aria-hidden="true" tabindex="-1"></a>Sample2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(Sample2, pred.int)</span>
+<span id="cb1579-6"><a href="crossvalidation.html#cb1579-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1579-7"><a href="crossvalidation.html#cb1579-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows</span></span>
+<span id="cb1579-8"><a href="crossvalidation.html#cb1579-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Sample2)</span></code></pre></div>
 <pre><code>##   PerfEval WorkSample SJT Consc      fit      lwr      upr
 ## 1      4.0        6.7 4.4   4.3 4.564170 3.396242 5.732099
 ## 2      4.3        9.0 3.7   1.7 4.556964 3.349621 5.764306
@@ -1514,30 +1489,6 @@ div.csl-indent {
 
 
 
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-browne1975predictive" class="csl-entry">
-Browne, MW. 1975. <span>“Predictive Validity of a Linear Regression Equation.”</span> <em>British Journal of Mathematical and Statistical Psychology</em> 28 (1): 79–87.
-</div>
-<div id="ref-cascio2005applied" class="csl-entry">
-Cascio, Wayne F, and Herman Aguinis. 2005. <em>Applied Psychology in Human Resource Management (6th Ed.)</em>. Upper Saddle River, NJ: Pearson Prentice Hall.
-</div>
-<div id="ref-ezekiel1930methods" class="csl-entry">
-Ezekiel, Mordecai. 1930. <span>“Methods of Correlation Analysis.”</span>
-</div>
-<div id="ref-R-caret" class="csl-entry">
-Kuhn, Max. 2021. <em>Caret: Classification and Regression Training</em>. <a href="https://CRAN.R-project.org/package=caret">https://CRAN.R-project.org/package=caret</a>.
-</div>
-<div id="ref-raju1997methodology" class="csl-entry">
-Raju, Nambury S, Reyhan Bilgic, Jack E Edwards, and Paul F Fleer. 1997. <span>“Methodology Review: Estimation of Population Validity and Cross-Validity, and the Use of Equal Weights in Prediction.”</span> <em>Applied Psychological Measurement</em> 21 (4): 291–305.
-</div>
-<div id="ref-wherry1931new" class="csl-entry">
-Wherry, Robert J. 1931. <span>“A New Formula for Predicting the Shrinkage of the Coefficient of Multiple Correlation.”</span> <em>The Annals of Mathematical Statistics</em> 2 (4): 440–57.
-</div>
-<div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
-</div>
-</div>
             </section>
 
           </div>
@@ -1548,6 +1499,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1574,10 +1526,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }

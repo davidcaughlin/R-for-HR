@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 58 Estimating a Market Pay Line Using Linear &amp; Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 58 Estimating a Market Pay Line Using Linear &amp; Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 58 Estimating a Market Pay Line Using Linear &amp; Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,9 +32,8 @@
   
 <link rel="prev" href="marketsurvey.html"/>
 <link rel="next" href="paydeterminants.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 <style type="text/css">
@@ -117,29 +115,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -663,29 +638,29 @@ div.csl-indent {
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1146,8 +1121,8 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1193,7 +1168,7 @@ div.csl-indent {
 <div id="conceptualvideo_marketpayline" class="section level3" number="58.1.4">
 <h3><span class="header-section-number">58.1.4</span> Conceptual Video</h3>
 <p>For a more in-depth review of market surveys, please check out the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/NEUmJmsIt3k?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/NEUmJmsIt3k?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/NEUmJmsIt3k" class="uri">https://youtu.be/NEUmJmsIt3k</a></p>
 </div>
@@ -1204,7 +1179,7 @@ div.csl-indent {
 <div id="videotutorial_marketpayline" class="section level3" number="58.2.1">
 <h3><span class="header-section-number">58.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/lfOccvOWMAU?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/lfOccvOWMAU?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/lfOccvOWMAU" class="uri">https://youtu.be/lfOccvOWMAU</a></p>
 </div>
@@ -1287,34 +1262,35 @@ div.csl-indent {
 </div>
 <div id="initsteps_marketpayline" class="section level3" number="58.2.3">
 <h3><span class="header-section-number">58.2.3</span> Initial Steps</h3>
-<p>If you haven’t already, save the file called <strong>“MarketPayLine.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the file called <strong>“MarketPayLine.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb2326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2326-1"><a href="marketpayline.html#cb2326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb2326-2"><a href="marketpayline.html#cb2326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“MarketPayLine.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb2327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2327-1"><a href="marketpayline.html#cb2327-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb2327-2"><a href="marketpayline.html#cb2327-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb2327-3"><a href="marketpayline.html#cb2327-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb2327-4"><a href="marketpayline.html#cb2327-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2328-1"><a href="marketpayline.html#cb2328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb2328-2"><a href="marketpayline.html#cb2328-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb2328-3"><a href="marketpayline.html#cb2328-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2328-4"><a href="marketpayline.html#cb2328-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb2328-5"><a href="marketpayline.html#cb2328-5" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MarketPayLine.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 25 Columns: 5</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (3): Job_Family, Job_ID, Job_Title
-## dbl (2): Points, Pay</code></pre>
+<div class="sourceCode" id="cb2202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2202-1"><a href="marketpayline.html#cb2202-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2202-2"><a href="marketpayline.html#cb2202-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“MarketPayLine.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2203-1"><a href="marketpayline.html#cb2203-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2203-2"><a href="marketpayline.html#cb2203-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2203-3"><a href="marketpayline.html#cb2203-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2203-4"><a href="marketpayline.html#cb2203-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2204-1"><a href="marketpayline.html#cb2204-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2204-2"><a href="marketpayline.html#cb2204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2204-3"><a href="marketpayline.html#cb2204-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2204-4"><a href="marketpayline.html#cb2204-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb2204-5"><a href="marketpayline.html#cb2204-5" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MarketPayLine.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb2332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2332-1"><a href="marketpayline.html#cb2332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb2332-2"><a href="marketpayline.html#cb2332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mp)</span></code></pre></div>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   Job_Family = col_character(),
+##   Job_ID = col_character(),
+##   Job_Title = col_character(),
+##   Points = col_double(),
+##   Pay = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb2206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2206-1"><a href="marketpayline.html#cb2206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb2206-2"><a href="marketpayline.html#cb2206-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mp)</span></code></pre></div>
 <pre><code>## [1] &quot;Job_Family&quot; &quot;Job_ID&quot;     &quot;Job_Title&quot;  &quot;Points&quot;     &quot;Pay&quot;</code></pre>
-<div class="sourceCode" id="cb2334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2334-1"><a href="marketpayline.html#cb2334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb2334-2"><a href="marketpayline.html#cb2334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mp)</span></code></pre></div>
-<pre><code>## spec_tbl_df [25 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb2208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2208-1"><a href="marketpayline.html#cb2208-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2208-2"><a href="marketpayline.html#cb2208-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mp)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,5] [25 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ Job_Family: chr [1:25] &quot;OA&quot; &quot;OA&quot; &quot;OA&quot; &quot;OA&quot; ...
 ##  $ Job_ID    : chr [1:25] &quot;OA132&quot; &quot;OA133&quot; &quot;OA134&quot; &quot;OA135&quot; ...
 ##  $ Job_Title : chr [1:25] &quot;Front Desk Receptionist&quot; &quot;Mail Clerk&quot; &quot;Data Entry Specialist&quot; &quot;Admissions Coordinator&quot; ...
@@ -1327,10 +1303,9 @@ div.csl-indent {
 ##   ..   Job_Title = col_character(),
 ##   ..   Points = col_double(),
 ##   ..   Pay = col_double()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb2336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2336-1"><a href="marketpayline.html#cb2336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb2336-2"><a href="marketpayline.html#cb2336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mp)</span></code></pre></div>
+##   .. )</code></pre>
+<div class="sourceCode" id="cb2210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2210-1"><a href="marketpayline.html#cb2210-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2210-2"><a href="marketpayline.html#cb2210-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mp)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   Job_Family Job_ID Job_Title                  Points   Pay
 ##   &lt;chr&gt;      &lt;chr&gt;  &lt;chr&gt;                       &lt;dbl&gt; &lt;dbl&gt;
@@ -1340,8 +1315,8 @@ div.csl-indent {
 ## 4 OA         OA135  Admissions Coordinator        456 29428
 ## 5 OA         OA136  Call Center Representative    465 30101
 ## 6 OA         OA137  Office Specialist             469 32613</code></pre>
-<div class="sourceCode" id="cb2338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2338-1"><a href="marketpayline.html#cb2338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb2338-2"><a href="marketpayline.html#cb2338-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mp)</span></code></pre></div>
+<div class="sourceCode" id="cb2212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2212-1"><a href="marketpayline.html#cb2212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2212-2"><a href="marketpayline.html#cb2212-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mp)</span></code></pre></div>
 <pre><code>## [1] 25</code></pre>
 <p>There are 5 variables and 25 cases (i.e., jobs) in the <code>mp</code> data frame: <code>Job_Family</code>, <code>Job_ID</code>, <code>Job_Title</code>, <code>Points</code>, and <code>Pay</code>. Per the output of the <code>str</code> (structure) function above, the <code>Job_Family</code>, <code>Job_ID</code>, and <code>Job_Title</code>variables are of type <em>character</em>, and the other variables are of type <em>numeric</em> (continuous: interval/ratio). The <code>Job_Family</code> variable inludes the code for two job families: NU (nurse) and OA (office). The <code>Job_ID</code> variable contains the unique identifiers for the benchmark jobs jobs, and the <code>Job_Title</code> variable contains the job titles. The <code>Points</code> variable includes job evaluation points associated with each benchmark job. The <code>Pay</code> variable includes the market pay rates based on market survey/review data.</p>
 </div>
@@ -1351,58 +1326,58 @@ div.csl-indent {
 <div id="estimate_slr_marketpayline_stronger" class="section level4" number="58.2.4.1">
 <h4><span class="header-section-number">58.2.4.1</span> Example of Stronger Linear Model Fit</h4>
 <p>For this first model, we will estimate a market pay line that shows strong fit to the data. In fact, the market pay line shows that the internal job structure (as evidenced by job evaluation points) is closely in tune with the prevailing market pay rates for the benchmark jobs.</p>
-<p><strong>Prepare Data.</strong> As an initial step, we need to subset our <code>mp</code> data frame object. You might not necessarily need to do this with real data, but we need to do so with this data frame object. Specifically, we will subset (i.e., filter) the <code>mp</code> data frame object such that we only retain those cases (i.e., jobs) from the nurse (NU) job family. When working with real data, we might choose to drill down to specific job families (like we are doing here), or we might include all job families in a single model. Sometimes this decision might be made for us, as perhaps the organization has only completed a job evaluation for certain job families. In other instances, we might subset our data by geographic location (e.g., country), for example. To subset our data, we will use the <code>filter</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>. For more information on the filtering data, check out the <a href="filter.html#filter">chapter on filtering data</a>.</p>
+<p><strong>Prepare Data.</strong> As an initial step, we need to subset our <code>mp</code> data frame object. You might not necessarily need to do this with real data, but we need to do so with this data frame object. Specifically, we will subset (i.e., filter) the <code>mp</code> data frame object such that we only retain those cases (i.e., jobs) from the nurse (NU) job family. When working with real data, we might choose to drill down to specific job families (like we are doing here), or we might include all job families in a single model. Sometimes this decision might be made for us, as perhaps the organization has only completed a job evaluation for certain job families. In other instances, we might subset our data by geographic location (e.g., country), for example. To subset our data, we will use the <code>filter</code> function from the <code>dplyr</code> package <span class="citation">(<a href="references.html#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>. For more information on the filtering data, check out the <a href="filter.html#filter">chapter on filtering data</a>.</p>
 <p>If you haven’t already, please install and access the <code>dplyr</code> package.</p>
-<div class="sourceCode" id="cb2340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2340-1"><a href="marketpayline.html#cb2340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb2340-2"><a href="marketpayline.html#cb2340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2341-1"><a href="marketpayline.html#cb2341-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb2341-2"><a href="marketpayline.html#cb2341-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb2214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2214-1"><a href="marketpayline.html#cb2214-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb2214-2"><a href="marketpayline.html#cb2214-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2215-1"><a href="marketpayline.html#cb2215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb2215-2"><a href="marketpayline.html#cb2215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>Using an approach with pipes, first, use the <code>&lt;-</code> assignment operator to name the filtered data frame that we will create. For this example, I name the new filtered data frame <code>nurse</code>. Second, type the name of the original data frame we read in at the beginning of this tutorial, which we named <code>mp</code>, followed by the pipe (<code>%&gt;%</code>) operator. This will “pipe” our data frame into the subsequent function. Third, either on the same line or on the next line, type the <code>filter</code> function. Fourth, within the function parentheses, type the name of the variable we wish to filter the data frame by, which in this example is <code>Job_Family</code>. Fourth, type a logical operator, which for this example is <code>==</code>. Fifth, type a value for the filter variable, which in this example is “NU” (for nurse job family); because the <code>Job_Family</code> variable is of type <em>character</em>, we need to put quotation marks (<code>" "</code>) around the value of the variable that we wish to filter by.</p>
-<div class="sourceCode" id="cb2342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2342-1"><a href="marketpayline.html#cb2342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset/filter data to retain just nurse family jobs</span></span>
-<span id="cb2342-2"><a href="marketpayline.html#cb2342-2" aria-hidden="true" tabindex="-1"></a>nurse <span class="ot">&lt;-</span> mp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Job_Family<span class="sc">==</span><span class="st">&quot;NU&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2216-1"><a href="marketpayline.html#cb2216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset/filter data to retain just nurse family jobs</span></span>
+<span id="cb2216-2"><a href="marketpayline.html#cb2216-2" aria-hidden="true" tabindex="-1"></a>nurse <span class="ot">&lt;-</span> mp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Job_Family<span class="sc">==</span><span class="st">&quot;NU&quot;</span>)</span></code></pre></div>
 <p><strong>Visualize Bivariate Association.</strong> Just as we would with any bivariate regression model involving two continuous variables, we will begin by creating a scatter plot to “eyeball” whether we think there is evidence of linearity. Using the <code>plot</code> function from base R, as the first argument, type the name of the data frame object (<code>nurse</code>), followed by the <code>$</code> operator and the name of the predictor variable, which is the job evaluation points (<code>Points</code>) variable. As the second argument, type the name of the data frame object (<code>nurse</code>), followed by the <code>$</code> operator and the name of the outcome variable, which is the market pay (<code>Pay</code>) variable. Optionally, as the third and fourth arguments, use <code>xlab</code> and <code>ylab</code> to specify the labels for the x-axis and y-axis, respectively.</p>
-<div class="sourceCode" id="cb2343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2343-1"><a href="marketpayline.html#cb2343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2343-2"><a href="marketpayline.html#cb2343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nurse<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2343-3"><a href="marketpayline.html#cb2343-3" aria-hidden="true" tabindex="-1"></a>     nurse<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2343-4"><a href="marketpayline.html#cb2343-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2343-5"><a href="marketpayline.html#cb2343-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
+<div class="sourceCode" id="cb2217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2217-1"><a href="marketpayline.html#cb2217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2217-2"><a href="marketpayline.html#cb2217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nurse<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2217-3"><a href="marketpayline.html#cb2217-3" aria-hidden="true" tabindex="-1"></a>     nurse<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2217-4"><a href="marketpayline.html#cb2217-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2217-5"><a href="marketpayline.html#cb2217-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1348-1.png" width="672" /></p>
 <p>As you can see, there is a very clear linear trend, and you can perhaps envision a regression line superimposed on the plot with minimal residual error. It seems safe to assume that simple linear regression will be appropriate in this case.</p>
 <p><strong>Specify Model.</strong> Next, using the <code>lm</code> function from base R, we will specify our simple linear regression model. Note that the <code>lm</code> (linear model) function is described in detail in the <a href="predictingcriterionscores.html#predictingcriterionscores">chapter supplement for the chapter that introduces simple linear regression</a>. We use the <code>lm</code> function here instead of, say, the <code>Regression</code> function from <code>lessR</code> because the <code>lm</code> function is more flexible and will be easier to work with in this context. Let’s come up with a name for the regression model object and include it to the left of the <code>&lt;-</code> assignment operator; here, I name the model <code>reg.nurse</code>. To the right of the <code>&lt;-</code> operator, type the name of the <code>lm</code> function. As the first argument, specify the regression model. Remember, the outcome variable (<code>Pay</code>) goes to the left of the tilde (<code>~</code>), and the predictor variable (<code>Points</code>) goes to the right of the tilde (<code>~</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object to which both variables in the model belong (<code>nurse</code>).</p>
-<div class="sourceCode" id="cb2344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2344-1"><a href="marketpayline.html#cb2344-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
-<span id="cb2344-2"><a href="marketpayline.html#cb2344-2" aria-hidden="true" tabindex="-1"></a>reg.nurse <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> Points, <span class="at">data=</span>nurse)</span></code></pre></div>
+<div class="sourceCode" id="cb2218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2218-1"><a href="marketpayline.html#cb2218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
+<span id="cb2218-2"><a href="marketpayline.html#cb2218-2" aria-hidden="true" tabindex="-1"></a>reg.nurse <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> Points, <span class="at">data=</span>nurse)</span></code></pre></div>
 <p>Note that we won’t request any output at this point because first we are going to evaluate whether we have reason to believe that we have met the statistical assumptions of a simple linear regression.</p>
 <p><strong>Test Statistical Assumptions.</strong> Recall that we generated a bivariate scatter plot between the <code>Points</code> and <code>Pay</code> variables to assess the assumption of linearity. In addition, we have good reason to believe that we have also met the assumption of bivariate normality, as the plotted values follow nearly in a perfect line. Now we will generate additional plots and other output to inform our conclusions whether we have satisfied additional statistical assumptions.</p>
 <p>We will begin by generating a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>. To do so, we will use the <code>plot</code> function from base R. As the first argument, enter the name of the regression model object we created above (<code>reg.nurse</code>). As the second argument, type the numeral <em>1</em>, which will request the first of four possible diagnostic plots, of which we will review three.</p>
-<div class="sourceCode" id="cb2345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2345-1"><a href="marketpayline.html#cb2345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
-<span id="cb2345-2"><a href="marketpayline.html#cb2345-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2219-1"><a href="marketpayline.html#cb2219-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
+<span id="cb2219-2"><a href="marketpayline.html#cb2219-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1350-1.png" width="672" /></p>
 <p>The plot shows the association between the fitted values (x-axis) and the residuals (y-axis). If you recall, the residuals are the error in our estimations - or in other words, how much our fitted values for the outcome variable deviate from the observed (actual) values for the outcome variable. The term “fitted values” is another way of saying predicted values for the outcome variable, but the language “fitted” is more precise here. The horizontal dotted line is drawn at the residual value of zero; remember, our goal is to minimize the size of residuals (i.e., error). The solid line shows the deviations from zero of the residuals for each fitted value, and the greater the solid line deviates from the dotted line, the more likely that (a) variances of the residuals may <em>not</em> be equal for each level of the predictor variable (violation of the assumption of homoscedasticity), (b) the average residual error value may <em>not</em> be zero for each level of the predictor variable, and (c) there may be potential bivariate outliers influencing the fitted (predicted) values. In this plot, we can see that the variances of the residuals do not appear to be necessarily equal across observations (potential evidence of heteroscedasticity), but the average residual error value appears to be about zero (which is good). Further, there appear to be three cases that are flagged as a potential bivariate outliers (i.e., row numbers <em>4</em>, <em>6</em>, and <em>7</em>). Now, we should be cautious interpreting these values, however, because we have a <em>very</em> small sample size here (i.e., 7), and even very minor residual errors could appear to be notable. Ideally, we would want to estimate a model with at least 10 cases/observations, but for the sake of demonstration here, we are using a smaller sample. Like any statistical model, we need to use our best judgment. in determining whether to remove outliers/influential cases or not. If we dropped those three cases, we would be left with just four cases, do dropping them would not be wise. We would, however, want to verify that the predictor and outcome values for these cases are accurate. All in all, for a sample size of just seven cases, this plot doesn’t look too bad.</p>
 <p>As an additional diagnostic tool, we can plot a Q-Q plot, which provides an indication as to whether the residuals are normality distributed (one of our statistical assumptions). Simply adapt the <code>plot</code> script from above, but this time, enter the numeral <em>2</em> (instead of <em>1</em>) to request the second diagnostic plot.</p>
-<div class="sourceCode" id="cb2346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2346-1"><a href="marketpayline.html#cb2346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
-<span id="cb2346-2"><a href="marketpayline.html#cb2346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2220-1"><a href="marketpayline.html#cb2220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
+<span id="cb2220-2"><a href="marketpayline.html#cb2220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1351-1.png" width="672" /></p>
 <p>Normally distributed residuals will fall along the dotted diagonal line. As you can see, the residuals fall, for the most part, on or very near the line with the exception of those three potential outlier cases that we identified in the previous plot: row numbers <em>4</em>, <em>6</em>, and <em>7</em>. Even those potential outliers, however, fall <em>very</em> close to the line.</p>
 <p>As another diagnostic plot, let’s look at Cook’s distance (D) across cases. Once again, adapt the <code>plot</code> script from above, but this time, enter the numeral <em>4</em> to request the fourth diagnostic plot. We’re skipping the third plot.</p>
-<div class="sourceCode" id="cb2347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2347-1"><a href="marketpayline.html#cb2347-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
-<span id="cb2347-2"><a href="marketpayline.html#cb2347-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2221-1"><a href="marketpayline.html#cb2221-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
+<span id="cb2221-2"><a href="marketpayline.html#cb2221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">4</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1352-1.png" width="672" /></p>
 <p>Clearly, cases associated with row numbers 6 and 7 seem like they might have problematic Cook’s distances, but let’s be careful not to jump to conclusions. Instead, let’s estimate the exact values of the Cook’s distance values using the <code>cooks.distance</code> function from base R, along with the <code>sort</code> function from base R. In addition, let’s view the Cook’s distance values using the <code>head</code> function from R.</p>
-<div class="sourceCode" id="cb2348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2348-1"><a href="marketpayline.html#cb2348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
-<span id="cb2348-2"><a href="marketpayline.html#cb2348-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.nurse)</span>
-<span id="cb2348-3"><a href="marketpayline.html#cb2348-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2348-4"><a href="marketpayline.html#cb2348-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort Cook&#39;s distance values in descending order               </span></span>
-<span id="cb2348-5"><a href="marketpayline.html#cb2348-5" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">sort</span>(cooksD, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2348-6"><a href="marketpayline.html#cb2348-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2348-7"><a href="marketpayline.html#cb2348-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
-<span id="cb2348-8"><a href="marketpayline.html#cb2348-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2222-1"><a href="marketpayline.html#cb2222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
+<span id="cb2222-2"><a href="marketpayline.html#cb2222-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.nurse)</span>
+<span id="cb2222-3"><a href="marketpayline.html#cb2222-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2222-4"><a href="marketpayline.html#cb2222-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort Cook&#39;s distance values in descending order               </span></span>
+<span id="cb2222-5"><a href="marketpayline.html#cb2222-5" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">sort</span>(cooksD, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2222-6"><a href="marketpayline.html#cb2222-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2222-7"><a href="marketpayline.html#cb2222-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
+<span id="cb2222-8"><a href="marketpayline.html#cb2222-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##             7             6             1             5             2             4             3 
 ## 0.98120478471 0.42525723584 0.11795980895 0.08726355151 0.07273564234 0.06107998202 0.00006240292</code></pre>
-<p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .57. Here, we see only the Cook’s distance value associated with row number 7 exceeds .57, flagging it as a potential outlier/influential case. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. Technically, none of our Cook’s distance values exceed <em>1</em>, and given our very small sample size, let’s go with the cutoff of <em>1</em>, which means that we will assume that we don’t have any outliers/influential cases.</p>
+<p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .57. Here, we see only the Cook’s distance value associated with row number 7 exceeds .57, flagging it as a potential outlier/influential case. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. Technically, none of our Cook’s distance values exceed <em>1</em>, and given our very small sample size, let’s go with the cutoff of <em>1</em>, which means that we will assume that we don’t have any outliers/influential cases.</p>
 <p>All in all, in spite of the very small sample size, we can be reasonably satisfied that we have met the statistical assumptions of a simple linear regression.</p>
 <p><strong>Interpret the Model Results.</strong> To request the results of our simple linear regression model, we will type the name of the <code>summary</code> function from base R and include whatever we named your regression model (<code>reg.nurse</code>) as the sole parenthetical argument. The <code>summary</code> function simply returns a summary of your estimated regression model results.</p>
-<div class="sourceCode" id="cb2350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2350-1"><a href="marketpayline.html#cb2350-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of simple linear regression model results</span></span>
-<span id="cb2350-2"><a href="marketpayline.html#cb2350-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.nurse)</span></code></pre></div>
+<div class="sourceCode" id="cb2224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2224-1"><a href="marketpayline.html#cb2224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of simple linear regression model results</span></span>
+<span id="cb2224-2"><a href="marketpayline.html#cb2224-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.nurse)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Pay ~ Points, data = nurse)
@@ -1463,101 +1438,103 @@ div.csl-indent {
 </tbody>
 </table>
 <p><strong>Visualize the Model.</strong> It’s often useful to plot the regression model – specifically, the regression line – as it reflects the market pay line. To do so, let’s start with the same script we used to visualize the bivariate association between <code>Points</code> and <code>Pay</code> above; however, as additional arguments, let’s use <code>xlim</code> and <code>ylim</code> to specify the x-axis and y-axis ranges, which requires specifying a two-value vector with the <code>c</code> function from base R. To superimpose the regression line on the scatter plot, we will use the <code>abline</code> function from base R. As the first argument, type the name of the regression model (<code>reg.nurse</code>). As an optional second argument, type <code>col=</code> followed by the name of a color in quotation marks (<code>"red"</code>) to specify the color of the line; the default is black.</p>
-<div class="sourceCode" id="cb2352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2352-1"><a href="marketpayline.html#cb2352-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2352-2"><a href="marketpayline.html#cb2352-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nurse<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2352-3"><a href="marketpayline.html#cb2352-3" aria-hidden="true" tabindex="-1"></a>     nurse<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2352-4"><a href="marketpayline.html#cb2352-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2352-5"><a href="marketpayline.html#cb2352-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
-<span id="cb2352-6"><a href="marketpayline.html#cb2352-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">550</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
-<span id="cb2352-7"><a href="marketpayline.html#cb2352-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
-<span id="cb2352-8"><a href="marketpayline.html#cb2352-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2352-9"><a href="marketpayline.html#cb2352-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
-<span id="cb2352-10"><a href="marketpayline.html#cb2352-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.nurse, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2226-1"><a href="marketpayline.html#cb2226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2226-2"><a href="marketpayline.html#cb2226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nurse<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2226-3"><a href="marketpayline.html#cb2226-3" aria-hidden="true" tabindex="-1"></a>     nurse<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2226-4"><a href="marketpayline.html#cb2226-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2226-5"><a href="marketpayline.html#cb2226-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
+<span id="cb2226-6"><a href="marketpayline.html#cb2226-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">550</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
+<span id="cb2226-7"><a href="marketpayline.html#cb2226-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
+<span id="cb2226-8"><a href="marketpayline.html#cb2226-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2226-9"><a href="marketpayline.html#cb2226-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
+<span id="cb2226-10"><a href="marketpayline.html#cb2226-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.nurse, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1355-1.png" width="672" /></p>
 <p>As you can see, our regression line very closely fits the data, which was evidenced statistically by the very high <em>R</em><sup>2</sup> value.</p>
 <p><strong>Predicting Market Pay Line Values.</strong> Using the regression model we estimated (<code>reg.nurse</code>), we can plug in the existing job evaluation points for the benchmark jobs in the data to see what the estimated market pay values would be for those jobs (and then we could compare them with the actual pay for those jobs, assuming we had access to those data, which we don’t in this example). These predicted values could feasibly be used to help determine the midpoints for pay grades/bands.</p>
 <p>Let’s create a new variable called <code>Predicted_Pay</code> that contains these predicted pay values for known job evaluation point values. Specify that the new <code>Predicted_Pay</code> variable will be attached to the existing <code>nurse</code> data frame by using the <code>$</code> operator. Next, use the <code>&lt;-</code> operator to assign values to the new variable. To the right of the <code>&lt;-</code> operator, type the name of the <code>predict</code> function from base R. As the first parenthetical argument, type the name of the regression model (<code>reg.nurse</code>). As the second argument, type <code>newdata=</code> followed by the name of the existing data frame called <code>nurse</code> which will allow the function to pull actual values on the <code>Points</code> variable and plug them into the regression equation for prediction purposes.</p>
-<div class="sourceCode" id="cb2353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2353-1"><a href="marketpayline.html#cb2353-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
-<span id="cb2353-2"><a href="marketpayline.html#cb2353-2" aria-hidden="true" tabindex="-1"></a>nurse<span class="sc">$</span>Predicted_Pay <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.nurse, <span class="at">newdata=</span>nurse)</span>
-<span id="cb2353-3"><a href="marketpayline.html#cb2353-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2353-4"><a href="marketpayline.html#cb2353-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View your data frame</span></span>
-<span id="cb2353-5"><a href="marketpayline.html#cb2353-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(nurse)</span></code></pre></div>
+<div class="sourceCode" id="cb2227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2227-1"><a href="marketpayline.html#cb2227-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
+<span id="cb2227-2"><a href="marketpayline.html#cb2227-2" aria-hidden="true" tabindex="-1"></a>nurse<span class="sc">$</span>Predicted_Pay <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.nurse, <span class="at">newdata=</span>nurse)</span>
+<span id="cb2227-3"><a href="marketpayline.html#cb2227-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2227-4"><a href="marketpayline.html#cb2227-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View your data frame</span></span>
+<span id="cb2227-5"><a href="marketpayline.html#cb2227-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(nurse)</span></code></pre></div>
 <p>Note that the new <code>Predicted_Pay</code> variable in your <code>nurse</code> data frame contains values that could be used as the midpoint for these select benchmark jobs from the nurse job family.</p>
 <p><strong><em>Optional:</em> Estimating Minimum &amp; Maximum Pay for Benchmark Jobs.</strong> If we wish to, we can estimate the minimum and maximum pay for benchmark jobs (or for pay grades). To do so, we need to come up with a range spread value, which represents how much greater the maximum possible pay for a job (or grade) differs from the minimum. The range spread value you choose should be based on the pay philosophy and policies in your organization.</p>
 <p>For the sake of demonstrate, let’s set the range spread at 20% (.20) for the nurse job family. Next, create new variables called <code>Min_Pay</code> and <code>Max_Pay</code>. To create the <code>Min_Pay</code> variable, divide the <code>Predicted_Pay</code> variable we created above by 1 plus the range spread divided by 2.</p>
-<div class="sourceCode" id="cb2354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2354-1"><a href="marketpayline.html#cb2354-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create minimum pay variable</span></span>
-<span id="cb2354-2"><a href="marketpayline.html#cb2354-2" aria-hidden="true" tabindex="-1"></a>nurse<span class="sc">$</span>Min_Pay <span class="ot">&lt;-</span> nurse<span class="sc">$</span>Predicted_Pay <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">20</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2228-1"><a href="marketpayline.html#cb2228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create minimum pay variable</span></span>
+<span id="cb2228-2"><a href="marketpayline.html#cb2228-2" aria-hidden="true" tabindex="-1"></a>nurse<span class="sc">$</span>Min_Pay <span class="ot">&lt;-</span> nurse<span class="sc">$</span>Predicted_Pay <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">20</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <p>To create the <code>Max_Pay</code> variable, multiply the <code>Min_Pay</code> variable times 1 plus the range spread.</p>
-<div class="sourceCode" id="cb2355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2355-1"><a href="marketpayline.html#cb2355-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create maximum pay variable</span></span>
-<span id="cb2355-2"><a href="marketpayline.html#cb2355-2" aria-hidden="true" tabindex="-1"></a>nurse<span class="sc">$</span>Max_Pay <span class="ot">&lt;-</span> nurse<span class="sc">$</span>Min_Pay <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2229-1"><a href="marketpayline.html#cb2229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create maximum pay variable</span></span>
+<span id="cb2229-2"><a href="marketpayline.html#cb2229-2" aria-hidden="true" tabindex="-1"></a>nurse<span class="sc">$</span>Max_Pay <span class="ot">&lt;-</span> nurse<span class="sc">$</span>Min_Pay <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">20</span>)</span></code></pre></div>
 <p>Let’s now add the our midpoint (which reflects <code>Predicted_Pay</code>), the minimum pay (<code>Min_Pay</code>), and the maximum pay (<code>Max_Pay</code>) on the same scatterplot we created a bit earlier in the tutorial. Using the <code>lines</code> function from base R, we will add the three lines corresponding to the midpoint, minimum, and maximum for the nurse family of benchmark jobs.</p>
-<div class="sourceCode" id="cb2356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2356-1"><a href="marketpayline.html#cb2356-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot for predictor and outcome variables</span></span>
-<span id="cb2356-2"><a href="marketpayline.html#cb2356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nurse<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2356-3"><a href="marketpayline.html#cb2356-3" aria-hidden="true" tabindex="-1"></a>     nurse<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2356-4"><a href="marketpayline.html#cb2356-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2356-5"><a href="marketpayline.html#cb2356-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
-<span id="cb2356-6"><a href="marketpayline.html#cb2356-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">550</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
-<span id="cb2356-7"><a href="marketpayline.html#cb2356-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
-<span id="cb2356-8"><a href="marketpayline.html#cb2356-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2356-9"><a href="marketpayline.html#cb2356-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add midpoint (predicted pay) line to plot</span></span>
-<span id="cb2356-10"><a href="marketpayline.html#cb2356-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(nurse<span class="sc">$</span>Points, nurse<span class="sc">$</span>Predicted_Pay, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb2356-11"><a href="marketpayline.html#cb2356-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2356-12"><a href="marketpayline.html#cb2356-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add minimum pay line to plot</span></span>
-<span id="cb2356-13"><a href="marketpayline.html#cb2356-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(nurse<span class="sc">$</span>Points, nurse<span class="sc">$</span>Min_Pay)</span>
-<span id="cb2356-14"><a href="marketpayline.html#cb2356-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2356-15"><a href="marketpayline.html#cb2356-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add maximum pay line to plot</span></span>
-<span id="cb2356-16"><a href="marketpayline.html#cb2356-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(nurse<span class="sc">$</span>Points, nurse<span class="sc">$</span>Max_Pay)</span></code></pre></div>
+<div class="sourceCode" id="cb2230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2230-1"><a href="marketpayline.html#cb2230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot for predictor and outcome variables</span></span>
+<span id="cb2230-2"><a href="marketpayline.html#cb2230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nurse<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2230-3"><a href="marketpayline.html#cb2230-3" aria-hidden="true" tabindex="-1"></a>     nurse<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2230-4"><a href="marketpayline.html#cb2230-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2230-5"><a href="marketpayline.html#cb2230-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
+<span id="cb2230-6"><a href="marketpayline.html#cb2230-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">550</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
+<span id="cb2230-7"><a href="marketpayline.html#cb2230-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
+<span id="cb2230-8"><a href="marketpayline.html#cb2230-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2230-9"><a href="marketpayline.html#cb2230-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add midpoint (predicted pay) line to plot</span></span>
+<span id="cb2230-10"><a href="marketpayline.html#cb2230-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(nurse<span class="sc">$</span>Points, nurse<span class="sc">$</span>Predicted_Pay, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb2230-11"><a href="marketpayline.html#cb2230-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2230-12"><a href="marketpayline.html#cb2230-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add minimum pay line to plot</span></span>
+<span id="cb2230-13"><a href="marketpayline.html#cb2230-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(nurse<span class="sc">$</span>Points, nurse<span class="sc">$</span>Min_Pay)</span>
+<span id="cb2230-14"><a href="marketpayline.html#cb2230-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2230-15"><a href="marketpayline.html#cb2230-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add maximum pay line to plot</span></span>
+<span id="cb2230-16"><a href="marketpayline.html#cb2230-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(nurse<span class="sc">$</span>Points, nurse<span class="sc">$</span>Max_Pay)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1359-1.png" width="672" /></p>
 </div>
 <div id="estimate_slr_marketpayline_weaker" class="section level4" number="58.2.4.2">
 <h4><span class="header-section-number">58.2.4.2</span> Example of Weaker Linear Model Fit</h4>
 <p>In this second example, we will estimate a market pay line that shows weaker fit to the data than the first example. As an initial step, we need to subset our <code>mp</code> data frame object once more. Just as we did above, to subset our data, we will use the <code>filter</code> function from the <code>dplyr</code> package. If you haven’t already, please install and access the <code>dplyr</code> package. Just as we did in the first example, filter the <code>mp</code> data frame, except this time retain only those cases that are associated with the “OA” (office) job family. Let’s name the new data frame <code>office</code>.</p>
-<div class="sourceCode" id="cb2357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2357-1"><a href="marketpayline.html#cb2357-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset/filter data to retain just office family jobs</span></span>
-<span id="cb2357-2"><a href="marketpayline.html#cb2357-2" aria-hidden="true" tabindex="-1"></a>office <span class="ot">&lt;-</span> mp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Job_Family<span class="sc">==</span><span class="st">&quot;OA&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2231-1"><a href="marketpayline.html#cb2231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset/filter data to retain just office family jobs</span></span>
+<span id="cb2231-2"><a href="marketpayline.html#cb2231-2" aria-hidden="true" tabindex="-1"></a>office <span class="ot">&lt;-</span> mp <span class="sc">%&gt;%</span> <span class="fu">filter</span>(Job_Family<span class="sc">==</span><span class="st">&quot;OA&quot;</span>)</span></code></pre></div>
 <p><strong>Visualize Bivariate Association.</strong> We will begin by creating a scatter plot to “eyeball” whether we think there is evidence of linearity.</p>
-<div class="sourceCode" id="cb2358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2358-1"><a href="marketpayline.html#cb2358-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2358-2"><a href="marketpayline.html#cb2358-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(office<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2358-3"><a href="marketpayline.html#cb2358-3" aria-hidden="true" tabindex="-1"></a>     office<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2358-4"><a href="marketpayline.html#cb2358-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2358-5"><a href="marketpayline.html#cb2358-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
+<div class="sourceCode" id="cb2232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2232-1"><a href="marketpayline.html#cb2232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2232-2"><a href="marketpayline.html#cb2232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(office<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2232-3"><a href="marketpayline.html#cb2232-3" aria-hidden="true" tabindex="-1"></a>     office<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2232-4"><a href="marketpayline.html#cb2232-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2232-5"><a href="marketpayline.html#cb2232-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1361-1.png" width="672" /></p>
 <p>There appears to be more-or-less a linear trend. It seems reasonable to assume that simple linear regression will be appropriate for fitting a model to these data.</p>
 <p><strong>Specify Model.</strong> Next, let’s specify our simple linear regression model for the office family of jobs. Let’s name the regression model object <code>reg.office</code>.</p>
-<div class="sourceCode" id="cb2359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2359-1"><a href="marketpayline.html#cb2359-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
-<span id="cb2359-2"><a href="marketpayline.html#cb2359-2" aria-hidden="true" tabindex="-1"></a>reg.office <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> Points, <span class="at">data=</span>office)</span></code></pre></div>
+<div class="sourceCode" id="cb2233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2233-1"><a href="marketpayline.html#cb2233-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
+<span id="cb2233-2"><a href="marketpayline.html#cb2233-2" aria-hidden="true" tabindex="-1"></a>reg.office <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> Points, <span class="at">data=</span>office)</span></code></pre></div>
 <p><strong>Test Statistical Assumptions.</strong> Based on the scatter plot we created above, we can feel reasonably confident that met the assumption of bivariate normality, as the plotted values seem to somewhat adhere to an ellipse shape.</p>
 <p>Next, let’s generate a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>.</p>
-<div class="sourceCode" id="cb2360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2360-1"><a href="marketpayline.html#cb2360-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
-<span id="cb2360-2"><a href="marketpayline.html#cb2360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2234-1"><a href="marketpayline.html#cb2234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
+<span id="cb2234-2"><a href="marketpayline.html#cb2234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1363-1.png" width="672" /></p>
 <p>In this plot, we can see that the variances of the residuals do not appear to be necessarily equal across observations (potential evidence of heteroscedasticity), but the average residual error value appears to be reasonably close to zero (which is good). Further, there appear to be three cases that are flagged as a potential bivariate outliers (i.e., row numbers <em>13</em>, <em>16</em>, and <em>18</em>). If these were real data, we would want to verify that the predictor and outcome values for these three cases are accurate. All in all, this plot doesn’t look too bad, so let’s move on to the next diagnostic plot.</p>
 <p>The Q-Q plot provides an indication as to whether the residuals are normality distributed (one of our statistical assumptions).</p>
-<div class="sourceCode" id="cb2361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2361-1"><a href="marketpayline.html#cb2361-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
-<span id="cb2361-2"><a href="marketpayline.html#cb2361-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2235-1"><a href="marketpayline.html#cb2235-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
+<span id="cb2235-2"><a href="marketpayline.html#cb2235-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1364-1.png" width="672" /></p>
 <p>As you can see, some of the residuals fall on or near the line with the exception of some cases that deviate, which shows some departure from normality in the residuals.</p>
 <p>The following plot shows the Cook’s distance (D) across cases.</p>
-<div class="sourceCode" id="cb2362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2362-1"><a href="marketpayline.html#cb2362-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
-<span id="cb2362-2"><a href="marketpayline.html#cb2362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2236-1"><a href="marketpayline.html#cb2236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
+<span id="cb2236-2"><a href="marketpayline.html#cb2236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">4</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1365-1.png" width="672" /></p>
 <p>The cases associated with row numbers 17 and 18 seem like they might have problematic Cook’s distances, but let’s be careful not to jump to conclusions. Instead, let’s estimate the exact values of the Cook’s distance values.</p>
-<div class="sourceCode" id="cb2363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2363-1"><a href="marketpayline.html#cb2363-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
-<span id="cb2363-2"><a href="marketpayline.html#cb2363-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.office)</span>
-<span id="cb2363-3"><a href="marketpayline.html#cb2363-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2363-4"><a href="marketpayline.html#cb2363-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort Cook&#39;s distance values in descending order               </span></span>
-<span id="cb2363-5"><a href="marketpayline.html#cb2363-5" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">sort</span>(cooksD, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2363-6"><a href="marketpayline.html#cb2363-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2363-7"><a href="marketpayline.html#cb2363-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
-<span id="cb2363-8"><a href="marketpayline.html#cb2363-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          18          17           2          16          13          15           8           4          10 
-## 0.656762965 0.223627186 0.077425779 0.074014305 0.049588694 0.048505115 0.048235670 0.048134209 0.045766159 
-##           5          12           7          14           1           6          11           9           3 
-## 0.043496277 0.037231721 0.036133566 0.030636966 0.029627806 0.012312294 0.008786797 0.001666541 0.001378862</code></pre>
-<p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .22. Here, we see only the Cook’s distance values associated with row numbers 17 and 18 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed <em>1</em>, and thus we will assume that we don’t have any troublesome outliers/influential cases.</p>
+<div class="sourceCode" id="cb2237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2237-1"><a href="marketpayline.html#cb2237-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
+<span id="cb2237-2"><a href="marketpayline.html#cb2237-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.office)</span>
+<span id="cb2237-3"><a href="marketpayline.html#cb2237-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2237-4"><a href="marketpayline.html#cb2237-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort Cook&#39;s distance values in descending order               </span></span>
+<span id="cb2237-5"><a href="marketpayline.html#cb2237-5" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">sort</span>(cooksD, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2237-6"><a href="marketpayline.html#cb2237-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2237-7"><a href="marketpayline.html#cb2237-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
+<span id="cb2237-8"><a href="marketpayline.html#cb2237-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##          18          17           2          16          13          15           8           4 
+## 0.656762965 0.223627186 0.077425779 0.074014305 0.049588694 0.048505115 0.048235670 0.048134209 
+##          10           5          12           7          14           1           6          11 
+## 0.045766159 0.043496277 0.037231721 0.036133566 0.030636966 0.029627806 0.012312294 0.008786797 
+##           9           3 
+## 0.001666541 0.001378862</code></pre>
+<p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .22. Here, we see only the Cook’s distance values associated with row numbers 17 and 18 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed <em>1</em>, and thus we will assume that we don’t have any troublesome outliers/influential cases.</p>
 <p>While by no means have we completely satisfied the statistical assumptions, we can be reasonably satisfied - although it should already be apparent that we will have a weaker-fitting model.</p>
 <p><strong>Interpret the Model Results.</strong> To request the results of our simple linear regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.office</code>) as the sole parenthetical argument.</p>
-<div class="sourceCode" id="cb2365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2365-1"><a href="marketpayline.html#cb2365-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of simple linear regression model results</span></span>
-<span id="cb2365-2"><a href="marketpayline.html#cb2365-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.office)</span></code></pre></div>
+<div class="sourceCode" id="cb2239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2239-1"><a href="marketpayline.html#cb2239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of simple linear regression model results</span></span>
+<span id="cb2239-2"><a href="marketpayline.html#cb2239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.office)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Pay ~ Points, data = office)
@@ -1614,100 +1591,100 @@ div.csl-indent {
 </tbody>
 </table>
 <p><strong>Visualize the Model.</strong> Now it’s time to plot the regression model.</p>
-<div class="sourceCode" id="cb2367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2367-1"><a href="marketpayline.html#cb2367-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2367-2"><a href="marketpayline.html#cb2367-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(office<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2367-3"><a href="marketpayline.html#cb2367-3" aria-hidden="true" tabindex="-1"></a>     office<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2367-4"><a href="marketpayline.html#cb2367-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2367-5"><a href="marketpayline.html#cb2367-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
-<span id="cb2367-6"><a href="marketpayline.html#cb2367-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">750</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
-<span id="cb2367-7"><a href="marketpayline.html#cb2367-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">70000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
-<span id="cb2367-8"><a href="marketpayline.html#cb2367-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2367-9"><a href="marketpayline.html#cb2367-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
-<span id="cb2367-10"><a href="marketpayline.html#cb2367-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.office, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2241-1"><a href="marketpayline.html#cb2241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2241-2"><a href="marketpayline.html#cb2241-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(office<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2241-3"><a href="marketpayline.html#cb2241-3" aria-hidden="true" tabindex="-1"></a>     office<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2241-4"><a href="marketpayline.html#cb2241-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2241-5"><a href="marketpayline.html#cb2241-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
+<span id="cb2241-6"><a href="marketpayline.html#cb2241-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">750</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
+<span id="cb2241-7"><a href="marketpayline.html#cb2241-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">70000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
+<span id="cb2241-8"><a href="marketpayline.html#cb2241-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2241-9"><a href="marketpayline.html#cb2241-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
+<span id="cb2241-10"><a href="marketpayline.html#cb2241-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.office, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1368-1.png" width="672" /></p>
 <p>As you can see, our regression line fits the data pretty well, which was evidenced statistically by the “good” <em>R</em><sup>2</sup> value.</p>
 <p><strong>Predict Market Pay Line Values.</strong> Let’s create a new variable called <code>Predicted_Pay</code> that contains these predicted pay values for known job evaluation point values.</p>
-<div class="sourceCode" id="cb2368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2368-1"><a href="marketpayline.html#cb2368-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
-<span id="cb2368-2"><a href="marketpayline.html#cb2368-2" aria-hidden="true" tabindex="-1"></a>office<span class="sc">$</span>Predicted_Pay <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.office, <span class="at">newdata=</span>office)</span>
-<span id="cb2368-3"><a href="marketpayline.html#cb2368-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2368-4"><a href="marketpayline.html#cb2368-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View your data frame</span></span>
-<span id="cb2368-5"><a href="marketpayline.html#cb2368-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(office)</span></code></pre></div>
+<div class="sourceCode" id="cb2242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2242-1"><a href="marketpayline.html#cb2242-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
+<span id="cb2242-2"><a href="marketpayline.html#cb2242-2" aria-hidden="true" tabindex="-1"></a>office<span class="sc">$</span>Predicted_Pay <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.office, <span class="at">newdata=</span>office)</span>
+<span id="cb2242-3"><a href="marketpayline.html#cb2242-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2242-4"><a href="marketpayline.html#cb2242-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View your data frame</span></span>
+<span id="cb2242-5"><a href="marketpayline.html#cb2242-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(office)</span></code></pre></div>
 <p>Note that the new <code>Predicted_Pay</code> variable in your <code>office</code> data frame contains values that could be used as the midpoint for these select benchmark jobs from the nurse job family.</p>
 <p><strong><em>Optional:</em> Estimating Minimum &amp; Maximum Pay for Benchmark Jobs.</strong> If we wish to, we can estimate the minimum and maximum pay for benchmark jobs (or for pay grades). For the sake of demonstrate, let’s set the range spread at 40% (.40) for the office job family. Next, create new variables called <code>Min_Pay</code> and <code>Max_Pay</code>. To create the <code>Min_Pay</code> variable, divide the <code>Predicted_Pay</code> variable we created above by 1 plus the range spread divided by 2.</p>
-<div class="sourceCode" id="cb2369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2369-1"><a href="marketpayline.html#cb2369-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create minimum pay variable</span></span>
-<span id="cb2369-2"><a href="marketpayline.html#cb2369-2" aria-hidden="true" tabindex="-1"></a>office<span class="sc">$</span>Min_Pay <span class="ot">&lt;-</span> office<span class="sc">$</span>Predicted_Pay <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2243-1"><a href="marketpayline.html#cb2243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create minimum pay variable</span></span>
+<span id="cb2243-2"><a href="marketpayline.html#cb2243-2" aria-hidden="true" tabindex="-1"></a>office<span class="sc">$</span>Min_Pay <span class="ot">&lt;-</span> office<span class="sc">$</span>Predicted_Pay <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <p>To create the <code>Max_Pay</code> variable, multiply the <code>Min_Pay</code> variable times 1 plus the range spread.</p>
-<div class="sourceCode" id="cb2370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2370-1"><a href="marketpayline.html#cb2370-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create maximum pay variable</span></span>
-<span id="cb2370-2"><a href="marketpayline.html#cb2370-2" aria-hidden="true" tabindex="-1"></a>office<span class="sc">$</span>Max_Pay <span class="ot">&lt;-</span> office<span class="sc">$</span>Min_Pay <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2244-1"><a href="marketpayline.html#cb2244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create maximum pay variable</span></span>
+<span id="cb2244-2"><a href="marketpayline.html#cb2244-2" aria-hidden="true" tabindex="-1"></a>office<span class="sc">$</span>Max_Pay <span class="ot">&lt;-</span> office<span class="sc">$</span>Min_Pay <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span>)</span></code></pre></div>
 <p>Let’s now add the our midpoint (which reflects <code>Predicted_Pay</code>), the minimum pay (<code>Min_Pay</code>), and the maximum pay (<code>Max_Pay</code>) on the same scatter plot we created a bit earlier in the tutorial.</p>
-<div class="sourceCode" id="cb2371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2371-1"><a href="marketpayline.html#cb2371-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2371-2"><a href="marketpayline.html#cb2371-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(office<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2371-3"><a href="marketpayline.html#cb2371-3" aria-hidden="true" tabindex="-1"></a>     office<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2371-4"><a href="marketpayline.html#cb2371-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2371-5"><a href="marketpayline.html#cb2371-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
-<span id="cb2371-6"><a href="marketpayline.html#cb2371-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">750</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
-<span id="cb2371-7"><a href="marketpayline.html#cb2371-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">70000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
-<span id="cb2371-8"><a href="marketpayline.html#cb2371-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2371-9"><a href="marketpayline.html#cb2371-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add midpoint (predicted pay) line to plot</span></span>
-<span id="cb2371-10"><a href="marketpayline.html#cb2371-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(office<span class="sc">$</span>Points, office<span class="sc">$</span>Predicted_Pay, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
-<span id="cb2371-11"><a href="marketpayline.html#cb2371-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2371-12"><a href="marketpayline.html#cb2371-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add minimum pay line to plot</span></span>
-<span id="cb2371-13"><a href="marketpayline.html#cb2371-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(office<span class="sc">$</span>Points, office<span class="sc">$</span>Min_Pay)</span>
-<span id="cb2371-14"><a href="marketpayline.html#cb2371-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2371-15"><a href="marketpayline.html#cb2371-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add maximum pay line to plot</span></span>
-<span id="cb2371-16"><a href="marketpayline.html#cb2371-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(office<span class="sc">$</span>Points, office<span class="sc">$</span>Max_Pay)</span></code></pre></div>
+<div class="sourceCode" id="cb2245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2245-1"><a href="marketpayline.html#cb2245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2245-2"><a href="marketpayline.html#cb2245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(office<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2245-3"><a href="marketpayline.html#cb2245-3" aria-hidden="true" tabindex="-1"></a>     office<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2245-4"><a href="marketpayline.html#cb2245-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2245-5"><a href="marketpayline.html#cb2245-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
+<span id="cb2245-6"><a href="marketpayline.html#cb2245-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">750</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
+<span id="cb2245-7"><a href="marketpayline.html#cb2245-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">70000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
+<span id="cb2245-8"><a href="marketpayline.html#cb2245-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2245-9"><a href="marketpayline.html#cb2245-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add midpoint (predicted pay) line to plot</span></span>
+<span id="cb2245-10"><a href="marketpayline.html#cb2245-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(office<span class="sc">$</span>Points, office<span class="sc">$</span>Predicted_Pay, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb2245-11"><a href="marketpayline.html#cb2245-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2245-12"><a href="marketpayline.html#cb2245-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Add minimum pay line to plot</span></span>
+<span id="cb2245-13"><a href="marketpayline.html#cb2245-13" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(office<span class="sc">$</span>Points, office<span class="sc">$</span>Min_Pay)</span>
+<span id="cb2245-14"><a href="marketpayline.html#cb2245-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2245-15"><a href="marketpayline.html#cb2245-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add maximum pay line to plot</span></span>
+<span id="cb2245-16"><a href="marketpayline.html#cb2245-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(office<span class="sc">$</span>Points, office<span class="sc">$</span>Max_Pay)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1372-1.png" width="672" /></p>
 </div>
 <div id="estimate_polyr_marketpayline" class="section level4" number="58.2.4.3">
 <h4><span class="header-section-number">58.2.4.3</span> Example of Nonlinear Market Pay Curve</h4>
 <p>In this third tutorial, we will estimate a market pay line – well, actually a <em>curve</em> – that is nonlinear. Specifically, we will apply first apply simple linear regression and then polynomial regression, where the latter will result in better fit to the data given the nonlinear nature of the association between <code>Points</code> and <code>Pay</code> in the sample data frame (<code>mp</code>). Let us assume that our goal is to estimate the association between job evaluation points (i.e., internal job structure) and market pay rates (i.e., external market) across job families, which in the <code>mp</code> data frame includes both the nurse and office job families.</p>
 <p><strong>Visualize Bivariate Association.</strong> Begin by creating a scatter plot to “eyeball” whether we think there is evidence of linearity or nonlinearity.</p>
-<div class="sourceCode" id="cb2372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2372-1"><a href="marketpayline.html#cb2372-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2372-2"><a href="marketpayline.html#cb2372-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2372-3"><a href="marketpayline.html#cb2372-3" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2372-4"><a href="marketpayline.html#cb2372-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2372-5"><a href="marketpayline.html#cb2372-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
+<div class="sourceCode" id="cb2246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2246-1"><a href="marketpayline.html#cb2246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2246-2"><a href="marketpayline.html#cb2246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2246-3"><a href="marketpayline.html#cb2246-3" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2246-4"><a href="marketpayline.html#cb2246-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2246-5"><a href="marketpayline.html#cb2246-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1373-1.png" width="672" /></p>
 <p>There appears to be somewhat of an exponential trend but definitely with some degree of linearity. Given these characteristics, let’s first estimate a model with simple linear regression in which we assume a linear association.</p>
 <p><strong>Specify Simple Linear Regression Model.</strong></p>
 <p>Next, we will specify our simple linear regression model. Let’s name the regression model object <code>reg.all</code>.</p>
-<div class="sourceCode" id="cb2373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2373-1"><a href="marketpayline.html#cb2373-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
-<span id="cb2373-2"><a href="marketpayline.html#cb2373-2" aria-hidden="true" tabindex="-1"></a>reg.all <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> Points, <span class="at">data=</span>mp)</span></code></pre></div>
+<div class="sourceCode" id="cb2247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2247-1"><a href="marketpayline.html#cb2247-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
+<span id="cb2247-2"><a href="marketpayline.html#cb2247-2" aria-hidden="true" tabindex="-1"></a>reg.all <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> Points, <span class="at">data=</span>mp)</span></code></pre></div>
 <p><strong>Test Statistical Assumptions for Simple Linear Regression.</strong> Based on the scatter plot we created above and the apparent nonlinearity, we cannot be very confident that we have met the assumptions of bivariate normality or linearity.</p>
 <p>Next, let’s generate a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>.</p>
-<div class="sourceCode" id="cb2374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2374-1"><a href="marketpayline.html#cb2374-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
-<span id="cb2374-2"><a href="marketpayline.html#cb2374-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2248-1"><a href="marketpayline.html#cb2248-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
+<span id="cb2248-2"><a href="marketpayline.html#cb2248-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1375-1.png" width="672" /></p>
 <p>In this plot, we can see that the variances of the residuals do not appear to be equal across observations (potential evidence of heteroscedasticity), and the average residual error value appears to be greater than zero. The form of the association seems to imply that there might be a departure from a linear association. Let’s move on to the next diagnostic plot.</p>
 <p>The Q-Q plot provides an indication as to whether the residuals are normality distributed (another one of our statistical assumptions for simple linear regression).</p>
-<div class="sourceCode" id="cb2375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2375-1"><a href="marketpayline.html#cb2375-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
-<span id="cb2375-2"><a href="marketpayline.html#cb2375-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2249-1"><a href="marketpayline.html#cb2249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
+<span id="cb2249-2"><a href="marketpayline.html#cb2249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1376-1.png" width="672" /></p>
 <p>As you can see, some of the residuals fall on or near the line with the exception of some cases that deviate, which shows some departure from normality in the residuals.</p>
 <p>The following plot shows the Cook’s distance (D) across cases.</p>
-<div class="sourceCode" id="cb2376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2376-1"><a href="marketpayline.html#cb2376-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
-<span id="cb2376-2"><a href="marketpayline.html#cb2376-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2250-1"><a href="marketpayline.html#cb2250-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
+<span id="cb2250-2"><a href="marketpayline.html#cb2250-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">4</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1377-1.png" width="672" /></p>
 <p>The case associated with row number 25 seems like it might have a problematic Cook’s distance value. Next, let’s estimate the exact values of the Cook’s distance values.</p>
-<div class="sourceCode" id="cb2377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2377-1"><a href="marketpayline.html#cb2377-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
-<span id="cb2377-2"><a href="marketpayline.html#cb2377-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.all)</span>
-<span id="cb2377-3"><a href="marketpayline.html#cb2377-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2377-4"><a href="marketpayline.html#cb2377-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort Cook&#39;s distance values in descending order               </span></span>
-<span id="cb2377-5"><a href="marketpayline.html#cb2377-5" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">sort</span>(cooksD, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2377-6"><a href="marketpayline.html#cb2377-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2377-7"><a href="marketpayline.html#cb2377-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
-<span id="cb2377-8"><a href="marketpayline.html#cb2377-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          25           1          19           2          23          20          15          24          18 
-## 1.054185542 0.282264751 0.124866652 0.075576062 0.061955323 0.058036351 0.057818032 0.053965377 0.041351819 
-##          16           8           7          14          22          12           3          13          10 
-## 0.022738034 0.017260506 0.015861019 0.014309202 0.008216950 0.006718502 0.005249071 0.004335400 0.004304829 
-##          21          11 
-## 0.003941973 0.003246351</code></pre>
-<p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .16. Here, we see only the Cook’s distance values associated with row numbers 1 and 25 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. Only the Cook’s distance value associated with row number 25 exceeds <em>1</em>, and thus we should be somewhat concerned that this case might be an outlier/influential case.</p>
+<div class="sourceCode" id="cb2251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2251-1"><a href="marketpayline.html#cb2251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
+<span id="cb2251-2"><a href="marketpayline.html#cb2251-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.all)</span>
+<span id="cb2251-3"><a href="marketpayline.html#cb2251-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2251-4"><a href="marketpayline.html#cb2251-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort Cook&#39;s distance values in descending order               </span></span>
+<span id="cb2251-5"><a href="marketpayline.html#cb2251-5" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">sort</span>(cooksD, <span class="at">decreasing=</span><span class="cn">TRUE</span>)</span>
+<span id="cb2251-6"><a href="marketpayline.html#cb2251-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2251-7"><a href="marketpayline.html#cb2251-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
+<span id="cb2251-8"><a href="marketpayline.html#cb2251-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<pre><code>##          25           1          19           2          23          20          15          24 
+## 1.054185542 0.282264751 0.124866652 0.075576062 0.061955323 0.058036351 0.057818032 0.053965377 
+##          18          16           8           7          14          22          12           3 
+## 0.041351819 0.022738034 0.017260506 0.015861019 0.014309202 0.008216950 0.006718502 0.005249071 
+##          13          10          21          11 
+## 0.004335400 0.004304829 0.003941973 0.003246351</code></pre>
+<p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .16. Here, we see only the Cook’s distance values associated with row numbers 1 and 25 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="references.html#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. Only the Cook’s distance value associated with row number 25 exceeds <em>1</em>, and thus we should be somewhat concerned that this case might be an outlier/influential case.</p>
 <p>While by no means have we satisfied the statistical assumptions, the diagnostics did not look too bad given the relatively small sample size we are working with. Let’s proceed forward and see what the model results look like.</p>
 <p><strong>Interpret the Simple Linear Regression Model Results.</strong> To request the results of our simple linear regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.all</code>) as the sole parenthetical argument.</p>
-<div class="sourceCode" id="cb2379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2379-1"><a href="marketpayline.html#cb2379-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of simple linear regression model results</span></span>
-<span id="cb2379-2"><a href="marketpayline.html#cb2379-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all)</span></code></pre></div>
+<div class="sourceCode" id="cb2253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2253-1"><a href="marketpayline.html#cb2253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of simple linear regression model results</span></span>
+<span id="cb2253-2"><a href="marketpayline.html#cb2253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Pay ~ Points, data = mp)
@@ -1763,35 +1740,35 @@ div.csl-indent {
 </tbody>
 </table>
 <p><strong>Visualize the Simple Linear Regression Model.</strong> Now it’s time to plot the simple linear regression model.</p>
-<div class="sourceCode" id="cb2381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2381-1"><a href="marketpayline.html#cb2381-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2381-2"><a href="marketpayline.html#cb2381-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2381-3"><a href="marketpayline.html#cb2381-3" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2381-4"><a href="marketpayline.html#cb2381-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2381-5"><a href="marketpayline.html#cb2381-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
-<span id="cb2381-6"><a href="marketpayline.html#cb2381-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
-<span id="cb2381-7"><a href="marketpayline.html#cb2381-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
-<span id="cb2381-8"><a href="marketpayline.html#cb2381-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2381-9"><a href="marketpayline.html#cb2381-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
-<span id="cb2381-10"><a href="marketpayline.html#cb2381-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.all, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2255-1"><a href="marketpayline.html#cb2255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2255-2"><a href="marketpayline.html#cb2255-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2255-3"><a href="marketpayline.html#cb2255-3" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2255-4"><a href="marketpayline.html#cb2255-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2255-5"><a href="marketpayline.html#cb2255-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
+<span id="cb2255-6"><a href="marketpayline.html#cb2255-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
+<span id="cb2255-7"><a href="marketpayline.html#cb2255-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
+<span id="cb2255-8"><a href="marketpayline.html#cb2255-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2255-9"><a href="marketpayline.html#cb2255-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
+<span id="cb2255-10"><a href="marketpayline.html#cb2255-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.all, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1380-1.png" width="672" /></p>
 <p>As you can see, our regression line fits the data pretty well, but the nonlinear nature of the association seems more apparent when we see the line superimposed on the scatter plot. Accordingly, let’s estimate a polynomial regression model to see if we can improve the fit to the data.</p>
 <p><strong>Specify Polynomial Regression Model.</strong> Next, specify our simple linear regression model. Let’s name the regression model object <code>reg.all_poly</code>. Given that we see one “bend” in the association, let’s estimate a quadratic functional form by including the function <code>poly</code> from base R with the predictor variable (<code>Points</code>) as the first argument and the numeral <em>2</em> as the second argument to indicate that we want to estimated a squared (quadratic) term. If we wanted to estimate a cubic functional form (i.e., two “bends”), we would enter the numeral <em>3</em>.</p>
-<div class="sourceCode" id="cb2382"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2382-1"><a href="marketpayline.html#cb2382-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify polynomial regression model</span></span>
-<span id="cb2382-2"><a href="marketpayline.html#cb2382-2" aria-hidden="true" tabindex="-1"></a>reg.all_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> <span class="fu">poly</span>(Points, <span class="dv">2</span>), <span class="at">data=</span>mp)</span></code></pre></div>
+<div class="sourceCode" id="cb2256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2256-1"><a href="marketpayline.html#cb2256-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify polynomial regression model</span></span>
+<span id="cb2256-2"><a href="marketpayline.html#cb2256-2" aria-hidden="true" tabindex="-1"></a>reg.all_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> <span class="fu">poly</span>(Points, <span class="dv">2</span>), <span class="at">data=</span>mp)</span></code></pre></div>
 <p><strong>Test Statistical Assumptions for Polynomial Regression.</strong> Let’s generate a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>.</p>
-<div class="sourceCode" id="cb2383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2383-1"><a href="marketpayline.html#cb2383-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
-<span id="cb2383-2"><a href="marketpayline.html#cb2383-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all_poly, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2257-1"><a href="marketpayline.html#cb2257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
+<span id="cb2257-2"><a href="marketpayline.html#cb2257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all_poly, <span class="dv">1</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1382-1.png" width="672" /></p>
 <p>In this plot, we can see that the variances of the residuals do not appear to be equal across observations (potential evidence of heterocedasticity), and the average residual error value appears to be greater than zero; however, this plot seems to be an improve on the one that we saw for the simple linear regression on these same data. Let’s move on to the next diagnostic plot.</p>
 <p>The Q-Q plot provides an indication as to whether the residuals are normality distributed (another one of our statistical assumptions for simple linear regression).</p>
-<div class="sourceCode" id="cb2384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2384-1"><a href="marketpayline.html#cb2384-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
-<span id="cb2384-2"><a href="marketpayline.html#cb2384-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all_poly, <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2258-1"><a href="marketpayline.html#cb2258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
+<span id="cb2258-2"><a href="marketpayline.html#cb2258-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all_poly, <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1383-1.png" width="672" /></p>
 <p>As you can see, some of the residuals fall relatively close to the line with the exception of some cases that deviate more substantially. This plot doesn’t look much better than the one corresponding to the simple linear regression model, but it doesn’t necessarily look worse.</p>
 <p>While by no means have we completely satisfied all of the statistical assumptions, the diagnostics did not reveal anything too unreasonable, as we the polynomial regression model seems to be closer to meeting the assumption of equal variances for residuals and that the average residual is close to zero. Thus, let’s proceed forward and see what the model results look like for the polynomial regression model.</p>
 <p><strong>Interpret the Polynomial Regression Model Results.</strong> To obtain the results of our polynomial regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.all_poly</code>) as the sole parenthetical argument.</p>
-<div class="sourceCode" id="cb2385"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2385-1"><a href="marketpayline.html#cb2385-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of polynomial regression model results</span></span>
-<span id="cb2385-2"><a href="marketpayline.html#cb2385-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all_poly)</span></code></pre></div>
+<div class="sourceCode" id="cb2259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2259-1"><a href="marketpayline.html#cb2259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary of polynomial regression model results</span></span>
+<span id="cb2259-2"><a href="marketpayline.html#cb2259-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all_poly)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Pay ~ poly(Points, 2), data = mp)
@@ -1848,9 +1825,9 @@ div.csl-indent {
 </tbody>
 </table>
 <p>To specify the polynomial regression equation, we will need to add the <code>raw=TRUE</code> argument to the <code>poly</code> function, as shown below. Note that the <em>p</em>-value associated with the highest degree polynomial - which in this example is the quadratic/squared term - remains the same, but the <em>p</em>-values change for the intercept/constant and lower degree polynomial(s) (e.g., first degree polynomial, which is the linear coefficient in this example). If you’re interested in interpreting the significance level of the intercept/constant and lower degree polynomial(s), then interpret the model <em>without</em> the argument <code>raw=TRUE</code> in the <code>poly</code> function. Nevertheless, if we are interested in writing out the regression equation, then we should use the model results when <code>raw=TRUE</code>.</p>
-<div class="sourceCode" id="cb2387"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2387-1"><a href="marketpayline.html#cb2387-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify polynomial regression model with raw coefficients</span></span>
-<span id="cb2387-2"><a href="marketpayline.html#cb2387-2" aria-hidden="true" tabindex="-1"></a>reg.all_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> <span class="fu">poly</span>(Points, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">data=</span>mp)</span>
-<span id="cb2387-3"><a href="marketpayline.html#cb2387-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all_poly)</span></code></pre></div>
+<div class="sourceCode" id="cb2261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2261-1"><a href="marketpayline.html#cb2261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify polynomial regression model with raw coefficients</span></span>
+<span id="cb2261-2"><a href="marketpayline.html#cb2261-2" aria-hidden="true" tabindex="-1"></a>reg.all_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> <span class="fu">poly</span>(Points, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">data=</span>mp)</span>
+<span id="cb2261-3"><a href="marketpayline.html#cb2261-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all_poly)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Pay ~ poly(Points, 2, raw = TRUE), data = mp)
@@ -1876,10 +1853,10 @@ div.csl-indent {
 <p><span class="math inline">\(Pay = 66380.51 - 188.48 * 630 + .25 * 630^2\)</span></p>
 <p><span class="math inline">\(Pay = 46863.11\)</span></p>
 <p><em>Note:</em> When we use the <code>lm</code> function, sometimes our coefficients and <em>p</em>-values will be in scientific notation (e.g., 3.023E-4). We can of course interpret the scientific notation values as is, but if we want to use standard notation, then we can precede the running of our <code>lm</code> model with the the following code: <code>options(scipen=999)</code>.</p>
-<div class="sourceCode" id="cb2389"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2389-1"><a href="marketpayline.html#cb2389-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set standard notation and specify polynomial regression model with raw coefficients</span></span>
-<span id="cb2389-2"><a href="marketpayline.html#cb2389-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
-<span id="cb2389-3"><a href="marketpayline.html#cb2389-3" aria-hidden="true" tabindex="-1"></a>reg.all_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> <span class="fu">poly</span>(Points, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">data=</span>mp)</span>
-<span id="cb2389-4"><a href="marketpayline.html#cb2389-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all_poly)</span></code></pre></div>
+<div class="sourceCode" id="cb2263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2263-1"><a href="marketpayline.html#cb2263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set standard notation and specify polynomial regression model with raw coefficients</span></span>
+<span id="cb2263-2"><a href="marketpayline.html#cb2263-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb2263-3"><a href="marketpayline.html#cb2263-3" aria-hidden="true" tabindex="-1"></a>reg.all_poly <span class="ot">&lt;-</span> <span class="fu">lm</span>(Pay <span class="sc">~</span> <span class="fu">poly</span>(Points, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">data=</span>mp)</span>
+<span id="cb2263-4"><a href="marketpayline.html#cb2263-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg.all_poly)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Pay ~ poly(Points, 2, raw = TRUE), data = mp)
@@ -1900,81 +1877,81 @@ div.csl-indent {
 ## Multiple R-squared:  0.9611, Adjusted R-squared:  0.9576 
 ## F-statistic: 271.7 on 2 and 22 DF,  p-value: 0.0000000000000003097</code></pre>
 <p><strong>Visualize the Polynomial Regression Model.</strong> Let’s plot the polynomial regression model. Plotting a nonlinear association is a bit more involved than plotting a linear association. As the first step, create a sequence of predictor values to plug into the regression model we estimated. As I show below, this involves the <code>seq</code> (sequence), <code>min</code> (minimum), and <code>max</code> (maximum) functions from base R. By default, I typically estimate a sequence of values of length 1000. If you adapt this script for other data, be sure to change the name of the data frame and the name of the predictor variable to whatever they are called in the data frame. Note that in order for this script to work, it is important to name the vector object whatever the predictor variable is called, which in this example is <code>Points</code>. As the second step, convert the vector object that contains the sequence of predictor values to a data frame; I recommend just keeping the data frame object name the same (<code>newdat</code>). As the third step, use the <code>predict</code> function from base R to predict values for the outcome from the given model (first argument) and the given predictor values (second argument); I recommend leaving the vector object containing the predicted values the same (<code>predicted_values</code>). As the fourth step, use the same <code>plot</code> script that you used above. As the final step, use the <code>lines</code> function from base R to superimpose the estimated curve on the scatter plot from the previous step. The first argument is the name of the vector of predictor values from the first step (<code>Points</code>). The second argument is the vector of predicted values (<code>predicted_values</code>) based on the model. The third (optional) argument is to specify the color of the curve, which in this case is <code>col="red"</code>.</p>
-<div class="sourceCode" id="cb2391"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2391-1"><a href="marketpayline.html#cb2391-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create object Points w/ continuous sequence of 1,000 values </span></span>
-<span id="cb2391-2"><a href="marketpayline.html#cb2391-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to include observed range of predictor values</span></span>
-<span id="cb2391-3"><a href="marketpayline.html#cb2391-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the object Points to whatever the name of your </span></span>
-<span id="cb2391-4"><a href="marketpayline.html#cb2391-4" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor variable is</span></span>
-<span id="cb2391-5"><a href="marketpayline.html#cb2391-5" aria-hidden="true" tabindex="-1"></a>Points <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(mp<span class="sc">$</span>Points), <span class="co"># Minimum of observed range</span></span>
-<span id="cb2391-6"><a href="marketpayline.html#cb2391-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">max</span>(mp<span class="sc">$</span>Points), <span class="co"># Maximum of observed range</span></span>
-<span id="cb2391-7"><a href="marketpayline.html#cb2391-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">length=</span><span class="dv">1000</span>) <span class="co"># Number of sequence values within range</span></span>
-<span id="cb2391-8"><a href="marketpayline.html#cb2391-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2391-9"><a href="marketpayline.html#cb2391-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Convert vector to data frame called newdat</span></span>
-<span id="cb2391-10"><a href="marketpayline.html#cb2391-10" aria-hidden="true" tabindex="-1"></a>newdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Points) <span class="co"># Change the object Points to name of predictor variable</span></span>
-<span id="cb2391-11"><a href="marketpayline.html#cb2391-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2391-12"><a href="marketpayline.html#cb2391-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Estimate predicted values</span></span>
-<span id="cb2391-13"><a href="marketpayline.html#cb2391-13" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.all_poly, <span class="co"># Regression model object name</span></span>
-<span id="cb2391-14"><a href="marketpayline.html#cb2391-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">newdata=</span>newdat) <span class="co"># Values to fit</span></span>
-<span id="cb2391-15"><a href="marketpayline.html#cb2391-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2391-16"><a href="marketpayline.html#cb2391-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2391-17"><a href="marketpayline.html#cb2391-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2391-18"><a href="marketpayline.html#cb2391-18" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2391-19"><a href="marketpayline.html#cb2391-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2391-20"><a href="marketpayline.html#cb2391-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
-<span id="cb2391-21"><a href="marketpayline.html#cb2391-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
-<span id="cb2391-22"><a href="marketpayline.html#cb2391-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
-<span id="cb2391-23"><a href="marketpayline.html#cb2391-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2391-24"><a href="marketpayline.html#cb2391-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Add regression curve to scatter plot</span></span>
-<span id="cb2391-25"><a href="marketpayline.html#cb2391-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Points, <span class="co"># vector of predictor values</span></span>
-<span id="cb2391-26"><a href="marketpayline.html#cb2391-26" aria-hidden="true" tabindex="-1"></a>      predicted_values, <span class="co"># Insert fitted/predicted values based on model</span></span>
-<span id="cb2391-27"><a href="marketpayline.html#cb2391-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># Set curve color to red</span></span></code></pre></div>
+<div class="sourceCode" id="cb2265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2265-1"><a href="marketpayline.html#cb2265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create object Points w/ continuous sequence of 1,000 values </span></span>
+<span id="cb2265-2"><a href="marketpayline.html#cb2265-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to include observed range of predictor values</span></span>
+<span id="cb2265-3"><a href="marketpayline.html#cb2265-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the object Points to whatever the name of your </span></span>
+<span id="cb2265-4"><a href="marketpayline.html#cb2265-4" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor variable is</span></span>
+<span id="cb2265-5"><a href="marketpayline.html#cb2265-5" aria-hidden="true" tabindex="-1"></a>Points <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(mp<span class="sc">$</span>Points), <span class="co"># Minimum of observed range</span></span>
+<span id="cb2265-6"><a href="marketpayline.html#cb2265-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">max</span>(mp<span class="sc">$</span>Points), <span class="co"># Maximum of observed range</span></span>
+<span id="cb2265-7"><a href="marketpayline.html#cb2265-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">length=</span><span class="dv">1000</span>) <span class="co"># Number of sequence values within range</span></span>
+<span id="cb2265-8"><a href="marketpayline.html#cb2265-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2265-9"><a href="marketpayline.html#cb2265-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Convert vector to data frame called newdat</span></span>
+<span id="cb2265-10"><a href="marketpayline.html#cb2265-10" aria-hidden="true" tabindex="-1"></a>newdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Points) <span class="co"># Change the object Points to name of predictor variable</span></span>
+<span id="cb2265-11"><a href="marketpayline.html#cb2265-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2265-12"><a href="marketpayline.html#cb2265-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Estimate predicted values</span></span>
+<span id="cb2265-13"><a href="marketpayline.html#cb2265-13" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.all_poly, <span class="co"># Regression model object name</span></span>
+<span id="cb2265-14"><a href="marketpayline.html#cb2265-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">newdata=</span>newdat) <span class="co"># Values to fit</span></span>
+<span id="cb2265-15"><a href="marketpayline.html#cb2265-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2265-16"><a href="marketpayline.html#cb2265-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2265-17"><a href="marketpayline.html#cb2265-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2265-18"><a href="marketpayline.html#cb2265-18" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2265-19"><a href="marketpayline.html#cb2265-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2265-20"><a href="marketpayline.html#cb2265-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
+<span id="cb2265-21"><a href="marketpayline.html#cb2265-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
+<span id="cb2265-22"><a href="marketpayline.html#cb2265-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
+<span id="cb2265-23"><a href="marketpayline.html#cb2265-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2265-24"><a href="marketpayline.html#cb2265-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Add regression curve to scatter plot</span></span>
+<span id="cb2265-25"><a href="marketpayline.html#cb2265-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Points, <span class="co"># vector of predictor values</span></span>
+<span id="cb2265-26"><a href="marketpayline.html#cb2265-26" aria-hidden="true" tabindex="-1"></a>      predicted_values, <span class="co"># Insert fitted/predicted values based on model</span></span>
+<span id="cb2265-27"><a href="marketpayline.html#cb2265-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># Set curve color to red</span></span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1387-1.png" width="672" /></p>
 <p>As you can see, our estimated curve from the polynomial regression model fits the data notably better than the line from the simple linear regression model.</p>
 <p><strong>Predict Market Pay Line Values for Polynomial Regression Model.</strong> Let’s create a new variable called <code>Predicted_Pay</code> that contains these predicted pay values for known job evaluation point values.</p>
-<div class="sourceCode" id="cb2392"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2392-1"><a href="marketpayline.html#cb2392-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
-<span id="cb2392-2"><a href="marketpayline.html#cb2392-2" aria-hidden="true" tabindex="-1"></a>mp<span class="sc">$</span>Predicted_Pay <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.all_poly, <span class="co"># name of regression model object</span></span>
-<span id="cb2392-3"><a href="marketpayline.html#cb2392-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">newdata=</span>mp) <span class="co"># name of data frame object</span></span>
-<span id="cb2392-4"><a href="marketpayline.html#cb2392-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2392-5"><a href="marketpayline.html#cb2392-5" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame</span></span>
-<span id="cb2392-6"><a href="marketpayline.html#cb2392-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(mp)</span></code></pre></div>
+<div class="sourceCode" id="cb2266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2266-1"><a href="marketpayline.html#cb2266-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
+<span id="cb2266-2"><a href="marketpayline.html#cb2266-2" aria-hidden="true" tabindex="-1"></a>mp<span class="sc">$</span>Predicted_Pay <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.all_poly, <span class="co"># name of regression model object</span></span>
+<span id="cb2266-3"><a href="marketpayline.html#cb2266-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">newdata=</span>mp) <span class="co"># name of data frame object</span></span>
+<span id="cb2266-4"><a href="marketpayline.html#cb2266-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2266-5"><a href="marketpayline.html#cb2266-5" aria-hidden="true" tabindex="-1"></a><span class="co"># View the data frame</span></span>
+<span id="cb2266-6"><a href="marketpayline.html#cb2266-6" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(mp)</span></code></pre></div>
 <p>Note that the new <code>Predicted_Pay</code> variable in your <code>mp</code> data frame contains values that could be used as the midpoint for these select benchmark jobs from the nurse job family.</p>
 <p><strong><em>Optional:</em> Estimating Minimum &amp; Maximum Pay for Benchmark Jobs Using Polynomial Regression Model.</strong> If we wish to, we can estimate the minimum and maximum pay for benchmark jobs (or for pay grades). For the sake of demonstrate, let’s set the range spread at 40% (.40) for the benchmark jobs in the <code>mp</code> data frame. Next, create new variables called <code>Min_Pay</code> and <code>Max_Pay</code>. To create the <code>Min_Pay</code> variable, divide the <code>Predicted_Pay</code> variable we created above by 1 plus the range spread divided by 2.</p>
-<div class="sourceCode" id="cb2393"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2393-1"><a href="marketpayline.html#cb2393-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create minimum pay variable</span></span>
-<span id="cb2393-2"><a href="marketpayline.html#cb2393-2" aria-hidden="true" tabindex="-1"></a>mp<span class="sc">$</span>Min_Pay <span class="ot">&lt;-</span> mp<span class="sc">$</span>Predicted_Pay <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2267-1"><a href="marketpayline.html#cb2267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create minimum pay variable</span></span>
+<span id="cb2267-2"><a href="marketpayline.html#cb2267-2" aria-hidden="true" tabindex="-1"></a>mp<span class="sc">$</span>Min_Pay <span class="ot">&lt;-</span> mp<span class="sc">$</span>Predicted_Pay <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
 <p>To create the <code>Max_Pay</code> variable, multiply the <code>Min_Pay</code> variable times 1 plus the range spread.</p>
-<div class="sourceCode" id="cb2394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2394-1"><a href="marketpayline.html#cb2394-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create maximum pay variable</span></span>
-<span id="cb2394-2"><a href="marketpayline.html#cb2394-2" aria-hidden="true" tabindex="-1"></a>mp<span class="sc">$</span>Max_Pay <span class="ot">&lt;-</span> mp<span class="sc">$</span>Min_Pay <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2268-1"><a href="marketpayline.html#cb2268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create maximum pay variable</span></span>
+<span id="cb2268-2"><a href="marketpayline.html#cb2268-2" aria-hidden="true" tabindex="-1"></a>mp<span class="sc">$</span>Max_Pay <span class="ot">&lt;-</span> mp<span class="sc">$</span>Min_Pay <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">+</span> .<span class="dv">40</span>)</span></code></pre></div>
 <p>Let’s now add the our midpoint (which reflects <code>Predicted_Pay</code>), the minimum pay (<code>Min_Pay</code>), and the maximum pay (<code>Max_Pay</code>) on the same scatterplot we created a bit earlier in the tutorial. All we are doing below is adding a sixth step to the previous plot we built, and in this sixth step, we use the <code>lines</code> function from base R to plot the minimum pay and maximum pay curves</p>
-<div class="sourceCode" id="cb2395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2395-1"><a href="marketpayline.html#cb2395-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create object Points w/ continuous sequence of 1,000 values </span></span>
-<span id="cb2395-2"><a href="marketpayline.html#cb2395-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to include observed range of predictor values</span></span>
-<span id="cb2395-3"><a href="marketpayline.html#cb2395-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the object Points to whatever the name of your </span></span>
-<span id="cb2395-4"><a href="marketpayline.html#cb2395-4" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor variable is</span></span>
-<span id="cb2395-5"><a href="marketpayline.html#cb2395-5" aria-hidden="true" tabindex="-1"></a>Points <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(mp<span class="sc">$</span>Points), <span class="co"># Minimum of observed range</span></span>
-<span id="cb2395-6"><a href="marketpayline.html#cb2395-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">max</span>(mp<span class="sc">$</span>Points), <span class="co"># Maximum of observed range</span></span>
-<span id="cb2395-7"><a href="marketpayline.html#cb2395-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">length=</span><span class="dv">1000</span>) <span class="co"># Number of sequence values within range</span></span>
-<span id="cb2395-8"><a href="marketpayline.html#cb2395-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2395-9"><a href="marketpayline.html#cb2395-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Convert vector to data frame called newdat</span></span>
-<span id="cb2395-10"><a href="marketpayline.html#cb2395-10" aria-hidden="true" tabindex="-1"></a>newdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Points) <span class="co"># Change the object Points to name of predictor variable</span></span>
-<span id="cb2395-11"><a href="marketpayline.html#cb2395-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2395-12"><a href="marketpayline.html#cb2395-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Estimate predicted values</span></span>
-<span id="cb2395-13"><a href="marketpayline.html#cb2395-13" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.all_poly, <span class="co"># Regression model object name</span></span>
-<span id="cb2395-14"><a href="marketpayline.html#cb2395-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">newdata=</span>newdat) <span class="co"># Values to fit</span></span>
-<span id="cb2395-15"><a href="marketpayline.html#cb2395-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2395-16"><a href="marketpayline.html#cb2395-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Create scatter plot for predictor and outcome variables</span></span>
-<span id="cb2395-17"><a href="marketpayline.html#cb2395-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
-<span id="cb2395-18"><a href="marketpayline.html#cb2395-18" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
-<span id="cb2395-19"><a href="marketpayline.html#cb2395-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
-<span id="cb2395-20"><a href="marketpayline.html#cb2395-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
-<span id="cb2395-21"><a href="marketpayline.html#cb2395-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
-<span id="cb2395-22"><a href="marketpayline.html#cb2395-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
-<span id="cb2395-23"><a href="marketpayline.html#cb2395-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2395-24"><a href="marketpayline.html#cb2395-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Add regression curve to scatter plot</span></span>
-<span id="cb2395-25"><a href="marketpayline.html#cb2395-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Points, <span class="co"># vector of predictor values</span></span>
-<span id="cb2395-26"><a href="marketpayline.html#cb2395-26" aria-hidden="true" tabindex="-1"></a>      predicted_values, <span class="co"># Insert fitted/predicted values based on model</span></span>
-<span id="cb2395-27"><a href="marketpayline.html#cb2395-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># Set curve color to red</span></span>
-<span id="cb2395-28"><a href="marketpayline.html#cb2395-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2395-29"><a href="marketpayline.html#cb2395-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Add minimum and maximum pay curves to plot</span></span>
-<span id="cb2395-30"><a href="marketpayline.html#cb2395-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mp<span class="sc">$</span>Points, mp<span class="sc">$</span>Min_Pay)</span>
-<span id="cb2395-31"><a href="marketpayline.html#cb2395-31" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mp<span class="sc">$</span>Points, mp<span class="sc">$</span>Max_Pay)</span></code></pre></div>
+<div class="sourceCode" id="cb2269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2269-1"><a href="marketpayline.html#cb2269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Create object Points w/ continuous sequence of 1,000 values </span></span>
+<span id="cb2269-2"><a href="marketpayline.html#cb2269-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to include observed range of predictor values</span></span>
+<span id="cb2269-3"><a href="marketpayline.html#cb2269-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Change the object Points to whatever the name of your </span></span>
+<span id="cb2269-4"><a href="marketpayline.html#cb2269-4" aria-hidden="true" tabindex="-1"></a><span class="co"># predictor variable is</span></span>
+<span id="cb2269-5"><a href="marketpayline.html#cb2269-5" aria-hidden="true" tabindex="-1"></a>Points <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(mp<span class="sc">$</span>Points), <span class="co"># Minimum of observed range</span></span>
+<span id="cb2269-6"><a href="marketpayline.html#cb2269-6" aria-hidden="true" tabindex="-1"></a>               <span class="fu">max</span>(mp<span class="sc">$</span>Points), <span class="co"># Maximum of observed range</span></span>
+<span id="cb2269-7"><a href="marketpayline.html#cb2269-7" aria-hidden="true" tabindex="-1"></a>               <span class="at">length=</span><span class="dv">1000</span>) <span class="co"># Number of sequence values within range</span></span>
+<span id="cb2269-8"><a href="marketpayline.html#cb2269-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2269-9"><a href="marketpayline.html#cb2269-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Convert vector to data frame called newdat</span></span>
+<span id="cb2269-10"><a href="marketpayline.html#cb2269-10" aria-hidden="true" tabindex="-1"></a>newdat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Points) <span class="co"># Change the object Points to name of predictor variable</span></span>
+<span id="cb2269-11"><a href="marketpayline.html#cb2269-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2269-12"><a href="marketpayline.html#cb2269-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Estimate predicted values</span></span>
+<span id="cb2269-13"><a href="marketpayline.html#cb2269-13" aria-hidden="true" tabindex="-1"></a>predicted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(reg.all_poly, <span class="co"># Regression model object name</span></span>
+<span id="cb2269-14"><a href="marketpayline.html#cb2269-14" aria-hidden="true" tabindex="-1"></a>                            <span class="at">newdata=</span>newdat) <span class="co"># Values to fit</span></span>
+<span id="cb2269-15"><a href="marketpayline.html#cb2269-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2269-16"><a href="marketpayline.html#cb2269-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4: Create scatter plot for predictor and outcome variables</span></span>
+<span id="cb2269-17"><a href="marketpayline.html#cb2269-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mp<span class="sc">$</span>Points, <span class="co"># Insert predictor variable</span></span>
+<span id="cb2269-18"><a href="marketpayline.html#cb2269-18" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
+<span id="cb2269-19"><a href="marketpayline.html#cb2269-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
+<span id="cb2269-20"><a href="marketpayline.html#cb2269-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>, <span class="co"># Set y-axis label</span></span>
+<span id="cb2269-21"><a href="marketpayline.html#cb2269-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">300</span>,<span class="dv">1000</span>), <span class="co"># Set x-axis lower and upper limits</span></span>
+<span id="cb2269-22"><a href="marketpayline.html#cb2269-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">10000</span>,<span class="dv">140000</span>)) <span class="co"># Set y-axis lower and upper limits</span></span>
+<span id="cb2269-23"><a href="marketpayline.html#cb2269-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2269-24"><a href="marketpayline.html#cb2269-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5: Add regression curve to scatter plot</span></span>
+<span id="cb2269-25"><a href="marketpayline.html#cb2269-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Points, <span class="co"># vector of predictor values</span></span>
+<span id="cb2269-26"><a href="marketpayline.html#cb2269-26" aria-hidden="true" tabindex="-1"></a>      predicted_values, <span class="co"># Insert fitted/predicted values based on model</span></span>
+<span id="cb2269-27"><a href="marketpayline.html#cb2269-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># Set curve color to red</span></span>
+<span id="cb2269-28"><a href="marketpayline.html#cb2269-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2269-29"><a href="marketpayline.html#cb2269-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Add minimum and maximum pay curves to plot</span></span>
+<span id="cb2269-30"><a href="marketpayline.html#cb2269-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mp<span class="sc">$</span>Points, mp<span class="sc">$</span>Min_Pay)</span>
+<span id="cb2269-31"><a href="marketpayline.html#cb2269-31" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mp<span class="sc">$</span>Points, mp<span class="sc">$</span>Max_Pay)</span></code></pre></div>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-1391-1.png" width="672" /></p>
 </div>
 </div>
@@ -1983,18 +1960,6 @@ div.csl-indent {
 <p>In this chapter, worked through three examples of estimating a market pay line. First, we estimated a market pay line that showed strong fit to the data using simple linear regression. Second, we estimated a market pay line that showed weaker fit to the data using simple linear regression. Third, we estimated a a market pay <em>curve</em> using polynomial regression.</p>
 
 </div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-bollen1985regression" class="csl-entry">
-Bollen, Kenneth A, and Robert W Jackman. 1985. <span>“Regression Diagnostics: An Expository Treatment of Outliers and Influential Cases.”</span> <em>Sociological Methods &amp; Research</em> 13 (4): 510–42.
-</div>
-<div id="ref-R-dplyr" class="csl-entry">
-Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2021. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
-</div>
-<div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -2007,6 +1972,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -2033,10 +1999,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }

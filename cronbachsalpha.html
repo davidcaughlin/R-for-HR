@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 29 Estimating Internal Consistency Reliability Using Cronbach’s alpha | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 29 Estimating Internal Consistency Reliability Using Cronbach’s alpha | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 29 Estimating Internal Consistency Reliability Using Cronbach’s alpha | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,9 +32,8 @@
   
 <link rel="prev" href="aggregatesegment.html"/>
 <link rel="next" href="compositevariable.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 <style type="text/css">
@@ -117,29 +115,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -663,29 +638,29 @@ div.csl-indent {
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1146,8 +1121,8 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1176,7 +1151,7 @@ div.csl-indent {
 <div id="conceptualoverview_cronbachsalpha" class="section level2" number="29.1">
 <h2><span class="header-section-number">29.1</span> Conceptual Overview</h2>
 <p>We can think of reliability as how <em>consistently</em> or dependably we have measured something in a given sample. Common types of reliability that we encounter in human resource management include inter-rater reliability, test-retest reliability, and internal consistency reliability. Conventionally, a measurement tool demonstrates an acceptable level of reliability in a sample when the reliability estimate is .70 or higher, where .00 indicates very low reliability and 1.00 indicates very high reliability. That being said, we should always strive for reliability estimates that are much closer to 1.00.</p>
-<p>When we working with multi-item measures multi-item measures, we often estimate <strong>internal consistency reliability</strong> can be defined as “a reliability estimate based on intercorrelation (i.e., homogeneity) among items on a test, with [Cronbach’s] alpha being a prime example” <span class="citation">(<a href="#ref-schultzwhitney2005" role="doc-biblioref">Schultz and Whitney 2005</a>)</span>. In other words, internal consistency reliability tells us how consistent scores on different items (e.g., questions) are to one another. Homogeneity among items provides some evidence that the items are reliably measuring the same construct (i.e., concept). Of course, just because we are consistently measuring something doesn’t necessary mean we are measuring the correct something, which echoes the notion that <em>high reliability is a necessary but not sufficient condition for high validity</em>. Nonetheless, internal consistency reliability is a useful form of reliability when it comes to evaluating multi-item scales and determining whether it is appropriate to create a composite variable (i.e., overall scale score variable) based on the sum or mean of item scores for each case (e.g., observation, person, employee, individual).</p>
+<p>When we working with multi-item measures multi-item measures, we often estimate <strong>internal consistency reliability</strong> can be defined as “a reliability estimate based on intercorrelation (i.e., homogeneity) among items on a test, with [Cronbach’s] alpha being a prime example” <span class="citation">(<a href="references.html#ref-schultzwhitney2005" role="doc-biblioref">Schultz and Whitney 2005</a>)</span>. In other words, internal consistency reliability tells us how consistent scores on different items (e.g., questions) are to one another. Homogeneity among items provides some evidence that the items are reliably measuring the same construct (i.e., concept). Of course, just because we are consistently measuring something doesn’t necessary mean we are measuring the correct something, which echoes the notion that <em>high reliability is a necessary but not sufficient condition for high validity</em>. Nonetheless, internal consistency reliability is a useful form of reliability when it comes to evaluating multi-item scales and determining whether it is appropriate to create a composite variable (i.e., overall scale score variable) based on the sum or mean of item scores for each case (e.g., observation, person, employee, individual).</p>
 <p><strong>Cronbach’s alpha (<span class="math inline">\(\alpha\)</span>)</strong> is commonly used as an indicator of internal consistency reliability. If our goal is to understand the extent to which the items relate to underlying factor(s), exploratory and/or confirmatory factor analysis would be appropriate. Cronbach’s alpha can be used to assess internal consistency reliability when the variables (e.g., survey items, measure items) analyzed are continuous (interval or ratio measurement scale); however, we often relax this assumption to allow the analysis of Likert-type response scale formats (e.g., <em>1</em> = Strongly Disagree, <em>5</em> = Strongly Disagree) for variables that are technically ordinal in nature. For dichotomous (binary) items, we might use the <em>Kuder-Richardson (K-R) coefficient</em> of equivalence to assess internal consistency reliability.</p>
 <p>There are different thresholds we might apply to evaluate the internal consistency reliability based on Cronbach’s alpha, and the table below shows the thresholds for qualitative descriptors that we’ll apply throughout this book.</p>
 <table>
@@ -1213,7 +1188,7 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>For additional information on internal consistency reliability, Cronbach’s alpha, and reliability in general, please check out <a href="https://opentext.wsu.edu/carriecuttler/chapter/reliability-and-validity-of-measurement/">this open-source resource</a> <span class="citation">(<a href="#ref-priceetal2017" role="doc-biblioref">Price et al. 2017</a>)</span>.</p>
+<p>For additional information on internal consistency reliability, Cronbach’s alpha, and reliability in general, please check out <a href="https://opentext.wsu.edu/carriecuttler/chapter/reliability-and-validity-of-measurement/">this open-source resource</a> <span class="citation">(<a href="references.html#ref-priceetal2017" role="doc-biblioref">Price et al. 2017</a>)</span>.</p>
 </div>
 <div id="tutorial_cronbachsalpha" class="section level2" number="29.2">
 <h2><span class="header-section-number">29.2</span> Tutorial</h2>
@@ -1221,7 +1196,7 @@ div.csl-indent {
 <div id="videotutorial_cronbachsalpha" class="section level3" number="29.2.1">
 <h3><span class="header-section-number">29.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/7k35isYrE4Q?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/7k35isYrE4Q?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/7k35isYrE4Q" class="uri">https://youtu.be/7k35isYrE4Q</a></p>
 </div>
@@ -1248,36 +1223,44 @@ div.csl-indent {
 </div>
 <div id="initsteps_cronbachsalpha" class="section level3" number="29.2.3">
 <h3><span class="header-section-number">29.2.3</span> Initial Steps</h3>
-<p>If you haven’t already, save the file called <strong>“survey.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the file called <strong>“survey.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb927"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb927-1"><a href="cronbachsalpha.html#cb927-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb927-2"><a href="cronbachsalpha.html#cb927-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“survey.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb928-1"><a href="cronbachsalpha.html#cb928-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb928-2"><a href="cronbachsalpha.html#cb928-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb928-3"><a href="cronbachsalpha.html#cb928-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb928-4"><a href="cronbachsalpha.html#cb928-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb929"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb929-1"><a href="cronbachsalpha.html#cb929-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb929-2"><a href="cronbachsalpha.html#cb929-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb929-3"><a href="cronbachsalpha.html#cb929-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb929-4"><a href="cronbachsalpha.html#cb929-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb929-5"><a href="cronbachsalpha.html#cb929-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 156 Columns: 11</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## dbl (11): SurveyID, JobSat1, JobSat2, JobSat3, TurnInt1, TurnInt2, TurnInt3, Engage1, Engage2, Engage3, Eng...</code></pre>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb875-1"><a href="cronbachsalpha.html#cb875-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb875-2"><a href="cronbachsalpha.html#cb875-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“survey.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb876-1"><a href="cronbachsalpha.html#cb876-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb876-2"><a href="cronbachsalpha.html#cb876-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb876-3"><a href="cronbachsalpha.html#cb876-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb876-4"><a href="cronbachsalpha.html#cb876-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb877-1"><a href="cronbachsalpha.html#cb877-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb877-2"><a href="cronbachsalpha.html#cb877-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb877-3"><a href="cronbachsalpha.html#cb877-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb877-4"><a href="cronbachsalpha.html#cb877-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb877-5"><a href="cronbachsalpha.html#cb877-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="cronbachsalpha.html#cb933-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb933-2"><a href="cronbachsalpha.html#cb933-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>##  [1] &quot;SurveyID&quot; &quot;JobSat1&quot;  &quot;JobSat2&quot;  &quot;JobSat3&quot;  &quot;TurnInt1&quot; &quot;TurnInt2&quot; &quot;TurnInt3&quot; &quot;Engage1&quot;  &quot;Engage2&quot; 
-## [10] &quot;Engage3&quot;  &quot;Engage4&quot;</code></pre>
-<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb935-1"><a href="cronbachsalpha.html#cb935-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb935-2"><a href="cronbachsalpha.html#cb935-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   SurveyID = col_double(),
+##   JobSat1 = col_double(),
+##   JobSat2 = col_double(),
+##   JobSat3 = col_double(),
+##   TurnInt1 = col_double(),
+##   TurnInt2 = col_double(),
+##   TurnInt3 = col_double(),
+##   Engage1 = col_double(),
+##   Engage2 = col_double(),
+##   Engage3 = col_double(),
+##   Engage4 = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb879-1"><a href="cronbachsalpha.html#cb879-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb879-2"><a href="cronbachsalpha.html#cb879-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>##  [1] &quot;SurveyID&quot; &quot;JobSat1&quot;  &quot;JobSat2&quot;  &quot;JobSat3&quot;  &quot;TurnInt1&quot; &quot;TurnInt2&quot; &quot;TurnInt3&quot; &quot;Engage1&quot; 
+##  [9] &quot;Engage2&quot;  &quot;Engage3&quot;  &quot;Engage4&quot;</code></pre>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb881-1"><a href="cronbachsalpha.html#cb881-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb881-2"><a href="cronbachsalpha.html#cb881-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 156</code></pre>
-<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb937-1"><a href="cronbachsalpha.html#cb937-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
-<span id="cb937-2"><a href="cronbachsalpha.html#cb937-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb883-1"><a href="cronbachsalpha.html#cb883-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
+<span id="cb883-2"><a href="cronbachsalpha.html#cb883-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   SurveyID JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4
 ##      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
@@ -1326,14 +1309,14 @@ div.csl-indent {
 </tr>
 </tbody>
 </table>
-<p>To compute internal consistency reliability, we will use the <code>alpha</code> function from the <code>psych</code> package <span class="citation">(<a href="#ref-R-psych" role="doc-biblioref">Revelle 2021</a>)</span>. To get started, install and access the <code>psych</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively (if you haven’t already done so).</p>
-<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="cronbachsalpha.html#cb939-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb939-2"><a href="cronbachsalpha.html#cb939-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb940-1"><a href="cronbachsalpha.html#cb940-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb940-2"><a href="cronbachsalpha.html#cb940-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<p>To compute internal consistency reliability, we will use the <code>alpha</code> function from the <code>psych</code> package <span class="citation">(<a href="references.html#ref-R-psych" role="doc-biblioref">Revelle 2021</a>)</span>. To get started, install and access the <code>psych</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively (if you haven’t already done so).</p>
+<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb885-1"><a href="cronbachsalpha.html#cb885-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb885-2"><a href="cronbachsalpha.html#cb885-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb886-1"><a href="cronbachsalpha.html#cb886-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb886-2"><a href="cronbachsalpha.html#cb886-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
 <p>Presumably, each set of similarly named items are intended to “tap into” the same underlying concept (e.g., Turnover Intentions: <code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>), which we are attempting to assess using the items. Let’s practice estimating Cronbach’s alpha for some of the measures in our data frame, beginning with the three Turnover Intention items (i.e., variables) (<code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>). Note that you must list the name of the data frame (<code>df</code>) containing these items prior to the first bracket (<code>[</code>. After that and within the <code>c</code> (combine) function, provide the item (variable) names of the scale for which you would like to estimate the internal consistency reliability; because we have included a comma (<code>,</code>) before the <code>c</code> function, we are using matrix/bracket notation to reference columns, which correspond to variables in this data frame; if we had placed the <code>c</code> function <em>before</em> the comma, then we would (<code>,</code>) be referencing rows using matrix/bracket notation (which will almost never be the case when we’re using a data frame with the <code>alpha</code> function. Finally, the item (variable) names listed as arguments within the <code>c</code> function should be in quotation marks.</p>
-<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="cronbachsalpha.html#cb941-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Turnover Intentions items</span></span>
-<span id="cb941-2"><a href="cronbachsalpha.html#cb941-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;TurnInt1&quot;</span>,<span class="st">&quot;TurnInt2&quot;</span>,<span class="st">&quot;TurnInt3&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb887-1"><a href="cronbachsalpha.html#cb887-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Turnover Intentions items</span></span>
+<span id="cb887-2"><a href="cronbachsalpha.html#cb887-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;TurnInt1&quot;</span>,<span class="st">&quot;TurnInt2&quot;</span>,<span class="st">&quot;TurnInt3&quot;</span>)])</span></code></pre></div>
 <pre><code>## 
 ## Reliability analysis   
 ## Call: alpha(x = df[, c(&quot;TurnInt1&quot;, &quot;TurnInt2&quot;, &quot;TurnInt3&quot;)])
@@ -1372,8 +1355,8 @@ div.csl-indent {
 </ol>
 <p>In this example, all three of these items appear to “tap into” our conceptual definition of turnover intentions . Thus, when combined with the acceptable internal consistency reliability for these three items, we can reasonably justify creating a composite variable (i.e., overall scale score variable) based on the mean or sum of these three items; you will learn how to do this in the following chapter.</p>
 <p>Now, let’s apply the <code>alpha</code> function to the three Job Satisfaction items (<code>JobSat1</code>, <code>JobSat2</code>, <code>JobSat3</code>). Given that we’re working the same data frame object (<code>df</code>), all we need to do is swap out the three turnover intentions item names (i.e., variable names) with the three job satisfaction items names. Please note that if we had fewer or more than three variables, we would simply list fewer variable-name arguments in the <code>c</code> function nested within the <code>alpha</code> function.</p>
-<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="cronbachsalpha.html#cb943-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Job Satisfaction items</span></span>
-<span id="cb943-2"><a href="cronbachsalpha.html#cb943-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;JobSat1&quot;</span>,<span class="st">&quot;JobSat2&quot;</span>,<span class="st">&quot;JobSat3&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb889-1"><a href="cronbachsalpha.html#cb889-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for Job Satisfaction items</span></span>
+<span id="cb889-2"><a href="cronbachsalpha.html#cb889-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;JobSat1&quot;</span>,<span class="st">&quot;JobSat2&quot;</span>,<span class="st">&quot;JobSat3&quot;</span>)])</span></code></pre></div>
 <pre><code>## 
 ## Reliability analysis   
 ## Call: alpha(x = df[, c(&quot;JobSat1&quot;, &quot;JobSat2&quot;, &quot;JobSat3&quot;)])
@@ -1424,21 +1407,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-priceetal2017" class="csl-entry">
-Price, Paul C, Rajiv S Jhangiani, I-Chant A Chiang, Dana C Leighton, and Carrie Cuttler. 2017. <em>Research Methods in Psychology (3rd American Ed.)</em>. Montreal, Canada: Pressbooks. <a href="https://opentext.wsu.edu/carriecuttler/">https://opentext.wsu.edu/carriecuttler/</a>.
-</div>
-<div id="ref-R-psych" class="csl-entry">
-Revelle, William. 2021. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. <a href="https://personality-project.org/r/psych/
-https://personality-project.org/r/psych-manual.pdf">https://personality-project.org/r/psych/
-<div id="ref-schultzwhitney2005" class="csl-entry">
-Schultz, K S, and D J Whitney. 2005. <em>Measurement Theory in Action: Case Studies and Exercises</em>. Thousand Oaks, CA: Sage.
-</div>
-<div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
-</div>
-</div>
             </section>
 
           </div>
@@ -1449,6 +1417,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1475,10 +1444,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }

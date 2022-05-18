@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 59 Identifying Pay Determinants Using Hierarchical Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 59 Identifying Pay Determinants Using Hierarchical Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 59 Identifying Pay Determinants Using Hierarchical Linear Regression | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,9 +32,8 @@
   
 <link rel="prev" href="marketpayline.html"/>
 <link rel="next" href="comparatio.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 <style type="text/css">
@@ -117,29 +115,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -663,29 +638,29 @@ div.csl-indent {
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1146,8 +1121,8 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1195,11 +1170,11 @@ div.csl-indent {
 <div id="conceptualvideo_paydeterminants" class="section level3" number="59.1.2">
 <h3><span class="header-section-number">59.1.2</span> Conceptual Videos</h3>
 <p>For a more in-depth review of pay determinants, please check out the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/EMC2aBvjB2s?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/EMC2aBvjB2s?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/EMC2aBvjB2s" class="uri">https://youtu.be/EMC2aBvjB2s</a></p>
 <p>For a more in-depth review of hierarchical linear regression, please check out the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/Ney5uM6sWgY?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/Ney5uM6sWgY?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/Ney5uM6sWgY" class="uri">https://youtu.be/Ney5uM6sWgY</a></p>
 </div>
@@ -1210,7 +1185,7 @@ div.csl-indent {
 <div id="videotutorial_paydeterminants" class="section level3" number="59.2.1">
 <h3><span class="header-section-number">59.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/OGXX3ldUMoI?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/OGXX3ldUMoI?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/OGXX3ldUMoI" class="uri">https://youtu.be/OGXX3ldUMoI</a></p>
 </div>
@@ -1257,34 +1232,35 @@ div.csl-indent {
 </div>
 <div id="initsteps_paydeterminants" class="section level3" number="59.2.3">
 <h3><span class="header-section-number">59.2.3</span> Initial Steps</h3>
-<p>If you haven’t already, save the file called <strong>“PayDeterminants.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the file called <strong>“PayDeterminants.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb2396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2396-1"><a href="paydeterminants.html#cb2396-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb2396-2"><a href="paydeterminants.html#cb2396-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PayDeterminants.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb2397"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2397-1"><a href="paydeterminants.html#cb2397-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb2397-2"><a href="paydeterminants.html#cb2397-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb2397-3"><a href="paydeterminants.html#cb2397-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb2397-4"><a href="paydeterminants.html#cb2397-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2398-1"><a href="paydeterminants.html#cb2398-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb2398-2"><a href="paydeterminants.html#cb2398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb2398-3"><a href="paydeterminants.html#cb2398-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2398-4"><a href="paydeterminants.html#cb2398-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb2398-5"><a href="paydeterminants.html#cb2398-5" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PayDeterminants.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 132 Columns: 5</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## chr (2): sex, race
-## dbl (3): raise, educ, perf</code></pre>
+<div class="sourceCode" id="cb2270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2270-1"><a href="paydeterminants.html#cb2270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2270-2"><a href="paydeterminants.html#cb2270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PayDeterminants.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2271-1"><a href="paydeterminants.html#cb2271-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2271-2"><a href="paydeterminants.html#cb2271-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2271-3"><a href="paydeterminants.html#cb2271-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2271-4"><a href="paydeterminants.html#cb2271-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2272-1"><a href="paydeterminants.html#cb2272-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2272-2"><a href="paydeterminants.html#cb2272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2272-3"><a href="paydeterminants.html#cb2272-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2272-4"><a href="paydeterminants.html#cb2272-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb2272-5"><a href="paydeterminants.html#cb2272-5" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PayDeterminants.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb2402"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2402-1"><a href="paydeterminants.html#cb2402-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb2402-2"><a href="paydeterminants.html#cb2402-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pd)</span></code></pre></div>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   raise = col_double(),
+##   educ = col_double(),
+##   perf = col_double(),
+##   sex = col_character(),
+##   race = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb2274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2274-1"><a href="paydeterminants.html#cb2274-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb2274-2"><a href="paydeterminants.html#cb2274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pd)</span></code></pre></div>
 <pre><code>## [1] &quot;raise&quot; &quot;educ&quot;  &quot;perf&quot;  &quot;sex&quot;   &quot;race&quot;</code></pre>
-<div class="sourceCode" id="cb2404"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2404-1"><a href="paydeterminants.html#cb2404-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb2404-2"><a href="paydeterminants.html#cb2404-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pd)</span></code></pre></div>
-<pre><code>## spec_tbl_df [132 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb2276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2276-1"><a href="paydeterminants.html#cb2276-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2276-2"><a href="paydeterminants.html#cb2276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(pd)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,5] [132 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ raise: num [1:132] 2.4 1.7 2.6 1.1 3.6 2.4 1 0.6 2.2 2.5 ...
 ##  $ educ : num [1:132] 3 3 5 5 4 2 2 2 4 4 ...
 ##  $ perf : num [1:132] 7.1 3.8 10 4 10 8.9 9.9 5.4 7.4 7.5 ...
@@ -1297,10 +1273,9 @@ div.csl-indent {
 ##   ..   perf = col_double(),
 ##   ..   sex = col_character(),
 ##   ..   race = col_character()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb2406"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2406-1"><a href="paydeterminants.html#cb2406-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb2406-2"><a href="paydeterminants.html#cb2406-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pd)</span></code></pre></div>
+##   .. )</code></pre>
+<div class="sourceCode" id="cb2278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2278-1"><a href="paydeterminants.html#cb2278-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2278-2"><a href="paydeterminants.html#cb2278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pd)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   raise  educ  perf sex    race 
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;
@@ -1310,8 +1285,8 @@ div.csl-indent {
 ## 4   1.1     5   4   female black
 ## 5   3.6     4  10   female black
 ## 6   2.4     2   8.9 male   black</code></pre>
-<div class="sourceCode" id="cb2408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2408-1"><a href="paydeterminants.html#cb2408-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb2408-2"><a href="paydeterminants.html#cb2408-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pd)</span></code></pre></div>
+<div class="sourceCode" id="cb2280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2280-1"><a href="paydeterminants.html#cb2280-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2280-2"><a href="paydeterminants.html#cb2280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(pd)</span></code></pre></div>
 <pre><code>## [1] 132</code></pre>
 <p>There are 5 variables and 132 cases (i.e., employees) in the <code>pd</code> data frame: <code>raise</code>, <code>educ</code>, <code>perf</code>, <code>sex</code>, and <code>race</code>. Per the output of the <code>str</code> (structure) function above, the <code>raise</code>, <code>educ</code>, and <code>perf</code> variables are of type <em>numeric</em>, and the <code>sex</code> and <code>race</code> variables are of type <em>character</em>. The <code>raise</code> variable represents the percentage annual raise each employee received. The <code>educ</code> variable is ordinal but numerically coded and can be treated as a continuous variable in this context, where 1 = high school diploma or GED, 2 = some college, 3 = associate’s degree, 4 = bachelor’s degree, and 5 = graduate certificate or degree. The <code>perf</code> variable contains the supervisor-rated annual performance rating scores, which can range from 1-10, with 10 indicating very high performance. The <code>sex</code>variable refers to employee sex (female, male). The <code>race</code> variable contains three level (asian, black, white).</p>
 </div>
@@ -1322,9 +1297,9 @@ div.csl-indent {
 <div id="perform_hiearchicallinearregression_stepone" class="section level4" number="59.2.4.1">
 <h4><span class="header-section-number">59.2.4.1</span> Step One (Block One)</h4>
 <p>In the first step (first block), we will specify a multiple linear regression model with <code>raise</code> as the outcome variable and <code>educ</code> and <code>perf</code> as the predictor variables. We are going to use the <code>lm</code> (linear model) function from base R instead of the <code>Regression</code> or <code>reg.brief</code> functions from <code>lessR</code> because the models we create using the <code>lm</code> function are a bit easier to work with (in my opinion) when it comes to hierarchical linear regression. Using the <code>&lt;-</code> assignment operator, let’s name the model object <code>step1</code> to reference the fact that it is our first step in the hierarchical linear regression process. Next, type the name of the <code>lm</code> function. As the first parenthetical argument, specify the following regression model: <code>raise ~ educ + perf</code>. Note that the tilde <code>~</code> symbol separates the outcome variable (left of the tilde) from the predictor variables (right of the tilde). As the second argument, type <code>data=</code> followed by the name of the data frame object (<code>pd</code>) in which our model variables can be found. On a subsequent line, type the name of the <code>summary</code> function from base R, with the name of our regression model object (<code>step1</code>) as the sole parenthetical argument. Finally, to determine the number of cases retained for the analysis (which becomes relevant if any data were missing on the focal variables), use the <code>nrow</code> function from base R with the <code>model.frame</code> function from base R as an argument. As the sole argument for the <code>model.frame</code> function, type the name of the regression model object (<code>step1</code>).</p>
-<div class="sourceCode" id="cb2410"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2410-1"><a href="paydeterminants.html#cb2410-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1 Model: Regress raise on educ and perf</span></span>
-<span id="cb2410-2"><a href="paydeterminants.html#cb2410-2" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> educ <span class="sc">+</span> perf, <span class="at">data=</span>pd)</span>
-<span id="cb2410-3"><a href="paydeterminants.html#cb2410-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step1)</span></code></pre></div>
+<div class="sourceCode" id="cb2282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2282-1"><a href="paydeterminants.html#cb2282-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1 Model: Regress raise on educ and perf</span></span>
+<span id="cb2282-2"><a href="paydeterminants.html#cb2282-2" aria-hidden="true" tabindex="-1"></a>step1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> educ <span class="sc">+</span> perf, <span class="at">data=</span>pd)</span>
+<span id="cb2282-3"><a href="paydeterminants.html#cb2282-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = raise ~ educ + perf, data = pd)
@@ -1344,17 +1319,17 @@ div.csl-indent {
 ## Residual standard error: 0.7999 on 129 degrees of freedom
 ## Multiple R-squared:  0.3837, Adjusted R-squared:  0.3742 
 ## F-statistic: 40.16 on 2 and 129 DF,  p-value: 0.00000000000002752</code></pre>
-<div class="sourceCode" id="cb2412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2412-1"><a href="paydeterminants.html#cb2412-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cases retained for the analysis</span></span>
-<span id="cb2412-2"><a href="paydeterminants.html#cb2412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">model.frame</span>(step1))</span></code></pre></div>
+<div class="sourceCode" id="cb2284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2284-1"><a href="paydeterminants.html#cb2284-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cases retained for the analysis</span></span>
+<span id="cb2284-2"><a href="paydeterminants.html#cb2284-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">model.frame</span>(step1))</span></code></pre></div>
 <pre><code>## [1] 132</code></pre>
 <p>Let’s review the findings from the first step of our hierarchical linear regression. Using a sample of 132 employees, we estimated the first step in a two-step hierarchical linear regression. Specifically, we regressed the percentage pay raise received by employees (<code>raise</code>) on their education level (<code>educ</code>) and supervisor-rated performance (<code>perf</code>). We found that both education level (<em>b</em> = .217, <em>p</em> &lt; .001) and performance (<em>b</em> = .296, <em>p</em> &lt; .001) were significantly and positively associated with the percentage raise received when controlling for one another. The (unadjusted multiple) <em>R</em><sup>2</sup> and adjusted <em>R</em><sup>2</sup> values are .384 and .374 (<em>F</em> = 40.16, <em>p</em> &lt; .001); focusing on the unadjusted <em>R</em><sup>2</sup> value, approximately 38% of the variance in percentage pay raise received by employees is explained by their education level and supervisor-rated performance scores. Because the <em>F</em>-value associated with the model is statistically significant (<em>p</em> &lt; .001), we can conclude that this model fits the data better than a model containing no predictor variables.</p>
 </div>
 <div id="perform_hiearchicallinearregression_steptwo" class="section level4" number="59.2.4.2">
 <h4><span class="header-section-number">59.2.4.2</span> Step Two (Block Two)</h4>
 <p>In the second step (second block), we will specify a multiple linear regression model with <code>raise</code> as the outcome variable and <code>educ</code> and <code>perf</code> as the predictor variables, but we will also add the predictor variables of <code>sex</code> and <code>race</code>. For this model, let’s name the model object <code>step2</code>.</p>
-<div class="sourceCode" id="cb2414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2414-1"><a href="paydeterminants.html#cb2414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2 Model: Regress raise on educ, perf, sex, and race</span></span>
-<span id="cb2414-2"><a href="paydeterminants.html#cb2414-2" aria-hidden="true" tabindex="-1"></a>step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> educ <span class="sc">+</span> perf <span class="sc">+</span> sex <span class="sc">+</span> race, <span class="at">data=</span>pd)</span>
-<span id="cb2414-3"><a href="paydeterminants.html#cb2414-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step2)</span></code></pre></div>
+<div class="sourceCode" id="cb2286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2286-1"><a href="paydeterminants.html#cb2286-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2 Model: Regress raise on educ, perf, sex, and race</span></span>
+<span id="cb2286-2"><a href="paydeterminants.html#cb2286-2" aria-hidden="true" tabindex="-1"></a>step2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> educ <span class="sc">+</span> perf <span class="sc">+</span> sex <span class="sc">+</span> race, <span class="at">data=</span>pd)</span>
+<span id="cb2286-3"><a href="paydeterminants.html#cb2286-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = raise ~ educ + perf + sex + race, data = pd)
@@ -1377,16 +1352,16 @@ div.csl-indent {
 ## Residual standard error: 0.6583 on 126 degrees of freedom
 ## Multiple R-squared:  0.5923, Adjusted R-squared:  0.5761 
 ## F-statistic: 36.61 on 5 and 126 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-<div class="sourceCode" id="cb2416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2416-1"><a href="paydeterminants.html#cb2416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cases retained for the analysis</span></span>
-<span id="cb2416-2"><a href="paydeterminants.html#cb2416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">model.frame</span>(step2))</span></code></pre></div>
+<div class="sourceCode" id="cb2288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2288-1"><a href="paydeterminants.html#cb2288-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of cases retained for the analysis</span></span>
+<span id="cb2288-2"><a href="paydeterminants.html#cb2288-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">model.frame</span>(step2))</span></code></pre></div>
 <pre><code>## [1] 132</code></pre>
 <p>Let’s review the findings from the second step of our hierarchical linear regression. Using the same sample of 132 employees as the first step, we regressed the percentage pay raise received by employees (<code>raise</code>) on their education level (<code>educ</code>), supervisor-rated performance (<code>perf</code>), sex (<code>sex</code>), and race/ethnicity (<code>race</code>). Both education level (<em>b</em> = .219, <em>p</em> &lt; .001) and performance (<em>b</em> = .283, <em>p</em> &lt; .001) remained significantly and positively associated with the percentage raise received when controlling for one another and the sex and race/ethnicity variables. On the one hand, employee sex was not significantly associated with the percentage pay raise received when controlling for the other variables in the model (<em>b</em> = .162, <em>p</em> = .167). On the other hand, employee race/ethnicity was significantly associated with percentage pay raise received. Because the employee race/ethnicity variable (<code>race</code>) is categorical and has three or more levels (i.e., asian, black, white), the <code>lm</code> function uses a process called <strong>dummy coding</strong> (<strong>contrast coding</strong>) to make comparisons between the different races/ethnicities with respect to the <code>raise</code> outcome variable. For more information on dummy coding, see the section called <a href="paydeterminants.html#dummycoding_hierarchicallinearregression_paydeterminants">Optional: More Information on Dummy Coding</a> below. The results indicate that <em>black</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = .587, <em>p</em> &lt; .001) when controlling for other predictor variables in the model, and likewise <em>white</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = 1.182, <em>p</em> &lt; .001). Thus, there is evidence that employee race/ethnicity influenced manager decisions when it came to determining the pay raise percentage for employees, which could be evidence of implicit or explicit bias. The (unadjusted multiple) <em>R</em><sup>2</sup> and adjusted <em>R</em><sup>2</sup> values are .592 and .576 (<em>F</em> = 36.61, <em>p</em> &lt; .001); focusing on the unadjusted <em>R</em><sup>2</sup> value, approximately 59% of the variance in percentage pay raise received by employees is explained by their education level, supervisor-rated performance scores, employee sex, and employee race/ethnicity. Because the <em>F</em>-value associated with the model is statistically significant (<em>p</em> &lt; .001), we can conclude that this model fits the data better than a model containing no predictor variables.</p>
 </div>
 <div id="perform_hiearchicallinearregression_nestedmodel" class="section level4" number="59.2.4.3">
 <h4><span class="header-section-number">59.2.4.3</span> Compare Nested Models</h4>
 <p>As a final step in our hierarchical linear regression, let’s use the <code>anova</code> function from base R to do a nested model comparison between the <code>step1</code> and <code>step2</code> models. This will tell us whether adding <code>sex</code> and <code>race</code> to the model significantly improved model fit (i.e., explained incrementally more variance in the outcome) over and above <code>educ</code> and <code>perf</code>. Type the name of the <code>anova</code> function. As the first argument, type the name of our first step model object (<code>step1</code>), and as the second argument, type the name of our second step model object (<code>step2</code>).</p>
-<div class="sourceCode" id="cb2418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2418-1"><a href="paydeterminants.html#cb2418-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested Model Comparison: Step 1 vs. Step 2</span></span>
-<span id="cb2418-2"><a href="paydeterminants.html#cb2418-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(step1, step2)</span></code></pre></div>
+<div class="sourceCode" id="cb2290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2290-1"><a href="paydeterminants.html#cb2290-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nested Model Comparison: Step 1 vs. Step 2</span></span>
+<span id="cb2290-2"><a href="paydeterminants.html#cb2290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(step1, step2)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: raise ~ educ + perf
@@ -1398,8 +1373,8 @@ div.csl-indent {
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>The <em>F</em>-value and its associated <em>p</em>-value (the latter of which is less than the conventional cutoff of .05) indicate that the second step model fits the data significantly better than the first step model. In other words, <code>sex</code> and <code>race</code> explain incremental variance in <code>raise</code> beyond the variance already explained by <code>educ</code> and <code>perf</code>. In the context of a pay raise, this is of course concerning because an employee’s sex or race/ethnicity should not factor into the percentage raise they receive.</p>
 <p>Finally, let’s reference the summary/output for each model and specifically the <code>r.squared</code> values to determine what the change in <em>R</em><sup>2</sup> was from the first step to the second step. The change in <em>R</em><sup>2</sup> gives as an idea of how much (in terms of practical significance) the model fit improved when adding the additional variables (i.e., <code>sex</code>, <code>race</code>). Note that we use the <code>$</code> symbol to indicate that we want the <code>r.squared</code> value from the <code>summary(step2)</code> and <code>summary(step1)</code> output, and then we do a simple subtraction to get the change in <em>R</em><sup>2</sup>. Note that we typically only interpret the change in <em>R</em><sup>2</sup> if we find that the models fit the data significantly differently from one another based on the <em>F</em>-value and its associated <em>p</em>-value in the model comparison step.</p>
-<div class="sourceCode" id="cb2420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2420-1"><a href="paydeterminants.html#cb2420-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change in R-squared</span></span>
-<span id="cb2420-2"><a href="paydeterminants.html#cb2420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step2)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">summary</span>(step1)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb2292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2292-1"><a href="paydeterminants.html#cb2292-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change in R-squared</span></span>
+<span id="cb2292-2"><a href="paydeterminants.html#cb2292-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(step2)<span class="sc">$</span>r.squared <span class="sc">-</span> <span class="fu">summary</span>(step1)<span class="sc">$</span>r.squared</span></code></pre></div>
 <pre><code>## [1] 0.2085752</code></pre>
 <p>As you can see, the change in <em>R</em><sup>2</sup> is .209, which indicates that <code>sex</code> and <code>race</code> explain approximately 21% additional variance in <code>raise</code> beyond the variance already explained by <code>educ</code> and <code>perf</code>. If we consider our conventional rules of thumb for interpreting <em>R</em><sup>2</sup> as an effect size (i.e., indicator of practical significance), this is medium-to-large change, which is impressive in terms of magnitude (and deeply concerning in this specific context).</p>
 <table>
@@ -1429,9 +1404,9 @@ div.csl-indent {
 <h4><span class="header-section-number">59.2.4.4</span> Optional: More Information on Dummy Coding</h4>
 <p><strong>Dummy coding</strong> (<strong>contrast coding</strong>) is used in regression when we have a categorical predictor variable. To illustrate dummy coding, I reference the results from Step 2 above. In a simple two-level/category categorical variable such as <code>sex</code> (<em>female</em>, <em>male</em>) just one dummy variable is needed to represent <code>sex</code>, and by default, the <code>lm</code> function uses the name of the level/category that comes first alphabetically as the reference group, setting it equal to 0 (e.g., <em>female</em> = 0); in turn, the name of the level/category that comes next alphabetically is used as the focal group and is set equal to 1 (e.g., <em>male</em> = 1). Using this coding, a positive and significant regression coefficient for <em>male</em> (i.e., <em>sexmale</em>) would indicate that male employees have higher scores/values on the outcome variable. Things get a little bit trickier when we have a categorical variable with three or more categories/levels. Using the present findings as an example, behind the scenes, the <code>lm</code> function has created two dichotomous “dummy” variables with respect to the <code>race</code> variable, both of which reference the focal level/category (e.g., <em>raceblack</em>) as 1 and all other levels/categories (e.g., <em>asian</em>, <em>white</em>) as 0. The number of dummy variables created to analyze a categorical variable is equal to the number of categories/levels (<em>k</em>) minus 1 (<em>k</em> - 1); in this example, we have three categories/levels (<em>asian</em>, <em>black</em>, <em>white</em>), and thus two dummy variables were created behind the scenes. Only two dummy variables are needed for a categorical variable with three levels/categories because it can be inferred what a third dummy variable’s values would be if we have two dummy variables’ values. In this example, because the <em>asian</em> level/category comes first alphabetically, it is treated as the reference group, which means its mean value is reflected in the intercept/constant value of -1.22478 when controlling for other variables in the model. We can interpret each dummy variable regression coefficient as the difference between the mean of the focal level/category (e.g., <em>raceblack</em>) and the intercept (e.g., <em>asian</em>) when controlling for other variables in the model. Thus, in the second step model above, <em>black</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = .587, <em>p</em> &lt; .001) when controlling for other predictor variables in the model, and likewise <em>white</em> employees received significantly higher percentage pay raises than <em>asian</em> employees (<em>b</em> = 1.182, <em>p</em> &lt; .001).</p>
 <p>Let’s dig deeper into dummy coding and illustrate its connection to analysis of variance (ANOVA). For solely explanatory purposes, let’s take a look at a model that only contains the dummy variables for the <code>race</code> variable in relation to the <code>raise</code> variable. Let’s name this model object <code>mod</code>.</p>
-<div class="sourceCode" id="cb2422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2422-1"><a href="paydeterminants.html#cb2422-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example model with dummy coding: Regress raise on race</span></span>
-<span id="cb2422-2"><a href="paydeterminants.html#cb2422-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> race, <span class="at">data=</span>pd)</span>
-<span id="cb2422-3"><a href="paydeterminants.html#cb2422-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb2294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2294-1"><a href="paydeterminants.html#cb2294-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example model with dummy coding: Regress raise on race</span></span>
+<span id="cb2294-2"><a href="paydeterminants.html#cb2294-2" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(raise <span class="sc">~</span> race, <span class="at">data=</span>pd)</span>
+<span id="cb2294-3"><a href="paydeterminants.html#cb2294-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mod)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = raise ~ race, data = pd)
@@ -1453,14 +1428,14 @@ div.csl-indent {
 ## F-statistic:  19.9 on 2 and 129 DF,  p-value: 0.00000002925</code></pre>
 <p>Note that in this model, the intercept/constant value of 1.594 represents the mean percentage raise for <em>asian</em> employees. The regression coefficient associated with <em>raceblack</em> (<em>b</em> = .623) represents the mean percentage raise for <em>black</em> employees minus the mean percentage raise for <em>asian</em> employees; because the values is positive, it means that <em>black</em> employees have a descriptively higher mean than <em>asian</em> employees. Next, the regression coefficient associated with <em>racewhite</em> (<em>b</em> = 1.291) represents the mean percentage raise for <em>black</em> employees minus the mean percentage raise for <em>asian</em> employees; because the values is positive, it means that <em>white</em> employees also have a descriptively higher mean than <em>asian</em> employees.</p>
 <p>We can confirm that the regression coefficient values mean outcome for each level of the categorical variable by using the <code>tapply</code> and <code>mean</code> functions to calculate the mean for the <code>raise</code> variable for each level of the <code>race</code> variable.</p>
-<div class="sourceCode" id="cb2424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2424-1"><a href="paydeterminants.html#cb2424-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean values on outcome variable for each level of categorical variable</span></span>
-<span id="cb2424-2"><a href="paydeterminants.html#cb2424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pd<span class="sc">$</span>raise, pd<span class="sc">$</span>race, mean)</span></code></pre></div>
+<div class="sourceCode" id="cb2296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2296-1"><a href="paydeterminants.html#cb2296-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean values on outcome variable for each level of categorical variable</span></span>
+<span id="cb2296-2"><a href="paydeterminants.html#cb2296-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(pd<span class="sc">$</span>raise, pd<span class="sc">$</span>race, mean)</span></code></pre></div>
 <pre><code>##    asian    black    white 
 ## 1.593548 2.216364 2.884783</code></pre>
 <p>Note that the intercept/constant value for above, which represents the mean percentage raise for the reference group (<em>asian</em> employees), is 1.594; this is the same as the mean we just calculated. In addition, if we add the regression coefficient for the dummy variable associated with <em>black</em> employees to the mean of the reference group (<em>asian</em> employees), we get 2.216 (1.5935 + .6228 = 2.2164), which is equal to the mean for <em>black</em> employees we calculated. Finally, if we add the regression coefficient for the dummy variable associated with <em>white</em> employees to the mean of the reference group (<em>asian</em> employees), we get 2.885 (1.5935 + 1.2912 = 2.8848), which is equal to the mean for <em>white</em> employees we calculated.</p>
 <p>Next, using the <code>anova</code> function from base R, we can interpret the regression model (<code>mod</code>) as a one-way ANOVA.</p>
-<div class="sourceCode" id="cb2426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2426-1"><a href="paydeterminants.html#cb2426-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display ANOVA results</span></span>
-<span id="cb2426-2"><a href="paydeterminants.html#cb2426-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
+<div class="sourceCode" id="cb2298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2298-1"><a href="paydeterminants.html#cb2298-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display ANOVA results</span></span>
+<span id="cb2298-2"><a href="paydeterminants.html#cb2298-2" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: raise
@@ -1479,12 +1454,6 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
-</div>
-</div>
             </section>
 
           </div>
@@ -1495,6 +1464,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1521,10 +1491,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }

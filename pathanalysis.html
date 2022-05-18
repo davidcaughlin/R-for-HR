@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 54 Investigating Processes Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 54 Investigating Processes Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 54 Investigating Processes Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1 of this book. This means that the books is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:image" content="https://rforhr.comcover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,9 +32,8 @@
   
 <link rel="prev" href="lassoregression.html"/>
 <link rel="next" href="mediationanalysis.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,8 +49,7 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
 
 
 <style type="text/css">
@@ -117,29 +115,6 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -663,29 +638,29 @@ div.csl-indent {
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1146,8 +1121,8 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1180,7 +1155,7 @@ div.csl-indent {
 <p>In this chapter, we will focus on <strong>recursive</strong> models, which means the direct relations between two variables presumed to be causally related can only be unidirectional. A <strong>nonrecursive</strong> model allows for bidirectional associations between variables presumed to be causally related and for a predictor variable to be correlated with the residual error of its presumed outcome variable.</p>
 <div id="pathdiagram_pathanalysis" class="section level3" number="54.1.1">
 <h3><span class="header-section-number">54.1.1</span> Path Diagram</h3>
-<p>It is customary to depict a path analysis model visually using a path diagram, and as mentioned above, path analysis can be used to test a theoretical or conceptual model of interest. Let’s use the Theory of Planned Behavior <span class="citation">(<a href="#ref-ajzen1991" role="doc-biblioref">Ajzen 1991</a>)</span>. For a simplified version of the theory, please refer to the Figure 1 below.</p>
+<p>It is customary to depict a path analysis model visually using a path diagram, and as mentioned above, path analysis can be used to test a theoretical or conceptual model of interest. Let’s use the Theory of Planned Behavior <span class="citation">(<a href="references.html#ref-ajzen1991" role="doc-biblioref">Ajzen 1991</a>)</span>. For a simplified version of the theory, please refer to the Figure 1 below.</p>
 <div class="figure">
 <img src="TPB_conceptualmodel.png" alt="" />
 <p class="caption">Figure 1: Conceptual representation of the Theory of Planned Behavior (Ajzen, 1991)</p>
@@ -1223,7 +1198,7 @@ div.csl-indent {
 </div>
 <div id="modelfit_pathanalysis" class="section level3" number="54.1.3">
 <h3><span class="header-section-number">54.1.3</span> Model Fit</h3>
-<p>When a model is over-identified (<em>df</em> &gt; 0), the extent to which the specified model fits the data can be assessed using various model fit indices, such as the chi-square test (<span class="math inline">\(\chi^{2}\)</span>), comparative fit index (CFI), Tucker-Lewis index (TLI), root mean square error of approximation (RMSEA), and standardized root mean square residual (SRMR). For a commonly cited reference on cutoffs for fit indices, please refer to Hu and Bentler <span class="citation">(<a href="#ref-hu1999cutoff" role="doc-biblioref">1999</a>)</span>.</p>
+<p>When a model is over-identified (<em>df</em> &gt; 0), the extent to which the specified model fits the data can be assessed using various model fit indices, such as the chi-square test (<span class="math inline">\(\chi^{2}\)</span>), comparative fit index (CFI), Tucker-Lewis index (TLI), root mean square error of approximation (RMSEA), and standardized root mean square residual (SRMR). For a commonly cited reference on cutoffs for fit indices, please refer to Hu and Bentler <span class="citation">(<a href="references.html#ref-hu1999cutoff" role="doc-biblioref">1999</a>)</span>.</p>
 <p><strong>Chi-square test:</strong> The chi-square test can be used to assess whether the model fits the data, where a statistically significant chi-square value (e.g., <em>p</em> &lt; .05) indicates that the model does not fit the data well and a nonsignificant chi-square value (e.g., <em>p</em> &gt; .05) indicates that the model fits the data reasonably well. The null hypothesis for the chi-square test is that the model fits the data perfectly, and thus failing to reject the null model provides some confidence that the model fits the data reasonably close to perfectly. The chi-square test is sensitive to sample size and non-normal variable distributions.</p>
 <p><strong>Comparative fit index (CFI):</strong> As the name implies, the comparative fit index (CFI) is a type of comparative (or incremental) fit index, which means that the CFI compares the focal model to a baseline model, which is commonly referred to as the null or independence model. The CFI is generally less sensitive to sample size than the chi-square test. A CFI value <em>greater than or equal to</em> .90 generally indicates good model fit to the data.</p>
 <p><strong>Tucker-Lewis index (CFI):</strong> Like the CFI, the Tucker-Lewis index (TLI) is another type of comparative (or incremental) fit index. The TLI is generally less sensitive to sample size than the chi-square test and tends to work well with smaller sample sizes. A TLI value <em>greater than or equal to</em> .95 generally indicates good model fit to the data, although some might relax that cutoff to .90.</p>
@@ -1272,7 +1247,7 @@ div.csl-indent {
 <div id="conceptualvideo_pathanalysis" class="section level3" number="54.1.6">
 <h3><span class="header-section-number">54.1.6</span> Conceptual Video</h3>
 <p>For a more in-depth review of path analysis, please check out the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/UGIVPtFKwc0?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/UGIVPtFKwc0?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/UGIVPtFKwc0" class="uri">https://youtu.be/UGIVPtFKwc0</a></p>
 </div>
@@ -1283,7 +1258,7 @@ div.csl-indent {
 <div id="videotutorial_pathanalysis" class="section level3" number="54.2.1">
 <h3><span class="header-section-number">54.2.1</span> Video Tutorial</h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/vMStRfsUTBg?rel=0" width="672" height="400px" data-external="1">
+<iframe src="https://youtube.com/embed/vMStRfsUTBg?rel=0" width="672" height="400px">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/vMStRfsUTBg" class="uri">https://youtu.be/vMStRfsUTBg</a></p>
 </div>
@@ -1314,33 +1289,35 @@ div.csl-indent {
 </div>
 <div id="initsteps_pathanalysis" class="section level3" number="54.2.3">
 <h3><span class="header-section-number">54.2.3</span> Initial Steps</h3>
-<p>If you haven’t already, save the file called <strong>“PlannedBehavior.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP,” which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
+<p>If you haven’t already, save the file called <strong>“PlannedBehavior.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb2243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2243-1"><a href="pathanalysis.html#cb2243-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb2243-2"><a href="pathanalysis.html#cb2243-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PlannedBehavior.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2021</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb2244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2244-1"><a href="pathanalysis.html#cb2244-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb2244-2"><a href="pathanalysis.html#cb2244-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb2244-3"><a href="pathanalysis.html#cb2244-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb2244-4"><a href="pathanalysis.html#cb2244-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2245-1"><a href="pathanalysis.html#cb2245-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb2245-2"><a href="pathanalysis.html#cb2245-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb2245-3"><a href="pathanalysis.html#cb2245-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2245-4"><a href="pathanalysis.html#cb2245-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb2245-5"><a href="pathanalysis.html#cb2245-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 199 Columns: 5</code></pre>
-<pre><code>## -- Column specification ---------------------------------------------------------------------------------------
-## Delimiter: &quot;,&quot;
-## dbl (5): attitude, norms, control, intention, behavior</code></pre>
+<div class="sourceCode" id="cb2125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2125-1"><a href="pathanalysis.html#cb2125-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2125-2"><a href="pathanalysis.html#cb2125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PlannedBehavior.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2126-1"><a href="pathanalysis.html#cb2126-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2126-2"><a href="pathanalysis.html#cb2126-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2126-3"><a href="pathanalysis.html#cb2126-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2126-4"><a href="pathanalysis.html#cb2126-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2127-1"><a href="pathanalysis.html#cb2127-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2127-2"><a href="pathanalysis.html#cb2127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2127-3"><a href="pathanalysis.html#cb2127-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2127-4"><a href="pathanalysis.html#cb2127-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb2127-5"><a href="pathanalysis.html#cb2127-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
-## i Use `spec()` to retrieve the full column specification for this data.
-## i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb2249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2249-1"><a href="pathanalysis.html#cb2249-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb2249-2"><a href="pathanalysis.html#cb2249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+## -- Column specification -----------------------------------------------------------------------------
+## cols(
+##   attitude = col_double(),
+##   norms = col_double(),
+##   control = col_double(),
+##   intention = col_double(),
+##   behavior = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb2129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2129-1"><a href="pathanalysis.html#cb2129-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb2129-2"><a href="pathanalysis.html#cb2129-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;attitude&quot;  &quot;norms&quot;     &quot;control&quot;   &quot;intention&quot; &quot;behavior&quot;</code></pre>
-<div class="sourceCode" id="cb2251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2251-1"><a href="pathanalysis.html#cb2251-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb2251-2"><a href="pathanalysis.html#cb2251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre><code>## spec_tbl_df [199 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb2131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2131-1"><a href="pathanalysis.html#cb2131-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2131-2"><a href="pathanalysis.html#cb2131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df[,5] [199 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ attitude : num [1:199] 2.31 4.66 3.85 4.24 2.91 2.99 3.96 3.01 4.77 3.67 ...
 ##  $ norms    : num [1:199] 2.31 4.01 3.56 2.25 3.31 2.51 4.65 2.98 3.09 3.63 ...
 ##  $ control  : num [1:199] 2.03 3.63 4.2 2.84 2.4 2.95 3.77 1.9 3.83 5 ...
@@ -1353,10 +1330,9 @@ div.csl-indent {
 ##   ..   control = col_double(),
 ##   ..   intention = col_double(),
 ##   ..   behavior = col_double()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb2253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2253-1"><a href="pathanalysis.html#cb2253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb2253-2"><a href="pathanalysis.html#cb2253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+##   .. )</code></pre>
+<div class="sourceCode" id="cb2133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2133-1"><a href="pathanalysis.html#cb2133-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2133-2"><a href="pathanalysis.html#cb2133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
 ##   attitude norms control intention behavior
 ##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -1366,18 +1342,18 @@ div.csl-indent {
 ## 4     4.24  2.25    2.84      1.51     2.25
 ## 5     2.91  3.31    2.4       1.45     2   
 ## 6     2.99  2.51    2.95      2.59     2.2</code></pre>
-<div class="sourceCode" id="cb2255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2255-1"><a href="pathanalysis.html#cb2255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb2255-2"><a href="pathanalysis.html#cb2255-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb2135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2135-1"><a href="pathanalysis.html#cb2135-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2135-2"><a href="pathanalysis.html#cb2135-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 199</code></pre>
 <p>There are 5 variables and 199 cases (i.e., employees) in the <code>df</code> data frame: <code>attitude</code>, <code>norms</code>, <code>control</code>, <code>intention</code>, and <code>behavior</code>. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>numeric</em> (continuous: interval/ratio). All of the variables are self-reports from a survey, where respondents rated their level of agreement (1 = strongly disagree, 5 = strongly agree) for the items associated with the <code>attitude</code>, <code>norms</code>, <code>control</code>, and <code>intention</code> scales, and where respondents rated the frequency with which they enact the behavior associated with the <code>behavior</code> variable (1 = never, 5 = all of the time). The <code>attitude</code> variable reflects an employee’s attitude toward the behavior in question. The <code>norms</code> variable reflects an employee’s perception of norms pertaining to the enactment of the behavior. The <code>control</code> variable reflects an employee’s feeling of control over being able to perform the behavior. The <code>intention</code> variable reflects an employee’s intention to enact the behavior. The <code>behavior</code> variable reflects an employee’s perception of the frequency with which they actually engage in the behavior.</p>
 </div>
 <div id="specifymodel_pathanalysis" class="section level3" number="54.2.4">
 <h3><span class="header-section-number">54.2.4</span> Specify &amp; Estimate Path Analysis Models</h3>
-<p>We will use functions from the <code>lavaan</code> package <span class="citation">(<a href="#ref-R-lavaan" role="doc-biblioref">Rosseel 2012</a>)</span> to specify and estimate our path analysis model. The <code>lavaan</code> package also allows structural equation modeling with latent variables, but we won’t cover that in this tutorial. If you haven’t already install and access the <code>lavaan</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. For background information on the <code>lavaan</code> package, check out the <a href="http://lavaan.ugent.be/tutorial/syntax1.html">package website</a>.</p>
-<div class="sourceCode" id="cb2257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2257-1"><a href="pathanalysis.html#cb2257-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb2257-2"><a href="pathanalysis.html#cb2257-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lavaan&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2258-1"><a href="pathanalysis.html#cb2258-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb2258-2"><a href="pathanalysis.html#cb2258-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code></pre></div>
+<p>We will use functions from the <code>lavaan</code> package <span class="citation">(<a href="references.html#ref-R-lavaan" role="doc-biblioref">Rosseel 2012</a>)</span> to specify and estimate our path analysis model. The <code>lavaan</code> package also allows structural equation modeling with latent variables, but we won’t cover that in this tutorial. If you haven’t already install and access the <code>lavaan</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. For background information on the <code>lavaan</code> package, check out the <a href="http://lavaan.ugent.be/tutorial/syntax1.html">package website</a>.</p>
+<div class="sourceCode" id="cb2137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2137-1"><a href="pathanalysis.html#cb2137-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb2137-2"><a href="pathanalysis.html#cb2137-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lavaan&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2138-1"><a href="pathanalysis.html#cb2138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb2138-2"><a href="pathanalysis.html#cb2138-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code></pre></div>
 <p>Let’s begin by showing how a multiple linear regression model can be estimated using <code>lavaan</code> and it’s functions. Specifically, let’s focus on the first part of our Theory of Planned Behavior model, where <code>attitude</code>, <code>norms</code>, and <code>control</code> are proposed as predictors <code>intention</code>.</p>
 <ol style="list-style-type: decimal">
 <li>Using the <code>&lt;-</code> operator, name the specified model object something of your choosing (<code>specmod</code>). To the right of the <code>&lt;-</code> operator, enter quotation marks (<code>" "</code>), and within them, specify your model, which in this case is a multiple linear regression equation: <code>intention ~ attitude + norms + control</code>. Just like we would with other regression functions in R, we use the tilde (<code>~</code>) to separate our outcome variable from our predictor variable, where the outcome variable goes to the left of the tilde, and the predictor variables go to the right.</li>
@@ -1389,16 +1365,16 @@ div.csl-indent {
 <li>As the second argument, type <code>fit.measures=TRUE</code> to request the model fit indices as part of the output.</li>
 <li>As the third argument, type <code>rsquare=TRUE</code> to request the unadjusted <em>R</em><sup>2</sup> value for the model.</li>
 </ul>
-<div class="sourceCode" id="cb2259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2259-1"><a href="pathanalysis.html#cb2259-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify path analysis model</span></span>
-<span id="cb2259-2"><a href="pathanalysis.html#cb2259-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2259-3"><a href="pathanalysis.html#cb2259-3" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
-<span id="cb2259-4"><a href="pathanalysis.html#cb2259-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2259-5"><a href="pathanalysis.html#cb2259-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2259-6"><a href="pathanalysis.html#cb2259-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
-<span id="cb2259-7"><a href="pathanalysis.html#cb2259-7" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
-<span id="cb2259-8"><a href="pathanalysis.html#cb2259-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2259-9"><a href="pathanalysis.html#cb2259-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
-<span id="cb2259-10"><a href="pathanalysis.html#cb2259-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2139-1"><a href="pathanalysis.html#cb2139-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify path analysis model</span></span>
+<span id="cb2139-2"><a href="pathanalysis.html#cb2139-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2139-3"><a href="pathanalysis.html#cb2139-3" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
+<span id="cb2139-4"><a href="pathanalysis.html#cb2139-4" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2139-5"><a href="pathanalysis.html#cb2139-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2139-6"><a href="pathanalysis.html#cb2139-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
+<span id="cb2139-7"><a href="pathanalysis.html#cb2139-7" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
+<span id="cb2139-8"><a href="pathanalysis.html#cb2139-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2139-9"><a href="pathanalysis.html#cb2139-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2139-10"><a href="pathanalysis.html#cb2139-10" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## lavaan 0.6-9 ended normally after 11 iterations
 ## 
 ##   Estimator                                         ML
@@ -1463,22 +1439,22 @@ div.csl-indent {
 ## R-Square:
 ##                    Estimate
 ##     intention         0.369</code></pre>
-<p>Towards the top of the output, alongside “Number of observations,” the number 199 appears, which indicates that 199 employees’ data were included in this analysis. Further below, you will see a zero (0) next to “Degrees of freedom,” which indicates that the model is just-identified. Thus, we will ignore the model fit information and skip down to the “Regressions” section. The path coefficient (i.e., regression coefficient) between <code>attitude</code> and <code>intention</code> is statistically significant and positive (<em>b</em> = .352, <em>p</em> &lt; .001). The path coefficient between <code>norms</code> and <code>intention</code> is statistically significant and positive (<em>b</em> = .153, <em>p</em> = .010). The path coefficient between <code>control</code> and <code>intention</code> is statistically significant and positive (<em>b</em> = .275, <em>p</em> &lt; .001). Under the “R-Square” section, we see the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>intention</code>, which is equal to .369; that is, collectively, <code>attitude</code>, <code>norms</code>, and <code>control</code> explain 36.9% of the variance in <code>intention</code>.</p>
+<p>Towards the top of the output, alongside “Number of observations”, the number 199 appears, which indicates that 199 employees’ data were included in this analysis. Further below, you will see a zero (0) next to “Degrees of freedom”, which indicates that the model is just-identified. Thus, we will ignore the model fit information and skip down to the “Regressions” section. The path coefficient (i.e., regression coefficient) between <code>attitude</code> and <code>intention</code> is statistically significant and positive (<em>b</em> = .352, <em>p</em> &lt; .001). The path coefficient between <code>norms</code> and <code>intention</code> is statistically significant and positive (<em>b</em> = .153, <em>p</em> = .010). The path coefficient between <code>control</code> and <code>intention</code> is statistically significant and positive (<em>b</em> = .275, <em>p</em> &lt; .001). Under the “R-Square” section, we see the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>intention</code>, which is equal to .369; that is, collectively, <code>attitude</code>, <code>norms</code>, and <code>control</code> explain 36.9% of the variance in <code>intention</code>.</p>
 <p>We can also explicitly model the covariances/correlations between the predictor (exogenous) variables in the model by using the double tilde (<code>~~</code>) operator. Note that on separate lines under the regression equation script, we can specify that we want <code>attitude</code> to be able to freely covary with <code>norms</code> and <code>control</code> and for <code>norms</code> to be able to freely covary with <code>control</code>. Everything else in your script remains the same as in our previously specified model. As noted <a href="pathanalysis.html#pathdiagram_pathanalysis">above</a>, in a real-life situation, we should think carefully about what it means to add these covariances to exogenous variables, particularly in the case of estimating the model using full information maximum likelihood and in the presence of missing data. We are specifying these covariances here for demonstration purposes.</p>
-<div class="sourceCode" id="cb2261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2261-1"><a href="pathanalysis.html#cb2261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify path analysis model</span></span>
-<span id="cb2261-2"><a href="pathanalysis.html#cb2261-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2261-3"><a href="pathanalysis.html#cb2261-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Direct relations</span></span>
-<span id="cb2261-4"><a href="pathanalysis.html#cb2261-4" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
-<span id="cb2261-5"><a href="pathanalysis.html#cb2261-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Covariances</span></span>
-<span id="cb2261-6"><a href="pathanalysis.html#cb2261-6" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms + control</span></span>
-<span id="cb2261-7"><a href="pathanalysis.html#cb2261-7" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
-<span id="cb2261-8"><a href="pathanalysis.html#cb2261-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2261-9"><a href="pathanalysis.html#cb2261-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2261-10"><a href="pathanalysis.html#cb2261-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
-<span id="cb2261-11"><a href="pathanalysis.html#cb2261-11" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
-<span id="cb2261-12"><a href="pathanalysis.html#cb2261-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2261-13"><a href="pathanalysis.html#cb2261-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
-<span id="cb2261-14"><a href="pathanalysis.html#cb2261-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2141-1"><a href="pathanalysis.html#cb2141-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify path analysis model</span></span>
+<span id="cb2141-2"><a href="pathanalysis.html#cb2141-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2141-3"><a href="pathanalysis.html#cb2141-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Direct relations</span></span>
+<span id="cb2141-4"><a href="pathanalysis.html#cb2141-4" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
+<span id="cb2141-5"><a href="pathanalysis.html#cb2141-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Covariances</span></span>
+<span id="cb2141-6"><a href="pathanalysis.html#cb2141-6" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms + control</span></span>
+<span id="cb2141-7"><a href="pathanalysis.html#cb2141-7" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
+<span id="cb2141-8"><a href="pathanalysis.html#cb2141-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2141-9"><a href="pathanalysis.html#cb2141-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2141-10"><a href="pathanalysis.html#cb2141-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
+<span id="cb2141-11"><a href="pathanalysis.html#cb2141-11" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
+<span id="cb2141-12"><a href="pathanalysis.html#cb2141-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2141-13"><a href="pathanalysis.html#cb2141-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2141-14"><a href="pathanalysis.html#cb2141-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## lavaan 0.6-9 ended normally after 17 iterations
 ## 
 ##   Estimator                                         ML
@@ -1556,11 +1532,11 @@ div.csl-indent {
 ##     intention         0.369</code></pre>
 <p>Just as before, the degrees of freedom (<em>df</em>) for the model is equal to zero (0), which again indicates that this model is just-identified, which is what we would expect from a multiple linear regression model as well. In addition, note that the path coefficients remain the same (along with their associated <em>p</em>-values), and the <em>R</em><sup>2</sup> value remains the same. In the new, output, however, the covariances are estimated, and when we estimate the covariances between variables, the variances of the variables involved in the covariances are also estimated by default. Often the covariances and variances are not of substantive interest when interpreting a path analysis model, though.</p>
 <p>Using the <code>lm</code> (linear model) function from base R we can verify that our path analysis results using the <code>sem</code> function from <code>lavaan</code> are equivalent to multiple linear regression results from a standard linear regression function. For a review of the <code>lm</code> function, please refer to the <a href="incrementalvalidity.html#incrementalvalidity_supplement">chapter supplement for estimating incremental validity using multiple linear regression</a>.</p>
-<div class="sourceCode" id="cb2263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2263-1"><a href="pathanalysis.html#cb2263-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
-<span id="cb2263-2"><a href="pathanalysis.html#cb2263-2" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">lm</span>(intention <span class="sc">~</span> attitude <span class="sc">+</span> norms <span class="sc">+</span> control, <span class="at">data=</span>df)</span>
-<span id="cb2263-3"><a href="pathanalysis.html#cb2263-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2263-4"><a href="pathanalysis.html#cb2263-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
-<span id="cb2263-5"><a href="pathanalysis.html#cb2263-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod)</span></code></pre></div>
+<div class="sourceCode" id="cb2143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2143-1"><a href="pathanalysis.html#cb2143-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate multiple linear regression model</span></span>
+<span id="cb2143-2"><a href="pathanalysis.html#cb2143-2" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">lm</span>(intention <span class="sc">~</span> attitude <span class="sc">+</span> norms <span class="sc">+</span> control, <span class="at">data=</span>df)</span>
+<span id="cb2143-3"><a href="pathanalysis.html#cb2143-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2143-4"><a href="pathanalysis.html#cb2143-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2143-5"><a href="pathanalysis.html#cb2143-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = intention ~ attitude + norms + control, data = df)
@@ -1583,21 +1559,21 @@ div.csl-indent {
 ## F-statistic: 38.01 on 3 and 195 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <p>As you can see, aside from the number of digits reported after the decimal, the <code>lm</code> regression coefficients are equivalent to the <code>sem</code> path coefficients. In addition, the unadjusted <em>R</em><sup>2</sup> value is the same.</p>
 <p>Now it’s time to test a full model of the Theory of Planned Behavior by adding the equation in which <code>intention</code> predicts <code>behavior</code>. We will build on our previous path analysis model script by specifying that <code>intention</code> is a predictor of <code>behavior</code> (i.e., <code>behavior ~ intention</code>). Everything else in our script can remain the same.</p>
-<div class="sourceCode" id="cb2265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2265-1"><a href="pathanalysis.html#cb2265-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify path analysis model</span></span>
-<span id="cb2265-2"><a href="pathanalysis.html#cb2265-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2265-3"><a href="pathanalysis.html#cb2265-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Direct relations</span></span>
-<span id="cb2265-4"><a href="pathanalysis.html#cb2265-4" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
-<span id="cb2265-5"><a href="pathanalysis.html#cb2265-5" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ intention</span></span>
-<span id="cb2265-6"><a href="pathanalysis.html#cb2265-6" aria-hidden="true" tabindex="-1"></a><span class="st"># Covariances</span></span>
-<span id="cb2265-7"><a href="pathanalysis.html#cb2265-7" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms + control</span></span>
-<span id="cb2265-8"><a href="pathanalysis.html#cb2265-8" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
-<span id="cb2265-9"><a href="pathanalysis.html#cb2265-9" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2265-10"><a href="pathanalysis.html#cb2265-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2265-11"><a href="pathanalysis.html#cb2265-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
-<span id="cb2265-12"><a href="pathanalysis.html#cb2265-12" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
-<span id="cb2265-13"><a href="pathanalysis.html#cb2265-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2265-14"><a href="pathanalysis.html#cb2265-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
-<span id="cb2265-15"><a href="pathanalysis.html#cb2265-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2145-1"><a href="pathanalysis.html#cb2145-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify path analysis model</span></span>
+<span id="cb2145-2"><a href="pathanalysis.html#cb2145-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2145-3"><a href="pathanalysis.html#cb2145-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Direct relations</span></span>
+<span id="cb2145-4"><a href="pathanalysis.html#cb2145-4" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
+<span id="cb2145-5"><a href="pathanalysis.html#cb2145-5" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ intention</span></span>
+<span id="cb2145-6"><a href="pathanalysis.html#cb2145-6" aria-hidden="true" tabindex="-1"></a><span class="st"># Covariances</span></span>
+<span id="cb2145-7"><a href="pathanalysis.html#cb2145-7" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms + control</span></span>
+<span id="cb2145-8"><a href="pathanalysis.html#cb2145-8" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
+<span id="cb2145-9"><a href="pathanalysis.html#cb2145-9" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2145-10"><a href="pathanalysis.html#cb2145-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2145-11"><a href="pathanalysis.html#cb2145-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
+<span id="cb2145-12"><a href="pathanalysis.html#cb2145-12" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
+<span id="cb2145-13"><a href="pathanalysis.html#cb2145-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2145-14"><a href="pathanalysis.html#cb2145-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2145-15"><a href="pathanalysis.html#cb2145-15" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## lavaan 0.6-9 ended normally after 17 iterations
 ## 
 ##   Estimator                                         ML
@@ -1678,71 +1654,71 @@ div.csl-indent {
 ##                    Estimate
 ##     intention         0.369
 ##     behavior          0.198</code></pre>
-<p>Again, we have 199 observations (employees) used in this analysis, but this time, the degrees of freedom is equal to 3, which indicates that our model is over-identified. Because the model is over-identified, we can interpret the model fit indices to assess the how well the model we specified fits the data. First, the chi-square test value appears to the right of the text “Model Fit Test Statistic,” and the associated <em>p</em>-value appears below. The chi-square test is nonsignificant (<span class="math inline">\(\chi^{2}(df=3)=2.023, p=.568\)</span>), which indicates that the model does not fit significantly worse than a model that fits the data perfectly; thus, we have our first indicator that the model fits the data reasonably well. Second, the comparative fit index (CFI) is 1.000, which is greater than the conventional .90 cutoff, which also indicates that the model fits the data reasonably well. Third, the Tucker-Lewis index (TLI) is 1.019, which is greater than the conventional .95 cutoff, which also indicates that the model fits the data reasonably well. Fourth, the root mean square error of approximation (RMSEA) value of .000 is less than the conventional cutoff of .08, and thus we have further evidence that the model fits the data reasonably well. Fifth, the standardized root mean square residual (SRMR) value of .019 is less than the conventional cutoff of .08, and thus we have further evidence that the model fits the data reasonably well. This is one of the relatively rare occasions in which all of the model fit indices are in agreement with one another, leading us to conclude that the specified model fits the data well. We can now feel comfortable proceeding forward interpreting the parameter estimates.</p>
+<p>Again, we have 199 observations (employees) used in this analysis, but this time, the degrees of freedom is equal to 3, which indicates that our model is over-identified. Because the model is over-identified, we can interpret the model fit indices to assess the how well the model we specified fits the data. First, the chi-square test value appears to the right of the text “Model Fit Test Statistic”, and the associated <em>p</em>-value appears below. The chi-square test is nonsignificant (<span class="math inline">\(\chi^{2}(df=3)=2.023, p=.568\)</span>), which indicates that the model does not fit significantly worse than a model that fits the data perfectly; thus, we have our first indicator that the model fits the data reasonably well. Second, the comparative fit index (CFI) is 1.000, which is greater than the conventional .90 cutoff, which also indicates that the model fits the data reasonably well. Third, the Tucker-Lewis index (TLI) is 1.019, which is greater than the conventional .95 cutoff, which also indicates that the model fits the data reasonably well. Fourth, the root mean square error of approximation (RMSEA) value of .000 is less than the conventional cutoff of .08, and thus we have further evidence that the model fits the data reasonably well. Fifth, the standardized root mean square residual (SRMR) value of .019 is less than the conventional cutoff of .08, and thus we have further evidence that the model fits the data reasonably well. This is one of the relatively rare occasions in which all of the model fit indices are in agreement with one another, leading us to conclude that the specified model fits the data well. We can now feel comfortable proceeding forward interpreting the parameter estimates.</p>
 <p>The path coefficient (i.e., direct relation, presumed causal relation) between <code>attitude</code> and <code>intention</code> is statistically significant and positive (<em>b</em> = .352, <em>p</em> &lt; .001); the path coefficient between <code>norms</code> and <code>intention</code> is also statistically significant and positive (<em>b</em> = .153, <em>p</em> = .010); and the path coefficient between <code>control</code> and <code>intention</code> is also statistically significant and positive (<em>b</em> = .275, <em>p</em> &lt; .001). Further, the path coefficient between <code>intention</code> and <code>behavior</code> is statistically significant and positive (<em>b</em> = .453, <em>p</em> &lt; .001). The covariances and variances are not of substantive interest, so we will ignore them. The unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>intention</code> is .369, which indicates that, collectively, <code>attitude</code>, <code>norms</code>, and <code>control</code> explain 36.9% of the variance in <code>intention</code>, and the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>behavior</code> is .198, which indicates that <code>intention</code> explains 19.8% of the variance in <code>behavior</code>. Overall, the results lends support to the propositions of the Theory of Planned Behavior, at least based on this sample of employees.</p>
 </div>
 <div id="additionalinfo_pathanalysis" class="section level3" number="54.2.5">
 <h3><span class="header-section-number">54.2.5</span> Additional Information on Model Specification Notation</h3>
 <p>Thus far we have focused on using the tilde (<code>~</code>) operator to note directional relations (i.e., path coefficients) and the double tilde (<code>~~</code>) to specify a covariance. The plus (<code>+</code>) operator allows us to add variables to one side of the directional relation or covariance equation.</p>
 <p>There are equivalent approaches for specifying <em>directional relations</em>. If we want to specify that <code>attitude</code>, <code>norms</code>, and <code>control</code> are predictors of <code>intention</code> we could use either approach shown below when specifying our model.</p>
-<div class="sourceCode" id="cb2267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2267-1"><a href="pathanalysis.html#cb2267-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent approaches to specifying directional relations</span></span>
-<span id="cb2267-2"><a href="pathanalysis.html#cb2267-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2267-3"><a href="pathanalysis.html#cb2267-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 1</span></span>
-<span id="cb2267-4"><a href="pathanalysis.html#cb2267-4" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2267-5"><a href="pathanalysis.html#cb2267-5" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
-<span id="cb2267-6"><a href="pathanalysis.html#cb2267-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2267-7"><a href="pathanalysis.html#cb2267-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2267-8"><a href="pathanalysis.html#cb2267-8" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 2</span></span>
-<span id="cb2267-9"><a href="pathanalysis.html#cb2267-9" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2267-10"><a href="pathanalysis.html#cb2267-10" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude</span></span>
-<span id="cb2267-11"><a href="pathanalysis.html#cb2267-11" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~  norms </span></span>
-<span id="cb2267-12"><a href="pathanalysis.html#cb2267-12" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ control</span></span>
-<span id="cb2267-13"><a href="pathanalysis.html#cb2267-13" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2147-1"><a href="pathanalysis.html#cb2147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent approaches to specifying directional relations</span></span>
+<span id="cb2147-2"><a href="pathanalysis.html#cb2147-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2147-3"><a href="pathanalysis.html#cb2147-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 1</span></span>
+<span id="cb2147-4"><a href="pathanalysis.html#cb2147-4" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2147-5"><a href="pathanalysis.html#cb2147-5" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
+<span id="cb2147-6"><a href="pathanalysis.html#cb2147-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2147-7"><a href="pathanalysis.html#cb2147-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2147-8"><a href="pathanalysis.html#cb2147-8" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 2</span></span>
+<span id="cb2147-9"><a href="pathanalysis.html#cb2147-9" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2147-10"><a href="pathanalysis.html#cb2147-10" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude</span></span>
+<span id="cb2147-11"><a href="pathanalysis.html#cb2147-11" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~  norms </span></span>
+<span id="cb2147-12"><a href="pathanalysis.html#cb2147-12" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ control</span></span>
+<span id="cb2147-13"><a href="pathanalysis.html#cb2147-13" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>The same logical applies if we hypothetically wanted to specify <code>attitude</code>, <code>norms</code>, and <code>control</code> as predictors of both <code>intention</code> and <code>behavior</code>. It’s really up to you how you decide to specify your model when equivalent approaches are possible.</p>
-<div class="sourceCode" id="cb2268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2268-1"><a href="pathanalysis.html#cb2268-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent approaches to specifying directional relations</span></span>
-<span id="cb2268-2"><a href="pathanalysis.html#cb2268-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2268-3"><a href="pathanalysis.html#cb2268-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 1</span></span>
-<span id="cb2268-4"><a href="pathanalysis.html#cb2268-4" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2268-5"><a href="pathanalysis.html#cb2268-5" aria-hidden="true" tabindex="-1"></a><span class="st">intention + behavior ~ attitude + norms + control</span></span>
-<span id="cb2268-6"><a href="pathanalysis.html#cb2268-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2268-7"><a href="pathanalysis.html#cb2268-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2268-8"><a href="pathanalysis.html#cb2268-8" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 2</span></span>
-<span id="cb2268-9"><a href="pathanalysis.html#cb2268-9" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2268-10"><a href="pathanalysis.html#cb2268-10" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
-<span id="cb2268-11"><a href="pathanalysis.html#cb2268-11" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ attitude + norms + control</span></span>
-<span id="cb2268-12"><a href="pathanalysis.html#cb2268-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2268-13"><a href="pathanalysis.html#cb2268-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2268-14"><a href="pathanalysis.html#cb2268-14" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 3</span></span>
-<span id="cb2268-15"><a href="pathanalysis.html#cb2268-15" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2268-16"><a href="pathanalysis.html#cb2268-16" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude</span></span>
-<span id="cb2268-17"><a href="pathanalysis.html#cb2268-17" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~  norms </span></span>
-<span id="cb2268-18"><a href="pathanalysis.html#cb2268-18" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ control</span></span>
-<span id="cb2268-19"><a href="pathanalysis.html#cb2268-19" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ attitude</span></span>
-<span id="cb2268-20"><a href="pathanalysis.html#cb2268-20" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~  norms </span></span>
-<span id="cb2268-21"><a href="pathanalysis.html#cb2268-21" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ control</span></span>
-<span id="cb2268-22"><a href="pathanalysis.html#cb2268-22" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2148-1"><a href="pathanalysis.html#cb2148-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent approaches to specifying directional relations</span></span>
+<span id="cb2148-2"><a href="pathanalysis.html#cb2148-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2148-3"><a href="pathanalysis.html#cb2148-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 1</span></span>
+<span id="cb2148-4"><a href="pathanalysis.html#cb2148-4" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2148-5"><a href="pathanalysis.html#cb2148-5" aria-hidden="true" tabindex="-1"></a><span class="st">intention + behavior ~ attitude + norms + control</span></span>
+<span id="cb2148-6"><a href="pathanalysis.html#cb2148-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2148-7"><a href="pathanalysis.html#cb2148-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2148-8"><a href="pathanalysis.html#cb2148-8" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 2</span></span>
+<span id="cb2148-9"><a href="pathanalysis.html#cb2148-9" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2148-10"><a href="pathanalysis.html#cb2148-10" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude + norms + control</span></span>
+<span id="cb2148-11"><a href="pathanalysis.html#cb2148-11" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ attitude + norms + control</span></span>
+<span id="cb2148-12"><a href="pathanalysis.html#cb2148-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2148-13"><a href="pathanalysis.html#cb2148-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2148-14"><a href="pathanalysis.html#cb2148-14" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 3</span></span>
+<span id="cb2148-15"><a href="pathanalysis.html#cb2148-15" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2148-16"><a href="pathanalysis.html#cb2148-16" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ attitude</span></span>
+<span id="cb2148-17"><a href="pathanalysis.html#cb2148-17" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~  norms </span></span>
+<span id="cb2148-18"><a href="pathanalysis.html#cb2148-18" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ control</span></span>
+<span id="cb2148-19"><a href="pathanalysis.html#cb2148-19" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ attitude</span></span>
+<span id="cb2148-20"><a href="pathanalysis.html#cb2148-20" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~  norms </span></span>
+<span id="cb2148-21"><a href="pathanalysis.html#cb2148-21" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ control</span></span>
+<span id="cb2148-22"><a href="pathanalysis.html#cb2148-22" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Further, there are equivalent approaches for specifying <em>covariances</em>. If we want to specify that <code>attitude</code>, <code>norms</code>, and <code>control</code> are permitted to covary with one another, we could use either approach below.</p>
-<div class="sourceCode" id="cb2269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2269-1"><a href="pathanalysis.html#cb2269-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent approaches to specifying covariances</span></span>
-<span id="cb2269-2"><a href="pathanalysis.html#cb2269-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2269-3"><a href="pathanalysis.html#cb2269-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 1</span></span>
-<span id="cb2269-4"><a href="pathanalysis.html#cb2269-4" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2269-5"><a href="pathanalysis.html#cb2269-5" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms + control</span></span>
-<span id="cb2269-6"><a href="pathanalysis.html#cb2269-6" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
-<span id="cb2269-7"><a href="pathanalysis.html#cb2269-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2269-8"><a href="pathanalysis.html#cb2269-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2269-9"><a href="pathanalysis.html#cb2269-9" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 2</span></span>
-<span id="cb2269-10"><a href="pathanalysis.html#cb2269-10" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2269-11"><a href="pathanalysis.html#cb2269-11" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms</span></span>
-<span id="cb2269-12"><a href="pathanalysis.html#cb2269-12" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ control</span></span>
-<span id="cb2269-13"><a href="pathanalysis.html#cb2269-13" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
-<span id="cb2269-14"><a href="pathanalysis.html#cb2269-14" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2149-1"><a href="pathanalysis.html#cb2149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalent approaches to specifying covariances</span></span>
+<span id="cb2149-2"><a href="pathanalysis.html#cb2149-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2149-3"><a href="pathanalysis.html#cb2149-3" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 1</span></span>
+<span id="cb2149-4"><a href="pathanalysis.html#cb2149-4" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2149-5"><a href="pathanalysis.html#cb2149-5" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms + control</span></span>
+<span id="cb2149-6"><a href="pathanalysis.html#cb2149-6" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
+<span id="cb2149-7"><a href="pathanalysis.html#cb2149-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2149-8"><a href="pathanalysis.html#cb2149-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2149-9"><a href="pathanalysis.html#cb2149-9" aria-hidden="true" tabindex="-1"></a><span class="do">### Approach 2</span></span>
+<span id="cb2149-10"><a href="pathanalysis.html#cb2149-10" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2149-11"><a href="pathanalysis.html#cb2149-11" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ norms</span></span>
+<span id="cb2149-12"><a href="pathanalysis.html#cb2149-12" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ control</span></span>
+<span id="cb2149-13"><a href="pathanalysis.html#cb2149-13" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ control</span></span>
+<span id="cb2149-14"><a href="pathanalysis.html#cb2149-14" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>If you would like to explicitly specify a <em>variance</em> component in your model (even if the model will do this by default for variables with specified covariances), you would use the double tilde (<code>~~</code>) operator with the same variable’s name on either side of the double tilde.</p>
-<div class="sourceCode" id="cb2270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2270-1"><a href="pathanalysis.html#cb2270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specifying variances</span></span>
-<span id="cb2270-2"><a href="pathanalysis.html#cb2270-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2270-3"><a href="pathanalysis.html#cb2270-3" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ attitude</span></span>
-<span id="cb2270-4"><a href="pathanalysis.html#cb2270-4" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ norms</span></span>
-<span id="cb2270-5"><a href="pathanalysis.html#cb2270-5" aria-hidden="true" tabindex="-1"></a><span class="st">control ~~ control</span></span>
-<span id="cb2270-6"><a href="pathanalysis.html#cb2270-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2150-1"><a href="pathanalysis.html#cb2150-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specifying variances</span></span>
+<span id="cb2150-2"><a href="pathanalysis.html#cb2150-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2150-3"><a href="pathanalysis.html#cb2150-3" aria-hidden="true" tabindex="-1"></a><span class="st">attitude ~~ attitude</span></span>
+<span id="cb2150-4"><a href="pathanalysis.html#cb2150-4" aria-hidden="true" tabindex="-1"></a><span class="st">norms ~~ norms</span></span>
+<span id="cb2150-5"><a href="pathanalysis.html#cb2150-5" aria-hidden="true" tabindex="-1"></a><span class="st">control ~~ control</span></span>
+<span id="cb2150-6"><a href="pathanalysis.html#cb2150-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span></code></pre></div>
 <p>Finally, if you have a single exogenous variable in your model (that does not share a covariance with any other variable), it is up to you whether you wish to specify the variance component for that exogenous variable as a free parameter (or not). The model fit and parameter estimates will remain the same.</p>
 </div>
 <div id="summary_pathanalysis" class="section level3" number="54.2.6">
@@ -1750,21 +1726,6 @@ div.csl-indent {
 <p>In this chapter, we explored the building blocks of path analysis, which allowed us to simultaneously fit a model with more than one outcome variable and with a variable that acts as both a predictor and an outcome. To do so, we used the <code>sem</code> function from the <code>lavaan</code> package and evaluated model fit indices and parameter estimates.</p>
 
 </div>
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-ajzen1991" class="csl-entry">
-Ajzen, Icek. 1991. <span>“The Theory of Planned Behavior.”</span> <em>Organizational Behavior and Human Decision Processes</em> 50: 179–211.
-</div>
-<div id="ref-hu1999cutoff" class="csl-entry">
-Hu, Li-tze, and Peter M Bentler. 1999. <span>“Cutoff Criteria for Fit Indexes in Covariance Structure Analysis: Conventional Criteria Versus New Alternatives.”</span> <em>Structural Equation Modeling</em> 6 (1): 1–55.
-</div>
-<div id="ref-R-lavaan" class="csl-entry">
-Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="https://www.jstatsoft.org/v48/i02/">https://www.jstatsoft.org/v48/i02/</a>.
-</div>
-<div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -1777,6 +1738,7 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2021. <em>Readr: Read Rectangul
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1803,10 +1765,6 @@ gitbook.start({
 "text": null
 },
 "download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
 "toc": {
 "collapse": "subsection"
 }
