@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 20 Manipulating &amp; Restructuring Data | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 20 Manipulating &amp; Restructuring Data | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 20 Manipulating &amp; Restructuring Data | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="clean.html"/>
 <link rel="next" href="center.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,29 +1169,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="manipulate" class="section level1" number="20">
-<h1><span class="header-section-number">Chapter 20</span> Manipulating &amp; Restructuring Data</h1>
+<div id="manipulate" class="section level1 hasAnchor" number="20">
+<h1><span class="header-section-number">Chapter 20</span> Manipulating &amp; Restructuring Data<a href="manipulate.html#manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this chapter, we will learn how to manipulate and restructure data – and more specifically, convert a data frame object from wide to long format and from long to wide format.</p>
-<div id="conceptualoverview_manipulate" class="section level2" number="20.1">
-<h2><span class="header-section-number">20.1</span> Conceptual Overview</h2>
+<div id="conceptualoverview_manipulate" class="section level2 hasAnchor" number="20.1">
+<h2><span class="header-section-number">20.1</span> Conceptual Overview<a href="manipulate.html#conceptualoverview_manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Data manipulation and restructuring</strong> refers to the process in which data are restructured or formatted in a different manner. When we think about structured data, we often think in terms of wide versus long formats. <strong>Wide format</strong> data are structured such that there are more columns (i.e., variables) and fewer rows than with long format data. For example, most survey platforms allow you to download the survey responses in a wide format, such that each variable (that corresponds to a survey item/question) will have its own column. <strong>Long format</strong> data are structured such that that are (sometimes) fewer columns yet more rows than with wide-format data. For example, we can restructure survey data from wide format such that one variable (i.e., column) contains the names of the different survey items/questions, and another variable contains the responses/scores for each item/question. Often our decision to manipulate data into wide versus long formats has to do with the type of analysis or visualization we plan to perform. As such, understanding how to manipulate and restructure your data is an important data-science skill.</p>
 <div class="figure">
 <img src="datastructure.png" alt="" />
 <p class="caption">Data can be manipulated into different structures to accomplish different goals. For example, a dataset in wide format might include employees’ scores on pre-test and post-test assessments as separate variables (i.e., columns), where one column includes the pre-test scores and one column includes the post-test scores. The same dataset could, alternatively, be manipulated or restructured into long format, such that the time of the test administration becomes a categorical variable and a separate variable contains the scores; In the wide-format dataset, each employee has a single row of data, whereas in the long-format dataset each employee has one row of data for their pre-test and one row of data for their post-test.</p>
 </div>
 </div>
-<div id="tutorial_manipulate" class="section level2" number="20.2">
-<h2><span class="header-section-number">20.2</span> Tutorial</h2>
+<div id="tutorial_manipulate" class="section level2 hasAnchor" number="20.2">
+<h2><span class="header-section-number">20.2</span> Tutorial<a href="manipulate.html#tutorial_manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter’s tutorial demonstrates how to restructure data from wide to long format and from long to wide format.</p>
-<div id="videotutorial_manipulate" class="section level3" number="20.2.1">
-<h3><span class="header-section-number">20.2.1</span> Video Tutorial</h3>
+<div id="videotutorial_manipulate" class="section level3 hasAnchor" number="20.2.1">
+<h3><span class="header-section-number">20.2.1</span> Video Tutorial<a href="manipulate.html#videotutorial_manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the video tutorial below, I demonstrate how to use two data-manipulation functions that have since been deprecated by the <code>tidyr</code> package, which are called <code>gather</code> and <code>spread</code>. In this chapter, I review how to use the new data-manipulation functions from the <code>tidyr</code> package called <code>pivot_longer</code> and <code>pivot_wider</code>, respectively. I personally find the new functions to be more intuitive to use, but perhaps you’ll disagree. Regardless of which you choose, both will help you manipulate data from wide to long format and from long to wide format.</p>
-<iframe src="https://youtube.com/embed/5DgEAKLRjhw?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/5DgEAKLRjhw?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/5DgEAKLRjhw" class="uri">https://youtu.be/5DgEAKLRjhw</a></p>
 </div>
-<div id="functions_manipulate" class="section level3" number="20.2.2">
-<h3><span class="header-section-number">20.2.2</span> Functions &amp; Packages Introduced</h3>
+<div id="functions_manipulate" class="section level3 hasAnchor" number="20.2.2">
+<h3><span class="header-section-number">20.2.2</span> Functions &amp; Packages Introduced<a href="manipulate.html#functions_manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -1191,38 +1215,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="initsteps_manipulate" class="section level3" number="20.2.3">
-<h3><span class="header-section-number">20.2.3</span> Initial Steps</h3>
+<div id="initsteps_manipulate" class="section level3 hasAnchor" number="20.2.3">
+<h3><span class="header-section-number">20.2.3</span> Initial Steps<a href="manipulate.html#initsteps_manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already, save the file called <strong>“ManipulatingData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb557-1"><a href="manipulate.html#cb557-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb557-2"><a href="manipulate.html#cb557-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“ManipulatingData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="manipulate.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb558-2"><a href="manipulate.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb558-3"><a href="manipulate.html#cb558-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb558-4"><a href="manipulate.html#cb558-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="manipulate.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb559-2"><a href="manipulate.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb559-3"><a href="manipulate.html#cb559-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb559-4"><a href="manipulate.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb559-5"><a href="manipulate.html#cb559-5" aria-hidden="true" tabindex="-1"></a>datam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ManipulatingData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   SurveyID = col_double(),
-##   JobSatisfaction = col_double(),
-##   TurnoverIntentions = col_double(),
-##   OrgCommitment = col_double(),
-##   JobInvolvement = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="manipulate.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb561-2"><a href="manipulate.html#cb561-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam)</span></code></pre></div>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="manipulate.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb558-2"><a href="manipulate.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“ManipulatingData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="manipulate.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb559-2"><a href="manipulate.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb559-3"><a href="manipulate.html#cb559-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb559-4"><a href="manipulate.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="manipulate.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb560-2"><a href="manipulate.html#cb560-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb560-3"><a href="manipulate.html#cb560-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb560-4"><a href="manipulate.html#cb560-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb560-5"><a href="manipulate.html#cb560-5" aria-hidden="true" tabindex="-1"></a>datam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ManipulatingData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 20 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (5): SurveyID, JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="manipulate.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb562-2"><a href="manipulate.html#cb562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam)</span></code></pre></div>
 <pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;     
 ## [5] &quot;JobInvolvement&quot;</code></pre>
-<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="manipulate.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
-<span id="cb563-2"><a href="manipulate.html#cb563-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(datam)</span></code></pre></div>
-<pre><code>## # A tibble: 20 x 5
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="manipulate.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
+<span id="cb564-2"><a href="manipulate.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(datam)</span></code></pre></div>
+<pre><code>## # A tibble: 20 × 5
 ##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
 ##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
 ##  1        1            55.4               97.2          32.3           50.5
@@ -1246,24 +1268,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 19       19            40.3               51.4          71.8           50.1
 ## 20       20            56.7               56            84.3           69.5</code></pre>
 <p>Note in the data frame that the <code>SurveyID</code> variable (i.e., column, field) is a unique identifier variable, which means that each case (i.e., observation) has a unique value on this variable. Each row represents a unique employee’s composite score on four measures (i.e., <code>JobSatisfaction</code>, <code>TurnoverIntentions</code>, <code>OrgCommitment</code>, <code>JobInvolvement</code>), where higher scores indicate higher levels of the concept (i.e., construct) being measured.</p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="manipulate.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine number of rows in data frame</span></span>
-<span id="cb565-2"><a href="manipulate.html#cb565-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam)</span></code></pre></div>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="manipulate.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine number of rows in data frame</span></span>
+<span id="cb566-2"><a href="manipulate.html#cb566-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam)</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 <p>Note how the data frame currently has 20 rows (cases) of data, as shown by the output to the <code>nrow</code> function from base R.</p>
 </div>
-<div id="manipulate_widetolong" class="section level3" number="20.2.4">
-<h3><span class="header-section-number">20.2.4</span> Wide-to-Long Format Data Manipulation</h3>
-<p>The data frame we read in called <code>datam</code> is in <em>wide format</em>, as each substantive variable has its own column. To restructure the data from wide to long format, we will use the <code>pivot_longer</code> function from the <code>tidyr</code> package <span class="citation">(<a href="references.html#ref-R-tidyr" role="doc-biblioref">Wickham 2021a</a>)</span>. Along with <code>readr</code> and <code>dplyr</code> (as well as other useful packages), the <code>tidyr</code> package is part of the <code>tidyverse</code> of packages. Let’s begin by installing and accessing the <code>tidyr</code> package so that we can use the <code>pivot_longer</code> function.</p>
-<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="manipulate.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package if you haven&#39;t already</span></span>
-<span id="cb567-2"><a href="manipulate.html#cb567-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="manipulate.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package</span></span>
-<span id="cb568-2"><a href="manipulate.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<div id="manipulate_widetolong" class="section level3 hasAnchor" number="20.2.4">
+<h3><span class="header-section-number">20.2.4</span> Wide-to-Long Format Data Manipulation<a href="manipulate.html#manipulate_widetolong" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The data frame we read in called <code>datam</code> is in <em>wide format</em>, as each substantive variable has its own column. To restructure the data from wide to long format, we will use the <code>pivot_longer</code> function from the <code>tidyr</code> package <span class="citation">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham and Girlich 2022</a>)</span>. Along with <code>readr</code> and <code>dplyr</code> (as well as other useful packages), the <code>tidyr</code> package is part of the <code>tidyverse</code> of packages. Let’s begin by installing and accessing the <code>tidyr</code> package so that we can use the <code>pivot_longer</code> function.</p>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="manipulate.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package if you haven&#39;t already</span></span>
+<span id="cb568-2"><a href="manipulate.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="manipulate.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package</span></span>
+<span id="cb569-2"><a href="manipulate.html#cb569-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
 <p><strong>If you received an error when attempting to access the <code>tidyr</code> package using the <code>library</code> function, you may need to install the following packages using the <code>install.packages</code> function: <code>rlang</code> and <code>glue</code>. Alternatively, you may try installing the entire <code>tidyverse</code> package.</strong></p>
 <p>Now that we’ve accessed the <code>tidyr</code> package, I will demonstrate two techniques for applying the <code>pivot_longer</code> function.</p>
-<p>The <em>first technique</em> uses the pipe operator (<code>%&gt;%</code>). The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(<a href="references.html#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2020</a>)</span>, on which the <code>tidyr</code> package is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="references.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> <a href="https://r4ds.had.co.nz/pipes.html">chapter on pipes</a>.</p>
+<p>The <em>first technique</em> uses the pipe operator (<code>%&gt;%</code>). The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(<a href="#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2022</a>)</span>, on which the <code>tidyr</code> package is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> <a href="https://r4ds.had.co.nz/pipes.html">chapter on pipes</a>.</p>
 <p>The <em>second technique</em> for applying the <code>pivot_longer</code> function takes a more traditional approach in that it involves nested functions being nested parenthetically. If you don’t want to learn how to use pipes (or would like to learn how to use them at a later date), feel free to skip to the section below called <a href="#widetolong_withoutpipe">Without Pipe</a>.</p>
-<div id="manipulate_widetolong_withpipe" class="section level4" number="20.2.4.1">
-<h4><span class="header-section-number">20.2.4.1</span> <em>With</em> Pipe</h4>
+<div id="manipulate_widetolong_withpipe" class="section level4 hasAnchor" number="20.2.4.1">
+<h4><span class="header-section-number">20.2.4.1</span> <em>With</em> Pipe<a href="manipulate.html#manipulate_widetolong_withpipe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Using the pipe (<code>%&gt;%</code>) operator technique, let’s apply the <code>pivot_longer</code> function to manipulate the <code>datam</code> data frame object from wide format to long format.</p>
 <p>We can specify the wide-to-long manipulation as follows.</p>
 <ol style="list-style-type: decimal">
@@ -1277,15 +1299,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>As the second argument in the <code>pivot_longer</code> function, type <code>names_to=</code> followed by what you would like to name the new stacked variable (see previous) created from the four survey measure variables. Let’s call the new variable containing the names of the measures the following: <code>"Measure"</code>.</li>
 <li>As the third argument in the <code>pivot_longer</code> function, type <code>values_to=</code> followed by what you would like to name the new variable that contains the scores for the four survey variables that are now stacked vertically for each case. Let’s call the new variable containing the scores on the four measures the following: <code>"Score"</code>.</li>
 </ol>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="manipulate.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (using pipe)</span></span>
-<span id="cb569-2"><a href="manipulate.html#cb569-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> datam <span class="sc">%&gt;%</span> </span>
-<span id="cb569-3"><a href="manipulate.html#cb569-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
-<span id="cb569-4"><a href="manipulate.html#cb569-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
-<span id="cb569-5"><a href="manipulate.html#cb569-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
-<span id="cb569-6"><a href="manipulate.html#cb569-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb569-7"><a href="manipulate.html#cb569-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb569-8"><a href="manipulate.html#cb569-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 12 x 3
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="manipulate.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (using pipe)</span></span>
+<span id="cb570-2"><a href="manipulate.html#cb570-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> datam <span class="sc">%&gt;%</span> </span>
+<span id="cb570-3"><a href="manipulate.html#cb570-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
+<span id="cb570-4"><a href="manipulate.html#cb570-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
+<span id="cb570-5"><a href="manipulate.html#cb570-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb570-6"><a href="manipulate.html#cb570-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb570-7"><a href="manipulate.html#cb570-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb570-8"><a href="manipulate.html#cb570-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 3
 ##    SurveyID Measure            Score
 ##       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
 ##  1        1 JobSatisfaction     55.4
@@ -1301,29 +1323,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11        3 OrgCommitment       63.9
 ## 12        3 JobInvolvement      50.2</code></pre>
 <p>As you can see, in the output, each respondent now has four rows of data – one row for each measure and the associated score. The giveaway is that each respondent’s unique <code>SurveyID</code> value is repeated four times.</p>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="manipulate.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
-<span id="cb571-2"><a href="manipulate.html#cb571-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_long)</span></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="manipulate.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
+<span id="cb572-2"><a href="manipulate.html#cb572-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_long)</span></code></pre></div>
 <pre><code>## [1] &quot;SurveyID&quot; &quot;Measure&quot;  &quot;Score&quot;</code></pre>
 <p>Note how there are now just three variables: <code>SurveyID</code>, <code>Measure</code>, and <code>Score</code>. Further, by applying the <code>nrow</code> function to the new data frame (as shown below), we can see that the new data frame is now much longer in terms of the number of rows; specifically, the original <code>datam</code> data frame in wide format has 20 rows, and now the new <code>datam_long</code> data frame in long format has 80 rows.</p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="manipulate.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
-<span id="cb573-2"><a href="manipulate.html#cb573-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_long)</span></code></pre></div>
+<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="manipulate.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
+<span id="cb574-2"><a href="manipulate.html#cb574-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_long)</span></code></pre></div>
 <pre><code>## [1] 80</code></pre>
 <p>Now apply the <code>View</code> function from base R to view and scroll through the whole data frame. Note that the unique identifier variable (i.e., <code>SurveyID</code>) repeats multiple times to indicate that the same survey respondent has scores in multiple rows.</p>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="manipulate.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View entire data frame</span></span>
-<span id="cb575-2"><a href="manipulate.html#cb575-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datam_long)</span></code></pre></div>
+<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="manipulate.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View entire data frame</span></span>
+<span id="cb576-2"><a href="manipulate.html#cb576-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datam_long)</span></code></pre></div>
 </div>
-<div id="manipulate_widetolong_withoutpipe" class="section level4" number="20.2.4.2">
-<h4><span class="header-section-number">20.2.4.2</span> <em>Without</em> Pipe</h4>
+<div id="manipulate_widetolong_withoutpipe" class="section level4 hasAnchor" number="20.2.4.2">
+<h4><span class="header-section-number">20.2.4.2</span> <em>Without</em> Pipe<a href="manipulate.html#manipulate_widetolong_withoutpipe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can also apply the <code>pivot_longer</code> function <em>without</em> using the pipe (<code>%&gt;%</code>) operator. To do so, use the same code as above, except drop the pipe (<code>%&gt;%</code>) operator and type <code>data=</code> followed by the name of the original data frame (<code>datam</code>) as the first argument within the <code>pivot_longer</code> function parentheses.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="manipulate.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (without using pipe)</span></span>
-<span id="cb576-2"><a href="manipulate.html#cb576-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data=</span>datam,</span>
-<span id="cb576-3"><a href="manipulate.html#cb576-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
-<span id="cb576-4"><a href="manipulate.html#cb576-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
-<span id="cb576-5"><a href="manipulate.html#cb576-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
-<span id="cb576-6"><a href="manipulate.html#cb576-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb576-7"><a href="manipulate.html#cb576-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb576-8"><a href="manipulate.html#cb576-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 12 x 3
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="manipulate.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (without using pipe)</span></span>
+<span id="cb577-2"><a href="manipulate.html#cb577-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data=</span>datam,</span>
+<span id="cb577-3"><a href="manipulate.html#cb577-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
+<span id="cb577-4"><a href="manipulate.html#cb577-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
+<span id="cb577-5"><a href="manipulate.html#cb577-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb577-6"><a href="manipulate.html#cb577-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb577-7"><a href="manipulate.html#cb577-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb577-8"><a href="manipulate.html#cb577-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 3
 ##    SurveyID Measure            Score
 ##       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
 ##  1        1 JobSatisfaction     55.4
@@ -1341,11 +1363,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Regardless of whether we use the pipe (<code>%&gt;%</code>) operator, we end up with the same wide-to-long format manipulation.</p>
 </div>
 </div>
-<div id="manipulate_longtowide" class="section level3" number="20.2.5">
-<h3><span class="header-section-number">20.2.5</span> Long-to-Wide Format Data Manipulation</h3>
+<div id="manipulate_longtowide" class="section level3 hasAnchor" number="20.2.5">
+<h3><span class="header-section-number">20.2.5</span> Long-to-Wide Format Data Manipulation<a href="manipulate.html#manipulate_longtowide" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using the long-format data frame we just created called <code>datam_long</code>, let’s manipulate it back to wide format using the <code>pivot_wider</code> function from the <code>tidyr</code> package. As we did above, we’ll do the long-to-wide data manipulation with and without the pipe (<code>%&gt;%</code>) operator.</p>
-<div id="manipulate_longtowide_withpipe" class="section level4" number="20.2.5.1">
-<h4><span class="header-section-number">20.2.5.1</span> <em>With</em> Pipe</h4>
+<div id="manipulate_longtowide_withpipe" class="section level4 hasAnchor" number="20.2.5.1">
+<h4><span class="header-section-number">20.2.5.1</span> <em>With</em> Pipe<a href="manipulate.html#manipulate_longtowide_withpipe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Using the pipe (<code>%&gt;%</code>) operator technique, let’s apply the <code>pivot_wider</code> function to manipulate the <code>datam_long</code> data frame object from long format back to wide format.</p>
 <p>We can specify the long-to-wide manipulation as follows.</p>
 <ol style="list-style-type: decimal">
@@ -1358,14 +1380,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>As the first argument in the <code>pivot_wider</code> function, type <code>names_from=</code> followed by the name of the variable that contains the names of the different survey measures: <code>Measure</code>. The levels or categories of this <code>Measure</code> variable will become the names of separate columns (i.e., variables) when the long-format data frame object is converted to a wide-format data frame object.</li>
 <li>As the second argument in the <code>pivot_wider</code> function, type <code>values_from=</code> followed by the name of the variable that contains the values (i.e., scores) for each of the survey measures: <code>Score</code>. The values from the <code>Score</code> variable will provide the data for the new survey-measure variables when the data frame object is in wide format.</li>
 </ol>
-<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="manipulate.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (using pipe)</span></span>
-<span id="cb578-2"><a href="manipulate.html#cb578-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> datam_long <span class="sc">%&gt;%</span> </span>
-<span id="cb578-3"><a href="manipulate.html#cb578-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>Measure,</span>
-<span id="cb578-4"><a href="manipulate.html#cb578-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from=</span>Score)</span>
-<span id="cb578-5"><a href="manipulate.html#cb578-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb578-6"><a href="manipulate.html#cb578-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb578-7"><a href="manipulate.html#cb578-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 12 x 5
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="manipulate.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (using pipe)</span></span>
+<span id="cb579-2"><a href="manipulate.html#cb579-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> datam_long <span class="sc">%&gt;%</span> </span>
+<span id="cb579-3"><a href="manipulate.html#cb579-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>Measure,</span>
+<span id="cb579-4"><a href="manipulate.html#cb579-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from=</span>Score)</span>
+<span id="cb579-5"><a href="manipulate.html#cb579-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb579-6"><a href="manipulate.html#cb579-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb579-7"><a href="manipulate.html#cb579-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 5
 ##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
 ##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
 ##  1        1            55.4               97.2          32.3           50.5
@@ -1381,26 +1403,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11       11            23.1               66.4          15.6           30.5
 ## 12       12            22.3               61.8          71.8           30.5</code></pre>
 <p>Now let’s print the variable names in the new <code>datam_wide</code> data frame object.</p>
-<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="manipulate.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
-<span id="cb580-2"><a href="manipulate.html#cb580-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_wide)</span></code></pre></div>
+<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="manipulate.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
+<span id="cb581-2"><a href="manipulate.html#cb581-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_wide)</span></code></pre></div>
 <pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;     
 ## [5] &quot;JobInvolvement&quot;</code></pre>
 <p>Note how we are now back to the same variables from our original wide-format data frame called <code>datam</code>: <code>SurveyID</code>, <code>JobInvolvement</code>, <code>JobSatisfaction</code>, <code>OrgCommitment</code>, and <code>TurnoverIntentions</code>. Further, by applying the <code>nrow</code> function to the new data frame (as shown below), we can see that the new wide-format data frame is now back to 20 rows. We have come full circle, as the <code>pivot_wider</code> function complements the <code>pivot_longer</code> function.</p>
-<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="manipulate.html#cb582-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
-<span id="cb582-2"><a href="manipulate.html#cb582-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_wide)</span></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="manipulate.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
+<span id="cb583-2"><a href="manipulate.html#cb583-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_wide)</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 </div>
-<div id="manipulate_longtowide_withoutpipe" class="section level4" number="20.2.5.2">
-<h4><span class="header-section-number">20.2.5.2</span> <em>Without</em> Pipe</h4>
+<div id="manipulate_longtowide_withoutpipe" class="section level4 hasAnchor" number="20.2.5.2">
+<h4><span class="header-section-number">20.2.5.2</span> <em>Without</em> Pipe<a href="manipulate.html#manipulate_longtowide_withoutpipe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can also apply the <code>pivot_wider</code> function <em>without</em> the pipe (<code>%&gt;%</code>) operator. Simply use the same code as above, except drop the pipe (<code>%&gt;%</code>) operator and type <code>data=</code> followed by the name of the long-format data frame object (<code>datam_long</code>) as the first argument within the <code>pivot_wider</code> function parentheses.</p>
-<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="manipulate.html#cb584-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (without using pipe)</span></span>
-<span id="cb584-2"><a href="manipulate.html#cb584-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>datam_long, </span>
-<span id="cb584-3"><a href="manipulate.html#cb584-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">names_from=</span>Measure,</span>
-<span id="cb584-4"><a href="manipulate.html#cb584-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">values_from=</span>Score)</span>
-<span id="cb584-5"><a href="manipulate.html#cb584-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb584-6"><a href="manipulate.html#cb584-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb584-7"><a href="manipulate.html#cb584-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 12 x 5
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="manipulate.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (without using pipe)</span></span>
+<span id="cb585-2"><a href="manipulate.html#cb585-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>datam_long, </span>
+<span id="cb585-3"><a href="manipulate.html#cb585-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">names_from=</span>Measure,</span>
+<span id="cb585-4"><a href="manipulate.html#cb585-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">values_from=</span>Score)</span>
+<span id="cb585-5"><a href="manipulate.html#cb585-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb585-6"><a href="manipulate.html#cb585-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb585-7"><a href="manipulate.html#cb585-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 5
 ##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
 ##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
 ##  1        1            55.4               97.2          32.3           50.5
@@ -1418,11 +1440,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Regardless of whether we use the pipe (<code>%&gt;%</code>) operator, we end up with the same long-to-wide format manipulation.</p>
 </div>
 </div>
-<div id="summary_manipulate" class="section level3" number="20.2.6">
-<h3><span class="header-section-number">20.2.6</span> Summary</h3>
+<div id="summary_manipulate" class="section level3 hasAnchor" number="20.2.6">
+<h3><span class="header-section-number">20.2.6</span> Summary<a href="manipulate.html#summary_manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this chapter, we learned how to manipulate a data frame from wide format to long format using the <code>pivot_longer</code>, and how to manipulate a data frame from long format to wide format using the <code>pivot_wider</code>. Both functions are from the <code>tidyr</code> package. Manipulating and restructuring data into different formats or structures is often an essential data-management step prior to running certain analyses or generating certain data visualizations.</p>
 
 </div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-magrittr" class="csl-entry">
+Bache, Stefan Milton, and Hadley Wickham. 2022. <em>Magrittr: A Forward-Pipe Operator for r</em>. <a href="https://CRAN.R-project.org/package=magrittr">https://CRAN.R-project.org/package=magrittr</a>.
+</div>
+<div id="ref-R-tidyr" class="csl-entry">
+Wickham, Hadley, and Maximilian Girlich. 2022. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
+</div>
+<div id="ref-wickham2017" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em><span>R</span> for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.
+</div>
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -1435,7 +1472,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1462,6 +1498,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

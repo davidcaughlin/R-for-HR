@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Basic Features and Operations of the R Language | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Basic Features and Operations of the R Language | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 11 Basic Features and Operations of the R Language | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="gettingstarted.html"/>
 <link rel="next" href="setwd.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,18 +1169,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="gentleintro" class="section level1" number="11">
-<h1><span class="header-section-number">Chapter 11</span> Basic Features and Operations of the R Language</h1>
+<div id="gentleintro" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Basic Features and Operations of the R Language<a href="gentleintro.html#gentleintro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this chapter, you will learn about basic features of the R language along with key bits of terminology. Think of this chapter as the “gentle introduction to R” that nearly every book on R includes. Also, it is completely fine if you don’t fully grasp certain concepts and functions upon completing this chapter. We will revisit many of these concepts and functions in the HR context in subsequent chapters. Until then, use this chapter as an opportunity to practice writing R code.</p>
-<div id="videotutorial_gentleintro" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> Video Tutorial</h2>
+<div id="videotutorial_gentleintro" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Video Tutorial<a href="gentleintro.html#videotutorial_gentleintro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When exploring the basic features, operations, and functions feel free to follow along with the written tutorial below or to check out the video. In the video, I offer an abbreviated version of what’s covered in the written tutorial and focus on what I think most beginners need to know and understand early on about R. In the written tutorial, I get into some functions and operations that probably won’t become relevant until further along in your learning of using R as tool for HR analytics.</p>
-<iframe src="https://youtube.com/embed/yHbVbHEjhLQ?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/yHbVbHEjhLQ?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/yHbVbHEjhLQ" class="uri">https://youtu.be/yHbVbHEjhLQ</a></p>
 </div>
-<div id="functions_gentleintro" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> Functions &amp; Packages Introduced</h2>
+<div id="functions_gentleintro" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Functions &amp; Packages Introduced<a href="gentleintro.html#functions_gentleintro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <table>
 <thead>
 <tr class="header">
@@ -1224,8 +1248,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="r_as_calculator" class="section level2" number="11.3">
-<h2><span class="header-section-number">11.3</span> R as a Calculator</h2>
+<div id="r_as_calculator" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> R as a Calculator<a href="gentleintro.html#r_as_calculator" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In its simplest form, R is a calculator. You can use R to carry out basic arithmetic, algebra, and other mathematical operations. The arithmetic operators in R are <code>+</code> (addition), <code>-</code> (subtraction), <code>*</code> (multiplication), <code>/</code> (division), <code>^</code> (exponent), and <code>sqrt</code> (square root). Below, you will find an example of these different arithmetic operators in action. In this book, lines of output are preceded by double hashtags (<code>##</code>); however, in your own R Console, you will not see the double hashtags before your output – unless, that is, you use double hashtags before your lines of script <a href="gentleintro.html#annotate">annotations</a>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="gentleintro.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
@@ -1254,8 +1278,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="gentleintro.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 1.732051</code></pre>
 </div>
-<div id="functions" class="section level2" number="11.4">
-<h2><span class="header-section-number">11.4</span> Functions</h2>
+<div id="functions" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Functions<a href="gentleintro.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <strong>function</strong> refers to an integrated set of instructions that can be applied consistently. Some functions also accept arguments, where an <strong>argument</strong> is used to further refine the instructions and resulting operations of the function. In R we can use functions that come standard from base R or functions that come from downloadable packages. Let’s take a look at the <code>print</code> function that comes standard with base R, which means that we don’t need a special package to access the function. This won’t be terribly exciting, but we can enter <code>3</code> as an argument within the <code>print</code> function parentheses; in general, arguments will appear within the inclusive parentheses.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="gentleintro.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
@@ -1270,16 +1294,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you would like to learn more about a function and the types of arguments that can be used within the function, you can access the help feature in R to access documentation on the function. The easiest way to do this is to enter <code>?</code> before the name of the function. Upon doing so, a help window will open; if you’re using RStudio, a specific window pane dedicated to Help will open.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="gentleintro.html#cb33-1" aria-hidden="true" tabindex="-1"></a>?class</span></code></pre></div>
 </div>
-<div id="packages" class="section level2" number="11.5">
-<h2><span class="header-section-number">11.5</span> Packages</h2>
+<div id="packages" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Packages<a href="gentleintro.html#packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <strong>package</strong> is a collection of functions with a common theme or that can be applied to address a similar set of problems. R packages go through a rigorous and laborious development and vetting process before being posted on the CRAN website (<a href="https://cran.r-project.org/" class="uri">https://cran.r-project.org/</a>).</p>
-<p>There are two functions that are important when it comes to installing and using packages. First, the <code>install.packages</code> function is used to install a package. The name of the package you wish to install should be surrounded with quotation marks (<code>" "</code> or <code>' '</code>) and entered as an argument in the function. For example, if we wish to install the <code>lessR</code> package <span class="citation">(<a href="references.html#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>, we type <code>install.packages("lessR")</code>, as shown below. Please note that the names of packages (and functions, arguments, and objects) are case sensitive in R.</p>
+<p>There are two functions that are important when it comes to installing and using packages. First, the <code>install.packages</code> function is used to install a package. The name of the package you wish to install should be surrounded with quotation marks (<code>" "</code> or <code>' '</code>) and entered as an argument in the function. For example, if we wish to install the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>, we type <code>install.packages("lessR")</code>, as shown below. Please note that the names of packages (and functions, arguments, and objects) are case sensitive in R.</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="gentleintro.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
 <p>Once you have installed a package, you use the <code>library</code> function to “check out” the package from your “library” of functions. To use the function, enter the exact name of the function <em>without</em> quotation marks.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="gentleintro.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
 <pre><code>## 
-## lessR 4.1.3  feedback: gerbing@pdx.edu  web: lessRstats.com/new
-## ---------------------------------------------------------------
+## lessR 4.1.9                         feedback: gerbing@pdx.edu 
+## --------------------------------------------------------------
 ## &gt; d &lt;- Read(&quot;&quot;)   Read text, Excel, SPSS, SAS, or R data file
 ##   d is default data frame, data= in analysis routines optional
 ## 
@@ -1288,14 +1312,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## customization, and descriptive statistics from pivot tables.
 ##   Enter:  browseVignettes(&quot;lessR&quot;)
 ## 
-## View changes in this new version of lessR.
+## View changes in this or recent versions of lessR.
 ##   Enter: help(package=lessR)  Click: Package NEWS
-##   Enter: interact()  for access to interactive graphics</code></pre>
+##   Enter: interact()  for access to interactive graphics
+##   New function: reshape_long() to move data from wide to long</code></pre>
 <p>We can also access a function from an installed package without using the <code>library</code> function. To do so, we can use the <code>::</code> operator to append the function name to the package name. For illustration purposes, I use precede <code>lessR::BoxPlot()</code> (which would allow us to access the <code>BoxPlot</code> function from the <code>lessR</code> package) with <code>?</code> to pull up the function documentation.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="gentleintro.html#cb37-1" aria-hidden="true" tabindex="-1"></a>?lessR<span class="sc">::</span><span class="fu">BoxPlot</span>()</span></code></pre></div>
 </div>
-<div id="variableassignment" class="section level2" number="11.6">
-<h2><span class="header-section-number">11.6</span> Variable Assignment</h2>
+<div id="variableassignment" class="section level2 hasAnchor" number="11.6">
+<h2><span class="header-section-number">11.6</span> Variable Assignment<a href="gentleintro.html#variableassignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Variable assignment</strong> is the process of assigning a value or multiple values to a variable. There are two assignment operators that can be used for variable assignment as well as for (re)naming objects such as tables and data frames: <code>&lt;-</code> and <code>=</code>. Both work the same way. I prefer to use <code>&lt;-</code>, but others prefer <code>=</code>. In the example below, we assign the value <code>3</code> to a variable (i.e., object) we are naming <code>x</code>.</p>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="gentleintro.html#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">3</span></span></code></pre></div>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="gentleintro.html#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">3</span></span></code></pre></div>
@@ -1306,11 +1331,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="gentleintro.html#cb42-1" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="typesofdata" class="section level2" number="11.7">
-<h2><span class="header-section-number">11.7</span> Types of Data</h2>
+<div id="typesofdata" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> Types of Data<a href="gentleintro.html#typesofdata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In general, there are four different types of data in R: <code>numeric</code>, <code>character</code>, <code>Date</code>, and <code>logical</code>.</p>
-<div id="numeric-data" class="section level3" number="11.7.1">
-<h3><span class="header-section-number">11.7.1</span> <code>numeric</code> Data</h3>
+<div id="numeric-data" class="section level3 hasAnchor" number="11.7.1">
+<h3><span class="header-section-number">11.7.1</span> <code>numeric</code> Data<a href="gentleintro.html#numeric-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>numeric</code> data are numbers or numeric values. This data type is ready-made for quantitative analysis. We can apply the <code>is.numeric</code> function to determine whether a value or variable is <code>numeric</code>; if the value or variable entered as an argument is <code>numeric</code>, R will return <code>TRUE</code>, and if it is not <code>numeric</code>, R will return <code>FALSE</code>. [Note that <code>TRUE</code> and <code>FALSE</code> statements don’t require quotation marks like text/character/string data, as they are handled differently in R.] Finally, let’s see if that <code>"Hello data science!"</code> phrase is numeric.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="gentleintro.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -1340,8 +1365,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb64-2"><a href="gentleintro.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
 </div>
-<div id="character-data" class="section level3" number="11.7.2">
-<h3><span class="header-section-number">11.7.2</span> <code>character</code> Data</h3>
+<div id="character-data" class="section level3 hasAnchor" number="11.7.2">
+<h3><span class="header-section-number">11.7.2</span> <code>character</code> Data<a href="gentleintro.html#character-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Data of type <code>character</code> do not explicitly or innately have quantitative properties. Sometimes this type of data is called “string” or “text” data. Data of type <code>factor</code> is similar to <code>character</code> but handled differently by R; this distinction becomes more important when working with vectors and analyses. That said, many analysis functions automatically convert <code>character</code> to <code>factor</code> for analyses, but when it comes to working with and manipulating data frames, this <code>character</code> versus <code>factor</code> distinction becomes more important. When data are of type <code>character</code>, we place quotation marks (<code>" "</code> or <code>' '</code>) around the text. For example, if the <code>character</code> of interest is <code>old</code>, then we place quotation marks around text like this <code>"old"</code>. Also note that <code>character</code> data are case sensitive, which means that <code>"old"</code> is not the same as <code>"Old"</code>. Using the function <code>is.character</code>, we can determine whether data are in fact of type <code>character</code>.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="gentleintro.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(<span class="st">&quot;old&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
@@ -1353,8 +1378,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb70-2"><a href="gentleintro.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 </div>
-<div id="date-data" class="section level3" number="11.7.3">
-<h3><span class="header-section-number">11.7.3</span> <code>Date</code> Data</h3>
+<div id="date-data" class="section level3 hasAnchor" number="11.7.3">
+<h3><span class="header-section-number">11.7.3</span> <code>Date</code> Data<a href="gentleintro.html#date-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When working with dates in R, there are two different types: <code>Date</code> and <code>POSIXct</code>. <code>Date</code> captures just the date, whereas <code>POSIXct</code> captures the date and time. Behind the scenes, R treats <code>Date</code> numerically as the number of days since January 1, 1970, and <code>POSIXct</code> as the number of seconds since January 1, 1970. To specify a value as a date, we can use the <code>as.Date</code> function.</p>
 <div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="gentleintro.html#cb72-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;1970-03-01&quot;</span>)</span>
 <span id="cb72-2"><a href="gentleintro.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z)</span></code></pre></div>
@@ -1372,8 +1397,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb78-2"><a href="gentleintro.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(z)</span></code></pre></div>
 <pre><code>## [1] 5173800</code></pre>
 </div>
-<div id="logical-data" class="section level3" number="11.7.4">
-<h3><span class="header-section-number">11.7.4</span> <code>logical</code> Data</h3>
+<div id="logical-data" class="section level3 hasAnchor" number="11.7.4">
+<h3><span class="header-section-number">11.7.4</span> <code>logical</code> Data<a href="gentleintro.html#logical-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Data that are of type <code>logical</code> can take on values of either <code>TRUE</code> or <code>FALSE</code>, which correspond to the integers <code>1</code> and <code>0</code>, respectively. As mentioned above, although <code>TRUE</code> and <code>FALSE</code> appear to be <code>character</code> or <code>factor</code> data, they are actually <code>logical</code> data, which means they do not require quotation marks (<code>" "</code> or <code>' '</code>).</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="gentleintro.html#cb80-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
 <span id="cb80-2"><a href="gentleintro.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(w)</span></code></pre></div>
@@ -1382,8 +1407,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] TRUE</code></pre>
 </div>
 </div>
-<div id="vectors" class="section level2" number="11.8">
-<h2><span class="header-section-number">11.8</span> Vectors</h2>
+<div id="vectors" class="section level2 hasAnchor" number="11.8">
+<h2><span class="header-section-number">11.8</span> Vectors<a href="gentleintro.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <strong>vector</strong> is a group of data elements in a particular order that are all the same data type. To create a vector, we can use the <code>c</code> function, which stands for “combine.” Within the <code>c</code> function parentheses, we can list the data elements and separate them by commas, as commas separate arguments within a function’s parentheses. We can also assign a vector to a variable using either the <code>&lt;-</code> or <code>=</code> operator. We can create vectors for all of the data types: <code>numeric</code>, <code>character</code>, <code>Date</code>, and <code>logical</code>.</p>
 <p>As an example, let’s create a vector of <code>numeric</code> values, and let’s call it <code>a</code>.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="gentleintro.html#cb84-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">19</span>)</span></code></pre></div>
@@ -1442,8 +1467,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="gentleintro.html#cb123-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">^</span> f</span></code></pre></div>
 <pre><code>## [1]      1      4    343 161051   6859</code></pre>
 </div>
-<div id="lists" class="section level2" number="11.9">
-<h2><span class="header-section-number">11.9</span> Lists</h2>
+<div id="lists" class="section level2 hasAnchor" number="11.9">
+<h2><span class="header-section-number">11.9</span> Lists<a href="gentleintro.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If we wish to combine data elements into a single list that with different data types, we can use the <code>list</code> function. The <code>list</code> function orders each data element and retains its value.</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="gentleintro.html#cb125-1" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="st">&quot;dog&quot;</span>, <span class="cn">TRUE</span>, <span class="st">&quot;2018-05-30&quot;</span>)</span>
 <span id="cb125-2"><a href="gentleintro.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(g)</span></code></pre></div>
@@ -1461,8 +1486,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="gentleintro.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(g)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 </div>
-<div id="dataframes" class="section level2" number="11.10">
-<h2><span class="header-section-number">11.10</span> Data Frames</h2>
+<div id="dataframes" class="section level2 hasAnchor" number="11.10">
+<h2><span class="header-section-number">11.10</span> Data Frames<a href="gentleintro.html#dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <strong>data frame</strong> is a specific type of table in which columns represent variables (i.e., fields) and rows represent cases (i.e., observations). We can create a simple data frame object by combining vectors of the same length. Let’s begin by creating six vector objects, which we will label <code>a</code> through <code>f</code>.</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="gentleintro.html#cb129-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">19</span>) </span>
 <span id="cb129-2"><a href="gentleintro.html#cb129-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">c</span>(3L, 10L, 2L, 5L, 5L) </span>
@@ -1494,8 +1519,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="gentleintro.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(r)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 </div>
-<div id="annotate" class="section level2" number="11.11">
-<h2><span class="header-section-number">11.11</span> Annotations</h2>
+<div id="annotate" class="section level2 hasAnchor" number="11.11">
+<h2><span class="header-section-number">11.11</span> Annotations<a href="gentleintro.html#annotate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Part of the value of using a code/script-based program like R is that you can leave notes and explain your decisions and operations. When preceding text, the <code>#</code> symbol indicates that all text that follows on that line is a comment or annotation; as a result, R knows not to interpret or analyze the text that follows. To illustrate annotations, let’s repeat the steps from the previous section; however, this time, let’s include annotations.</p>
 <div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="gentleintro.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create six vectors </span></span>
 <span id="cb138-2"><a href="gentleintro.html#cb138-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">19</span>) <span class="co"># Vector a</span></span>
@@ -1532,10 +1557,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>Can you start to envision how annotated code might help to tell a story about data-related decision-making processes?</p>
 </div>
-<div id="summary_gentleintro" class="section level2" number="11.12">
-<h2><span class="header-section-number">11.12</span> Summary</h2>
+<div id="summary_gentleintro" class="section level2 hasAnchor" number="11.12">
+<h2><span class="header-section-number">11.12</span> Summary<a href="gentleintro.html#summary_gentleintro" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this chapter, we learned the basics of working with the R statistical programming language. This chapter is by no means comprehensive, and there were probably some concepts and functions that still don’t quite make sense to you. Nonetheless, hopefully, this chapter provided you with a basic understanding of the basic operations and building blocks of R. We’ll practice applying many of the operations and functions from this chapter in subsequent chapters, which means you’ll have many more opportunities to learn and practice.</p>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
 </div>
 </div>
             </section>
@@ -1548,7 +1579,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1575,6 +1605,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

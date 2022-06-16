@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 60 Computing Compa-Ratios &amp; Investigating Pay Compression | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 60 Computing Compa-Ratios &amp; Investigating Pay Compression | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 60 Computing Compa-Ratios &amp; Investigating Pay Compression | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -31,9 +30,9 @@
   
   
 <link rel="prev" href="paydeterminants.html"/>
-<link rel="next" href="create-portfolio.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link rel="next" href="create_portfolio.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,11 +1169,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="comparatio" class="section level1" number="60">
-<h1><span class="header-section-number">Chapter 60</span> Computing Compa-Ratios &amp; Investigating Pay Compression</h1>
+<div id="comparatio" class="section level1 hasAnchor" number="60">
+<h1><span class="header-section-number">Chapter 60</span> Computing Compa-Ratios &amp; Investigating Pay Compression<a href="comparatio.html#comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this chapter, we will learn how to compute compa-ratios, generate scatter plots, and evaluate whether there might be evidence of pay compression – or even pay inversion. The compa ratio is a useful tool for determining how well an organization’s actual pay practices are adhering to its pay policies.</p>
-<div id="conceptualoverview_comparatio" class="section level2" number="60.1">
-<h2><span class="header-section-number">60.1</span> Conceptual Overview</h2>
+<div id="conceptualoverview_comparatio" class="section level2 hasAnchor" number="60.1">
+<h2><span class="header-section-number">60.1</span> Conceptual Overview<a href="comparatio.html#conceptualoverview_comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <strong>compa-ratio</strong> is an HR metric that indicates how well an employee is actually paid (or a group of employees are paid) relative to the midpoint of their pay grade. The compa-ratio is a useful metric for determining how well an organization is adhering to its espoused pay policy, and when coupled with other information, such as employee tenure, the compa-ratio can be used to detect whether pay compression and pay inversion exist.</p>
 <p>The compa-ratio for an <em>employee</em> is simple to compute, and the formula is as follows.</p>
 <p><span class="math inline">\(C_{employee} = \frac{Pay}{MidPoint} \times 100\)</span></p>
@@ -1157,26 +1181,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To compute the compa-ratio for a <em>group</em> of employees, we can use the following formula.</p>
 <p><span class="math inline">\(C_{group} = \overline{C}_{employee}\)</span></p>
 <p>where <span class="math inline">\(\overline{C}_{employee}\)</span> refers to the average compa-ratio for a group of employees.</p>
-<div id="conceptualvideo_comparatio" class="section level3" number="60.1.1">
-<h3><span class="header-section-number">60.1.1</span> Conceptual Videos</h3>
+<div id="conceptualvideo_comparatio" class="section level3 hasAnchor" number="60.1.1">
+<h3><span class="header-section-number">60.1.1</span> Conceptual Videos<a href="comparatio.html#conceptualvideo_comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a more in-depth review of compa-ratios and adherence to pay policies, please check out the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/zGXVjDw_vX4?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/zGXVjDw_vX4?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/zGXVjDw_vX4" class="uri">https://youtu.be/zGXVjDw_vX4</a></p>
 </div>
 </div>
-<div id="tutorial_comparatio" class="section level2" number="60.2">
-<h2><span class="header-section-number">60.2</span> Tutorial</h2>
+<div id="tutorial_comparatio" class="section level2 hasAnchor" number="60.2">
+<h2><span class="header-section-number">60.2</span> Tutorial<a href="comparatio.html#tutorial_comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter’s tutorial demonstrates how to compute compa-ratios and generate scatter plots in R.</p>
-<div id="videotutorial_comparatio" class="section level3" number="60.2.1">
-<h3><span class="header-section-number">60.2.1</span> Video Tutorial</h3>
+<div id="videotutorial_comparatio" class="section level3 hasAnchor" number="60.2.1">
+<h3><span class="header-section-number">60.2.1</span> Video Tutorial<a href="comparatio.html#videotutorial_comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/nERabUWTubA?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/nERabUWTubA?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/nERabUWTubA" class="uri">https://youtu.be/nERabUWTubA</a></p>
 </div>
-<div id="functions_comparatio" class="section level3" number="60.2.2">
-<h3><span class="header-section-number">60.2.2</span> Functions &amp; Packages Introduced</h3>
+<div id="functions_comparatio" class="section level3 hasAnchor" number="60.2.2">
+<h3><span class="header-section-number">60.2.2</span> Functions &amp; Packages Introduced<a href="comparatio.html#functions_comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -1224,57 +1248,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="initsteps_comparatio" class="section level3" number="60.2.3">
-<h3><span class="header-section-number">60.2.3</span> Initial Steps</h3>
+<div id="initsteps_comparatio" class="section level3 hasAnchor" number="60.2.3">
+<h3><span class="header-section-number">60.2.3</span> Initial Steps<a href="comparatio.html#initsteps_comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already, save the files called <strong>“PData.csv”</strong> and <strong>“CData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data files for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb2300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2300-1"><a href="comparatio.html#cb2300-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb2300-2"><a href="comparatio.html#cb2300-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data files called <strong>“PData.csv”</strong> and <strong>“CData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb2301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2301-1"><a href="comparatio.html#cb2301-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb2301-2"><a href="comparatio.html#cb2301-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb2301-3"><a href="comparatio.html#cb2301-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb2301-4"><a href="comparatio.html#cb2301-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2302-1"><a href="comparatio.html#cb2302-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb2302-2"><a href="comparatio.html#cb2302-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb2302-3"><a href="comparatio.html#cb2302-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2302-4"><a href="comparatio.html#cb2302-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
-<span id="cb2302-5"><a href="comparatio.html#cb2302-5" aria-hidden="true" tabindex="-1"></a>PersonalData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   EmployeeID = col_double(),
-##   StartDate = col_character(),
-##   Sex = col_character(),
-##   RaceEthnicity = col_character(),
-##   Age_2018 = col_double(),
-##   Disability = col_character(),
-##   Veteran = col_character()
-## )</code></pre>
-<div class="sourceCode" id="cb2304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2304-1"><a href="comparatio.html#cb2304-1" aria-hidden="true" tabindex="-1"></a>CompensationData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;CData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   EmployeeID = col_double(),
-##   PayGrade = col_character(),
-##   BasePay_2018 = col_double(),
-##   VariablePay_2018 = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb2306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2306-1"><a href="comparatio.html#cb2306-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
-<span id="cb2306-2"><a href="comparatio.html#cb2306-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2307-1"><a href="comparatio.html#cb2307-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
-<span id="cb2307-2"><a href="comparatio.html#cb2307-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2307-3"><a href="comparatio.html#cb2307-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2307-4"><a href="comparatio.html#cb2307-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (merge) without pipes</span></span>
-<span id="cb2307-5"><a href="comparatio.html#cb2307-5" aria-hidden="true" tabindex="-1"></a>MergedDF <span class="ot">&lt;-</span> <span class="fu">full_join</span>(PersonalData, CompensationData, <span class="at">by=</span><span class="st">&quot;EmployeeID&quot;</span>)</span>
-<span id="cb2307-6"><a href="comparatio.html#cb2307-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2307-7"><a href="comparatio.html#cb2307-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names in joined (merged) data frame (tibble) object</span></span>
-<span id="cb2307-8"><a href="comparatio.html#cb2307-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2303-1"><a href="comparatio.html#cb2303-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2303-2"><a href="comparatio.html#cb2303-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data files called <strong>“PData.csv”</strong> and <strong>“CData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2304-1"><a href="comparatio.html#cb2304-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2304-2"><a href="comparatio.html#cb2304-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2304-3"><a href="comparatio.html#cb2304-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2304-4"><a href="comparatio.html#cb2304-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2305-1"><a href="comparatio.html#cb2305-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2305-2"><a href="comparatio.html#cb2305-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2305-3"><a href="comparatio.html#cb2305-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2305-4"><a href="comparatio.html#cb2305-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) objects</span></span>
+<span id="cb2305-5"><a href="comparatio.html#cb2305-5" aria-hidden="true" tabindex="-1"></a>PersonalData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 521 Columns: 7
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): StartDate, Sex, RaceEthnicity, Disability, Veteran
+## dbl (2): EmployeeID, Age_2018
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb2307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2307-1"><a href="comparatio.html#cb2307-1" aria-hidden="true" tabindex="-1"></a>CompensationData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;CData.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 521 Columns: 4
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): PayGrade
+## dbl (3): EmployeeID, BasePay_2018, VariablePay_2018
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb2309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2309-1"><a href="comparatio.html#cb2309-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr package if you haven&#39;t already</span></span>
+<span id="cb2309-2"><a href="comparatio.html#cb2309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2310-1"><a href="comparatio.html#cb2310-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access dplyr package</span></span>
+<span id="cb2310-2"><a href="comparatio.html#cb2310-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2310-3"><a href="comparatio.html#cb2310-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2310-4"><a href="comparatio.html#cb2310-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Full join (merge) without pipes</span></span>
+<span id="cb2310-5"><a href="comparatio.html#cb2310-5" aria-hidden="true" tabindex="-1"></a>MergedDF <span class="ot">&lt;-</span> <span class="fu">full_join</span>(PersonalData, CompensationData, <span class="at">by=</span><span class="st">&quot;EmployeeID&quot;</span>)</span>
+<span id="cb2310-6"><a href="comparatio.html#cb2310-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2310-7"><a href="comparatio.html#cb2310-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names in joined (merged) data frame (tibble) object</span></span>
+<span id="cb2310-8"><a href="comparatio.html#cb2310-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(MergedDF)</span></code></pre></div>
 <pre><code>##  [1] &quot;EmployeeID&quot;       &quot;StartDate&quot;        &quot;Sex&quot;              &quot;RaceEthnicity&quot;    &quot;Age_2018&quot;        
 ##  [6] &quot;Disability&quot;       &quot;Veteran&quot;          &quot;PayGrade&quot;         &quot;BasePay_2018&quot;     &quot;VariablePay_2018&quot;</code></pre>
-<div class="sourceCode" id="cb2309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2309-1"><a href="comparatio.html#cb2309-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb2309-2"><a href="comparatio.html#cb2309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(MergedDF)</span></code></pre></div>
-<pre><code>## spec_tbl_df[,10] [521 x 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb2312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2312-1"><a href="comparatio.html#cb2312-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2312-2"><a href="comparatio.html#cb2312-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(MergedDF)</span></code></pre></div>
+<pre><code>## spec_tbl_df [521 × 10] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmployeeID      : num [1:521] 1001 1002 1003 1004 1005 ...
 ##  $ StartDate       : chr [1:521] &quot;1/29/2013&quot; &quot;2/1/2013&quot; &quot;2/10/2013&quot; &quot;2/10/2013&quot; ...
 ##  $ Sex             : chr [1:521] &quot;Male&quot; &quot;Male&quot; &quot;Male&quot; &quot;Female&quot; ...
@@ -1294,10 +1315,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   ..   Age_2018 = col_double(),
 ##   ..   Disability = col_character(),
 ##   ..   Veteran = col_character()
-##   .. )</code></pre>
-<div class="sourceCode" id="cb2311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2311-1"><a href="comparatio.html#cb2311-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb2311-2"><a href="comparatio.html#cb2311-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(MergedDF)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 10
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<div class="sourceCode" id="cb2314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2314-1"><a href="comparatio.html#cb2314-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2314-2"><a href="comparatio.html#cb2314-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(MergedDF)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 10
 ##   EmployeeID StartDate Sex    RaceEthnicity Age_2018 Disability Veteran PayGrade BasePay_2018
 ##        &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;           &lt;dbl&gt;
 ## 1       1001 1/29/2013 Male   White             38.1 No         No      C               43837
@@ -1306,24 +1328,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4       1004 2/10/2013 Female Black             38.8 No         No      C               42398
 ## 5       1005 2/18/2013 Female Asian             32.0 No         No      C               43253
 ## 6       1006 2/18/2013 Male   White             34.4 No         No      C               44038
-## # ... with 1 more variable: VariablePay_2018 &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb2313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2313-1"><a href="comparatio.html#cb2313-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb2313-2"><a href="comparatio.html#cb2313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(MergedDF)</span></code></pre></div>
+## # … with 1 more variable: VariablePay_2018 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb2316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2316-1"><a href="comparatio.html#cb2316-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2316-2"><a href="comparatio.html#cb2316-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(MergedDF)</span></code></pre></div>
 <pre><code>## [1] 521</code></pre>
 <p>There are 10 variables and 56 cases (i.e., employees) in the <code>MergedDF</code> data frame: <code>EmployeeID</code>, <code>StartDate</code>, <code>Sex</code>, <code>RaceEthnicity</code>, <code>Age_2018</code>, <code>Disability</code>, <code>Veteran</code>, <code>PayGrade</code>, <code>BasePay_2018</code>, and <code>VariablePay_2018</code>. In this tutorial, we will focus on the <code>StartDate</code>, <code>BasePay_2018</code>, and <code>VariablePay_2018</code> variables. Please note that the <code>StartDate</code> variable is of type <em>character</em> and not <em>Date</em>; we will need to change this later on.</p>
 </div>
-<div id="compute_comparatio_employee" class="section level3" number="60.2.4">
-<h3><span class="header-section-number">60.2.4</span> Compute Compa-Ratio for Each Employee</h3>
+<div id="compute_comparatio_employee" class="section level3 hasAnchor" number="60.2.4">
+<h3><span class="header-section-number">60.2.4</span> Compute Compa-Ratio for Each Employee<a href="comparatio.html#compute_comparatio_employee" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The compa-ratio reflects how much an employee is actually paid a given pay grade relative to the midpoint of the pay grade. For this pay grade, we will assume that the pay policy specifies the midpoint for total compensation (base pay + variable pay) as $55,000 per year.</p>
 <p>To begin, we need to create a total pay (i.e., total compensation) variable by calculating the sum of base and variable pay for each employee. Let’s name this new variable <code>TotalPay_2018</code>. First, type <code>MergedDF$TotalPay_2018</code> followed by the <code>&lt;-</code> assignment operator to specify what you would like to name your new variable (<code>TotalPay_2018</code>). Second, add the <code>BasePay_2018</code> variable to the <code>VariablePay_2018</code> variable using the <code>+</code> operator.</p>
-<div class="sourceCode" id="cb2315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2315-1"><a href="comparatio.html#cb2315-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TotalPay variable</span></span>
-<span id="cb2315-2"><a href="comparatio.html#cb2315-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>TotalPay_2018 <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>BasePay_2018 <span class="sc">+</span> MergedDF<span class="sc">$</span>VariablePay_2018</span></code></pre></div>
+<div class="sourceCode" id="cb2318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2318-1"><a href="comparatio.html#cb2318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create TotalPay variable</span></span>
+<span id="cb2318-2"><a href="comparatio.html#cb2318-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>TotalPay_2018 <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>BasePay_2018 <span class="sc">+</span> MergedDF<span class="sc">$</span>VariablePay_2018</span></code></pre></div>
 <p>Next, to compute the compa-ratio for each employee, first, type <code>MergedDF$CompaRatio</code> followed by the <code>&lt;-</code> assignment operator to create and name a new variable called <code>CompaRatio</code>. Second, divide the <code>TotalPay_2018</code> variable values by the midpoint value for the pay grade (<em>$55,000</em>) using the division operator (<code>/</code>). Third, multiply the resulting quotient by <em>100</em> to convert the ratio to a percentage (using the multiplication <code>*</code> operator).</p>
-<div class="sourceCode" id="cb2316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2316-1"><a href="comparatio.html#cb2316-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CompaRatio variable</span></span>
-<span id="cb2316-2"><a href="comparatio.html#cb2316-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>CompaRatio <span class="ot">&lt;-</span> (MergedDF<span class="sc">$</span>TotalPay_2018 <span class="sc">/</span> <span class="dv">55000</span>) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb2316-3"><a href="comparatio.html#cb2316-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2316-4"><a href="comparatio.html#cb2316-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of compa-ratios</span></span>
-<span id="cb2316-5"><a href="comparatio.html#cb2316-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>CompaRatio)</span></code></pre></div>
+<div class="sourceCode" id="cb2319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2319-1"><a href="comparatio.html#cb2319-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create CompaRatio variable</span></span>
+<span id="cb2319-2"><a href="comparatio.html#cb2319-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>CompaRatio <span class="ot">&lt;-</span> (MergedDF<span class="sc">$</span>TotalPay_2018 <span class="sc">/</span> <span class="dv">55000</span>) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb2319-3"><a href="comparatio.html#cb2319-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2319-4"><a href="comparatio.html#cb2319-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of compa-ratios</span></span>
+<span id="cb2319-5"><a href="comparatio.html#cb2319-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>CompaRatio)</span></code></pre></div>
 <pre><code>##   [1] 102.93455 102.41091  99.94000  99.45091 102.67273 103.21273 100.78000 101.91091 102.59818
 ##  [10] 100.54182 100.36182 101.45273 101.45818 101.91091  98.84545 102.44182 100.78727 101.67273
 ##  [19] 100.58545 103.08545  96.13091  99.90727 101.01273 100.31636  99.92545 100.55818 101.81455
@@ -1384,23 +1406,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [514] 103.69636 100.43455 106.18727 100.92727 101.51091 101.73091 101.50727 101.11273</code></pre>
 <p>Employees with compa-ratios that are equal to 100% are paid at the midpoint for the pay grade. Employees with compa-ratios that are greater than 100% are paid more than the midpoint for their pay grade, and employees with compa-ratios that are less than 100% are paid less than the midpoint. There are rules of thumb for what can be considered large and small compa-ratios (e.g., 80% vs. 120%), but generally speaking, interpreting compa-ratio values should be based upon the width of the specific pay grade in question, as well as other organizational factors (e.g., pay philosophy).</p>
 </div>
-<div id="compute_comparatio_group" class="section level3" number="60.2.5">
-<h3><span class="header-section-number">60.2.5</span> Compute Compa-Ratio for Group of Employees</h3>
+<div id="compute_comparatio_group" class="section level3 hasAnchor" number="60.2.5">
+<h3><span class="header-section-number">60.2.5</span> Compute Compa-Ratio for Group of Employees<a href="comparatio.html#compute_comparatio_group" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To compute the compa-ratio for an entire group of employees, apply the <code>mean</code> function from base R to the new <code>CompaRatio</code> variable.</p>
-<div class="sourceCode" id="cb2318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2318-1"><a href="comparatio.html#cb2318-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean</span></span>
-<span id="cb2318-2"><a href="comparatio.html#cb2318-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>CompaRatio, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2321-1"><a href="comparatio.html#cb2321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate mean</span></span>
+<span id="cb2321-2"><a href="comparatio.html#cb2321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>CompaRatio, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 100.9211</code></pre>
 <p>The value of <em>100.705</em> indicates that the organization is paying employees at 101% of the pay grade midpoint, which is a pretty good sign in terms of adherence to the pay policy midpoint for the grade. We would likely be very concerned if we instead saw a group compa-ratio of 75% or 125%.</p>
 </div>
-<div id="compute_comparatio_scatterplot" class="section level3" number="60.2.6">
-<h3><span class="header-section-number">60.2.6</span> Investigate Pay Compression and Pay Inversion</h3>
+<div id="compute_comparatio_scatterplot" class="section level3 hasAnchor" number="60.2.6">
+<h3><span class="header-section-number">60.2.6</span> Investigate Pay Compression and Pay Inversion<a href="comparatio.html#compute_comparatio_scatterplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>While computing the mean compa-ratio value for a group of employees is useful, by itself, it does not provide us with direct evidence of pay compression or pay inversion. The scatter plot data visualization can be useful in this regard, particularly when we associate employee tenure with compa-ratio. Because we currently only have a start date (<code>StartDate</code>) variable in our data frame, we need to create a new variable that represents tenure.</p>
 <p>To create a new variable that we will call <code>Tenure</code>, we need to subtract employees’ start date (<code>StartDate</code>) values from some more recent date, which in this case is December 31, 2018 (<code>"2018-12-31"</code>). First, type <code>MergedDF$Tenure</code> followed by the <code>&lt;-</code> assignment operator to inform R that you wish to create and name new variable called <code>Tenure</code> and append it to the existing <code>MergedDF</code> data frame using the <code>$</code> operator. Second, enter the <code>as.Date</code> function from base R with <code>"2018-12-31"</code> as the sole parenthetical argument; this is the more recent date from which we will subtract <code>StartDate</code> values. Third, enter the subtraction operator (<code>-</code>). Fourth, earlier we found that the <code>StartDate</code> variable is of type <em>character</em> and not <em>Date</em>; consequently, we need to convert it to type <em>Date</em> by applying the <code>as.Date</code> function, with the name of the data frame (<code>MergedDF</code>), <code>$</code> operator, and name of the start date (<code>StartDate</code>) variable as the first argument, and <code>format="%m/%d/%Y"</code> as the second argument.</p>
-<div class="sourceCode" id="cb2320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2320-1"><a href="comparatio.html#cb2320-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure variable</span></span>
-<span id="cb2320-2"><a href="comparatio.html#cb2320-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2018-12-31&quot;</span>) <span class="sc">-</span> <span class="fu">as.Date</span>(MergedDF<span class="sc">$</span>StartDate, <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2323-1"><a href="comparatio.html#cb2323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure variable</span></span>
+<span id="cb2323-2"><a href="comparatio.html#cb2323-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">&quot;2018-12-31&quot;</span>) <span class="sc">-</span> <span class="fu">as.Date</span>(MergedDF<span class="sc">$</span>StartDate, <span class="at">format=</span><span class="st">&quot;%m/%d/%Y&quot;</span>)</span></code></pre></div>
 <p>Take a look at the vector of values that belong to the new <code>Tenure</code> variable that we just added to the <code>MergedDF</code> data frame. When applying arithmetic to variables of type <em>Date</em>, the resulting variables/output will be of the unit <em>days</em>. That is, when you see the value of <em>2142</em> for <code>Tenure</code>, it refers to 2,142 days of employment.</p>
-<div class="sourceCode" id="cb2321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2321-1"><a href="comparatio.html#cb2321-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure variable values</span></span>
-<span id="cb2321-2"><a href="comparatio.html#cb2321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
+<div class="sourceCode" id="cb2324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2324-1"><a href="comparatio.html#cb2324-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure variable values</span></span>
+<span id="cb2324-2"><a href="comparatio.html#cb2324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
 <pre><code>## Time differences in days
 ##   [1] 2162 2159 2150 2150 2142 2142 2130 2130 2120 2120 2100 2100 2060 2060 2055 2055 2043 2043 2021
 ##  [20] 2021 2001 2001 1922 1922 1909 1909 1905 1905 1889 1889 1872 1872 1862 1862 1857 1857 1833 1833
@@ -1431,22 +1453,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [495]  971  969  968  967  967  964  963  961  960  960  959  958  953  952  951  950  949  948  947
 ## [514]  946  945  945  944  943  943  941  941</code></pre>
 <p>Using the <code>class</code> function from base R, let’s check the variable type for just the <code>Tenure</code> variable.</p>
-<div class="sourceCode" id="cb2323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2323-1"><a href="comparatio.html#cb2323-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check variable type/class of Tenure variable</span></span>
-<span id="cb2323-2"><a href="comparatio.html#cb2323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
-<pre><code>## [1] &quot;difftime&quot;</code></pre>
-<p>As you can see, the <code>Tenure</code> variable is of a special numeric type called <em>difftime</em>. Let’s apply the <code>as.numeric</code> function from base R to convert the <code>Tenure</code> variable to a traditional variable of type <em>numeric</em>. Before the <code>as.numeric</code> function, we type <code>MergedDF$Tenure</code> followed by the <code>&lt;-</code> assignment operator to overwrite the existing <code>Tenure</code> variable in our <code>MergedDF</code> data frame.</p>
-<div class="sourceCode" id="cb2325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2325-1"><a href="comparatio.html#cb2325-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Tenure variable to numeric type</span></span>
-<span id="cb2325-2"><a href="comparatio.html#cb2325-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
-<p>To make sure that worked, let’s apply the <code>class</code> function once more. The conversion worked.</p>
 <div class="sourceCode" id="cb2326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2326-1"><a href="comparatio.html#cb2326-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check variable type/class of Tenure variable</span></span>
 <span id="cb2326-2"><a href="comparatio.html#cb2326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
+<pre><code>## [1] &quot;difftime&quot;</code></pre>
+<p>As you can see, the <code>Tenure</code> variable is of a special numeric type called <em>difftime</em>. Let’s apply the <code>as.numeric</code> function from base R to convert the <code>Tenure</code> variable to a traditional variable of type <em>numeric</em>. Before the <code>as.numeric</code> function, we type <code>MergedDF$Tenure</code> followed by the <code>&lt;-</code> assignment operator to overwrite the existing <code>Tenure</code> variable in our <code>MergedDF</code> data frame.</p>
+<div class="sourceCode" id="cb2328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2328-1"><a href="comparatio.html#cb2328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Tenure variable to numeric type</span></span>
+<span id="cb2328-2"><a href="comparatio.html#cb2328-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
+<p>To make sure that worked, let’s apply the <code>class</code> function once more. The conversion worked.</p>
+<div class="sourceCode" id="cb2329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2329-1"><a href="comparatio.html#cb2329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check variable type/class of Tenure variable</span></span>
+<span id="cb2329-2"><a href="comparatio.html#cb2329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(MergedDF<span class="sc">$</span>Tenure)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>Next, divide the Tenure variable values by <em>365</em> to get an estimate of how many <em>years</em> (as opposed to days) each employee has worked in their current pay grade, which is how we are defining tenure in this context. Before our subtraction equation, we type <code>MergedDF$Tenure_Yrs &lt;-</code> to create a new variable called <code>Tenure_Yrs</code> that will be appended to our <code>MergedDF</code> data frame.</p>
-<div class="sourceCode" id="cb2328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2328-1"><a href="comparatio.html#cb2328-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure_Yrs variable</span></span>
-<span id="cb2328-2"><a href="comparatio.html#cb2328-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure_Yrs <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>Tenure <span class="sc">/</span> <span class="dv">365</span></span></code></pre></div>
+<div class="sourceCode" id="cb2331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2331-1"><a href="comparatio.html#cb2331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Tenure_Yrs variable</span></span>
+<span id="cb2331-2"><a href="comparatio.html#cb2331-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>Tenure_Yrs <span class="ot">&lt;-</span> MergedDF<span class="sc">$</span>Tenure <span class="sc">/</span> <span class="dv">365</span></span></code></pre></div>
 <p>Take a look at the vector of values that belong to the new <code>Tenure_Yrs</code> variable that we just added to the <code>MergedDF</code> data frame. The values are now in the unit <em>years</em>.</p>
-<div class="sourceCode" id="cb2329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2329-1"><a href="comparatio.html#cb2329-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure_Yrs variable values</span></span>
-<span id="cb2329-2"><a href="comparatio.html#cb2329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
+<div class="sourceCode" id="cb2332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2332-1"><a href="comparatio.html#cb2332-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print vector of Tenure_Yrs variable values</span></span>
+<span id="cb2332-2"><a href="comparatio.html#cb2332-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
 <pre><code>##   [1] 5.923288 5.915068 5.890411 5.890411 5.868493 5.868493 5.835616 5.835616 5.808219 5.808219
 ##  [11] 5.753425 5.753425 5.643836 5.643836 5.630137 5.630137 5.597260 5.597260 5.536986 5.536986
 ##  [21] 5.482192 5.482192 5.265753 5.265753 5.230137 5.230137 5.219178 5.219178 5.175342 5.175342
@@ -1501,24 +1523,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [511] 2.600000 2.597260 2.594521 2.591781 2.589041 2.589041 2.586301 2.583562 2.583562 2.578082
 ## [521] 2.578082</code></pre>
 <p>By applying the <code>mean</code> and <code>range</code> functions from base R, we see that the average tenure (in years) for these employees is 3.46 years, the minimum tenure is 2.58 years, and the maximum tenure is 5.87 years.</p>
-<div class="sourceCode" id="cb2331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2331-1"><a href="comparatio.html#cb2331-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute mean for Tenure_Yrs variable</span></span>
-<span id="cb2331-2"><a href="comparatio.html#cb2331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2334-1"><a href="comparatio.html#cb2334-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute mean for Tenure_Yrs variable</span></span>
+<span id="cb2334-2"><a href="comparatio.html#cb2334-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 3.387185</code></pre>
-<div class="sourceCode" id="cb2333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2333-1"><a href="comparatio.html#cb2333-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute range for Tenure_Yrs variable</span></span>
-<span id="cb2333-2"><a href="comparatio.html#cb2333-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2336-1"><a href="comparatio.html#cb2336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute range for Tenure_Yrs variable</span></span>
+<span id="cb2336-2"><a href="comparatio.html#cb2336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(MergedDF<span class="sc">$</span>Tenure_Yrs, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 2.578082 5.923288</code></pre>
-<p>To visualize the relationship between <code>CompaRatio</code> and <code>Tenure_Yrs</code> (to search for evidence of pay compression/inversion), we will create a scatter plot using the <code>ScatterPlot</code> function from the <code>lessR</code> package <span class="citation">(<a href="references.html#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>. If you haven’t already, install and access the <code>lessR</code> package.</p>
-<div class="sourceCode" id="cb2335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2335-1"><a href="comparatio.html#cb2335-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
-<span id="cb2335-2"><a href="comparatio.html#cb2335-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2336-1"><a href="comparatio.html#cb2336-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access lessR package</span></span>
-<span id="cb2336-2"><a href="comparatio.html#cb2336-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<p>To visualize the relationship between <code>CompaRatio</code> and <code>Tenure_Yrs</code> (to search for evidence of pay compression/inversion), we will create a scatter plot using the <code>ScatterPlot</code> function from the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>. If you haven’t already, install and access the <code>lessR</code> package.</p>
+<div class="sourceCode" id="cb2338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2338-1"><a href="comparatio.html#cb2338-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
+<span id="cb2338-2"><a href="comparatio.html#cb2338-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2339-1"><a href="comparatio.html#cb2339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access lessR package</span></span>
+<span id="cb2339-2"><a href="comparatio.html#cb2339-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
 <p>To apply the <code>ScatterPlot</code> function, first, type the name of the function. As the first argument, type the variable name you wish to be displayed on the x-axis (<code>CompaRatio</code>). As the second argument, type the variable name you wish to be displayed on the y-axis (<code>Tenure_Yrs</code>). Finally, enter <code>data=</code> followed by the name of the data frame (<code>MergedDF</code>) to which the two variables belong.</p>
-<div class="sourceCode" id="cb2337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2337-1"><a href="comparatio.html#cb2337-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; Tenure_Yrs</span></span>
-<span id="cb2337-2"><a href="comparatio.html#cb2337-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1432-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2340-1"><a href="comparatio.html#cb2340-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; Tenure_Yrs</span></span>
+<span id="cb2340-2"><a href="comparatio.html#cb2340-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1435-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(CompaRatio, Tenure_Yrs, enhance=TRUE)  # many options
-## Plot(CompaRatio, Tenure_Yrs, color=&quot;red&quot;)  # exterior edge color of points
+## Plot(CompaRatio, Tenure_Yrs, fill=&quot;skyblue&quot;)  # interior fill color of points
 ## Plot(CompaRatio, Tenure_Yrs, fit=&quot;lm&quot;, fit_se=c(.90,.99))  # fit line, stnd errors
 ## Plot(CompaRatio, Tenure_Yrs, MD_cut=6)  # label Mahalanobis dist &gt; 6 as outliers 
 ## 
@@ -1530,13 +1552,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Hypothesis Test of 0 Correlation:  t = 0.821,  df = 519,  p-value = 0.412 
 ## 95% Confidence Interval for Correlation:  -0.050 to 0.122</code></pre>
 <p>The scatter plot (visually) reveals a slight positive relationship between compa-ratios and tenure. That said, a clear pattern or trend is not easy to discern from this scatterplot. Rather, the main take-away from the scatterplot is that a lot of employees were hired more recently, which suggests that the <code>Tenure_Yrs</code> variable has a skewed distribution. Let’s use the <code>Plot</code> function from <code>lessR</code> to look at the distribution for <code>Tenure_Yrs</code> by itself.</p>
-<div class="sourceCode" id="cb2339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2339-1"><a href="comparatio.html#cb2339-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of Tenure_Yrs variable</span></span>
-<span id="cb2339-2"><a href="comparatio.html#cb2339-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2342-1"><a href="comparatio.html#cb2342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of Tenure_Yrs variable</span></span>
+<span id="cb2342-2"><a href="comparatio.html#cb2342-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(Tenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
 <pre><code>## [Violin/Box/Scatterplot graphics from Deepayan Sarkar&#39;s lattice package]
 ## &gt;&gt;&gt; Suggestions
 ## Plot(Tenure_Yrs, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(Tenure_Yrs, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1433-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1436-1.png" width="672" /></p>
 <pre><code>## --- Tenure_Yrs --- 
 ## Present: 521 
 ## Missing: 0 
@@ -1595,16 +1617,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## bw: 0.31       set bandwidth higher for smoother edges</code></pre>
 <p>Note how the distribution is positively skewed, which shows univariate deviation from normality for the <code>Tenure_Yrs</code> variable. The skewness statistic in the <code>Plot</code> output confirms this positive skewness (.545), but that skewness statistic is not too worrisome by most standards; meaning, we could probably feel comfortable using the <code>Tenure_Yrs</code> variable without transforming it.</p>
 <p>Despite the not-very-concerning amount of positive skewness for the <code>Tenure_Yrs</code> variable, let’s take this opportunity to practice transforming a variable using a logarithmic (log) transformation. Specifically, let’s transform the <code>Tenure_Yrs</code> variable using a natural log transformation. To do so, we can use the <code>log</code> function from base R, and let’s call the new variable <code>logTenure_Yrs</code>.</p>
-<div class="sourceCode" id="cb2342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2342-1"><a href="comparatio.html#cb2342-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create logTenure variable</span></span>
-<span id="cb2342-2"><a href="comparatio.html#cb2342-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>logTenure_Yrs <span class="ot">&lt;-</span> <span class="fu">log</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
+<div class="sourceCode" id="cb2345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2345-1"><a href="comparatio.html#cb2345-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create logTenure variable</span></span>
+<span id="cb2345-2"><a href="comparatio.html#cb2345-2" aria-hidden="true" tabindex="-1"></a>MergedDF<span class="sc">$</span>logTenure_Yrs <span class="ot">&lt;-</span> <span class="fu">log</span>(MergedDF<span class="sc">$</span>Tenure_Yrs)</span></code></pre></div>
 <p>Now, let’s take a look at the univariate distribution of the new <code>logTenure_Yrs</code> variable we just created.</p>
-<div class="sourceCode" id="cb2343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2343-1"><a href="comparatio.html#cb2343-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of logTenure_Yrs variable</span></span>
-<span id="cb2343-2"><a href="comparatio.html#cb2343-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2346-1"><a href="comparatio.html#cb2346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create violin-box-scatter (VBS) plot of logTenure_Yrs variable</span></span>
+<span id="cb2346-2"><a href="comparatio.html#cb2346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Plot</span>(logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
 <pre><code>## [Violin/Box/Scatterplot graphics from Deepayan Sarkar&#39;s lattice package]
 ## &gt;&gt;&gt; Suggestions
 ## Plot(logTenure_Yrs, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(logTenure_Yrs, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1435-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1438-1.png" width="672" /></p>
 <pre><code>## --- logTenure_Yrs --- 
 ## Present: 521 
 ## Missing: 0 
@@ -1662,9 +1684,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## jitter_x: 0.33  random horizontal movement of points 
 ## bw: 0.10       set bandwidth higher for smoother edges</code></pre>
 <p>The positive skewness shows some improvement in the <code>logTenure_Yrs</code> variable but not much. Nevertheless, for the sake of demonstration, let’s create a scatter plot using <code>CompaRatio</code> the new transformed variable called (<code>logTenure_Yrs</code>).</p>
-<div class="sourceCode" id="cb2346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2346-1"><a href="comparatio.html#cb2346-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; logTenure_Yrs</span></span>
-<span id="cb2346-2"><a href="comparatio.html#cb2346-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1436-1.png" width="672" /></p>
+<div class="sourceCode" id="cb2349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2349-1"><a href="comparatio.html#cb2349-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatterplot between CompaRatio &amp; logTenure_Yrs</span></span>
+<span id="cb2349-2"><a href="comparatio.html#cb2349-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1439-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(CompaRatio, logTenure_Yrs, enhance=TRUE)  # many options
 ## Plot(CompaRatio, logTenure_Yrs, fill=&quot;skyblue&quot;)  # interior fill color of points
@@ -1679,8 +1701,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Hypothesis Test of 0 Correlation:  t = 0.752,  df = 519,  p-value = 0.452 
 ## 95% Confidence Interval for Correlation:  -0.053 to 0.119</code></pre>
 <p>The scatterplot shows a slightly positive upward association. Now, let’s use the <code>Correlation</code> function from <code>lessR</code> to see estimate whether a statistically significant association exists, and if so, how strong and in what direction. To apply the <code>Correlation</code> function, simply enter the name of the <code>Correlation</code> function, and within the parentheses, enter the same three arguments as you entered for the <code>ScatterPlot</code> function directly above. [Technically, we don’t need to apply the <code>Correlation</code> function if we already applied the <code>ScatterPlot</code> function because the latter provides an estimate of the correlation coefficient. Nevertheless, it will make your script clearer and more interpretable if you clearly specify the <code>Correlation</code> function separately from the <code>ScatterPlot</code> function.]</p>
-<div class="sourceCode" id="cb2348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2348-1"><a href="comparatio.html#cb2348-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation between CompaRatio &amp; logTenure_Yrs</span></span>
-<span id="cb2348-2"><a href="comparatio.html#cb2348-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Correlation</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
+<div class="sourceCode" id="cb2351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2351-1"><a href="comparatio.html#cb2351-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation between CompaRatio &amp; logTenure_Yrs</span></span>
+<span id="cb2351-2"><a href="comparatio.html#cb2351-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Correlation</span>(CompaRatio, logTenure_Yrs, <span class="at">data=</span>MergedDF)</span></code></pre></div>
 <pre><code>## Correlation Analysis for Variables CompaRatio and logTenure_Yrs 
 ##   
 ## &gt;&gt;&gt; Pearson&#39;s product-moment correlation 
@@ -1696,8 +1718,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 95% Confidence Interval for Correlation:  -0.053 to 0.119</code></pre>
 <p>We see that the correlation is statistically significant (<em>p</em> = .047). Further, the association between the two variables is positive and small-to-medium in magnitude (<em>r</em> = .266). Thus, there seems to be evidence that employees who are paid higher relative to their pay-grade midpoint tend to have held a job in that pay grade for a longer period of time, but remember, this is based on the tenure variable to which we applied a log-odds transformation; meaning, the interpretation isn’t quite so simple. The slight-to-moderate <em>positive</em> association, however, is a relatively good sign as it means that the organization tends to pay employees more who have higher tenure, which is often at least partially consistent with most organizations’ pay policies/philosophies. If we had seen a <em>negative</em> association, that would have been perhaps suggestive of pay compression or even pay inversion within the pay grade.</p>
 </div>
-<div id="summary_comparatio" class="section level3" number="60.2.7">
-<h3><span class="header-section-number">60.2.7</span> Summary</h3>
+<div id="summary_comparatio" class="section level3 hasAnchor" number="60.2.7">
+<h3><span class="header-section-number">60.2.7</span> Summary<a href="comparatio.html#summary_comparatio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this chapter, we learned how to compute compa ratios and generate scatter plots to evaluate if pay compression might be an issue. The compa-ratio is a useful HR metric for assessing how an individual or group is paid relative to the pay midpoint. Calculating compa-ratios comes in handy when assessing pay compression or inversion. Scatter plots and correlations can also be applied to understand whether there is evidence of pay compression (or even pay inversion).</p>
 
 </div>
@@ -1706,17 +1728,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
+</div>
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="paydeterminants.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="create-portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="create_portfolio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1743,6 +1773,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

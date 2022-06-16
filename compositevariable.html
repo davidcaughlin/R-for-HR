@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 30 Creating a Composite Variable Based on a Multi-Item Measure | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 30 Creating a Composite Variable Based on a Multi-Item Measure | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 30 Creating a Composite Variable Based on a Multi-Item Measure | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="cronbachsalpha.html"/>
 <link rel="next" href="employeetraining.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,11 +1169,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="compositevariable" class="section level1" number="30">
-<h1><span class="header-section-number">Chapter 30</span> Creating a Composite Variable Based on a Multi-Item Measure</h1>
+<div id="compositevariable" class="section level1 hasAnchor" number="30">
+<h1><span class="header-section-number">Chapter 30</span> Creating a Composite Variable Based on a Multi-Item Measure<a href="compositevariable.html#compositevariable" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this chapter, we will learn how to create a composite variable based on scores from a multi-item measure. To justify which items should be included or excluded when creating the composite variable, we will compute Cronbach’s alpha (<span class="math inline">\(\alpha\)</span>) as an indicator of internal consistency reliability.</p>
-<div id="conceptualoverview_compositevariable" class="section level2" number="30.1">
-<h2><span class="header-section-number">30.1</span> Conceptual Overview</h2>
+<div id="conceptualoverview_compositevariable" class="section level2 hasAnchor" number="30.1">
+<h2><span class="header-section-number">30.1</span> Conceptual Overview<a href="compositevariable.html#conceptualoverview_compositevariable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes it is useful to create a <strong>composite variable</strong> out of the sum or mean of multiple variables’ scores. This process results in each case (e.g., observation, employee, individual) receiving a composite score based on the sum or mean of their scores on the variables used to create the composite variable. As an example, imagine that a direct supervisor rates each of their team members on five dimensions from a performance evaluation measure, which results in five separate variables corresponding to the five dimensions. A composite variable could be created for each team member by taking the average of the five ratings each individual received, such that the resulting variable represents each team member’s overall level of job performance.</p>
 <p>So why do we create composite variables? Well, psychological constructs (e.g., attitudes, behaviors, feelings) are often multi-faceted, which means that single item will likely not “capture” the full underlying concept (i.e., construct) space or domain. Continuing with the performance evaluation example, job performance is often multi-faceted, as for a given job, the conceptual performance domain often involves a variety of different behavior types (e.g., customer service, administrative). By creating a composite variable out of variables that are intended to measure the different sub-facets of the conceptual performance domain, we can create an indicator of overall job performance.</p>
 <p>An <strong>overall scale score variable</strong> is a specific type of composite variable in which scores on items from a multi-item scale (i.e., measure) are combined (by computing the sum or the mean) into a new variable. This process results in each case (e.g., observation, employee, individual) receiving an overall scale score based on the sum or mean of their scores on the items from a given measure. For example, imagine that employees respond to an annual survey containing a three-item job satisfaction measure. An overall scale score variable could be created by computing each respondent’s average response scores to the three job satisfaction items and applying these to a new composite variable that represents each respondent’s overall level of job satisfaction.</p>
@@ -1189,18 +1213,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="tutorial_compositevariable" class="section level2" number="30.2">
-<h2><span class="header-section-number">30.2</span> Tutorial</h2>
+<div id="tutorial_compositevariable" class="section level2 hasAnchor" number="30.2">
+<h2><span class="header-section-number">30.2</span> Tutorial<a href="compositevariable.html#tutorial_compositevariable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter’s tutorial demonstrates how to create a composite variable based on scores from a multi-item measure. To justify which items to include in the creation of the composite variable, we will use Cronbach’s alpha (<span class="math inline">\(\alpha\)</span>) as an indicator of internal consistency reliability.</p>
-<div id="videotutorial_compositevariable" class="section level3" number="30.2.1">
-<h3><span class="header-section-number">30.2.1</span> Video Tutorial</h3>
+<div id="videotutorial_compositevariable" class="section level3 hasAnchor" number="30.2.1">
+<h3><span class="header-section-number">30.2.1</span> Video Tutorial<a href="compositevariable.html#videotutorial_compositevariable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/vdmYv0YnWEE?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/vdmYv0YnWEE?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/vdmYv0YnWEE" class="uri">https://youtu.be/vdmYv0YnWEE</a></p>
 </div>
-<div id="functions_compositevariable" class="section level3" number="30.2.2">
-<h3><span class="header-section-number">30.2.2</span> Functions &amp; Packages Introduced</h3>
+<div id="functions_compositevariable" class="section level3 hasAnchor" number="30.2.2">
+<h3><span class="header-section-number">30.2.2</span> Functions &amp; Packages Introduced<a href="compositevariable.html#functions_compositevariable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -1228,47 +1252,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="initsteps_compositevariable" class="section level3" number="30.2.3">
-<h3><span class="header-section-number">30.2.3</span> Initial Steps</h3>
+<div id="initsteps_compositevariable" class="section level3 hasAnchor" number="30.2.3">
+<h3><span class="header-section-number">30.2.3</span> Initial Steps<a href="compositevariable.html#initsteps_compositevariable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already, save the file called <strong>“survey.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb891-1"><a href="compositevariable.html#cb891-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb891-2"><a href="compositevariable.html#cb891-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“survey.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="compositevariable.html#cb892-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb892-2"><a href="compositevariable.html#cb892-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb892-3"><a href="compositevariable.html#cb892-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb892-4"><a href="compositevariable.html#cb892-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="compositevariable.html#cb893-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb893-2"><a href="compositevariable.html#cb893-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb893-3"><a href="compositevariable.html#cb893-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb893-4"><a href="compositevariable.html#cb893-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb893-5"><a href="compositevariable.html#cb893-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   SurveyID = col_double(),
-##   JobSat1 = col_double(),
-##   JobSat2 = col_double(),
-##   JobSat3 = col_double(),
-##   TurnInt1 = col_double(),
-##   TurnInt2 = col_double(),
-##   TurnInt3 = col_double(),
-##   Engage1 = col_double(),
-##   Engage2 = col_double(),
-##   Engage3 = col_double(),
-##   Engage4 = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb895-1"><a href="compositevariable.html#cb895-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb895-2"><a href="compositevariable.html#cb895-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb892-1"><a href="compositevariable.html#cb892-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb892-2"><a href="compositevariable.html#cb892-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“survey.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb893-1"><a href="compositevariable.html#cb893-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb893-2"><a href="compositevariable.html#cb893-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb893-3"><a href="compositevariable.html#cb893-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb893-4"><a href="compositevariable.html#cb893-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb894-1"><a href="compositevariable.html#cb894-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb894-2"><a href="compositevariable.html#cb894-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb894-3"><a href="compositevariable.html#cb894-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb894-4"><a href="compositevariable.html#cb894-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb894-5"><a href="compositevariable.html#cb894-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;survey.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 156 Columns: 11
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (11): SurveyID, JobSat1, JobSat2, JobSat3, TurnInt1, TurnInt2, TurnInt3, Engage1, Engage2, Eng...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb896-1"><a href="compositevariable.html#cb896-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb896-2"><a href="compositevariable.html#cb896-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>##  [1] &quot;SurveyID&quot; &quot;JobSat1&quot;  &quot;JobSat2&quot;  &quot;JobSat3&quot;  &quot;TurnInt1&quot; &quot;TurnInt2&quot; &quot;TurnInt3&quot; &quot;Engage1&quot; 
 ##  [9] &quot;Engage2&quot;  &quot;Engage3&quot;  &quot;Engage4&quot;</code></pre>
-<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb897-1"><a href="compositevariable.html#cb897-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb897-2"><a href="compositevariable.html#cb897-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb898"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb898-1"><a href="compositevariable.html#cb898-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb898-2"><a href="compositevariable.html#cb898-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 156</code></pre>
-<div class="sourceCode" id="cb899"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb899-1"><a href="compositevariable.html#cb899-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
-<span id="cb899-2"><a href="compositevariable.html#cb899-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 11
+<div class="sourceCode" id="cb900"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb900-1"><a href="compositevariable.html#cb900-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
+<span id="cb900-2"><a href="compositevariable.html#cb900-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 11
 ##   SurveyID JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4
 ##      &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ## 1        1       3       3       3        3        3        3       2       1       2       2
@@ -1279,16 +1295,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6        6       3       3       3        3        2        2       4       4       5       3</code></pre>
 <p>The data frame includes annual employee survey responses from 156 employees to three Job Satisfaction items (<code>JobSat1</code>, <code>JobSat2</code>, <code>JobSat3</code>), three Turnover Intentions items (<code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>), and four Engagement items (<code>Engage1</code>, <code>Engage2</code>, <code>Engage3</code>, <code>Engage4</code>). Employees responded to each item using a 5-point response format, ranging from <em>Strongly Disagree</em> (1) to <em>Strongly Agree</em> (5). Assume that higher scores on an item indicate higher levels of that variable; for example, a higher score on <code>TurnInt1</code> would indicate that the respondent has higher intentions of quitting the organization.</p>
 </div>
-<div id="compositevariable_cronbachsalpha" class="section level3" number="30.2.4">
-<h3><span class="header-section-number">30.2.4</span> Compute Cronbach’s alpha</h3>
+<div id="compositevariable_cronbachsalpha" class="section level3 hasAnchor" number="30.2.4">
+<h3><span class="header-section-number">30.2.4</span> Compute Cronbach’s alpha<a href="compositevariable.html#compositevariable_cronbachsalpha" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To justify the creation of a composite variable (i.e., overall scale score variable) for one of the multi-item survey measures, we’ll first estimate internal consistency reliability using Cronbach’s alpha. To do so, we will use the <code>alpha</code> function from the <code>psych</code> package. To get started, install and access the <code>psych</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively (if you haven’t already done so).</p>
-<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb901-1"><a href="compositevariable.html#cb901-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb901-2"><a href="compositevariable.html#cb901-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb902"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb902-1"><a href="compositevariable.html#cb902-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb902-2"><a href="compositevariable.html#cb902-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<div class="sourceCode" id="cb902"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb902-1"><a href="compositevariable.html#cb902-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb902-2"><a href="compositevariable.html#cb902-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="compositevariable.html#cb903-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb903-2"><a href="compositevariable.html#cb903-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
 <p>Now let’s compute Cronbach’s alpha for the four-item engagement measure.</p>
-<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb903-1"><a href="compositevariable.html#cb903-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for the four-item Engagement measure</span></span>
-<span id="cb903-2"><a href="compositevariable.html#cb903-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;Engage1&quot;</span>,<span class="st">&quot;Engage2&quot;</span>,<span class="st">&quot;Engage3&quot;</span>,<span class="st">&quot;Engage4&quot;</span>)])</span></code></pre></div>
+<div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb904-1"><a href="compositevariable.html#cb904-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cronbach&#39;s alpha for the four-item Engagement measure</span></span>
+<span id="cb904-2"><a href="compositevariable.html#cb904-2" aria-hidden="true" tabindex="-1"></a><span class="fu">alpha</span>(df[,<span class="fu">c</span>(<span class="st">&quot;Engage1&quot;</span>,<span class="st">&quot;Engage2&quot;</span>,<span class="st">&quot;Engage3&quot;</span>,<span class="st">&quot;Engage4&quot;</span>)])</span></code></pre></div>
 <pre><code>## 
 ## Reliability analysis   
 ## Call: alpha(x = df[, c(&quot;Engage1&quot;, &quot;Engage2&quot;, &quot;Engage3&quot;, &quot;Engage4&quot;)])
@@ -1296,8 +1312,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
 ##       0.84      0.84     0.8      0.56 5.1 0.021  3.5 0.66     0.56
 ## 
-##  lower alpha upper     95% confidence boundaries
-## 0.79 0.84 0.88 
+##     95% confidence boundaries 
+##          lower alpha upper
+## Feldt     0.79  0.84  0.87
+## Duhachek  0.79  0.84  0.88
 ## 
 ##  Reliability if an item is dropped:
 ##         raw_alpha std.alpha G6(smc) average_r S/N alpha se   var.r med.r
@@ -1371,25 +1389,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>For a more in-depth review of internal consistency reliability and justifying which items (if any) to remove, be sure to check out the <a href="cronbachsalpha.html#cronbachsalpha">previous chapter</a>.</p>
 </div>
-<div id="compositevariable_composite" class="section level3" number="30.2.5">
-<h3><span class="header-section-number">30.2.5</span> Create a Composite Variable</h3>
+<div id="compositevariable_composite" class="section level3 hasAnchor" number="30.2.5">
+<h3><span class="header-section-number">30.2.5</span> Create a Composite Variable<a href="compositevariable.html#compositevariable_composite" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To create a composite variable, we will use the <code>rowMeans</code> function from base R, as it offers a straightforward approach. The function also allows us to decide what to do with cases that have missing data on one or more of the variables (e.g., items). Given that we feel justified to created an composite variable (i.e., overall scale score variable) based on the four engagement items (<code>Engage1</code>, <code>Engage2</code>, <code>Engage3</code>, <code>Engage4</code>), we will include all four of those items in our <code>rowMeans</code> function. First, let’s come up with a name for the composite variable we’re about to create; here, I decided to call the new variable <code>Engage_Overall</code>, as the variable will represent overall engagement. Second, we’ll append the new variable called <code>Engage_Overall</code> to the <code>df</code> data frame using the <code>$</code> operator to indicate that the new variable will be added to that data frame object. Third, we’ll use the <code>&lt;-</code> operator to indicate that we are assigning the results of the <code>rowMeans</code> function to the new variable. Fourth, we will type the name of the <code>rowMeans</code> function. Fifth, as the first argument, type the name of the data frame object to which the items belong (<code>df</code>). Sixth, following the data frame name, type in brackets (<code>[ ]</code>), and within the brackets, type a comma (<code>,</code>) followed by the <code>c</code> (combine) function; by placing a comma in front of the <code>c</code> function, we are indicating that we will be referencing the names of columns (i.e., variables); within the <code>c</code> function, list the name of each item in quotation marks (<code>" "</code>), separated by commas (<code>,</code>). Finally, as the second argument in the <code>rowMeans</code> function, type the <code>na.rm=TRUE</code> argument, which will tell the function to compute the mean for each case that has at least one score for the specified items; in other words, this function allows for the row means to be computed even if there are missing data. [Note: If you wish to create a composite variable based on the sum of item scores, you can use the <code>rowSums</code> function from base R.]</p>
-<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb905-1"><a href="compositevariable.html#cb905-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create composite (overall scale score) variable based on Engagement items</span></span>
-<span id="cb905-2"><a href="compositevariable.html#cb905-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Engage_Overall <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(df[,<span class="fu">c</span>(<span class="st">&quot;Engage1&quot;</span>,<span class="st">&quot;Engage2&quot;</span>,<span class="st">&quot;Engage3&quot;</span>,<span class="st">&quot;Engage4&quot;</span>)], </span>
-<span id="cb905-3"><a href="compositevariable.html#cb905-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="compositevariable.html#cb906-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create composite (overall scale score) variable based on Engagement items</span></span>
+<span id="cb906-2"><a href="compositevariable.html#cb906-2" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Engage_Overall <span class="ot">&lt;-</span> <span class="fu">rowMeans</span>(df[,<span class="fu">c</span>(<span class="st">&quot;Engage1&quot;</span>,<span class="st">&quot;Engage2&quot;</span>,<span class="st">&quot;Engage3&quot;</span>,<span class="st">&quot;Engage4&quot;</span>)], </span>
+<span id="cb906-3"><a href="compositevariable.html#cb906-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Let’s take a look at the variables in our <code>df</code> data frame object by using the <code>names</code> function from base R.</p>
-<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb906-1"><a href="compositevariable.html#cb906-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names to Console</span></span>
-<span id="cb906-2"><a href="compositevariable.html#cb906-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb907-1"><a href="compositevariable.html#cb907-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names to Console</span></span>
+<span id="cb907-2"><a href="compositevariable.html#cb907-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>##  [1] &quot;SurveyID&quot;       &quot;JobSat1&quot;        &quot;JobSat2&quot;        &quot;JobSat3&quot;        &quot;TurnInt1&quot;      
 ##  [6] &quot;TurnInt2&quot;       &quot;TurnInt3&quot;       &quot;Engage1&quot;        &quot;Engage2&quot;        &quot;Engage3&quot;       
 ## [11] &quot;Engage4&quot;        &quot;Engage_Overall&quot;</code></pre>
 <p>Note that we now have a variable called <code>Engage_Overall</code>, which is our composite variable meant to represent overall engagement for each survey respondent.</p>
 <p>You can take a closer look at the composite scores for the new <code>Engage_Overall</code> variable by using the <code>View</code> function from base R.</p>
-<div class="sourceCode" id="cb908"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb908-1"><a href="compositevariable.html#cb908-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable names</span></span>
-<span id="cb908-2"><a href="compositevariable.html#cb908-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb909"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb909-1"><a href="compositevariable.html#cb909-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable names</span></span>
+<span id="cb909-2"><a href="compositevariable.html#cb909-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(df)</span></code></pre></div>
 </div>
-<div id="summary_compositevariable" class="section level3" number="30.2.6">
-<h3><span class="header-section-number">30.2.6</span> Summary</h3>
+<div id="summary_compositevariable" class="section level3 hasAnchor" number="30.2.6">
+<h3><span class="header-section-number">30.2.6</span> Summary<a href="compositevariable.html#summary_compositevariable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this chapter, we learned how to create a composite variable (e.g., overall scale score variable) based on scores from a multi-item measure. To justify which items to include in the composite variable, we computed Cronbach’s alpha (<span class="math inline">\(\alpha\)</span>) as an estimate of internal consistency reliability. The <code>rowMeans</code> function (and <code>rowSums</code> function) from base R is quite useful when it comes to creating composite variables.</p>
 
 </div>
@@ -1398,6 +1416,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -1408,7 +1432,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1435,6 +1458,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 31 Introduction to Employee Training | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 31 Introduction to Employee Training | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 31 Introduction to Employee Training | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="compositevariable.html"/>
 <link rel="next" href="pretestposttest.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,51 +1169,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="employeetraining" class="section level1" number="31">
-<h1><span class="header-section-number">Chapter 31</span> Introduction to Employee Training</h1>
+<div id="employeetraining" class="section level1 hasAnchor" number="31">
+<h1><span class="header-section-number">Chapter 31</span> Introduction to Employee Training<a href="employeetraining.html#employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>Employee training</strong> is intended to enhance employees’ learning and develop their knowledge, skills, abilities, and other characteristics (KSAOs). In most circumstances, a goal of training is to help employees transfer what they learned during training to their job. A comprehensive review of employee training, in general, is beyond the scope of this chapter; however, if you’re looking for a very general and basic over of employee training, please check out the following conceptual video. In the sections that follow, you will also have an opportunity to drill down to specific steps in the training process.</p>
-<iframe src="https://youtube.com/embed/nv6N-WqgkKA?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/nv6N-WqgkKA?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/nv6N-WqgkKA" class="uri">https://youtu.be/nv6N-WqgkKA</a></p>
-<div id="needsassessment_employeetraining" class="section level2" number="31.1">
-<h2><span class="header-section-number">31.1</span> Needs Assessment</h2>
+<div id="needsassessment_employeetraining" class="section level2 hasAnchor" number="31.1">
+<h2><span class="header-section-number">31.1</span> Needs Assessment<a href="employeetraining.html#needsassessment_employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <strong>needs assessment</strong> is a critical early step when developing a new training program, as it helps us target who needs training, what they need to be trained on, and what resources the organization has to support the training initiative. The following video provides a conceptual overview of a needs assessment.</p>
-<iframe src="https://youtube.com/embed/PiW0gFxGgbs?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/PiW0gFxGgbs?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/PiW0gFxGgbs" class="uri">https://youtu.be/PiW0gFxGgbs</a></p>
 </div>
-<div id="learningenvironmentenhancement_employeetraining" class="section level2" number="31.2">
-<h2><span class="header-section-number">31.2</span> Learning Environment &amp; Enhancement</h2>
+<div id="learningenvironmentenhancement_employeetraining" class="section level2 hasAnchor" number="31.2">
+<h2><span class="header-section-number">31.2</span> Learning Environment &amp; Enhancement<a href="employeetraining.html#learningenvironmentenhancement_employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When developing a training program, the <strong>learning environment</strong> and <strong>learning enhancement</strong> should be emphasized. The following conceptual videos review the importance of these two priorties in the context of the training process.</p>
-<iframe src="https://youtube.com/embed/uKSOyTm3XFY?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/uKSOyTm3XFY?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/uKSOyTm3XFY" class="uri">https://youtu.be/uKSOyTm3XFY</a></p>
-<iframe src="https://youtube.com/embed/uKSOyTm3XFY?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/uKSOyTm3XFY?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/uKSOyTm3XFY" class="uri">https://youtu.be/uKSOyTm3XFY</a></p>
 </div>
-<div id="trainingmethods_employeetraining" class="section level2" number="31.3">
-<h2><span class="header-section-number">31.3</span> Training Methods</h2>
+<div id="trainingmethods_employeetraining" class="section level2 hasAnchor" number="31.3">
+<h2><span class="header-section-number">31.3</span> Training Methods<a href="employeetraining.html#trainingmethods_employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When we think of training, the <strong>training methods</strong> used to deploy the training program usually come to mind. In the following conceptual video, I review some examples of common training methods.</p>
-<iframe src="https://youtube.com/embed/b_h3YHBzuzo?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/b_h3YHBzuzo?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/b_h3YHBzuzo" class="uri">https://youtu.be/b_h3YHBzuzo</a></p>
 </div>
-<div id="trainingevaluation_employeetraining" class="section level2" number="31.4">
-<h2><span class="header-section-number">31.4</span> Training Evaluation</h2>
+<div id="trainingevaluation_employeetraining" class="section level2 hasAnchor" number="31.4">
+<h2><span class="header-section-number">31.4</span> Training Evaluation<a href="employeetraining.html#trainingevaluation_employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The primary aim of this chapter is to describe a key step in the employee training process: training evaluation. Thus, we will spend more time reviewing this step of the training process.</p>
 <p>We can evaluate the effectiveness of a training program by using different types of <strong>training evaluation designs</strong> (i.e., <strong>research designs</strong>). Namely, we can apply various types of pre-experimental, quasi-experimental, or true experimental designs in order to evaluate a training program on selected outcomes (i.e., measures). Depending upon the type of training evaluation design we choose to apply, we will have varying degrees of confidence that and differences or changes we observe were caused by the training itself as opposed to other (confounding) factors.</p>
-<div id="causalinferences_employeetraining" class="section level3" number="31.4.1">
-<h3><span class="header-section-number">31.4.1</span> Causal Inferences</h3>
-<p>As described by Cascio and Boudreau <span class="citation">(<a href="references.html#ref-cascio2011investing" role="doc-biblioref">2011</a>)</span>, for two hypothetical variables (e.g., X, Y) to be causally related, the following must be true.</p>
+<div id="causalinferences_employeetraining" class="section level3 hasAnchor" number="31.4.1">
+<h3><span class="header-section-number">31.4.1</span> Causal Inferences<a href="employeetraining.html#causalinferences_employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As described by Cascio and Boudreau <span class="citation">(<a href="#ref-cascio2011investing" role="doc-biblioref">2011</a>)</span>, for two hypothetical variables (e.g., X, Y) to be causally related, the following must be true.</p>
 <ol style="list-style-type: decimal">
 <li>Y must not occur until after X, which is referred to as <em>temporal precedence</em>.</li>
 <li>X and Y are associated with one another, which is referred to as <em>covariation</em>.</li>
 <li>Other explanations of the association between X and Y can be ruled out or eliminated, which is referred to as <em>control for confounding variables</em>.</li>
 </ol>
 </div>
-<div id="evaluationdesigns_employeetraining" class="section level3" number="31.4.2">
-<h3><span class="header-section-number">31.4.2</span> Training Evaluation Designs &amp; Statistical Analysis</h3>
+<div id="evaluationdesigns_employeetraining" class="section level3 hasAnchor" number="31.4.2">
+<h3><span class="header-section-number">31.4.2</span> Training Evaluation Designs &amp; Statistical Analysis<a href="employeetraining.html#evaluationdesigns_employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Examples of common training evaluation designs include (but are not limited to):</p>
 <ul>
 <li>Post-test-only without control group;</li>
@@ -1200,20 +1224,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>Each type of training evaluation design generates data, and thus another important consideration during training evaluation is to determine which type of analysis is most appropriate for analyzing the data from a given training evaluation design. For example, an independent-samples <em>t</em>-test is often appropriate when analyzing data from a post-test-only with control group design, whereas a paired-samples <em>t</em>-test is often appropriate when analyzing data from a pre-test/post-test without control group training evaluation design. More advanced types of training evaluation designs (e.g., mixed-factorial designs) often require other types of statistical analyses, such as the analysis of (co)variance or regression.</p>
 <p>For a review of training evaluation designs as well as common outcome measures, please watch the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/XFJCKyAfW7Q?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/XFJCKyAfW7Q?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/XFJCKyAfW7Q" class="uri">https://youtu.be/XFJCKyAfW7Q</a></p>
 </div>
 </div>
-<div id="chapters_employeetraining" class="section level2" number="31.5">
-<h2><span class="header-section-number">31.5</span> Chapters Included</h2>
+<div id="chapters_employeetraining" class="section level2 hasAnchor" number="31.5">
+<h2><span class="header-section-number">31.5</span> Chapters Included<a href="employeetraining.html#chapters_employeetraining" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the following chapters, you will have an opportunity to learn how to work with training evaluation data originating from different designs.</p>
 <ul>
 <li><a href="pretestposttest.html#pretestposttest">Evaluating a Post-Test/Post-Test without Control Group Design Using Paired-Samples <em>t</em>-test</a></li>
 <li><a href="posttestonly.html#posttestonly">Evaluating a Post-Test-Only with Control Group Design Using Independent-Samples <em>t</em>-test</a></li>
-<li><a href="posttestonly-threegroups.html#posttestonly_threegroups">Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a></li>
+<li><a href="posttestonly_threegroups.html#posttestonly_threegroups">Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a></li>
 </ul>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-cascio2011investing" class="csl-entry">
+Cascio, Wayne F, and John Boudreau. 2011. <em>Investing in People: Financial Impact of Human Resource Initiatives</em>. Upper Saddle, NJ: Pearson.
 </div>
 </div>
             </section>
@@ -1226,7 +1256,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1253,6 +1282,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

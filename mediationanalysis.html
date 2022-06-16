@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="pathanalysis.html"/>
 <link rel="next" href="compensation.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,11 +1169,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="mediationanalysis" class="section level1" number="55">
-<h1><span class="header-section-number">Chapter 55</span> Estimating a Mediation Model Using Path Analysis</h1>
+<div id="mediationanalysis" class="section level1 hasAnchor" number="55">
+<h1><span class="header-section-number">Chapter 55</span> Estimating a Mediation Model Using Path Analysis<a href="mediationanalysis.html#mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this chapter, we will learn how to estimate a mediation analysis using path analysis.</p>
-<div id="conceptualoverview_mediationanalysis" class="section level2" number="55.1">
-<h2><span class="header-section-number">55.1</span> Conceptual Overview</h2>
+<div id="conceptualoverview_mediationanalysis" class="section level2 hasAnchor" number="55.1">
+<h2><span class="header-section-number">55.1</span> Conceptual Overview<a href="mediationanalysis.html#conceptualoverview_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Mediation analysis</strong> is used to investigate whether an intervening variable transmits the effects of a predictor variable on an outcome variable. Both multiple regression and structural equation modeling (path analysis) can be used to perform mediation analysis, but structural equation modeling (path analysis) offers a single-step process that often more efficient. When implemented using path analysis, mediation analysis follows the same model specification, model identification, and model fit considerations as general applications of path analysis. For more information on path analysis, please refer to the <a href="pathanalysis.html#pathanalysis">previous chapter on path analysis</a>.</p>
 <p>Just as in a conventional path analysis model, we often represent our mediation analysis model visually as a <em>path diagram</em>. For illustration purposes, let’s begin with a path diagram of the direct relation between a predictor variable called Attitude with an outcome variable called Behavior (see Figure 1). This path diagram specifies Attitude (towards the Behavior) as a predictor of the Behavior, with any error in prediction captured in the (residual) error term. By convention, we commonly refer to this path as the <strong>c</strong> path.</p>
 <div class="figure">
@@ -1166,47 +1190,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <img src="Mediation3.png" alt="" />
 <p class="caption">Figure 3: Examples of two equivalent path diagram representations of the same complete mediation</p>
 </div>
-<div id="indirecteffect_mediationanalysis" class="section level3" number="55.1.1">
-<h3><span class="header-section-number">55.1.1</span> Estimation of Indirect Effect</h3>
-<p>There are different approaches to estimating the indirect effect, such as <em>causal steps</em> <span class="citation">(<a href="references.html#ref-baron1986moderator" role="doc-biblioref">Baron and Kenny 1986</a>)</span>, <em>difference in coefficients</em>, and <em>product of coefficients</em> <span class="citation">(<a href="references.html#ref-mackinnon1993estimating" role="doc-biblioref">MacKinnon and Dwyer 1993</a>)</span>. Because the <strong>product of coefficients</strong> approach is efficient to implement, we will focus on that approach in this tutorial. Using this approach, the indirect effect is estimated by computing the product of the coefficients for directional relations (i.e., paths), which include the relation between the predictor variable and the mediator variable (<strong>a</strong> path) and the relation between the mediator variable and the outcome variable (<strong>b</strong>). The statistical significance of the indirect effect can be computed by dividing the product of the coefficients by its standard error, and then the resulting ratio (quotient) can be compared to a standard normal distribution – or another distribution.</p>
-<p>There are different methods for implementing the product of coefficients approach, and we will focus on the (multivariate) delta method and a resampling method. First, in the <strong>(multivariate) delta method</strong> (where the Sobel test is a specific form), the standard error for the product of coefficients is compared to a standard normal distribution to determine the indirect effect’s significance level (i.e., <em>p</em>-value). This method does tend to show bias in smaller samples [e.g., <em>N</em> &lt; 50; <span class="citation">MacKinnon, Warsi, and Dwyer (<a href="references.html#ref-mackinnon1995simulation" role="doc-biblioref">1995</a>)</span>; <span class="citation">MacKinnon et al. (<a href="references.html#ref-mackinnon2002comparison" role="doc-biblioref">2002</a>)</span>], however, and assumes the sampling distribution of the indirect effect is normal, which is not often a tenable assumption when dealing with the product of two coefficients. Second, <strong>resampling methods</strong> constitute a broad family of methods in which data are re-sampled (with replacement) a specified number of times (e.g., 5,000), and a normal sampling distribution need not be assumed. Examples of resampling methods broadly include bootstrapping, the permutation method, and the Monte Carlo method. <strong>Bootstrapping</strong> is perhaps one of the most common a popular resampling methods today, and bootstrapping can be used to estimate confidence intervals for an indirect effect estimated using the product of coefficients approach. Many resampling approaches tend to show some bias in small samples [e.g., <em>N</em> &lt; 20-80; <span class="citation">Koopman et al. (<a href="references.html#ref-koopman2015small" role="doc-biblioref">2015</a>)</span>]; however, resampling methods like bootstrapping are often preferred over the delta method because they do not hold the strict assumption that the sampling distribution is normal. There are a multiple types of bootstrapping, such as percentile, bias-corrected, and bias-corrected and accelerated, most of which can be implemented with relative ease in R.</p>
+<div id="indirecteffect_mediationanalysis" class="section level3 hasAnchor" number="55.1.1">
+<h3><span class="header-section-number">55.1.1</span> Estimation of Indirect Effect<a href="mediationanalysis.html#indirecteffect_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are different approaches to estimating the indirect effect, such as <em>causal steps</em> <span class="citation">(<a href="#ref-baron1986moderator" role="doc-biblioref">Baron and Kenny 1986</a>)</span>, <em>difference in coefficients</em>, and <em>product of coefficients</em> <span class="citation">(<a href="#ref-mackinnon1993estimating" role="doc-biblioref">MacKinnon and Dwyer 1993</a>)</span>. Because the <strong>product of coefficients</strong> approach is efficient to implement, we will focus on that approach in this tutorial. Using this approach, the indirect effect is estimated by computing the product of the coefficients for directional relations (i.e., paths), which include the relation between the predictor variable and the mediator variable (<strong>a</strong> path) and the relation between the mediator variable and the outcome variable (<strong>b</strong>). The statistical significance of the indirect effect can be computed by dividing the product of the coefficients by its standard error, and then the resulting ratio (quotient) can be compared to a standard normal distribution – or another distribution.</p>
+<p>There are different methods for implementing the product of coefficients approach, and we will focus on the (multivariate) delta method and a resampling method. First, in the <strong>(multivariate) delta method</strong> (where the Sobel test is a specific form), the standard error for the product of coefficients is compared to a standard normal distribution to determine the indirect effect’s significance level (i.e., <em>p</em>-value). This method does tend to show bias in smaller samples [e.g., <em>N</em> &lt; 50; <span class="citation">MacKinnon, Warsi, and Dwyer (<a href="#ref-mackinnon1995simulation" role="doc-biblioref">1995</a>)</span>; <span class="citation">MacKinnon et al. (<a href="#ref-mackinnon2002comparison" role="doc-biblioref">2002</a>)</span>], however, and assumes the sampling distribution of the indirect effect is normal, which is not often a tenable assumption when dealing with the product of two coefficients. Second, <strong>resampling methods</strong> constitute a broad family of methods in which data are re-sampled (with replacement) a specified number of times (e.g., 5,000), and a normal sampling distribution need not be assumed. Examples of resampling methods broadly include bootstrapping, the permutation method, and the Monte Carlo method. <strong>Bootstrapping</strong> is perhaps one of the most common a popular resampling methods today, and bootstrapping can be used to estimate confidence intervals for an indirect effect estimated using the product of coefficients approach. Many resampling approaches tend to show some bias in small samples [e.g., <em>N</em> &lt; 20-80; <span class="citation">Koopman et al. (<a href="#ref-koopman2015small" role="doc-biblioref">2015</a>)</span>]; however, resampling methods like bootstrapping are often preferred over the delta method because they do not hold the strict assumption that the sampling distribution is normal. There are a multiple types of bootstrapping, such as percentile, bias-corrected, and bias-corrected and accelerated, most of which can be implemented with relative ease in R.</p>
 </div>
-<div id="modelidentification_mediationanalysis" class="section level3" number="55.1.2">
-<h3><span class="header-section-number">55.1.2</span> Model Identification</h3>
+<div id="modelidentification_mediationanalysis" class="section level3 hasAnchor" number="55.1.2">
+<h3><span class="header-section-number">55.1.2</span> Model Identification<a href="mediationanalysis.html#modelidentification_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Because we are testing for mediation using path analysis in this chapter, please refer to the <a href="pathanalysis.html#modelidentification_pathanalysis">Model Identification section from previous chapter on path analysis</a>.</p>
 </div>
-<div id="modelfit_mediationanalysis" class="section level3" number="55.1.3">
-<h3><span class="header-section-number">55.1.3</span> Model Fit</h3>
+<div id="modelfit_mediationanalysis" class="section level3 hasAnchor" number="55.1.3">
+<h3><span class="header-section-number">55.1.3</span> Model Fit<a href="mediationanalysis.html#modelfit_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>please refer to the <a href="pathanalysis.html#modelfit_pathanalysis">Model Fit section from previous chapter on path analysis</a>.</p>
 </div>
-<div id="parameterestimatese_mediationanalysis" class="section level3" number="55.1.4">
-<h3><span class="header-section-number">55.1.4</span> Parameter Estimates</h3>
+<div id="parameterestimatese_mediationanalysis" class="section level3 hasAnchor" number="55.1.4">
+<h3><span class="header-section-number">55.1.4</span> Parameter Estimates<a href="mediationanalysis.html#parameterestimatese_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In mediation analysis, parameter estimates (e.g., direct relations, covariances, variances) can be interpreted like those from a regression model, where the associated <em>p</em>-values or confidence intervals can be used as indicators of statistical significance.</p>
 </div>
-<div id="statisticalassumptions_mediationanalysis" class="section level3" number="55.1.5">
-<h3><span class="header-section-number">55.1.5</span> Statistical Assumptions</h3>
+<div id="statisticalassumptions_mediationanalysis" class="section level3 hasAnchor" number="55.1.5">
+<h3><span class="header-section-number">55.1.5</span> Statistical Assumptions<a href="mediationanalysis.html#statisticalassumptions_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The statistical assumptions that should be met prior to estimating and/or interpreting a mediation analysis model are the same that should be met when running a path analysis model; for a review of those assumptions please review to the <a href="pathanalysis.html#pathanalysis">previous chapter path analysis</a>.</p>
 </div>
-<div id="conceptualvideo_mediationanalysis" class="section level3" number="55.1.6">
-<h3><span class="header-section-number">55.1.6</span> Conceptual Video</h3>
+<div id="conceptualvideo_mediationanalysis" class="section level3 hasAnchor" number="55.1.6">
+<h3><span class="header-section-number">55.1.6</span> Conceptual Video<a href="mediationanalysis.html#conceptualvideo_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For a more in-depth review of path analysis, please check out the following conceptual video.</p>
-<iframe src="https://youtube.com/embed/3zA4iB0aAvg?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/3zA4iB0aAvg?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to conceptual video: <a href="https://youtu.be/3zA4iB0aAvg" class="uri">https://youtu.be/3zA4iB0aAvg</a></p>
 </div>
 </div>
-<div id="tutorial_mediationanalysis" class="section level2" number="55.2">
-<h2><span class="header-section-number">55.2</span> Tutorial</h2>
+<div id="tutorial_mediationanalysis" class="section level2 hasAnchor" number="55.2">
+<h2><span class="header-section-number">55.2</span> Tutorial<a href="mediationanalysis.html#tutorial_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter’s tutorial demonstrates perform mediation analysis in a path analysis framework using R.</p>
-<div id="videotutorial_mediationanalysis" class="section level3" number="55.2.1">
-<h3><span class="header-section-number">55.2.1</span> Video Tutorial</h3>
+<div id="videotutorial_mediationanalysis" class="section level3 hasAnchor" number="55.2.1">
+<h3><span class="header-section-number">55.2.1</span> Video Tutorial<a href="mediationanalysis.html#videotutorial_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below.</p>
-<iframe src="https://youtube.com/embed/za-KTX1A5us?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/za-KTX1A5us?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/za-KTX1A5us" class="uri">https://youtu.be/za-KTX1A5us</a></p>
 </div>
-<div id="functions_mediationanalysis" class="section level3" number="55.2.2">
-<h3><span class="header-section-number">55.2.2</span> Functions &amp; Packages Introduced</h3>
+<div id="functions_mediationanalysis" class="section level3 hasAnchor" number="55.2.2">
+<h3><span class="header-section-number">55.2.2</span> Functions &amp; Packages Introduced<a href="mediationanalysis.html#functions_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -1234,37 +1258,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="initsteps_mediationanalysis" class="section level3" number="55.2.3">
-<h3><span class="header-section-number">55.2.3</span> Initial Steps</h3>
+<div id="initsteps_mediationanalysis" class="section level3 hasAnchor" number="55.2.3">
+<h3><span class="header-section-number">55.2.3</span> Initial Steps<a href="mediationanalysis.html#initsteps_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already, save the file called <strong>“PlannedBehavior.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb2151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2151-1"><a href="mediationanalysis.html#cb2151-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb2151-2"><a href="mediationanalysis.html#cb2151-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PlannedBehavior.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb2152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2152-1"><a href="mediationanalysis.html#cb2152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb2152-2"><a href="mediationanalysis.html#cb2152-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb2152-3"><a href="mediationanalysis.html#cb2152-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb2152-4"><a href="mediationanalysis.html#cb2152-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2153-1"><a href="mediationanalysis.html#cb2153-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb2153-2"><a href="mediationanalysis.html#cb2153-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb2153-3"><a href="mediationanalysis.html#cb2153-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2153-4"><a href="mediationanalysis.html#cb2153-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb2153-5"><a href="mediationanalysis.html#cb2153-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   attitude = col_double(),
-##   norms = col_double(),
-##   control = col_double(),
-##   intention = col_double(),
-##   behavior = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb2155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2155-1"><a href="mediationanalysis.html#cb2155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb2155-2"><a href="mediationanalysis.html#cb2155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb2154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2154-1"><a href="mediationanalysis.html#cb2154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb2154-2"><a href="mediationanalysis.html#cb2154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PlannedBehavior.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb2155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2155-1"><a href="mediationanalysis.html#cb2155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb2155-2"><a href="mediationanalysis.html#cb2155-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb2155-3"><a href="mediationanalysis.html#cb2155-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb2155-4"><a href="mediationanalysis.html#cb2155-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2156-1"><a href="mediationanalysis.html#cb2156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb2156-2"><a href="mediationanalysis.html#cb2156-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb2156-3"><a href="mediationanalysis.html#cb2156-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2156-4"><a href="mediationanalysis.html#cb2156-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb2156-5"><a href="mediationanalysis.html#cb2156-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 199 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (5): attitude, norms, control, intention, behavior
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb2158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2158-1"><a href="mediationanalysis.html#cb2158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb2158-2"><a href="mediationanalysis.html#cb2158-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
 <pre><code>## [1] &quot;attitude&quot;  &quot;norms&quot;     &quot;control&quot;   &quot;intention&quot; &quot;behavior&quot;</code></pre>
-<div class="sourceCode" id="cb2157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2157-1"><a href="mediationanalysis.html#cb2157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
-<span id="cb2157-2"><a href="mediationanalysis.html#cb2157-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre><code>## spec_tbl_df[,5] [199 x 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb2160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2160-1"><a href="mediationanalysis.html#cb2160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
+<span id="cb2160-2"><a href="mediationanalysis.html#cb2160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
+<pre><code>## spec_tbl_df [199 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ attitude : num [1:199] 2.31 4.66 3.85 4.24 2.91 2.99 3.96 3.01 4.77 3.67 ...
 ##  $ norms    : num [1:199] 2.31 4.01 3.56 2.25 3.31 2.51 4.65 2.98 3.09 3.63 ...
 ##  $ control  : num [1:199] 2.03 3.63 4.2 2.84 2.4 2.95 3.77 1.9 3.83 5 ...
@@ -1277,10 +1299,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   ..   control = col_double(),
 ##   ..   intention = col_double(),
 ##   ..   behavior = col_double()
-##   .. )</code></pre>
-<div class="sourceCode" id="cb2159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2159-1"><a href="mediationanalysis.html#cb2159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
-<span id="cb2159-2"><a href="mediationanalysis.html#cb2159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
+##   .. )
+##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
+<div class="sourceCode" id="cb2162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2162-1"><a href="mediationanalysis.html#cb2162-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
+<span id="cb2162-2"><a href="mediationanalysis.html#cb2162-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 5
 ##   attitude norms control intention behavior
 ##      &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ## 1     2.31  2.31    2.03      2.5      2.62
@@ -1289,21 +1312,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     4.24  2.25    2.84      1.51     2.25
 ## 5     2.91  3.31    2.4       1.45     2   
 ## 6     2.99  2.51    2.95      2.59     2.2</code></pre>
-<div class="sourceCode" id="cb2161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2161-1"><a href="mediationanalysis.html#cb2161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
-<span id="cb2161-2"><a href="mediationanalysis.html#cb2161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb2164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2164-1"><a href="mediationanalysis.html#cb2164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
+<span id="cb2164-2"><a href="mediationanalysis.html#cb2164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 199</code></pre>
 <p>There are 5 variables and 199 cases (i.e., employees) in the <code>df</code> data frame: <code>attitude</code>, <code>norms</code>, <code>control</code>, <code>intention</code>, and <code>behavior</code>. Per the output of the <code>str</code> (structure) function above, all of the variables are of type <em>numeric</em> (continuous: interval/ratio). All of the variables are self-reports from a survey, where respondents rated their level of agreement (1 = strongly disagree, 5 = strongly agree) for the items associated with the <code>attitude</code>, <code>norms</code>, <code>control</code>, and <code>intention</code> scales, and where respondents rated the frequency with which they enact the behavior associated with the <code>behavior</code> variable (1 = never, 5 = all of the time). The <code>attitude</code> variable reflects an employee’s attitude toward the behavior in question. The <code>norms</code> variable reflects an employee’s perception of norms pertaining to the enactment of the behavior. The <code>control</code> variable reflects an employee’s feeling of control over being able to perform the behavior. The <code>intention</code> variable reflects an employee’s intention to enact the behavior. The <code>behavior</code> variable reflects an employee’s perception of the frequency with which they actually engage in the behavior.</p>
 </div>
-<div id="specifymodel_mediationanalysis" class="section level3" number="55.2.4">
-<h3><span class="header-section-number">55.2.4</span> Specify &amp; Estimate a Mediation Analysis Model</h3>
-<p>We will use functions from the <code>lavaan</code> package <span class="citation">(<a href="references.html#ref-R-lavaan" role="doc-biblioref">Rosseel 2012</a>)</span> to specify and estimate our mediation analysis model. The <code>lavaan</code> package also allows structural equation modeling with latent variables, but we won’t cover that in this tutorial. If you haven’t already install and access the <code>lavaan</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. For background information on the <code>lavaan</code> package, check out the <a href="http://lavaan.ugent.be/tutorial/syntax1.html">package website</a>.</p>
-<div class="sourceCode" id="cb2163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2163-1"><a href="mediationanalysis.html#cb2163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb2163-2"><a href="mediationanalysis.html#cb2163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lavaan&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2164-1"><a href="mediationanalysis.html#cb2164-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb2164-2"><a href="mediationanalysis.html#cb2164-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code></pre></div>
+<div id="specifymodel_mediationanalysis" class="section level3 hasAnchor" number="55.2.4">
+<h3><span class="header-section-number">55.2.4</span> Specify &amp; Estimate a Mediation Analysis Model<a href="mediationanalysis.html#specifymodel_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will use functions from the <code>lavaan</code> package <span class="citation">(<a href="#ref-R-lavaan" role="doc-biblioref">Rosseel 2012</a>)</span> to specify and estimate our mediation analysis model. The <code>lavaan</code> package also allows structural equation modeling with latent variables, but we won’t cover that in this tutorial. If you haven’t already install and access the <code>lavaan</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively. For background information on the <code>lavaan</code> package, check out the <a href="http://lavaan.ugent.be/tutorial/syntax1.html">package website</a>.</p>
+<div class="sourceCode" id="cb2166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2166-1"><a href="mediationanalysis.html#cb2166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb2166-2"><a href="mediationanalysis.html#cb2166-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lavaan&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2167-1"><a href="mediationanalysis.html#cb2167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb2167-2"><a href="mediationanalysis.html#cb2167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lavaan)</span></code></pre></div>
 <p>Let’s specify a <em>partial</em> mediation model in which <code>attitude</code> is the predictor variable, <code>intention</code> is the mediator variable, and <code>behavior</code> is the outcome variable. [<em>Note</em>: If we wanted to specify a <em>complete</em> mediation model, then we would <em>not</em> specify the direct relation from the predictor variable to the outcome variable.] We will first apply the <em>delta method</em> for estimating the indirect effect and then follow it up with the <strong>percentile bootstrapping</strong> method.</p>
-<div id="deltamethod_mediationanalysis" class="section level4" number="55.2.4.1">
-<h4><span class="header-section-number">55.2.4.1</span> Delta Method</h4>
+<div id="deltamethod_mediationanalysis" class="section level4 hasAnchor" number="55.2.4.1">
+<h4><span class="header-section-number">55.2.4.1</span> Delta Method<a href="mediationanalysis.html#deltamethod_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To apply the delta method, which is a product of coefficients method, we will do the following.</p>
 <ol style="list-style-type: decimal">
 <li>We will specify the model and name it <code>specmod</code> using the <code>&lt;-</code> operator.</li>
@@ -1316,25 +1339,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>We will create a model estimation object (which here we label <code>fitmod</code>), and apply the <code>sem</code> function from <code>lavaan</code>, with the model specification object (<code>specmod</code>) as the first argument. As the second argument, type <code>data=</code> followed by the name of the data from which the variables named in the model specification object come (<code>df</code>).</li>
 <li>Type the name of the <code>summary</code> function from base R. As the first argument, type the name of the model estimation object we created in the previous step (<code>fitmod</code>). As the second and third arguments, respectively, type <code>fit.measures=TRUE</code> and <code>rsquare=TRUE</code> to request the model fit indices and the unadjusted <em>R</em><sup>2</sup> values for the endogenous variables.</li>
 </ol>
-<div class="sourceCode" id="cb2165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2165-1"><a href="mediationanalysis.html#cb2165-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify mediation analysis model</span></span>
-<span id="cb2165-2"><a href="mediationanalysis.html#cb2165-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2165-3"><a href="mediationanalysis.html#cb2165-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Path c&#39; (direct effect)</span></span>
-<span id="cb2165-4"><a href="mediationanalysis.html#cb2165-4" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ c*attitude</span></span>
-<span id="cb2165-5"><a href="mediationanalysis.html#cb2165-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Path a</span></span>
-<span id="cb2165-6"><a href="mediationanalysis.html#cb2165-6" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ a*attitude</span></span>
-<span id="cb2165-7"><a href="mediationanalysis.html#cb2165-7" aria-hidden="true" tabindex="-1"></a><span class="st"># Path b</span></span>
-<span id="cb2165-8"><a href="mediationanalysis.html#cb2165-8" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ b*intention</span></span>
-<span id="cb2165-9"><a href="mediationanalysis.html#cb2165-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2165-10"><a href="mediationanalysis.html#cb2165-10" aria-hidden="true" tabindex="-1"></a><span class="st"># Indirect effect (a*b)</span></span>
-<span id="cb2165-11"><a href="mediationanalysis.html#cb2165-11" aria-hidden="true" tabindex="-1"></a><span class="st">ab := a*b</span></span>
-<span id="cb2165-12"><a href="mediationanalysis.html#cb2165-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2165-13"><a href="mediationanalysis.html#cb2165-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2165-14"><a href="mediationanalysis.html#cb2165-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
-<span id="cb2165-15"><a href="mediationanalysis.html#cb2165-15" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
-<span id="cb2165-16"><a href="mediationanalysis.html#cb2165-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2165-17"><a href="mediationanalysis.html#cb2165-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
-<span id="cb2165-18"><a href="mediationanalysis.html#cb2165-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## lavaan 0.6-9 ended normally after 11 iterations
+<div class="sourceCode" id="cb2168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2168-1"><a href="mediationanalysis.html#cb2168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify mediation analysis model</span></span>
+<span id="cb2168-2"><a href="mediationanalysis.html#cb2168-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2168-3"><a href="mediationanalysis.html#cb2168-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Path c&#39; (direct effect)</span></span>
+<span id="cb2168-4"><a href="mediationanalysis.html#cb2168-4" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ c*attitude</span></span>
+<span id="cb2168-5"><a href="mediationanalysis.html#cb2168-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Path a</span></span>
+<span id="cb2168-6"><a href="mediationanalysis.html#cb2168-6" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ a*attitude</span></span>
+<span id="cb2168-7"><a href="mediationanalysis.html#cb2168-7" aria-hidden="true" tabindex="-1"></a><span class="st"># Path b</span></span>
+<span id="cb2168-8"><a href="mediationanalysis.html#cb2168-8" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ b*intention</span></span>
+<span id="cb2168-9"><a href="mediationanalysis.html#cb2168-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2168-10"><a href="mediationanalysis.html#cb2168-10" aria-hidden="true" tabindex="-1"></a><span class="st"># Indirect effect (a*b)</span></span>
+<span id="cb2168-11"><a href="mediationanalysis.html#cb2168-11" aria-hidden="true" tabindex="-1"></a><span class="st">ab := a*b</span></span>
+<span id="cb2168-12"><a href="mediationanalysis.html#cb2168-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2168-13"><a href="mediationanalysis.html#cb2168-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2168-14"><a href="mediationanalysis.html#cb2168-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model</span></span>
+<span id="cb2168-15"><a href="mediationanalysis.html#cb2168-15" aria-hidden="true" tabindex="-1"></a>fitmod <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
+<span id="cb2168-16"><a href="mediationanalysis.html#cb2168-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2168-17"><a href="mediationanalysis.html#cb2168-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2168-18"><a href="mediationanalysis.html#cb2168-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## lavaan 0.6-11 ended normally after 1 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1408,8 +1431,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     ab                0.212    0.044    4.778    0.000</code></pre>
 <p>Again, we have 199 observations (employees) used in this analysis, and the degrees of freedom is equal to 0, which indicates that our model is just-identified. Because the model is just-identified, there are no available degrees of freedom with which to estimate some of the common model fit indices (e.g., RMSEA), so we will not evaluate model fit. Instead, we will move on to interpreting model parameter estimates. The path coefficient (i.e., direct relation, presumed causal relation) between <code>attitude</code> and <code>intention</code> (i.e., path <strong>a</strong>) is statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). Further, the path coefficient between <code>intention</code> and <code>behavior</code> (i.e., path <strong>b</strong>) is also statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). The direct effect path between <code>attitude</code> and <code>behavior</code>, however, is nonsignificant (<em>b</em> = .029, <em>p</em> = .680). The (residual) error variances for <code>behavior</code> and <code>intentions</code> are not of substantive interest, so we will ignore them. The unadjusted <em>R</em><sup>2</sup> values for the endogenous variable <code>intention</code> is .259, which indicates that <code>attitude</code> explains 25.9% of the variance in <code>intention</code>, and the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>behavior</code> is .199, which indicates that, collectively <code>attitude</code> and <code>intention</code> explain 19.9% of the variance in <code>behavior</code>. Moving on to the estimate of the indirect effect (which you can find in the <em>Defined Parameters</em> section), we see that the indirect effect object we specified (<code>ab</code>) is positive and statistically significant (IE = .212, <em>p</em> &lt; .001), which indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>intention</code>. Again, this estimate was computed using the delta method.</p>
 </div>
-<div id="percentilebootstrapmethod_mediationanalysis" class="section level4" number="55.2.4.2">
-<h4><span class="header-section-number">55.2.4.2</span> Percentile Bootstrapping Method</h4>
+<div id="percentilebootstrapmethod_mediationanalysis" class="section level4 hasAnchor" number="55.2.4.2">
+<h4><span class="header-section-number">55.2.4.2</span> Percentile Bootstrapping Method<a href="mediationanalysis.html#percentilebootstrapmethod_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The percentile bootstrapping method is generally recommended over the delta method, and <strong>thus, my recommendation is to use the percentile bootstrapping method when estimating indirect effects.</strong> Depending upon the processing speed and power of your machine, the approach make take a minute or multiple minutes to perform the number of bootstrap iterations (i.e., re-samples) requested. The initial model specification and model estimation steps the same as would be used for the delta method, as we will use these to get the model fit information and direct effect parameter estimates, which don’t require bootstrapping. However, after that, differences emerge.</p>
 <ol style="list-style-type: decimal">
 <li>Specify the model in the same way as was done previously in preparation for the delta method, and name the object something (e.g., <code>specmod</code>).</li>
@@ -1433,25 +1456,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>As the third argument, type <code>level=0.95</code> to request the 95% confidence interval be estimated.</li>
 <li>As the fourth argument, type <code>boot.ci.type="perc"</code> to apply the percentile bootstrap approach. It may take a few minutes for your requested bootstraps to run.</li>
 </ul>
-<div class="sourceCode" id="cb2167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2167-1"><a href="mediationanalysis.html#cb2167-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify mediation analysis model</span></span>
-<span id="cb2167-2"><a href="mediationanalysis.html#cb2167-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb2167-3"><a href="mediationanalysis.html#cb2167-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Path c&#39; (direct effect)</span></span>
-<span id="cb2167-4"><a href="mediationanalysis.html#cb2167-4" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ c*attitude</span></span>
-<span id="cb2167-5"><a href="mediationanalysis.html#cb2167-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Path a</span></span>
-<span id="cb2167-6"><a href="mediationanalysis.html#cb2167-6" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ a*attitude</span></span>
-<span id="cb2167-7"><a href="mediationanalysis.html#cb2167-7" aria-hidden="true" tabindex="-1"></a><span class="st"># Path b</span></span>
-<span id="cb2167-8"><a href="mediationanalysis.html#cb2167-8" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ b*intention</span></span>
-<span id="cb2167-9"><a href="mediationanalysis.html#cb2167-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2167-10"><a href="mediationanalysis.html#cb2167-10" aria-hidden="true" tabindex="-1"></a><span class="st"># Indirect effect (a*b)</span></span>
-<span id="cb2167-11"><a href="mediationanalysis.html#cb2167-11" aria-hidden="true" tabindex="-1"></a><span class="st">ab := a*b</span></span>
-<span id="cb2167-12"><a href="mediationanalysis.html#cb2167-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb2167-13"><a href="mediationanalysis.html#cb2167-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2167-14"><a href="mediationanalysis.html#cb2167-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model (direct effect parameter estimates)</span></span>
-<span id="cb2167-15"><a href="mediationanalysis.html#cb2167-15" aria-hidden="true" tabindex="-1"></a>fitmod1 <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
-<span id="cb2167-16"><a href="mediationanalysis.html#cb2167-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2167-17"><a href="mediationanalysis.html#cb2167-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
-<span id="cb2167-18"><a href="mediationanalysis.html#cb2167-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod1, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## lavaan 0.6-9 ended normally after 11 iterations
+<div class="sourceCode" id="cb2170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2170-1"><a href="mediationanalysis.html#cb2170-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify mediation analysis model</span></span>
+<span id="cb2170-2"><a href="mediationanalysis.html#cb2170-2" aria-hidden="true" tabindex="-1"></a>specmod <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb2170-3"><a href="mediationanalysis.html#cb2170-3" aria-hidden="true" tabindex="-1"></a><span class="st"># Path c&#39; (direct effect)</span></span>
+<span id="cb2170-4"><a href="mediationanalysis.html#cb2170-4" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ c*attitude</span></span>
+<span id="cb2170-5"><a href="mediationanalysis.html#cb2170-5" aria-hidden="true" tabindex="-1"></a><span class="st"># Path a</span></span>
+<span id="cb2170-6"><a href="mediationanalysis.html#cb2170-6" aria-hidden="true" tabindex="-1"></a><span class="st">intention ~ a*attitude</span></span>
+<span id="cb2170-7"><a href="mediationanalysis.html#cb2170-7" aria-hidden="true" tabindex="-1"></a><span class="st"># Path b</span></span>
+<span id="cb2170-8"><a href="mediationanalysis.html#cb2170-8" aria-hidden="true" tabindex="-1"></a><span class="st">behavior ~ b*intention</span></span>
+<span id="cb2170-9"><a href="mediationanalysis.html#cb2170-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2170-10"><a href="mediationanalysis.html#cb2170-10" aria-hidden="true" tabindex="-1"></a><span class="st"># Indirect effect (a*b)</span></span>
+<span id="cb2170-11"><a href="mediationanalysis.html#cb2170-11" aria-hidden="true" tabindex="-1"></a><span class="st">ab := a*b</span></span>
+<span id="cb2170-12"><a href="mediationanalysis.html#cb2170-12" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb2170-13"><a href="mediationanalysis.html#cb2170-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2170-14"><a href="mediationanalysis.html#cb2170-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model (direct effect parameter estimates)</span></span>
+<span id="cb2170-15"><a href="mediationanalysis.html#cb2170-15" aria-hidden="true" tabindex="-1"></a>fitmod1 <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df)</span>
+<span id="cb2170-16"><a href="mediationanalysis.html#cb2170-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2170-17"><a href="mediationanalysis.html#cb2170-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
+<span id="cb2170-18"><a href="mediationanalysis.html#cb2170-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod1, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## lavaan 0.6-11 ended normally after 1 iterations
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
@@ -1523,14 +1546,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Defined Parameters:
 ##                    Estimate  Std.Err  z-value  P(&gt;|z|)
 ##     ab                0.212    0.044    4.778    0.000</code></pre>
-<div class="sourceCode" id="cb2169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2169-1"><a href="mediationanalysis.html#cb2169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
-<span id="cb2169-2"><a href="mediationanalysis.html#cb2169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
-<span id="cb2169-3"><a href="mediationanalysis.html#cb2169-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2169-4"><a href="mediationanalysis.html#cb2169-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model (bootstrap)</span></span>
-<span id="cb2169-5"><a href="mediationanalysis.html#cb2169-5" aria-hidden="true" tabindex="-1"></a>fitmod2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df, <span class="at">se=</span><span class="st">&quot;bootstrap&quot;</span>, <span class="at">bootstrap=</span><span class="dv">5000</span>)</span>
-<span id="cb2169-6"><a href="mediationanalysis.html#cb2169-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2169-7"><a href="mediationanalysis.html#cb2169-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Request percentile bootstrap 95% confidence intervals</span></span>
-<span id="cb2169-8"><a href="mediationanalysis.html#cb2169-8" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fitmod2, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">level=</span><span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">&quot;perc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2172-1"><a href="mediationanalysis.html#cb2172-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed</span></span>
+<span id="cb2172-2"><a href="mediationanalysis.html#cb2172-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2022</span>)</span>
+<span id="cb2172-3"><a href="mediationanalysis.html#cb2172-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2172-4"><a href="mediationanalysis.html#cb2172-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate model (bootstrap)</span></span>
+<span id="cb2172-5"><a href="mediationanalysis.html#cb2172-5" aria-hidden="true" tabindex="-1"></a>fitmod2 <span class="ot">&lt;-</span> <span class="fu">sem</span>(specmod, <span class="at">data=</span>df, <span class="at">se=</span><span class="st">&quot;bootstrap&quot;</span>, <span class="at">bootstrap=</span><span class="dv">5000</span>)</span>
+<span id="cb2172-6"><a href="mediationanalysis.html#cb2172-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2172-7"><a href="mediationanalysis.html#cb2172-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Request percentile bootstrap 95% confidence intervals</span></span>
+<span id="cb2172-8"><a href="mediationanalysis.html#cb2172-8" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fitmod2, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">level=</span><span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">&quot;perc&quot;</span>)</span></code></pre></div>
 <pre><code>##         lhs op       rhs label   est    se      z pvalue ci.lower ci.upper
 ## 1  behavior  ~  attitude     c 0.029 0.065  0.453   0.65   -0.095    0.162
 ## 2 intention  ~  attitude     a 0.484 0.053  9.150   0.00    0.378    0.585
@@ -1544,8 +1567,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The model fit information and direct relation (non-bootstrapped) parameter estimates are the same as when we estimated the model as part of the delta method. Nonetheless, I repeat those findings here and then extend them with the percentile bootstrap findings for the indirect effect. We have 199 observations (employees) used in this analysis, and the degrees of freedom is equal to 0, which indicates that our model is just-identified. Because the model is just-identified, there are no available degrees of freedom with which to estimate some of the common model fit indices (e.g., RMSEA), so we will not evaluate model fit. Instead, we will move on to interpreting model parameter estimates. The path coefficient (i.e., direct relation, presumed causal relation) between <code>attitude</code> and <code>intention</code> (i.e., path <strong>a</strong>) is statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). Further, the path coefficient between <code>intention</code> and <code>behavior</code> (i.e., path <strong>b</strong>) is also statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). The direct effect path between <code>attitude</code> and <code>behavior</code>, however, is nonsignificant (<em>b</em> = .029, <em>p</em> = .680). The (residual) error variances for <code>behavior</code> and <code>intentions</code> are not of substantive interest, so we will ignore them. The unadjusted <em>R</em><sup>2</sup> values for the endogenous variable <code>intention</code> is .259, which indicates that <code>attitude</code> explains 25.9% of the variance in <code>intention</code>, and the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>behavior</code> is .199, which indicates that, collectively <code>attitude</code> and <code>intention</code> explain 19.9% of the variance in <code>behavior</code>. Moving on, we get the delta method estimate of the indirect effect (which you can find in the <em>Defined Parameters</em> section), and we see that the indirect effect object we specified (<code>ab</code>) is positive and statistically significant (IE = .212, <em>p</em> &lt; .001), which indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>intention</code>. Again, however, that is the delta method estimate of the indirect effect, so let’s now take a look at the percentile bootstrap estimate of the indirect effect. At the very end of the output appears a table containing, among other things, the 95% confidence intervals for various parameters. We are only interested in the very last row which displays the 95% confidence interval for the <code>ab</code> object we specified using the product of coefficients approach. The point estimate for the indirect effect is .212, and 95% confidence interval does <em>not</em> include zero and positive, so we can conclude that the indirect effect of <code>attitude</code> on <code>behavior</code> via <code>intention</code> is statistically significant and positive (95% CI[.136, 300]). In other words, the percentile bootstrapping method indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>behavior</code>. If this confidence interval included zero in its range, then we would conclude that there is no evidence that <code>intention</code> is a mediator.</p>
 </div>
 </div>
-<div id="summary_mediationanalysis" class="section level3" number="55.2.5">
-<h3><span class="header-section-number">55.2.5</span> Summary</h3>
+<div id="summary_mediationanalysis" class="section level3 hasAnchor" number="55.2.5">
+<h3><span class="header-section-number">55.2.5</span> Summary<a href="mediationanalysis.html#summary_mediationanalysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this chapter, we explored the building blocks of mediation analysis using a path analysis framework. To do so, we used the <code>sem</code> and <code>parameterEstimates</code> functions from the <code>lavaan</code> package and to estimate the indirect effect.</p>
 
 </div>
@@ -1554,6 +1577,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-baron1986moderator" class="csl-entry">
+Baron, Reuben M, and David A Kenny. 1986. <span>“The Moderator-Mediator Variable Distinction in Social Psychological Research: Conceptual, Strategic, and Statistical Considerations.”</span> <em>Journal of Personality and Social Psychology</em> 51 (6): 1173–82.
+</div>
+<div id="ref-koopman2015small" class="csl-entry">
+Koopman, Joel, Michael Howe, John R Hollenbeck, and Hock-Peng Sin. 2015. <span>“Small Sample Mediation Testing: Misplaced Confidence in Bootstrapped Confidence Intervals.”</span> <em>Journal of Applied Psychology</em> 100 (1): 194–202.
+</div>
+<div id="ref-mackinnon1993estimating" class="csl-entry">
+MacKinnon, David P, and James H Dwyer. 1993. <span>“Estimating Mediated Effects in Prevention Studies.”</span> <em>Evaluation Review</em> 17 (2): 144–58.
+</div>
+<div id="ref-mackinnon2002comparison" class="csl-entry">
+MacKinnon, David P, Chondra M Lockwood, Jeanne M Hoffman, Stephen G West, and Virgil Sheets. 2002. <span>“A Comparison of Methods to Test Mediation and Other Intervening Variable Effects.”</span> <em>Psychological Methods</em> 7 (1): 83–104.
+</div>
+<div id="ref-mackinnon1995simulation" class="csl-entry">
+MacKinnon, David P, Ghulam Warsi, and James H Dwyer. 1995. <span>“A Simulation Study of Mediated Effect Measures.”</span> <em>Multivariate Behavioral Research</em> 30 (1): 41–62.
+</div>
+<div id="ref-R-lavaan" class="csl-entry">
+Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="https://www.jstatsoft.org/v48/i02/">https://www.jstatsoft.org/v48/i02/</a>.
+</div>
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -1564,7 +1611,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1591,6 +1637,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

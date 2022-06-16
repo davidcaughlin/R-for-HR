@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Overview of R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Overview of R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 8 Overview of R &amp; RStudio | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="deploymentimplementation.html"/>
 <link rel="next" href="install.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,30 +1169,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="overviewR" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Overview of R &amp; RStudio</h1>
+<div id="overviewR" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Overview of R &amp; RStudio<a href="overviewR.html#overviewR" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Advances in technology have paved the way for increasingly powerful, sophisticated, and expansive data-analytic tools. Examples of such tools include enterprise solutions by IBM and SAP as well as <a href="https://www.alteryx.com/">alteryx</a>, <a href="https://powerbi.microsoft.com/en-us/">Microsoft Power BI</a>, <a href="https://www.tableau.com/">Tableau</a>, <a href="https://www.sas.com/en_us/home.html">SAS</a>, and <a href="https://www.tensorflow.org/">Google TensorFlow</a>. At the same time, barriers to entry for using powerful programming languages like <a href="https://www.r-project.org/">R</a> and <a href="https://www.python.org/">Python</a> have fallen as the number and quality of educational programs aimed at teaching programming has grown and the amount of free online content has increased.</p>
 <div class="figure">
 <img src="data_technology_capabilities.png" alt="" />
 <p class="caption">As time marches forward, the power, functionality, and capabilities of our data-analytics technologies have increased rapidly, with prime examples including tools like Tableau, Python, R, and TensorFlow.</p>
 </div>
 <p>Compared to working with “off-the-shelf” platforms (e.g., Tableau, SAP), by working directly with programming languages, analysts can design and implement operations, models, and other tools that meet their specific needs. Programming languages allow analysts to define or customize their own functions or apply functions developed by experts around the world. In fact, these languages can have the advantage of getting us closer to our data and understanding and “seeing” the myriad decisions we must make when acquiring, managing, analyzing, and visualizing data.</p>
-<p>In this book, we focus specifically on the R programming language <span class="citation">(<a href="references.html#ref-R-base" role="doc-biblioref">R Core Team 2021</a>)</span>. In the following sections, we will learn about about the R programming language itself as well as RStudio <span class="citation">(<a href="references.html#ref-rstudio2020" role="doc-biblioref">RStudio Team 2020</a>)</span>, where the latter is a integrated development environment for R.</p>
-<div id="R_overview" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> R Programming Language</h2>
+<p>In this book, we focus specifically on the R programming language <span class="citation">(<a href="#ref-R-base" role="doc-biblioref">R Core Team 2022</a>)</span>. In the following sections, we will learn about about the R programming language itself as well as RStudio <span class="citation">(<a href="#ref-rstudio2020" role="doc-biblioref">RStudio Team 2020</a>)</span>, where the latter is a integrated development environment for R.</p>
+<div id="R_overview" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> R Programming Language<a href="overviewR.html#R_overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the following sections, we will learn answers to the following questions about R:</p>
 <ul>
 <li>What is R?</li>
 <li>Why use R?</li>
 <li>Who uses R?</li>
 </ul>
-<div id="R_what" class="section level3" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> What Is R?</h3>
+<div id="R_what" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> What Is R?<a href="overviewR.html#R_what" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R is an open-source and freely available statistical programming language and environment that can be used for data management, analysis, and visualization. R is similar to the S language, where the latter was developed at Bell laboratories. You can learn more about R on the <a href="https://www.r-project.org/about.html">R Project website</a>.</p>
 <p>R software can be freely downloaded for Windows, MacOS, and Linux operating systems via a <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN) mirror</a>. Each <a href="https://cran.r-project.org/mirrors.html">CRAN mirror</a> is a server that acts as a repository and distribution site that allows users to download copies of R-related software. Currently, CRAN mirrors are hosted at institutions all over the world, such as the University of Science and Technology Houari Boumediene in Algeria, Univerisiti Putra Malaysia in Malaysia, University of Bergen in Norway, and Indiana University in the United States. Often, R is referred to as <em>base R</em>, which can be useful for distinguishing it from add-on software like RStudio. To learn how to install the base R software, please refer to the <a href="install.html#installR">following chapter</a>.</p>
 </div>
-<div id="R_why" class="section level3" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> Why Use R?</h3>
+<div id="R_why" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Why Use R?<a href="overviewR.html#R_why" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>R is a popular tool for managing, analyzing, and visualizing data. Some characteristics that make R particularly attractive are:</p>
 <ul>
 <li>R and its packages are free!</li>
@@ -1178,26 +1202,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>R is especially well-suited for ad hoc statistical analysis of data and data visualization.</li>
 </ul>
 </div>
-<div id="R_who" class="section level3" number="8.1.3">
-<h3><span class="header-section-number">8.1.3</span> Who Uses R?</h3>
+<div id="R_who" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Who Uses R?<a href="overviewR.html#R_who" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Data analysts and data scientists all over the world use R, including at well-known organizations like Google, Facebook, NASA, and Janssen. In addition, many scientists at academic institutions use R to statistically analyze data from research projects.</p>
 </div>
 </div>
-<div id="RStudio_overview" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> RStudio</h2>
+<div id="RStudio_overview" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> RStudio<a href="overviewR.html#RStudio_overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the following sections, we will learn answers to the following questions about RStudio:</p>
 <ul>
 <li>What is RStudio?</li>
 <li>Why use RStudio?</li>
 <li>Who uses RStudio?</li>
 </ul>
-<div id="RStudio_what" class="section level3" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> What is RStudio?</h3>
-<p>RStudio is an integrated development environment (IDE) for R. RStudio uses base R as its engine and layers on additional features. Although an IDE like RStudio is <em>not</em> required to use R, using R via RStudio has a number of benefits. Namely, RStudio provides a user-friendly interface as well as easy-access to and integration with RMarkdown <span class="citation">(<a href="references.html#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>; <a href="references.html#ref-R-rmarkdown" role="doc-biblioref">Allaire et al. 2021</a>)</span> and Shiny web applications <span class="citation">(<a href="references.html#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span>, for example. Further, by default, RStudio includes window panes designated for R scripts, the Console, the Environment, and Plots. You can learn more about RStudio at the <a href="https://www.rstudio.com/">official website</a>.</p>
+<div id="RStudio_what" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> What is RStudio?<a href="overviewR.html#RStudio_what" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RStudio is an integrated development environment (IDE) for R. RStudio uses base R as its engine and layers on additional features. Although an IDE like RStudio is <em>not</em> required to use R, using R via RStudio has a number of benefits. Namely, RStudio provides a user-friendly interface as well as easy-access to and integration with RMarkdown <span class="citation">(<a href="#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>; <a href="#ref-R-rmarkdown" role="doc-biblioref">Allaire et al. 2022</a>)</span> and Shiny web applications <span class="citation">(<a href="#ref-R-shiny" role="doc-biblioref">Chang et al. 2021</a>)</span>, for example. Further, by default, RStudio includes window panes designated for R scripts, the Console, the Environment, and Plots. You can learn more about RStudio at the <a href="https://www.rstudio.com/">official website</a>.</p>
 <p>Free desktop and server versions of RStudio are available, and you can learn how to download and install the desktop version in the <a href="install.html#installRStudio">following chapter</a>.</p>
 </div>
-<div id="RStudio_why" class="section level3" number="8.2.2">
-<h3><span class="header-section-number">8.2.2</span> Why RStudio?</h3>
+<div id="RStudio_why" class="section level3 hasAnchor" number="8.2.2">
+<h3><span class="header-section-number">8.2.2</span> Why RStudio?<a href="overviewR.html#RStudio_why" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>RStudio is a popular tool for implementing the R language and environment. Some characteristics that make RStudio particularly attractive are:</p>
 <ul>
 <li>The open-source versions of RStudio Desktop and Server are free to download and use.</li>
@@ -1206,20 +1230,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The RStudio developers hold conferences regularly, which can be great venues to connect with other R users.</li>
 </ul>
 </div>
-<div id="RStudio_who" class="section level3" number="8.2.3">
-<h3><span class="header-section-number">8.2.3</span> Who Uses RStudio?</h3>
+<div id="RStudio_who" class="section level3 hasAnchor" number="8.2.3">
+<h3><span class="header-section-number">8.2.3</span> Who Uses RStudio?<a href="overviewR.html#RStudio_who" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Many people who use base R choose to use RStudio as well. I’ve found that it’s relatively rare to find people who work directly from base R these days.</p>
 </div>
 </div>
-<div id="packages_overview" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Packages</h2>
-<p>Although a base R installation comes standard with a number of very useful standard functions, a major advantage of using R is the availability packages with more specialized functions. A <strong>package</strong> contains a collection of functions, generally with an overarching theme or purpose. For example, the <code>psych</code> package <span class="citation">(<a href="references.html#ref-R-psych" role="doc-biblioref">Revelle 2021</a>)</span> includes a suite of functions that are well-suited to conducting the types of analyses that are common in psychology. As I type this sentence, there are currently over 17,000 available R packages, and you can view the current list of available packages sorted by name by clicking <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">here</a>.</p>
-<p>Examples of packages that I demonstrate in this book include: <code>apaTables</code> <span class="citation">(<a href="references.html#ref-R-apaTables" role="doc-biblioref">Stanley 2021</a>)</span>, <code>dplyr</code> <span class="citation">(<a href="references.html#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2021</a>)</span>, <code>ggplot2</code> <span class="citation">(<a href="references.html#ref-book-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span>, <code>lavaan</code> <span class="citation">(<a href="references.html#ref-R-lavaan" role="doc-biblioref">Rosseel 2012</a>)</span>, <code>lessR</code> <span class="citation">(<a href="references.html#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>, <code>psych</code> <span class="citation">(<a href="references.html#ref-R-psych" role="doc-biblioref">Revelle 2021</a>)</span>, <code>readr</code> <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span>, and <code>tidyr</code> <span class="citation">(<a href="references.html#ref-R-tidyr" role="doc-biblioref">Wickham 2021a</a>)</span>.</p>
+<div id="packages_overview" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Packages<a href="overviewR.html#packages_overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Although a base R installation comes standard with a number of very useful standard functions, a major advantage of using R is the availability packages with more specialized functions. A <strong>package</strong> contains a collection of functions, generally with an overarching theme or purpose. For example, the <code>psych</code> package <span class="citation">(<a href="#ref-R-psych" role="doc-biblioref">Revelle 2022</a>)</span> includes a suite of functions that are well-suited to conducting the types of analyses that are common in psychology. As I type this sentence, there are currently over 17,000 available R packages, and you can view the current list of available packages sorted by name by clicking <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">here</a>.</p>
+<p>Examples of packages that I demonstrate in this book include: <code>apaTables</code> <span class="citation">(<a href="#ref-R-apaTables" role="doc-biblioref">Stanley 2021</a>)</span>, <code>dplyr</code> <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2022</a>)</span>, <code>ggplot2</code> <span class="citation">(<a href="#ref-book-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span>, <code>lavaan</code> <span class="citation">(<a href="#ref-R-lavaan" role="doc-biblioref">Rosseel 2012</a>)</span>, <code>lessR</code> <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>, <code>psych</code> <span class="citation">(<a href="#ref-R-psych" role="doc-biblioref">Revelle 2022</a>)</span>, <code>readr</code> <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>, and <code>tidyr</code> <span class="citation">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham and Girlich 2022</a>)</span>.</p>
 </div>
-<div id="summary-3" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Summary</h2>
+<div id="summary-3" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Summary<a href="overviewR.html#summary-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In summary, R is a powerful and widely used programming language and environment, and RStudio is an integrated development environment that layers user-friendly features and helpful tools onto R. Together, they help data analysts and data scientists manage, analyze, visualize, and report data.</p>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-rmarkdown" class="csl-entry">
+Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang, and Richard Iannone. 2022. <em>Rmarkdown: Dynamic Documents for r</em>. <a href="https://CRAN.R-project.org/package=rmarkdown">https://CRAN.R-project.org/package=rmarkdown</a>.
+</div>
+<div id="ref-R-shiny" class="csl-entry">
+Chang, Winston, Joe Cheng, JJ Allaire, Carson Sievert, Barret Schloerke, Yihui Xie, Jeff Allen, Jonathan McPherson, Alan Dipert, and Barbara Borges. 2021. <em><span class="nocase">shiny</span>: Web Application Framework for <span>R</span></em>. <a href="https://CRAN.R-project.org/package=shiny">https://CRAN.R-project.org/package=shiny</a>.
+</div>
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
+</div>
+<div id="ref-R-base" class="csl-entry">
+R Core Team. 2022. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-R-psych" class="csl-entry">
+Revelle, William. 2022. <em>Psych: Procedures for Psychological, Psychometric, and Personality Research</em>. <a href="https://personality-project.org/r/psych/
+https://personality-project.org/r/psych-manual.pdf">https://personality-project.org/r/psych/
+<div id="ref-R-lavaan" class="csl-entry">
+Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="https://www.jstatsoft.org/v48/i02/">https://www.jstatsoft.org/v48/i02/</a>.
+</div>
+<div id="ref-rstudio2020" class="csl-entry">
+RStudio Team. 2020. <em>RStudio: Integrated Development Environment for <span>R</span></em>. Boston, MA: RStudio, PBC. <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.
+</div>
+<div id="ref-R-apaTables" class="csl-entry">
+Stanley, David. 2021. <em><span class="nocase">apaTables</span>: Create American Psychological Association (APA) Style Tables</em>. <a href="https://CRAN.R-project.org/package=apaTables">https://CRAN.R-project.org/package=apaTables</a>.
+</div>
+<div id="ref-book-ggplot2" class="csl-entry">
+Wickham, Hadley. 2016. <em><span class="nocase">ggplot2</span>: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-R-dplyr" class="csl-entry">
+Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2022. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+</div>
+<div id="ref-R-tidyr" class="csl-entry">
+Wickham, Hadley, and Maximilian Girlich. 2022. <em>Tidyr: Tidy Messy Data</em>. <a href="https://CRAN.R-project.org/package=tidyr">https://CRAN.R-project.org/package=tidyr</a>.
+</div>
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+</div>
+<div id="ref-rmarkdown2018" class="csl-entry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
 </div>
 </div>
             </section>
@@ -1232,7 +1298,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1259,6 +1324,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

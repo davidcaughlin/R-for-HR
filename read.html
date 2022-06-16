@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 13 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R</title>
   <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 13 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
-  <meta property="og:url" content="https://rforhr.com" />
-  <meta property="og:image" content="https://rforhr.comcover.png" />
+  <meta property="og:image" content="https://rforhr.com/cover.png" />
   <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
@@ -19,7 +18,7 @@
   <meta name="twitter:title" content="Chapter 13 Reading Data into R | R for HR: An Introduction to Human Resource Analytics Using R" />
   
   <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="twitter:image" content="https://rforhr.comcover.png" />
+  <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
 
@@ -32,8 +31,8 @@
   
 <link rel="prev" href="setwd.html"/>
 <link rel="next" href="addnames.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,7 +48,9 @@
 
 
 
-
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -115,6 +116,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -638,29 +662,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="33.3.3" data-path="posttestonly.html"><a href="posttestonly.html#t.test_function_isttest"><i class="fa fa-check"></i><b>33.3.3</b> <code>t.test</code> Function from Base R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="34" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
+<li class="chapter" data-level="34" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html"><i class="fa fa-check"></i><b>34</b> Evaluating a Post-Test-Only with Two Comparison Groups Design Using One-Way ANOVA</a>
 <ul>
-<li class="chapter" data-level="34.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
+<li class="chapter" data-level="34.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#conceptualoverview_posttestonly_threegroups_onewayanova"><i class="fa fa-check"></i><b>34.1</b> Conceptual Overview</a>
 <ul>
-<li class="chapter" data-level="34.1.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
-<li class="chapter" data-level="34.1.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.1.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_posttestonly_threegroups"><i class="fa fa-check"></i><b>34.1.1</b> Review of Post-Test-Only with Two Comparison Groups Design</a></li>
+<li class="chapter" data-level="34.1.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#review_onewayanova"><i class="fa fa-check"></i><b>34.1.2</b> Review of One-Way ANOVA</a></li>
 </ul></li>
-<li class="chapter" data-level="34.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
+<li class="chapter" data-level="34.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#tutorial_onewayanova"><i class="fa fa-check"></i><b>34.2</b> Tutorial</a>
 <ul>
-<li class="chapter" data-level="34.2.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
-<li class="chapter" data-level="34.2.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.2.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.2.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
-<li class="chapter" data-level="34.2.5" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
-<li class="chapter" data-level="34.2.6" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
-<li class="chapter" data-level="34.2.7" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
+<li class="chapter" data-level="34.2.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#videotutorial_onewayanova"><i class="fa fa-check"></i><b>34.2.1</b> Video Tutorial</a></li>
+<li class="chapter" data-level="34.2.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#functions_onewayanova"><i class="fa fa-check"></i><b>34.2.2</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.2.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#initsteps_onewayanova"><i class="fa fa-check"></i><b>34.2.3</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.2.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#teststatisticalassumptions_onewayanova"><i class="fa fa-check"></i><b>34.2.4</b> Test Statistical Assumptions</a></li>
+<li class="chapter" data-level="34.2.5" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#estimate_onewayanova"><i class="fa fa-check"></i><b>34.2.5</b> Estimate One-Way ANOVA</a></li>
+<li class="chapter" data-level="34.2.6" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#barchart_onewayanova"><i class="fa fa-check"></i><b>34.2.6</b> Visualize Results Using Bar Chart</a></li>
+<li class="chapter" data-level="34.2.7" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#summary_onewayanova"><i class="fa fa-check"></i><b>34.2.7</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="34.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
+<li class="chapter" data-level="34.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement"><i class="fa fa-check"></i><b>34.3</b> Chapter Supplement</a>
 <ul>
-<li class="chapter" data-level="34.3.1" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
-<li class="chapter" data-level="34.3.2" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
-<li class="chapter" data-level="34.3.3" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
-<li class="chapter" data-level="34.3.4" data-path="posttestonly-threegroups.html"><a href="posttestonly-threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
+<li class="chapter" data-level="34.3.1" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_supplement_functions"><i class="fa fa-check"></i><b>34.3.1</b> Functions &amp; Packages Introduced</a></li>
+<li class="chapter" data-level="34.3.2" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#onewayanova_initsteps_supplement"><i class="fa fa-check"></i><b>34.3.2</b> Initial Steps</a></li>
+<li class="chapter" data-level="34.3.3" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#aov_function_onewayanova"><i class="fa fa-check"></i><b>34.3.3</b> <code>aov</code> Function from Base R</a></li>
+<li class="chapter" data-level="34.3.4" data-path="posttestonly_threegroups.html"><a href="posttestonly_threegroups.html#apatable_onewayanova"><i class="fa fa-check"></i><b>34.3.4</b> APA-Style Table of Results</a></li>
 </ul></li>
 </ul></li>
 <li class="part"><span><b>VII Employee Selection</b></span></li>
@@ -1121,8 +1145,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create-portfolio.html"><a href="create-portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature-search-review.html"><a href="literature-search-review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1145,26 +1169,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="read" class="section level1" number="13">
-<h1><span class="header-section-number">Chapter 13</span> Reading Data into R</h1>
+<div id="read" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Reading Data into R<a href="read.html#read" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this chapter, we will learn what “reading data” means in the context of the R language, and how to go about reading data into R so that we can begin managing, analyzing, and visualizing the data.</p>
-<div id="conceptualoverview_read" class="section level2" number="13.1">
-<h2><span class="header-section-number">13.1</span> Conceptual Overview</h2>
+<div id="conceptualoverview_read" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Conceptual Overview<a href="read.html#conceptualoverview_read" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Reading data</strong> refers to the process of importing data from a (working) directory or website into R. When we read a data file into R, we often read it in as a <strong>data frame (df)</strong> object, where a data frame is a tabular display with columns representing variables and rows representing cases. For additional information on data frames, please refer to <a href="gentleintro.html#dataframes">this section</a> from a previous chapter.</p>
 <p>Many different data file formats can be read into R as data frames, such as .csv (comma separated values), .xlsx (Excel workbook), .txt (text), .sas7bdat (SAS), and .sav (SPSS). In this chapter, you will learn how to read .csv and .xlsx files into R; however, in the <a href="read.html#read_supplement">Chapter Supplement</a>, you will have an opportunity to learn how to use the <code>Read</code> function from the <code>lessR</code> package, which can read in .sas7bdat (SAS) and .sav (SPSS) files.</p>
 </div>
-<div id="tutorial_read" class="section level2" number="13.2">
-<h2><span class="header-section-number">13.2</span> Tutorial</h2>
+<div id="tutorial_read" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Tutorial<a href="read.html#tutorial_read" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This chapter’s tutorial demonstrates how to read data files into R, such as those in .csv or .xlsx format.</p>
-<div id="videotutorial_read" class="section level3" number="13.2.1">
-<h3><span class="header-section-number">13.2.1</span> Video Tutorial</h3>
+<div id="videotutorial_read" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Video Tutorial<a href="read.html#videotutorial_read" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As usual, you have the choice to follow along with the written tutorial in this chapter or to watch the video tutorial below. Both versions of the tutorial demonstrate how to read a .csv file into R; however, in the video tutorial I demonstrate multiple functions that can read in .csv files (<code>read.csv</code>, <code>read_csv</code>, <code>Read</code>), whereas in the written tutorial, I demonstrate just the function I prefer to use (<code>read_csv</code>). In this written tutorial, I also demonstrate how to read in a .xlsx file using the <code>read_excel</code> function as well as some additional operations, and for time considerations, I don’t demonstrate those approaches in the video.</p>
-<iframe src="https://youtube.com/embed/smWjqhaxHY8?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/smWjqhaxHY8?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/smWjqhaxHY8" class="uri">https://youtu.be/smWjqhaxHY8</a></p>
 </div>
-<div id="functions_read" class="section level3" number="13.2.2">
-<h3><span class="header-section-number">13.2.2</span> Functions &amp; Packages Introduced</h3>
+<div id="functions_read" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Functions &amp; Packages Introduced<a href="read.html#functions_read" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -1212,8 +1236,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="initialsteps_read" class="section level3" number="13.2.3">
-<h3><span class="header-section-number">13.2.3</span> Initial Steps</h3>
+<div id="initialsteps_read" class="section level3 hasAnchor" number="13.2.3">
+<h3><span class="header-section-number">13.2.3</span> Initial Steps<a href="read.html#initialsteps_read" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Please note, that any function that appears in the <em>Initial Steps</em> section has been covered in a previous chapter. If you need a refresher, please view the relevant chapter. In addition, a previous chapter may show you how to perform the same action using different functions or packages.</p>
 <p>To get started, please save the following data files into a folder on your computer that you will set as your working directory: <strong>“PersData.csv”</strong> and <strong>“PersData_Excel.xlsx”</strong>. As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, set your working directory by using the <code>setwd</code> function (see below) or by doing it using drop-down menus. Your working directory folder will likely be different than the one shown below; “H:/RWorkshop” just happens to be the name of the folder that I save my data files to and that I set as my working directory. You can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. If you need a refresher on how to set a working directory, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a>.</p>
@@ -1221,12 +1245,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb146-2"><a href="read.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Finally, I highly recommend that you create a new R Script file (.R), which will allow you to edit and save your script and annotations. To learn more, please refer to <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
 </div>
-<div id="readcsv" class="section level3" number="13.2.4">
-<h3><span class="header-section-number">13.2.4</span> Read a .csv File</h3>
+<div id="readcsv" class="section level3 hasAnchor" number="13.2.4">
+<h3><span class="header-section-number">13.2.4</span> Read a .csv File<a href="read.html#readcsv" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One of the easiest data file formats to work with when reading data into R is the .csv (comma-separated values) file format. Many HR analysts and other types of data analysts regularly work with .csv files, and .csv files can be created in Microsoft Excel and Google Sheets (as well as using many other programs). For example, many survey, data-analysis, and data-acquisition platforms allow data to be exported to .csv files.</p>
 <p>When getting started in R, the way in which the .csv file is formatted can make your life easier. Specifically, the most straightforward .csv file format to read is structured such that (a) the first row contains the names of the variables (i.e., columns, fields), and (b) the second, third, fourth, and fifth rows (and so on) contain the observed scores on the variables (i.e., data), where each row represents a case (i.e., observation, employee). In the <a href="read.html#read_skiprows">chapter supplement</a> section of this chapter, you will have an opportunity to read in .csv files in which the observed values do not begin until the third row or later.</p>
-<p>As part of the <code>tidyverse</code> of R packages <span class="citation">(<a href="references.html#ref-R-tidyverse" role="doc-biblioref">Wickham 2021b</a>; <a href="references.html#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>, the <code>readr</code> package <span class="citation">(<a href="references.html#ref-R-readr" role="doc-biblioref">Wickham and Hester 2020</a>)</span> and its functions can be used to read in a few different data file formats (as long as they are rectangular), including .csv files. To read in .csv files, we will use the <code>read_csv</code> function from the <code>readr</code> package, as it tends to be faster than some of the other functions developed to read in data. There are several other R functions that can read in .csv files (e.g., <code>read.csv</code>, <code>Read</code>), and if you’re interested in learning two of those functions, feel free to check out the end-of-book supplement called <a href="read.html#read_supplement">Reading Data: Chapter Supplement</a>.</p>
-<p>By default, the <code>read_csv</code> function reads data in as a data frame, where a data frame is a specific type of table in which columns contain variables and rows contain cases. Well, technically, the function reads data in as a <em>tibble</em> (as opposed to a data frame), where a tibble behaves a lot like a data frame. Thus, from here on out in the book, I’ll just use the term “data frame.” If you would like more information about tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="references.html#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</p>
+<p>As part of the <code>tidyverse</code> of R packages <span class="citation">(<a href="#ref-R-tidyverse" role="doc-biblioref">Wickham 2021</a>; <a href="#ref-tidyverse2019" role="doc-biblioref">Wickham et al. 2019</a>)</span>, the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span> and its functions can be used to read in a few different data file formats (as long as they are rectangular), including .csv files. To read in .csv files, we will use the <code>read_csv</code> function from the <code>readr</code> package, as it tends to be faster than some of the other functions developed to read in data. There are several other R functions that can read in .csv files (e.g., <code>read.csv</code>, <code>Read</code>), and if you’re interested in learning two of those functions, feel free to check out the end-of-book supplement called <a href="read.html#read_supplement">Reading Data: Chapter Supplement</a>.</p>
+<p>By default, the <code>read_csv</code> function reads data in as a data frame, where a data frame is a specific type of table in which columns contain variables and rows contain cases. Well, technically, the function reads data in as a <em>tibble</em> (as opposed to a data frame), where a tibble behaves a lot like a data frame. Thus, from here on out in the book, I’ll just use the term “data frame.” If you would like more information about tibbles, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> chapter on tibbles: <a href="http://r4ds.had.co.nz/tibbles.html" class="uri">http://r4ds.had.co.nz/tibbles.html</a>.</p>
 <p>To use the <code>read_csv</code> function, the <code>readr</code> package must be installed and accessed using the <code>install.packages</code> and <code>library</code> functions, respectively. Type <code>"readr"</code> (note the quotation marks) into the parentheses of the <code>install.packages</code> function, and run that line of code.</p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="read.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package</span></span>
 <span id="cb147-2"><a href="read.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
@@ -1236,16 +1260,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Type the name of the <code>read_csv</code> function, and note that all of the letters in the function name are lowercase. As the sole argument within the function’s parentheses and within quotation marks (<code>" "</code>), type the <em>exact</em> name of the .csv data file as it is named in your working directory (“PersData.csv”), and be sure to follow it immediately with the .csv extension. Remember, R is a language where spaces matter in the context of file names; meaning, if there are spaces in your file name, there needs to be spaces when the file name appears in your R code. Remember, the file called “PersData.csv” should already be saved in your working directory folder (see <a href="read.html#initialsteps_read">Initial Steps</a>).</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="read.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv file into R as data frame</span></span>
 <span id="cb149-2"><a href="read.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
-<pre><code>## # A tibble: 9 x 5
+<pre><code>## Rows: 9 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): lastname, firstname, startdate, gender
+## dbl (1): id
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre><code>## # A tibble: 9 × 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1   153 Sanchez    Alejandro 1/1/2016  male  
@@ -1261,19 +1284,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Often, you will want to assign a data frame to an object that will be stored in your (Global) Environment for subsequent use; once the data are assigned, the object becomes a data frame object. By creating a data frame object, you can manipulate and/or analyze the data within the object using a variety of functions (and without changing the data in the original .csv file). To assign the data frame to an object, we simply (a) use the same <code>read_csv</code> function and argument as above, (b) add either the <code>&lt;-</code> or <code>=</code> operator to the left of the <code>read_csv</code> function, and (c) create a name of our choosing for the data frame object by entering that name to the left of the <code>&lt;-</code> or <code>=</code> operator. You can name your data frame object whatever you would like as long as it doesn’t include spaces, doesn’t start with a numeral, and doesn’t include special characters like <code>*</code> or <code>-</code> (to name a few). I recommend choosing a name that is relatively short but descriptive, and that is not the same as another R function or variable name that you plan to use. Below, I name the new data frame object <code>personaldata</code>; note, however, that I could have just have easily called <code>PersonalData</code>, <code>pd</code>, <code>df</code>, or any other single-word name that doesn’t begin with a special character or a numeral.</p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="read.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R and name data frame object</span></span>
 <span id="cb152-2"><a href="read.html#cb152-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
+<pre><code>## Rows: 9 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): lastname, firstname, startdate, gender
+## dbl (1): id
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Using the <code>head</code> function from base R, let’s print just the first 6 rows of our data frame object that we named <code>personaldata</code>. This will allow us to verify that everything worked as planned.</p>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="read.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
 <span id="cb154-2"><a href="read.html#cb154-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
+<pre><code>## # A tibble: 6 × 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1   153 Sanchez  Alejandro 1/1/2016  male  
@@ -1290,7 +1312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Instead of using the <code>View</code> function, you could just “run” the name of the data frame object by highlighting <code>personaldata</code> in your R Script and clicking “Run” (or you can enter the name of the data frame object directly into your Console command line and click Enter). To print an object to the Console, another option is to use the <code>print</code> function (from base R) with the name of the data frame object as the sole argument in the parentheses. Similarly, if you have many rows of data, you can use the <code>head</code> function from base R to print just the first 6 rows of data, or you can use the <code>tail</code> function from base R to print the last 6 rows of data.</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="read.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Highlight the name of data frame object and run the code to view in Console</span></span>
 <span id="cb157-2"><a href="read.html#cb157-2" aria-hidden="true" tabindex="-1"></a>personaldata</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
+<pre><code>## # A tibble: 9 × 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1   153 Sanchez    Alejandro 1/1/2016  male  
@@ -1304,7 +1326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="read.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use print function with the name of the data frame object to view in Console</span></span>
 <span id="cb159-2"><a href="read.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
+<pre><code>## # A tibble: 9 × 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1   153 Sanchez    Alejandro 1/1/2016  male  
@@ -1318,7 +1340,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 9   282 Legend     John      1/9/2016  male</code></pre>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="read.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
 <span id="cb161-2"><a href="read.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
+<pre><code>## # A tibble: 6 × 5
 ##      id lastname firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1   153 Sanchez  Alejandro 1/1/2016  male  
@@ -1329,7 +1351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6   111 Newton   Isaac     1/9/2016  male</code></pre>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="read.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the last 6 rows of the data frame object in Console</span></span>
 <span id="cb163-2"><a href="read.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(personaldata)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 5
+<pre><code>## # A tibble: 6 × 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1   165 Doe        Jane      1/4/2016  female
@@ -1345,19 +1367,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>When needed, you can also use the <code>read_csv</code> function to read in .csv data from a website. For example, rather than save the .csv file to a folder on your computer, you can read in the raw data directly from my GitHub site. Within the quotation marks (<code>" "</code>), simply paste in the following URL: <a href="https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv" class="uri">https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv</a>.</p>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="read.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read .csv data file into R from a website</span></span>
 <span id="cb166-2"><a href="read.html#cb166-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/davidcaughlin/R-Tutorial-Data-Files/master/PersData.csv&quot;</span>)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
+<pre><code>## Rows: 9 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): lastname, firstname, startdate, gender
+## dbl (1): id
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div id="readxlsx" class="section level3" number="13.2.5">
-<h3><span class="header-section-number">13.2.5</span> Read a .xlsx File</h3>
-<p>Reading in Excel workbook files with more than one worksheet requires a bit more work. To read in a .xlsx file with multiple worksheets, we will use the <code>excel_sheets</code> and <code>read_excel</code> functions from the <code>readxl</code> package <span class="citation">(<a href="references.html#ref-R-readxl" role="doc-biblioref">Wickham and Bryan 2019</a>)</span>. Be sure to install and access the <code>read_xl</code> package if you haven’t already.</p>
+<div id="readxlsx" class="section level3 hasAnchor" number="13.2.5">
+<h3><span class="header-section-number">13.2.5</span> Read a .xlsx File<a href="read.html#readxlsx" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Reading in Excel workbook files with more than one worksheet requires a bit more work. To read in a .xlsx file with multiple worksheets, we will use the <code>excel_sheets</code> and <code>read_excel</code> functions from the <code>readxl</code> package <span class="citation">(<a href="#ref-R-readxl" role="doc-biblioref">Wickham and Bryan 2022</a>)</span>. Be sure to install and access the <code>read_xl</code> package if you haven’t already.</p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="read.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readxl package</span></span>
 <span id="cb168-2"><a href="read.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readxl&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="read.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readxl package</span></span>
@@ -1371,7 +1392,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb172-2"><a href="read.html#cb172-2" aria-hidden="true" tabindex="-1"></a>personaldata_year1 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>, <span class="at">sheet=</span><span class="st">&quot;Year1&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="read.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
 <span id="cb173-2"><a href="read.html#cb173-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata_year1)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
+<pre><code>## # A tibble: 9 × 5
 ##      id lastname   firstname startdate           gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt; 
 ## 1   153 Sanchez    Alejandro 2016-01-01 00:00:00 male  
@@ -1388,7 +1409,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb175-2"><a href="read.html#cb175-2" aria-hidden="true" tabindex="-1"></a>personaldata_year2 <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;PersData_Excel.xlsx&quot;</span>, <span class="at">sheet=</span><span class="st">&quot;Year2&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="read.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
 <span id="cb176-2"><a href="read.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata_year2)</span></code></pre></div>
-<pre><code>## # A tibble: 9 x 5
+<pre><code>## # A tibble: 9 × 5
 ##      id lastname   firstname startdate           gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt; 
 ## 1   153 Sanchez    Alejandro 2016-01-01 00:00:00 male  
@@ -1401,16 +1422,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8   312 Ramos      Jorge     2017-03-01 00:00:00 male  
 ## 9   395 Lucas      Nadia     2017-03-04 00:00:00 female</code></pre>
 </div>
-<div id="read_summary" class="section level3" number="13.2.6">
-<h3><span class="header-section-number">13.2.6</span> Summary</h3>
+<div id="read_summary" class="section level3 hasAnchor" number="13.2.6">
+<h3><span class="header-section-number">13.2.6</span> Summary<a href="read.html#read_summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In this chapter, we learned how to read data into the R environment. Reading data into R is an important first step, and often, it is the step that causes the most problems for new R users. We practiced applying the <code>read_csv</code> function from the <code>readr</code> pack and the <code>read_excel</code> function from the <code>read_xl</code> package to read .csv and .xlsx files, respectively, into the R environment.</p>
 </div>
 </div>
-<div id="read_supplement" class="section level2" number="13.3">
-<h2><span class="header-section-number">13.3</span> Chapter Supplement</h2>
+<div id="read_supplement" class="section level2 hasAnchor" number="13.3">
+<h2><span class="header-section-number">13.3</span> Chapter Supplement<a href="read.html#read_supplement" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this chapter supplement, I demonstrate additional functions that can be used to read in .csv files and demonstrate how to list the names of data files located in a (working directory) folder and how to skip rows of data when reading in a .csv file.</p>
-<div id="read_supplement_functions" class="section level3" number="13.3.1">
-<h3><span class="header-section-number">13.3.1</span> Functions &amp; Packages Introduced</h3>
+<div id="read_supplement_functions" class="section level3 hasAnchor" number="13.3.1">
+<h3><span class="header-section-number">13.3.1</span> Functions &amp; Packages Introduced<a href="read.html#read_supplement_functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <table>
 <thead>
 <tr class="header">
@@ -1434,20 +1455,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 </div>
-<div id="read_initsteps_supplement" class="section level3" number="13.3.2">
-<h3><span class="header-section-number">13.3.2</span> Initial Steps</h3>
+<div id="read_initsteps_supplement" class="section level3 hasAnchor" number="13.3.2">
+<h3><span class="header-section-number">13.3.2</span> Initial Steps<a href="read.html#read_initsteps_supplement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If required, please refer to the <a href="#initsteps_read">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="read.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
 <span id="cb178-2"><a href="read.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 </div>
-<div id="read_additionalfunctions" class="section level3" number="13.3.3">
-<h3><span class="header-section-number">13.3.3</span> Additional Functions for Reading a .csv File</h3>
-<p>In addition to the <code>read_csv</code> function from the <code>readr</code> package covered <a href="read.html#readcsv">earlier in the chapter</a>, we can read .csv files into R using the <code>read.csv</code> function from base R and the <code>Read</code> function from the <code>lessR</code> package <span class="citation">(<a href="references.html#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>, which we will review in this chapter supplement.</p>
-<div id="readcsv_supp" class="section level4" number="13.3.3.1">
-<h4><span class="header-section-number">13.3.3.1</span> <code>read.csv</code> Function from Base R</h4>
+<div id="read_additionalfunctions" class="section level3 hasAnchor" number="13.3.3">
+<h3><span class="header-section-number">13.3.3</span> Additional Functions for Reading a .csv File<a href="read.html#read_additionalfunctions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In addition to the <code>read_csv</code> function from the <code>readr</code> package covered <a href="read.html#readcsv">earlier in the chapter</a>, we can read .csv files into R using the <code>read.csv</code> function from base R and the <code>Read</code> function from the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>, which we will review in this chapter supplement.</p>
+<div id="readcsv_supp" class="section level4 hasAnchor" number="13.3.3.1">
+<h4><span class="header-section-number">13.3.3.1</span> <code>read.csv</code> Function from Base R<a href="read.html#readcsv_supp" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The <code>read.csv</code> file comes standard with base R, which means that you don’t need to install a package to access the function. As the function name implies, this function is used when the source data file is in .csv format.</p>
 <p>To learn how to use the <code>read.csv</code> function, you have the choice to follow along with the video tutorial below or the subsequent written tutorial.</p>
-<iframe src="https://youtube.com/embed/xsnOGUKtECo?rel=0" width="672" height="400px">
+<iframe src="https://youtube.com/embed/xsnOGUKtECo?rel=0" width="672" height="400px" data-external="1">
 </iframe>
 <p>Link to video tutorial: <a href="https://youtu.be/xsnOGUKtECo" class="uri">https://youtu.be/xsnOGUKtECo</a></p>
 <p>Typically, the <code>read.csv</code> function requires only a single argument within the parentheses, which will be the <em>exact</em> name of the data file enclosed with quotation marks; the file should be located your working directory folder. Remember, R is a language where case and space sensitivity matters when it comes to names; meaning, if there are spaces in your file name, there needs to be spaces when the file name appears in your R script, and if some letters are upper case in your file name, there needs to be corresponding upper-case letters in your R script. Let’s practice reading in a file called <strong>“PersData.csv”</strong> by entering the exact name of the file followed by the .csv extension, all within in quotation marks. Remember, the file called <strong>“PersData.csv”</strong> should already be saved in your working directory folder (see <a href="#initsteps_read_supp">Initial Steps</a>).</p>
@@ -1468,8 +1489,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="read.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data and name data frame object</span></span>
 <span id="cb181-2"><a href="read.html#cb181-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 </div>
-<div id="readlessr_supp" class="section level4" number="13.3.3.2">
-<h4><span class="header-section-number">13.3.3.2</span> <code>Read</code> Function from <code>lessR</code> Package</h4>
+<div id="readlessr_supp" class="section level4 hasAnchor" number="13.3.3.2">
+<h4><span class="header-section-number">13.3.3.2</span> <code>Read</code> Function from <code>lessR</code> Package<a href="read.html#readlessr_supp" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Just like the <code>read.csv</code> and <code>read_csv</code> functions, the <code>Read</code> function from the <code>lessR</code> package can read in .csv files; however, it can also read in other file formats like .xls/x, .sas7bdat (SAS), and .sav (SPSS).</p>
 <p>To use the <code>Read</code> function, the <code>lessR</code> package needs to be installed and accessed using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
 <div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="read.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
@@ -1499,7 +1520,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3  firstname character      9       0       8   Alejandro  Ronald ... Cindy  John
 ##  4  startdate character      9       0       5   1/1/2016  1/9/2016 ... 1/9/2016  1/9/2016
 ##  5     gender character      9       0       2   male  male  male ... female  female  male
-## ------------------------------------------------------------------------------------------</code></pre>
+## ------------------------------------------------------------------------------------------
+## 
+## 
+## For the column lastname, each row of data is unique. Are these values
+## a unique ID for each row? To implement, perhaps re-read a worksheet or text
+## file with the following setting added to your Read statement: row_names=2</code></pre>
 <p>Let’s print just the first six rows of the <code>personaldata</code> data frame object to the Console to verify that everything worked as intended.</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="read.html#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
 <span id="cb186-2"><a href="read.html#cb186-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
@@ -1513,41 +1539,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For more information on the <code>Read</code> function from the <code>lessR</code> package, check out David Gerbing’s website: <a href="http://www.lessrstats.com/videos.html" class="uri">http://www.lessrstats.com/videos.html</a>.</p>
 </div>
 </div>
-<div id="read_skiprows" class="section level3" number="13.3.4">
-<h3><span class="header-section-number">13.3.4</span> Skip Rows of Data During Read</h3>
+<div id="read_skiprows" class="section level3 hasAnchor" number="13.3.4">
+<h3><span class="header-section-number">13.3.4</span> Skip Rows of Data During Read<a href="read.html#read_skiprows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Thus far, I have showcased some of the most common approaches to reading in data files, with an emphasis on reading in .csv files with the first row corresponding to the column (variable) names and the remaining rows containing the substantive data for cases. There are, however, other challenges and considerations you might encounter along the way.</p>
 <p>For example, some survey platforms like Qualtrics allow for data to be downloaded in .csv format; however, sometimes these platforms include variable name and label information in the second and even third rows of data as opposed to in just the first row. Fortunately, we can skip rows when reading in such data files. We’ll first learn how to skip rows with the <code>read_csv</code> function from the <code>readr</code> package, and then we’ll learn to do so using the <code>read.csv</code> function from base R and the <code>Read</code> function from the <code>lessR</code> package.</p>
 <p>Let’s pretend that the first row of the <strong>“PersData.csv”</strong> data file contains variable names, and the second and third rows contain variable label information and explanations. We can nest the <code>read_csv</code> function (from the <code>readr</code> package) within the <code>names</code> function, which will result in a vector of names from the first row of the data file. Using the <code>&lt;-</code> operator, let’s name this vector <code>var_names</code> so that we can reference it in the subsequent step.</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="read.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read variable names from first row of data</span></span>
 <span id="cb188-2"><a href="read.html#cb188-2" aria-hidden="true" tabindex="-1"></a>var_names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>))</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
+<pre><code>## Rows: 9 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): lastname, firstname, startdate, gender
+## dbl (1): id
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Next, using the <code>read_csv</code> function, we will read in the data file, skip the variable names row and the first two rows of actual values (which adds to three rows), and add the variable names we pulled in the previous step. Notably, the <code>read_csv</code> function assumes that the first of data in your data file contain the variable names when you use the <code>col_names</code> argument, as we will do below. As usual, as the first argument of the <code>read_csv</code> function, type the exact name of the data file you wish to read in within quotation marks (<code>" "</code>). As the second argument, type <code>skip=3</code> to indicate that you wish to skip the first three rows when reading in the data. As the third argument, type <code>col_names=</code> followed by the name of the <code>var_names</code> vector object we created in the previous step. Using the <code>&lt;-</code> operator, let’s name this data frame object <code>test</code>.</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="read.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data file (but skip the variable names &amp; rows 1-2) </span></span>
 <span id="cb190-2"><a href="read.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="co"># &amp; introduce variable names</span></span>
 <span id="cb190-3"><a href="read.html#cb190-3" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>,</span>
 <span id="cb190-4"><a href="read.html#cb190-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">skip=</span><span class="dv">3</span>,</span>
 <span id="cb190-5"><a href="read.html#cb190-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_names=</span>var_names)</span></code></pre></div>
-<pre><code>## 
-## -- Column specification -----------------------------------------------------------------------------
-## cols(
-##   id = col_double(),
-##   lastname = col_character(),
-##   firstname = col_character(),
-##   startdate = col_character(),
-##   gender = col_character()
-## )</code></pre>
+<pre><code>## Rows: 7 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (4): lastname, firstname, startdate, gender
+## dbl (1): id
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Finally, let’s see the fruits of our labor by printing the contents of the <code>test</code> data frame object to our Console.</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="read.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
 <span id="cb192-2"><a href="read.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test)</span></code></pre></div>
-<pre><code>## # A tibble: 7 x 5
+<pre><code>## # A tibble: 7 × 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
 ## 1   155 Smith      John      1/9/2016  male  
@@ -1602,7 +1626,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3  firstname character      7       0       6   John  Jane ... Cindy  John
 ##  4  startdate character      7       0       4   1/9/2016  1/4/2016 ... 1/9/2016  1/9/2016
 ##  5     gender character      7       0       2   male  female ... female  male
-## ------------------------------------------------------------------------------------------</code></pre>
+## ------------------------------------------------------------------------------------------
+## 
+## 
+## For the column lastname, each row of data is unique. Are these values
+## a unique ID for each row? To implement, perhaps re-read a worksheet or text
+## file with the following setting added to your Read statement: row_names=2</code></pre>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="read.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object in Console</span></span>
 <span id="cb198-2"><a href="read.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(test)</span></code></pre></div>
 <pre><code>##    id   lastname firstname startdate gender
@@ -1614,8 +1643,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 201 Providence     Cindy  1/9/2016 female
 ## 7 282     Legend      John  1/9/2016   male</code></pre>
 </div>
-<div id="listdatafiles" class="section level3" number="13.3.5">
-<h3><span class="header-section-number">13.3.5</span> List Data File Names in Working Directory</h3>
+<div id="listdatafiles" class="section level3 hasAnchor" number="13.3.5">
+<h3><span class="header-section-number">13.3.5</span> List Data File Names in Working Directory<a href="read.html#listdatafiles" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you’re like me, and you save a lot of data files into a single folder, sometimes you find yourself flipping back and forth from RStudio to your file folder to see the exact names of the files when you’re attempting to read them into your R environment. If you would like to obtain the exact names of files located in a (working) directory, the <code>list.files</code> function from base R comes in handy. This function will return a list of all file names within a particular directory or file names that meet a particular pattern. For our purposes, let’s identify all of the .csv data file names contained within our current working directory. As the first argument, type <code>path=</code> followed by the path associated with your working directory. Second, because we are only pulling the file names associated with .csv files, enter the argument <code>all.files=FALSE</code>. Third, type the argument <code>full.names=FALSE</code> to indicate that we do not want the path to precede the file names. Finally, type the argument <code>pattern=".csv"</code> to request the names of only those file names that match the regular expression of “.csv” will be returned.</p>
 <div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="read.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List data file names in working directory</span></span>
 <span id="cb200-2"><a href="read.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;H:/RWorkshop&quot;</span>, </span>
@@ -1625,6 +1654,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In your Console, you should see the list of file names you requested. You could then copy specific file names that you wish to read into R.</p>
 
 </div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-lessR" class="csl-entry">
+Gerbing, David, The School of Business, and Portland State University. 2021. <em><span class="nocase">lessR</span>: Less Code, More Results</em>. <a href="https://CRAN.R-project.org/package=lessR">https://CRAN.R-project.org/package=lessR</a>.
+</div>
+<div id="ref-R-tidyverse" class="csl-entry">
+———. 2021. <em>Tidyverse: Easily Install and Load the Tidyverse</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.
+</div>
+<div id="ref-tidyverse2019" class="csl-entry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.
+</div>
+<div id="ref-R-readxl" class="csl-entry">
+Wickham, Hadley, and Jennifer Bryan. 2022. <em>Readxl: Read Excel Files</em>. <a href="https://CRAN.R-project.org/package=readxl">https://CRAN.R-project.org/package=readxl</a>.
+</div>
+<div id="ref-wickham2017" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em><span>R</span> for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.
+</div>
+<div id="ref-R-readr" class="csl-entry">
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -1637,7 +1687,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -1664,6 +1713,10 @@ gitbook.start({
 "text": null
 },
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
