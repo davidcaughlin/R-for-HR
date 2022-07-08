@@ -236,7 +236,8 @@ div.csl-indent {
 <li class="chapter" data-level="6.2.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#clarityparsimony_storytelling"><i class="fa fa-check"></i><b>6.2.2</b> Clarity &amp; Parsimony</a></li>
 <li class="chapter" data-level="6.2.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#influencepersuasion_storytelling"><i class="fa fa-check"></i><b>6.2.3</b> Influence &amp; Persuasion</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary_datainterpretationstorytelling"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datavizualization_storytelling"><i class="fa fa-check"></i><b>6.3</b> Data Visualization</a></li>
+<li class="chapter" data-level="6.4" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary_datainterpretationstorytelling"><i class="fa fa-check"></i><b>6.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
@@ -1147,6 +1148,9 @@ div.csl-indent {
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
 <li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
+<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1219,31 +1223,30 @@ div.csl-indent {
 <h3><span class="header-section-number">20.2.3</span> Initial Steps<a href="manipulate.html#initsteps_manipulate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already, save the file called <strong>“ManipulatingData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb558-1"><a href="manipulate.html#cb558-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb558-2"><a href="manipulate.html#cb558-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="manipulate.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb559-2"><a href="manipulate.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
 <p>Next, read in the .csv data file called <strong>“ManipulatingData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb559"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb559-1"><a href="manipulate.html#cb559-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb559-2"><a href="manipulate.html#cb559-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb559-3"><a href="manipulate.html#cb559-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb559-4"><a href="manipulate.html#cb559-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="manipulate.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb560-2"><a href="manipulate.html#cb560-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb560-3"><a href="manipulate.html#cb560-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb560-4"><a href="manipulate.html#cb560-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb560-5"><a href="manipulate.html#cb560-5" aria-hidden="true" tabindex="-1"></a>datam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ManipulatingData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb560-1"><a href="manipulate.html#cb560-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb560-2"><a href="manipulate.html#cb560-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb560-3"><a href="manipulate.html#cb560-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb560-4"><a href="manipulate.html#cb560-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb561-1"><a href="manipulate.html#cb561-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb561-2"><a href="manipulate.html#cb561-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb561-3"><a href="manipulate.html#cb561-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb561-4"><a href="manipulate.html#cb561-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb561-5"><a href="manipulate.html#cb561-5" aria-hidden="true" tabindex="-1"></a>datam <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;ManipulatingData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 20 Columns: 5
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (5): SurveyID, JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb562-1"><a href="manipulate.html#cb562-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb562-2"><a href="manipulate.html#cb562-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam)</span></code></pre></div>
-<pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;     
-## [5] &quot;JobInvolvement&quot;</code></pre>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb564-1"><a href="manipulate.html#cb564-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
-<span id="cb564-2"><a href="manipulate.html#cb564-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(datam)</span></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb563-1"><a href="manipulate.html#cb563-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb563-2"><a href="manipulate.html#cb563-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam)</span></code></pre></div>
+<pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;      &quot;JobInvolvement&quot;</code></pre>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb565-1"><a href="manipulate.html#cb565-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
+<span id="cb565-2"><a href="manipulate.html#cb565-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(datam)</span></code></pre></div>
 <pre><code>## # A tibble: 20 × 5
 ##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
 ##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
@@ -1268,18 +1271,18 @@ div.csl-indent {
 ## 19       19            40.3               51.4          71.8           50.1
 ## 20       20            56.7               56            84.3           69.5</code></pre>
 <p>Note in the data frame that the <code>SurveyID</code> variable (i.e., column, field) is a unique identifier variable, which means that each case (i.e., observation) has a unique value on this variable. Each row represents a unique employee’s composite score on four measures (i.e., <code>JobSatisfaction</code>, <code>TurnoverIntentions</code>, <code>OrgCommitment</code>, <code>JobInvolvement</code>), where higher scores indicate higher levels of the concept (i.e., construct) being measured.</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb566-1"><a href="manipulate.html#cb566-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine number of rows in data frame</span></span>
-<span id="cb566-2"><a href="manipulate.html#cb566-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam)</span></code></pre></div>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb567-1"><a href="manipulate.html#cb567-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine number of rows in data frame</span></span>
+<span id="cb567-2"><a href="manipulate.html#cb567-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam)</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 <p>Note how the data frame currently has 20 rows (cases) of data, as shown by the output to the <code>nrow</code> function from base R.</p>
 </div>
 <div id="manipulate_widetolong" class="section level3 hasAnchor" number="20.2.4">
 <h3><span class="header-section-number">20.2.4</span> Wide-to-Long Format Data Manipulation<a href="manipulate.html#manipulate_widetolong" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The data frame we read in called <code>datam</code> is in <em>wide format</em>, as each substantive variable has its own column. To restructure the data from wide to long format, we will use the <code>pivot_longer</code> function from the <code>tidyr</code> package <span class="citation">(<a href="#ref-R-tidyr" role="doc-biblioref">Wickham and Girlich 2022</a>)</span>. Along with <code>readr</code> and <code>dplyr</code> (as well as other useful packages), the <code>tidyr</code> package is part of the <code>tidyverse</code> of packages. Let’s begin by installing and accessing the <code>tidyr</code> package so that we can use the <code>pivot_longer</code> function.</p>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb568-1"><a href="manipulate.html#cb568-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package if you haven&#39;t already</span></span>
-<span id="cb568-2"><a href="manipulate.html#cb568-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="manipulate.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package</span></span>
-<span id="cb569-2"><a href="manipulate.html#cb569-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<div class="sourceCode" id="cb569"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb569-1"><a href="manipulate.html#cb569-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package if you haven&#39;t already</span></span>
+<span id="cb569-2"><a href="manipulate.html#cb569-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="manipulate.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package</span></span>
+<span id="cb570-2"><a href="manipulate.html#cb570-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
 <p><strong>If you received an error when attempting to access the <code>tidyr</code> package using the <code>library</code> function, you may need to install the following packages using the <code>install.packages</code> function: <code>rlang</code> and <code>glue</code>. Alternatively, you may try installing the entire <code>tidyverse</code> package.</strong></p>
 <p>Now that we’ve accessed the <code>tidyr</code> package, I will demonstrate two techniques for applying the <code>pivot_longer</code> function.</p>
 <p>The <em>first technique</em> uses the pipe operator (<code>%&gt;%</code>). The pipe operator comes from a package called <code>magrittr</code> <span class="citation">(<a href="#ref-R-magrittr" role="doc-biblioref">Bache and Wickham 2022</a>)</span>, on which the <code>tidyr</code> package is partially dependent. In short, a pipe allows a person to more efficiently write code and to improve the readability of the code and overall script. Specifically, a <strong>pipe</strong> forwards the result or value of one object or expression to a subsequent function. In doing so, one can avoid writing functions in which other functions are nested parenthetically. For more information on the pipe operator, check out Wickham and Grolemund’s <span class="citation">(<a href="#ref-wickham2017" role="doc-biblioref">2017</a>)</span> <a href="https://r4ds.had.co.nz/pipes.html">chapter on pipes</a>.</p>
@@ -1299,14 +1302,14 @@ div.csl-indent {
 <li>As the second argument in the <code>pivot_longer</code> function, type <code>names_to=</code> followed by what you would like to name the new stacked variable (see previous) created from the four survey measure variables. Let’s call the new variable containing the names of the measures the following: <code>"Measure"</code>.</li>
 <li>As the third argument in the <code>pivot_longer</code> function, type <code>values_to=</code> followed by what you would like to name the new variable that contains the scores for the four survey variables that are now stacked vertically for each case. Let’s call the new variable containing the scores on the four measures the following: <code>"Score"</code>.</li>
 </ol>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb570-1"><a href="manipulate.html#cb570-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (using pipe)</span></span>
-<span id="cb570-2"><a href="manipulate.html#cb570-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> datam <span class="sc">%&gt;%</span> </span>
-<span id="cb570-3"><a href="manipulate.html#cb570-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
-<span id="cb570-4"><a href="manipulate.html#cb570-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
-<span id="cb570-5"><a href="manipulate.html#cb570-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
-<span id="cb570-6"><a href="manipulate.html#cb570-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb570-7"><a href="manipulate.html#cb570-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb570-8"><a href="manipulate.html#cb570-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb571-1"><a href="manipulate.html#cb571-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (using pipe)</span></span>
+<span id="cb571-2"><a href="manipulate.html#cb571-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> datam <span class="sc">%&gt;%</span> </span>
+<span id="cb571-3"><a href="manipulate.html#cb571-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
+<span id="cb571-4"><a href="manipulate.html#cb571-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
+<span id="cb571-5"><a href="manipulate.html#cb571-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb571-6"><a href="manipulate.html#cb571-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb571-7"><a href="manipulate.html#cb571-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb571-8"><a href="manipulate.html#cb571-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 3
 ##    SurveyID Measure            Score
 ##       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
@@ -1323,28 +1326,28 @@ div.csl-indent {
 ## 11        3 OrgCommitment       63.9
 ## 12        3 JobInvolvement      50.2</code></pre>
 <p>As you can see, in the output, each respondent now has four rows of data – one row for each measure and the associated score. The giveaway is that each respondent’s unique <code>SurveyID</code> value is repeated four times.</p>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb572-1"><a href="manipulate.html#cb572-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
-<span id="cb572-2"><a href="manipulate.html#cb572-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_long)</span></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb573-1"><a href="manipulate.html#cb573-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
+<span id="cb573-2"><a href="manipulate.html#cb573-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_long)</span></code></pre></div>
 <pre><code>## [1] &quot;SurveyID&quot; &quot;Measure&quot;  &quot;Score&quot;</code></pre>
 <p>Note how there are now just three variables: <code>SurveyID</code>, <code>Measure</code>, and <code>Score</code>. Further, by applying the <code>nrow</code> function to the new data frame (as shown below), we can see that the new data frame is now much longer in terms of the number of rows; specifically, the original <code>datam</code> data frame in wide format has 20 rows, and now the new <code>datam_long</code> data frame in long format has 80 rows.</p>
-<div class="sourceCode" id="cb574"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb574-1"><a href="manipulate.html#cb574-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
-<span id="cb574-2"><a href="manipulate.html#cb574-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_long)</span></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb575-1"><a href="manipulate.html#cb575-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
+<span id="cb575-2"><a href="manipulate.html#cb575-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_long)</span></code></pre></div>
 <pre><code>## [1] 80</code></pre>
 <p>Now apply the <code>View</code> function from base R to view and scroll through the whole data frame. Note that the unique identifier variable (i.e., <code>SurveyID</code>) repeats multiple times to indicate that the same survey respondent has scores in multiple rows.</p>
-<div class="sourceCode" id="cb576"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb576-1"><a href="manipulate.html#cb576-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View entire data frame</span></span>
-<span id="cb576-2"><a href="manipulate.html#cb576-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datam_long)</span></code></pre></div>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="manipulate.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View entire data frame</span></span>
+<span id="cb577-2"><a href="manipulate.html#cb577-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(datam_long)</span></code></pre></div>
 </div>
 <div id="manipulate_widetolong_withoutpipe" class="section level4 hasAnchor" number="20.2.4.2">
 <h4><span class="header-section-number">20.2.4.2</span> <em>Without</em> Pipe<a href="manipulate.html#manipulate_widetolong_withoutpipe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can also apply the <code>pivot_longer</code> function <em>without</em> using the pipe (<code>%&gt;%</code>) operator. To do so, use the same code as above, except drop the pipe (<code>%&gt;%</code>) operator and type <code>data=</code> followed by the name of the original data frame (<code>datam</code>) as the first argument within the <code>pivot_longer</code> function parentheses.</p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb577-1"><a href="manipulate.html#cb577-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (without using pipe)</span></span>
-<span id="cb577-2"><a href="manipulate.html#cb577-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data=</span>datam,</span>
-<span id="cb577-3"><a href="manipulate.html#cb577-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
-<span id="cb577-4"><a href="manipulate.html#cb577-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
-<span id="cb577-5"><a href="manipulate.html#cb577-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
-<span id="cb577-6"><a href="manipulate.html#cb577-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb577-7"><a href="manipulate.html#cb577-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb577-8"><a href="manipulate.html#cb577-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb578-1"><a href="manipulate.html#cb578-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_longer function to restructure data in long format (without using pipe)</span></span>
+<span id="cb578-2"><a href="manipulate.html#cb578-2" aria-hidden="true" tabindex="-1"></a>datam_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data=</span>datam,</span>
+<span id="cb578-3"><a href="manipulate.html#cb578-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">cols=</span><span class="fu">c</span>(JobSatisfaction, TurnoverIntentions, OrgCommitment, JobInvolvement),</span>
+<span id="cb578-4"><a href="manipulate.html#cb578-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">names_to=</span><span class="st">&quot;Measure&quot;</span>,</span>
+<span id="cb578-5"><a href="manipulate.html#cb578-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span>
+<span id="cb578-6"><a href="manipulate.html#cb578-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb578-7"><a href="manipulate.html#cb578-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb578-8"><a href="manipulate.html#cb578-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_long, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 3
 ##    SurveyID Measure            Score
 ##       &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;
@@ -1380,13 +1383,13 @@ div.csl-indent {
 <li>As the first argument in the <code>pivot_wider</code> function, type <code>names_from=</code> followed by the name of the variable that contains the names of the different survey measures: <code>Measure</code>. The levels or categories of this <code>Measure</code> variable will become the names of separate columns (i.e., variables) when the long-format data frame object is converted to a wide-format data frame object.</li>
 <li>As the second argument in the <code>pivot_wider</code> function, type <code>values_from=</code> followed by the name of the variable that contains the values (i.e., scores) for each of the survey measures: <code>Score</code>. The values from the <code>Score</code> variable will provide the data for the new survey-measure variables when the data frame object is in wide format.</li>
 </ol>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb579-1"><a href="manipulate.html#cb579-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (using pipe)</span></span>
-<span id="cb579-2"><a href="manipulate.html#cb579-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> datam_long <span class="sc">%&gt;%</span> </span>
-<span id="cb579-3"><a href="manipulate.html#cb579-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>Measure,</span>
-<span id="cb579-4"><a href="manipulate.html#cb579-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from=</span>Score)</span>
-<span id="cb579-5"><a href="manipulate.html#cb579-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb579-6"><a href="manipulate.html#cb579-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb579-7"><a href="manipulate.html#cb579-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb580-1"><a href="manipulate.html#cb580-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (using pipe)</span></span>
+<span id="cb580-2"><a href="manipulate.html#cb580-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> datam_long <span class="sc">%&gt;%</span> </span>
+<span id="cb580-3"><a href="manipulate.html#cb580-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from=</span>Measure,</span>
+<span id="cb580-4"><a href="manipulate.html#cb580-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from=</span>Score)</span>
+<span id="cb580-5"><a href="manipulate.html#cb580-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb580-6"><a href="manipulate.html#cb580-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb580-7"><a href="manipulate.html#cb580-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 5
 ##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
 ##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
@@ -1403,25 +1406,24 @@ div.csl-indent {
 ## 11       11            23.1               66.4          15.6           30.5
 ## 12       12            22.3               61.8          71.8           30.5</code></pre>
 <p>Now let’s print the variable names in the new <code>datam_wide</code> data frame object.</p>
-<div class="sourceCode" id="cb581"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb581-1"><a href="manipulate.html#cb581-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
-<span id="cb581-2"><a href="manipulate.html#cb581-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_wide)</span></code></pre></div>
-<pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;     
-## [5] &quot;JobInvolvement&quot;</code></pre>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb582-1"><a href="manipulate.html#cb582-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable names</span></span>
+<span id="cb582-2"><a href="manipulate.html#cb582-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datam_wide)</span></code></pre></div>
+<pre><code>## [1] &quot;SurveyID&quot;           &quot;JobSatisfaction&quot;    &quot;TurnoverIntentions&quot; &quot;OrgCommitment&quot;      &quot;JobInvolvement&quot;</code></pre>
 <p>Note how we are now back to the same variables from our original wide-format data frame called <code>datam</code>: <code>SurveyID</code>, <code>JobInvolvement</code>, <code>JobSatisfaction</code>, <code>OrgCommitment</code>, and <code>TurnoverIntentions</code>. Further, by applying the <code>nrow</code> function to the new data frame (as shown below), we can see that the new wide-format data frame is now back to 20 rows. We have come full circle, as the <code>pivot_wider</code> function complements the <code>pivot_longer</code> function.</p>
-<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb583-1"><a href="manipulate.html#cb583-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
-<span id="cb583-2"><a href="manipulate.html#cb583-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_wide)</span></code></pre></div>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb584-1"><a href="manipulate.html#cb584-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame</span></span>
+<span id="cb584-2"><a href="manipulate.html#cb584-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(datam_wide)</span></code></pre></div>
 <pre><code>## [1] 20</code></pre>
 </div>
 <div id="manipulate_longtowide_withoutpipe" class="section level4 hasAnchor" number="20.2.5.2">
 <h4><span class="header-section-number">20.2.5.2</span> <em>Without</em> Pipe<a href="manipulate.html#manipulate_longtowide_withoutpipe" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can also apply the <code>pivot_wider</code> function <em>without</em> the pipe (<code>%&gt;%</code>) operator. Simply use the same code as above, except drop the pipe (<code>%&gt;%</code>) operator and type <code>data=</code> followed by the name of the long-format data frame object (<code>datam_long</code>) as the first argument within the <code>pivot_wider</code> function parentheses.</p>
-<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb585-1"><a href="manipulate.html#cb585-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (without using pipe)</span></span>
-<span id="cb585-2"><a href="manipulate.html#cb585-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>datam_long, </span>
-<span id="cb585-3"><a href="manipulate.html#cb585-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">names_from=</span>Measure,</span>
-<span id="cb585-4"><a href="manipulate.html#cb585-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">values_from=</span>Score)</span>
-<span id="cb585-5"><a href="manipulate.html#cb585-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb585-6"><a href="manipulate.html#cb585-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
-<span id="cb585-7"><a href="manipulate.html#cb585-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb586-1"><a href="manipulate.html#cb586-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply pivot_wider function to restructure data in wide format (without using pipe)</span></span>
+<span id="cb586-2"><a href="manipulate.html#cb586-2" aria-hidden="true" tabindex="-1"></a>datam_wide <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(<span class="at">data=</span>datam_long, </span>
+<span id="cb586-3"><a href="manipulate.html#cb586-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">names_from=</span>Measure,</span>
+<span id="cb586-4"><a href="manipulate.html#cb586-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">values_from=</span>Score)</span>
+<span id="cb586-5"><a href="manipulate.html#cb586-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb586-6"><a href="manipulate.html#cb586-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 12 rows of new data frame</span></span>
+<span id="cb586-7"><a href="manipulate.html#cb586-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datam_wide, <span class="at">n=</span><span class="dv">12</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 5
 ##    SurveyID JobSatisfaction TurnoverIntentions OrgCommitment JobInvolvement
 ##       &lt;dbl&gt;           &lt;dbl&gt;              &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;

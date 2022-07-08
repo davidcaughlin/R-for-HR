@@ -236,7 +236,8 @@ div.csl-indent {
 <li class="chapter" data-level="6.2.2" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#clarityparsimony_storytelling"><i class="fa fa-check"></i><b>6.2.2</b> Clarity &amp; Parsimony</a></li>
 <li class="chapter" data-level="6.2.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#influencepersuasion_storytelling"><i class="fa fa-check"></i><b>6.2.3</b> Influence &amp; Persuasion</a></li>
 </ul></li>
-<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary_datainterpretationstorytelling"><i class="fa fa-check"></i><b>6.3</b> Summary</a></li>
+<li class="chapter" data-level="6.3" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#datavizualization_storytelling"><i class="fa fa-check"></i><b>6.3</b> Data Visualization</a></li>
+<li class="chapter" data-level="6.4" data-path="datainterpretationstorytelling.html"><a href="datainterpretationstorytelling.html#summary_datainterpretationstorytelling"><i class="fa fa-check"></i><b>6.4</b> Summary</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="deploymentimplementation.html"><a href="deploymentimplementation.html"><i class="fa fa-check"></i><b>7</b> Deployment &amp; Implementation</a></li>
 <li class="part"><span><b>II Introduction to R</b></span></li>
@@ -1147,6 +1148,9 @@ div.csl-indent {
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
 <li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
 <li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
+<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1231,7 +1235,7 @@ div.csl-indent {
 <span id="cb203-4"><a href="addnames.html#cb203-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb203-5"><a href="addnames.html#cb203-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 9 Columns: 5
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (4): lastname, firstname, startdate, gender
 ## dbl (1): id
@@ -1276,17 +1280,24 @@ div.csl-indent {
 <span id="cb211-3"><a href="addnames.html#cb211-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb211-4"><a href="addnames.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of the data frame object in Console</span></span>
 <span id="cb211-5"><a href="addnames.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<pre><code>##                                         
+## 1 153  Sanchez Alejandro 1/1/2016   male
+## 2 154 McDonald    Ronald 1/9/2016   male
+## 3 155    Smith      John 1/9/2016   male
+## 4 165      Doe      Jane 1/4/2016 female
+## 5 125 Franklin  Benjamin 1/5/2016   male
+## 6 111   Newton     Isaac 1/9/2016   male</code></pre>
 <p>As you can see, the variable names do not appear in the overwritten <code>personaldata</code> data frame object.</p>
 </div>
 <div id="add_variablenames" class="section level3 hasAnchor" number="14.2.5">
 <h3><span class="header-section-number">14.2.5</span> Add Variable Names to a Data Frame Object<a href="addnames.html#add_variablenames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In other instances, you might find yourself with a dataset that lacks variable names (or has variable names that need to be replaced), which means that you will need to add those variable names to the data frame.</p>
 <p>Let’s work with the <code>personaldata</code> data frame object from the previous section for practice. To add variable names, we can use the <code>names</code> function from base R, and enter the name of the data frame as the argument. Using the <code>&lt;-</code> operator, we can specify the variable names using the <code>c</code> (combine) function that contains a vector of variable names in quotation marks (<code>" "</code>) as the arguments. <em>Remember to type a comma (<code>,</code>) between the function arguments, as commas are used to separate arguments from one another when there are more than one.</em> Please note that the it’s important that the vector of variable names contains the same number of names as the data frame object has columns.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="addnames.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
-<span id="cb212-2"><a href="addnames.html#cb212-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;lastname&quot;</span>, <span class="st">&quot;firstname&quot;</span>, <span class="st">&quot;startdate&quot;</span>, <span class="st">&quot;gender&quot;</span>)</span>
-<span id="cb212-3"><a href="addnames.html#cb212-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-4"><a href="addnames.html#cb212-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of data in Console</span></span>
-<span id="cb212-5"><a href="addnames.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="addnames.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
+<span id="cb213-2"><a href="addnames.html#cb213-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;id&quot;</span>, <span class="st">&quot;lastname&quot;</span>, <span class="st">&quot;firstname&quot;</span>, <span class="st">&quot;startdate&quot;</span>, <span class="st">&quot;gender&quot;</span>)</span>
+<span id="cb213-3"><a href="addnames.html#cb213-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb213-4"><a href="addnames.html#cb213-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print just the first 6 rows of data in Console</span></span>
+<span id="cb213-5"><a href="addnames.html#cb213-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>##    id lastname firstname startdate gender
 ## 1 153  Sanchez Alejandro  1/1/2016   male
 ## 2 154 McDonald    Ronald  1/9/2016   male
@@ -1299,18 +1310,18 @@ div.csl-indent {
 <div id="change_variablenames" class="section level3 hasAnchor" number="14.2.6">
 <h3><span class="header-section-number">14.2.6</span> Change Specific Variable Names in a Data Frame Object<a href="addnames.html#change_variablenames" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Using the resulting data frame object from the previous section (<code>personaldata</code>), we can rename specific variables using the <code>rename</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2022</a>)</span>. To get started, we’ll need to install the <code>dplyr</code> package so that we can access the <code>rename</code> function. If you haven’t already, install and access the <code>dplyr</code> package using the <code>install.packages</code> and <code>library</code> functions, respectively.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="addnames.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb214-2"><a href="addnames.html#cb214-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="addnames.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb215-2"><a href="addnames.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="addnames.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb215-2"><a href="addnames.html#cb215-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="addnames.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb216-2"><a href="addnames.html#cb216-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>We’ll begin by specifying the name of our data frame object <code>personaldata</code>, followed by the <code>&lt;-</code> operator so that we can overwrite the existing <code>personaldata</code> frame object with one that contains the renamed variables. Next, type the name of the <code>rename</code> function. As the first argument in the function, type the name of the data frame object (<code>personaldata</code>). As the second argument, let’s change the <code>lastname</code> variable to <code>Last_Name</code> by typing the name of our new variable followed by <code>=</code> and, in quotation marks (<code>" "</code>), the name of the original variable (<code>Last_Name="lastname"</code>). As the third argument, let’s apply the same process as the second argument and change the <code>firstname</code> variable to <code>First_Name</code> by typing the name of our new variable followed by <code>=</code> and, in quotation marks (<code>" "</code>), the name of the original variable (<code>First_Name="firstname"</code>).</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="addnames.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
-<span id="cb216-2"><a href="addnames.html#cb216-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">rename</span>(personaldata,</span>
-<span id="cb216-3"><a href="addnames.html#cb216-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Last_Name=</span><span class="st">&quot;lastname&quot;</span>,</span>
-<span id="cb216-4"><a href="addnames.html#cb216-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">First_Name=</span><span class="st">&quot;firstname&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="addnames.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add (or replace) variable names to data frame object</span></span>
+<span id="cb217-2"><a href="addnames.html#cb217-2" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">rename</span>(personaldata,</span>
+<span id="cb217-3"><a href="addnames.html#cb217-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">Last_Name=</span><span class="st">&quot;lastname&quot;</span>,</span>
+<span id="cb217-4"><a href="addnames.html#cb217-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">First_Name=</span><span class="st">&quot;firstname&quot;</span>)</span></code></pre></div>
 <p>Using the <code>head</code> function from base R, let’s verify that we renamed the two variables successfully.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="addnames.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of data in Console</span></span>
-<span id="cb217-2"><a href="addnames.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="addnames.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View just the first 6 rows of data in Console</span></span>
+<span id="cb218-2"><a href="addnames.html#cb218-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(personaldata)</span></code></pre></div>
 <pre><code>##    id Last_Name First_Name startdate gender
 ## 1 153   Sanchez  Alejandro  1/1/2016   male
 ## 2 154  McDonald     Ronald  1/9/2016   male
