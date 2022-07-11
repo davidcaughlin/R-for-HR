@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1360,7 +1364,7 @@ In the interim, we caution against using separate regression lines for men and w
 <span id="cb1403-4"><a href="differentialprediction.html#cb1403-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1403-5"><a href="differentialprediction.html#cb1403-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 377 Columns: 6
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (3): emp_id, gender, race
 ## dbl (3): perf_eval, interview, age
@@ -1425,7 +1429,7 @@ In the interim, we caution against using separate regression lines for men and w
 <p><strong>Step One:</strong> Let’s being by regressing the criterion variable <code>perf_eval</code> on the selection tool variable <code>c_interview</code>. Here we are just establishing whether the selection tool shows evidence of criterion-related validity. See the chapters on <a href="predictingcriterionscores.html#predictingcriterionscores">predicting criterion scores using simple linear regression</a> if you would like more information on regression-based approaches to assessing criterion-related validity, including determining whether statistical assumptions have been met. You can use either the <code>Regression</code> or <code>reg_brief</code> function from <code>lessR</code>, where the latter provides less output. To keep the amount of output in this tutorial to a minimum, I will use the <code>reg_brief</code> function, but when you evaluate whether statistical assumptions have been met, be sure to use the full <code>Regression</code> function.</p>
 <div class="sourceCode" id="cb1414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1414-1"><a href="differentialprediction.html#cb1414-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool)</span></span>
 <span id="cb1414-2"><a href="differentialprediction.html#cb1414-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-865-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-868-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, Rmd=&quot;eg&quot;)  
@@ -1503,7 +1507,7 @@ In the interim, we caution against using separate regression lines for men and w
 <p><strong>Step Two:</strong> Next, let’s add the protected class variable <code>gender</code> to our model to investigate whether <em>intercept differences</em> exist. For more information on how to interpret and test the statistical assumptions of a multiple linear regression model, check out the <a href="#incremental%20validity">chapter on estimating incremental validity using multiple linear regression</a>.</p>
 <div class="sourceCode" id="cb1416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1416-1"><a href="differentialprediction.html#cb1416-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (gender)</span></span>
 <span id="cb1416-2"><a href="differentialprediction.html#cb1416-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">+</span> gender, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-866-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-869-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + gender, data=DiffPred, Rmd=&quot;eg&quot;)  
@@ -1605,14 +1609,14 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.16   0.05     3.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-870-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-873-1.png" width="672" /></p>
 <p><em>[If you got an error message when running the <code>probe_interaction</code> function, you may need to install the <code>sandwich</code> package and then try again.]</em></p>
 <p>Because we were only testing an additive model, the figure shows the slopes for each subgroup (men, women) as equal with just the intercepts differing. In the following step, we will formally test whether a multiplicative interaction effect exists, which would suggest slope differences.</p>
 <p><strong>Step Three:</strong> As the final step, it’s time to add the interaction term between <code>c_interview</code> and <code>gender</code> to the model. Fortunately, this is very easy to do in R. All we need to do is change the <code>+</code> symbol from our previous regression model script to the <code>*</code>, where the <code>*</code> implies an interaction in the context of a model. Conceptually, the <code>*</code> is appropriate because we are estimating a multiplicative model when we have an interaction term, which is commonly known as a product term.</p>
 <div class="sourceCode" id="cb1423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1423-1"><a href="differentialprediction.html#cb1423-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (gender), </span></span>
 <span id="cb1423-2"><a href="differentialprediction.html#cb1423-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and interaction between selection tool and protected class</span></span>
 <span id="cb1423-3"><a href="differentialprediction.html#cb1423-3" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">*</span> gender, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-871-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-874-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * gender, data=DiffPred, Rmd=&quot;eg&quot;)  
@@ -1709,7 +1713,7 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.26   0.06     4.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-873-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-876-1.png" width="672" /></p>
 <p>The plot output shows that the two slopes are indeed different, such that there doesn’t seem to be much of an association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) for men, but there seems to be a positive association for women. Now take a look at the text output in your console. The simple slopes analysis automatically estimates the regression coefficient (slope) for both levels of the moderator variable (<code>gender</code>: man, woman). Corroborating what we see in the plot, we find that the simple slope for women is indeed statistically significant and positive (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in interview scores, job performance scores tend to go up by .26 units. In contrast, we find that the simple slope for men is nonsignificant (<em>b</em> = -.02, <em>p</em> = .77).</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the levels/subgroups of the protected class variable (<code>gender</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 <p><strong>Sample Write-Up:</strong> Our HR analytics team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we caution against using separate regression lines for men and women, as this may be interpreted as running afoul of the U.S. Civil Rights Act of 1991 <span class="citation">(<a href="#ref-saad2002investigating" role="doc-biblioref">Saad and Sackett 2002</a>)</span>. A more conservative approach would be to develop a structured interview process that allows for the use of a common regression line across legally protected groups.</p>
@@ -1720,7 +1724,7 @@ In the interim, we caution against using separate regression lines for men and w
 <p><strong>Step One:</strong> Regress the criterion variable <code>perf_eval</code> on the selection tool variable <code>c_interview</code>.</p>
 <div class="sourceCode" id="cb1428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1428-1"><a href="differentialprediction.html#cb1428-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool)</span></span>
 <span id="cb1428-2"><a href="differentialprediction.html#cb1428-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-874-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-877-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, Rmd=&quot;eg&quot;)  
@@ -1775,7 +1779,7 @@ In the interim, we caution against using separate regression lines for men and w
 <p><strong>Step Two:</strong> Regress the criterion variable <code>perf_eval</code> on the selection tool variable <code>c_interview</code> and the protected class variable <code>c_age</code>.</p>
 <div class="sourceCode" id="cb1430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1430-1"><a href="differentialprediction.html#cb1430-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (c_age)</span></span>
 <span id="cb1430-2"><a href="differentialprediction.html#cb1430-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">+</span> c_age, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-875-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-878-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + c_age, data=DiffPred, Rmd=&quot;eg&quot;)  
@@ -1862,12 +1866,12 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.56   0.05    11.31   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-877-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-880-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>c_age</code> to the model using the <code>*</code> symbol.</p>
 <div class="sourceCode" id="cb1435"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1435-1"><a href="differentialprediction.html#cb1435-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (c_age), </span></span>
 <span id="cb1435-2"><a href="differentialprediction.html#cb1435-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and interaction between selection tool and protected class</span></span>
 <span id="cb1435-3"><a href="differentialprediction.html#cb1435-3" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">*</span> c_age, <span class="at">data=</span>DiffPred)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-878-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-881-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * c_age, data=DiffPred, Rmd=&quot;eg&quot;)  
@@ -1956,7 +1960,7 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.69   0.06    11.40   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-880-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-883-1.png" width="672" /></p>
 <p>The plot and the simple slopes analyses output show that the two slopes are indeed different, such that the association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) is stronger for older workers (<em>b</em> = .69, <em>p</em> &lt; .01), than for average-aged workers (<em>b</em> = .57, <em>p</em> &lt; .01) and younger workers (<em>b</em> = .45, <em>p</em> &lt; .01). Notably, all three simple slopes are statistically significant and positive, but the slope is stronger for older workers.</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the protected class variable (<code>c_age</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 </div>
@@ -1967,7 +1971,7 @@ In the interim, we caution against using separate regression lines for men and w
 <div class="sourceCode" id="cb1440"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1440-1"><a href="differentialprediction.html#cb1440-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool)</span></span>
 <span id="cb1440-2"><a href="differentialprediction.html#cb1440-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview, <span class="at">data=</span>DiffPred, </span>
 <span id="cb1440-3"><a href="differentialprediction.html#cb1440-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">rows=</span>(race<span class="sc">==</span><span class="st">&quot;asian&quot;</span> <span class="sc">|</span> race<span class="sc">==</span><span class="st">&quot;white&quot;</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-881-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-884-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
@@ -2023,7 +2027,7 @@ In the interim, we caution against using separate regression lines for men and w
 <div class="sourceCode" id="cb1442"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1442-1"><a href="differentialprediction.html#cb1442-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (race)</span></span>
 <span id="cb1442-2"><a href="differentialprediction.html#cb1442-2" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">+</span> race, <span class="at">data=</span>DiffPred,</span>
 <span id="cb1442-3"><a href="differentialprediction.html#cb1442-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">rows=</span>(race<span class="sc">==</span><span class="st">&quot;asian&quot;</span> <span class="sc">|</span> race<span class="sc">==</span><span class="st">&quot;white&quot;</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-882-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-885-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview + race, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
@@ -2118,13 +2122,13 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.41   0.05     8.94   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-884-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-887-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>race</code> to the model using the <code>*</code> symbol.</p>
 <div class="sourceCode" id="cb1447"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1447-1"><a href="differentialprediction.html#cb1447-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (race), </span></span>
 <span id="cb1447-2"><a href="differentialprediction.html#cb1447-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and interaction between selection tool and protected class</span></span>
 <span id="cb1447-3"><a href="differentialprediction.html#cb1447-3" aria-hidden="true" tabindex="-1"></a><span class="fu">reg_brief</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">*</span> race, <span class="at">data=</span>DiffPred,</span>
 <span id="cb1447-4"><a href="differentialprediction.html#cb1447-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">rows=</span>(race<span class="sc">==</span><span class="st">&quot;asian&quot;</span> <span class="sc">|</span> race<span class="sc">==</span><span class="st">&quot;white&quot;</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-885-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-888-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestion
 ## # Create an R markdown file for interpretative output with  Rmd = &quot;file_name&quot;
 ## reg(perf_eval ~ c_interview * race, data=DiffPred, rows=(race == &quot;asian&quot; | race == &quot;white&quot;), Rmd=&quot;eg&quot;)  
@@ -2259,7 +2263,7 @@ In the interim, we caution against using separate regression lines for men and w
 <span id="cb1451-4"><a href="differentialprediction.html#cb1451-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1451-5"><a href="differentialprediction.html#cb1451-5" aria-hidden="true" tabindex="-1"></a>DiffPred <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;DiffPred.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 377 Columns: 6
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (3): emp_id, gender, race
 ## dbl (3): perf_eval, interview, age
@@ -2419,7 +2423,7 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.16   0.05     3.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-898-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-901-1.png" width="672" /></p>
 <p>Because we were only testing an additive model, the figure shows the slopes for each subgroup (men, women) as equal with just the intercepts differing. In the following step, we will formally test whether a multiplicative interaction effect exists, which would suggest slope differences.</p>
 <p><strong>Step Three:</strong> As the final step, it’s time to add the interaction term between <code>c_interview</code> and <code>gender</code> to the model. Fortunately, this is very easy to do in R. All we need to do is change the <code>+</code> symbol from our previous regression model script to the <code>*</code>, where the <code>*</code> implies an interaction in the context of a model. Conceptually, the <code>*</code> is appropriate because we are estimating a multiplicative model when we have an interaction term, which is commonly known as a product term. Let’s name this model <code>model.3</code>. As before, we’ll do a nested model comparison with the previous model and this one to determine whether there is a significant improvement in fit. In addition, we’ll estimate change in <em>R</em><sup>2</sup>.</p>
 <div class="sourceCode" id="cb1472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1472-1"><a href="differentialprediction.html#cb1472-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (gender), </span></span>
@@ -2482,7 +2486,7 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.26   0.06     4.32   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-902-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-905-1.png" width="672" /></p>
 <p>The plot output shows that the two slopes are indeed different, such that there doesn’t seem to be much of an association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) for men, but there seems to be a postive association for women. Now take a look at the text output in your console. The simple slopes analysis automatically estimates the regression coefficient (slope) for both levels of the moderator variable (<code>gender</code>: man, woman). Corroborating what we see in the plot, we find that the simple slope for women is indeed statistically significant and positive (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in interview scores, job performance scores tend to go up by .26 units. In contrast, we find that the simple slope for men is nonsignificant (<em>b</em> = -.02, <em>p</em> = .77).</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the levels/subgroups of the protected class variable (<code>gender</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 <p><strong>Sample Write-Up:</strong> Our HR analytics team recently found evidence in support of the criterion-related validity of a new structured interview selection procedure. As a next step, we investigated whether there might be evidence of differential prediction of the structured interview based on the U.S. protected class of gender. Based on a sample of 377 individuals, we applied a three-step process with moderated multiple linear regression, which is consistent with established principles <span class="citation">(<a href="#ref-siop2018" role="doc-biblioref">Society for Industrial &amp; Organizational Psychology 2018</a>; <a href="#ref-cleary1968test" role="doc-biblioref">Cleary 1968</a>)</span>. Based on our analyses, we found evidence differential prediction (i.e., predictive bias) based on gender for the new structured interview procedure, and specifically, we found evidence of both intercept and slope differences. In the first step, we found evidence of criterion-related validity based on a simple linear regression model, as structured interview scores were positively and significantly associated with job performance (<em>b</em> = .307, <em>p</em> &lt; .001), thereby indicating some degree of job-relatedness and -relevance. In the second step, we added the protected class variable associated with gender to the model, resulting in a multiple linear regression model, and found that the model intercept for women was significantly lower than the intercept for men (<em>b</em> = -.602, <em>p</em> &lt; .001). In the third step, we added the interaction term between the structured interview and gender variables, resulting in a moderated multiple linear regression model, and we found that gender moderated the association between interview scores and job performance scores to a statistically significant extent (<em>b</em> = .284, <em>p</em> = .007). Based on follow-up simple slopes analyses, we found that the association between structured interview scores and job performance scores was statistically significant for women (<em>b</em> = .26, <em>p</em> &lt; .01), such that for every one unit increase in structured interview scores, job performance scores tended to increase by .26 units; in contrast, the associated between structured interview scores and job performance scores for men was nonsignificant (<em>b</em> = -.02, <em>p</em> = .77). In sum, we found evidence of both intercept and slope differences, which means that this interview tool shows predictive bias with respect to gender, making the application of a common regression line (i.e., equation) inappropriate according to U.S. guidelines. If possible, this structured interview should be redesigned or the interviewers should be trained to reduce the predictive bias based on gender. In the interim, we caution against using separate regression lines for men and women, as this may be interpreted as running afoul of the U.S. Civil Rights Act of 1991 <span class="citation">(<a href="#ref-saad2002investigating" role="doc-biblioref">Saad and Sackett 2002</a>)</span>. A more conservative approach would be to develop a structured interview process that allows for the use of a common regression line across legally protected groups.</p>
@@ -2578,7 +2582,7 @@ In the interim, we caution against using separate regression lines for men and w
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.56   0.05    11.31   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-907-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-910-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>c_age</code> to the model using the <code>*</code> symbol. In addition, do a nested model comparison, and estimate the change in <em>R</em><sup>2</sup>.</p>
 <div class="sourceCode" id="cb1490"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1490-1"><a href="differentialprediction.html#cb1490-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool) and protected class (c_age)</span></span>
 <span id="cb1490-2"><a href="differentialprediction.html#cb1490-2" aria-hidden="true" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(perf_eval <span class="sc">~</span> c_interview <span class="sc">*</span> c_age, <span class="at">data=</span>DiffPred)</span>
@@ -2646,7 +2650,7 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.69   0.06    11.40   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-911-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-914-1.png" width="672" /></p>
 <p>The plot and the simple slopes analyses output show that the two slopes are indeed different, such that the association between the selection tool (<code>c_interview</code>, Interview) and the criterion (<code>perf_eval</code>, Job Performance) is stronger for older workers (<em>b</em> = .69, <em>p</em> &lt; .01), than for average-aged workers (<em>b</em> = .57, <em>p</em> &lt; .01) and younger workers (<em>b</em> = .45, <em>p</em> &lt; .01). Notably, all three simple slopes are statistically significant and postive, but the slope is stronger for older workers.</p>
 <p>In sum, we found evidence of intercept <em>and</em> slope differences for the selection tool (<code>c_interview</code>) in relation to the criterion (<code>perf_eval</code>) that were conditional upon the protected class variable (<code>c_age</code>). Thus, it would be inappropriate to use a common regression line when predicting scores on the criterion based on the interview selection tool.</p>
 </div>
@@ -2739,7 +2743,7 @@ Now we’re ready to use the <code>probe_interaction</code> to plot this multipl
 ##   Est.   S.E.   t val.      p
 ## ------ ------ -------- ------
 ##   0.41   0.05     8.94   0.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-916-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-919-1.png" width="672" /></p>
 <p><strong>Step Three:</strong> Now add the interaction term between <code>c_interview</code> and <code>race</code> to the model using the <code>*</code> symbol. In addition, do a nested model comparison, and estimate the change in <em>R</em><sup>2</sup>.</p>
 <div class="sourceCode" id="cb1508"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1508-1"><a href="differentialprediction.html#cb1508-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regress perf_eval (criterion) on c_interview (selection tool), protected class (race),</span></span>
 <span id="cb1508-2"><a href="differentialprediction.html#cb1508-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and interaction between selection tool and protected class</span></span>

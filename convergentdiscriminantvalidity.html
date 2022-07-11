@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1365,17 +1369,18 @@ div.csl-indent {
 <span id="cb1930-4"><a href="convergentdiscriminantvalidity.html#cb1930-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1930-5"><a href="convergentdiscriminantvalidity.html#cb1930-5" aria-hidden="true" tabindex="-1"></a>PerfRew <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfMgmtRewardSystemsExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 95 Columns: 11
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (1): Sex
-## dbl (10): EmpID, Perf_Qual, Perf_Prod, Perf_Effort, Perf_Admin, SalesRevenue, BasePay_2018, VariablePay_2018, Age,...
+## dbl (10): EmpID, Perf_Qual, Perf_Prod, Perf_Effort, Perf_Admin, SalesRevenue, BasePay_2018, VariablePay_2018, Age...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb1932"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1932-1"><a href="convergentdiscriminantvalidity.html#cb1932-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
 <span id="cb1932-2"><a href="convergentdiscriminantvalidity.html#cb1932-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(PerfRew)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmpID&quot;            &quot;Perf_Qual&quot;        &quot;Perf_Prod&quot;        &quot;Perf_Effort&quot;      &quot;Perf_Admin&quot;       &quot;SalesRevenue&quot;    
-##  [7] &quot;BasePay_2018&quot;     &quot;VariablePay_2018&quot; &quot;Sex&quot;              &quot;Age&quot;              &quot;EducationLevel&quot;</code></pre>
+<pre><code>##  [1] &quot;EmpID&quot;            &quot;Perf_Qual&quot;        &quot;Perf_Prod&quot;        &quot;Perf_Effort&quot;      &quot;Perf_Admin&quot;      
+##  [6] &quot;SalesRevenue&quot;     &quot;BasePay_2018&quot;     &quot;VariablePay_2018&quot; &quot;Sex&quot;              &quot;Age&quot;             
+## [11] &quot;EducationLevel&quot;</code></pre>
 <div class="sourceCode" id="cb1934"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1934-1"><a href="convergentdiscriminantvalidity.html#cb1934-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
 <span id="cb1934-2"><a href="convergentdiscriminantvalidity.html#cb1934-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(PerfRew)</span></code></pre></div>
 <pre><code>## spec_tbl_df [95 × 11] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
@@ -1509,7 +1514,7 @@ div.csl-indent {
 <p>To begin, type the name of the <code>ScatterPlot</code> function. As the first two arguments of the function, we’ll type the names of the two variables we wish to visualize: <code>Perf_Overall</code> and <code>SalesRevenue</code>. The variable name that we type after the <code>x=</code> argument will set the x-axis, and the variable name that we type after the <code>y=</code> argument will set the y-axis. Conventionally, we place the criterion variable on the y-axis, as it is the outcome. As the third argument, use the <code>data=</code> argument to provide the name of the data frame to which the two variables belong (<code>PerfRew</code>).</p>
 <div class="sourceCode" id="cb1950"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1950-1"><a href="convergentdiscriminantvalidity.html#cb1950-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plot using ScatterPlot function from lessR</span></span>
 <span id="cb1950-2"><a href="convergentdiscriminantvalidity.html#cb1950-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Perf_Overall, <span class="at">y=</span>SalesRevenue, <span class="at">data=</span>PerfRew)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1191-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1194-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Perf_Overall, SalesRevenue, enhance=TRUE)  # many options
 ## Plot(Perf_Overall, SalesRevenue, color=&quot;red&quot;)  # exterior edge color of points
@@ -1531,7 +1536,7 @@ div.csl-indent {
 <span id="cb1952-2"><a href="convergentdiscriminantvalidity.html#cb1952-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ScatterPlot</span>(<span class="at">x=</span>Perf_Overall, <span class="at">y=</span>SalesRevenue, <span class="at">data=</span>PerfRew, </span>
 <span id="cb1952-3"><a href="convergentdiscriminantvalidity.html#cb1952-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">xlab=</span><span class="st">&quot;Overall Performance Evaluation Score&quot;</span>,</span>
 <span id="cb1952-4"><a href="convergentdiscriminantvalidity.html#cb1952-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Annual Sales Revenue Generated ($)&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1192-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1195-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Perf_Overall, SalesRevenue, enhance=TRUE)  # many options
 ## Plot(Perf_Overall, SalesRevenue, fill=&quot;skyblue&quot;)  # interior fill color of points
@@ -1552,7 +1557,7 @@ div.csl-indent {
 <span id="cb1954-4"><a href="convergentdiscriminantvalidity.html#cb1954-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">ylab=</span><span class="st">&quot;Annual Sales Revenue Generated ($)&quot;</span>,</span>
 <span id="cb1954-5"><a href="convergentdiscriminantvalidity.html#cb1954-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1193-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1196-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Perf_Overall, SalesRevenue, enhance=TRUE)  # many options
 ## Plot(Perf_Overall, SalesRevenue, color=&quot;red&quot;)  # exterior edge color of points
@@ -1598,7 +1603,7 @@ div.csl-indent {
 ## Plot(Perf_Overall, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry</code></pre>
 <pre><code>## The default of &#39;doScale&#39; is FALSE now for stability;
 ##   set options(mc_doScale_quiet=TRUE) to suppress this (once per session) message</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1197-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1200-1.png" width="672" /></p>
 <pre><code>## --- Perf_Overall --- 
 ## Present: 95 
 ## Missing: 0 
@@ -1631,7 +1636,7 @@ div.csl-indent {
 ## &gt;&gt;&gt; Suggestions
 ## Plot(SalesRevenue, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(SalesRevenue, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1198-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1201-1.png" width="672" /></p>
 <pre><code>## --- SalesRevenue --- 
 ## Present: 95 
 ## Missing: 0 
@@ -1666,7 +1671,7 @@ div.csl-indent {
 <span id="cb1968-3"><a href="convergentdiscriminantvalidity.html#cb1968-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">ellipse=</span><span class="cn">TRUE</span>,</span>
 <span id="cb1968-4"><a href="convergentdiscriminantvalidity.html#cb1968-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">out_cut=</span>.<span class="dv">05</span>)</span></code></pre></div>
 <pre><code>## [Ellipse with Murdoch and Chow&#39;s function ellipse from their ellipse package]</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1199-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1202-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Perf_Overall, SalesRevenue, enhance=TRUE)  # many options
 ## Plot(Perf_Overall, SalesRevenue, fill=&quot;skyblue&quot;)  # interior fill color of points
@@ -1779,7 +1784,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 ## &gt;&gt;&gt; Suggestions
 ## Plot(Perf_Overall, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(Perf_Overall, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1202-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1205-1.png" width="672" /></p>
 <pre><code>## --- Perf_Overall --- 
 ## Present: 95 
 ## Missing: 0 
@@ -2124,17 +2129,18 @@ Thus, we can assume that the assumption of univariate normality has been met for
 <span id="cb1998-4"><a href="convergentdiscriminantvalidity.html#cb1998-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1998-5"><a href="convergentdiscriminantvalidity.html#cb1998-5" aria-hidden="true" tabindex="-1"></a>PerfRew <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PerfMgmtRewardSystemsExample.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 95 Columns: 11
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (1): Sex
-## dbl (10): EmpID, Perf_Qual, Perf_Prod, Perf_Effort, Perf_Admin, SalesRevenue, BasePay_2018, VariablePay_2018, Age,...
+## dbl (10): EmpID, Perf_Qual, Perf_Prod, Perf_Effort, Perf_Admin, SalesRevenue, BasePay_2018, VariablePay_2018, Age...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb2000"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2000-1"><a href="convergentdiscriminantvalidity.html#cb2000-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
 <span id="cb2000-2"><a href="convergentdiscriminantvalidity.html#cb2000-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(PerfRew)</span></code></pre></div>
-<pre><code>##  [1] &quot;EmpID&quot;            &quot;Perf_Qual&quot;        &quot;Perf_Prod&quot;        &quot;Perf_Effort&quot;      &quot;Perf_Admin&quot;       &quot;SalesRevenue&quot;    
-##  [7] &quot;BasePay_2018&quot;     &quot;VariablePay_2018&quot; &quot;Sex&quot;              &quot;Age&quot;              &quot;EducationLevel&quot;</code></pre>
+<pre><code>##  [1] &quot;EmpID&quot;            &quot;Perf_Qual&quot;        &quot;Perf_Prod&quot;        &quot;Perf_Effort&quot;      &quot;Perf_Admin&quot;      
+##  [6] &quot;SalesRevenue&quot;     &quot;BasePay_2018&quot;     &quot;VariablePay_2018&quot; &quot;Sex&quot;              &quot;Age&quot;             
+## [11] &quot;EducationLevel&quot;</code></pre>
 <div class="sourceCode" id="cb2002"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2002-1"><a href="convergentdiscriminantvalidity.html#cb2002-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
 <span id="cb2002-2"><a href="convergentdiscriminantvalidity.html#cb2002-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(PerfRew)</span></code></pre></div>
 <pre><code>## spec_tbl_df [95 × 11] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
@@ -2369,7 +2375,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 <p>To begin, type the name of the <code>cor.plot</code> function. As the first argument, type the name of the correlation matrix object you just created (<code>matrixexample2</code>). As the second argument, leave the <code>numbers=TRUE</code> argument as is. You can save the image by selecting Export from the Plots window in RStudio.</p>
 <div class="sourceCode" id="cb2028"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2028-1"><a href="convergentdiscriminantvalidity.html#cb2028-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a heatmap correlation matrix</span></span>
 <span id="cb2028-2"><a href="convergentdiscriminantvalidity.html#cb2028-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.plot</span>(matrixexample2, <span class="at">numbers=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1238-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1241-1.png" width="672" /></p>
 <p>The heatmap displays stronger positive correlations in a darker hue of blue and stronger negative correlations in a darker hue of red. Correlations that are equal to zero will be white.</p>
 </div>
 <div id="corrgram_corrgram_function" class="section level3 hasAnchor" number="51.3.6">
@@ -2391,7 +2397,7 @@ Thus, we can assume that the assumption of univariate normality has been met for
 <div class="sourceCode" id="cb2031"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2031-1"><a href="convergentdiscriminantvalidity.html#cb2031-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a correlogram heatmap</span></span>
 <span id="cb2031-2"><a href="convergentdiscriminantvalidity.html#cb2031-2" aria-hidden="true" tabindex="-1"></a><span class="fu">corrgram</span>(PerfRew, <span class="at">order=</span><span class="cn">TRUE</span>, <span class="at">lower.panel=</span>panel.shade,</span>
 <span id="cb2031-3"><a href="convergentdiscriminantvalidity.html#cb2031-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">upper.panel=</span>panel.pie, <span class="at">text.panel=</span>panel.txt)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1241-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1244-1.png" width="672" /></p>
 
 </div>
 </div>

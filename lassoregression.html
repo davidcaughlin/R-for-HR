@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1379,16 +1383,17 @@ div.csl-indent {
 <span id="cb2063-4"><a href="lassoregression.html#cb2063-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2063-5"><a href="lassoregression.html#cb2063-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;lasso.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 1000 Columns: 37
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
-## dbl (37): y, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, ...
+## dbl (37): y, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22,...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb2065"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2065-1"><a href="lassoregression.html#cb2065-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
 <span id="cb2065-2"><a href="lassoregression.html#cb2065-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>##  [1] &quot;y&quot;   &quot;x1&quot;  &quot;x2&quot;  &quot;x3&quot;  &quot;x4&quot;  &quot;x5&quot;  &quot;x6&quot;  &quot;x7&quot;  &quot;x8&quot;  &quot;x9&quot;  &quot;x10&quot; &quot;x11&quot; &quot;x12&quot; &quot;x13&quot; &quot;x14&quot; &quot;x15&quot; &quot;x16&quot; &quot;x17&quot; &quot;x18&quot;
-## [20] &quot;x19&quot; &quot;x20&quot; &quot;x21&quot; &quot;x22&quot; &quot;x23&quot; &quot;x24&quot; &quot;x25&quot; &quot;x26&quot; &quot;x27&quot; &quot;x28&quot; &quot;x29&quot; &quot;x30&quot; &quot;x31&quot; &quot;x32&quot; &quot;x33&quot; &quot;x34&quot; &quot;x35&quot; &quot;x36&quot;</code></pre>
+<pre><code>##  [1] &quot;y&quot;   &quot;x1&quot;  &quot;x2&quot;  &quot;x3&quot;  &quot;x4&quot;  &quot;x5&quot;  &quot;x6&quot;  &quot;x7&quot;  &quot;x8&quot;  &quot;x9&quot;  &quot;x10&quot; &quot;x11&quot; &quot;x12&quot; &quot;x13&quot; &quot;x14&quot; &quot;x15&quot; &quot;x16&quot; &quot;x17&quot;
+## [19] &quot;x18&quot; &quot;x19&quot; &quot;x20&quot; &quot;x21&quot; &quot;x22&quot; &quot;x23&quot; &quot;x24&quot; &quot;x25&quot; &quot;x26&quot; &quot;x27&quot; &quot;x28&quot; &quot;x29&quot; &quot;x30&quot; &quot;x31&quot; &quot;x32&quot; &quot;x33&quot; &quot;x34&quot; &quot;x35&quot;
+## [37] &quot;x36&quot;</code></pre>
 <div class="sourceCode" id="cb2067"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2067-1"><a href="lassoregression.html#cb2067-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
 <span id="cb2067-2"><a href="lassoregression.html#cb2067-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spec_tbl_df [1,000 × 37] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
@@ -1631,7 +1636,7 @@ div.csl-indent {
 <span id="cb2092-5"><a href="lassoregression.html#cb2092-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Root Mean-Squared Error (RMSE)&quot;</span>,</span>
 <span id="cb2092-6"><a href="lassoregression.html#cb2092-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">0</span>)</span>
 <span id="cb2092-7"><a href="lassoregression.html#cb2092-7" aria-hidden="true" tabindex="-1"></a>     )</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1284-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1287-1.png" width="672" /></p>
 <p>Remember, our goal is to minimize model prediction error and, specifically, RMSE. As you can see in the plot above, the lowest RMSE value (~ .84) seems to occur around a log(lambda) value of approximately -4 or so. To see what that exact value is, let’s apply a logarithmic transformation to our optimal lambda using the <code>log</code> function.</p>
 <div class="sourceCode" id="cb2093"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2093-1"><a href="lassoregression.html#cb2093-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Best tuned lambda</span></span>
 <span id="cb2093-2"><a href="lassoregression.html#cb2093-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(model1<span class="sc">$</span>bestTune<span class="sc">$</span>lambda)</span></code></pre></div>
@@ -1702,7 +1707,7 @@ div.csl-indent {
 <div class="sourceCode" id="cb2103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2103-1"><a href="lassoregression.html#cb2103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the importance of different predictor variables</span></span>
 <span id="cb2103-2"><a href="lassoregression.html#cb2103-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb2103-3"><a href="lassoregression.html#cb2103-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">varImp</span>(model1))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1291-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1294-1.png" width="672" /></p>
 <p>Note that the y-axis is labeled “Feature,” which is just another way of saying “predictor variable” in this context.</p>
 <p>Remember way back when in this tutorial when we partitioned our data into the <code>train_df</code> and <code>test_df</code>? Well, now we are going to apply our lasso regression model that we trained using <em>k</em>-fold cross-validation and the <code>train_df</code> data frame to our <code>test_df</code> data frame. First, using our final lasso regression model, we need to estimate predicted values for individuals’ scores on <code>y</code> based the predictor variable values in the <code>test_df</code> data. Let’s call the object to which we will assign these predictions <code>predictions</code> by using the <code>&lt;-</code> operator. To the right of the <code>&lt;-</code> operator, type the name of the <code>predict</code> function from base R. As the first argument, type the name of the model object we built using the <code>train</code> function (<code>model1</code>). As the second argument, type <code>newdata=</code> followed by the name of the testing data frame (<code>test_df</code>).</p>
 <div class="sourceCode" id="cb2104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2104-1"><a href="lassoregression.html#cb2104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome using model from training data based on testing data</span></span>

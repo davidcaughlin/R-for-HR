@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1399,7 +1403,7 @@ div.csl-indent {
 <span id="cb1889-4"><a href="survival.html#cb1889-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1889-5"><a href="survival.html#cb1889-5" aria-hidden="true" tabindex="-1"></a>survdat <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Survival.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 701 Columns: 9
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (4): Start_date, Gender, Race, Turnover_date
 ## dbl (5): id, Pay_hourly, Pay_sat, Turnover, LOS
@@ -1461,15 +1465,15 @@ div.csl-indent {
 <p>To better understand our data, let’s run a simple histogram for length of service (<code>LOS</code>) for <em>all</em> cases in our data frame (<code>survdat</code>) using the <code>hist</code> function from base R.</p>
 <div class="sourceCode" id="cb1898"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1898-1"><a href="survival.html#cb1898-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect distribution for LOS for all cases</span></span>
 <span id="cb1898-2"><a href="survival.html#cb1898-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(survdat<span class="sc">$</span>LOS)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1151-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1154-1.png" width="672" /></p>
 <p>Interestingly, length of service looks normally distributed in this sample. Let’s drill down a bit deeper by looking at length of service for just those individuals who stayed in the organization for the duration of the study. To do so, let’s bring in the <code>subset</code> function from base R and integrate it within our <code>hist</code> function.</p>
 <div class="sourceCode" id="cb1899"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1899-1"><a href="survival.html#cb1899-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect distribution for LOS for those who stayed</span></span>
 <span id="cb1899-2"><a href="survival.html#cb1899-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">subset</span>(survdat, Turnover<span class="sc">==</span><span class="dv">0</span>)<span class="sc">$</span>LOS)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1152-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1155-1.png" width="672" /></p>
 <p>This distribution also looks relatively normal. Next, let’s inspect the distributions for those who voluntarily turned over.</p>
 <div class="sourceCode" id="cb1900"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1900-1"><a href="survival.html#cb1900-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect distribution for LOS for those who voluntarily turned over</span></span>
 <span id="cb1900-2"><a href="survival.html#cb1900-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">subset</span>(survdat, Turnover<span class="sc">==</span><span class="dv">1</span>)<span class="sc">$</span>LOS)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1153-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1156-1.png" width="672" /></p>
 <p>Both of these distributions seem to be relatively normal as well, although the distribution for just those individuals who involuntarily turned over has many fewer cases. Please note that it is not unusual to see nonnormal distributions of length of service; for example, in some industries, there tends to be a large number of “first day no shows” for certain jobs and a higher turnover during the first 90 days on-the-job than after the first 90 days. This can result in a positively skewed distribution.</p>
 </div>
 <div id="conductkmanalysis_lifetable_survival" class="section level3 hasAnchor" number="49.2.6">
@@ -1582,7 +1586,7 @@ div.csl-indent {
 <p>We can create a data visualization (i.e., line chart) of our <code>km_fit1</code> model by using the <code>plot</code> function from base R. Simply, enter the name of the model object as the sole parenthetical argument of the <code>plot</code> function.</p>
 <div class="sourceCode" id="cb1909"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1909-1"><a href="survival.html#cb1909-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the cumulative survival rates (probabilities)</span></span>
 <span id="cb1909-2"><a href="survival.html#cb1909-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(km_fit1)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1159-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1162-1.png" width="672" /></p>
 <p>The data visualization shown above provides a visual depiction of the survival curve/trajectory along with the 95% confidence interval for each time interval. Corroborating what we saw in our first life table output using the default time-interval settings, the cumulative survival rate begins to drop more precipitously when length of service is between 500 and 100 days. Note that the x-axis shows the length of service (in days), and the y-axis shows the cumulative survival rate (i.e., probability).</p>
 <p>We can also create a more aesthetically pleasing data visualization of our <code>km_fit1</code> model by using the <code>ggsurvplot</code> function from the <code>survminer</code> package <span class="citation">(<a href="#ref-R-survminer" role="doc-biblioref">Kassambara, Kosinski, and Biecek 2021</a>)</span>. If you haven’t already, install and access the <code>survminer</code> package.</p>
 <div class="sourceCode" id="cb1910"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1910-1"><a href="survival.html#cb1910-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install survminer package if you haven&#39;t already</span></span>
@@ -1596,7 +1600,7 @@ div.csl-indent {
 <span id="cb1912-4"><a href="survival.html#cb1912-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">risk.table=</span><span class="cn">TRUE</span>,</span>
 <span id="cb1912-5"><a href="survival.html#cb1912-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">conf.int=</span><span class="cn">TRUE</span>,</span>
 <span id="cb1912-6"><a href="survival.html#cb1912-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">ggtheme=</span><span class="fu">theme_minimal</span>())</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1162-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1165-1.png" width="672" /></p>
 <p>The plot graphically displays the cumulative survival rates/probabilities and the risk table. The shading around the red line represents the 95% confidence intervals. The risk table below the plot displays the average number of cases at risk of experiencing the event (<span class="math inline">\(r_i\)</span>) at the time intervals displayed on the x-axis.</p>
 <p>Moving forward, let’s extend our Kaplan-Meier analysis model by adding a categorical covariate (i.e., predictor variable) to our Kaplan-Meier analysis model to see if we can observe differences between groups/categories in terms of survival curves. Specifically, let’s replace the numeral <code>1</code> from our previous model with the categorical <code>Race</code> variable, and let’s name this model object <code>km_fit2</code>.</p>
 <div class="sourceCode" id="cb1913"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1913-1"><a href="survival.html#cb1913-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Conduct Kaplan-Meier analysis with categorical covariate</span></span>
@@ -1821,7 +1825,7 @@ div.csl-indent {
 <span id="cb1919-6"><a href="survival.html#cb1919-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">pval.method=</span><span class="cn">TRUE</span>,</span>
 <span id="cb1919-7"><a href="survival.html#cb1919-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">conf.int=</span><span class="cn">TRUE</span>,</span>
 <span id="cb1919-8"><a href="survival.html#cb1919-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">ggtheme=</span><span class="fu">theme_minimal</span>())</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1166-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1169-1.png" width="672" /></p>
 <p>In the plot, three survival rates are presented - one for each race. Note that the <em>p</em>-value is greater than or equal to .05, so we would <em>not</em> conclude that any differences we observed descriptively/visually between the three races are statistically significant. We can see that the <em>log-rank test</em> was used to estimate whether such differences existed across levels of the categorical covariate; we’ll revisit the log-rank test in the context of a Cox proportional hazards model below. In the table, we also find that the risk table is now stratified by levels (i.e., strata) of the categorical covariate.</p>
 </div>
 <div id="estimatecox_survival" class="section level3 hasAnchor" number="49.2.7">

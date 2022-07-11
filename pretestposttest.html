@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1316,7 +1320,7 @@ div.csl-indent {
 <span id="cb913-4"><a href="pretestposttest.html#cb913-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb913-5"><a href="pretestposttest.html#cb913-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 25 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (3): EmpID, PreTest, PostTest
 ## 
@@ -1400,7 +1404,7 @@ div.csl-indent {
 ## 
 ## Density bandwidth for 6.941
 ## --------------------------------------------------</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-555-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-555-2.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-557-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-557-2.png" width="672" /></p>
 <p>As you can see in the output, the <code>ttest</code> function provides descriptive statistics, assumption tests regarding the distribution of the difference scores, a statistical significance test of the mean comparison, and an indicator of practical significance in the form of the standardized mean difference (Cohen’s <em>d</em>). In addition, the default lollipop data visualization depicts the distance from the <code>PreTest</code> score to the <code>PostTest</code> score for each case, and the default density distribution depicts the shape of the difference-score distribution, and the extent to which the mean of this distribution appears (visually) to differ from zero.</p>
 <p><strong>Description</strong>: The <em>Description</em> section includes basic descriptive statistics about the sample. In the output, we can see that that there are 25 employees (<em>n</em> = 25), and descriptively, the mean of the differences (<code>PostTest</code> minus <code>PreTest</code>) is 19.64 (<em>SD</em> = 11.60), which indicates that, on average, scores increased from before to after training (although we will not know if this difference is statistically significant until we get to the <em>Inference</em> section of the output).</p>
 <p><strong>Normality Assumption:</strong> If the sample size is less than or equal to 30, then the <strong>Shapiro-Wilk normality test</strong> is used to test the null hypothesis that the distribution of the difference scores demonstrates univariate normality; as such, if the <code>p</code>-values associated with the test statistic (<em>W</em>) is less than the conventional alpha level of .05, then we would <em>reject</em> the null hypothesis and assume that the distribution is <em>not</em> normal. If, however, we <em>fail to reject</em> the null hypothesis, then we don’t have statistical evidence that the distribution is anything other than normal; in other words, if the <em>p</em>-value is equal to or greater than our alpha level (.05), then we can assume the variable is likely normally distributed. In the output, we can see that the difference is normally distributed (<em>W</em> = .969, <em>p</em> = .613).</p>
@@ -1508,7 +1512,7 @@ div.csl-indent {
 ##              n   miss     mean       sd      min      mdn      max 
 ## PreTest    25      0    52.72     7.05    43.00    51.00    66.00 
 ## PostTest   25      0    72.36     6.98    60.00    73.00    84.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-561-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-563-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Score, Test) # lollipop plot 
 ## 
@@ -1528,7 +1532,7 @@ div.csl-indent {
 ##              n   miss     mean       sd      min      mdn      max 
 ## PreTest    25      0    52.72     7.05    43.00    51.00    66.00 
 ## PostTest   25      0    72.36     6.98    60.00    73.00    84.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-562-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-564-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Score, Test) # lollipop plot 
 ## 
@@ -1566,7 +1570,7 @@ div.csl-indent {
 <span id="cb941-2"><a href="pretestposttest.html#cb941-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(meannames, prepost_means, <span class="at">data=</span>meansdf, </span>
 <span id="cb941-3"><a href="pretestposttest.html#cb941-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>, </span>
 <span id="cb941-4"><a href="pretestposttest.html#cb941-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Average Score&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-567-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-569-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(prepost_means, meannames) # lollipop plot 
 ## 
@@ -1632,7 +1636,7 @@ div.csl-indent {
 <span id="cb945-4"><a href="pretestposttest.html#cb945-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb945-5"><a href="pretestposttest.html#cb945-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 25 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (3): EmpID, PreTest, PostTest
 ## 

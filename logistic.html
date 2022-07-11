@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1365,7 +1369,7 @@ div.csl-indent {
 <span id="cb1667-4"><a href="logistic.html#cb1667-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1667-5"><a href="logistic.html#cb1667-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 99 Columns: 6
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): ID
 ## dbl (5): Turnover, JS, OC, TI, NAff
@@ -1532,7 +1536,7 @@ div.csl-indent {
 ## Accuracy: 58.16 
 ## Sensitivity: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1008-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1011-1.png" width="672" /></p>
 <p><strong>Note: In some instances, you might receive an error message like the one shown below. You can ignore such a message, as it just indicates that you have a very poor-performing model that results in predicted outcome-variable classifications that are all the same (e.g., all of the predicted values are 0). If you receive such a message, you can proceed forward with your interpretation of the output.</strong></p>
 <p><span class="math inline">\(\color{red}{\text{Error:}}\)</span>
 <span class="math inline">\(\color{red}{\text{All predicted values are 0.}}\)</span>
@@ -1665,7 +1669,7 @@ div.csl-indent {
 ## Accuracy: 65.31 
 ## Sensitivity: 84.75 
 ## Precision: 66.67</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1009-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1012-1.png" width="672" /></p>
 <p>Because the interaction term (<code>JS:log(JS)</code>) regression coefficient of 1.1696 in the <em>Model Coefficients</em> table is nonsignificant (<em>p</em> = .232), we have no reason to believe that the association between the continuous predictor variable and the logit transformation of the outcome variable is <em>non</em>linear. If the interaction term had been statistically significant, then we might have evidence that the assumption was violated, and one potential solution would be to estimate a polynomial model of some kind to better fit the data; for more information on estimating nonlinear associations, check out Chapter 7 (“Curvilinear Effects in Logistic Regression”) from Osborne <span class="citation">(<a href="#ref-osborne2015" role="doc-biblioref">2015</a>)</span>. Finally, we only apply this test when the predictor variable in question is continuous (interval, ratio). In practice, however, note that for reasons of parsimony, we sometimes we might choose to estimate a linear model over a nonlinear/polynomial model when the former fits the data reasonably well.</p>
 <p><strong>Important Note: If the variable for which you are applying the Box-Tidwell approach described above has one or more cases with a score of zero, then you will receive an error message when you run the model with the <code>log</code> function. The reason for the error is that the log of zero or any negative value is (mathematically) undefined. There are many reasons why your variable might have cases with scores equal to zero, some of which include: (a) zero is a naturally occurring value for the scale on which the variable is based, or (b) the variable was grand-mean centered or standardized, such that the mean is now equal to zero. There are some approaches to dealing with this issue and neither approach I will show you is going to be perfect, but each approach will give you an approximate understanding of whether violation of the linearity assumption might be an issue. First, we can add a positive numeric constant to every score on the continuous predictor variable in question that will result in the new lowest score being 1. Why 1 you might ask? Well, the rationale is somewhat arbitrary; the log of 1 is zero, and there is something nice about grounding the lowest logarithmic value at 0. Due note, however, that the magnitude of the linear transformation will have some effect on the <em>p</em>-value associated with the Box-Tidwell interaction term. Second, if there are proportionally very few cases with scores of zero on the predictor variable in question, we can simply subset those cases out for the analysis.</strong></p>
 <p>Just for the sake of demonstration, let’s transform the <code>JS</code> variable so that its lowest score is equal to zero. This will give us an opportunity to test the two approaches I described above. Simply, create a new variable (<code>JS_0</code>) that is equal to <code>JS</code> minus the minimum value of <code>JS</code>.</p>
@@ -1944,7 +1948,7 @@ div.csl-indent {
 ## Accuracy: 59.38 
 ## Sensitivity: 84.48 
 ## Precision: 62.03</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1021-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1024-1.png" width="672" /></p>
 </div>
 <div id="predictingprobabilities_simple_logistic" class="section level4 hasAnchor" number="47.2.4.3">
 <h4><span class="header-section-number">47.2.4.3</span> Optional: Compute Predicted Probabilities Based on Sample Data<a href="logistic.html#predictingprobabilities_simple_logistic" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -2142,7 +2146,7 @@ div.csl-indent {
 ## Accuracy: 58.16 
 ## Sensitivity: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1022-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1025-1.png" width="672" /></p>
 <p>In the output under the <em>Forecasts</em> section, you should see a section called <em>Data, Fitted Values, Standard Errors</em>. This section now contains the predicted probabilities and associated classifications for <em>all</em> cases in the sample. The column labeled <em>fitted</em> contains the predicted probabilities, and the column labeled <em>predict</em> contains the probabilities when applied to a default probability threshold of .50, such that 1 indicates that the probability was .50 or greater (i.e., event predicted to occur) 0 indicates the probability was less than .50 (i.e., event not predicted to occur).</p>
 <p>If desired, we can also append the predicted probabilities (i.e., fitted values) to our existing data frame by referencing the row names (i.e., row numbers) of each object when we merge.</p>
 <ol style="list-style-type: decimal">
@@ -2354,7 +2358,7 @@ div.csl-indent {
 ## Accuracy: 58.16 
 ## Sensitivity: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1023-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1026-1.png" width="672" /></p>
 <p>If we print the first six rows from the <code>td</code> data frame object, we will see the new column containing the predicted probabilities based on our simple logistic regression model.</p>
 <div class="sourceCode" id="cb1703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1703-1"><a href="logistic.html#cb1703-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame object</span></span>
 <span id="cb1703-2"><a href="logistic.html#cb1703-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
@@ -2495,7 +2499,7 @@ div.csl-indent {
 ## Accuracy: 58.16 
 ## Sensitivity: 83.05 
 ## Precision: 61.25</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1028-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1031-1.png" width="672" /></p>
 <div class="sourceCode" id="cb1710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1710-1"><a href="logistic.html#cb1710-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract intercept and predictor coefficient</span></span>
 <span id="cb1710-2"><a href="logistic.html#cb1710-2" aria-hidden="true" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="fu">unname</span>(mod<span class="sc">$</span>coefficients[<span class="st">&quot;(Intercept)&quot;</span>]) <span class="co"># extract intercept</span></span>
 <span id="cb1710-3"><a href="logistic.html#cb1710-3" aria-hidden="true" tabindex="-1"></a>b1 <span class="ot">=</span> <span class="fu">unname</span>(mod<span class="sc">$</span>coefficients[<span class="st">&quot;JS&quot;</span>]) <span class="co"># extract predictor coefficient</span></span>
@@ -2650,7 +2654,7 @@ div.csl-indent {
 ## Accuracy: 78.95 
 ## Sensitivity: 89.66 
 ## Precision: 78.79</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1032-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1035-1.png" width="672" /></p>
 <p><strong>Note: In some instances, you might receive the error message shown below. You can ignore this message, as it just indicates that you have a poor predictor variable in the model that results in fitted/predicted values that are all the same. If you get this message, proceed forward with your interpretation of the output.</strong></p>
 <p><span class="math inline">\(\color{red}{\text{Error:}}\)</span>
 <span class="math inline">\(\color{red}{\text{All predicted values are 0.}}\)</span>
@@ -2800,7 +2804,7 @@ div.csl-indent {
 ## Accuracy: 74.74 
 ## Sensitivity: 86.21 
 ## Precision: 75.76</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1033-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1036-1.png" width="672" /></p>
 <p>Because the <em>p</em>-values associated with each of the interaction terms and their regression coefficients (<code>JS:log(JS)</code>, <code>NAff:log(NAff)</code>, <code>TI:log(TI)</code>) are equal to or greater than the conventional two-tailed alpha level of .05, we have no reason to believe that any of the associations between the continuous predictor variables and the logit transformation of the outcome variable are nonlinear. If one of the interaction terms had been statistically significant, then we might have evidence that the assumption was violated, meaning we would assume a nonlinear association instead, and one potential solution would be to apply a transformation to the predictor variable in question (e.g., logarithmic transformation). Finally, we only apply this test when the predictor variables in question are continuous (interval, ratio).</p>
 <p><strong>Important Note: If the variable for which you are applying the Box-Tidwell approach described above has one or more cases with a score of zero, then you will receive an error message when you run the model with the <code>log</code> function. The reason for the error is that the log of zero or any negative value is (mathematically) undefined. There are many reasons why your variable might have cases with scores equal to zero, some of which include: (a) zero is a naturally occurring value for the scale on which the variable is based, or (b) the variable was grand-mean centered or standardized, such that the mean is now equal to zero. There are some approaches to dealing with this issue and neither approach I will show you is going to be perfect, but each approach will give you an approximate understanding of whether violation of the linearity assumption might be an issue. First, we can add a positive numeric constant to every score on the continuous predictor variable in question that will result in the new lowest score being 1. Why 1 you might ask? Well, the rationale is somewhat arbitrary; the log of 1 is zero, and there is something nice about grounding the lowest logarithmic value at 0. Due note, however, that the magnitude of the linear transformation will have some effect on the <em>p</em>-value associated with the Box-Tidwell interaction term. Second, if there are proportionally very few cases with scores of zero on the predictor variable in question, we can simply subset those cases out for the analysis. These approaches to addressing zero values (including the error message you might encounter) are demonstrated in a <a href="logistic.html#teststatisticalassumptions_simple_logistic">previous section on simple logistic regression</a>.</strong></p>
 </div>
@@ -2996,7 +3000,7 @@ div.csl-indent {
 <span id="cb1729-4"><a href="logistic.html#cb1729-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1729-5"><a href="logistic.html#cb1729-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 99 Columns: 6
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): ID
 ## dbl (5): Turnover, JS, OC, TI, NAff
@@ -3060,7 +3064,7 @@ div.csl-indent {
 <p><strong>Data Are Free of Bivariate Outliers:</strong> To determine whether the data are free of bivariate outliers, let’s look at Cook’s distance (D) values across cases. Using the <code>plot</code> function from base R, type the name of our model object (<code>model1</code>) as the first argument, and as the second argument, enter the numeral <em>4</em> to request the fourth diagnostic plot, which is the Cook’s distance plot.</p>
 <div class="sourceCode" id="cb1738"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1738-1"><a href="logistic.html#cb1738-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb1738-2"><a href="logistic.html#cb1738-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model1, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1046-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1049-1.png" width="672" /></p>
 <p>The case associated with row number <em>66</em> has the highest Cook’s distance value, followed by the cases associated with row numbers <em>67</em> and <em>71</em> – although <em>66</em> and <em>67</em> seem to be clearest potential outliers of the three.</p>
 <p>We can also print the cases with the highest Cook’s distances. To do so, let’s create an object called <code>cooksD</code> to which we will assign a vector of Cook’s distance values using the <code>cooks.distance</code> function from base R. Just type the name of the logistic regression model object (<code>model1</code>) as the sole parenthetical argument. Next, update the object we called <code>cooksD</code> by applying the <code>sort</code> function from base R and typing the <code>cooksD</code> object name as the first object and <code>decreasing=TRUE</code> as the second argument; this will sort the Cook’s distance values in descending order. Finally, apply the <code>head</code> function from base R, and as the first argument enter the name of the <code>cooksD</code> object that we just sorted; as the second argument, type <code>n=20</code> to show the top 20 rows, as opposed to the default top 6 rows.</p>
 <div class="sourceCode" id="cb1739"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1739-1"><a href="logistic.html#cb1739-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
@@ -3516,7 +3520,7 @@ div.csl-indent {
 <p><strong>Data Are Free of Multivariate Outliers:</strong> To determine whether the data are free of multivariate outliers, let’s look at Cook’s distance (D) values across cases. Using the <code>plot</code> function from base R, type the name of our model object (<code>model1</code>) as the first argument, and as the second argument, enter the numeral <em>4</em> to request the fourth diagnostic plot, which is the Cook’s distance plot.</p>
 <div class="sourceCode" id="cb1796"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1796-1"><a href="logistic.html#cb1796-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb1796-2"><a href="logistic.html#cb1796-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model2, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1082-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1085-1.png" width="672" /></p>
 <p>The case associated with row number <em>6</em> has the highest Cook’s distance value, followed by the cases associated with row numbers <em>1</em> and <em>66</em>. The cases associated with row numbers <em>6</em> and <em>1</em> seem to be clearest potential outliers of the three.</p>
 <p>We can also print the cases with the highest Cook’s distances. Let’s create an object called <code>cooksD</code> that we will assign a vector of Cook’s distance values to using the <code>cooks.distance</code> function from base R. Just enter the name of the logistic regression model object (<code>model1</code>) as the sole parenthetical argument. Next, update the object we called <code>cooksD</code> by applying the <code>sort</code> function from base R and entering the <code>cooksD</code> object as the first object and <code>decreasing=TRUE</code> as the second argument; this will sort the Cook’s distance values in descending order. Finally, apply the <code>head</code> function from base R, and as the first argument enter the name of the <code>cooksD</code> object that we just sorted; as the second argument, type <code>n=20</code> to show the top 20 rows, as opposed to the default top 6 rows.</p>
 <div class="sourceCode" id="cb1797"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1797-1"><a href="logistic.html#cb1797-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>

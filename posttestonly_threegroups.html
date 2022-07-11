@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1186,6 +1190,9 @@ div.csl-indent {
 </div>
 <div id="review_onewayanova" class="section level3 hasAnchor" number="34.1.2">
 <h3><span class="header-section-number">34.1.2</span> Review of One-Way ANOVA<a href="posttestonly_threegroups.html#review_onewayanova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe src="https://youtube.com/embed/kwwU9N8WCfQ?rel=0" width="672" height="400px" data-external="1">
+</iframe>
+<p>Link to conceptual video: <a href="https://youtu.be/kwwU9N8WCfQ" class="uri">https://youtu.be/kwwU9N8WCfQ</a></p>
 <p><strong>Analysis of variance (ANOVA)</strong> is part of a family of analyses aimed at comparing means, which includes one-way ANOVA, repeated-measures ANOVA, factorial ANOVA, and mixed-factorial ANOVA. In general, an ANOVA is used to compare three or more means; however, it can be used to compare two means on a single factor – but you might as well just use an independent-samples <em>t</em>-test if this is the case. When comparing means, an omnibus <em>F</em>-test is employed to determine whether there are any differences in means across the levels of the categorical (nominal, ordinal) predictor variable. In other words, with an ANOVA, we are attempting to reject the null hypothesis that that there are no mean differences across levels of the categorical predictor variable. It is important to remember, however, that the <em>F</em>-test is an omnibus test, which means that its <em>p</em>-value only indicates whether mean differences exist across two or more means and not where those specific differences in means exist. Typically, post-hoc pairwise comparison tests can be used to uncover which specific pairs of levels (categories) show differences in means.</p>
 <p>The <strong>one-way ANOVA</strong> refers to one of the most basic forms of ANOVA – specifically, an ANOVA in which there is only a single categorical predictor variable and a continuous outcome variable. The term “one-way” indicates that there is just a single <em>factor</em> (i.e., predictor variable, independent variable). If we were to have two categorical predictor variables, then we could call the corresponding analysis a <em>factorial ANOVA</em> or more specifically a <em>two-way ANOVA</em>. A one-way ANOVA is employed to test the equality of two or more means on a continuous (interval, ratio) outcome variable (i.e., dependent variable) all at once by using information about the variances. For a one-way ANOVA the null hypothesis is typically that all means are equal, or rather, there are no differences between the means. More concretely, an <em>F</em>-test is used as an omnibus test for a one-way ANOVA. In essence, the <em>F</em>-test reflects the between-level (between-group, between-category) variance divided by the within-group variance. To calculate the degrees of freedom (<em>df</em>) for the numerator (between-group variance), we subtract 1 from the number of groups (<em>df</em> = <em>k</em> - 1). To calculate the <em>df</em> for the denominator (within-group variance), we subtract the number of groups from the number of people in the overall sample (<em>df</em> = <em>n</em> - <em>k</em>).</p>
 <p><em>Note:</em> In this chapter, we will focus on exclusively on applying a one-way ANOVA with balanced groups, where <em>balanced groups</em> means that each group (i.e., category) has the same number of independent cases. The default approach to calculating sum of squares in most R ANOVA functions is to use what is often referred to as Type I sum of squares. Type II and Type III sum of squares refer to the other approaches to calculating sum of squares for an ANOVA. Results are typically similar between Type I, Type II, and Type III approaches when the data are balanced across groups designated by the factors (i.e., predictor variables). To use Type II and Type III sum of squares, I recommend that you use the <code>Anova</code> function from the <code>car</code> package, which we will not cover in this tutorial. Because we are only considering considering a single between-subjects factor (i.e., one-way ANOVA) and have a balanced design, we won’t concern ourselves with this distinction. If, however, you wish to extend the one-way ANOVA to a <em>two</em>-way ANOVA, I recommend checking out <a href="https://www.r-bloggers.com/anova-%E2%80%93-type-iiiiii-ss-explained/">this link to the R-Bloggers site</a>.</p>
@@ -1357,7 +1364,7 @@ div.csl-indent {
 <span id="cb1002-4"><a href="posttestonly_threegroups.html#cb1002-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1002-5"><a href="posttestonly_threegroups.html#cb1002-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 75 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): Condition
 ## dbl (2): EmpID, PostTest
@@ -1408,7 +1415,7 @@ div.csl-indent {
 ## Plot(PostTest, out_cut=2, fences=TRUE, vbs_mean=TRUE)  # Label two outliers ...
 ## Plot(PostTest, box_adj=TRUE)  # Adjust boxplot whiskers for asymmetry
 ## ANOVA(PostTest ~ Condition)  # Add the data parameter if not the d data frame</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-610-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-613-1.png" width="672" /></p>
 <pre><code>## PostTest 
 ##   - by levels of - 
 ## Condition 
@@ -1489,7 +1496,7 @@ div.csl-indent {
 <p>Now we’re ready to estimate a one-way ANOVA. To begin, type the name of the <code>ANOVA</code> function. As the first argument in the parentheses, specify the statistical model. To do so, type the name of the continuous outcome variable (<code>PostTest</code>) to the left of the <code>~</code> symbol and the name of the categorical predictor variable (<code>Condition</code>) to the right of the <code>~</code> symbol. For the second argument, use <code>data=</code> to specify the name of the data frame where the outcome and predictor variables are located (<code>td</code>).</p>
 <div class="sourceCode" id="cb1023"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1023-1"><a href="posttestonly_threegroups.html#cb1023-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One-way ANOVA using ANOVA function from lessR</span></span>
 <span id="cb1023-2"><a href="posttestonly_threegroups.html#cb1023-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ANOVA</span>(PostTest <span class="sc">~</span> Condition, <span class="at">data=</span>td)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-617-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-617-2.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-620-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-620-2.png" width="672" /></p>
 <pre><code>## 
 ##   BACKGROUND 
 ## 
@@ -1682,7 +1689,7 @@ div.csl-indent {
 ## New   25      0    72.36     6.98    60.00    73.00    84.00 
 ## No    25      0    62.36     8.09    47.00    61.00    79.00 
 ## Old   25      0    69.60     9.11    51.00    70.00    89.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-624-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-627-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(PostTest, Condition) # lollipop plot 
 ## 
@@ -1767,7 +1774,7 @@ div.csl-indent {
 <span id="cb1038-4"><a href="posttestonly_threegroups.html#cb1038-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1038-5"><a href="posttestonly_threegroups.html#cb1038-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_ThreeGroupPost.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 75 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): Condition
 ## dbl (2): EmpID, PostTest
@@ -1885,7 +1892,7 @@ div.csl-indent {
 <p>We can also plot the pairwise mean comparisons by entering the name of the <code>TukeyTest</code> object we created as the sole argument in the <code>plot</code> function from base R.</p>
 <div class="sourceCode" id="cb1054"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1054-1"><a href="posttestonly_threegroups.html#cb1054-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot pairwise mean comparisons from Tukey&#39;s test</span></span>
 <span id="cb1054-2"><a href="posttestonly_threegroups.html#cb1054-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(TukeyTest)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-635-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-638-1.png" width="672" /></p>
 <p>The <code>TukeyHSD</code> function from base R does not provide effect size estimates for the post-hoc pairwise mean comparisons, so if you would like those, you can do the following.</p>
 <p><strong>Effect Sizes of Significant Post-Hoc Pairwise Comparisons:</strong> There are various ways that we could go about computing an effect size such as Cohen’s <em>d</em> for those post-hoc pairwise mean comparisons that were statistically significant. In the post-hoc pairwise mean comparisons, we identified that the <em>New</em> and <em>Old</em> training conditions resulted in significantly higher post-training assessment (<code>PostTest</code>) scores compared to the <em>No</em> training condition. The question then becomes: How much better than the <em>No</em> training condition are the <em>New</em> and <em>Old</em> training conditions?</p>
 <p>To compute Cohen’s <em>d</em> as an estimate of practical significance we will use the <code>cohen.d</code> function from the <code>effsize</code> package <span class="citation">(<a href="#ref-R-effsize" role="doc-biblioref">Torchiano 2020</a>)</span>. If you haven’t already, install the <code>effsize</code> package. Make sure to access the package using the <code>library</code> function.</p>

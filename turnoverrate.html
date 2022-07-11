@@ -1146,11 +1146,15 @@ div.csl-indent {
 </ul></li>
 </ul></li>
 <li class="part"><span><b>XI Odds &amp; Ends</b></span></li>
-<li class="chapter" data-level="61" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>61</b> Creating a Data Analytics Portfolio</a></li>
-<li class="chapter" data-level="62" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>62</b> Conducting a Literature Search &amp; Review</a></li>
-<li class="chapter" data-level="63" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>63</b> Statistical &amp; Practical Significance</a></li>
-<li class="chapter" data-level="64" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>64</b> Missing Data</a></li>
-<li class="chapter" data-level="65" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>65</b> Power Analysis</a></li>
+<li class="chapter" data-level="61" data-path="primerdata.html"><a href="primerdata.html"><i class="fa fa-check"></i><b>61</b> Primer on Data</a></li>
+<li class="chapter" data-level="62" data-path="legalethical.html"><a href="legalethical.html"><i class="fa fa-check"></i><b>62</b> Legal &amp; Ethical Issues</a></li>
+<li class="chapter" data-level="63" data-path="jdm_bias.html"><a href="jdm_bias.html"><i class="fa fa-check"></i><b>63</b> Judgment, Decision Making, &amp; Bias</a></li>
+<li class="chapter" data-level="64" data-path="languageconsiderations.html"><a href="languageconsiderations.html"><i class="fa fa-check"></i><b>64</b> Language Considerations</a></li>
+<li class="chapter" data-level="65" data-path="create_portfolio.html"><a href="create_portfolio.html"><i class="fa fa-check"></i><b>65</b> Creating a Data Analytics Portfolio</a></li>
+<li class="chapter" data-level="66" data-path="literature_search_review.html"><a href="literature_search_review.html"><i class="fa fa-check"></i><b>66</b> Conducting a Literature Search &amp; Review</a></li>
+<li class="chapter" data-level="67" data-path="statistical_practical_significance.html"><a href="statistical_practical_significance.html"><i class="fa fa-check"></i><b>67</b> Statistical &amp; Practical Significance</a></li>
+<li class="chapter" data-level="68" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>68</b> Missing Data</a></li>
+<li class="chapter" data-level="69" data-path="poweranalysis.html"><a href="poweranalysis.html"><i class="fa fa-check"></i><b>69</b> Power Analysis</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -1238,7 +1242,7 @@ div.csl-indent {
 <span id="cb1585-4"><a href="turnoverrate.html#cb1585-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1585-5"><a href="turnoverrate.html#cb1585-5" aria-hidden="true" tabindex="-1"></a>tr <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;turnover_rate.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 12 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (3): Month, Separations, Ave_Employees
 ## 
@@ -1310,24 +1314,24 @@ div.csl-indent {
 <p><strong>Optional:</strong> Given that we have access to an organization’s monthly turnover rates for an entire year, we can plot the turnover rates as a line graph to facilitate interpretation of trends. If you choose to create this optional data visualization, feel free to follow along; otherwise, you can skip down to the section called <em>Compute Annual Turnover Rates</em>. We will create a very simple plot using the aptly named <code>plot</code> function from base R. We will start with the most basic version of the line graph plot, and then add more arguments to refine it a bit.</p>
 <p>For the first argument in our <code>plot</code> function, let’s specify the <code>Month</code> variable from the <code>tr</code> data frame object as our x-axis variable using the <code>x=</code> argument: <code>x=tr$Month</code>. As the second argument, let’s specify the <code>TR_Monthly</code> variable (we just created) from the <code>tr</code> data frame object as our y-axis variable using the <code>y=</code> argument: <code>y=tr$TR_Monthly</code>.</p>
 <div class="sourceCode" id="cb1600"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1600-1"><a href="turnoverrate.html#cb1600-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-959-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-962-1.png" width="672" /></p>
 <p>By default, the function as specified above provides us with scatter plot in our Plots window. If we wish to convert this plot to a line graph, we can add the following argument: <code>type="l"</code>.</p>
 <div class="sourceCode" id="cb1601"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1601-1"><a href="turnoverrate.html#cb1601-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
 <span id="cb1601-2"><a href="turnoverrate.html#cb1601-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-960-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-963-1.png" width="672" /></p>
 <p>Next, we can create more meaningful x- and y-axis labels by using the <code>xlab</code> and <code>ylab</code> arguments. Note that anything we can write whatever we’d like in the quotation marks (<code>" "</code>).</p>
 <div class="sourceCode" id="cb1602"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1602-1"><a href="turnoverrate.html#cb1602-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
 <span id="cb1602-2"><a href="turnoverrate.html#cb1602-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
 <span id="cb1602-3"><a href="turnoverrate.html#cb1602-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Month&quot;</span>,</span>
 <span id="cb1602-4"><a href="turnoverrate.html#cb1602-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Monthly Turnover Rate (%)&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-961-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-964-1.png" width="672" /></p>
 <p>Finally, if we wish to adjust the y-axis limits, we can use the <code>ylim</code> argument followed by <code>=</code> and a vector of two values, where the first value is the lower limit of the y-axis and the second value is the upper limit. Here, we create a vector containing the lower- and upper-limits of <code>0</code> and <code>25</code> using the <code>c</code> (combine) function from base R.</p>
 <div class="sourceCode" id="cb1603"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1603-1"><a href="turnoverrate.html#cb1603-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>tr<span class="sc">$</span>Month, <span class="at">y=</span>tr<span class="sc">$</span>TR_Monthly, </span>
 <span id="cb1603-2"><a href="turnoverrate.html#cb1603-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type=</span><span class="st">&quot;l&quot;</span>,</span>
 <span id="cb1603-3"><a href="turnoverrate.html#cb1603-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Month&quot;</span>,</span>
 <span id="cb1603-4"><a href="turnoverrate.html#cb1603-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Monthly Turnover Rate (%)&quot;</span>,</span>
 <span id="cb1603-5"><a href="turnoverrate.html#cb1603-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">25</span>))</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-962-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-965-1.png" width="672" /></p>
 <p>The resulting plot allows us to potentially identify and describe any trends or patterns in monthly turnover rates over the course of an entire year. Here, we can see that monthly turnover rates were highest in the first month (January) but then declined through the fifth month (May), increasing through the seventh month (July), dropping quickly to the eighth month (August), and then increasing, plateauing, and declining in the remaining months of the year. If we were to have access to data over multiple years, it’s possible we might begin to see some seasonality to the turnover rates. With access to more years worth of data, we could also build forecasting models (e.g., perform time-series analyses).</p>
 </div>
 <div id="turnoverrate_annualturnoverrate" class="section level3 hasAnchor" number="45.2.5">
