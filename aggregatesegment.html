@@ -1289,10 +1289,10 @@ div.csl-indent {
 <span id="cb797-4"><a href="aggregatesegment.html#cb797-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb797-5"><a href="aggregatesegment.html#cb797-5" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 156 Columns: 19
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (3): EmployeeID, Unit, Supervisor
-## dbl (16): JobSat1, JobSat2, JobSat3, TurnInt1, TurnInt2, TurnInt3, Engage1, Engage2, Engage3, Engage4, Engage5, E...
+## dbl (16): JobSat1, JobSat2, JobSat3, TurnInt1, TurnInt2, TurnInt3, Engage1, Engage2, Engage3, Engage4, Engage5, Ex...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -1307,16 +1307,16 @@ div.csl-indent {
 <div class="sourceCode" id="cb803"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb803-1"><a href="aggregatesegment.html#cb803-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print top 6 rows of data frame (tibble) object</span></span>
 <span id="cb803-2"><a href="aggregatesegment.html#cb803-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(EmpSurvData)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 19
-##   EmployeeID Unit       Supervisor JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4
-##   &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
-## 1 EID294     Marketing  EID373           3       3       3        3        3        3       2       1       2       2
-## 2 EID295     Marketing  EID373           2       3       2        3        4        2       2       1       3       3
-## 3 EID296     Marketing  EID373           2       2       3        3        3        3       1       1       2       1
-## 4 EID301     Marketing  EID367           2       2       3        4        4        4       3       2       3       2
-## 5 EID306     Marketing  EID367           2       2       2        4        4        4       3       2       3       4
-## 6 EID213     HumanReso… EID370           4       3       4        3        3        3       3       2       4       3
-## # … with 6 more variables: Engage5 &lt;dbl&gt;, ExpIncivil1 &lt;dbl&gt;, ExpIncivil2 &lt;dbl&gt;, ExpIncivil3 &lt;dbl&gt;,
-## #   ExpIncivil4 &lt;dbl&gt;, ExpIncivil5 &lt;dbl&gt;</code></pre>
+##   EmployeeID Unit        Supervisor JobSat1 JobSat2 JobSat3 TurnInt1 TurnInt2 TurnInt3 Engage1 Engage2 Engage3 Engage4
+##   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 EID294     Marketing   EID373           3       3       3        3        3        3       2       1       2       2
+## 2 EID295     Marketing   EID373           2       3       2        3        4        2       2       1       3       3
+## 3 EID296     Marketing   EID373           2       2       3        3        3        3       1       1       2       1
+## 4 EID301     Marketing   EID367           2       2       3        4        4        4       3       2       3       2
+## 5 EID306     Marketing   EID367           2       2       2        4        4        4       3       2       3       4
+## 6 EID213     HumanResou… EID370           4       3       4        3        3        3       3       2       4       3
+## # … with 6 more variables: Engage5 &lt;dbl&gt;, ExpIncivil1 &lt;dbl&gt;, ExpIncivil2 &lt;dbl&gt;, ExpIncivil3 &lt;dbl&gt;, ExpIncivil4 &lt;dbl&gt;,
+## #   ExpIncivil5 &lt;dbl&gt;</code></pre>
 <p>The data for this exercise include employees’ unique identifiers (<code>EmployeeID</code>), the unit they work in (<code>unit</code>), their direct supervisor (<code>Supervisor</code>), and annual employee survey responses to three job satisfaction items (<code>JobSat1</code>, <code>JobSat2_rev</code>, <code>JobSat3</code>), three turnover intentions items (<code>TurnInt1</code>, <code>TurnInt2</code>, <code>TurnInt3</code>), five engagement items (<code>Engage1</code>, <code>Engage2</code>, <code>Engage3</code>, <code>Engage4</code>, <code>Engage5</code>), and five exposure to incivility items (<code>ExpIncivil1</code>, <code>ExpIncivil2</code>, <code>ExpIncivil3</code>, <code>ExpIncivil4</code>, <code>ExpIncivil5_rev</code>). All response scales are 5 points, ranging from strongly disagree (1) to strongly agree (5).</p>
 </div>
 <div id="counts_bygroup" class="section level3 hasAnchor" number="28.2.4">
@@ -1875,10 +1875,10 @@ div.csl-indent {
 <span id="cb865-4"><a href="aggregatesegment.html#cb865-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb865-5"><a href="aggregatesegment.html#cb865-5" aria-hidden="true" tabindex="-1"></a>EmpSurvData <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;EmployeeSurveyData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 156 Columns: 19
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (3): EmployeeID, Unit, Supervisor
-## dbl (16): JobSat1, JobSat2, JobSat3, TurnInt1, TurnInt2, TurnInt3, Engage1, Engage2, Engage3, Engage4, Engage5, E...
+## dbl (16): JobSat1, JobSat2, JobSat3, TurnInt1, TurnInt2, TurnInt3, Engage1, Engage2, Engage3, Engage4, Engage5, Ex...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -1921,7 +1921,7 @@ div.csl-indent {
 ## ExpIncivil3   17 11 2.45 0.52      2    2.44 0.00   2   3     1  0.16    -2.15 0.16
 ## ExpIncivil4   18 11 2.55 0.52      3    2.56 0.00   2   3     1 -0.16    -2.15 0.16
 ## ExpIncivil5   19 11 2.55 0.52      3    2.56 0.00   2   3     1 -0.16    -2.15 0.16
-## --------------------------------------------------------------------------------------- 
+## ---------------------------------------------------------------------------------------- 
 ## group: Manufacturing
 ##             vars  n  mean    sd median trimmed   mad min max range  skew kurtosis   se
 ## EmployeeID*    1 72 36.50 20.93   36.5   36.50 26.69   1  72    71  0.00    -1.25 2.47
@@ -1943,7 +1943,7 @@ div.csl-indent {
 ## ExpIncivil3   17 72  2.50  0.75    2.0    2.48  1.48   1   4     3  0.10    -0.40 0.09
 ## ExpIncivil4   18 72  2.56  0.65    3.0    2.57  0.00   1   4     3 -0.20    -0.25 0.08
 ## ExpIncivil5   19 72  2.57  0.67    3.0    2.57  0.74   1   4     3 -0.11    -0.26 0.08
-## --------------------------------------------------------------------------------------- 
+## ---------------------------------------------------------------------------------------- 
 ## group: Marketing
 ##             vars  n  mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## EmployeeID*    1 19 10.00 5.63     10   10.00 7.41   1  19    18  0.00    -1.39 1.29
@@ -1965,7 +1965,7 @@ div.csl-indent {
 ## ExpIncivil3   17 19  2.58 0.69      2    2.53 0.00   2   4     2  0.68    -0.83 0.16
 ## ExpIncivil4   18 19  2.53 0.70      2    2.47 0.00   2   4     2  0.85    -0.64 0.16
 ## ExpIncivil5   19 19  2.58 0.69      3    2.59 0.00   1   4     3 -0.27    -0.39 0.16
-## --------------------------------------------------------------------------------------- 
+## ---------------------------------------------------------------------------------------- 
 ## group: ResearchDevelopment
 ##             vars  n mean   sd median trimmed  mad min max range  skew kurtosis   se
 ## EmployeeID*    1 18 9.50 5.34    9.5    9.50 6.67   1  18    17  0.00    -1.40 1.26
@@ -1987,7 +1987,7 @@ div.csl-indent {
 ## ExpIncivil3   17 18 2.39 0.70    2.0    2.38 0.00   1   4     3  0.37    -0.30 0.16
 ## ExpIncivil4   18 18 2.44 0.62    2.5    2.50 0.74   1   3     2 -0.52    -0.86 0.15
 ## ExpIncivil5   19 18 2.22 0.65    2.0    2.25 0.00   1   3     2 -0.19    -0.88 0.15
-## --------------------------------------------------------------------------------------- 
+## ---------------------------------------------------------------------------------------- 
 ## group: Sales
 ##             vars  n  mean    sd median trimmed   mad min max range  skew kurtosis   se
 ## EmployeeID*    1 36 18.50 10.54   18.5   18.50 13.34   1  36    35  0.00    -1.30 1.76
