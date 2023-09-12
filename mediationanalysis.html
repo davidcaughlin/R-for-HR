@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 55 Estimating a Mediation Model Using Path Analysis | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
@@ -91,7 +91,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1272,7 +1276,7 @@ div.csl-indent {
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
 <div class="sourceCode" id="cb2155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2155-1"><a href="mediationanalysis.html#cb2155-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
 <span id="cb2155-2"><a href="mediationanalysis.html#cb2155-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PlannedBehavior.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<p>Next, read in the .csv data file called <strong>“PlannedBehavior.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2023</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
 <div class="sourceCode" id="cb2156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2156-1"><a href="mediationanalysis.html#cb2156-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
 <span id="cb2156-2"><a href="mediationanalysis.html#cb2156-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
 <span id="cb2156-3"><a href="mediationanalysis.html#cb2156-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
@@ -1283,7 +1287,7 @@ div.csl-indent {
 <span id="cb2157-4"><a href="mediationanalysis.html#cb2157-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2157-5"><a href="mediationanalysis.html#cb2157-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PlannedBehavior.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 199 Columns: 5
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (5): attitude, norms, control, intention, behavior
 ## 
@@ -1294,7 +1298,7 @@ div.csl-indent {
 <pre><code>## [1] &quot;attitude&quot;  &quot;norms&quot;     &quot;control&quot;   &quot;intention&quot; &quot;behavior&quot;</code></pre>
 <div class="sourceCode" id="cb2161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2161-1"><a href="mediationanalysis.html#cb2161-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
 <span id="cb2161-2"><a href="mediationanalysis.html#cb2161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
-<pre><code>## spec_tbl_df [199 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>## spc_tbl_ [199 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ attitude : num [1:199] 2.31 4.66 3.85 4.24 2.91 2.99 3.96 3.01 4.77 3.67 ...
 ##  $ norms    : num [1:199] 2.31 4.01 3.56 2.25 3.31 2.51 4.65 2.98 3.09 3.63 ...
 ##  $ control  : num [1:199] 2.03 3.63 4.2 2.84 2.4 2.95 3.77 1.9 3.83 5 ...
@@ -1365,14 +1369,14 @@ div.csl-indent {
 <span id="cb2169-16"><a href="mediationanalysis.html#cb2169-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2169-17"><a href="mediationanalysis.html#cb2169-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
 <span id="cb2169-18"><a href="mediationanalysis.html#cb2169-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## lavaan 0.6-11 ended normally after 1 iterations
+<pre><code>## lavaan 0.6.15 ended normally after 1 iteration
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of model parameters                         5
-##                                                       
+## 
 ##   Number of observations                           199
-##                                                       
+## 
 ## Model Test User Model:
 ##                                                       
 ##   Test statistic                                 0.000
@@ -1396,14 +1400,15 @@ div.csl-indent {
 ##                                                       
 ##   Akaike (AIC)                                 973.767
 ##   Bayesian (BIC)                               990.234
-##   Sample-size adjusted Bayesian (BIC)          974.393
+##   Sample-size adjusted Bayesian (SABIC)        974.393
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.000
 ##   90 Percent confidence interval - lower         0.000
 ##   90 Percent confidence interval - upper         0.000
-##   P-value RMSEA &lt;= 0.05                             NA
+##   P-value H_0: RMSEA &lt;= 0.050                       NA
+##   P-value H_0: RMSEA &gt;= 0.080                       NA
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
@@ -1482,14 +1487,14 @@ div.csl-indent {
 <span id="cb2171-16"><a href="mediationanalysis.html#cb2171-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2171-17"><a href="mediationanalysis.html#cb2171-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Request summary of results</span></span>
 <span id="cb2171-18"><a href="mediationanalysis.html#cb2171-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitmod1, <span class="at">fit.measures=</span><span class="cn">TRUE</span>, <span class="at">rsquare=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## lavaan 0.6-11 ended normally after 1 iterations
+<pre><code>## lavaan 0.6.15 ended normally after 1 iteration
 ## 
 ##   Estimator                                         ML
 ##   Optimization method                           NLMINB
 ##   Number of model parameters                         5
-##                                                       
+## 
 ##   Number of observations                           199
-##                                                       
+## 
 ## Model Test User Model:
 ##                                                       
 ##   Test statistic                                 0.000
@@ -1513,14 +1518,15 @@ div.csl-indent {
 ##                                                       
 ##   Akaike (AIC)                                 973.767
 ##   Bayesian (BIC)                               990.234
-##   Sample-size adjusted Bayesian (BIC)          974.393
+##   Sample-size adjusted Bayesian (SABIC)        974.393
 ## 
 ## Root Mean Square Error of Approximation:
 ## 
 ##   RMSEA                                          0.000
 ##   90 Percent confidence interval - lower         0.000
 ##   90 Percent confidence interval - upper         0.000
-##   P-value RMSEA &lt;= 0.05                             NA
+##   P-value H_0: RMSEA &lt;= 0.050                       NA
+##   P-value H_0: RMSEA &gt;= 0.080                       NA
 ## 
 ## Standardized Root Mean Square Residual:
 ## 
@@ -1563,13 +1569,13 @@ div.csl-indent {
 <span id="cb2173-7"><a href="mediationanalysis.html#cb2173-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Request percentile bootstrap 95% confidence intervals</span></span>
 <span id="cb2173-8"><a href="mediationanalysis.html#cb2173-8" aria-hidden="true" tabindex="-1"></a><span class="fu">parameterEstimates</span>(fitmod2, <span class="at">ci=</span><span class="cn">TRUE</span>, <span class="at">level=</span><span class="fl">0.95</span>, <span class="at">boot.ci.type=</span><span class="st">&quot;perc&quot;</span>)</span></code></pre></div>
 <pre><code>##         lhs op       rhs label   est    se      z pvalue ci.lower ci.upper
-## 1  behavior  ~  attitude     c 0.029 0.065  0.453   0.65   -0.095    0.162
-## 2 intention  ~  attitude     a 0.484 0.053  9.150   0.00    0.378    0.585
-## 3  behavior  ~ intention     b 0.438 0.070  6.232   0.00    0.298    0.573
-## 4  behavior ~~  behavior       0.698 0.057 12.201   0.00    0.581    0.804
-## 5 intention ~~ intention       0.623 0.055 11.364   0.00    0.512    0.729
+## 1  behavior  ~  attitude     c 0.029 0.065  0.451  0.652   -0.099    0.156
+## 2 intention  ~  attitude     a 0.484 0.054  8.980  0.000    0.378    0.587
+## 3  behavior  ~ intention     b 0.438 0.071  6.166  0.000    0.297    0.576
+## 4  behavior ~~  behavior       0.698 0.056 12.375  0.000    0.581    0.800
+## 5 intention ~~ intention       0.623 0.055 11.351  0.000    0.515    0.730
 ## 6  attitude ~~  attitude       0.928 0.000     NA     NA    0.928    0.928
-## 7        ab :=       a*b    ab 0.212 0.041  5.159   0.00    0.135    0.296</code></pre>
+## 7        ab :=       a*b    ab 0.212    NA     NA     NA    0.136    0.300</code></pre>
 <p><em>Note:</em> If you receive the following error message, you can safely ignore it, as it simply means that some of the bootstrap draws (i.e., re-samples) did not work successfully but most did; we can still be confident in our findings, and this warning does not apply to the original model we estimated prior to the bootstrapping.</p>
 <p><strong>lavaan WARNING: the optimizer warns that a solution has NOT been found!lavaan WARNING: the optimizer warns that a solution has NOT been found!lavaan WARNING: only 4997 bootstrap draws were successful.</strong></p>
 <p>The model fit information and direct relation (non-bootstrapped) parameter estimates are the same as when we estimated the model as part of the delta method. Nonetheless, I repeat those findings here and then extend them with the percentile bootstrap findings for the indirect effect. We have 199 observations (employees) used in this analysis, and the degrees of freedom is equal to 0, which indicates that our model is just-identified. Because the model is just-identified, there are no available degrees of freedom with which to estimate some of the common model fit indices (e.g., RMSEA), so we will not evaluate model fit. Instead, we will move on to interpreting model parameter estimates. The path coefficient (i.e., direct relation, presumed causal relation) between <code>attitude</code> and <code>intention</code> (i.e., path <strong>a</strong>) is statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). Further, the path coefficient between <code>intention</code> and <code>behavior</code> (i.e., path <strong>b</strong>) is also statistically significant and positive (<em>b</em> = .484, <em>p</em> &lt; .001). The direct effect path between <code>attitude</code> and <code>behavior</code>, however, is nonsignificant (<em>b</em> = .029, <em>p</em> = .680). The (residual) error variances for <code>behavior</code> and <code>intentions</code> are not of substantive interest, so we will ignore them. The unadjusted <em>R</em><sup>2</sup> values for the endogenous variable <code>intention</code> is .259, which indicates that <code>attitude</code> explains 25.9% of the variance in <code>intention</code>, and the unadjusted <em>R</em><sup>2</sup> value for the outcome variable <code>behavior</code> is .199, which indicates that, collectively <code>attitude</code> and <code>intention</code> explain 19.9% of the variance in <code>behavior</code>. Moving on, we get the delta method estimate of the indirect effect (which you can find in the <em>Defined Parameters</em> section), and we see that the indirect effect object we specified (<code>ab</code>) is positive and statistically significant (IE = .212, <em>p</em> &lt; .001), which indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>intention</code>. Again, however, that is the delta method estimate of the indirect effect, so let’s now take a look at the percentile bootstrap estimate of the indirect effect. At the very end of the output appears a table containing, among other things, the 95% confidence intervals for various parameters. We are only interested in the very last row which displays the 95% confidence interval for the <code>ab</code> object we specified using the product of coefficients approach. The point estimate for the indirect effect is .212, and 95% confidence interval does <em>not</em> include zero and positive, so we can conclude that the indirect effect of <code>attitude</code> on <code>behavior</code> via <code>intention</code> is statistically significant and positive (95% CI[.136, 300]). In other words, the percentile bootstrapping method indicates that <code>intention</code> mediates the association between <code>attitude</code> and <code>behavior</code>. If this confidence interval included zero in its range, then we would conclude that there is no evidence that <code>intention</code> is a mediator.</p>
@@ -1606,7 +1612,7 @@ MacKinnon, David P, Ghulam Warsi, and James H Dwyer. 1995. <span>“A Simulation
 Rosseel, Yves. 2012. <span>“<span class="nocase">lavaan</span>: An <span>R</span> Package for Structural Equation Modeling.”</span> <em>Journal of Statistical Software</em> 48 (2): 1–36. <a href="https://www.jstatsoft.org/v48/i02/">https://www.jstatsoft.org/v48/i02/</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -1644,7 +1650,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["R for HR.pdf", "R for HR.epub"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -1662,7 +1668,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

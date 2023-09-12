@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 58 Estimating a Market Pay Line Using Linear &amp; Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 58 Estimating a Market Pay Line Using Linear &amp; Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 58 Estimating a Market Pay Line Using Linear &amp; Polynomial Regression | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
@@ -91,7 +91,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1298,7 +1302,7 @@ div.csl-indent {
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
 <div class="sourceCode" id="cb2206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2206-1"><a href="marketpayline.html#cb2206-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
 <span id="cb2206-2"><a href="marketpayline.html#cb2206-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“MarketPayLine.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<p>Next, read in the .csv data file called <strong>“MarketPayLine.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2023</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
 <div class="sourceCode" id="cb2207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2207-1"><a href="marketpayline.html#cb2207-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
 <span id="cb2207-2"><a href="marketpayline.html#cb2207-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
 <span id="cb2207-3"><a href="marketpayline.html#cb2207-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
@@ -1309,7 +1313,7 @@ div.csl-indent {
 <span id="cb2208-4"><a href="marketpayline.html#cb2208-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2208-5"><a href="marketpayline.html#cb2208-5" aria-hidden="true" tabindex="-1"></a>mp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;MarketPayLine.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 25 Columns: 5
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (3): Job_Family, Job_ID, Job_Title
 ## dbl (2): Points, Pay
@@ -1321,7 +1325,7 @@ div.csl-indent {
 <pre><code>## [1] &quot;Job_Family&quot; &quot;Job_ID&quot;     &quot;Job_Title&quot;  &quot;Points&quot;     &quot;Pay&quot;</code></pre>
 <div class="sourceCode" id="cb2212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2212-1"><a href="marketpayline.html#cb2212-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
 <span id="cb2212-2"><a href="marketpayline.html#cb2212-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mp)</span></code></pre></div>
-<pre><code>## spec_tbl_df [25 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<pre><code>## spc_tbl_ [25 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ Job_Family: chr [1:25] &quot;OA&quot; &quot;OA&quot; &quot;OA&quot; &quot;OA&quot; ...
 ##  $ Job_ID    : chr [1:25] &quot;OA132&quot; &quot;OA133&quot; &quot;OA134&quot; &quot;OA135&quot; ...
 ##  $ Job_Title : chr [1:25] &quot;Front Desk Receptionist&quot; &quot;Mail Clerk&quot; &quot;Data Entry Specialist&quot; &quot;Admissions Coordinator&quot; ...
@@ -1358,7 +1362,7 @@ div.csl-indent {
 <div id="estimate_slr_marketpayline_stronger" class="section level4 hasAnchor" number="58.2.4.1">
 <h4><span class="header-section-number">58.2.4.1</span> Example of Stronger Linear Model Fit<a href="marketpayline.html#estimate_slr_marketpayline_stronger" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For this first model, we will estimate a market pay line that shows strong fit to the data. In fact, the market pay line shows that the internal job structure (as evidenced by job evaluation points) is closely in tune with the prevailing market pay rates for the benchmark jobs.</p>
-<p><strong>Prepare Data.</strong> As an initial step, we need to subset our <code>mp</code> data frame object. You might not necessarily need to do this with real data, but we need to do so with this data frame object. Specifically, we will subset (i.e., filter) the <code>mp</code> data frame object such that we only retain those cases (i.e., jobs) from the nurse (NU) job family. When working with real data, we might choose to drill down to specific job families (like we are doing here), or we might include all job families in a single model. Sometimes this decision might be made for us, as perhaps the organization has only completed a job evaluation for certain job families. In other instances, we might subset our data by geographic location (e.g., country), for example. To subset our data, we will use the <code>filter</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2022</a>)</span>. For more information on the filtering data, check out the <a href="filter.html#filter">chapter on filtering data</a>.</p>
+<p><strong>Prepare Data.</strong> As an initial step, we need to subset our <code>mp</code> data frame object. You might not necessarily need to do this with real data, but we need to do so with this data frame object. Specifically, we will subset (i.e., filter) the <code>mp</code> data frame object such that we only retain those cases (i.e., jobs) from the nurse (NU) job family. When working with real data, we might choose to drill down to specific job families (like we are doing here), or we might include all job families in a single model. Sometimes this decision might be made for us, as perhaps the organization has only completed a job evaluation for certain job families. In other instances, we might subset our data by geographic location (e.g., country), for example. To subset our data, we will use the <code>filter</code> function from the <code>dplyr</code> package <span class="citation">(<a href="#ref-R-dplyr" role="doc-biblioref">Wickham et al. 2023</a>)</span>. For more information on the filtering data, check out the <a href="filter.html#filter">chapter on filtering data</a>.</p>
 <p>If you haven’t already, please install and access the <code>dplyr</code> package.</p>
 <div class="sourceCode" id="cb2218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2218-1"><a href="marketpayline.html#cb2218-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
 <span id="cb2218-2"><a href="marketpayline.html#cb2218-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
@@ -1373,7 +1377,7 @@ div.csl-indent {
 <span id="cb2221-3"><a href="marketpayline.html#cb2221-3" aria-hidden="true" tabindex="-1"></a>     nurse<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
 <span id="cb2221-4"><a href="marketpayline.html#cb2221-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
 <span id="cb2221-5"><a href="marketpayline.html#cb2221-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1372-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1373-1.png" width="672" /></p>
 <p>As you can see, there is a very clear linear trend, and you can perhaps envision a regression line superimposed on the plot with minimal residual error. It seems safe to assume that simple linear regression will be appropriate in this case.</p>
 <p><strong>Specify Model.</strong> Next, using the <code>lm</code> function from base R, we will specify our simple linear regression model. Note that the <code>lm</code> (linear model) function is described in detail in the <a href="predictingcriterionscores.html#predictingcriterionscores">chapter supplement for the chapter that introduces simple linear regression</a>. We use the <code>lm</code> function here instead of, say, the <code>Regression</code> function from <code>lessR</code> because the <code>lm</code> function is more flexible and will be easier to work with in this context. Let’s come up with a name for the regression model object and include it to the left of the <code>&lt;-</code> assignment operator; here, I name the model <code>reg.nurse</code>. To the right of the <code>&lt;-</code> operator, type the name of the <code>lm</code> function. As the first argument, specify the regression model. Remember, the outcome variable (<code>Pay</code>) goes to the left of the tilde (<code>~</code>), and the predictor variable (<code>Points</code>) goes to the right of the tilde (<code>~</code>). As the second argument, type <code>data=</code> followed by the name of the data frame object to which both variables in the model belong (<code>nurse</code>).</p>
 <div class="sourceCode" id="cb2222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2222-1"><a href="marketpayline.html#cb2222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
@@ -1383,17 +1387,17 @@ div.csl-indent {
 <p>We will begin by generating a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>. To do so, we will use the <code>plot</code> function from base R. As the first argument, enter the name of the regression model object we created above (<code>reg.nurse</code>). As the second argument, type the numeral <em>1</em>, which will request the first of four possible diagnostic plots, of which we will review three.</p>
 <div class="sourceCode" id="cb2223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2223-1"><a href="marketpayline.html#cb2223-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
 <span id="cb2223-2"><a href="marketpayline.html#cb2223-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1374-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1375-1.png" width="672" /></p>
 <p>The plot shows the association between the fitted values (x-axis) and the residuals (y-axis). If you recall, the residuals are the error in our estimations - or in other words, how much our fitted values for the outcome variable deviate from the observed (actual) values for the outcome variable. The term “fitted values” is another way of saying predicted values for the outcome variable, but the language “fitted” is more precise here. The horizontal dotted line is drawn at the residual value of zero; remember, our goal is to minimize the size of residuals (i.e., error). The solid line shows the deviations from zero of the residuals for each fitted value, and the greater the solid line deviates from the dotted line, the more likely that (a) variances of the residuals may <em>not</em> be equal for each level of the predictor variable (violation of the assumption of homoscedasticity), (b) the average residual error value may <em>not</em> be zero for each level of the predictor variable, and (c) there may be potential bivariate outliers influencing the fitted (predicted) values. In this plot, we can see that the variances of the residuals do not appear to be necessarily equal across observations (potential evidence of heteroscedasticity), but the average residual error value appears to be about zero (which is good). Further, there appear to be three cases that are flagged as a potential bivariate outliers (i.e., row numbers <em>4</em>, <em>6</em>, and <em>7</em>). Now, we should be cautious interpreting these values, however, because we have a <em>very</em> small sample size here (i.e., 7), and even very minor residual errors could appear to be notable. Ideally, we would want to estimate a model with at least 10 cases/observations, but for the sake of demonstration here, we are using a smaller sample. Like any statistical model, we need to use our best judgment. in determining whether to remove outliers/influential cases or not. If we dropped those three cases, we would be left with just four cases, do dropping them would not be wise. We would, however, want to verify that the predictor and outcome values for these cases are accurate. All in all, for a sample size of just seven cases, this plot doesn’t look too bad.</p>
 <p>As an additional diagnostic tool, we can plot a Q-Q plot, which provides an indication as to whether the residuals are normality distributed (one of our statistical assumptions). Simply adapt the <code>plot</code> script from above, but this time, enter the numeral <em>2</em> (instead of <em>1</em>) to request the second diagnostic plot.</p>
 <div class="sourceCode" id="cb2224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2224-1"><a href="marketpayline.html#cb2224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
 <span id="cb2224-2"><a href="marketpayline.html#cb2224-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1375-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1376-1.png" width="672" /></p>
 <p>Normally distributed residuals will fall along the dotted diagonal line. As you can see, the residuals fall, for the most part, on or very near the line with the exception of those three potential outlier cases that we identified in the previous plot: row numbers <em>4</em>, <em>6</em>, and <em>7</em>. Even those potential outliers, however, fall <em>very</em> close to the line.</p>
 <p>As another diagnostic plot, let’s look at Cook’s distance (D) across cases. Once again, adapt the <code>plot</code> script from above, but this time, enter the numeral <em>4</em> to request the fourth diagnostic plot. We’re skipping the third plot.</p>
 <div class="sourceCode" id="cb2225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2225-1"><a href="marketpayline.html#cb2225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb2225-2"><a href="marketpayline.html#cb2225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.nurse, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1376-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1377-1.png" width="672" /></p>
 <p>Clearly, cases associated with row numbers 6 and 7 seem like they might have problematic Cook’s distances, but let’s be careful not to jump to conclusions. Instead, let’s estimate the exact values of the Cook’s distance values using the <code>cooks.distance</code> function from base R, along with the <code>sort</code> function from base R. In addition, let’s view the Cook’s distance values using the <code>head</code> function from R.</p>
 <div class="sourceCode" id="cb2226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2226-1"><a href="marketpayline.html#cb2226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
 <span id="cb2226-2"><a href="marketpayline.html#cb2226-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.nurse)</span>
@@ -1480,7 +1484,7 @@ div.csl-indent {
 <span id="cb2230-8"><a href="marketpayline.html#cb2230-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2230-9"><a href="marketpayline.html#cb2230-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
 <span id="cb2230-10"><a href="marketpayline.html#cb2230-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.nurse, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1379-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1380-1.png" width="672" /></p>
 <p>As you can see, our regression line very closely fits the data, which was evidenced statistically by the very high <em>R</em><sup>2</sup> value.</p>
 <p><strong>Predicting Market Pay Line Values.</strong> Using the regression model we estimated (<code>reg.nurse</code>), we can plug in the existing job evaluation points for the benchmark jobs in the data to see what the estimated market pay values would be for those jobs (and then we could compare them with the actual pay for those jobs, assuming we had access to those data, which we don’t in this example). These predicted values could feasibly be used to help determine the midpoints for pay grades/bands.</p>
 <p>Let’s create a new variable called <code>Predicted_Pay</code> that contains these predicted pay values for known job evaluation point values. Specify that the new <code>Predicted_Pay</code> variable will be attached to the existing <code>nurse</code> data frame by using the <code>$</code> operator. Next, use the <code>&lt;-</code> operator to assign values to the new variable. To the right of the <code>&lt;-</code> operator, type the name of the <code>predict</code> function from base R. As the first parenthetical argument, type the name of the regression model (<code>reg.nurse</code>). As the second argument, type <code>newdata=</code> followed by the name of the existing data frame called <code>nurse</code> which will allow the function to pull actual values on the <code>Points</code> variable and plug them into the regression equation for prediction purposes.</p>
@@ -1514,7 +1518,7 @@ div.csl-indent {
 <span id="cb2234-14"><a href="marketpayline.html#cb2234-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2234-15"><a href="marketpayline.html#cb2234-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add maximum pay line to plot</span></span>
 <span id="cb2234-16"><a href="marketpayline.html#cb2234-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(nurse<span class="sc">$</span>Points, nurse<span class="sc">$</span>Max_Pay)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1383-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1384-1.png" width="672" /></p>
 </div>
 <div id="estimate_slr_marketpayline_weaker" class="section level4 hasAnchor" number="58.2.4.2">
 <h4><span class="header-section-number">58.2.4.2</span> Example of Weaker Linear Model Fit<a href="marketpayline.html#estimate_slr_marketpayline_weaker" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1527,7 +1531,7 @@ div.csl-indent {
 <span id="cb2236-3"><a href="marketpayline.html#cb2236-3" aria-hidden="true" tabindex="-1"></a>     office<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
 <span id="cb2236-4"><a href="marketpayline.html#cb2236-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
 <span id="cb2236-5"><a href="marketpayline.html#cb2236-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1385-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1386-1.png" width="672" /></p>
 <p>There appears to be more-or-less a linear trend. It seems reasonable to assume that simple linear regression will be appropriate for fitting a model to these data.</p>
 <p><strong>Specify Model.</strong> Next, let’s specify our simple linear regression model for the office family of jobs. Let’s name the regression model object <code>reg.office</code>.</p>
 <div class="sourceCode" id="cb2237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2237-1"><a href="marketpayline.html#cb2237-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify simple linear regression model</span></span>
@@ -1536,17 +1540,17 @@ div.csl-indent {
 <p>Next, let’s generate a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>.</p>
 <div class="sourceCode" id="cb2238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2238-1"><a href="marketpayline.html#cb2238-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
 <span id="cb2238-2"><a href="marketpayline.html#cb2238-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1387-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1388-1.png" width="672" /></p>
 <p>In this plot, we can see that the variances of the residuals do not appear to be necessarily equal across observations (potential evidence of heteroscedasticity), but the average residual error value appears to be reasonably close to zero (which is good). Further, there appear to be three cases that are flagged as a potential bivariate outliers (i.e., row numbers <em>13</em>, <em>16</em>, and <em>18</em>). If these were real data, we would want to verify that the predictor and outcome values for these three cases are accurate. All in all, this plot doesn’t look too bad, so let’s move on to the next diagnostic plot.</p>
 <p>The Q-Q plot provides an indication as to whether the residuals are normality distributed (one of our statistical assumptions).</p>
 <div class="sourceCode" id="cb2239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2239-1"><a href="marketpayline.html#cb2239-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
 <span id="cb2239-2"><a href="marketpayline.html#cb2239-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1388-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1389-1.png" width="672" /></p>
 <p>As you can see, some of the residuals fall on or near the line with the exception of some cases that deviate, which shows some departure from normality in the residuals.</p>
 <p>The following plot shows the Cook’s distance (D) across cases.</p>
 <div class="sourceCode" id="cb2240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2240-1"><a href="marketpayline.html#cb2240-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb2240-2"><a href="marketpayline.html#cb2240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.office, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1389-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1390-1.png" width="672" /></p>
 <p>The cases associated with row numbers 17 and 18 seem like they might have problematic Cook’s distances, but let’s be careful not to jump to conclusions. Instead, let’s estimate the exact values of the Cook’s distance values.</p>
 <div class="sourceCode" id="cb2241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2241-1"><a href="marketpayline.html#cb2241-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
 <span id="cb2241-2"><a href="marketpayline.html#cb2241-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.office)</span>
@@ -1556,10 +1560,10 @@ div.csl-indent {
 <span id="cb2241-6"><a href="marketpayline.html#cb2241-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2241-7"><a href="marketpayline.html#cb2241-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb2241-8"><a href="marketpayline.html#cb2241-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          18          17           2          16          13          15           8           4          10 
-## 0.656762965 0.223627186 0.077425779 0.074014305 0.049588694 0.048505115 0.048235670 0.048134209 0.045766159 
-##           5          12           7          14           1           6          11           9           3 
-## 0.043496277 0.037231721 0.036133566 0.030636966 0.029627806 0.012312294 0.008786797 0.001666541 0.001378862</code></pre>
+<pre><code>##          18          17           2          16          13          15           8           4          10           5          12 
+## 0.656762965 0.223627186 0.077425779 0.074014305 0.049588694 0.048505115 0.048235670 0.048134209 0.045766159 0.043496277 0.037231721 
+##           7          14           1           6          11           9           3 
+## 0.036133566 0.030636966 0.029627806 0.012312294 0.008786797 0.001666541 0.001378862</code></pre>
 <p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .22. Here, we see only the Cook’s distance values associated with row numbers 17 and 18 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. None of our Cook’s distance values exceed <em>1</em>, and thus we will assume that we don’t have any troublesome outliers/influential cases.</p>
 <p>While by no means have we completely satisfied the statistical assumptions, we can be reasonably satisfied - although it should already be apparent that we will have a weaker-fitting model.</p>
 <p><strong>Interpret the Model Results.</strong> To request the results of our simple linear regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.office</code>) as the sole parenthetical argument.</p>
@@ -1631,7 +1635,7 @@ div.csl-indent {
 <span id="cb2245-8"><a href="marketpayline.html#cb2245-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2245-9"><a href="marketpayline.html#cb2245-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
 <span id="cb2245-10"><a href="marketpayline.html#cb2245-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.office, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1392-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1393-1.png" width="672" /></p>
 <p>As you can see, our regression line fits the data pretty well, which was evidenced statistically by the “good” <em>R</em><sup>2</sup> value.</p>
 <p><strong>Predict Market Pay Line Values.</strong> Let’s create a new variable called <code>Predicted_Pay</code> that contains these predicted pay values for known job evaluation point values.</p>
 <div class="sourceCode" id="cb2246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2246-1"><a href="marketpayline.html#cb2246-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
@@ -1663,7 +1667,7 @@ div.csl-indent {
 <span id="cb2249-14"><a href="marketpayline.html#cb2249-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2249-15"><a href="marketpayline.html#cb2249-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Add maximum pay line to plot</span></span>
 <span id="cb2249-16"><a href="marketpayline.html#cb2249-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(office<span class="sc">$</span>Points, office<span class="sc">$</span>Max_Pay)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1396-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1397-1.png" width="672" /></p>
 </div>
 <div id="estimate_polyr_marketpayline" class="section level4 hasAnchor" number="58.2.4.3">
 <h4><span class="header-section-number">58.2.4.3</span> Example of Nonlinear Market Pay Curve<a href="marketpayline.html#estimate_polyr_marketpayline" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -1674,7 +1678,7 @@ div.csl-indent {
 <span id="cb2250-3"><a href="marketpayline.html#cb2250-3" aria-hidden="true" tabindex="-1"></a>     mp<span class="sc">$</span>Pay, <span class="co"># Insert outcome variable</span></span>
 <span id="cb2250-4"><a href="marketpayline.html#cb2250-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;Job Evaluation Points&quot;</span>, <span class="co"># Set x-axis label</span></span>
 <span id="cb2250-5"><a href="marketpayline.html#cb2250-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">&quot;Market Pay ($)&quot;</span>) <span class="co"># Set y-axis label</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1397-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1398-1.png" width="672" /></p>
 <p>There appears to be somewhat of an exponential trend but definitely with some degree of linearity. Given these characteristics, let’s first estimate a model with simple linear regression in which we assume a linear association.</p>
 <p><strong>Specify Simple Linear Regression Model.</strong></p>
 <p>Next, we will specify our simple linear regression model. Let’s name the regression model object <code>reg.all</code>.</p>
@@ -1684,17 +1688,17 @@ div.csl-indent {
 <p>Next, let’s generate a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>.</p>
 <div class="sourceCode" id="cb2252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2252-1"><a href="marketpayline.html#cb2252-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
 <span id="cb2252-2"><a href="marketpayline.html#cb2252-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1399-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1400-1.png" width="672" /></p>
 <p>In this plot, we can see that the variances of the residuals do not appear to be equal across observations (potential evidence of heteroscedasticity), and the average residual error value appears to be greater than zero. The form of the association seems to imply that there might be a departure from a linear association. Let’s move on to the next diagnostic plot.</p>
 <p>The Q-Q plot provides an indication as to whether the residuals are normality distributed (another one of our statistical assumptions for simple linear regression).</p>
 <div class="sourceCode" id="cb2253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2253-1"><a href="marketpayline.html#cb2253-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
 <span id="cb2253-2"><a href="marketpayline.html#cb2253-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1400-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1401-1.png" width="672" /></p>
 <p>As you can see, some of the residuals fall on or near the line with the exception of some cases that deviate, which shows some departure from normality in the residuals.</p>
 <p>The following plot shows the Cook’s distance (D) across cases.</p>
 <div class="sourceCode" id="cb2254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2254-1"><a href="marketpayline.html#cb2254-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: Cook&#39;s Distance plot</span></span>
 <span id="cb2254-2"><a href="marketpayline.html#cb2254-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all, <span class="dv">4</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1401-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1402-1.png" width="672" /></p>
 <p>The case associated with row number 25 seems like it might have a problematic Cook’s distance value. Next, let’s estimate the exact values of the Cook’s distance values.</p>
 <div class="sourceCode" id="cb2255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2255-1"><a href="marketpayline.html#cb2255-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate Cook&#39;s distance values</span></span>
 <span id="cb2255-2"><a href="marketpayline.html#cb2255-2" aria-hidden="true" tabindex="-1"></a>cooksD <span class="ot">&lt;-</span> <span class="fu">cooks.distance</span>(reg.all)</span>
@@ -1704,12 +1708,10 @@ div.csl-indent {
 <span id="cb2255-6"><a href="marketpayline.html#cb2255-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2255-7"><a href="marketpayline.html#cb2255-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top-20 Cook&#39;s distance values</span></span>
 <span id="cb2255-8"><a href="marketpayline.html#cb2255-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          25           1          19           2          23          20          15          24          18 
-## 1.054185542 0.282264751 0.124866652 0.075576062 0.061955323 0.058036351 0.057818032 0.053965377 0.041351819 
-##          16           8           7          14          22          12           3          13          10 
-## 0.022738034 0.017260506 0.015861019 0.014309202 0.008216950 0.006718502 0.005249071 0.004335400 0.004304829 
-##          21          11 
-## 0.003941973 0.003246351</code></pre>
+<pre><code>##          25           1          19           2          23          20          15          24          18          16           8 
+## 1.054185542 0.282264751 0.124866652 0.075576062 0.061955323 0.058036351 0.057818032 0.053965377 0.041351819 0.022738034 0.017260506 
+##           7          14          22          12           3          13          10          21          11 
+## 0.015861019 0.014309202 0.008216950 0.006718502 0.005249071 0.004335400 0.004304829 0.003941973 0.003246351</code></pre>
 <p>There are many different rules of thumbs for what constitutes an extreme Cook’s distance value. One common approach is to determine the threshold by dividing 4 by the sample size, which in this case would give us .16. Here, we see only the Cook’s distance values associated with row numbers 1 and 25 exceed .2, flagging them as potential outliers/influential cases. There is, however, an even more liberal cutoff, which is simply <em>1</em> <span class="citation">(<a href="#ref-bollen1985regression" role="doc-biblioref">Bollen and Jackman 1985</a>)</span>. Only the Cook’s distance value associated with row number 25 exceeds <em>1</em>, and thus we should be somewhat concerned that this case might be an outlier/influential case.</p>
 <p>While by no means have we satisfied the statistical assumptions, the diagnostics did not look too bad given the relatively small sample size we are working with. Let’s proceed forward and see what the model results look like.</p>
 <p><strong>Interpret the Simple Linear Regression Model Results.</strong> To request the results of our simple linear regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.all</code>) as the sole parenthetical argument.</p>
@@ -1780,7 +1782,7 @@ div.csl-indent {
 <span id="cb2259-8"><a href="marketpayline.html#cb2259-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2259-9"><a href="marketpayline.html#cb2259-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add regression line to plot</span></span>
 <span id="cb2259-10"><a href="marketpayline.html#cb2259-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg.all, <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1404-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1405-1.png" width="672" /></p>
 <p>As you can see, our regression line fits the data pretty well, but the nonlinear nature of the association seems more apparent when we see the line superimposed on the scatter plot. Accordingly, let’s estimate a polynomial regression model to see if we can improve the fit to the data.</p>
 <p><strong>Specify Polynomial Regression Model.</strong> Next, specify our simple linear regression model. Let’s name the regression model object <code>reg.all_poly</code>. Given that we see one “bend” in the association, let’s estimate a quadratic functional form by including the function <code>poly</code> from base R with the predictor variable (<code>Points</code>) as the first argument and the numeral <em>2</em> as the second argument to indicate that we want to estimated a squared (quadratic) term. If we wanted to estimate a cubic functional form (i.e., two “bends”), we would enter the numeral <em>3</em>.</p>
 <div class="sourceCode" id="cb2260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2260-1"><a href="marketpayline.html#cb2260-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify polynomial regression model</span></span>
@@ -1788,12 +1790,12 @@ div.csl-indent {
 <p><strong>Test Statistical Assumptions for Polynomial Regression.</strong> Let’s generate a scatter plot displaying the association between the <em>fitted (predicted) values and residuals</em>.</p>
 <div class="sourceCode" id="cb2261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2261-1"><a href="marketpayline.html#cb2261-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: fitted values &amp; residuals</span></span>
 <span id="cb2261-2"><a href="marketpayline.html#cb2261-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all_poly, <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1406-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1407-1.png" width="672" /></p>
 <p>In this plot, we can see that the variances of the residuals do not appear to be equal across observations (potential evidence of heterocedasticity), and the average residual error value appears to be greater than zero; however, this plot seems to be an improve on the one that we saw for the simple linear regression on these same data. Let’s move on to the next diagnostic plot.</p>
 <p>The Q-Q plot provides an indication as to whether the residuals are normality distributed (another one of our statistical assumptions for simple linear regression).</p>
 <div class="sourceCode" id="cb2262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2262-1"><a href="marketpayline.html#cb2262-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostics plot: normal Q-Q plot</span></span>
 <span id="cb2262-2"><a href="marketpayline.html#cb2262-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg.all_poly, <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1407-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1408-1.png" width="672" /></p>
 <p>As you can see, some of the residuals fall relatively close to the line with the exception of some cases that deviate more substantially. This plot doesn’t look much better than the one corresponding to the simple linear regression model, but it doesn’t necessarily look worse.</p>
 <p>While by no means have we completely satisfied all of the statistical assumptions, the diagnostics did not reveal anything too unreasonable, as we the polynomial regression model seems to be closer to meeting the assumption of equal variances for residuals and that the average residual is close to zero. Thus, let’s proceed forward and see what the model results look like for the polynomial regression model.</p>
 <p><strong>Interpret the Polynomial Regression Model Results.</strong> To obtain the results of our polynomial regression model, type the name of the <code>summary</code> function from base R and include whatever you named your regression model (<code>reg.all_poly</code>) as the sole parenthetical argument.</p>
@@ -1934,7 +1936,7 @@ div.csl-indent {
 <span id="cb2269-25"><a href="marketpayline.html#cb2269-25" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(Points, <span class="co"># vector of predictor values</span></span>
 <span id="cb2269-26"><a href="marketpayline.html#cb2269-26" aria-hidden="true" tabindex="-1"></a>      predicted_values, <span class="co"># Insert fitted/predicted values based on model</span></span>
 <span id="cb2269-27"><a href="marketpayline.html#cb2269-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>) <span class="co"># Set curve color to red</span></span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1411-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1412-1.png" width="672" /></p>
 <p>As you can see, our estimated curve from the polynomial regression model fits the data notably better than the line from the simple linear regression model.</p>
 <p><strong>Predict Market Pay Line Values for Polynomial Regression Model.</strong> Let’s create a new variable called <code>Predicted_Pay</code> that contains these predicted pay values for known job evaluation point values.</p>
 <div class="sourceCode" id="cb2270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2270-1"><a href="marketpayline.html#cb2270-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict outcome values using model</span></span>
@@ -1982,7 +1984,7 @@ div.csl-indent {
 <span id="cb2273-29"><a href="marketpayline.html#cb2273-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 6: Add minimum and maximum pay curves to plot</span></span>
 <span id="cb2273-30"><a href="marketpayline.html#cb2273-30" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mp<span class="sc">$</span>Points, mp<span class="sc">$</span>Min_Pay)</span>
 <span id="cb2273-31"><a href="marketpayline.html#cb2273-31" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(mp<span class="sc">$</span>Points, mp<span class="sc">$</span>Max_Pay)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1415-1.png" width="672" /></p>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-1416-1.png" width="672" /></p>
 </div>
 </div>
 <div id="summary_marketpayline" class="section level3 hasAnchor" number="58.2.5">
@@ -1998,10 +2000,10 @@ div.csl-indent {
 Bollen, Kenneth A, and Robert W Jackman. 1985. <span>“Regression Diagnostics: An Expository Treatment of Outliers and Influential Cases.”</span> <em>Sociological Methods &amp; Research</em> 13 (4): 510–42.
 </div>
 <div id="ref-R-dplyr" class="csl-entry">
-Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2022. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
+Wickham, Hadley, Romain François, Lionel Henry, Kirill Müller, and Davis Vaughan. 2023. <em>Dplyr: A Grammar of Data Manipulation</em>. <a href="https://CRAN.R-project.org/package=dplyr">https://CRAN.R-project.org/package=dplyr</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -2039,7 +2041,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["R for HR.pdf", "R for HR.epub"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -2057,7 +2059,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

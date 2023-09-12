@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 15 Writing Data from R | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 15 Writing Data from R | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 15 Writing Data from R | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
@@ -91,7 +91,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1209,10 +1213,14 @@ div.csl-indent {
 <td align="center">base R</td>
 </tr>
 <tr class="even">
+<td align="center"><code>write_csv</code></td>
+<td align="center"><code>readr</code></td>
+</tr>
+<tr class="odd">
 <td align="center"><code>write.table</code></td>
 <td align="center">base R</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><code>table</code></td>
 <td align="center">base R</td>
 </tr>
@@ -1223,31 +1231,31 @@ div.csl-indent {
 <h3><span class="header-section-number">15.2.3</span> Initial Steps<a href="write.html#initialsteps_write" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already, save the file called <strong>“PersData.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="write.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb220-2"><a href="write.html#cb220-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="write.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb221-2"><a href="write.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb221-3"><a href="write.html#cb221-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb221-4"><a href="write.html#cb221-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="write.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb222-2"><a href="write.html#cb222-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb222-3"><a href="write.html#cb222-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb222-4"><a href="write.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb222-5"><a href="write.html#cb222-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="write.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb221-2"><a href="write.html#cb221-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“PersData.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2023</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="write.html#cb222-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb222-2"><a href="write.html#cb222-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb222-3"><a href="write.html#cb222-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb222-4"><a href="write.html#cb222-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="write.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb223-2"><a href="write.html#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb223-3"><a href="write.html#cb223-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb223-4"><a href="write.html#cb223-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb223-5"><a href="write.html#cb223-5" aria-hidden="true" tabindex="-1"></a>personaldata <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;PersData.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 9 Columns: 5
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (4): lastname, firstname, startdate, gender
 ## dbl (1): id
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="write.html#cb224-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
-<span id="cb224-2"><a href="write.html#cb224-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="write.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
+<span id="cb225-2"><a href="write.html#cb225-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(personaldata)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;        &quot;lastname&quot;  &quot;firstname&quot; &quot;startdate&quot; &quot;gender&quot;</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="write.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
-<span id="cb226-2"><a href="write.html#cb226-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="write.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame (tibble) object</span></span>
+<span id="cb227-2"><a href="write.html#cb227-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 5
 ##      id lastname   firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1265,11 +1273,11 @@ div.csl-indent {
 <div id="write_dataframe" class="section level3 hasAnchor" number="15.2.4">
 <h3><span class="header-section-number">15.2.4</span> Write Data Frame to Working Directory<a href="write.html#write_dataframe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <code>write.csv</code> function from base R can be used to write a data frame object to your working directory or to a folder of your choosing. Let’s write the <code>personaldata</code> data frame (that we read in and named above) to our working directory. Before doing so, however, let’s make a minor change to the data frame to illustrate a scenario in which you clean your data in R and then write the data to a .csv file so that a colleague can work with the data in another program. Specifically, let’s remove the <code>lastname</code> variable from the data frame. To do so, type the name of the data frame (<code>personaldata</code>), followed by the <code>$</code> symbol and then the name of the variable in question (<code>lastname</code>). Next, type the <code>&lt;-</code> operator followed by <code>NULL</code>. This code will remove the variable from the data frame.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="write.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable from data frame object</span></span>
-<span id="cb228-2"><a href="write.html#cb228-2" aria-hidden="true" tabindex="-1"></a>personaldata<span class="sc">$</span>lastname <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb228-3"><a href="write.html#cb228-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb228-4"><a href="write.html#cb228-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
-<span id="cb228-5"><a href="write.html#cb228-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="write.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove variable from data frame object</span></span>
+<span id="cb229-2"><a href="write.html#cb229-2" aria-hidden="true" tabindex="-1"></a>personaldata<span class="sc">$</span>lastname <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb229-3"><a href="write.html#cb229-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb229-4"><a href="write.html#cb229-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print data frame object</span></span>
+<span id="cb229-5"><a href="write.html#cb229-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(personaldata)</span></code></pre></div>
 <pre><code>## # A tibble: 9 × 4
 ##      id firstname startdate gender
 ##   &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; 
@@ -1284,31 +1292,40 @@ div.csl-indent {
 ## 9   282 John      1/9/2016  male</code></pre>
 <p>As you can see in your Console output, the variable called <code>lastname</code> is no longer present in the data frame object.</p>
 <p>To write our “cleaned”” data frame (<code>personaldata</code>) to our working directory, we use the <code>write.csv</code> function from base R. As the first argument in the parentheses, type the name of the data frame (<code>personaldata</code>). <em>Remember to type a comma (<code>,</code>) before the second argument, as this is how we separate arguments from one another when there are more than one.</em> As the second argument, let’s type what we want to name the file that we will create in our working directory. Make sure that the name of the new .csv file is in quotation marks (<code>" "</code>). Here, I name the new file <em>“Cleaned PersData.csv”</em>; it is important that you keep the .csv extension at the end of the name you provide.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="write.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data frame object to working directory</span></span>
-<span id="cb230-2"><a href="write.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(personaldata, <span class="st">&quot;Cleaned PersData.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="write.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data frame object to working directory</span></span>
+<span id="cb231-2"><a href="write.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(personaldata, <span class="st">&quot;Cleaned PersData.csv&quot;</span>)</span></code></pre></div>
 <p>If you go to your working directory folder, you will find the file called <em>“Cleaned PersData.csv”</em> saved there.</p>
 <p>We can also specify which folder that we want to write our data to using the full path extension and what we would like to name the new .csv file.</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="write.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data frame object to folder</span></span>
-<span id="cb231-2"><a href="write.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(personaldata, <span class="st">&quot;H:/RWorkshop/Cleaned PersData2.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="write.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data frame object to folder</span></span>
+<span id="cb232-2"><a href="write.html#cb232-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(personaldata, <span class="st">&quot;H:/RWorkshop/Cleaned PersData2.csv&quot;</span>)</span></code></pre></div>
 <p>If you go to your working directory folder, you will find the file called <em>“Cleaned PersData2.csv”</em>.</p>
+<p>Alternatively, you can use the <code>write_csv</code> function from the <code>readr</code> package to write your data frame. One advantage of using the <code>write_csv</code> function over the <code>write.csv</code> is that the <code>write_csv</code> function doesn’t output a row number column in the .csv file like the <code>write.csv</code> function does. Assuming you have already installed the <code>readr</code> package, you’ll need to access the <code>readr</code> package if you haven’t already using the <code>library</code> function. Once you’ve done that, the <code>write_csv</code> function takes the same arguments as the <code>write.csv</code> function that we learned above.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="write.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb233-2"><a href="write.html#cb233-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb233-3"><a href="write.html#cb233-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-4"><a href="write.html#cb233-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data frame object to working directory</span></span>
+<span id="cb233-5"><a href="write.html#cb233-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(personaldata, <span class="st">&quot;Cleaned PersData3.csv&quot;</span>)</span>
+<span id="cb233-6"><a href="write.html#cb233-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb233-7"><a href="write.html#cb233-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Write data frame object to folder</span></span>
+<span id="cb233-8"><a href="write.html#cb233-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(personaldata, <span class="st">&quot;H:/RWorkshop/Cleaned PersData4.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="write_table" class="section level3 hasAnchor" number="15.2.5">
 <h3><span class="header-section-number">15.2.5</span> Write Table to Working Directory<a href="write.html#write_table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes we work with table objects in R. If we wish to write a table to our working directory, we can use the <code>write.table</code> function from base R. Before doing so, we need to create a data table object as an example, which we can do using the <code>table</code> function from base R.</p>
 <p>To create a table, first, come up with a name for your new table object; in this example, I name the table <code>table_example</code> (because I’m so creative). Second, type the <code>&lt;-</code> operator to the right of your new table name to tell R that you are creating a new object. Third, type the name of the table-creation function, which is <code>table</code>. Fourth, in the function’s parentheses, as the first argument, enter the name of first variable you wish to use to make the table, and use the <code>$</code> symbol to indicate that the variable (<code>gender</code>) belongs to the data frame in question (<code>personaldata</code>), which should look like this: <code>personaldata$gender</code>. Fifth, as the second argument, enter the name of the second variable you wish to use to make the table, and use the <code>$</code> symbol to indicate that the variable (<code>startdate</code>) belongs to the data frame in question (<code>personaldata</code>), which should look like this: <code>personaldata$startdate</code>.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="write.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from gender and startdate variables from personaldata data frame</span></span>
-<span id="cb232-2"><a href="write.html#cb232-2" aria-hidden="true" tabindex="-1"></a>table_example <span class="ot">&lt;-</span> <span class="fu">table</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate)</span>
-<span id="cb232-3"><a href="write.html#cb232-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb232-4"><a href="write.html#cb232-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object in Console</span></span>
-<span id="cb232-5"><a href="write.html#cb232-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table_example)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="write.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create table from gender and startdate variables from personaldata data frame</span></span>
+<span id="cb234-2"><a href="write.html#cb234-2" aria-hidden="true" tabindex="-1"></a>table_example <span class="ot">&lt;-</span> <span class="fu">table</span>(personaldata<span class="sc">$</span>gender, personaldata<span class="sc">$</span>startdate)</span>
+<span id="cb234-3"><a href="write.html#cb234-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb234-4"><a href="write.html#cb234-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Print table object in Console</span></span>
+<span id="cb234-5"><a href="write.html#cb234-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(table_example)</span></code></pre></div>
 <pre><code>##         
 ##          1/1/2016 1/4/2016 1/5/2016 1/7/2016 1/9/2016
 ##   female        0        1        0        1        1
 ##   male          1        0        1        0        4</code></pre>
 <p>The table above shows how how many female versus male employees started working on a given date.</p>
 <p>Now we are ready to write the table called <code>table_example</code> to our working directory using the <code>write.table</code> function. As the first argument, type the name of the table object (<code>table_example</code>). Second, type what we would like to call the file when it is saved in our working directory (<code>**"Practice Table.csv"**</code>); be sure to include the .csv extension in the name and wrap it all in quotation marks. Third, use the <code>sep=","</code> argument to specify that the values in the table are separated by commas, as this will be a comma separated values file. Fourth, add the argument <code>col.names=NA</code> to format the table such that the column names will be aligned with their respective values. The reason for this fourth argument is that in our table the first column will contain the row names of one of the variables; if we don’t include this argument, the function will by default enter the name of the first column name associated with one of the levels of the variables in the first column, and because the first column actually contains the row names for the table, the row names will be off by one column. The <code>col.names=NA</code> argument simply leaves the first cell in the top row blank so that in the next column to the right, the first column name for one of the variables will appear. [To understand what the table would look like <em>without</em> this fourth argument, simply omit it, and open the resulting file in your working directory to see what happens.]</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="write.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write table object to working directory</span></span>
-<span id="cb234-2"><a href="write.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(table_example, <span class="st">&quot;Practice Table.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">col.names=</span><span class="cn">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="write.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write table object to working directory</span></span>
+<span id="cb236-2"><a href="write.html#cb236-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(table_example, <span class="st">&quot;Practice Table.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">col.names=</span><span class="cn">NA</span>)</span></code></pre></div>
 <p>If you go to your working directory, you will find the file called <em>“Practice Table.csv”</em>.</p>
 </div>
 <div id="summary_write" class="section level3 hasAnchor" number="15.2.6">
@@ -1324,7 +1341,7 @@ div.csl-indent {
 Wickham, Hadley, and Garrett Grolemund. 2017. <em><span>R</span> for Data Science: Visualize, Model, Transform, Tidy, and Import Data</em>. Sebastopol, California: O’Reilly Media, Inc. <a href="https://r4ds.had.co.nz/n">https://r4ds.had.co.nz/n</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -1362,7 +1379,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["R for HR.pdf", "R for HR.epub"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -1380,7 +1397,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

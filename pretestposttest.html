@@ -5,19 +5,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 32 Evaluating a Pre-Test/Post-Test without Control Group Design Using Paired-Samples t-test | R for HR: An Introduction to Human Resource Analytics Using R</title>
-  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 32 Evaluating a Pre-Test/Post-Test without Control Group Design Using Paired-Samples t-test | R for HR: An Introduction to Human Resource Analytics Using R" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://rforhr.com/cover.png" />
-  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta property="og:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="github-repo" content="davidcaughlin/R-for-HR" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 32 Evaluating a Pre-Test/Post-Test without Control Group Design Using Paired-Samples t-test | R for HR: An Introduction to Human Resource Analytics Using R" />
   
-  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.1 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
+  <meta name="twitter:description" content="Human resource (HR) analytics is a growing area of HR manage, and the purpose of this book is to show how the R programming language can be used as tool to manage, analyze, and visualize HR data in order to derive insights and to inform decision making. [NOTE: This is Version 0.1.3 of this book, which means that the book is not yet in its final form, that it contains typographical errors, and that it may be expanded in the future.]" />
   <meta name="twitter:image" content="https://rforhr.com/cover.png" />
 
 <meta name="author" content="David E. Caughlin" />
@@ -91,7 +91,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +104,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +118,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
@@ -1307,31 +1311,31 @@ div.csl-indent {
 <h3><span class="header-section-number">32.2.3</span> Initial Steps<a href="pretestposttest.html#initsteps_psttest" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you haven’t already, save the file called <strong>“TrainingEvaluation_PrePostOnly.csv”</strong> into a folder that you will subsequently set as your working directory. Your working directory will likely be different than the one shown below (i.e., <code>"H:/RWorkshop"</code>). As a reminder, you can access all of the data files referenced in this book by downloading them as a compressed (zipped) folder from the my GitHub site: <a href="https://github.com/davidcaughlin/R-Tutorial-Data-Files" class="uri">https://github.com/davidcaughlin/R-Tutorial-Data-Files</a>; once you’ve followed the link to GitHub, just click “Code” (or “Download”) followed by “Download ZIP”, which will download all of the data files referenced in this book. For the sake of parsimony, I recommend downloading all of the data files into the same folder on your computer, which will allow you to set that same folder as your working directory for each of the chapters in this book.</p>
 <p>Next, using the <code>setwd</code> function, set your working directory to the folder in which you saved the data file for this chapter. Alternatively, you can manually set your working directory folder in your drop-down menus by going to <em>Session &gt; Set Working Directory &gt; Choose Directory…</em>. Be sure to create a new R script file (.R) or update an existing R script file so that you can save your script and annotations. If you need refreshers on how to set your working directory and how to create and save an R script, please refer to <a href="setwd.html#setwd">Setting a Working Directory</a> and <a href="gettingstarted.html#createRscript">Creating &amp; Saving an R Script</a>.</p>
-<div class="sourceCode" id="cb911"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb911-1"><a href="pretestposttest.html#cb911-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb911-2"><a href="pretestposttest.html#cb911-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<p>Next, read in the .csv data file called <strong>“TrainingEvaluation_PrePostOnly.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2022</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
-<div class="sourceCode" id="cb912"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb912-1"><a href="pretestposttest.html#cb912-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb912-2"><a href="pretestposttest.html#cb912-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb912-3"><a href="pretestposttest.html#cb912-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb912-4"><a href="pretestposttest.html#cb912-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb913-1"><a href="pretestposttest.html#cb913-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb913-2"><a href="pretestposttest.html#cb913-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb913-3"><a href="pretestposttest.html#cb913-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb913-4"><a href="pretestposttest.html#cb913-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb913-5"><a href="pretestposttest.html#cb913-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb913-1"><a href="pretestposttest.html#cb913-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb913-2"><a href="pretestposttest.html#cb913-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<p>Next, read in the .csv data file called <strong>“TrainingEvaluation_PrePostOnly.csv”</strong> using your choice of read function. In this example, I use the <code>read_csv</code> function from the <code>readr</code> package <span class="citation">(<a href="#ref-R-readr" role="doc-biblioref">Wickham, Hester, and Bryan 2023</a>)</span>. If you choose to use the <code>read_csv</code> function, be sure that you have installed and accessed the <code>readr</code> package using the <code>install.packages</code> and <code>library</code> functions. <em>Note: You don’t need to install a package every time you wish to access it; in general, I would recommend updating a package installation once ever 1-3 months.</em> For refreshers on installing packages and reading data into R, please refer to <a href="gentleintro.html#packages">Packages</a> and <a href="read.html#read">Reading Data into R</a>.</p>
+<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb914-1"><a href="pretestposttest.html#cb914-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb914-2"><a href="pretestposttest.html#cb914-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb914-3"><a href="pretestposttest.html#cb914-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb914-4"><a href="pretestposttest.html#cb914-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb915-1"><a href="pretestposttest.html#cb915-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb915-2"><a href="pretestposttest.html#cb915-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb915-3"><a href="pretestposttest.html#cb915-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb915-4"><a href="pretestposttest.html#cb915-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb915-5"><a href="pretestposttest.html#cb915-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 25 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (3): EmpID, PreTest, PostTest
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb915-1"><a href="pretestposttest.html#cb915-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb915-2"><a href="pretestposttest.html#cb915-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(td)</span></code></pre></div>
+<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb917-1"><a href="pretestposttest.html#cb917-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb917-2"><a href="pretestposttest.html#cb917-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(td)</span></code></pre></div>
 <pre><code>## [1] &quot;EmpID&quot;    &quot;PreTest&quot;  &quot;PostTest&quot;</code></pre>
-<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb917-1"><a href="pretestposttest.html#cb917-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
-<span id="cb917-2"><a href="pretestposttest.html#cb917-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(td)</span></code></pre></div>
-<pre><code>## spec_tbl_df [25 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb919"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb919-1"><a href="pretestposttest.html#cb919-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb919-2"><a href="pretestposttest.html#cb919-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(td)</span></code></pre></div>
+<pre><code>## spc_tbl_ [25 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmpID   : num [1:25] 26 27 28 29 30 31 32 33 34 35 ...
 ##  $ PreTest : num [1:25] 43 58 52 47 43 50 66 48 49 49 ...
 ##  $ PostTest: num [1:25] 66 74 62 84 78 73 60 61 71 83 ...
@@ -1342,8 +1346,8 @@ div.csl-indent {
 ##   ..   PostTest = col_double()
 ##   .. )
 ##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb919"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb919-1"><a href="pretestposttest.html#cb919-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
-<span id="cb919-2"><a href="pretestposttest.html#cb919-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
+<div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb921-1"><a href="pretestposttest.html#cb921-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb921-2"><a href="pretestposttest.html#cb921-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   EmpID PreTest PostTest
 ##   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
@@ -1360,15 +1364,15 @@ div.csl-indent {
 <p>In this chapter, we will review how to estimate a paired-samples <em>t</em>-test using the <code>ttest</code> function from the <code>lessR</code> package <span class="citation">(<a href="#ref-R-lessR" role="doc-biblioref">Gerbing, Business, and University 2021</a>)</span>. Using this function, we will evaluate whether the mean of the differences between the pre-test (<code>PreTest</code>) and post-test (<code>PostTest</code>) outcome variables differs significantly from zero. In other words, let’s find out if assessment scores increased, stayed the same, or decreased from before to after the employees participated in training.</p>
 <p>Prior to running the paired-samples <em>t</em>-test, we’ll have to assume (because we don’t have access to information that would indicate otherwise) that the data meet the statistical assumption that the difference scores based on the two outcome measures (e.g., pre-test, post-test) are independent of each other (i.e., randomly sampled from the underlying population).</p>
 <p>To access and use the <code>ttest</code> function, we need to install and/or access the <code>lessR</code> package. If you haven’t already, be sure to install the <code>lessR</code> package; if you’ve recently installed the package, then you likely don’t need to install it in this session, and you can skip that step to save time. You <em>will</em> need to run the <code>library</code> function to access the package (assuming it’s been installed), so don’t forget that important step.</p>
-<div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb921-1"><a href="pretestposttest.html#cb921-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
-<span id="cb921-2"><a href="pretestposttest.html#cb921-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb922"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb922-1"><a href="pretestposttest.html#cb922-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access lessR package and its functions</span></span>
-<span id="cb922-2"><a href="pretestposttest.html#cb922-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
+<div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="pretestposttest.html#cb923-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install lessR package</span></span>
+<span id="cb923-2"><a href="pretestposttest.html#cb923-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;lessR&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb924"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb924-1"><a href="pretestposttest.html#cb924-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access lessR package and its functions</span></span>
+<span id="cb924-2"><a href="pretestposttest.html#cb924-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span></code></pre></div>
 <p>Please note that when you use the <code>library</code> function to access the <code>lessR</code> package in a new R or <code>RStudio</code> session, you will likely receive a message in red font in your Console. Typically, red font in your Console is not a good sign; however, accessing the <code>lessR</code> package is one of the unique situations in which a red-font message is not a warning or error message. You may also receive a warning message that indicates that certain “objects are masked.” For our purposes, we can ignore that message.</p>
 <p>The <code>ttest</code> function from the <code>lessR</code> package makes running a paired-samples <em>t</em>-test relatively straightforward, as wrapped up in the function are tests of the second statistical assumption (see <a href="pretestposttest.html#statisticalassumptions_psttest">Statistical Assumptions section</a>).</p>
 <p>Now we’re ready to run a paired-samples <em>t</em>-test. To begin, type the name of the <code>ttest</code> function. As the first argument in the parentheses, specify the name of the first outcome variable (<code>PreTest</code>). As the second argument, specify the name of the second outcome variable (<code>PostTest</code>). Difference scores will be calculated as part of the function by subtracting the variable in the first argument from the variable in the second argument. For the third argument, use <code>data=</code> to specify the name of the data frame (<code>td</code>) where the outcome and predictor variables are located. For the fourth argument, enter <code>paired=TRUE</code> to inform R that the data are paired and, thus, you are requesting a paired-samples <em>t</em>-test.</p>
-<div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb923-1"><a href="pretestposttest.html#cb923-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired-samples t-test using ttest function from lessR</span></span>
-<span id="cb923-2"><a href="pretestposttest.html#cb923-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttest</span>(PreTest, PostTest, <span class="at">data=</span>td, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb925"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb925-1"><a href="pretestposttest.html#cb925-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired-samples t-test using ttest function from lessR</span></span>
+<span id="cb925-2"><a href="pretestposttest.html#cb925-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ttest</span>(PreTest, PostTest, <span class="at">data=</span>td, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ## 
 ## ------ Describe ------
@@ -1402,9 +1406,8 @@ div.csl-indent {
 ## 
 ## ------ Graphics Smoothing Parameter ------
 ## 
-## Density bandwidth for 6.941
-## --------------------------------------------------</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-557-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-557-2.png" width="672" /></p>
+## Density bandwidth for 6.941</code></pre>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-558-1.png" width="672" /><img src="R-for-HR_files/figure-html/unnamed-chunk-558-2.png" width="672" /></p>
 <p>As you can see in the output, the <code>ttest</code> function provides descriptive statistics, assumption tests regarding the distribution of the difference scores, a statistical significance test of the mean comparison, and an indicator of practical significance in the form of the standardized mean difference (Cohen’s <em>d</em>). In addition, the default lollipop data visualization depicts the distance from the <code>PreTest</code> score to the <code>PostTest</code> score for each case, and the default density distribution depicts the shape of the difference-score distribution, and the extent to which the mean of this distribution appears (visually) to differ from zero.</p>
 <p><strong>Description</strong>: The <em>Description</em> section includes basic descriptive statistics about the sample. In the output, we can see that that there are 25 employees (<em>n</em> = 25), and descriptively, the mean of the differences (<code>PostTest</code> minus <code>PreTest</code>) is 19.64 (<em>SD</em> = 11.60), which indicates that, on average, scores increased from before to after training (although we will not know if this difference is statistically significant until we get to the <em>Inference</em> section of the output).</p>
 <p><strong>Normality Assumption:</strong> If the sample size is less than or equal to 30, then the <strong>Shapiro-Wilk normality test</strong> is used to test the null hypothesis that the distribution of the difference scores demonstrates univariate normality; as such, if the <code>p</code>-values associated with the test statistic (<em>W</em>) is less than the conventional alpha level of .05, then we would <em>reject</em> the null hypothesis and assume that the distribution is <em>not</em> normal. If, however, we <em>fail to reject</em> the null hypothesis, then we don’t have statistical evidence that the distribution is anything other than normal; in other words, if the <em>p</em>-value is equal to or greater than our alpha level (.05), then we can assume the variable is likely normally distributed. In the output, we can see that the difference is normally distributed (<em>W</em> = .969, <em>p</em> = .613).</p>
@@ -1441,10 +1444,10 @@ div.csl-indent {
 <h4><span class="header-section-number">32.2.5.1</span> First Approach<a href="pretestposttest.html#barchart_psttest_firstapproach" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For the first approach to prepping the data and generating a bar chart, we will use the <code>pivot_longer</code> function from the <code>tidyr</code> package, which means that we need to install and/or access the <code>tidyr</code> package. If you’d like additional information on the restructuring data frames using the <code>pivot_longer</code> function, please check out the <a href="manipulate.html#manipulate">chapter on manipulating and restructuring data</a>.</p>
 <p>If you haven’t already, be sure to install the <code>lessR</code> package; if you’ve recently installed the package, then you likely don’t need to install it in this session, and you can skip that step to save time. You <em>will</em> need to run the <code>library</code> function to access the package (assuming it’s been installed), so don’t forget that important step. <em>[Note: If you run into any installation errors, try installing and access the <code>tidyverse</code> “grand” package, which subsumes the <code>tidyr</code> package, along with many others.]</em></p>
-<div class="sourceCode" id="cb925"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb925-1"><a href="pretestposttest.html#cb925-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package</span></span>
-<span id="cb925-2"><a href="pretestposttest.html#cb925-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb926"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb926-1"><a href="pretestposttest.html#cb926-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package and its functions</span></span>
-<span id="cb926-2"><a href="pretestposttest.html#cb926-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
+<div class="sourceCode" id="cb927"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb927-1"><a href="pretestposttest.html#cb927-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install tidyr package</span></span>
+<span id="cb927-2"><a href="pretestposttest.html#cb927-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;tidyr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb928-1"><a href="pretestposttest.html#cb928-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access tidyr package and its functions</span></span>
+<span id="cb928-2"><a href="pretestposttest.html#cb928-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span></code></pre></div>
 <p>Next, let’s use the <code>pivot_longer</code> function from the <code>tidyr</code> package to “pivot” (i.e., manipulate, restructure) our data into “long format”, where “long format” is sometimes referred to as “stacked format”.</p>
 <ol style="list-style-type: decimal">
 <li>As the first step, create a unique name for an object that we can subsequently assign the manipulated data frame object to. Here, I call the new data frame object <code>td_long</code> to indicate that the new data frame object is in long format.</li>
@@ -1457,14 +1460,14 @@ div.csl-indent {
 <li>As the fourth argument, type the <code>values_to=</code> argument followed by the name of a new variable containing the test scores that were originally nested within the <code>PreTest</code> and <code>PostTest</code> variable names from the original <code>td</code> data frame object; make sure the name of the new variable is within quotation marks (<code>" "</code>). Here, I name this new variable <code>"Score"</code>.</li>
 </ul></li>
 </ol>
-<div class="sourceCode" id="cb927"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb927-1"><a href="pretestposttest.html#cb927-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Manipulate data from wide to long format (i.e., stack)</span></span>
-<span id="cb927-2"><a href="pretestposttest.html#cb927-2" aria-hidden="true" tabindex="-1"></a>td_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data=</span>td,</span>
-<span id="cb927-3"><a href="pretestposttest.html#cb927-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">cols=</span><span class="fu">c</span>(PreTest,PostTest), </span>
-<span id="cb927-4"><a href="pretestposttest.html#cb927-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">names_to=</span><span class="st">&quot;Test&quot;</span>, </span>
-<span id="cb927-5"><a href="pretestposttest.html#cb927-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb929"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb929-1"><a href="pretestposttest.html#cb929-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Manipulate data from wide to long format (i.e., stack)</span></span>
+<span id="cb929-2"><a href="pretestposttest.html#cb929-2" aria-hidden="true" tabindex="-1"></a>td_long <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(<span class="at">data=</span>td,</span>
+<span id="cb929-3"><a href="pretestposttest.html#cb929-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">cols=</span><span class="fu">c</span>(PreTest,PostTest), </span>
+<span id="cb929-4"><a href="pretestposttest.html#cb929-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">names_to=</span><span class="st">&quot;Test&quot;</span>, </span>
+<span id="cb929-5"><a href="pretestposttest.html#cb929-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">values_to=</span><span class="st">&quot;Score&quot;</span>)</span></code></pre></div>
 <p>Let’s take a peek at our new <code>td_long</code> data frame object by using the <code>Print</code> function.</p>
-<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb928-1"><a href="pretestposttest.html#cb928-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object to Console</span></span>
-<span id="cb928-2"><a href="pretestposttest.html#cb928-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(td_long)</span></code></pre></div>
+<div class="sourceCode" id="cb930"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb930-1"><a href="pretestposttest.html#cb930-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print new data frame object to Console</span></span>
+<span id="cb930-2"><a href="pretestposttest.html#cb930-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(td_long)</span></code></pre></div>
 <pre><code>## # A tibble: 50 × 3
 ##    EmpID Test     Score
 ##    &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
@@ -1478,7 +1481,7 @@ div.csl-indent {
 ##  8    29 PostTest    84
 ##  9    30 PreTest     43
 ## 10    30 PostTest    78
-## # … with 40 more rows</code></pre>
+## # ℹ 40 more rows</code></pre>
 <p>As you can see, each observation (i.e., employee) now has two rows of data (as opposed to one), such that they have a row for <code>PreTest</code> scores and <code>PostTest</code> scores. These data are now in long (i.e., stacked) format.</p>
 <p>By default, the <code>PreTest</code> and <code>PostTest</code> levels of the <code>Test</code> variable we created will be in alphabetical order, such that <code>PostTest</code> will come before <code>PreTest</code> if we created any data visualizations or go to analyze the data from this variable. Intuitively, this is not the order we want, as temporally <code>PreTest</code> should precede (i.e., come before) <code>PostTest</code>. Fortunately, we can use the <code>factor</code> function from base R to convert the <code>Test</code> variable to an ordered factor.</p>
 <ol style="list-style-type: decimal">
@@ -1491,10 +1494,10 @@ div.csl-indent {
 <li>As the third argument, type <code>levels=</code> followed by a vector of the variable levels (i.e., categories) in ascending order. Note that we use the <code>c</code> (combine) function from base R to construct the vector, and we need to put each level within quotation marks (<code>" "</code>). Here, we wish to order the levels such that <code>PreTest</code> comes before <code>PostTest</code>, so we insert the following: <code>c("PreTest","PostTest")</code>.</li>
 </ul></li>
 </ol>
-<div class="sourceCode" id="cb930"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb930-1"><a href="pretestposttest.html#cb930-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-order the Test variable so that PreTest comes first</span></span>
-<span id="cb930-2"><a href="pretestposttest.html#cb930-2" aria-hidden="true" tabindex="-1"></a>td_long<span class="sc">$</span>Test <span class="ot">&lt;-</span> <span class="fu">factor</span>(td_long<span class="sc">$</span>Test,</span>
-<span id="cb930-3"><a href="pretestposttest.html#cb930-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ordered=</span><span class="cn">TRUE</span>,</span>
-<span id="cb930-4"><a href="pretestposttest.html#cb930-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;PreTest&quot;</span>,<span class="st">&quot;PostTest&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb932"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb932-1"><a href="pretestposttest.html#cb932-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-order the Test variable so that PreTest comes first</span></span>
+<span id="cb932-2"><a href="pretestposttest.html#cb932-2" aria-hidden="true" tabindex="-1"></a>td_long<span class="sc">$</span>Test <span class="ot">&lt;-</span> <span class="fu">factor</span>(td_long<span class="sc">$</span>Test,</span>
+<span id="cb932-3"><a href="pretestposttest.html#cb932-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">ordered=</span><span class="cn">TRUE</span>,</span>
+<span id="cb932-4"><a href="pretestposttest.html#cb932-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">levels=</span><span class="fu">c</span>(<span class="st">&quot;PreTest&quot;</span>,<span class="st">&quot;PostTest&quot;</span>))</span></code></pre></div>
 <p>We are now ready to create our bar chart of the average scores on the pre-test and the post-test from our pre-test/post-test without control group evaluation design.</p>
 <ol style="list-style-type: decimal">
 <li>Begin by typing the name of the <code>BarChart</code> function from the <code>lessR</code> package; if you haven’t already, be sure that you have recently installed the <code>lessR</code> package and that you have accessed the package in your current R session. See above for more details on how to install and access the <code>lessR</code> package.</li>
@@ -1503,41 +1506,41 @@ div.csl-indent {
 <li>As the third argument, type <code>data=</code> followed by the exact name of the data frame object to which the variables specified in the two previous arguments belong. In this example, the name of the data frame object is <code>td_long</code>.</li>
 <li>As the fourth argument, type <code>stat="mean"</code> to indicate that we wish for the <code>BarChart</code> function to compute the average (i.e., mean) score from the <code>Score</code> variable for each level of the <code>Test</code> variable.</li>
 </ol>
-<div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb931-1"><a href="pretestposttest.html#cb931-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
-<span id="cb931-2"><a href="pretestposttest.html#cb931-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(<span class="at">x=</span>Test, <span class="at">y=</span>Score, <span class="at">data=</span>td_long, <span class="at">stat=</span><span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb933-1"><a href="pretestposttest.html#cb933-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
+<span id="cb933-2"><a href="pretestposttest.html#cb933-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(<span class="at">x=</span>Test, <span class="at">y=</span>Score, <span class="at">data=</span>td_long, <span class="at">stat=</span><span class="st">&quot;mean&quot;</span>)</span></code></pre></div>
 <pre><code>## Score 
 ##   - by levels of - 
 ## Test 
 ##  
-##              n   miss     mean       sd      min      mdn      max 
-## PreTest    25      0    52.72     7.05    43.00    51.00    66.00 
-## PostTest   25      0    72.36     6.98    60.00    73.00    84.00</code></pre>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-563-1.png" width="672" /></p>
-<pre><code>## &gt;&gt;&gt; Suggestions
-## Plot(Score, Test) # lollipop plot 
-## 
-##  Data for:  Score 
-##  ---------------- 
-##   PreTest  PostTest 
-##    52.720    72.360</code></pre>
-<p>If you wish, you can then add additional arguments like <code>xlab=</code> and <code>ylab=</code> to re-label the x- and y-axes, respectively.</p>
-<div class="sourceCode" id="cb934"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb934-1"><a href="pretestposttest.html#cb934-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
-<span id="cb934-2"><a href="pretestposttest.html#cb934-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(<span class="at">x=</span>Test, <span class="at">y=</span>Score, <span class="at">data=</span>td_long, <span class="at">stat=</span><span class="st">&quot;mean&quot;</span>,</span>
-<span id="cb934-3"><a href="pretestposttest.html#cb934-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>,</span>
-<span id="cb934-4"><a href="pretestposttest.html#cb934-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Average Score&quot;</span>)</span></code></pre></div>
-<pre><code>## Score 
-##   - by levels of - 
-## Test 
-##  
-##              n   miss     mean       sd      min      mdn      max 
+##             n   miss     mean       sd      min      mdn      max 
 ## PreTest    25      0    52.72     7.05    43.00    51.00    66.00 
 ## PostTest   25      0    72.36     6.98    60.00    73.00    84.00</code></pre>
 <p><img src="R-for-HR_files/figure-html/unnamed-chunk-564-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(Score, Test) # lollipop plot 
 ## 
-##  Data for:  Score 
-##  ---------------- 
+##  Plotted Values 
+##  -------------- 
+##   PreTest  PostTest 
+##    52.720    72.360</code></pre>
+<p>If you wish, you can then add additional arguments like <code>xlab=</code> and <code>ylab=</code> to re-label the x- and y-axes, respectively.</p>
+<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb936-1"><a href="pretestposttest.html#cb936-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
+<span id="cb936-2"><a href="pretestposttest.html#cb936-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(<span class="at">x=</span>Test, <span class="at">y=</span>Score, <span class="at">data=</span>td_long, <span class="at">stat=</span><span class="st">&quot;mean&quot;</span>,</span>
+<span id="cb936-3"><a href="pretestposttest.html#cb936-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>,</span>
+<span id="cb936-4"><a href="pretestposttest.html#cb936-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Average Score&quot;</span>)</span></code></pre></div>
+<pre><code>## Score 
+##   - by levels of - 
+## Test 
+##  
+##             n   miss     mean       sd      min      mdn      max 
+## PreTest    25      0    52.72     7.05    43.00    51.00    66.00 
+## PostTest   25      0    72.36     6.98    60.00    73.00    84.00</code></pre>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-565-1.png" width="672" /></p>
+<pre><code>## &gt;&gt;&gt; Suggestions
+## Plot(Score, Test) # lollipop plot 
+## 
+##  Plotted Values 
+##  -------------- 
 ##   PreTest  PostTest 
 ##    52.720    72.360</code></pre>
 </div>
@@ -1553,29 +1556,29 @@ div.csl-indent {
 <li>As the second argument within the <code>c</code> function, type the name of the <code>mean</code> function from base R, and within that function’s parentheses, type the name of the data frame (<code>td</code>), followed by the <code>$</code> symbol and the name of the second outcome variable (<code>PostTest</code>); as the second argument within the <code>mean</code> function, type <code>na.rm=TRUE</code> in case there are missing data.</li>
 </ul></li>
 </ol>
-<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb937-1"><a href="pretestposttest.html#cb937-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector of means for first and second outcome variables</span></span>
-<span id="cb937-2"><a href="pretestposttest.html#cb937-2" aria-hidden="true" tabindex="-1"></a>prepost_means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(td<span class="sc">$</span>PreTest, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="fu">mean</span>(td<span class="sc">$</span>PostTest, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="pretestposttest.html#cb939-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector of means for first and second outcome variables</span></span>
+<span id="cb939-2"><a href="pretestposttest.html#cb939-2" aria-hidden="true" tabindex="-1"></a>prepost_means <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(td<span class="sc">$</span>PreTest, <span class="at">na.rm=</span><span class="cn">TRUE</span>), <span class="fu">mean</span>(td<span class="sc">$</span>PostTest, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
 <p>Now it’s time to create a vector of the names (i.e., variable names) that correspond with the means contained within the vector we just created. First, come up with a name for the vector object that will contain the names; here, I name the vector <code>meannames</code> using the <code>&lt;-</code> operator. Second, type the name of the <code>c</code> function from base R. As the first argument within the function, type what you wish to name the first mean (i.e., variable name for the first value), and put it in quotation marks (<code>"Pre-Test"</code>). As the second argument within the function, type what you wish to name the second mean (i.e., variable name for the second value), and put it in quotation marks (<code>"Post-Test"</code>).</p>
-<div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb938-1"><a href="pretestposttest.html#cb938-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector of names corresponding to the first and second means above</span></span>
-<span id="cb938-2"><a href="pretestposttest.html#cb938-2" aria-hidden="true" tabindex="-1"></a>meannames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Pre-Test&quot;</span>,<span class="st">&quot;Post-Test&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb940-1"><a href="pretestposttest.html#cb940-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector of names corresponding to the first and second means above</span></span>
+<span id="cb940-2"><a href="pretestposttest.html#cb940-2" aria-hidden="true" tabindex="-1"></a>meannames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Pre-Test&quot;</span>,<span class="st">&quot;Post-Test&quot;</span>)</span></code></pre></div>
 <p>To combine these two vectors into a data frame, we will use the <code>data.frame</code> function from base R. First, come up with a name for the data frame object; here, I name the data frame <code>meansdf</code> using the <code>&lt;-</code> naming symbol. Second, type the name of the <code>data.frame</code> function. As the first argument, type the name of <code>meannames</code> vector we created. As the second argument, type the name of the <code>prepost_means</code> vector we created.</p>
-<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb939-1"><a href="pretestposttest.html#cb939-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data frame from the two vectors created above</span></span>
-<span id="cb939-2"><a href="pretestposttest.html#cb939-2" aria-hidden="true" tabindex="-1"></a>meansdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(meannames, prepost_means)</span></code></pre></div>
+<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="pretestposttest.html#cb941-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data frame from the two vectors created above</span></span>
+<span id="cb941-2"><a href="pretestposttest.html#cb941-2" aria-hidden="true" tabindex="-1"></a>meansdf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(meannames, prepost_means)</span></code></pre></div>
 <p>Remove the vectors called <code>meannames</code> and <code>prepost_means</code> from your R Global environment to avoid any confusion when specifying the <code>BarChart</code> function. Use the <code>remove</code> function from base R to accomplish this.</p>
-<div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb940-1"><a href="pretestposttest.html#cb940-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the two vectors created above from R Global Environment</span></span>
-<span id="cb940-2"><a href="pretestposttest.html#cb940-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(prepost_means)</span>
-<span id="cb940-3"><a href="pretestposttest.html#cb940-3" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(meannames)</span></code></pre></div>
+<div class="sourceCode" id="cb942"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb942-1"><a href="pretestposttest.html#cb942-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the two vectors created above from R Global Environment</span></span>
+<span id="cb942-2"><a href="pretestposttest.html#cb942-2" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(prepost_means)</span>
+<span id="cb942-3"><a href="pretestposttest.html#cb942-3" aria-hidden="true" tabindex="-1"></a><span class="fu">remove</span>(meannames)</span></code></pre></div>
 <p>Now have data in a format that can be used as input in the <code>BarChart</code> function from the <code>lessR</code> package. Begin by typing the name of the <code>BarChart</code> function. As the first argument, type the name of the variable that contains the names of the means (<code>meannames</code>). As the second argument, type the name of the variable that contains the actual means (<code>prepost_means</code>). As the third argument, type <code>data=</code> followed by the name of the data frame to which the aforementioned variables belong (<code>meansdf</code>). As the fourth argument, use <code>xlab=</code> to provide the x-axis label (<code>"Time"</code>). As the fifth argument, use <code>ylab=</code> to provide the y-axis label (<code>"Average Score"</code>).</p>
-<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb941-1"><a href="pretestposttest.html#cb941-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
-<span id="cb941-2"><a href="pretestposttest.html#cb941-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(meannames, prepost_means, <span class="at">data=</span>meansdf, </span>
-<span id="cb941-3"><a href="pretestposttest.html#cb941-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>, </span>
-<span id="cb941-4"><a href="pretestposttest.html#cb941-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Average Score&quot;</span>)</span></code></pre></div>
-<p><img src="R-for-HR_files/figure-html/unnamed-chunk-569-1.png" width="672" /></p>
+<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="pretestposttest.html#cb943-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
+<span id="cb943-2"><a href="pretestposttest.html#cb943-2" aria-hidden="true" tabindex="-1"></a><span class="fu">BarChart</span>(meannames, prepost_means, <span class="at">data=</span>meansdf, </span>
+<span id="cb943-3"><a href="pretestposttest.html#cb943-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">xlab=</span><span class="st">&quot;Time&quot;</span>, </span>
+<span id="cb943-4"><a href="pretestposttest.html#cb943-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">ylab=</span><span class="st">&quot;Average Score&quot;</span>)</span></code></pre></div>
+<p><img src="R-for-HR_files/figure-html/unnamed-chunk-570-1.png" width="672" /></p>
 <pre><code>## &gt;&gt;&gt; Suggestions
 ## Plot(prepost_means, meannames) # lollipop plot 
 ## 
-##  Data for:  prepost_means 
-##  ------------------------ 
+##  Plotted Values 
+##  -------------- 
 ##   Pre-Test  Post-Test 
 ##     52.720     72.360</code></pre>
 </div>
@@ -1624,30 +1627,30 @@ div.csl-indent {
 <div id="psttest_initsteps_supplement" class="section level3 hasAnchor" number="32.3.2">
 <h3><span class="header-section-number">32.3.2</span> Initial Steps<a href="pretestposttest.html#psttest_initsteps_supplement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If required, please refer to the <a href="pretestposttest.html#initsteps_psttest">Initial Steps</a> section from this chapter for more information on these initial steps.</p>
-<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb943-1"><a href="pretestposttest.html#cb943-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
-<span id="cb943-2"><a href="pretestposttest.html#cb943-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb944"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb944-1"><a href="pretestposttest.html#cb944-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
-<span id="cb944-2"><a href="pretestposttest.html#cb944-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
-<span id="cb944-3"><a href="pretestposttest.html#cb944-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
-<span id="cb944-4"><a href="pretestposttest.html#cb944-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="pretestposttest.html#cb945-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
-<span id="cb945-2"><a href="pretestposttest.html#cb945-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb945-3"><a href="pretestposttest.html#cb945-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb945-4"><a href="pretestposttest.html#cb945-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
-<span id="cb945-5"><a href="pretestposttest.html#cb945-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb945-1"><a href="pretestposttest.html#cb945-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your working directory</span></span>
+<span id="cb945-2"><a href="pretestposttest.html#cb945-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;H:/RWorkshop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb946-1"><a href="pretestposttest.html#cb946-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install readr package if you haven&#39;t already</span></span>
+<span id="cb946-2"><a href="pretestposttest.html#cb946-2" aria-hidden="true" tabindex="-1"></a><span class="co"># [Note: You don&#39;t need to install a package every </span></span>
+<span id="cb946-3"><a href="pretestposttest.html#cb946-3" aria-hidden="true" tabindex="-1"></a><span class="co"># time you wish to access it]</span></span>
+<span id="cb946-4"><a href="pretestposttest.html#cb946-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="pretestposttest.html#cb947-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access readr package</span></span>
+<span id="cb947-2"><a href="pretestposttest.html#cb947-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb947-3"><a href="pretestposttest.html#cb947-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb947-4"><a href="pretestposttest.html#cb947-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
+<span id="cb947-5"><a href="pretestposttest.html#cb947-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;TrainingEvaluation_PrePostOnly.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 25 Columns: 3
-## ── Column specification ──────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (3): EmpID, PreTest, PostTest
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb947-1"><a href="pretestposttest.html#cb947-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
-<span id="cb947-2"><a href="pretestposttest.html#cb947-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(td)</span></code></pre></div>
+<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="pretestposttest.html#cb949-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) objects</span></span>
+<span id="cb949-2"><a href="pretestposttest.html#cb949-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(td)</span></code></pre></div>
 <pre><code>## [1] &quot;EmpID&quot;    &quot;PreTest&quot;  &quot;PostTest&quot;</code></pre>
-<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb949-1"><a href="pretestposttest.html#cb949-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
-<span id="cb949-2"><a href="pretestposttest.html#cb949-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(td)</span></code></pre></div>
-<pre><code>## spec_tbl_df [25 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="pretestposttest.html#cb951-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View variable type for each variable in data frame</span></span>
+<span id="cb951-2"><a href="pretestposttest.html#cb951-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(td)</span></code></pre></div>
+<pre><code>## spc_tbl_ [25 × 3] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
 ##  $ EmpID   : num [1:25] 26 27 28 29 30 31 32 33 34 35 ...
 ##  $ PreTest : num [1:25] 43 58 52 47 43 50 66 48 49 49 ...
 ##  $ PostTest: num [1:25] 66 74 62 84 78 73 60 61 71 83 ...
@@ -1658,8 +1661,8 @@ div.csl-indent {
 ##   ..   PostTest = col_double()
 ##   .. )
 ##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb951-1"><a href="pretestposttest.html#cb951-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
-<span id="cb951-2"><a href="pretestposttest.html#cb951-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
+<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="pretestposttest.html#cb953-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View first 6 rows of data frame</span></span>
+<span id="cb953-2"><a href="pretestposttest.html#cb953-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(td)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 3
 ##   EmpID PreTest PostTest
 ##   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
@@ -1676,8 +1679,8 @@ div.csl-indent {
 <p>Before running our paired-samples <em>t</em>-test using the <code>t.test</code> function from base R, we should test the second assumption (see <a href="pretestposttest.html#statisticalassumptions_psttest">Statistical Assumptions</a> section). To do so, we will estimate the <em>Shapiro-Wilk normality test</em>. This test was covered in detail above when we applied the <code>ttest</code> function from <code>lessR</code>, so we will breeze through the interpretation in this section.</p>
 <p><em>Note:</em> In accordance with the central limit theorem, a sampling distribution will tend to approximate a normal distribution when it is based on more than 30 cases (<em>N</em> &gt; 30). Thus, if there are more than 30 cases in each independent sample, then we can assume that the assumption of univariate normality has been met, which means we won’t formally test the assumption for the two independent samples.</p>
 <p>To compute the Shapiro-Wilk normality test to test the assumption that the difference scores are normally distributed, we will use the <code>shapiro.test</code> function from base R. First, type the name of the <code>shapiro.test</code> function. As the sole argument, type the name of the data frame (<code>td</code>), followed by the <code>$</code> symbol and the difference between the <code>PostTest</code> scores and <code>PreTest</code> scores: <code>td$PostTest - td$PreTest</code>.</p>
-<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb953-1"><a href="pretestposttest.html#cb953-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Shapiro-Wilk normality test for normal distribution</span></span>
-<span id="cb953-2"><a href="pretestposttest.html#cb953-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(td<span class="sc">$</span>PostTest <span class="sc">-</span> td<span class="sc">$</span>PreTest)</span></code></pre></div>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="pretestposttest.html#cb955-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Shapiro-Wilk normality test for normal distribution</span></span>
+<span id="cb955-2"><a href="pretestposttest.html#cb955-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(td<span class="sc">$</span>PostTest <span class="sc">-</span> td<span class="sc">$</span>PreTest)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -1685,8 +1688,8 @@ div.csl-indent {
 ## W = 0.96874, p-value = 0.6134</code></pre>
 <p>The output of the script/code above indicates that the <em>p</em>-value associated with the test is equal to or greater than the conventional alpha of .05; therefore, we <em>fail to reject</em> the null hypothesis that the difference scores are normally distributed. In other words, we have no evidence to suggest that the difference score variable scores are anything other than normally distributed.</p>
 <p>With confidence that we met the statistical assumptions for a paired-samples <em>t</em>-test, we are ready to apply the <code>t.test</code> function from base R. To begin, type the name of the <code>t.test</code> function. As the first argument, specify the name of the data frame (<code>td</code>), followed by the <code>$</code> symbol and the name of the <em>second</em> outcome variable (<code>PostTest</code>). As the second argument, specify the name of the data frame (<code>td</code>), followed by the <code>$</code> symbol and the name of the <em>first</em> outcome variable (<code>PreTest</code>). Note that the ordering of the variables is opposite of the <code>ttest</code> function from <code>lessR</code>. Difference scores will be calculated as part of the function by subtracting the variable in the second argument from the variable in the first variable argument. For the third argument, enter <code>paired=TRUE</code> to inform R that the data are paired, which means you are requesting a paired-samples <em>t</em>-test.</p>
-<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb955-1"><a href="pretestposttest.html#cb955-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired-samples t-test using t.test function from base R</span></span>
-<span id="cb955-2"><a href="pretestposttest.html#cb955-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(td<span class="sc">$</span>PostTest, td<span class="sc">$</span>PreTest, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="pretestposttest.html#cb957-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired-samples t-test using t.test function from base R</span></span>
+<span id="cb957-2"><a href="pretestposttest.html#cb957-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(td<span class="sc">$</span>PostTest, td<span class="sc">$</span>PreTest, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -1700,13 +1703,13 @@ div.csl-indent {
 ##           19.64</code></pre>
 <p>Note that the <code>t.test</code> output provides you with the results of the paired-samples <em>t</em>-test in terms of the formal statistical test (<em>t</em> = 8.4677, <em>p</em> &lt; .001), the 95% confidence interval (95% CI[14.853, 24.427]), and the mean of the differences (<em>M</em> = 19.64). The output, however, does <em>not</em> include an estimate of practical significance.</p>
 <p>To compute Cohen’s <em>d</em> as an estimate of practical significance we will use the <code>cohen.d</code> function from the <code>effsize</code> package <span class="citation">(<a href="#ref-R-effsize" role="doc-biblioref">Torchiano 2020</a>)</span>. If you haven’t already, install the <code>effsize</code> package. Make sure to access the package using the <code>library</code> function.</p>
-<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb957-1"><a href="pretestposttest.html#cb957-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
-<span id="cb957-2"><a href="pretestposttest.html#cb957-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;effsize&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb958-1"><a href="pretestposttest.html#cb958-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
-<span id="cb958-2"><a href="pretestposttest.html#cb958-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effsize)</span></code></pre></div>
+<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="pretestposttest.html#cb959-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install package</span></span>
+<span id="cb959-2"><a href="pretestposttest.html#cb959-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;effsize&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb960-1"><a href="pretestposttest.html#cb960-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access package</span></span>
+<span id="cb960-2"><a href="pretestposttest.html#cb960-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(effsize)</span></code></pre></div>
 <p>As the first argument in the <code>cohen.d</code> function, specify the name of the data frame (<code>td</code>), followed by the <code>$</code> symbol and the name of the <em>second</em> outcome variable (<code>PostTest</code>). As the second argument, specify the name of the data frame (<code>td</code>), followed by the <code>$</code> symbol and the name of the <em>first</em> outcome variable (<code>PreTest</code>). As the third argument, type <code>paired=TRUE</code> to indicate that the data are indeed paired (i.e., dependent).</p>
-<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb959-1"><a href="pretestposttest.html#cb959-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d</span></span>
-<span id="cb959-2"><a href="pretestposttest.html#cb959-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(td<span class="sc">$</span>PostTest, td<span class="sc">$</span>PreTest, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb961-1"><a href="pretestposttest.html#cb961-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute Cohen&#39;s d</span></span>
+<span id="cb961-2"><a href="pretestposttest.html#cb961-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cohen.d</span>(td<span class="sc">$</span>PostTest, td<span class="sc">$</span>PreTest, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Cohen&#39;s d
 ## 
@@ -1751,7 +1754,7 @@ Gerbing, David, The School of Business, and Portland State University. 2021. <em
 Torchiano, Marco. 2020. <em>Effsize: Efficient Effect Size Computation</em>. <a href="https://doi.org/10.5281/zenodo.1480624">https://doi.org/10.5281/zenodo.1480624</a>.
 </div>
 <div id="ref-R-readr" class="csl-entry">
-Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2022. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
+Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangular Text Data</em>. <a href="https://CRAN.R-project.org/package=readr">https://CRAN.R-project.org/package=readr</a>.
 </div>
 </div>
             </section>
@@ -1789,7 +1792,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["R for HR.pdf", "R for HR.epub"],
 "search": {
 "engine": "fuse",
 "options": null
@@ -1807,7 +1810,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
