@@ -1373,7 +1373,7 @@ div.csl-indent {
 <span id="cb1669-4"><a href="logistic.html#cb1669-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1669-5"><a href="logistic.html#cb1669-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 99 Columns: 6
-## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): ID
 ## dbl (5): Turnover, JS, OC, TI, NAff
@@ -3004,7 +3004,7 @@ div.csl-indent {
 <span id="cb1731-4"><a href="logistic.html#cb1731-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb1731-5"><a href="logistic.html#cb1731-5" aria-hidden="true" tabindex="-1"></a>td <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;Turnover.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 99 Columns: 6
-## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr (1): ID
 ## dbl (5): Turnover, JS, OC, TI, NAff
@@ -3079,10 +3079,10 @@ div.csl-indent {
 <span id="cb1741-6"><a href="logistic.html#cb1741-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1741-7"><a href="logistic.html#cb1741-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1741-8"><a href="logistic.html#cb1741-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##         69          7         73         58         12         31         13          1         33         84         63         61 
-## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 0.02352896 0.01756755 0.01733141 0.01693066 
-##         97         70         74         75         67         80         77         39 
-## 0.01692984 0.01648318 0.01614505 0.01595550 0.01453516 0.01431210 0.01336026 0.01281733</code></pre>
+<pre><code>##         69          7         73         58         12         31         13          1         33         84         63 
+## 0.08495602 0.06240864 0.04888996 0.04617863 0.04352935 0.04117397 0.03313842 0.02608930 0.02352896 0.01756755 0.01733141 
+##         61         97         70         74         75         67         80         77         39 
+## 0.01693066 0.01692984 0.01648318 0.01614505 0.01595550 0.01453516 0.01431210 0.01336026 0.01281733</code></pre>
 <p>Again, we see cases associated with row numbers <em>66</em> (.085), <em>67</em> (.062), and <em>71</em> (.049) having the highest Cook’s distance values, with <em>66</em> and <em>67</em> still looking like the most influential cases of the lot. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>66</em> and <em>67</em> from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>Association Between Any Continuous Predictor Variable and Logit Transformation of Outcome Variable Is Linear:</strong> To test the assumption of linearity between a <em>continuous</em> predictor variable and the logit transformation of the outcome variable, we can add the interaction between the predictor variable and its logarithmic (i.e., natural log) transformation. <strong>[Note: We do not perform the following test/approach for <em>categorical</em> predictor variables.]</strong> We will use an approach that is commonly referred to as the Box-Tidwell approach <span class="citation">(<a href="#ref-hosmerlemeshow2000" role="doc-biblioref">Hosmer and Lemeshow 2000</a>)</span>. To apply this approach, we need to add the interaction term between our predictor variable <code>JS</code> and its logarithmic transformation to our logistic regression model – but not the main effect for the logarithmic transformation of <code>JS</code>. In our regression model formula, specify the dichotomous outcome variable <code>Turnover</code> to the left of the <code>~</code> operator. To the right of the <code>~</code> operator, type the name of the predictor variable <code>JS</code> followed by the <code>+</code> operator. After the <code>+</code> operator, type the name of the predictor variable <code>JS</code>, followed by the <code>:</code> operator and the <code>log</code> function from base R with the predictor variable <code>JS</code> as its sole parenthetical argument. Finally, we will use the <code>summary</code> function from base R to generate the model output, and within the parentheses, enter the name of the model you created in the prior step (<code>boxtidwell</code>).</p>
 <div class="sourceCode" id="cb1743"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1743-1"><a href="logistic.html#cb1743-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Box-Tidwell diagnostic test of linearity between continuous predictor variable and</span></span>
@@ -3511,10 +3511,10 @@ div.csl-indent {
 <span id="cb1799-6"><a href="logistic.html#cb1799-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1799-7"><a href="logistic.html#cb1799-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View top 20 Cook&#39;s distance values</span></span>
 <span id="cb1799-8"><a href="logistic.html#cb1799-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cooksD, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
-<pre><code>##          6          1         66         42         96         74         27         26         67         61         68          4 
-## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 0.03973226 0.02634920 0.02182251 0.01882168 
-##         25         52         54         69          8         75         77         64 
-## 0.01802907 0.01720366 0.01718997 0.01718628 0.01661234 0.01611474 0.01593173 0.01552323</code></pre>
+<pre><code>##          6          1         66         42         96         74         27         26         67         61         68 
+## 0.15184792 0.13426790 0.10091817 0.08227834 0.05869871 0.04691783 0.04554332 0.04249992 0.03973226 0.02634920 0.02182251 
+##          4         25         52         54         69          8         75         77         64 
+## 0.01882168 0.01802907 0.01720366 0.01718997 0.01718628 0.01661234 0.01611474 0.01593173 0.01552323</code></pre>
 <p>Again, we see cases associated with row numbers <em>6</em> (.152), <em>1</em> (.134), and <em>66</em> (.101) having the highest Cook’s distance values. As a sensitivity analysis, we <em>could</em> estimate our model once more after removing the cases associated with row numbers <em>6</em> and <em>1</em> (and maybe even <em>66</em>) from our data frame. With that being said, we should be wary of removing outlier or influential cases and should do so only when we have good justification for doing so. A liberal threshold Cook’s distance is 1, which means that we would grow concerned if any of these values exceeded 1, whereas a more conservative threshold is 4 divided by the sample size (4 / 98 = .041). These Cook’s distance values are all well-below the more liberal threshold, so I would say we’re safe to leave the associated cases in the data.</p>
 <p><strong>No (Multi)Collinearity Between Predictor Variables:</strong> To assess whether (multi)collinearity might be an issue, let’s estimate two indices of collinearity: tolerance and valence inflation factor (VIF). If you haven’t already, install the <code>car</code> package <span class="citation">(<a href="#ref-R-car" role="doc-biblioref">Fox and Weisberg 2019</a>)</span> which contains the <code>vif</code> function we will use to compute tolerance.</p>
 <div class="sourceCode" id="cb1801"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1801-1"><a href="logistic.html#cb1801-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install car package if you haven&#39;t already</span></span>
@@ -3898,7 +3898,17 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangul
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": null,
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
 "fontsettings": {
 "theme": "white",
 "family": "sans",
@@ -3913,7 +3923,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["R for HR.pdf", "R for HR.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null

@@ -1387,16 +1387,16 @@ div.csl-indent {
 <span id="cb2063-4"><a href="lassoregression.html#cb2063-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and name data frame (tibble) object</span></span>
 <span id="cb2063-5"><a href="lassoregression.html#cb2063-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;lasso.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 1000 Columns: 37
-## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
-## dbl (37): y, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x2...
+## dbl (37): y, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb2065"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2065-1"><a href="lassoregression.html#cb2065-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the names of the variables in the data frame (tibble) object</span></span>
 <span id="cb2065-2"><a href="lassoregression.html#cb2065-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
-<pre><code>##  [1] &quot;y&quot;   &quot;x1&quot;  &quot;x2&quot;  &quot;x3&quot;  &quot;x4&quot;  &quot;x5&quot;  &quot;x6&quot;  &quot;x7&quot;  &quot;x8&quot;  &quot;x9&quot;  &quot;x10&quot; &quot;x11&quot; &quot;x12&quot; &quot;x13&quot; &quot;x14&quot; &quot;x15&quot; &quot;x16&quot; &quot;x17&quot; &quot;x18&quot; &quot;x19&quot; &quot;x20&quot;
-## [22] &quot;x21&quot; &quot;x22&quot; &quot;x23&quot; &quot;x24&quot; &quot;x25&quot; &quot;x26&quot; &quot;x27&quot; &quot;x28&quot; &quot;x29&quot; &quot;x30&quot; &quot;x31&quot; &quot;x32&quot; &quot;x33&quot; &quot;x34&quot; &quot;x35&quot; &quot;x36&quot;</code></pre>
+<pre><code>##  [1] &quot;y&quot;   &quot;x1&quot;  &quot;x2&quot;  &quot;x3&quot;  &quot;x4&quot;  &quot;x5&quot;  &quot;x6&quot;  &quot;x7&quot;  &quot;x8&quot;  &quot;x9&quot;  &quot;x10&quot; &quot;x11&quot; &quot;x12&quot; &quot;x13&quot; &quot;x14&quot; &quot;x15&quot; &quot;x16&quot; &quot;x17&quot; &quot;x18&quot; &quot;x19&quot;
+## [21] &quot;x20&quot; &quot;x21&quot; &quot;x22&quot; &quot;x23&quot; &quot;x24&quot; &quot;x25&quot; &quot;x26&quot; &quot;x27&quot; &quot;x28&quot; &quot;x29&quot; &quot;x30&quot; &quot;x31&quot; &quot;x32&quot; &quot;x33&quot; &quot;x34&quot; &quot;x35&quot; &quot;x36&quot;</code></pre>
 <div class="sourceCode" id="cb2067"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2067-1"><a href="lassoregression.html#cb2067-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print variable type for each variable in data frame (tibble) object</span></span>
 <span id="cb2067-2"><a href="lassoregression.html#cb2067-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df)</span></code></pre></div>
 <pre><code>## spc_tbl_ [1,000 × 37] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
@@ -1481,16 +1481,16 @@ div.csl-indent {
 <div class="sourceCode" id="cb2069"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2069-1"><a href="lassoregression.html#cb2069-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print first 6 rows of data frame (tibble) object</span></span>
 <span id="cb2069-2"><a href="lassoregression.html#cb2069-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 37
-##        y     x1     x2     x3     x4     x5     x6     x7     x8     x9    x10    x11    x12    x13    x14    x15    x16    x17    x18
-##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-## 1 -0.886 -0.57  -0.669 -0.978 -0.948 -1.70  -0.623  0.176 -1.62  -1.19  -0.519 -0.495  0.008  0.269  0.017 -0.32  -0.849 -4.32  -2.40 
-## 2  0.763  1.76   1.08   1.09   2.43   1.01   2.57   1.32   2.92   2.00   0.882  1.16   2.90   2.00   3.66   0.885  1.13   6.26   6.34 
-## 3  0.209 -0.016  0.264 -1.30  -0.493 -0.049 -0.61  -0.565 -1.63  -0.95   0.676  0.531  0.434  0.499  2.00  -0.776 -0.404  1.66   1.68 
-## 4  1.75   1.48   0.153  1.80  -1     -0.768  0.008 -0.083  0.478  0.204  1.18   0.687  1.20  -0.523 -2.02   4.07   0.658  1.11   6.42 
-## 5  0.22  -1.29  -1.09   0.226  0.713  1.73  -1.21   1.12  -1.05   0.622  0.234  0.596 -0.004 -1.71   0.754 -0.335 -0.154 -2.20   0.379
-## 6 -0.458 -0.619 -1.82  -1.35  -0.036 -3.79  -2.02  -0.072 -1.26  -0.999 -1.12  -2.61  -1.85  -2.16   0.311 -5.68  -0.409 -0.999 -3.67 
-## # ℹ 18 more variables: x19 &lt;dbl&gt;, x20 &lt;dbl&gt;, x21 &lt;dbl&gt;, x22 &lt;dbl&gt;, x23 &lt;dbl&gt;, x24 &lt;dbl&gt;, x25 &lt;dbl&gt;, x26 &lt;dbl&gt;, x27 &lt;dbl&gt;, x28 &lt;dbl&gt;,
-## #   x29 &lt;dbl&gt;, x30 &lt;dbl&gt;, x31 &lt;dbl&gt;, x32 &lt;dbl&gt;, x33 &lt;dbl&gt;, x34 &lt;dbl&gt;, x35 &lt;dbl&gt;, x36 &lt;dbl&gt;</code></pre>
+##        y     x1     x2     x3     x4     x5     x6     x7     x8     x9    x10    x11    x12    x13    x14    x15    x16    x17
+##    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1 -0.886 -0.57  -0.669 -0.978 -0.948 -1.70  -0.623  0.176 -1.62  -1.19  -0.519 -0.495  0.008  0.269  0.017 -0.32  -0.849 -4.32 
+## 2  0.763  1.76   1.08   1.09   2.43   1.01   2.57   1.32   2.92   2.00   0.882  1.16   2.90   2.00   3.66   0.885  1.13   6.26 
+## 3  0.209 -0.016  0.264 -1.30  -0.493 -0.049 -0.61  -0.565 -1.63  -0.95   0.676  0.531  0.434  0.499  2.00  -0.776 -0.404  1.66 
+## 4  1.75   1.48   0.153  1.80  -1     -0.768  0.008 -0.083  0.478  0.204  1.18   0.687  1.20  -0.523 -2.02   4.07   0.658  1.11 
+## 5  0.22  -1.29  -1.09   0.226  0.713  1.73  -1.21   1.12  -1.05   0.622  0.234  0.596 -0.004 -1.71   0.754 -0.335 -0.154 -2.20 
+## 6 -0.458 -0.619 -1.82  -1.35  -0.036 -3.79  -2.02  -0.072 -1.26  -0.999 -1.12  -2.61  -1.85  -2.16   0.311 -5.68  -0.409 -0.999
+## # ℹ 19 more variables: x18 &lt;dbl&gt;, x19 &lt;dbl&gt;, x20 &lt;dbl&gt;, x21 &lt;dbl&gt;, x22 &lt;dbl&gt;, x23 &lt;dbl&gt;, x24 &lt;dbl&gt;, x25 &lt;dbl&gt;, x26 &lt;dbl&gt;,
+## #   x27 &lt;dbl&gt;, x28 &lt;dbl&gt;, x29 &lt;dbl&gt;, x30 &lt;dbl&gt;, x31 &lt;dbl&gt;, x32 &lt;dbl&gt;, x33 &lt;dbl&gt;, x34 &lt;dbl&gt;, x35 &lt;dbl&gt;, x36 &lt;dbl&gt;</code></pre>
 <div class="sourceCode" id="cb2071"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2071-1"><a href="lassoregression.html#cb2071-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print number of rows in data frame (tibble) object</span></span>
 <span id="cb2071-2"><a href="lassoregression.html#cb2071-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df)</span></code></pre></div>
 <pre><code>## [1] 1000</code></pre>
@@ -2038,7 +2038,17 @@ Wickham, Hadley, Jim Hester, and Jennifer Bryan. 2023. <em>Readr: Read Rectangul
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": null,
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": true,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
 "fontsettings": {
 "theme": "white",
 "family": "sans",
@@ -2053,7 +2063,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["R for HR.pdf", "R for HR.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
